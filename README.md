@@ -8,10 +8,11 @@ Site static cu prezentările interactive pentru clasa a IV-a.
 
 ## Structură
 - `index.html`: cuprinsul, pe materii.
-- `istorie/`, `stiinte/`, `geografie/`, `civica/`: câte un fișier HTML pentru fiecare prezentare.
+- `istorie/`, `stiinte/`, `geografie/`, `civica/`: câte un folder pe materie, cu un subfolder pentru fiecare unitate (`unitatea-1/`, `unitatea-2/`…).
+- În fiecare unitate: `lectia-N-<subiect>.html` pentru fiecare lecție și `recapitulare.html` pentru recapitularea unității.
 - `vendor/`: biblioteca three.js (licență MIT), folosită pentru modelul 3D de la geografie, ca să meargă și fără internet.
 
 ## Bine de știut
 - Nimic nu urmărește ce lecții au fost deschise. Fiecare prezentare pornește de la început. Singurul lucru salvat este fișa „Localitatea mea”, de la lecția 4 de istorie, și doar în browserul de pe dispozitivul folosit.
 - Fonturile se încarcă de pe Google Fonts. Fără internet, paginile folosesc fonturile calculatorului.
-- Sursa fiecărei prezentări este artefactul cu același nume din claude.ai. Când o lecție se schimbă acolo, trebuie actualizat și fișierul de aici.
+- Fișierele din acest folder sunt singura sursă a prezentărilor.

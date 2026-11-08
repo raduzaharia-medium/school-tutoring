@@ -6,7 +6,7 @@
 <style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
 </head>
 <body>
-<title>Clasa, școala, cartierul, localitatea</title>
+<title>Ce este istoria?</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
@@ -232,41 +232,13 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 @media (max-width:520px){.hbars{grid-template-columns:1fr}.hbars span{margin-top:4px}}
 .step small{display:block;font-weight:700;color:var(--soft);font-size:.72em}
 .sort .seg{flex-wrap:wrap}
-.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
-.duo>div{border-radius:18px;padding:14px 18px;min-width:0}
-.duo .man{background:var(--tint-yellow);border:2px solid var(--yellow)}
-.duo .ctx{background:var(--tint-green);border:2px solid var(--green)}
-.duo h3{font-size:1em;margin-bottom:.3em}
-.duo p{margin:.2em 0;font-size:.95em}
-.vocab{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:14px}
-.vocab div{background:var(--tint-purple);border-radius:14px;padding:10px 14px}
-.vocab b{color:var(--purple)}
-:root[data-theme="dark"] .vocab b{color:#CBB9FF}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .vocab b{color:#CBB9FF}}
-.fig{width:100%;height:auto;display:block;border-radius:16px}
-.fig text{fill:var(--ink);font-family:"Nunito",sans-serif;font-weight:800}
-.sky{width:100%;height:auto;display:block;border-radius:16px}
-.sky text{font-family:"Nunito",sans-serif;font-weight:800;fill:#FFFFFF}
-.steps{display:grid;gap:10px;counter-reset:s;margin:0;padding:0;list-style:none}
-.steps li{counter-increment:s;background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 14px 10px 54px;position:relative}
-.steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:30px;height:30px;border-radius:50%;background:var(--purple);color:#fff;display:grid;place-items:center;font-family:"Baloo 2",sans-serif;font-weight:800}
-.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
-.ctrl button{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:.4em 1em;cursor:pointer}
-.ctrl button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
-.tbl{width:100%;border-collapse:collapse;background:var(--paper);border-radius:14px;overflow:hidden}
-.tbl th,.tbl td{padding:.5em .8em;border-bottom:2px solid var(--line);text-align:left}
-.tbl th{background:var(--tint-blue)}
-.scroll{overflow-x:auto}
-
-.levels{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:10px}
-.levels button{font:inherit;text-align:left;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:10px 14px}
-.levels button b{display:block;font-family:var(--display);font-size:1.05em}
-.levels button[aria-pressed="true"]{border-color:var(--blue);background:var(--tint-blue)}
-.calc{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0}
-.calc input,.calc select{font:inherit;font-weight:800;padding:.3em .5em;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);max-width:9em}
-.calc input[type=range]{max-width:none;flex:1;min-width:160px;padding:0}
-.out{background:var(--tint-yellow);border-radius:14px;padding:10px 16px;font-weight:700}
-.out b{font-family:var(--display);font-size:1.2em}
+.star{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.star button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.35em 1em}
+.star button[aria-pressed="true"]{background:var(--yellow);border-color:var(--yellow);color:#1E2340}
+.layers{display:grid;gap:4px;margin:10px 0}
+.layers button{font:inherit;font-weight:700;text-align:left;cursor:pointer;border:0;border-radius:8px;padding:8px 12px;color:#fff;display:flex;gap:10px;align-items:center}
+.layers button .n{margin-left:auto;background:rgba(255,255,255,.9);color:#1E2340;border-radius:99px;min-width:1.8em;text-align:center;font-weight:800}
+.layers button:disabled{cursor:default}
 </style>
 <main class="deck" id="deck">
 
@@ -275,114 +247,142 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
  <div class="wrap cover">
   <div>
    <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
-   <p style="font-weight:800;color:var(--soft);margin:0">Geografie, Unitatea 1, Lecția 1</p>
-   <h1>Clasa, școala, cartierul, localitatea</h1>
-   <p class="lead">Geografia nu începe departe, în munți sau în alte țări. Începe în camera ta, pe drumul spre școală și în banca din clasă.</p>
+   <p style="font-weight:800;color:var(--soft);margin:0">Istorie · Unitatea 1 · Lecția 1 · manual pp. 10–11</p>
+   <h1>Ce este istoria?</h1>
+   <p class="lead">Cine studiază trecutul, cu ce dovezi lucrează și cum își dă seama cât de vechi e un obiect găsit în pământ.</p>
    <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
   </div>
   <svg viewBox="0 0 220 220" aria-hidden="true">
-   <circle cx="110" cy="110" r="102" fill="var(--tint-blue)" stroke="var(--blue)" stroke-width="4"/>
-   <circle cx="110" cy="122" r="74" fill="var(--tint-green)" stroke="var(--green)" stroke-width="4"/>
-   <circle cx="110" cy="136" r="46" fill="var(--tint-yellow)" stroke="#C9862A" stroke-width="4"/>
-   <circle cx="110" cy="150" r="20" fill="var(--tint-red)" stroke="var(--red)" stroke-width="4"/>
-   <text x="110" y="156" text-anchor="middle" font-size="18">🎒</text>
-   <text x="110" y="28" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="800" font-size="13" fill="var(--ink)">localitatea</text>
-   <text x="110" y="64" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="800" font-size="13" fill="var(--ink)">cartierul</text>
-   <text x="110" y="104" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="800" font-size="13" fill="var(--ink)">școala</text>
+   <rect x="10" y="20" width="200" height="40" rx="6" fill="#6DBB5A"/>
+   <rect x="10" y="60" width="200" height="40" fill="#B4874E"/>
+   <rect x="10" y="100" width="200" height="40" fill="#9A6B3A"/>
+   <rect x="10" y="140" width="200" height="40" fill="#7A5230"/>
+   <rect x="10" y="180" width="200" height="30" rx="6" fill="#5A3A22"/>
+   <circle cx="60" cy="80" r="9" fill="#F6C431" stroke="#fff" stroke-width="3"/>
+   <path d="M130 112 h30 l-5 20 h-20z" fill="#E2433A" stroke="#fff" stroke-width="3"/>
+   <path d="M70 152 l26 10 -4 8 -26 -10z" fill="#C9862A" stroke="#fff" stroke-width="3"/>
+   <path d="M150 188 l18 4 -6 12 -16 -6z" fill="#B9B4A8" stroke="#fff" stroke-width="3"/>
+   <path d="M175 6 v40 M168 40 l7 10 7 -10" stroke="var(--ink)" stroke-width="5" fill="none" stroke-linecap="round"/>
   </svg>
  </div>
 </section>
 
-<!-- 2 GEOGRAFIA DIN ZIUA TA -->
-<section class="slide" aria-label="Geografia din ziua ta">
+<!-- 2 STIM / VREM -->
+<section class="slide" aria-label="Ce știm și ce vrem să aflăm">
  <div class="wrap">
-  <span class="badge" style="background:var(--green)">Cuvânt-înainte</span>
-  <h2>Geografia începe de la trezire</h2>
-  <p class="lead">Manualul spune că toată dimineața ta este geografie. Uite de ce:</p>
+  <span class="badge" style="background:var(--green)">Știm deja</span>
+  <div class="grid g2">
+   <div class="box"><span class="emo">🔎</span><p>Oamenii au vrut dintotdeauna să cunoască trecutul <b>familiei</b> și al <b>neamului</b> lor.</p></div>
+   <div class="box"><span class="emo">🧩</span><p>Au căutat <b>indicii</b> lăsate de înaintași, le-au <b>interpretat</b> și le-au făcut cunoscute celorlalți.</p></div>
+  </div>
+  <span class="badge" style="background:var(--red);margin-top:22px">Ancheta de azi</span>
+  <div class="q"><span class="mark" style="background:var(--blue)">1</span>Ce studiază istoria, ca știință?</div>
+  <div class="q"><span class="mark" style="background:var(--purple)">2</span>Cum se numesc oamenii care studiază istoria?</div>
+  <div class="q"><span class="mark" style="background:var(--green)">3</span>Ce indicii ne ajută să reconstituim trecutul?</div>
+ </div>
+</section>
+
+<!-- 3 CE ESTE ISTORIA -->
+<section class="slide" aria-label="Ce este istoria">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Reținem</span>
+  <h2>Istoria este o știință</h2>
+  <div class="tip p" style="margin-top:0;font-size:1.05em"><b>Istoria</b> este știința care studiază <b>evoluția societății omenești</b>, de la origini până în prezent. Oamenii care o studiază și scriu despre ea se numesc <b>istorici</b>.</div>
+  <p style="margin-top:14px">Istoria ne arată:</p>
   <div class="grid g4">
-   <div class="box"><span class="emo">🌅</span><h3>Ziua și noaptea</h3><p>Pământul se rotește în jurul axei sale. Ai învățat asta și la științe.</p></div>
-   <div class="box"><span class="emo">🚰</span><h3>Apa de la robinet</h3><p>Vine dintr-un râu, un lac sau din ape subterane și trece printr-o stație de tratare.</p></div>
-   <div class="box"><span class="emo">💡</span><h3>Becul</h3><p>Lumina vine de la o centrală electrică, care folosește o resursă: apă, cărbune, vânt, Soare.</p></div>
-   <div class="box"><span class="emo">🪑</span><h3>Masa</h3><p>E făcută din lemn, adică dintr-o pădure.</p></div>
+   <div class="box"><span class="emo">🏠</span><p>cum au trăit oamenii și cum și-au făcut <b>unelte</b>, <b>arme</b> și <b>adăposturi</b></p></div>
+   <div class="box"><span class="emo">🌾</span><p>ce <b>ocupații</b> aveau</p></div>
+   <div class="box"><span class="emo">🏛️</span><p>cum s-au <b>organizat</b></p></div>
+   <div class="box"><span class="emo">👑</span><p>cele mai importante <b>fapte</b> și cei mai de seamă <b>conducători</b></p></div>
   </div>
-  <div class="tip b">🔤 <b>Geo + grafia:</b> în greacă, <i>geo</i> înseamnă Pământ, iar <i>grafia</i> înseamnă a scrie, a reprezenta. Geografia descrie ce se află pe suprafața Pământului și desenează asta pe planuri și hărți.</div>
-  <span class="badge" style="background:var(--red);margin-top:18px">Ancheta de azi</span>
-  <div class="q"><span class="mark" style="background:var(--blue)">?</span>Ce este orizontul apropiat și ce cuprinde el?</div>
-  <div class="q"><span class="mark" style="background:var(--green)">?</span>Prin ce se deosebește un sat de un oraș? Ce este un cartier?</div>
+  <div class="tip y">⭐ <b>Steluța întrebărilor.</b> Orice eveniment istoric are cinci întrebări: <b>Cine? Ce? Când? Unde? Cum?</b> Le vei folosi la toate lecțiile, așa că încearcă-le mai întâi aici.</div>
+  <div class="star" id="star"></div>
+  <div class="tip b" id="starinfo" aria-live="polite"></div>
  </div>
 </section>
 
-<!-- 3 ORIZONTUL APROPIAT -->
-<section class="slide" aria-label="Orizontul apropiat">
+<!-- 4 ISTORIC SI ARHEOLOG -->
+<section class="slide" aria-label="Istoricul și arheologul">
  <div class="wrap">
-  <span class="badge" style="background:var(--red)">Rețin</span>
-  <h2>Orizontul apropiat</h2>
-  <div class="tip p" style="margin-top:0;font-size:1.05em">Spațiul din jur, în care îți desfășori activitățile zilnice, este <b>orizontul apropiat</b>. El cuprinde <b>locuința</b>, <b>școala</b>, <b>sala de clasă</b>, <b>drumul de acasă până la școală</b> și locurile prin care treci.</div>
-  <p style="margin-top:14px"><b>Apasă pe fiecare spațiu</b>, de la cel mai mic la cel mai mare:</p>
-  <div class="levels" id="levels">
-   <button type="button" aria-pressed="true" data-i="0"><b>🛏️ Camera</b>a ta</button>
-   <button type="button" aria-pressed="false" data-i="1"><b>🏠 Locuința</b>casă sau apartament</button>
-   <button type="button" aria-pressed="false" data-i="2"><b>📚 Sala de clasă</b>unde înveți</button>
-   <button type="button" aria-pressed="false" data-i="3"><b>🏫 Școala</b>clădirea cu toate sălile</button>
-   <button type="button" aria-pressed="false" data-i="4"><b>🏘️ Cartierul</b>o parte din oraș</button>
-   <button type="button" aria-pressed="false" data-i="5"><b>🏙️ Localitatea</b>satul sau orașul</button>
+  <span class="badge" style="background:var(--blue)">Album istoric</span>
+  <h2>O echipă de detectivi</h2>
+  <div class="grid g2">
+   <div class="box"><span class="emo">⛏️🧪</span><h3>Arheologul descoperă</h3><p>Face <b>săpături arheologice</b>, curăță, restaurează și <b>datează</b> obiectele în <b>laborator</b>. Apoi le dă informațiile istoricilor.</p></div>
+   <div class="box"><span class="emo">📚🖋️</span><h3>Istoricul interpretează</h3><p>Pune laolaltă dovezile, le compară și <b>scrie</b> povestea trecutului, ca alții să o poată citi.</p></div>
   </div>
-  <div class="tip b" id="levelinfo" aria-live="polite"></div>
- </div>
-</section>
-
-<!-- 4 SAT ORAS CARTIER -->
-<section class="slide" aria-label="Sat, oraș, cartier">
- <div class="wrap">
-  <span class="badge" style="background:var(--red)">Rețin · Vocabular</span>
-  <h2>Sat, oraș, cartier</h2>
-  <div class="vocab">
-   <div><b>localitate</b>: așezare omenească, un spațiu clar delimitat de natura din jur, în care oamenii trăiesc și lucrează.</div>
-   <div><b>sat</b> (localitate rurală): mai mică; oamenii se ocupă mai ales cu agricultura, adică cultivă plante și cresc animale.</div>
-   <div><b>oraș</b> (localitate urbană): mai mare și mai populat; oamenii lucrează în industrie, comerț, sănătate, cultură.</div>
-   <div><b>cartier</b>: o parte dintr-un oraș, cu nume propriu și trăsăturile lui.</div>
-  </div>
-  <div class="grid g3" style="margin-top:16px">
-   <div class="box" style="border-color:var(--blue)"><span class="emo">🏘️</span><h3>Gabriela</h3><p>Locuiește în cartierul <b>Tei</b>. Acolo sunt și casa, și școala ei. Pentru ea, orizontul apropiat este <b>cartierul</b>.</p></div>
-   <div class="box" style="border-color:var(--purple)"><span class="emo">🏢</span><h3>Ioana</h3><p>Locuiește în cartierul <b>Unirea</b>, cu blocuri de peste zece etaje, și învață la altă școală. Are alt orizont apropiat, deși e în același oraș.</p></div>
-   <div class="box" style="border-color:var(--green)"><span class="emo">🏡</span><h3>Bunicii Ioanei</h3><p>Trăiesc într-un sat mic, unde toată lumea se cunoaște și se salută. Pentru ei, orizontul apropiat este <b>tot satul</b>.</p></div>
-  </div>
-  <div class="tip y">🤔 <b>Gândește:</b> de ce, pentru Andrei, care stă la oraș, orizontul apropiat este cartierul, și nu tot orașul?</div>
- </div>
-</section>
-
-<!-- 5 SORTARE SAT/ORAS -->
-<section class="slide" aria-label="Sat sau oraș">
- <div class="wrap">
-  <span class="badge" style="background:var(--blue)">Aplic</span>
-  <h2>Indicii de detectiv: sat sau oraș?</h2>
-  <p>Fiecare indiciu te duce mai degrabă spre un sat sau spre un oraș. Sortează-le, apoi verifică.</p>
-  <div class="sort" id="sort-loc"></div>
-  <div class="qnav" style="justify-content:flex-start"><button class="act" type="button" data-check="sort-loc">Verifică</button><button class="act sec" type="button" data-reset="sort-loc">Ia de la capăt</button></div>
-  <div id="sort-loc-fb" aria-live="polite"></div>
- </div>
-</section>
-
-<!-- 6 DRUMUL SPRE SCOALA -->
-<section class="slide" aria-label="Drumul spre școală">
- <div class="wrap">
-  <span class="badge" style="background:var(--blue)">Aplic · Geografie + Educație civică</span>
-  <h2>Pe drumul spre școală</h2>
-  <p>Pe planul cartierului lui Andrei apar clădiri pe lângă care trece zilnic. Fiecare are un rol în comunitate:</p>
+  <h3 style="margin-top:20px">Unde se păstrează dovezile</h3>
   <div class="grid g3">
-   <div class="box"><span class="emo">🏛️</span><h3>Primăria</h3><p>Aici lucrează primarul și oamenii care conduc localitatea: se ocupă de străzi, parcuri, iluminat, școli.</p></div>
-   <div class="box"><span class="emo">📮</span><h3>Poșta</h3><p>Trimite și primește scrisori și colete, dar și pensiile pentru unii bunici.</p></div>
-   <div class="box"><span class="emo">📚</span><h3>Librăria</h3><p>Vinde cărți și rechizite. Bibliotecile împrumută cărți gratuit.</p></div>
-  </div>
-  <div class="tip g">🔗 <b>Legături:</b> la istorie (L4) ai învățat despre <b>comunitatea locală</b>. Clădirile de pe drumul tău sunt locurile în care această comunitate lucrează împreună. Primăria este autoritatea locală, despre care vorbești și la educație civică.</div>
-  <div class="mc">
-   <div class="m"><span class="lab">📘 Manualul spune</span><p>Satul e o localitate mică, iar populația lui se ocupă în principal cu agricultura.</p></div>
-   <div><span class="lab">🌍 Context</span><p>Aproape jumătate dintre locuitorii României trăiesc la sat. Azi, mulți dintre ei nu mai lucrează în agricultură: unii fac naveta zilnic la oraș, alții lucrează în magazine, ateliere sau de acasă. Satele de lângă orașele mari arată tot mai mult ca niște cartiere.</p></div>
+   <div class="box"><span class="emo">🏛️</span><h3>Muzee</h3><p>obiecte: arme, vase, podoabe, monede. De exemplu, <b>Muzeul Național de Istorie a României</b>, din București.</p></div>
+   <div class="box"><span class="emo">📖</span><h3>Biblioteci</h3><p>cărți și <b>manuscrise</b> vechi, adică texte scrise de mână</p></div>
+   <div class="box"><span class="emo">🗄️</span><h3>Arhive</h3><p>documente oficiale: acte, scrisori, registre</p></div>
   </div>
  </div>
 </section>
 
-<!-- 7 MISIUNI -->
+<!-- 5 SURSE -->
+<section class="slide" aria-label="Sursele istorice">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Reținem</span>
+  <h2>Sursele istorice: scrise și nescrise</h2>
+  <div class="grid g2">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">📜</span><h3>Scrise</h3><p><b>documente</b>, <b>hărți</b>, <b>inscripții</b> (texte săpate în piatră sau metal), <b>monede</b></p></div>
+   <div class="box" style="border-color:#C9862A"><span class="emo">🏺</span><h3>Nescrise</h3><p><b>arme</b>, <b>podoabe</b>, obiecte din diverse materiale, de exemplu <b>vase de ceramică</b></p></div>
+  </div>
+  <div class="tip g">🧠 <b>Truc:</b> întreabă-te dacă obiectul are <b>text</b> pe el. Monedele au nume de regi sau de împărați, ani, locuri, deci sunt surse scrise, chiar dacă sunt obiecte.</div>
+  <p style="margin-top:14px"><b>Aplicăm:</b> sortează sursele pe care le-ai putea vedea într-un muzeu sau într-un castel.</p>
+  <div class="sort" id="sort-src"></div>
+  <div class="qnav" style="justify-content:flex-start"><button class="act" type="button" data-check="sort-src">Verifică</button><button class="act sec" type="button" data-reset="sort-src">Ia de la capăt</button></div>
+  <div id="sort-src-fb" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 6 CUM DATAM -->
+<section class="slide" aria-label="Cum află arheologul vârsta unui obiect">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Istorie + Științe</span>
+  <h2>Cum află arheologul cât de vechi e un obiect?</h2>
+  <p>Manualul spune că arheologii <b>datează</b> obiectele. Iată două metode:</p>
+  <div class="grid g2">
+   <div class="box"><span class="emo">🍰</span><h3>1. Straturile de pământ</h3><p>Pământul se depune în straturi, ca la un tort. De obicei, ce e <b>mai adânc</b> e <b>mai vechi</b>. Apasă pe straturi, de jos în sus, de la cel mai vechi la cel mai nou.</p>
+    <div class="layers" id="layers"></div>
+    <div id="layers-fb" aria-live="polite"></div>
+   </div>
+   <div class="box"><span class="emo">⚛️</span><h3>2. „Ceasul” din oase și lemn</h3><p>Tot ce a fost viu (lemn, oase, semințe) are în el o formă de carbon numită <b>carbon-14</b>. După moarte, acesta dispare încet: la fiecare <b>aproximativ 5730 de ani</b> rămâne <b>jumătate</b> din cantitatea de dinainte.</p><p>Măsurând cât a mai rămas, oamenii de știință află vârsta, până la aproximativ <b>50.000 de ani</b>.</p><p style="color:var(--soft);font-size:.9em">Metalul și piatra nu au fost vii, așa că pentru ele metoda nu merge. Atunci arheologii se uită la straturi și la ce e găsit lângă ele.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 7 IZVOARE -->
+<section class="slide" aria-label="Izvoare istorice">
+ <div class="wrap quiz" style="max-width:920px">
+  <span class="badge" style="background:var(--red)">Izvoare istorice</span>
+  <h2 style="margin-bottom:.6em">De ce studiem istoria?</h2>
+  <blockquote>„Istoria este cea dintâi carte a unei nații. Într-însa ea își vede trecutul, prezentul și viitorul.”<cite>Nicolae Bălcescu (1819 – 1852), istoric român</cite></blockquote>
+  <blockquote style="margin-top:16px;border-color:var(--green)">„Istoria iaste dascălul tuturor lucrurilor, că ea nu numai cu cuvinte, ci și cu pilde adeverează cele ce învață.”<cite>Samuil Micu (1745 – 1806), istoric</cite></blockquote>
+  <p style="margin-top:12px;color:var(--soft)"><b>Cuvinte vechi:</b> <i>iaste</i> = este · <i>dascăl</i> = învățător · <i>pildă</i> = exemplu · <i>a adeveri</i> = a dovedi că e adevărat</p>
+  <div class="item"><p>Spune cu cuvintele tale ce crede Samuil Micu despre istorie.</p><div class="btns"><button class="reveal hint" data-t="Un dascăl îți explică regula. Istoria ce îți dă pe lângă regulă? Gândește-te la „pilde”.">Indiciu</button></div></div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Bălcescu: istoria este „cea dintâi carte a unei nații”.</p><p style="font-style:normal;font-size:.9em">Pentru lecție: istoria ne ajută să ne cunoaștem trecutul ca popor.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Bălcescu a scris asta în secolul XIX, când românii își doreau un stat unit, iar istoria era folosită ca să-i unească. Definiția din manual este mai largă: istoria studiază <b>toată omenirea</b>, nu doar o singură nație. Când citești un citat, întreabă-te <b>cine</b> l-a scris, <b>când</b> și <b>de ce</b>.</p></div>
+  </div>
+ </div>
+</section>
+
+
+<!-- PUNTE: MANUALUL CA IZVOR -->
+<section class="slide" aria-label="Și manualul e un izvor">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Unealta de istorie, folosită peste tot</span>
+  <h2>Și manualul tău e un izvor</h2>
+  <p>Ai învățat să te întrebi despre orice izvor <b>cine l-a scris, când și de ce</b>. Funcționează și pentru manualele de istorie, geografie, științe sau civică. Într-un manual poți găsi cinci feluri de propoziții: <b>fapte</b>, informații <b>învechite</b>, <b>simplificări</b>, <b>păreri</b> și, uneori, <b>greșeli</b>. Sortează:</p>
+  <div class="sort" id="sort-five"></div>
+  <div class="qnav" style="justify-content:flex-start"><button class="act" type="button" data-check="sort-five">Verifică</button><button class="act sec" type="button" data-reset="sort-five">Ia de la capăt</button></div>
+  <div id="sort-five-fb" aria-live="polite"></div>
+  <div class="tip b">🔎 <b>Trei feluri de întrebări:</b> <i>închise</i> („Este București capitala?”), <i>deschise</i> („De ce…? Cum…?”) și <i>de verificare</i> („Cum știm? Cine spune asta? Când?”). Ultimele sunt unealta preferată a istoricului.</div>
+  <div class="tip y">🤝 <b>La școală:</b> răspunsul cerut e cel din manual. Dacă ai găsit ceva care nu se potrivește, spune-l ca pe o întrebare: „Am citit că… Cum se potrivește cu manualul?”</div>
+ </div>
+</section>
+<!-- 8 MISIUNI -->
 <section class="slide" aria-label="Misiunile">
  <div class="wrap" style="max-width:920px">
   <div class="qtop">
@@ -394,17 +394,16 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
  </div>
 </section>
 
-<!-- 8 AM INVATAT -->
+<!-- 9 AM INVATAT -->
 <section class="slide" aria-label="Am învățat">
  <div class="wrap">
   <span class="badge" style="background:var(--green)">Am învățat</span>
   <h2>Ce luăm cu noi din lecție</h2>
-  <div class="grid g3">
-   <div class="box" style="border-color:var(--blue)"><span class="emo">🎒</span><p><b>Orizontul apropiat</b> este spațiul vieții tale de zi cu zi: locuința, școala, clasa, drumul dintre ele.</p></div>
-   <div class="box" style="border-color:var(--green)"><span class="emo">🏙️</span><p>La <b>oraș</b>, orizontul apropiat este <b>cartierul</b>. La <b>sat</b>, este <b>toată localitatea</b>.</p></div>
-   <div class="box" style="border-color:var(--purple)"><span class="emo">🏘️</span><p><b>Localitățile</b> pot fi <b>rurale</b> (sate) sau <b>urbane</b> (orașe, împărțite în cartiere).</p></div>
+  <div class="grid g2">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">📚</span><p><b>Istoria</b> este știința care se ocupă cu studierea <b>trecutului omenirii</b>.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">🔎</span><p><b>Istoricii</b> reconstituie evenimentele pe baza <b>surselor istorice</b>, scrise și nescrise.</p></div>
   </div>
-  <div class="tip y">🧭 <b>Urmează:</b> cum te orientezi în orizontul apropiat și cum măsori distanțele (lecția 2).</div>
+  <div class="tip y">🧭 <b>De aici încolo:</b> în lecția 2 afli cum se măsoară timpul istoric. Ai nevoie de el ca să răspunzi la întrebarea „Când?” din steluță.</div>
  </div>
 </section>
 
@@ -412,7 +411,7 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 
 
 <nav class="bar" aria-label="Navigare prezentare">
- <a class="home" href="../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
+ <a class="home" href="../../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
  <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
  <div class="dots" id="dots"></div>
  <span class="count" id="count"></span>
@@ -420,7 +419,7 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 </nav>
 <script>
 (function(){
-  var KEY='geo-l1-slide';
+  var KEY='istorie-l1-slide';
   var slides=[].slice.call(document.querySelectorAll('.slide'));
   var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
   var cur=0;
@@ -453,27 +452,45 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
   });
 /* ---------- missions ---------- */
     var SORTERS={
-   'sort-loc':{cats:{s:'sat',o:'oraș'},items:[
-     ['Cei mai mulți oameni cultivă plante și cresc animale','s'],['Are mai multe cartiere, fiecare cu numele lui','o'],['Toată lumea se cunoaște și se salută','s'],['Blocuri cu peste zece etaje','o'],['Spital, teatru, fabrici și multe magazine','o'],['Orizontul apropiat al unui copil este toată localitatea','s']],
-    expl:'Sat: agricultura, oameni care se cunosc între ei, orizontul apropiat = toată localitatea. Oraș: cartiere, blocuri înalte, spitale, fabrici, comerț. Atenție: acestea sunt indicii, nu reguli fixe. Există și sate mari, și orașe mici.'}
+   'sort-five':{cats:{f:'fapt',i:'învechit',s:'simplificare',p:'părere',g:'greșeală'},items:[
+     ['„România a devenit stat membru al Uniunii Europene la 1 ianuarie 2007.” (Civică)','f'],
+     ['„Moneda europeană a fost introdusă în 19 state.” (Civică, manual din 2022)','i'],
+     ['„Tinerii au datoria de a păstra documentele și amintirile de familie.” (Istorie)','p'],
+     ['„Soarele răsare din aceeași parte a orizontului, numită est.” (Geografie)','s'],
+     ['Pământul se rotește „de la est spre vest”. (Științe, p. 19)','g'],
+     ['„În România, limba oficială este limba română.” (Civică, din Constituție)','f']],
+    expl:'Fapte: aderarea din 2007 și limba oficială. Învechit: euro (azi 21 de state). Simplificare: Soarele răsare exact la est doar primăvara și toamna. Părere: „datoria” tinerilor; nicio lege nu cere asta. Greșeală: Pământul se rotește de la vest spre est (chiar manualul de științe spune corect pe pagina dinainte).'},
+   'sort-src':{cats:{s:'scrisă',n:'nescrisă'},items:[
+     ['Hartă veche a Europei','s'],['Sabie de cavaler','n'],['Monedă cu chipul unui împărat','s'],['Vas de ceramică','n'],['Inscripție pe zidul unei cetăți','s'],['Colier de aur','n'],['Scrisoare a unui domnitor','s'],['Coif de luptă','n']],
+    expl:'Scrise: harta, moneda, inscripția, scrisoarea. Fiecare are text. Nescrise: sabia, vasul, colierul, coiful. Acestea sunt obiecte care „vorbesc” prin formă, material și locul în care au fost găsite.'}
   };
-  var LEVELS=[
-   '🛏️ <b>Camera</b> este cel mai mic spațiu al tău. Face parte din locuință.',
-   '🏠 <b>Locuința</b> este spațiul în care îți trăiești viața de familie: o casă sau un apartament dintr-un bloc. Legătura cu istoria: în L3 ai aflat că orice familie are o locuință, o gospodărie.',
-   '📚 <b>Sala de clasă</b> este spațiul în care un colectiv de elevi, de obicei de aceeași vârstă, învață pe durata unui an școlar.',
-   '🏫 <b>Școala</b> este clădirea cu mai multe încăperi, fiecare cu rolul ei: săli de clasă, bibliotecă, cancelarie, secretariat.',
-   '🏘️ <b>Cartierul</b> este o parte a unui oraș, cu străzi, locuințe și clădiri în care oamenii lucrează. La oraș, el este orizontul tău apropiat.',
-   '🏙️ <b>Localitatea</b> este satul sau orașul. La sat, toată localitatea este orizontul apropiat. Legătura cu istoria: în L4 ai învățat că locuitorii ei formează comunitatea locală.'
+  var STAR=[
+   ['Cine?','Reprezentanții românilor din Transilvania, adunați în număr mare.'],
+   ['Ce?','Au hotărât unirea Transilvaniei cu România: Marea Unire.'],
+   ['Când?','Pe 1 decembrie 1918. De aceea 1 Decembrie este Ziua Națională.'],
+   ['Unde?','La Alba Iulia.'],
+   ['Cum?','Printr-o adunare mare, în care s-a votat hotărârea de unire.']
+  ];
+  var LAYERS=[
+   ['🪙','Monedă de 10 bani din 2005','epoca contemporană'],
+   ['🏺','Cioburi de oală medievală','Evul Mediu'],
+   ['💰','Monedă romană de argint','Antichitate'],
+   ['🪓','Topor de bronz','Preistorie târzie'],
+   ['🪨','Unealtă de piatră cioplită','Preistorie']
   ];
   var Q=[
-   {t:'mcq',tags:['L1'],d:'Logică',q:'Ioana și Gabriela locuiesc în același oraș, dar în cartiere diferite, și merg la școli diferite. Au același orizont apropiat?',o:['Da, pentru că e același oraș','Nu, pentru că orizontul apropiat al fiecăreia este cartierul ei','Da, pentru că amândouă sunt în clasa a IV-a','Nu se poate spune'],a:1,h:'La oraș, ce spațiu cuprinde și locuința, și școala unui copil?',e:'La oraș, orizontul apropiat este cartierul în care sunt locuința și școala ta. Cartiere diferite înseamnă orizonturi apropiate diferite, chiar dacă orașul e același.'},
-   {t:'mcq',tags:['L1'],d:'Logică',q:'Care dintre aceste spații NU face parte din orizontul apropiat al unui elev din București?',o:['Sala lui de clasă','Drumul de acasă până la școală','Magazinul din colțul străzii lui','Litoralul Mării Negre, unde merge vara'],a:3,h:'Orizontul apropiat e spațiul activităților tale ZILNICE.',e:'Litoralul îl vezi doar în vacanță, nu zilnic. Orizontul apropiat cuprinde doar locurile în care îți desfășori viața de zi cu zi.'},
-   {t:'mcq',tags:['L1'],d:'Limba română',q:'Ce cuvânt se potrivește: „Partea unei localități urbane care cuprinde străzi, locuințe și clădiri se numește …”',o:['clasă','cartier','locuință','sat'],a:1,h:'„Urbană” înseamnă de oraș. Ce parte a unui oraș are străzi și clădiri?',e:'Cartier. Rural înseamnă de la sat, urban înseamnă de la oraș. Ambele cuvinte vin din latină: rus = câmp, urbs = oraș.'},
-   {t:'mcq',tags:['L1','Istorie L4'],d:'Istorie',q:'La istorie (L4) ai învățat despre comunitatea locală. Ce legătură are ea cu orizontul apropiat de la geografie?',o:['Niciuna','Comunitatea locală sunt oamenii, iar orizontul apropiat e locul. La sat, ele se suprapun: tot satul.','Sunt același lucru','Comunitatea locală e mai mică decât clasa'],a:1,h:'Una vorbește despre OAMENI, cealaltă despre SPAȚIU.',e:'Istoria privește oamenii (comunitatea), geografia privește locul (orizontul). Într-un sat mic, oamenii din comunitate și spațiul de zi cu zi sunt același: satul.'},
-   {t:'num',tags:['L1'],d:'Matematică',q:'Gabriela face 12 minute pe jos de acasă până la școală și tot 12 minute înapoi. Câte minute merge pe jos într-o săptămână de școală (5 zile)?',a:120,h:'Calculează întâi o zi (dus + întors), apoi înmulțește cu numărul de zile.',e:'(12 + 12) × 5 = 120 de minute, adică 2 ore pe săptămână. Și drumul spre școală face parte din orizontul apropiat.'},
-   {t:'mcq',tags:['L1'],d:'Gândire',q:'Un copil se mută de la oraș la bunici, într-un sat. Ce se întâmplă cu orizontul lui apropiat?',o:['Rămâne același','Devine tot satul în care locuiește acum','Dispare','Devine tot județul'],a:1,h:'Orizontul apropiat se schimbă odată cu locul în care trăiești zilnic.',e:'Orizontul apropiat ține de locul unde trăiești acum. La sat, acesta este toată localitatea, pentru că acolo sunt și casa, și școala, și locurile de joacă.'},
-   {t:'mcq',tags:['L1','Istorie L5'],d:'Legături',q:'La istorie (L5) ai văzut că, în România, la sat mai mulți tineri renunță la școală decât la oraș. Care cauză are legătură directă cu geografia?',o:['Copiii de la sat sunt mai puțin deștepți','Școala poate fi departe, iar drumul greu, mai ales iarna','La sat nu există cărți','Copiii de la sat nu au voie la școală'],a:1,h:'Geografia studiază spațiul și distanțele. Ce cauză ține de LOC?',e:'Distanța și drumul până la școală țin de geografie. Celelalte variante sunt false. Așa se leagă orizontul apropiat de o problemă reală.'},
-   {t:'mcq',tags:['L1'],d:'Limbi',q:'„Geografia” vine din greacă: geo = Pământ, grafia = a scrie, a reprezenta. Ce alt cuvânt are aceeași a doua parte?',o:['geometrie','fotografie','geologie','geam'],a:1,h:'Caută cuvântul care se termină la fel.',e:'Foto-grafie înseamnă „a scrie cu lumina”. Geo-metrie și geo-logie au însă prima parte comună: măsurarea Pământului și studiul Pământului.'}
+   {t:'mcq',tags:['L1'],d:'Steluța',q:'„Gutenberg a inventat tiparul la Mainz, în Germania.” La ce întrebare din steluță răspunde „la Mainz”?',o:['Cine?','Ce?','Când?','Unde?'],a:3,h:'Mainz este numele unui oraș.',e:'Unde? Un oraș sau o țară răspunde mereu la „Unde?”. Lipsește „Când?”: Gutenberg a inventat tiparul pe la 1450, vei afla asta la lecția 6.'},
+   {t:'mcq',tags:['L1'],d:'Logică',q:'Despre Preistorie avem doar surse nescrise: unelte, oase, picturi în peșteri. De ce?',o:['Pentru că s-au pierdut toate cărțile','Pentru că atunci nu exista încă scrisul','Pentru că oamenii nu voiau să scrie','Pentru că le-au ascuns arheologii'],a:1,h:'Ce lipsea oamenilor din Preistorie ca să lase documente?',e:'Scrisul nu fusese inventat încă. De aceea, pentru Preistorie, munca arheologilor este esențială: obiectele sunt singurele dovezi.'},
+   {t:'mcq',tags:['L1'],d:'Roluri',q:'La o săpătură se găsește un vas de lut spart în 40 de bucăți. Cine îl lipește la loc și află cât de vechi este?',o:['Istoricul','Arheologul','Bibliotecarul','Muzeograful'],a:1,h:'Uită-te la Albumul istoric: cine „restaurează și datează”?',e:'Arheologul restaurează și datează obiectul. Apoi istoricul îl folosește ca dovadă, alături de alte surse.'},
+   {t:'mcq',tags:['L1'],d:'Logică',q:'Un manuscris de 500 de ani, scris de mână, trebuie păstrat cu grijă. Unde se află cel mai probabil?',o:['Într-o bibliotecă sau o arhivă','În sertarul arheologului','Într-o peșteră','În clasă, pe perete'],a:0,h:'Ce loc din lecție păstrează texte vechi?',e:'Bibliotecile și arhivele păstrează manuscrise și documente în condiții speciale: lumină slabă, temperatură și umiditate controlate.'},
+   {t:'mcq',tags:['L1'],d:'Științe',q:'La o săpătură, o monedă romană stă la 2 metri adâncime, iar cioburile unui vas medieval la 1 metru, în același loc. Ce poți spune?',o:['Vasul e mai vechi','Moneda e probabil mai veche','Au aceeași vârstă','Nu se poate spune nimic'],a:1,h:'Gândește-te la tortul cu straturi: ce s-a pus primul?',e:'Moneda e probabil mai veche, pentru că straturile mai adânci s-au depus mai demult. Arheologii verifică totuși dacă straturile n-au fost amestecate, de exemplu de o groapă săpată mai târziu.'},
+   {t:'num',tags:['L1','Științe'],d:'Matematică',q:'În osul unui animal a mai rămas un sfert din carbonul-14 inițial. Cantitatea se înjumătățește la fiecare 5730 de ani. Cam câți ani are osul?',a:11460,h:'Întreg → jumătate → sfert. Câte înjumătățiri sunt? Înmulțește cu 5730.',e:'Două înjumătățiri: 2 × 5730 = 11.460 de ani. Osul este din Preistorie.'},
+   {t:'mcq',tags:['L1'],d:'Surse',q:'Ce NU poate afla un istoric de pe o monedă romană?',o:['Numele împăratului','Din ce metal se făceau monedele','Ce gândea omul care a pierdut-o','Cum se scriau literele latinești'],a:2,h:'Moneda e un obiect cu text. Ce informație nu poate fi pe ea?',e:'Gândurile oamenilor nu rămân pe obiecte. Pentru asta istoricii caută scrisori, jurnale sau memorii. Fiecare tip de sursă răspunde la alte întrebări.'},
+   {t:'num',tags:['L1','Matematică'],d:'Matematică',q:'Nicolae Bălcescu a trăit între 1819 și 1852. Câți ani a trăit, aproximativ?',a:33,h:'1852 − 1819.',e:'33 de ani. A murit tânăr, dar a scris cărți de istorie citite și azi. Și el a fost un „izvor istoric”.'},
+   {t:'mcq',tags:['L1'],d:'Limba română',q:'Samuil Micu scria „iaste” în loc de „este”. De ce?',o:['Greșeală de tipar','Așa se scria și se vorbea româna acum peste 200 de ani','E un cuvânt din altă limbă','E o glumă'],a:1,h:'Limbile se schimbă în timp, ca și oamenii.',e:'Limba română s-a schimbat de-a lungul timpului. Și textele vechi sunt surse istorice: ne arată cum vorbeau oamenii atunci.'},
+   {t:'mcq',tags:['L1'],d:'Gândire critică',q:'Două surse descriu aceeași bătălie: una spune că au fost 1.000 de soldați, cealaltă 10.000. Ce face un istoric bun?',o:['Alege cifra mai mare, sună mai bine','Alege prima sursă găsită','Caută și alte dovezi și se întreabă cine a scris fiecare sursă și de ce','Renunță'],a:2,h:'Gândește-te ca un detectiv: când martorii spun lucruri diferite, ce faci?',e:'Istoricul compară sursele, caută dovezi noi (de exemplu, arheologice) și se întreabă cine a scris fiecare text. Un învingător poate exagera, ca să pară victoria mai mare.'},
+   {t:'mcq',tags:['L1','Științe'],d:'Științe',q:'Metoda carbonului-14 merge pentru care dintre aceste obiecte?',o:['O sabie de fier','O unealtă de piatră','O bucată de lemn ars dintr-o vatră','O monedă de argint'],a:2,h:'Metoda merge doar pentru ce a fost cândva viu.',e:'Lemnul a fost viu, era un copac. Fierul, piatra și argintul nu au fost niciodată vii, deci nu au carbon-14 de măsurat.'},
+   {t:'mcq',tags:['L1'],d:'Steluța',q:'Care întrebare din steluță e cea mai grea pentru un istoric, de obicei?',o:['Unde?','Când?','Cum? (de ce s-a întâmplat așa)','Toate sunt la fel de ușoare'],a:2,h:'Pentru „Unde?” ai hărți, pentru „Când?” ai date. Pentru „Cum?” ce îți trebuie?',e:'„Cum?” și „De ce?” cer interpretare: trebuie să legi multe dovezi între ele. Acolo istoricii se contrazic cel mai des, iar meseria devine interesantă.'}
   ];
 
 
@@ -492,9 +509,22 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
     });
   })();
 
-  (function(){var bs=document.querySelectorAll('#levels button'),li=document.getElementById('levelinfo');
-    function show(i){bs.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});li.innerHTML=LEVELS[i];}
-    bs.forEach(function(b,i){b.onclick=function(){show(i)}});show(0);})();
+  (function(){
+    var st=document.getElementById('star'),si=document.getElementById('starinfo');
+    st.innerHTML=STAR.map(function(s,i){return '<button type="button" aria-pressed="false" data-i="'+i+'">'+s[0]+'</button>'}).join('');
+    si.innerHTML='Exemplu: <b>Marea Unire</b>. Gândește-te întâi la răspuns, apoi apasă pe fiecare întrebare.';
+    st.querySelectorAll('button').forEach(function(b){b.onclick=function(){st.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});var s=STAR[+b.getAttribute('data-i')];si.innerHTML='<b>'+s[0]+'</b> '+s[1];};});
+  })();
+  (function(){
+    var host=document.getElementById('layers'),fb=document.getElementById('layers-fb'),cols=['#B4874E','#9A6B3A','#8A5A2B','#7A5230','#5A3A22'],next=LAYERS.length-1,count=0;
+    function build(){next=LAYERS.length-1;count=0;fb.innerHTML='';host.innerHTML=LAYERS.map(function(l,i){return '<button type="button" data-i="'+i+'" style="background:'+cols[i]+'"><span>'+l[0]+'</span><span>'+l[1]+'</span><span class="n" hidden></span></button>'}).join('');
+      host.querySelectorAll('button').forEach(function(b){b.onclick=function(){var i=+b.getAttribute('data-i');
+        if(i===next){count++;var n=b.querySelector('.n');n.hidden=false;n.textContent=count;b.disabled=true;b.title=LAYERS[i][2];next--;
+          if(next<0)fb.innerHTML='<div class="fb ok">✅ Perfect! De jos în sus: Preistorie → Preistorie târzie (bronz) → Antichitate → Evul Mediu → azi. Straturile sunt o axă a timpului îngropată în pământ.</div>';}
+        else{fb.innerHTML='<div class="fb h">💡 Nu încă. Caută stratul cel mai adânc dintre cele rămase. <button type="button" class="act sec" id="lr">Ia de la capăt</button></div>';document.getElementById('lr').onclick=build;}
+      };});}
+    build();
+  })();
   var host=document.getElementById('qhost'),bar=document.getElementById('qbar'),sc=document.getElementById('qscore');
   var qi=0,score=0,MAX=Q.length*2;
   function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}

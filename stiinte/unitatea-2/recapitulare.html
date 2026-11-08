@@ -6,7 +6,7 @@
 <style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
 </head>
 <body>
-<title>Popoare de ieri și de azi</title>
+<title>Pământul, mediu de viață</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
@@ -232,6 +232,55 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 @media (max-width:520px){.hbars{grid-template-columns:1fr}.hbars span{margin-top:4px}}
 .step small{display:block;font-weight:700;color:var(--soft);font-size:.72em}
 .sort .seg{flex-wrap:wrap}
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
+.duo>div{border-radius:18px;padding:14px 18px;min-width:0}
+.duo .man{background:var(--tint-yellow);border:2px solid var(--yellow)}
+.duo .ctx{background:var(--tint-green);border:2px solid var(--green)}
+.duo h3{font-size:1em;margin-bottom:.3em}
+.duo p{margin:.2em 0;font-size:.95em}
+.vocab{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:14px}
+.vocab div{background:var(--tint-purple);border-radius:14px;padding:10px 14px}
+.vocab b{color:var(--purple)}
+:root[data-theme="dark"] .vocab b{color:#CBB9FF}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .vocab b{color:#CBB9FF}}
+.fig{width:100%;height:auto;display:block;border-radius:16px}
+.fig text{fill:var(--ink);font-family:"Nunito",sans-serif;font-weight:800}
+.sky{width:100%;height:auto;display:block;border-radius:16px}
+.sky text{font-family:"Nunito",sans-serif;font-weight:800;fill:#FFFFFF}
+.steps{display:grid;gap:10px;counter-reset:s;margin:0;padding:0;list-style:none}
+.steps li{counter-increment:s;background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 14px 10px 54px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:30px;height:30px;border-radius:50%;background:var(--purple);color:#fff;display:grid;place-items:center;font-family:"Baloo 2",sans-serif;font-weight:800}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.ctrl button{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:.4em 1em;cursor:pointer}
+.ctrl button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.tbl{width:100%;border-collapse:collapse;background:var(--paper);border-radius:14px;overflow:hidden}
+.tbl th,.tbl td{padding:.5em .8em;border-bottom:2px solid var(--line);text-align:left}
+.tbl th{background:var(--tint-blue)}
+.scroll{overflow-x:auto}
+
+.levels{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:10px}
+.levels button{font:inherit;text-align:left;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:10px 14px}
+.levels button b{display:block;font-family:var(--display);font-size:1.05em}
+.levels button[aria-pressed="true"]{border-color:var(--blue);background:var(--tint-blue)}
+.calc{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0}
+.calc input,.calc select{font:inherit;font-weight:800;padding:.3em .5em;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);max-width:9em}
+.calc input[type=range]{max-width:none;flex:1;min-width:160px;padding:0}
+.out{background:var(--tint-yellow);border-radius:14px;padding:10px 16px;font-weight:700}
+.out b{font-family:var(--display);font-size:1.2em}
+
+.minbtns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.minbtns button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.35em .9em}
+.minbtns button[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+.eu-bar{position:relative;height:38px;border-radius:12px;background:var(--line);overflow:hidden;margin:8px 0}
+.eu-bar i{position:absolute;left:0;top:0;bottom:0;background:#2F6FD6;transition:width .4s}
+.eu-bar span{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-weight:800;color:#fff;font-family:var(--display);font-size:1.1em}
+@media (prefers-reduced-motion:reduce){.eu-bar i{transition:none}}
+
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}.pd summary{cursor:pointer;font-weight:800}.pd[open] summary{margin-bottom:6px}.pd:last-of-type{border-color:var(--green)}
+.threadgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.threadgrid .box{padding:12px 16px}
+.threadgrid .box b{display:block;font-family:var(--display);color:var(--soft);font-size:.9em}
+.threadgrid .box p{margin:.2em 0 0}
 </style>
 <main class="deck" id="deck">
 
@@ -240,163 +289,68 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
  <div class="wrap cover">
   <div>
    <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
-   <p style="font-weight:800;color:var(--soft);margin:0">Istorie, Unitatea 1, Lecția 6</p>
-   <h1>Popoare de ieri și de azi</h1>
-   <p class="lead">Cum s-au format popoarele Europei? Cine sunt „strămoșii” francezilor, rușilor sau ai noștri? Și de ce în limba română găsești și cuvinte latinești, și cuvinte slave?</p>
+   <p style="font-weight:800;color:var(--soft);margin:0">Științe ale naturii · Unitatea 2 · Recapitulare · manual pp. 30–35</p>
+   <h1>Pământul, mediu de viață</h1>
+   <p class="lead">Șase lecții, un singur lanț: Soarele luminează și încălzește, Pământul se rotește și se învârte, viețuitoarele se adaptează, iar omul schimbă totul. Recapitulăm și apoi urmează quiz-ul.</p>
    <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
   </div>
   <svg viewBox="0 0 220 220" aria-hidden="true">
-   <circle cx="110" cy="110" r="100" fill="var(--tint-blue)" stroke="var(--blue)" stroke-width="4"/>
-   <path d="M60 70 C80 50 120 46 150 60 C170 70 176 96 160 110 C150 120 130 116 120 130 C110 146 120 168 96 172 C70 176 56 150 62 130 C66 112 44 96 60 70Z" fill="#6DBB5A"/>
-   <circle cx="90" cy="90" r="9" fill="#E2433A"/><circle cx="135" cy="80" r="9" fill="#6B4BC4"/><circle cx="120" cy="125" r="9" fill="#F6C431"/><circle cx="88" cy="150" r="9" fill="#2F6FD6"/>
-   <path d="M90 90 L135 80 L120 125 L88 150 Z" fill="none" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4 4"/>
+   <rect width="220" height="220" rx="24" fill="#0F1432"/>
+   <circle cx="40" cy="110" r="30" fill="#FFC933"/>
+   <circle cx="150" cy="110" r="44" fill="#3E7BD9"/><path d="M150 66 A44 44 0 0 1 150 154Z" fill="#12194A"/>
+   <path d="M120 96 q14 -18 30 -6 q10 -14 22 2" fill="#2E9D52"/>
+   <circle cx="200" cy="60" r="7" fill="#C9CED8"/>
   </svg>
  </div>
 </section>
 
-<!-- 2 STIM / VREM -->
-<section class="slide" aria-label="Ce știm și ce vrem să aflăm">
+<!-- 2 LANTUL -->
+<section class="slide" aria-label="Lanțul unității">
  <div class="wrap">
-  <span class="badge" style="background:var(--green)">Știm deja</span>
-  <p class="lead" style="max-width:none">Din cele mai vechi timpuri, oamenii au trăit în grupuri, la început mici, apoi tot mai mari, ca să-și procure hrana și să se apere de dușmani.</p>
-  <div class="ladder" style="margin:14px 0 20px">
-   <div class="step">🏠 familie <small>L3</small></div><span class="arrow">›</span>
-   <div class="step">🏘️ comunitate <small>L4</small></div><span class="arrow">›</span>
-   <div class="step" style="background:var(--tint-yellow)">🌍 popor <small>azi</small></div>
-  </div>
-  <span class="badge" style="background:var(--red)">Ancheta de azi</span>
-  <div class="grid g2">
-   <div class="q" style="margin:0"><span class="mark" style="background:var(--blue)">1</span>Cum s-au format popoarele?</div>
-   <div class="q" style="margin:0"><span class="mark" style="background:var(--purple)">2</span>Cum au evoluat?</div>
-   <div class="q" style="margin:0"><span class="mark" style="background:var(--green)">3</span>Care sunt cele mai vechi popoare?</div>
-   <div class="q" style="margin:0"><span class="mark" style="background:var(--red)">4</span>Ce legătură au popoarele de ieri cu cele de azi?</div>
-  </div>
- </div>
-</section>
-
-<!-- 3 CUM S-AU FORMAT -->
-<section class="slide" aria-label="Cum s-au format popoarele">
- <div class="wrap">
-  <span class="badge" style="background:var(--red)">Reținem</span>
-  <h2>Cum se naște un popor</h2>
+  <span class="badge" style="background:var(--red)">Reținem din imagini</span>
+  <h2>Un lanț de șase verigi</h2>
   <div class="path">
-   <div class="box"><span class="emo">👨‍👩‍👧</span><b>Familii</b><p>Mai multe familii stăpânesc același teritoriu, cu hrană și adăpost.</p></div>
-   <div class="box"><span class="emo">🗣️</span><b>Aceeași limbă</b><p>În timp, vorbesc aceeași limbă și au aceleași obiceiuri și credințe.</p></div>
-   <div class="box"><span class="emo">🏛️</span><b>Popor</b><p>Se organizează și lasă urmașilor construcții, invenții, cultură.</p></div>
+   <div class="box"><span class="emo">🪐</span><b>L1 · Sistemul Solar</b><p>Soarele, planetele, sateliții, planetele pitice, cometele, asteroizii.</p></div>
+   <div class="box"><span class="emo">☀️</span><b>L2 · Soarele</b><p>Stea cu lumină proprie. Rotația, în 24 de ore, face zi și noapte.</p></div>
+   <div class="box"><span class="emo">🍂</span><b>L3 · Anotimpurile</b><p>Revoluția plus axa înclinată fac anotimpurile.</p></div>
+   <div class="box"><span class="emo">🦉</span><b>L4 · Ritmurile</b><p>Diurne, nocturne; migrație, hibernare.</p></div>
+   <div class="box"><span class="emo">🦴</span><b>L5 · Fosilele</b><p>Urmele vieții de acum milioane de ani.</p></div>
+   <div class="box"><span class="emo">🌳</span><b>L6 · Omul</b><p>Folosește și poate distruge mediul. Legile îl apără.</p></div>
   </div>
-  <div class="grid g2" style="margin-top:16px">
-   <div class="box"><span class="emo">⚔️</span><h3>Cuceritori și cuceriți</h3><p>Unele popoare au cucerit alte teritorii. Altele au fost cucerite și au preluat <b>modul de viață</b> și <b>limba</b> cuceritorilor. Așa s-a întâmplat cu dacii după cucerirea romană, cum ai văzut în L2.</p></div>
-   <div class="box"><span class="emo">🐎</span><h3>Migrațiile</h3><p>La granița dintre <b>Antichitate</b> și <b>Evul Mediu</b>, popoare migratoare, ca slavii, s-au așezat pe teritoriile altora. La începutul Evului Mediu existau deja multe popoare care trăiesc și azi.</p></div>
-  </div>
-  <div class="mc">
-   <div class="m"><span class="lab">📘 Manualul spune</span><p>„Cele mai vechi popoare din Europa au fost grecii și romanii.”</p><p style="font-style:normal;font-size:.9em">Pentru lecție: grecii și romanii sunt cele două mari civilizații antice ale Europei.</p></div>
-   <div><span class="lab">🌍 Context</span><p>În aceeași vreme trăiau și alte popoare: <b>tracii</b> (din care făceau parte și <b>geto-dacii</b>), ilirii, celții. Despre greci și romani știm mai mult pentru că au lăsat foarte multe <b>izvoare scrise</b> (L1). Cine scrie mult rămâne mai bine în istorie.</p></div>
-  </div>
+  <div class="tip y">🔗 <b>De gândit:</b> ia orice verigă și explică de ce n-ar exista fără cea dinainte. De exemplu: fără axa înclinată (L3) n-ar exista anotimpuri, deci nici berzele n-ar mai avea de ce să migreze (L4).</div>
  </div>
 </section>
 
-<!-- 4 FAMILII DE POPOARE -->
-<section class="slide" aria-label="Familii de popoare">
- <div class="wrap">
-  <span class="badge" style="background:var(--blue)">Lucru cu harta · Aplicăm</span>
-  <h2>Latini, germanici, slavi… și ceilalți</h2>
-  <p>Istoricii grupează popoarele Europei după <b>limbile înrudite</b> pe care le vorbesc. Sortează popoarele de mai jos, apoi verifică. Atenție: unul dintre ele te poate păcăli.</p>
-  <div class="sort" id="sort-pop"></div>
-  <div class="qnav" style="justify-content:flex-start"><button class="act" type="button" data-check="sort-pop">Verifică</button><button class="act sec" type="button" data-reset="sort-pop">Ia de la capăt</button></div>
-  <div id="sort-pop-fb" aria-live="polite"></div>
+<!-- 3 CORECTEAZA -->
+<section class="slide" aria-label="Corectează textul">
+ <div class="wrap quiz" style="max-width:920px">
+  <span class="badge" style="background:var(--blue)">Reținem din activități · ex. 4, p. 31</span>
+  <h2>Găsește greșelile</h2>
+  <blockquote>„Anotimpurile se formează în urma mișcării de rotație a Pământului în jurul Soarelui, timp de 24 de ore. Alternanța zi-noapte este determinată de înclinarea axei terestre.”</blockquote>
+  <div class="item" style="margin-top:12px"><p>Câte greșeli găsești? Rescrie textul corect.</p><div class="btns"><button class="reveal hint" data-t="Verifică trei lucruri: numele mișcării în jurul Soarelui, cât durează și ce produce de fapt rotația.">Indiciu</button><button class="reveal" data-t="Corect: „Anotimpurile se formează în urma mișcării de REVOLUȚIE a Pământului în jurul Soarelui, timp de 365 de zile și aproape 6 ore, împreună cu înclinarea axei. Alternanța zi-noapte este determinată de mișcarea de ROTAȚIE în jurul axei, în 24 de ore.” Erau trei greșeli: rotație/revoluție, 24 de ore în loc de un an și cauza zilei și a nopții.">Verifică</button></div></div>
+  <div class="tip g">🧠 <b>Truc:</b> exercițiul ăsta e exact unealta de cercetător pe care ai folosit-o la istorie: citești atent, nu crezi pe cuvânt și verifici fiecare bucată.</div>
  </div>
 </section>
 
-<!-- 5 GALI SI GERMANI -->
-<section class="slide" aria-label="Galii și germanii">
+<!-- 4 PUNTE -->
+<section class="slide" aria-label="Punte">
  <div class="wrap">
-  <span class="badge" style="background:var(--red)">Reținem · Vestul și centrul Europei</span>
-  <h2>De la gali la francezi. Germanii</h2>
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Științe ↔ Geografie ↔ Istorie ↔ Civică</span>
+  <h2>Unitatea 2 în celelalte manuale</h2>
   <div class="grid g2">
-   <div class="box"><span class="emo">🐓</span><h3>Galii (celții) → francezii</h3>
-    <p>Trăiau între râurile <b>Sena</b>, <b>Loara</b> și <b>Rin</b>. Erau agricultori și meșteșugari, foloseau <b>roata olarului</b>, prelucrau <b>fierul</b> și făceau comerț în toată Europa.</p>
-    <p>Conduși de <b>Vercingetorix</b>, s-au opus romanilor (<b>52 î.H.</b>), dar au fost cuceriți și au preluat treptat modul de viață roman. Sub stăpânirea <b>francilor</b> s-a format <b>poporul francez</b>.</p></div>
-   <div class="box"><span class="emo">📜</span><h3>Germanii</h3>
-    <p>Trăiau între <b>Rin</b> și <b>Elba</b>. Se ocupau cu agricultura, creșterea animalelor și meșteșugurile. În <b>secolul X</b> au pus bazele <b>Sfântului Imperiu Roman</b>.</p>
-    <p>În <b>secolul XV</b>, <b>Johannes Gutenberg</b> a inventat <b>tiparul</b>: cărțile au devenit mai ieftine, iar cultura și învățământul s-au răspândit în toată Europa.</p></div>
-  </div>
-  <div class="tip y">🏰 <b>Legătura cu România:</b> <b>sașii</b> colonizați în Transilvania au fost meșteșugari și negustori pricepuți. Au întemeiat <b>Sibiul</b> în <b>secolul XII</b>. Unul dintre obiceiurile lor este carnavalul cu măști din martie, care marchează schimbarea anotimpului. Amintește-ți din L4 ce s-a întâmplat cu sașii după 1990.</div>
-  <div class="tip g">🧠 <b>Fă legătura cu L5:</b> de ce crezi că după inventarea tiparului au apărut mai mulți „știutori de carte”?</div>
- </div>
-</section>
-
-<!-- 6 SLAVII -->
-<section class="slide" aria-label="Slavii">
- <div class="wrap">
-  <span class="badge" style="background:var(--red)">Reținem · Estul Europei</span>
-  <h2>Slavii și urmașii lor</h2>
-  <div class="grid g3">
-   <div class="box"><span class="emo">🐝</span><h3>Slavii</h3><p>S-au întins între <b>Elba</b> și <b>Volga</b>, între <b>Marea Baltică</b> și <b>Marea Neagră</b>. Erau crescători de animale, olari, împletitori de nuiele, <b>apicultori</b> și vânători.</p></div>
-   <div class="box"><span class="emo">🏞️</span><h3>Slavii de sud</h3><p>Unii s-au așezat la sud de Dunăre (602). Acolo au venit <b>bulgarii</b> și au întemeiat un stat. <b>Sârbii</b> locuiau pe țărmul <b>Mării Adriatice</b>, iar după cucerirea turcă mulți s-au mutat în <b>Banat</b> (L4).</p></div>
-   <div class="box"><span class="emo">⛪</span><h3>Rușii</h3><p>Slavi răsăriteni. Au întemeiat un stat care a devenit, în <b>epoca modernă</b>, un mare imperiu, vecin cu Moldova. În Delta Dunării trăiesc și azi <b>rușii-lipoveni</b>, așezați acolo pentru pescuit.</p></div>
-  </div>
-  <div class="tip b">🗣️ <b>Ce am moștenit de la slavi:</b> obiceiul <b>Caloianului</b> (pentru chemarea ploii), cuvinte din agricultură (<b>plug</b>, <b>sapă</b>, <b>coasă</b>) și din organizarea societății (<b>boier</b>, <b>rob</b>, <b>voievod</b>).</div>
-  <div class="mc">
-   <div class="m"><span class="lab">📘 Manualul spune</span><p>„Slavii au venit din Asia.”</p><p style="font-style:normal;font-size:.9em">Pentru lecție: slavii au fost un popor migrator, venit dinspre est.</p></div>
-   <div><span class="lab">🌍 Context</span><p>Cei mai mulți istorici de azi cred că slavii s-au format în <b>estul Europei</b>, în zona de azi a Ucrainei, Belarusului și Poloniei, nu în Asia. Istoricii au ajuns aici comparând limbi, descoperiri arheologice și izvoare scrise: o dovadă că istoria se corectează când apar dovezi noi.</p></div>
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🧭</span><h3>Geografie</h3><p>Soarele răsare la est (L4). Umbra de la amiază arată nordul. Berzele zboară spre sud.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">⏳</span><h3>Istorie</h3><p>Ceasul solar (L2). Anul = o revoluție. Carbonul-14 (L1) merge la mamuți, dar nu și la dinozauri.</p></div>
+   <div class="box" style="border-color:var(--purple)"><span class="emo">⚖️</span><h3>Civică</h3><p>Legile ocrotesc speciile. Instituțiile: Garda de Mediu, primăria. Delta, pe lista UNESCO.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">➗</span><h3>Matematică</h3><p>24 de ore × 365 de zile; 6 ore × 4 = o zi; 230 − 66 = 164 de milioane de ani.</p></div>
   </div>
  </div>
 </section>
 
-<!-- 7 UNGURII SI TURCII -->
-<section class="slide" aria-label="Ungurii și turcii">
- <div class="wrap">
-  <span class="badge" style="background:var(--red)">Reținem · Vecini cu istorie comună</span>
-  <h2>Ungurii (maghiarii) și turcii</h2>
-  <div class="grid g2">
-   <div class="box"><span class="emo">👑</span><h3>Ungurii</h3><p>S-au așezat în <b>Câmpia Panonică</b>, unde au întemeiat un stat. Practicau agricultura, meșteșugurile și creșterea animalelor. Au influențat viața, organizarea și religia românilor din Transilvania.</p></div>
-   <div class="box"><span class="emo">🕌</span><h3>Turcii</h3><p>De origine asiatică, s-au așezat în <b>Asia Mică</b> și au întemeiat un stat în <b>secolul XIV</b>: Imperiul Otoman. Au cucerit Balcanii și i-au transformat în <b>pașalâcuri</b>. În <b>Dobrogea</b> au lăsat urme în port, muzică, obiceiuri și religie (islamul).</p></div>
-  </div>
-  <div class="mc">
-   <div class="m"><span class="lab">📘 Manualul spune</span><p>Ungurii s-au așezat „în vestul Transilvaniei, în Câmpia Panonică”, întemeind un stat în sec. IX. Mulți români s-au convertit la catolicism.</p><p style="font-style:normal;font-size:.9em">Pentru lecție: maghiarii s-au așezat la vest de români și i-au influențat.</p></div>
-   <div><span class="lab">🌍 Context</span><p><b>Geografie:</b> Câmpia Panonică este <b>la vest</b> de Transilvania, mai ales pe teritoriul Ungariei de azi. Maghiarii au ajuns acolo pe la <b>895</b>. Regatul Ungariei a început în anul <b>1000</b>, cu regele Ștefan I.</p><p><b>Religie:</b> cei mai mulți români au rămas <b>ortodocși</b>. S-au convertit mai ales unii nobili, iar pe la <b>1700</b> o parte dintre românii din Transilvania au format Biserica <b>greco-catolică</b>, unită cu Roma.</p></div>
-  </div>
-  <div class="mc">
-   <div class="m"><span class="lab">📘 Manualul spune</span><p>Germanii erau „niște războinici de temut”. Turcii erau un „popor războinic”.</p></div>
-   <div><span class="lab">🌍 Context</span><p>În acele vremuri, aproape toate popoarele purtau războaie, inclusiv românii. Asemenea etichete descriu o <b>perioadă</b>, nu felul de a fi al unui popor pentru totdeauna. Germanii și turcii de azi nu sunt „războinici” mai mult decât alții.</p></div>
-  </div>
- </div>
-</section>
-
-<!-- 8 RASCRUCE -->
-<section class="slide" aria-label="România la răscruce">
- <div class="wrap">
-  <span class="badge" style="background:var(--purple)">Marea idee a lecției</span>
-  <h2>Țara noastră, la răscrucea civilizațiilor</h2>
-  <p>Teritoriul României s-a aflat între <b>Apus</b> și <b>Răsărit</b>. Fiecare vecin și-a lăsat amprenta asupra limbii, a obiceiurilor și a modului de viață:</p>
-  <div class="grid g3">
-   <div class="box" style="border-color:var(--red)"><span class="emo">🏛️</span><h3>Romanii</h3><p>Limba română este o <b>limbă latină</b>, soră cu italiana, franceza, spaniola. Cuvintele de bază sunt latinești: <i>om, casă, apă, lună</i>.</p></div>
-   <div class="box" style="border-color:var(--blue)"><span class="emo">🐝</span><h3>Slavii</h3><p>Cuvinte ca <i>plug, coasă, boier, voievod</i>, obiceiul Caloianului.</p></div>
-   <div class="box" style="border-color:#C9862A"><span class="emo">🏰</span><h3>Germanii (sașii)</h3><p>Orașe ca <b>Sibiu</b> sau <b>Brașov</b>, bisericile fortificate, meșteșugurile.</p></div>
-   <div class="box" style="border-color:var(--purple)"><span class="emo">👑</span><h3>Maghiarii</h3><p>Influențe în organizarea și viața Transilvaniei. Azi, cea mai mare minoritate din România (L4).</p></div>
-   <div class="box" style="border-color:var(--green)"><span class="emo">🕌</span><h3>Turcii</h3><p>Port, muzică, obiceiuri și moschei în <b>Dobrogea</b>.</p></div>
-   <div class="box" style="background:var(--tint-yellow)"><span class="emo">🔎</span><h3>Detectiv de cuvinte</h3><p>Vei găsi la misiuni un test: cuvântul vine din latină sau din slavă?</p></div>
-  </div>
- </div>
-</section>
-
-<style>.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}.pd summary{cursor:pointer;font-weight:800}.pd[open] summary{margin-bottom:6px}.pd:last-of-type{border-color:var(--green)}</style>
-<!-- PUNTE -->
-<section class="slide" aria-label="Punte: Istorie și Geografie">
- <div class="wrap">
-  <span class="badge" style="background:var(--purple)">🌉 Punte · Istorie ↔ Geografie</span>
-  <h2>Verifică pe hartă</h2>
-  <p>Unele întrebări de istorie se rezolvă doar cu harta de la geografie.</p>
-  <details class="pd"><summary>De ce trăiesc mai mulți turci și tătari în Dobrogea?</summary><p><b>Istorie:</b> Imperiul Otoman a stăpânit Dobrogea secole întregi. <b>Geografie:</b> Dobrogea e la sud de Dunăre și lângă Marea Neagră, adică pe drumul dintre Balcani și stepele de la nord de mare. Cele două materii, împreună, dau răspunsul.</p></details>
-  <details class="pd"><summary>Manualul spune: ungurii s-au așezat „în vestul Transilvaniei, în Câmpia Panonică”. Verifică!</summary><p>Caută pe hartă Câmpia Panonică: e mai ales în <b>Ungaria</b>, adică <b>la vest de</b> Transilvania, nu în vestul ei. O margine a ei intră în vestul României (Câmpia de Vest). Unealta de orientare de la geografie lămurește formularea.</p></details>
-  <details class="pd"><summary>De ce era Rinul o graniță bună între gali și germani?</summary><p>Un râu mare e greu de trecut, se vede de departe și nu se mută. Exact ce cere un <b>reper bun</b> (geografie, L2)!</p></details>
- </div>
-</section>
-<!-- 9 MISIUNI -->
-<section class="slide" aria-label="Misiunile">
+<!-- 5 QUIZ -->
+<section class="slide" aria-label="Quiz">
  <div class="wrap" style="max-width:920px">
   <div class="qtop">
-   <span class="badge" style="background:var(--purple);margin:0">Misiunile lecției</span>
+   <span class="badge" style="background:var(--purple);margin:0">Quiz · Unitatea 2</span>
    <span class="score" id="qscore">0 puncte</span>
   </div>
   <div class="qprog"><i id="qbar"></i></div>
@@ -404,28 +358,11 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
  </div>
 </section>
 
-<!-- 10 AM INVATAT -->
-<section class="slide" aria-label="Am învățat">
- <div class="wrap">
-  <span class="badge" style="background:var(--green)">Am învățat</span>
-  <h2>Ce luăm cu noi din lecție</h2>
-  <div class="grid g2">
-   <div class="box" style="border-color:var(--blue)"><span class="emo">🏰</span><p>Cele mai multe popoare din Europa de azi s-au format în <b>Evul Mediu</b>.</p></div>
-   <div class="box" style="border-color:var(--green)"><span class="emo">🧭</span><p>Țara noastră s-a aflat la <b>confluența</b> civilizațiilor apusene și răsăritene, care au influențat <b>limba</b>, <b>obiceiurile</b> și <b>modul de viață</b>.</p></div>
-  </div>
-  <h3 style="margin-top:20px">Știați că…</h3>
-  <div class="tip p">🏺 Cele mai vechi civilizații din lume au fost cea <b>sumeriană</b> și cea <b>egipteană</b>. Amintește-ți de piramide de la recapitulare!</div>
-  <div class="mc">
-   <div class="m"><span class="lab">📘 Manualul spune</span><p>Primul popor format în Europa, în Evul Mediu, a fost cel francez. Coroana Ungariei, cu care a fost încoronat Ștefan I, este singura coroană bizantină păstrată.</p></div>
-   <div><span class="lab">🌍 Context</span><p>„Primul popor” e greu de stabilit, pentru că popoarele se formează încet, în secole. Pentru francezi avem un document foarte vechi, din <b>842</b>, de aceea sunt dați ca exemplu.</p><p>Coroana se numește după Ștefan I, dar partea ei bizantină a fost făcută pe la <b>1075</b>, la câteva zeci de ani după moartea lui (1038). Numele vine din <b>tradiție</b>.</p></div>
-  </div>
- </div>
-</section>
-
 </main>
 
+
 <nav class="bar" aria-label="Navigare prezentare">
- <a class="home" href="../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
+ <a class="home" href="../../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
  <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
  <div class="dots" id="dots"></div>
  <span class="count" id="count"></span>
@@ -433,7 +370,7 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 </nav>
 <script>
 (function(){
-  var KEY='popoare-slide';
+  var KEY='sn-u2r-slide';
   var slides=[].slice.call(document.querySelectorAll('.slide'));
   var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
   var cur=0;
@@ -465,25 +402,24 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
     b.onclick=function(){d.hidden=!d.hidden;b.textContent=d.hidden?label:'Ascunde';};
   });
 /* ---------- missions ---------- */
-    var SORTERS={
-   'sort-pop':{cats:{l:'latin',g:'germanic',s:'slav',a:'altul'},items:[
-     ['Francezii','l'],['Spaniolii','l'],['Românii','l'],['Germanii','g'],['Englezii','g'],['Rușii','s'],['Sârbii','s'],['Bulgarii','s'],['Maghiarii (ungurii)','a'],['Grecii','a'],['Turcii','a']],
-    expl:'Latini: francezi, spanioli, români (și italieni, portughezi). Germanici: germani, englezi (și suedezi, olandezi). Slavi: ruși, sârbi, bulgari (și polonezi, cehi). Altele: maghiarii vorbesc o limbă fino-ugrică, înrudită cu finlandeza; turca vine din Asia Centrală; greaca este o ramură separată. Capcana: bulgarii! Numele lor vine de la un popor venit din Asia, dar acesta s-a amestecat cu slavii mult mai numeroși și a preluat limba lor.'}
-  };
+    var SORTERS={};
   var Q=[
-   {t:'order',tags:['L6','L2'],d:'Cronologie',q:'Pune evenimentele de pe axa timpului din manual în ordine, de la cel mai vechi la cel mai nou.',items:['Conflictul dintre gali și romani (52 î.H.)','Slavii se așază la sud de Dunăre (602)','Primul document francez (842)','Ungurii cuceresc Transilvania (sec. XI)','Colonizarea sașilor în Transilvania (sec. XII)','Întemeierea Imperiului Otoman (1301)'],h:'Mai întâi găsește singurul eveniment î.H. Apoi transformă secolele în ani: sec. XI = 1001–1100.',e:'52 î.H. → 602 → 842 → sec. XI → sec. XII → 1301. Ai observat? Doar primul eveniment este din Antichitate; toate celelalte sunt din Evul Mediu, când s-au format popoarele.'},
-   {t:'num',tags:['L6','L2'],d:'Matematică',q:'Câți ani au trecut între conflictul galilor cu romanii (52 î.H.) și primul document scris în franceză (842)?',a:893,h:'Treci prin două ere. Ține minte regula de la recapitulare: nu există anul 0.',e:'52 + 842 − 1 = 893 de ani. Atât a durat drumul de la gali la poporul francez cu limba lui scrisă.'},
-   {t:'sort',tags:['L6'],d:'Limba română',q:'Detectiv de cuvinte: fiecare cuvânt vine din latină sau din slavă?',items:[['plug','n'],['om','s'],['coasă','n'],['apă','s'],['voievod','n'],['lună','s'],['boier','n'],['casă','s']],labels:{s:'latină',n:'slavă'},h:'Lecția dă exemple de cuvinte slave din agricultură și din organizarea societății. Cuvintele pentru lucrurile de bază ale vieții sunt mai vechi.',e:'Slave: plug, coasă, voievod, boier. Latinești: om (homo), apă (aqua), lună (luna), casă (casa). Cuvintele cele mai vechi și mai simple sunt latinești. De aceea româna este o limbă latină, chiar dacă a împrumutat multe cuvinte de la vecini.'},
-   {t:'mcq',tags:['L6','L5'],d:'Matematică',q:'Gutenberg a tipărit primele cărți pe la 1450. Prima carte tipărită pe teritoriul românesc, Liturghierul lui Macarie, a apărut în 1508. Cam câți ani a durat până a ajuns tiparul la noi?',o:['cam 6 ani','cam 60 de ani','cam 600 de ani'],a:1,h:'1508 − 1450 = ?',e:'1508 − 1450 = 58, deci cam 60 de ani. Pentru vremea aceea a fost repede: invențiile circulau încet, cu negustori și călugări.'},
-   {t:'mcq',tags:['L6','L4','L2'],d:'Matematică',q:'Sibiul a fost întemeiat de sași în secolul al XII-lea. Cam câți ani are orașul în 2026?',o:['cam 1200 de ani','cam 850 de ani','cam 400 de ani','cam 12 ani'],a:1,h:'Secolul XII înseamnă anii 1101–1200, nu anul 1200. Scade din 2026.',e:'Între 826 și 925 de ani, adică aproape 9 secole. Capcana era 1200: numărul secolului nu este vârsta orașului.'},
-   {t:'mcq',tags:['L6'],d:'Geografie',q:'Râul Rin apare de două ori în lecție. Ce două popoare antice despărțea?',o:['Grecii și romanii','Galii (la vest) și germanii (la est)','Slavii și rușii','Turcii și ungurii'],a:1,h:'Galii: între Sena, Loara și Rin. Germanii: între Rin și Elba.',e:'Galii trăiau la vest de Rin, germanii la est. Și azi Rinul formează o parte din granița dintre Franța și Germania. Râurile au fost adesea granițe naturale (L2, mediul geografic).'},
-   {t:'mcq',tags:['L6'],d:'Logică',q:'Care dintre aceste popoare NU este nici latin, nici germanic, nici slav?',o:['Spaniolii','Polonezii','Englezii','Maghiarii'],a:3,h:'Una dintre variante vorbește o limbă înrudită cu finlandeza.',e:'Maghiarii vorbesc o limbă fino-ugrică, înrudită de departe cu finlandeza și estona. Englezii sunt germanici, chiar dacă engleza are multe cuvinte din franceză.'},
-   {t:'mcq',tags:['L6','L2'],d:'Detectiv',q:'Coroana Ungariei poartă numele regelui Ștefan I, încoronat în anul 1000 și mort în 1038. Partea ei bizantină a fost făcută pe la 1075. Ce concluzie tragi?',o:['Ștefan I a fost încoronat cu o coroană din viitor','Coroana a fost făcută după moartea lui, deci numele vine din tradiție','Anii sunt greșiți','Ștefan I a trăit până în 1075'],a:1,h:'Compară 1038 cu 1075. Ce a apărut întâi?',e:'Coroana (cel puțin partea bizantină) a fost făcută după moartea lui Ștefan I. Numele vine din tradiție, nu dintr-un fapt dovedit. Istoricii verifică mereu datele.'},
-   {t:'mcq',tags:['L6','L2'],d:'Cronologie',q:'Templul grecesc Erechtheion este din secolul V î.H., iar Colosseumul roman din secolul I d.H. Cam câți ani despart cele două construcții?',o:['cam 400 de ani','cam 500 de ani','cam 600 de ani'],a:1,h:'Numără secolele: V, IV, III, II, I î.H., apoi I d.H. Câte trepte faci? Nu există secolul 0.',e:'Cam 500 de ani: Erechtheion a fost terminat pe la 406 î.H., Colosseumul pe la 80 d.H. Dacă ai răspuns 600, ai numărat un „secol 0” care nu există.'},
-   {t:'mcq',tags:['L6','Științe'],d:'Științe',q:'Caloianul, obicei moștenit de la slavi, era făcut pentru a chema ploaia. Când avea cel mai mult sens?',o:['Iarna, când ninge','Vara, în perioadele de secetă','Toamna, la cules','Oricând, nu contează'],a:1,h:'Amintește-ți de la științe, de la anotimpuri: când sunt temperaturile cele mai mari?',e:'Vara, când e cald și seceta usucă recoltele. Pentru agricultori, ploaia la timp însemna hrană pentru tot anul. Obiceiurile au mereu un rost practic.'},
-   {t:'mcq',tags:['L6','L5'],d:'Limbi',q:'„Voievod” vine din slavă și înseamnă cam „cel care conduce oastea”. Ce îți spune asta despre domnitorii români ca Mircea cel Bătrân sau Ștefan cel Mare?',o:['Că erau slavi','Că erau în primul rând conducători militari','Că nu știau limba română','Nimic'],a:1,h:'Un cuvânt împrumutat nu schimbă poporul. Ce rol avea un voievod?',e:'Erau mai ales conducători militari, apărători ai țării. Am împrumutat cuvântul, nu și poporul: un român rămâne român chiar dacă folosește cuvinte slave, așa cum un englez rămâne englez când spune un cuvânt francez.'},
-   {t:'mcq',tags:['L6','L4'],d:'Gândire',q:'Sârbii s-au mutat în Banat după cucerirea turcă. Lipovenii s-au așezat în Deltă pentru pescuit. Ce au în comun cele două migrații?',o:['Ambele au avut loc în Antichitate','Oamenii s-au mutat pentru siguranță sau pentru trai, așa cum fac și azi','Ambele au fost cuceriri','Nu au nimic în comun'],a:1,h:'Întreabă-te DE CE pleacă oamenii din locul lor.',e:'Oamenii migrează ca să scape de pericole sau ca să găsească un trai mai bun. Așa s-au format minoritățile din L4. Azi se întâmplă la fel: mulți români au plecat să lucreze în alte țări.'}
+   {t:'order',tags:['L1'],d:'Sistemul Solar',q:'Pune planetele în ordine, de la cea mai apropiată de Soare la cea mai depărtată.',items:['Mercur','Venus','Terra','Marte','Jupiter','Saturn','Uranus','Neptun'],h:'O propoziție-truc: „Mama Vede Tot, Mereu Joacă Șah Uitându-se Netulburată” (Mercur, Venus, Terra, Marte, Jupiter, Saturn, Uranus, Neptun).',e:'Mercur, Venus, Terra, Marte, Jupiter, Saturn, Uranus, Neptun. Pluto e acum „planetă pitică”, nu planetă.'},
+   {t:'mcq',tags:['L1','Evaluare'],d:'Ghicitoare',q:'Ce planetă este vecină cu Pământul, dar NU e mai aproape de Soare decât el?',o:['Venus','Marte','Mercur','Jupiter'],a:1,h:'Vecinii Pământului sunt Venus și Marte. Care e mai departe?',e:'Marte. Venus e și ea vecină, dar e mai aproape de Soare.'},
+   {t:'mcq',tags:['L1','Evaluare'],d:'Ghicitoare',q:'Ce planetă e vecină cu Saturn, dar NU e mai mare decât Saturn?',o:['Jupiter','Uranus','Neptun','Terra'],a:1,h:'Vecinii lui Saturn sunt Jupiter și Uranus. Care e mai mare decât Saturn?',e:'Uranus. Jupiter e vecin, dar e cea mai mare planetă, deci mai mare decât Saturn.'},
+   {t:'mcq',tags:['L2'],d:'Capcană',q:'De ce vedem Luna noaptea, dacă ea nu are lumină proprie?',o:['Pentru că e o stea','Pentru că reflectă lumina Soarelui','Pentru că arde','Nu o vedem niciodată'],a:1,h:'Ce corpuri cerești au lumină proprie, după manual?',e:'Doar stelele au lumină proprie. Luna și planetele reflectă lumina Soarelui, ca o oglindă.'},
+   {t:'mcq',tags:['L2','L3'],d:'Rotație sau revoluție',q:'Ce produce mișcarea de REVOLUȚIE, împreună cu axa înclinată?',o:['Ziua și noaptea','Anotimpurile','Fosilele','Mareea'],a:1,h:'Revoluție = în jurul Soarelui.',e:'Anotimpurile. Rotația, în jurul axei, produce ziua și noaptea.'},
+   {t:'num',tags:['L3','Matematică'],d:'Matematică',q:'În câți ani se adună din „cele aproape 6 ore” o zi întreagă?',a:4,h:'24 : 6.',e:'24 : 6 = 4 ani. De aceea avem un an bisect, cu 29 februarie, din 4 în 4 ani.'},
+   {t:'sort',tags:['L4','Evaluare'],d:'Adevărat sau fals',q:'Mesajul Ioanei din evaluare: adevărat sau fals?',items:[['Toate viețuitoarele sunt diurne.','n'],['Iarna, unele animale hibernează.','s'],['Toamna, multe mamifere și păsări își îndesesc blana și penele.','s'],['Păsările migratoare pleacă primăvara în țările calde.','n']],labels:{s:'adevărat',n:'fals'},h:'Atenție la „toate” și la anotimp.',e:'Fals: nu TOATE viețuitoarele sunt diurne (există nocturne). Adevărat: hibernarea, blana mai deasă. Fals: păsările pleacă TOAMNA și se întorc primăvara.'},
+   {t:'mcq',tags:['L4'],d:'Gândire',q:'Iarna, zilele sunt mai scurte și temperaturile mai scăzute. Ce legătură are asta cu hibernarea?',o:['Niciuna','E puțină hrană și e frig, așa că unele animale „dorm” ca să economisească energie','Animalele se plictisesc','Hibernarea e vara'],a:1,h:'Ce găsește un arici de mâncare în ianuarie?',e:'Fără insecte și cu frig, ariciul ar consuma mai multă energie decât găsește. Hibernarea e o strategie de supraviețuire, legată direct de anotimpuri (L3).'},
+   {t:'mcq',tags:['L5','Evaluare'],d:'Fosile',q:'Fosilele sunt resturi conservate de…',o:['plante','animale','plante și animale','pietre'],a:2,h:'Manualul vorbește și de frunze, și de oase.',e:'Plante și animale. Există fosile de frunze, de cochilii, de oase, chiar și urme de pași.'},
+   {t:'mcq',tags:['L5'],d:'Știința se schimbă',q:'La test scrii, după manual, că dinozaurii erau reptile. Ce mai știi în plus de la noi?',o:['Nimic','Că păsările de azi sunt urmașele dinozaurilor','Că dinozaurii mai trăiesc în Deltă','Că erau mamifere'],a:1,h:'Amintește-ți slide-ul „Ce a aflat știința între timp”.',e:'Păsările sunt urmașele dinozaurilor. Manualul e un punct de plecare, iar știința merge mai departe.'},
+   {t:'mcq',tags:['L6','Evaluare'],d:'Mediu',q:'Ce activitate poate duce la dispariția unor specii de plante?',o:['Plantarea puieților','Culesul masiv al plantelor pentru vânzare','Udatul grădinii','Fotografiatul florilor'],a:1,h:'Manualul vorbește de „colectarea masivă în scop comercial”.',e:'Culesul în exces. Dacă iei toate florile, nu mai rămân semințe pentru anul următor.'},
+   {t:'mcq',tags:['L6'],d:'Mediu',q:'Ce activitate poate duce la dispariția unor specii de PĂSĂRI?',o:['Hrănirea lor iarna','Tăierea pădurilor și uscarea mlaștinilor în care își fac cuiburile','Construirea de căsuțe pentru păsări','Observarea lor cu binoclul'],a:1,h:'Unde își cresc păsările puii?',e:'Distrugerea locurilor de cuibărit. Dropia, din atlasul manualului, a devenit rară tocmai pentru că și-a pierdut câmpurile sălbatice.'},
+   {t:'mcq',tags:['L1','L6'],d:'Gândire',q:'De ce e Pământul singura planetă cunoscută pe care omul poate trăi, și de ce trebuie protejat?',o:['Pentru că e cea mai mare','Pentru că e la distanța potrivită de Soare, are apă, aer cu oxigen și viețuitoare. Dacă le stricăm, n-avem altă planetă.','Pentru că e cea mai mică','Pentru că e colorată'],a:1,h:'Leagă L1 (planete), L2 (distanța de Soare), U1 (oxigenul) și L6 (influența omului).',e:'Distanța potrivită, apa, oxigenul și viața. Toată unitatea duce aici: mediul de viață e unic, iar omul e responsabil pentru el.'},
+   {t:'mcq',tags:['L2','Geografie','Istorie'],d:'Punte',q:'Ce au în comun ceasul solar (istorie), punctele cardinale (geografie) și ziua și noaptea (științe)?',o:['Nimic','Toate se explică prin rotația Pământului și mișcarea aparentă a Soarelui','Toate au fost inventate de romani','Toate se fac cu busola'],a:1,h:'Ce face Soarele, aparent, pe cer de dimineața până seara?',e:'Rotația Pământului face ca Soarele să pară că trece de la est spre vest. Asta măsoară ceasul solar, asta ne arată punctele cardinale și asta face ziua și noaptea.'}
   ];
+
 
   (function(){
     Object.keys(SORTERS).forEach(function(id){

@@ -6,7 +6,7 @@
 <style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
 </head>
 <body>
-<title>Cercurile apartenenței</title>
+<title>Am învățat în clasa a III-a</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
@@ -267,6 +267,20 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 .calc input[type=range]{max-width:none;flex:1;min-width:160px;padding:0}
 .out{background:var(--tint-yellow);border-radius:14px;padding:10px 16px;font-weight:700}
 .out b{font-family:var(--display);font-size:1.2em}
+
+.minbtns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.minbtns button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.35em .9em}
+.minbtns button[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+.eu-bar{position:relative;height:38px;border-radius:12px;background:var(--line);overflow:hidden;margin:8px 0}
+.eu-bar i{position:absolute;left:0;top:0;bottom:0;background:#2F6FD6;transition:width .4s}
+.eu-bar span{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-weight:800;color:#fff;font-family:var(--display);font-size:1.1em}
+@media (prefers-reduced-motion:reduce){.eu-bar i{transition:none}}
+
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}.pd summary{cursor:pointer;font-weight:800}.pd[open] summary{margin-bottom:6px}.pd:last-of-type{border-color:var(--green)}
+.threadgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.threadgrid .box{padding:12px 16px}
+.threadgrid .box b{display:block;font-family:var(--display);color:var(--soft);font-size:.9em}
+.threadgrid .box p{margin:.2em 0 0}
 </style>
 <main class="deck" id="deck">
 
@@ -275,84 +289,125 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
  <div class="wrap cover">
   <div>
    <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
-   <p style="font-weight:800;color:var(--soft);margin:0">Educație civică · Recapitularea Unității 1, „Locuri de apartenență” · lecțiile 1–3 · manual pp. 20–24</p>
-   <h1>Cercurile apartenenței</h1>
-   <p class="lead">Localitatea, țara, Uniunea Europeană: aparții tuturor în același timp. Recapitulăm cele trei lecții, verificăm ce s-a schimbat de când s-a scris manualul și apoi urmează misiunile, cu întrebările din evaluarea unității.</p>
+   <p style="font-weight:800;color:var(--soft);margin:0">Științe ale naturii · Unitatea 1 · Recapitulare · manual pp. 10–15</p>
+   <h1>Am învățat în clasa a III-a</h1>
+   <p class="lead">Lumea vie, aerul, corpurile și transformările lor, forțele. Tot ce ai nevoie din clasa a III-a ca să înțelegi Soarele, anotimpurile și fosilele din clasa a IV-a.</p>
    <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
   </div>
   <svg viewBox="0 0 220 220" aria-hidden="true">
-   <circle cx="110" cy="110" r="100" fill="#2F6FD6"/>
-   <g fill="#F6C431">
-    <circle cx="110" cy="22" r="6"/><circle cx="154" cy="34" r="6"/><circle cx="186" cy="66" r="6"/><circle cx="198" cy="110" r="6"/><circle cx="186" cy="154" r="6"/><circle cx="154" cy="186" r="6"/><circle cx="110" cy="198" r="6"/><circle cx="66" cy="186" r="6"/><circle cx="34" cy="154" r="6"/><circle cx="22" cy="110" r="6"/><circle cx="34" cy="66" r="6"/><circle cx="66" cy="34" r="6"/>
-   </g>
-   <circle cx="110" cy="110" r="66" fill="#FFFFFF"/>
-   <rect x="68" y="80" width="28" height="60" fill="#2F6FD6"/><rect x="96" y="80" width="28" height="60" fill="#F6C431"/><rect x="124" y="80" width="28" height="60" fill="#E2433A"/>
-   <circle cx="110" cy="110" r="66" fill="none" stroke="#1E2340" stroke-width="3"/>
+   <rect x="20" y="120" width="56" height="56" rx="6" fill="#2F6FD6"/>
+   <path d="M100 176 h56 v-30 q-28 -18 -56 0z" fill="#7FB8E6"/>
+   <g fill="#B9C6DE"><circle cx="186" cy="132" r="8"/><circle cx="170" cy="112" r="6"/><circle cx="192" cy="96" r="5"/></g>
+   <path d="M110 60 c0 -30 40 -30 40 0 c0 20 -20 30 -20 50 c0 -20 -20 -30 -20 -50z" fill="#2E9D52"/>
+   <text x="48" y="200" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="800" font-size="13" fill="var(--soft)">solid</text>
+   <text x="128" y="200" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="800" font-size="13" fill="var(--soft)">lichid</text>
+   <text x="186" y="200" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="800" font-size="13" fill="var(--soft)">gaz</text>
   </svg>
  </div>
 </section>
 
-<!-- 2 UNITATEA PE SCURT -->
-<section class="slide" aria-label="Unitatea pe scurt">
+<!-- 2 DOSARUL PE SCURT -->
+<section class="slide" aria-label="Pe scurt">
  <div class="wrap">
-  <span class="badge" style="background:var(--red)">Unitatea pe scurt</span>
-  <h2>Trei cercuri, unul în altul</h2>
+  <span class="badge" style="background:var(--red)">Reținem din imagini</span>
+  <h2>Clasa a III-a, pe o pagină</h2>
   <div class="grid g3">
-   <div class="box" style="border-color:var(--green)"><span class="emo">🏘️</span><h3>L1 · Apartenența locală</h3><p><b>Comunitatea locală</b>: oamenii unei localități, cu interese, credințe și norme comune; au <b>drepturi și responsabilități</b>. Relații: vecinătate, prietenie, colaborare, competiție, conflict. <b>Instituțiile</b>: primăria, poliția, școala, poșta. <b>Domiciliul</b> și adresa. Tradițiile locale.</p></div>
-   <div class="box" style="border-color:var(--red)"><span class="emo">🇷🇴</span><h3>L2 · Apartenența națională</h3><p><b>Țara natală.</b> Însemnele: <b>drapelul</b> (albastru, galben, roșu), <b>stema</b>, <b>imnul</b> „Deșteaptă-te, române!”, <b>Ziua Națională</b> (1 Decembrie). <b>Constituția</b>, legea cea mai importantă. 41 de județe și municipiul București. <b>Diaspora</b>.</p></div>
-   <div class="box" style="border-color:var(--blue)"><span class="emo">🇪🇺</span><h3>L3 · Uniunea Europeană</h3><p>Creată ca să nu mai fie război între vecini. România membră din <b>2007</b>. Însemnele: drapelul cu <b>12 stele</b>, imnul „<b>Oda bucuriei</b>”, deviza „<b>Unitate în diversitate</b>”, <b>Ziua Europei</b> (9 Mai), moneda <b>euro</b>.</p></div>
+   <div class="box"><span class="emo">🌱</span><h3>Lumea vie</h3><p>Plantele își prepară <b>singure hrana</b>: iau din sol apă și substanțe hrănitoare, iar hrana se face în <b>frunze</b>, cu <b>lumină</b> și <b>aer</b>.</p></div>
+   <div class="box"><span class="emo">💨</span><h3>Aerul</h3><p>Atmosfera e un <b>amestec de gaze</b>. Cel mai important pentru viață e <b>oxigenul</b>, produs de plantele verzi, la lumină.</p></div>
+   <div class="box"><span class="emo">🪨</span><h3>Corpurile</h3><p>Obiectele din jur se numesc <b>corpuri</b>: naturale sau artificiale, cu viață sau fără viață. Au culoare, formă și dimensiune.</p></div>
+   <div class="box"><span class="emo">🧊</span><h3>Stările</h3><p><b>Solid</b> (formă și volum proprii), <b>lichid</b> (curge, ia forma vasului), <b>gazos</b> (fără formă și volum proprii, se răspândește).</p></div>
+   <div class="box"><span class="emo">🔥</span><h3>Transformările</h3><p><b>Topire</b>, <b>solidificare</b>, <b>vaporizare</b>, <b>condensare</b>.</p></div>
+   <div class="box"><span class="emo">🏹</span><h3>Forțele</h3><p>Corpurile interacționează. Un rezultat e <b>deformarea</b>. După o deformare <b>elastică</b>, corpul revine la forma inițială.</p></div>
   </div>
-  <div class="tip g">🎯 <b>Ce trebuie să știi pentru test</b> (autoevaluarea de la p. 23): ce sunt locurile de apartenență, ce este Uniunea Europeană și care e scopul ei, cum participi la viața comunității locale, a țării și a Europei.</div>
  </div>
 </section>
 
-<!-- 3 MONEDE -->
-<section class="slide" aria-label="Ce monedă folosește">
+<!-- 3 STARI -->
+<section class="slide" aria-label="Stările corpurilor">
  <div class="wrap">
-  <span class="badge" style="background:var(--purple)">🌉 Punte · Civică ↔ Geografie · ex. 3, p. 22</span>
-  <h2>Euro sau altă monedă?</h2>
-  <p>Manualul îți cere un tabel cu țara, capitala și moneda. Capcana: toate aceste țări sunt în UE, dar <b>nu toate</b> folosesc euro. Sortează-le.</p>
-  <div class="sort" id="sort-euro"></div>
-  <div class="qnav" style="justify-content:flex-start"><button class="act" type="button" data-check="sort-euro">Verifică</button><button class="act sec" type="button" data-reset="sort-euro">Ia de la capăt</button></div>
-  <div id="sort-euro-fb" aria-live="polite"></div>
+  <span class="badge" style="background:var(--blue)">Reținem din activități</span>
+  <h2>Solid, lichid sau gaz?</h2>
+  <p>Sortează corpurile din jurul tău după starea în care se află <b>la temperatura camerei</b>.</p>
+  <div class="sort" id="sort-st"></div>
+  <div class="qnav" style="justify-content:flex-start"><button class="act" type="button" data-check="sort-st">Verifică</button><button class="act sec" type="button" data-reset="sort-st">Ia de la capăt</button></div>
+  <div id="sort-st-fb" aria-live="polite"></div>
  </div>
 </section>
 
-<!-- 4 DETECTIVUL -->
-<section class="slide" aria-label="Ce s-a schimbat de la manual">
+<!-- 4 TRANSFORMARI -->
+<section class="slide" aria-label="Transformările">
  <div class="wrap">
-  <span class="badge" style="background:var(--blue)">Unealta de cercetător · lectura de la p. 21 și evaluarea de la p. 24</span>
-  <h2>Ce s-a schimbat de când s-a scris manualul?</h2>
-  <p>Manualul e din 2022. Încearcă întâi să ghicești ce s-a schimbat, apoi deschide fiecare dosar. La test scrii ce cere învățătoarea, dar e bine să știi și cum stau lucrurile azi.</p>
-  <details class="pd"><summary>„Moneda europeană a fost introdusă în 19 state.”</summary><p><b>Învechit.</b> Azi sunt <b>21</b>: <b>Croația</b> a trecut la euro în 2023, iar <b>Bulgaria</b> pe 1 ianuarie 2026. România folosește în continuare <b>leul</b>.</p></details>
-  <details class="pd"><summary>„Printre statele candidate se numără Turcia, Albania, Muntenegru și Serbia.”</summary><p><b>Incomplet acum.</b> Din 2022 sunt <b>9</b> state candidate. Printre cele noi: <b>Republica Moldova</b> și <b>Ucraina</b>, ambele vecine cu România.</p></details>
-  <details class="pd"><summary>„Marea Britanie a decis să părăsească alianța la 31 decembrie 2020.”</summary><p><b>Simplificat.</b> Ieșirea oficială a fost pe <b>31 ianuarie 2020</b>. Până la 31 decembrie 2020 a fost o perioadă de tranziție, în care regulile au rămas aceleași.</p></details>
-  <details class="pd"><summary>Evaluarea, ex. 5: „Consiliul Europei, instituție a UE din care fac parte toți șefii de stat sau de guvern.”</summary><p><b>Greșeală de nume.</b> Instituția UE cu șefii de stat sau de guvern este <b>Consiliul European</b>. <b>Consiliul Europei</b> e altă organizație, mai veche și mai mare (46 de state), care se ocupă de drepturile omului. Un singur cuvânt face diferența! Dacă primești exercițiul la test, poți scrie: „Am învățat că se numește Consiliul European.”</p></details>
-  <details class="pd"><summary>Schengen: „călătorești fără să ți se verifice pașaportul la graniță”</summary><p><b>Nou pentru România:</b> pe aeroporturi și în porturi din <b>31 martie 2024</b>, iar pe uscat din <b>1 ianuarie 2025</b>. Actul de identitate trebuie să-l ai totuși la tine.</p></details>
+  <span class="badge" style="background:var(--blue)">Reținem din activități</span>
+  <h2>Ce transformare vezi?</h2>
+  <div class="grid g4">
+   <div class="box"><span class="emo">🧊➡️💧</span><h3>Topire</h3><p>solid → lichid</p></div>
+   <div class="box"><span class="emo">💧➡️🧊</span><h3>Solidificare</h3><p>lichid → solid</p></div>
+   <div class="box"><span class="emo">💧➡️💨</span><h3>Vaporizare</h3><p>lichid → gaz</p></div>
+   <div class="box"><span class="emo">💨➡️💧</span><h3>Condensare</h3><p>gaz → lichid</p></div>
+  </div>
+  <div class="sort" id="sort-tr" style="margin-top:14px"></div>
+  <div class="qnav" style="justify-content:flex-start"><button class="act" type="button" data-check="sort-tr">Verifică</button><button class="act sec" type="button" data-reset="sort-tr">Ia de la capăt</button></div>
+  <div id="sort-tr-fb" aria-live="polite"></div>
  </div>
 </section>
 
-<!-- 5 DEZBATEM -->
-<section class="slide" aria-label="Citim și dezbatem">
+<!-- 5 MASURI -->
+<section class="slide" aria-label="Dimensiune, volum, masă">
  <div class="wrap">
-  <span class="badge" style="background:var(--red)">Citim și dezbatem · recapitularea, ex. 1 și 2</span>
-  <h2>Ce întrebare pune un cetățean atent?</h2>
+  <span class="badge" style="background:var(--red)">Evaluare inițială · Test 2</span>
+  <h2>Dimensiune, volum, masă, greutate</h2>
+  <div class="cmp-wrap">
+   <table class="cmp">
+    <thead><tr><th>Mărimea</th><th>Ce înseamnă</th><th>Unitatea</th><th>Instrumentul</th></tr></thead>
+    <tbody>
+     <tr><td>Dimensiunea</td><td>lungime, lățime, înălțime</td><td>metrul (m)</td><td>rigla, ruleta</td></tr>
+     <tr><td>Volumul / capacitatea</td><td>cât spațiu ocupă un corp / cât încape într-un vas</td><td>litrul (l)</td><td>vasul gradat</td></tr>
+     <tr><td>Masa</td><td>cantitatea de substanță dintr-un corp</td><td>kilogramul (kg)</td><td>cântarul</td></tr>
+     <tr><td>Greutatea</td><td>forța cu care Pământul atrage corpul</td><td>(vei afla mai târziu)</td><td>—</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="tip y">🌙 <b>Capcana din manual:</b> un om care ajunge pe Lună are <b>aceeași masă</b>, dar <b>greutatea</b> lui e alta. Pe Lună e atras mai slab, cam de 6 ori mai slab decât pe Pământ.</div>
   <div class="mc">
-   <div class="m"><span class="lab">📘 Manualul spune</span><p>„Scrieți <b>patru trăsături pozitive ale poporului român</b> și alcătuiți enunțuri cu acestea.”</p></div>
-   <div><span class="lab">🌍 Context</span><p>Trăsăturile, ca hărnicia sau ospitalitatea, le au <b>oamenii</b>, nu popoarele întregi. Printre români, ca în orice popor, sunt oameni harnici și leneși, primitori și neprimitori. Când auzi „<b>toți</b> românii sunt…” sau „<b>toți</b> ungurii sunt…”, pune întrebarea: „Chiar toți? De unde știm?” O generalizare despre un popor e o <b>părere</b>, nu un fapt, chiar și atunci când sună frumos. Pentru exercițiu, poți scrie „Mulți români sunt primitori”: e mai adevărat.</p></div>
-  </div>
-  <div class="mc">
-   <div class="m"><span class="lab">📘 Manualul spune</span><p>Acțiunile de ecologizare „sunt modalități de a-ți arăta dragostea față de țară?”</p></div>
-   <div><span class="lab">🌍 Context</span><p>Pot fi. Dar un om strânge gunoiul din parc și pentru că vrea un parc curat, pentru sănătatea lui sau pentru că e <b>responsabilitatea</b> oricărui membru al comunității (L1). Legea nu îți cere să iubești țara. Îți cere să respecți regulile și simbolurile ei (L2). Faptele bune contează, oricare ar fi motivul.</p></div>
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>„Masa unui corp nu trebuie confundată cu greutatea acestuia.”</p></div>
+   <div><span class="lab">🌍 Context</span><p>În viața de zi cu zi spunem „cântăresc 35 de kilograme” și „greutatea mea”, dar, științific, kilogramele sunt <b>masa</b>. E un exemplu bun de cuvânt care înseamnă altceva în vorbirea obișnuită și altceva în știință.</p></div>
   </div>
  </div>
 </section>
 
-<!-- 6 MISIUNI -->
+<!-- 6 PUNTE -->
+<section class="slide" aria-label="Punte spre clasa a IV-a">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Clasa a III-a ↔ clasa a IV-a ↔ Geografie</span>
+  <h2>De ce ai nevoie de toate acestea anul ăsta</h2>
+  <div class="grid g2">
+   <div class="box"><span class="emo">🌧️</span><h3>Stările apei → anotimpurile (U2 L3)</h3><p>Ploaia și ninsoarea sunt <b>vaporizare</b> și <b>condensare</b>: Soarele încălzește apa, vaporii urcă, se răcesc și formează nori.</p></div>
+   <div class="box"><span class="emo">☀️</span><h3>Oxigenul → Soarele (U2 L2)</h3><p>Plantele fac oxigen <b>doar la lumină</b>. Fără Soare, nu doar că ar fi frig, dar nu am mai avea nici aer de respirat.</p></div>
+   <div class="box"><span class="emo">📏</span><h3>Măsurile → geografia (L2–L3)</h3><p>Metrul de la științe e același cu metrul de la planul clasei. Litrul și kilogramul sunt la fel în toată Europa.</p></div>
+   <div class="box"><span class="emo">🦕</span><h3>Corpurile naturale → fosilele (U2 L5)</h3><p>O fosilă e un corp natural, fost viu, care s-a transformat în timp în piatră.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 7 ATLAS -->
+<section class="slide" aria-label="Atlas: apele planetei">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Atlas · Apele planetei</span>
+  <h2>Peștii, între folosire și protecție</h2>
+  <p>În apele planetei trăiesc peste <b>30&nbsp;000 de specii de pești</b>, în ape <b>dulci</b> (râuri, lacuri) sau <b>sărate</b> (mări, oceane): toni, păstrăvi, bibani, somni.</p>
+  <div class="grid g2">
+   <div class="box"><span class="emo">🎣</span><h3>Ce folosește omul</h3><p>Carnea, icrele, grăsimea, industria medicamentelor. Unii pescari practică pescuitul sportiv, în care peștii sunt eliberați.</p></div>
+   <div class="box"><span class="emo">⚠️</span><h3>Pericolul</h3><p><b>Poluarea</b> apelor și <b>pescuitul excesiv</b> au împuținat mult peștii. Vei relua asta în U2 L6, despre influența omului.</p></div>
+  </div>
+  <div class="tip b">🔗 <b>Punte cu geografia și istoria:</b> unde pescuiesc lipovenii (istorie L4, L6)? Într-o apă dulce sau sărată? Delta Dunării are mai ales apă dulce, iar Marea Neagră, apă sărată.</div>
+ </div>
+</section>
+
+<!-- 8 MISIUNI -->
 <section class="slide" aria-label="Misiunile">
  <div class="wrap" style="max-width:920px">
   <div class="qtop">
-   <span class="badge" style="background:var(--purple);margin:0">Misiunile unității</span>
+   <span class="badge" style="background:var(--purple);margin:0">Quiz · recapitulare clasa a III-a</span>
    <span class="score" id="qscore">0 puncte</span>
   </div>
   <div class="qprog"><i id="qbar"></i></div>
@@ -364,15 +419,15 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 
 
 <nav class="bar" aria-label="Navigare prezentare">
- <a class="home" href="../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
-  <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
+ <a class="home" href="../../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
+ <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
  <div class="dots" id="dots"></div>
  <span class="count" id="count"></span>
  <button class="nav" id="next" aria-label="Slide-ul următor">→</button>
 </nav>
 <script>
 (function(){
-  var KEY='civ-u1-rec-slide';
+  var KEY='sn-u1-slide';
   var slides=[].slice.call(document.querySelectorAll('.slide'));
   var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
   var cur=0;
@@ -405,29 +460,22 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
   });
 /* ---------- missions ---------- */
     var SORTERS={
-   'sort-euro':{cats:{e:'euro',a:'altă monedă'},items:[
-     ['🇮🇹 Italia (Roma)','e'],['🇭🇺 Ungaria (Budapesta)','a'],['🇷🇴 România (București)','a'],['🇧🇬 Bulgaria (Sofia)','e'],['🇭🇷 Croația (Zagreb)','e'],['🇵🇱 Polonia (Varșovia)','a'],['🇫🇷 Franța (Paris)','e'],['🇸🇪 Suedia (Stockholm)','a']],
-    expl:'Euro: Italia, Franța, Croația (din 2023) și Bulgaria (din 2026). Altă monedă: România (leul), Ungaria (forintul), Polonia (zlotul), Suedia (coroana suedeză). Din 27 de state ale UE, 21 folosesc euro.'}
+   'sort-st':{cats:{s:'solid',l:'lichid',g:'gaz'},items:[['O piatră','s'],['Laptele','l'],['Aerul din minge','g'],['Cuburile de gheață','s'],['Uleiul','l'],['Aburul de deasupra ceaiului fierbinte','g'],['Nisipul','s']],
+    expl:'Atenție la nisip: curge, dar fiecare grăunte e un mic solid cu formă proprie. Și aburul pe care îl VEZI e, de fapt, făcut din picături mici de apă. Vaporii de apă propriu-ziși sunt invizibili. Știința e plină de astfel de detalii!'},
+   'sort-tr':{cats:{t:'topire',s:'solidificare',v:'vaporizare',c:'condensare'},items:[['Înghețata se înmoaie la soare','t'],['Apa din tava de gheață devine cuburi','s'],['O baltă dispare într-o zi caldă','v'],['Se aburește oglinda după duș','c'],['Ceara de lângă fitilul aprins devine lichidă','t']],
+    expl:'Înghețata: topire. Cuburile: solidificare. Balta: vaporizare (evaporare). Oglinda: condensare, adică vaporii calzi întâlnesc sticla rece și devin picături. Ceara de lângă fitil: topire. Când picătura cade pe masă și se întărește, urmează solidificarea. Manualul folosește lumânarea la exercițiul 5.'}
   };
   var Q=[
-   {t:'mcq',tags:['L1','Evaluare'],d:'Adevărat sau fals',q:'„Între membrii unei comunități pot exista doar relații de colaborare.” (evaluarea, ex. 1)',o:['Adevărat','Fals'],a:1,h:'Cuvântul-capcană e „doar”. Amintește-ți sortarea relațiilor de la L1.',e:'Fals. Pot exista vecinătate, prietenie, colaborare, dar și competiție și conflict. Contează cum le rezolvăm: prin discuție și după reguli.'},
-   {t:'mcq',tags:['L1','Evaluare'],d:'Completează',q:'„Sorcova reprezintă o … populară transmisă din generație în generație.” (evaluarea, ex. 2)',o:['lege','tradiție','instituție','însemn'],a:1,h:'Se transmite de la bunici la nepoți, dar nu e obligatorie.',e:'Tradiție. Tradițiile sunt obiceiuri, nu legi: fiecare familie alege dacă le păstrează.'},
-   {t:'order',tags:['L1','L2','L3'],d:'Cercurile',q:'Pune cercurile apartenenței în ordine, de la cel mai mic la cel mai mare.',items:['familia','localitatea','județul','România','Uniunea Europeană'],h:'Fiecare cerc îl cuprinde pe cel dinainte.',e:'Familia → localitatea → județul → România → Uniunea Europeană. Aparții tuturor în același timp.'},
-   {t:'mcq',tags:['L1','Siguranță online'],d:'Siguranță',q:'La ex. 5 din recapitulare, marcați pe schița cartierului zona în care locuiți. Colegul vrea să posteze schița pe internet. Ce îi spui?',o:['Super, s-o vadă toată lumea','În clasă e în regulă, dar pe internet adresa și zona unde locuiești rămân private','Să scrie și numărul blocului','Să o trimită unui necunoscut'],a:1,h:'Cine vede o postare pe internet?',e:'În clasă, schița o văd colegii și învățătoarea. Pe internet o poate vedea oricine, de aceea adresa rămâne privată.'},
-   {t:'mcq',tags:['L1'],d:'Instituții',q:'În localitate nu merge iluminatul pe o stradă întreagă. Cine răspunde și cine alege conducerea acelei instituții?',o:['Poliția; o numește Guvernul','Primăria; primarul e ales de locuitori, prin vot','Școala; o alege directorul','Poșta; nu o alege nimeni'],a:1,h:'Ce instituție are grijă de străzi? Și cine votează la alegerile locale?',e:'Primăria. Primarul și consilierii locali sunt aleși de locuitorii cu drept de vot. De aceea primăria le răspunde locuitorilor.'},
-   {t:'mcq',tags:['L2','Lege'],d:'Lege',q:'Într-o comună, 30% dintre locuitori sunt maghiari. Pot folosi limba maghiară când merg la primărie?',o:['Nu, limba oficială e româna','Da, legea permite folosirea limbii materne la primărie unde o minoritate depășește 20% din locuitori','Doar dacă vorbesc și românește','Doar în ziua de 1 Decembrie'],a:1,h:'Ai învățat despre un prag în procente. 30% e mai mult sau mai puțin decât el?',e:'Da. Limba oficială e româna (Constituția, art. 13), dar unde o minoritate trece de 20%, legea îi permite să folosească limba maternă în relația cu primăria. Legătură cu L4 de la istorie: harta minorităților.'},
-   {t:'mcq',tags:['L3','Evaluare'],d:'Însemne',q:'Care dintre acestea NU este un însemn al Uniunii Europene?',o:['Drapelul cu 12 stele','„Oda bucuriei”','Ziua de 9 Mai','Ziua de 1 Decembrie'],a:3,h:'Una dintre date e sărbătoarea României.',e:'1 Decembrie e Ziua Națională a României. Ziua Europei e 9 Mai.'},
-   {t:'mcq',tags:['L3'],d:'Capcană',q:'Drapelul UE are 12 stele, iar UE are 27 de state. Câte stele vor fi dacă intră și Republica Moldova?',o:['28','12','13','27'],a:1,h:'Stelele nu sunt state.',e:'Tot 12. Numărul 12 e un simbol al unității și al desăvârșirii și nu se schimbă când intră state noi.'},
-   {t:'num',tags:['L3','Matematică'],d:'Matematică',q:'UE a început cu 6 state fondatoare. Azi are 27, iar un stat a ieșit. Câte state au intrat în total după fondatori?',a:22,h:'Dacă n-ar fi ieșit nimeni, ar fi 28. Din 28 scazi cele 6 de la început.',e:'27 + 1 = 28 de state au fost membre la un moment dat. 28 − 6 = 22 au intrat după fondatori.'},
-   {t:'num',tags:['L3','Matematică'],d:'Matematică',q:'Din 27 de state ale UE, 21 folosesc euro. Câte state nu folosesc euro?',a:6,h:'Scade.',e:'27 − 21 = 6. România e unul dintre ele: plătim în lei.'},
-   {t:'mcq',tags:['L3','Evaluare'],d:'Detectiv',q:'Evaluarea vorbește despre „Consiliul Europei, instituție a UE din care fac parte toți șefii de stat sau de guvern”. Ce e greșit?',o:['Nimic','Numele: instituția UE e Consiliul European; Consiliul Europei e altă organizație','Nu există șefi de stat','UE nu are instituții'],a:1,h:'Un singur cuvânt e diferit. Deschide dosarul de pe slide-ul cu schimbările.',e:'Consiliul European e instituția UE a șefilor de stat sau de guvern. Consiliul Europei are 46 de state și se ocupă de drepturile omului.'},
-   {t:'mcq',tags:['L3','Geografie'],d:'Geografie',q:'Mergi cu mașina din România în Ungaria, în 2026. Ce se întâmplă la graniță?',o:['Stai la coadă pentru verificarea pașaportului, ca înainte','De regulă, nu ți se mai verifică actele, pentru că România e în Schengen și pe uscat din 2025; actul de identitate îl ai totuși la tine','Nu ai voie să treci','Trebuie să schimbi lei în euro la graniță'],a:1,h:'Schengen e numele unui orășel din Luxemburg. Din ce an e România în Schengen și pe uscat?',e:'Din 1 ianuarie 2025, România e în Schengen și pe uscat. Atenție și la ultima variantă: Ungaria nu folosește euro, ci forintul.'},
-   {t:'mcq',tags:['L3','Istorie'],d:'Istorie',q:'Lectura de la p. 21 spune că UE a fost creată „cu scopul de a se pune capăt conflictelor”. Care conflict a fost ultimul, cel mai mare?',o:['Războaiele dacilor cu romanii','Al Doilea Război Mondial','Revoluția de la 1848','Primul Război Mondial'],a:1,h:'Cuvântul din lectură e „au culminat cu…”.',e:'Al Doilea Război Mondial (1939–1945). Franța și Germania, dușmane în ambele războaie mondiale, au fondat împreună comunitatea.'},
-   {t:'num',tags:['L3','Matematică'],d:'Matematică',q:'Robert Schuman a propus unirea țărilor europene pe 9 mai 1950. România a intrat în UE în 2007. Câți ani au trecut?',a:57,h:'2007 − 1950.',e:'57 de ani. Între timp, Uniunea a crescut de la 6 la 27 de state.'},
-   {t:'mcq',tags:['L2','Istorie L2'],d:'Istorie',q:'Proiectul de la p. 20 pomenește fortărețele dacice din Munții Orăștiei, pe lista UNESCO. În ce epocă au fost construite?',o:['Epoca străveche','Epoca antică','Evul Mediu','Epoca modernă'],a:1,h:'Dacii lui Decebal s-au luptat cu romanii lui Traian. Caută pe banda epocilor de la istorie.',e:'Epoca antică: au fost ridicate în secolele I î.H. – I d.H. Ai învățat la istorie că antichitatea ține din secolul I î.H. până în secolul VII.'},
-   {t:'mcq',tags:['L2','Științe'],d:'Științe',q:'Pe lista UNESCO a României din proiect apar Delta Dunării, Mănăstirea Horezu și Cetatea Sighișoara. Care e un monument al naturii, nu construit de oameni?',o:['Mănăstirea Horezu','Cetatea Sighișoara','Delta Dunării','Bisericile de lemn din Maramureș'],a:2,h:'Care dintre ele s-a format din aluviunile unui fluviu?',e:'Delta Dunării, formată de fluviu în mii de ani. Celelalte sunt construite de oameni. La științe ai învățat cum le protejează legea (U2, L6).'},
-   {t:'mcq',tags:['L2','Gândire critică'],d:'Gândire',q:'Cineva spune: „Toți românii sunt foarte harnici.” Ce întrebare e cea mai potrivită?',o:['„Ce frumos!”','„Chiar toți? De unde știm?”','„Și ungurii?”','„Ce înseamnă harnic?”'],a:1,h:'Ce cuvânt mic face propoziția să fie o generalizare?',e:'„Toți” transformă o observație într-o generalizare. Trăsăturile le au oamenii, nu popoarele întregi. E o părere, chiar dacă sună frumos.'},
-   {t:'mcq',tags:['L3','Istorie L4'],d:'Legături',q:'Deviza UE e „Unitate în diversitate”. Unde ai mai întâlnit această idee?',o:['Nicăieri','La istorie, L4: în România trăiesc minorități cu limbi și tradiții proprii, dar toți sunt cetățeni ai aceleiași țări','La matematică, la fracții','În imnul României'],a:1,h:'Gândește-te la harta minorităților naționale.',e:'Exact ce ai văzut la comunitatea națională: oameni diferiți, aceeași țară. UE face la fel cu 27 de țări și 24 de limbi oficiale.'}
+   {t:'mcq',tags:['U1','Clasa a III-a'],d:'Lumea vie',q:'Unde își prepară planta hrana?',o:['În rădăcină','În frunze, cu ajutorul luminii și al aerului','În flori','În sol'],a:1,h:'Rădăcina doar ia apa și substanțele din sol. Unde ajung ele apoi?',e:'În frunze. Rădăcina aduce apa și substanțele hrănitoare, iar frunzele, cu lumină și aer, fac hrana. Ca bonus, plantele produc și oxigen.'},
+   {t:'mcq',tags:['U1','U2 L2'],d:'Punte',q:'Noaptea, plantele verzi produc oxigen la fel ca ziua?',o:['Da, la fel','Nu: oxigenul se produce în prezența luminii','Doar iarna','Plantele nu produc niciodată oxigen'],a:1,h:'Recitește: oxigenul e produs de plante „în prezența…”.',e:'Fără lumină, nu se produce oxigen. Iată încă un motiv pentru care Soarele e „cea mai importantă sursă de energie” (U2 L2).'},
+   {t:'mcq',tags:['U1'],d:'Stări',q:'Ce corp are formă și volum proprii?',o:['Apa din pahar','Aerul din cameră','O carte','Sucul din sticlă'],a:2,h:'Lichidele și gazele iau forma vasului.',e:'Cartea e solidă: își păstrează forma oriunde o pui. Apa și sucul iau forma vasului, iar aerul umple tot spațiul.'},
+   {t:'mcq',tags:['U1','U2 L3'],d:'Punte',q:'Iarna, pe geamul rece al mașinii apar picături de apă din respirația ta. Ce transformare e?',o:['Topire','Condensare','Solidificare','Vaporizare'],a:1,h:'Respirația are vapori calzi. Ce se întâmplă când ating ceva rece?',e:'Condensare: vaporii devin lichid. Tot așa se formează și norii (U2 L3): vaporii urcă, se răcesc și condensează în picături mici.'},
+   {t:'num',tags:['U1','Matematică'],d:'Măsuri',q:'Un vas de 10 l e plin. Torni din el în 3 vase: de 1 l, de 2 l și de 5 l, până le umpli. Câți litri rămân în vasul mare?',a:2,h:'Adună ce ai turnat: 1 + 2 + 5. Scade din 10.',e:'10 − (1 + 2 + 5) = 2 litri. Litrul e unitatea pentru capacitatea vaselor.'},
+   {t:'mcq',tags:['U1'],d:'Capcană',q:'Un astronaut are 70 kg pe Pământ. Ce se întâmplă cu MASA lui pe Lună?',o:['Devine de 6 ori mai mică','Rămâne 70 kg','Devine 0','Crește'],a:1,h:'Masa = cantitatea de substanță din corp. Se pierde substanță în călătorie?',e:'Masa rămâne aceeași, 70 kg. Se schimbă GREUTATEA, adică forța cu care e atras: pe Lună e de aproximativ 6 ori mai mică. De aceea astronauții sar atât de ușor.'},
+   {t:'mcq',tags:['U1'],d:'Forțe',q:'Care e o deformare ELASTICĂ?',o:['O cutie de carton strivită','O minge de cauciuc apăsată, care revine la formă','O cană spartă','Plastilina modelată'],a:1,h:'Elastic = revine la forma inițială.',e:'Mingea de cauciuc revine la forma ei. Cutia, cana și plastilina rămân schimbate: aceea e deformare plastică sau rupere.'},
+   {t:'mcq',tags:['U1','Geografie'],d:'Punte',q:'Ai învățat la geografie să măsori distanțe în metri. La științe, metrul măsoară…',o:['masa','dimensiunea: lungimea, lățimea, înălțimea','volumul','timpul'],a:1,h:'Ce unitate e pentru masă? Ce rămâne pentru metru?',e:'Dimensiunea. Aceeași unitate, două materii: la geografie măsori distanțe, la științe dimensiuni. Masa e în kilograme, iar volumul în litri.'},
+   {t:'mcq',tags:['U1','Atlas'],d:'Gândire',q:'Atlasul spune că poluarea și pescuitul excesiv au împuținat peștii. Ce înseamnă „excesiv”?',o:['Puțin','Mai mult decât se pot reface peștii prin înmulțire','Doar sportiv','Noaptea'],a:1,h:'Peștii se înmulțesc. Ce se întâmplă dacă pescuiești mai repede decât se înmulțesc?',e:'Când prinzi mai mulți pești decât se nasc, numărul lor scade an de an. De aceea există perioade în care pescuitul e interzis, ca peștii să se poată înmulți.'},
+   {t:'mcq',tags:['U1'],d:'Ghicitoare',q:'„Are solzi și nu e pește / Și când merge se târăște.” Din ce grupă de animale face parte?',o:['Mamifere','Păsări','Reptile','Insecte'],a:2,h:'Răspunsul ghicitorii e șarpele.',e:'Șarpele e o reptilă: are solzi, se târăște, iar cei mai mulți șerpi se înmulțesc prin ouă. Vei întâlni reptilele din nou la dinozauri (U2 L5).'}
   ];
 
 
@@ -525,6 +573,5 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
   setScore();render();
 })();
 </script>
-
 </body>
 </html>

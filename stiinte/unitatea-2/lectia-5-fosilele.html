@@ -6,7 +6,7 @@
 <style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
 </head>
 <body>
-<title>Orientarea și distanțele</title>
+<title>Mărturii ale vieții din trecut: fosilele</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
@@ -267,6 +267,20 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 .calc input[type=range]{max-width:none;flex:1;min-width:160px;padding:0}
 .out{background:var(--tint-yellow);border-radius:14px;padding:10px 16px;font-weight:700}
 .out b{font-family:var(--display);font-size:1.2em}
+
+.minbtns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.minbtns button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.35em .9em}
+.minbtns button[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+.eu-bar{position:relative;height:38px;border-radius:12px;background:var(--line);overflow:hidden;margin:8px 0}
+.eu-bar i{position:absolute;left:0;top:0;bottom:0;background:#2F6FD6;transition:width .4s}
+.eu-bar span{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-weight:800;color:#fff;font-family:var(--display);font-size:1.1em}
+@media (prefers-reduced-motion:reduce){.eu-bar i{transition:none}}
+
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}.pd summary{cursor:pointer;font-weight:800}.pd[open] summary{margin-bottom:6px}.pd:last-of-type{border-color:var(--green)}
+.threadgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.threadgrid .box{padding:12px 16px}
+.threadgrid .box b{display:block;font-family:var(--display);color:var(--soft);font-size:.9em}
+.threadgrid .box p{margin:.2em 0 0}
 </style>
 <main class="deck" id="deck">
 
@@ -275,115 +289,93 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
  <div class="wrap cover">
   <div>
    <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
-   <p style="font-weight:800;color:var(--soft);margin:0">Geografie, Unitatea 1, Lecția 2</p>
-   <h1>Orientarea și distanțele în orizontul apropiat</h1>
-   <p class="lead">Cum explici cuiva drumul până la tine acasă? Ce reper alegi? Și cum măsori 40 de metri cu o ruletă de 10 metri?</p>
+   <p style="font-weight:800;color:var(--soft);margin:0">Științe ale naturii · Unitatea 2 · Lecția 5 · manual pp. 26–27</p>
+   <h1>Mărturii ale vieții din trecut: fosilele</h1>
+   <p class="lead">Cum aflăm ce animale au trăit acum milioane de ani, dacă nimeni nu le-a văzut? Și au trăit oamenii pe vremea dinozaurilor?</p>
    <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
   </div>
   <svg viewBox="0 0 220 220" aria-hidden="true">
-   <rect x="10" y="10" width="200" height="200" rx="20" fill="var(--tint-green)"/>
-   <path d="M30 180 C70 170 60 120 110 110 C160 100 150 50 190 40" stroke="#C9862A" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="2 16"/>
-   <rect x="160" y="22" width="40" height="34" rx="4" fill="var(--blue)"/><path d="M156 24 L180 8 L204 24Z" fill="#E2433A"/>
-   <circle cx="34" cy="180" r="14" fill="var(--yellow)" stroke="#fff" stroke-width="4"/>
-   <path d="M100 150 h40 M120 140 v20" stroke="var(--ink)" stroke-width="4"/>
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="#B4874E"/>
+   <rect x="10" y="80" width="200" height="60" fill="#9A6B3A"/><rect x="10" y="140" width="200" height="70" rx="0" fill="#7A5230"/>
+   <g fill="none" stroke="#F4E9D8" stroke-width="7" stroke-linecap="round">
+    <path d="M40 170 Q80 150 120 165 T190 160"/><path d="M60 162 v-14 M80 156 v-16 M100 158 v-16 M120 164 v-14 M140 162 v-14 M160 160 v-12"/>
+    <circle cx="190" cy="152" r="10"/>
+   </g>
   </svg>
  </div>
 </section>
 
-<!-- 2 OBSERV -->
-<section class="slide" aria-label="Ce vrem să aflăm">
+<!-- 2 OBSERVARE -->
+<section class="slide" aria-label="Observare">
  <div class="wrap">
-  <span class="badge" style="background:var(--blue)">Observ</span>
-  <h2>Ionela, Ana și școala</h2>
-  <p>În manual, o imagine arată locuința Ionelei, locuința Anei și școala. Manualul întreabă: <b>care dintre cele două fete ajunge mai repede la școală, și de ce?</b></p>
-  <div class="tip y">🧠 Ca să răspunzi, ai nevoie de două lucruri: <b>direcția</b> (în ce parte e școala?) și <b>distanța</b> (cât de departe?). Despre ele e lecția de azi.</div>
-  <span class="badge" style="background:var(--red);margin-top:18px">Ancheta de azi</span>
-  <div class="q"><span class="mark" style="background:var(--blue)">1</span>Ce înseamnă să te orientezi?</div>
-  <div class="q"><span class="mark" style="background:var(--purple)">2</span>Ce este un reper bun?</div>
-  <div class="q"><span class="mark" style="background:var(--green)">3</span>Cu ce și în ce unități măsurăm distanțele?</div>
+  <span class="badge" style="background:var(--red)">Observare · manual p. 26</span>
+  <h2>Animale care nu mai există</h2>
+  <div class="grid g3">
+   <div class="box"><span class="emo">🦣</span><h3>Mamutul</h3><p>Blană deasă și lungă împotriva frigului. Cu colții lungi scormonea prin zăpadă după crengi și plante.</p></div>
+   <div class="box"><span class="emo">🦖</span><h3>Tiranozaurul</h3><p>Un carnivor uriaș.</p></div>
+   <div class="box"><span class="emo">🦕</span><h3>Brahiozaurul</h3><p>Un dinozaur ierbivor, cu gât foarte lung.</p></div>
+  </div>
+  <div class="tip y">❓ <b>Întrebarea zilei:</b> cu ce animale de azi seamănă? Cum știm cum arătau, dacă nu există fotografii?</div>
  </div>
 </section>
 
-<!-- 3 ORIENTAREA -->
-<section class="slide" aria-label="Orientarea">
+<!-- 3 FOSILELE -->
+<section class="slide" aria-label="Ce sunt fosilele">
  <div class="wrap">
-  <span class="badge" style="background:var(--red)">Rețin</span>
-  <h2>Ce înseamnă să te orientezi</h2>
-  <div class="tip p" style="margin-top:0;font-size:1.05em"><b>Orientarea</b> înseamnă să afli unde te afli, unde vrei să ajungi și în ce direcție trebuie să mergi.</div>
+  <span class="badge" style="background:var(--yellow);color:#1E2340">Studiu · manual p. 27</span>
+  <h2>Ce sunt fosilele</h2>
+  <div class="tip p" style="margin-top:0;font-size:1.05em"><b>Fosilele</b> sunt <b>resturi sau urme</b> de plante și animale, <b>conservate în pământ</b> și descoperite prin cercetări științifice. Studiul lor ne ajută să reconstituim viețuitoarele din trecut și mediul în care trăiau.</div>
   <div class="grid g4" style="margin-top:14px">
-   <div class="box" style="text-align:center"><span class="emo">⬅️</span><b>stânga</b></div>
-   <div class="box" style="text-align:center"><span class="emo">➡️</span><b>dreapta</b></div>
-   <div class="box" style="text-align:center"><span class="emo">⬆️</span><b>înainte</b> (în față)</div>
-   <div class="box" style="text-align:center"><span class="emo">⬇️</span><b>înapoi</b> (în spate)</div>
+   <div class="box"><span class="emo">🦴</span><h3>Oase și dinți</h3><p>transformați în timp în piatră</p></div>
+   <div class="box"><span class="emo">🐚</span><h3>Cochilii</h3><p>sau tiparul lor în rocă</p></div>
+   <div class="box"><span class="emo">🐾</span><h3>Urme de pași</h3><p>rămase în noroi care s-a întărit</p></div>
+   <div class="box"><span class="emo">🍃</span><h3>Frunze</h3><p>conturul lor pe o piatră</p></div>
   </div>
-  <div class="tip g">📍 <b>Repere.</b> Poziția unui loc se spune față de un element cunoscut de multă lume. Exemple din manual: „Dacă mergi spre Primărie, casa mea se află pe partea dreaptă a străzii.” sau „Școala este situată în spatele magazinului Orizont.”</div>
-  <div class="tip b">✉️ <b>E-mailul Biancăi:</b> Bianca i-a scris Alinei că blocul ei e „în fața mașinii”. Alina a găsit în e-mail trei greșeli de orientare. Una e ușor de văzut fără imagine: o mașină parcată nu e un reper bun. De ce?</div>
+  <p style="margin-top:14px"><b>Dinozaurii:</b> au trăit în trecutul îndepărtat, unii pe uscat, alții în apă, se înmulțeau prin <b>ouă</b> și se hrăneau cu <b>carne</b> sau cu <b>plante</b>.</p>
  </div>
 </section>
 
-<!-- 4 STANGA CUI -->
-<section class="slide" aria-label="Stânga cui">
+<!-- 4 AXA TIMPULUI -->
+<section class="slide" aria-label="Când au trăit">
  <div class="wrap">
-  <span class="badge" style="background:var(--purple)">Explorăm</span>
-  <h2>Stânga cui?</h2>
-  <p>Alex stă în mijlocul curții. <b>Rotește-l</b> și răspunde la întrebare. Privește de sus, ca pe un plan.</p>
-  <div class="grid g2" style="align-items:start">
-   <svg class="fig" id="lr-svg" viewBox="0 0 300 300" role="img" aria-label="Alex în mijlocul curții, înconjurat de școală, parc, magazin și bloc" style="background:var(--tint-green)">
-    <rect x="105" y="10" width="90" height="50" rx="8" fill="#2F6FD6"/><text x="150" y="42" text-anchor="middle" font-size="18" style="fill:#fff">🏫 Școala</text>
-    <rect x="235" y="110" width="58" height="80" rx="8" fill="#2E9D52"/><text x="264" y="146" text-anchor="middle" font-size="22">🌳</text><text x="264" y="172" text-anchor="middle" font-size="14" style="fill:#fff">Parcul</text>
-    <rect x="95" y="240" width="110" height="50" rx="8" fill="#C9862A"/><text x="150" y="272" text-anchor="middle" font-size="17" style="fill:#fff">🛒 Magazinul</text>
-    <rect x="7" y="110" width="58" height="80" rx="8" fill="#6B4BC4"/><text x="36" y="146" text-anchor="middle" font-size="22">🏢</text><text x="36" y="172" text-anchor="middle" font-size="14" style="fill:#fff">Blocul</text>
-    <g id="lr-kid" style="transition:transform .4s;transform-origin:150px 150px">
-     <circle cx="150" cy="150" r="26" fill="#F2C9A0" stroke="#1E2340" stroke-width="3"/>
-     <path d="M150 104 L136 128 L164 128 Z" fill="#E2433A"/>
-     <circle cx="141" cy="144" r="3" fill="#1E2340"/><circle cx="159" cy="144" r="3" fill="#1E2340"/>
-    </g>
-   </svg>
-   <div>
-    <div class="ctrl"><button type="button" id="lr-left">↺ Rotește la stânga</button><button type="button" id="lr-right">↻ Rotește la dreapta</button></div>
-    <p id="lr-face" style="font-weight:800"></p>
-    <p id="lr-q" class="stem" style="font-size:1.1em;font-weight:800"></p>
-    <div class="opts" id="lr-opts"></div>
-    <div id="lr-fb" aria-live="polite"></div>
-    <div class="qnav" style="justify-content:flex-start"><button class="act sec" type="button" id="lr-new">Altă întrebare</button></div>
-   </div>
-  </div>
-  <div class="tip y">🧭 <b>Concluzie:</b> stânga și dreapta depind de încotro privești. Școala nu se mută, dar poate fi „în stânga” sau „în dreapta”. De aceea, în lecția 4, învățăm punctele cardinale: ele rămân mereu aceleași.</div>
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Științe ↔ Istorie (L2)</span>
+  <h2>Au trăit oamenii pe vremea dinozaurilor?</h2>
+  <p>Apasă pe fiecare moment, în ordine. Cifrele din paranteză sunt în <b>milioane de ani în urmă</b>.</p>
+  <div class="minbtns" id="deep"></div>
+  <div class="tip b" id="deepinfo" aria-live="polite"></div>
+  <div class="tip y">🧠 <b>Legătura cu istoria:</b> manualul de istorie spune că Preistoria a început acum <b>1–8 milioane de ani</b>. Dinozaurii dispăruseră deja de peste <b>55 de milioane de ani</b>! Mamuții, însă, au trăit în aceeași vreme cu oamenii din Preistorie, iar oamenii i-au pictat pe pereții peșterilor.</div>
  </div>
 </section>
 
-<!-- 5 REPERE -->
-<section class="slide" aria-label="Repere bune">
+<!-- 5 MANUALUL SPUNE -->
+<section class="slide" aria-label="Manualul spune și context">
  <div class="wrap">
-  <span class="badge" style="background:var(--blue)">Aplic</span>
-  <h2>Reper bun sau reper slab?</h2>
-  <p>Un reper bun <b>nu se mută</b>, se <b>vede ușor</b> și îl <b>cunosc mulți oameni</b>. Sortează:</p>
-  <div class="sort" id="sort-rep"></div>
-  <div class="qnav" style="justify-content:flex-start"><button class="act" type="button" data-check="sort-rep">Verifică</button><button class="act sec" type="button" data-reset="sort-rep">Ia de la capăt</button></div>
-  <div id="sort-rep-fb" aria-live="polite"></div>
+  <span class="badge" style="background:var(--purple)">Atenție la detalii</span>
+  <h2>Ce a aflat știința între timp</h2>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>„Reptilele din zilele noastre sunt urmași ai dinozaurilor.”</p><p style="font-style:normal;font-size:.9em">La test, dacă se cere: dinozaurii erau reptile.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Oamenii de știință de azi spun că <b>păsările</b> sunt urmașele dinozaurilor, adică vrabia și găina sunt „dinozauri mici” care au supraviețuit. Șopârlele, șerpii și țestoasele de azi sunt doar <b>rude</b> mai îndepărtate, nu urmași. Crocodilii sunt rudele lor cele mai apropiate dintre reptile.</p></div>
+  </div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>„Au existat dinozauri care puteau să zboare.”</p></div>
+   <div><span class="lab">🌍 Context</span><p>Marile „reptile zburătoare” (pterozaurii) trăiau în aceeași epocă, dar <b>nu erau dinozauri</b>. Dinozaurii care au zburat cu adevărat sunt… <b>păsările</b> și strămoșii lor cu pene.</p></div>
+  </div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Tiranozaurul avea „aproape 14 tone”.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Cei mai mulți paleontologi estimează cam <b>8–9 tone</b> pentru exemplarele mari. Masa unui animal dispărut se <b>estimează</b> din oase, deci cifrele diferă de la un cercetător la altul. Când vezi o cifră, întreabă: cum au aflat-o?</p></div>
+  </div>
  </div>
 </section>
 
-<!-- 6 DISTANTE -->
-<section class="slide" aria-label="Distanțele">
+<!-- 6 DATARE -->
+<section class="slide" aria-label="Cum aflăm vârsta unei fosile">
  <div class="wrap">
-  <span class="badge" style="background:var(--red)">Rețin</span>
-  <h2>Distanțele: metri sau kilometri?</h2>
-  <div class="grid g2">
-   <div class="box"><span class="emo">📏</span><h3>În cartier sau într-un sat mic</h3><p>Distanțele se spun de obicei în <b>metri</b>. Le măsori cu <b>rigla</b>, <b>metrul</b> sau <b>ruleta</b>.</p></div>
-   <div class="box"><span class="emo">🛣️</span><h3>Când locurile sunt departe</h3><p>Distanțele se spun în <b>kilometri</b>. 1 km = 1&nbsp;000 m.</p></div>
-  </div>
-  <div class="tip y">⚽ <b>Problema lui Emil și Daniel:</b> au măsurat distanța dintre porțile terenului de sport: <b>40 m</b>. Ruleta lor măsura cel mult <b>10 m</b> o dată. Cum au făcut?</div>
-  <div class="quiz" style="margin-top:6px"><div class="item"><div class="btns"><button class="reveal hint" data-t="Gândește-te la un șnur de 10 m pe care îl întinzi, faci un semn la capăt, apoi îl muți.">Indiciu</button><button class="reveal" data-t="Au întins ruleta de 4 ori la rând, marcând de fiecare dată capătul: 4 × 10 m = 40 m.">Verifică</button></div></div></div>
-  <h3 style="margin-top:18px">🦶 Calculatorul de pași</h3>
-  <p>Emil a măsurat terenul și cu pasul. Pasul lui are <b>40 cm</b>. Dar pasul tău? Mută cursorul și alege distanța.</p>
-  <div class="calc">
-   <label for="step-len" style="font-weight:800">Pasul: <span id="step-val">40</span> cm</label>
-   <input type="range" id="step-len" min="30" max="80" value="40">
-   <label for="step-dist" style="font-weight:800">Distanța:</label>
-   <select id="step-dist"><option value="40">terenul de sport, 40 m</option><option value="110">strada Andrei, 110 m</option><option value="1000">1 kilometru</option></select>
-  </div>
-  <div class="out" id="step-out" aria-live="polite"></div>
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Științe ↔ Istorie (L1)</span>
+  <h2>Cum aflăm vârsta unei fosile?</h2>
+  <p>La istorie (L1) ai învățat două metode ale arheologilor. Merg și la fosile?</p>
+  <details class="pd"><summary>Straturile de pământ</summary><p><b>Da.</b> Ce e mai adânc e de obicei mai vechi. Fosilele de dinozaur se găsesc în roci foarte vechi, sub straturile cu fosile de mamut.</p></details>
+  <details class="pd"><summary>Carbonul-14</summary><p><b>La dinozauri, nu!</b> Carbonul-14 merge doar până la aproximativ 50&nbsp;000 de ani, pentru că după atâtea înjumătățiri nu mai rămâne aproape nimic de măsurat. Dinozaurii au zeci de milioane de ani. Pentru ei, oamenii de știință folosesc alte „ceasuri” ascunse în roci. Un os de mamut tânăr, de câteva zeci de mii de ani, poate fi însă datat cu carbon-14.</p></details>
+  <details class="pd"><summary>Ce au în comun arheologul și paleontologul?</summary><p>Amândoi sapă, curăță și datează. Arheologul studiază urmele <b>oamenilor</b>, iar paleontologul studiază <b>fosilele</b> plantelor și animalelor. Uneori lucrează împreună, de exemplu la un sit unde oamenii din Preistorie vânau mamuți.</p></details>
  </div>
 </section>
 
@@ -405,11 +397,10 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
   <span class="badge" style="background:var(--green)">Am învățat</span>
   <h2>Ce luăm cu noi din lecție</h2>
   <div class="grid g3">
-   <div class="box" style="border-color:var(--blue)"><span class="emo">🧭</span><p><b>Orientarea</b>: știi unde ești, unde vrei să ajungi și încotro să mergi.</p></div>
-   <div class="box" style="border-color:var(--green)"><span class="emo">📍</span><p>Folosim <b>stânga, dreapta, înainte, înapoi</b> și <b>repere</b> care nu se mută.</p></div>
-   <div class="box" style="border-color:var(--purple)"><span class="emo">📏</span><p>Distanțele se măsoară în <b>metri</b> sau <b>kilometri</b>, cu riglă, metru sau ruletă.</p></div>
+   <div class="box" style="border-color:#C9862A"><span class="emo">🦴</span><p><b>Fosilele</b> sunt resturi sau urme de plante și animale, conservate în pământ.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">🦕</span><p><b>Dinozaurii</b> au trăit în trecutul îndepărtat, pe uscat sau în apă, se înmulțeau prin ouă și mâncau carne sau plante.</p></div>
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🔍</span><p>Studiul fosilelor ne ajută să reconstituim viețuitoarele din trecut și mediul în care trăiau.</p></div>
   </div>
-  <div class="tip y">🗺️ <b>Urmează:</b> cum desenăm spațiile pe un plan (lecția 3).</div>
  </div>
 </section>
 
@@ -417,7 +408,7 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 
 
 <nav class="bar" aria-label="Navigare prezentare">
- <a class="home" href="../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
+ <a class="home" href="../../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
  <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
  <div class="dots" id="dots"></div>
  <span class="count" id="count"></span>
@@ -425,7 +416,7 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 </nav>
 <script>
 (function(){
-  var KEY='geo-l2-slide';
+  var KEY='sn-l5-slide';
   var slides=[].slice.call(document.querySelectorAll('.slide'));
   var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
   var cur=0;
@@ -457,20 +448,24 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
     b.onclick=function(){d.hidden=!d.hidden;b.textContent=d.hidden?label:'Ascunde';};
   });
 /* ---------- missions ---------- */
-    var SORTERS={
-   'sort-rep':{cats:{b:'reper bun',r:'reper slab'},items:[
-     ['Primăria','b'],['O mașină parcată','r'],['Biserica din centru','b'],['Un nor ciudat','r'],['Școala ta','b'],['Câinele vecinului','r'],['Statuia din parc','b'],['„Un copac”, într-o pădure','r']],
-    expl:'Repere bune: Primăria, biserica, școala, statuia. Nu se mută și le știe multă lume. Repere slabe: mașina pleacă, norul se schimbă, câinele aleargă, iar „un copac” într-o pădure nu spune nimic, pentru că sunt sute.'}
-  };
+    var SORTERS={};
+  var DEEP=[
+   ['🦕 primii dinozauri','≈ 230','Apar primii dinozauri. Timp de peste 160 de milioane de ani, sunt „stăpânii” uscatului.'],
+   ['☄️ dispariția dinozaurilor','≈ 66','Un asteroid uriaș lovește Pământul (în zona Mexicului de azi). Praful ridicat întunecă cerul, plantele mor, iar dinozaurii mari dispar. Supraviețuiesc dinozaurii mici cu pene: strămoșii păsărilor.'],
+   ['🧍 primii oameni','≈ 2–3','Apar primii oameni. Manualul de istorie spune 1–8 milioane de ani, pentru că cercetătorii nu sunt de acord unde e „începutul”.'],
+   ['🦣 mamuții și oamenii','≈ 0,4 – 0,004','Mamuții trăiesc în epoca de gheață, alături de oamenii din Preistorie, care îi vânează și îi pictează în peșteri. Ultimii mamuți dispar acum aproximativ 4 000 de ani, pe o insulă din nordul Rusiei, când egiptenii construiseră deja piramidele.'],
+   ['📅 azi','0','Tu, citind despre toate acestea.']
+  ];
   var Q=[
-   {t:'mcq',tags:['L2'],d:'Logică',q:'Alex stă cu fața spre Doru. Ana e în dreapta lui Alex. Doru se întoarce cu fața spre Alex. De ce parte a lui Doru este Ana?',o:['În dreapta lui Doru','În stânga lui Doru','În spatele lui Doru','Nu se poate ști'],a:1,h:'Când doi oameni stau față în față, dreapta unuia este stânga celuilalt. Încearcă cu cineva din familie!',e:'În stânga lui Doru. Față în față, dreapta și stânga se inversează. De aceea, pentru orientare, folosim repere fixe și, mai târziu, punctele cardinale.'},
-   {t:'num',tags:['L2'],d:'Matematică',q:'Emil a mers de la o poartă a terenului la cealaltă: 40 m. Un pas al lui are 40 cm. Câți pași a făcut?',a:100,h:'Transformă 40 m în centimetri: 1 m = 100 cm. Apoi împarte la 40.',e:'40 m = 4 000 cm. 4 000 : 40 = 100 de pași.'},
-   {t:'mcq',tags:['L2'],d:'Gândire',q:'De ce distanța măsurată cu pasul e mai puțin exactă decât cea măsurată cu ruleta?',o:['Pentru că pașii nu sunt toți la fel de lungi și diferă de la om la om','Pentru că ruleta e mai scumpă','Pentru că pașii se măsoară în kilometri','Nu e mai puțin exactă'],a:0,h:'Ar face un adult și un copil același număr de pași pe același teren?',e:'Pașii diferă de la un om la altul și chiar de la un pas la altul. Ruleta are diviziuni egale, deci măsoară la fel pentru oricine. De aceea s-au inventat unitățile de măsură standard, ca metrul.'},
-   {t:'mcq',tags:['L2'],d:'Matematică',q:'De ce nu e potrivită rigla de 30 cm pentru a măsura distanța de la tablă la ultima bancă (8 m)?',o:['Rigla nu măsoară în metri','Ar trebui pusă de aproape 27 de ori, iar fiecare mutare adaugă o mică greșeală','Rigla e prea grea','Distanța e prea mică'],a:1,h:'8 m = 800 cm. Câte rigle de 30 cm încap?',e:'800 : 30 ≈ 27 de mutări. La fiecare mutare poți greși cu câțiva milimetri, iar greșelile se adună. Pentru distanțe mari se folosește ruleta sau metrul.'},
-   {t:'mcq',tags:['L2'],d:'Unități',q:'Care distanță se exprimă cel mai potrivit în kilometri?',o:['lungimea clasei','de la tablă la ușă','de acasă până la bunicii din alt oraș','lungimea terenului de sport'],a:2,h:'Kilometrii sunt pentru locuri depărtate.',e:'Drumul până în alt oraș are zeci sau sute de kilometri. Celelalte distanțe au câțiva metri sau câteva zeci de metri.'},
-   {t:'mcq',tags:['L2','Istorie L1'],d:'Istorie',q:'Înainte de metru, oamenii măsurau cu palma, cotul sau pasul. Ce problemă aveau?',o:['Nicio problemă','Fiecare om avea alte măsuri, deci rezultatele nu se potriveau','Nu știau să numere','Măsurau doar noaptea'],a:1,h:'Ai calculat deja: un pas de 40 cm față de unul de 60 cm.',e:'Mâinile și pașii oamenilor diferă. Metrul a apărut în Franța, pe la 1790–1800, ca o unitate egală pentru toți. Măsura e și ea o descoperire cu istorie!'},
-   {t:'mcq',tags:['L2'],d:'Orientare',q:'Care e cea mai bună descriere a drumului până la casa ta?',o:['„Mergi drept, apoi o iei la stânga.”','„De la Primărie mergi spre biserică; casa mea e a treia pe dreapta, după farmacie.”','„E lângă o mașină roșie.”','„E aproape.”'],a:1,h:'Caută descrierea cu repere fixe și cu un punct de plecare clar.',e:'Are un punct de plecare (Primăria), o direcție (spre biserică), repere fixe (farmacia) și o poziție exactă (a treia pe dreapta). Prima variantă nu spune de unde pleci.'},
-   {t:'num',tags:['L2','Matematică'],d:'Matematică',q:'Strada lui Andrei are 110 m. Câți metri parcurge el dacă merge pe toată strada de 3 ori, dus și întors?',a:660,h:'Un dus și un întors înseamnă de 2 ori strada. Și asta se repetă de 3 ori.',e:'110 × 2 × 3 = 660 m. Este mai mult de jumătate de kilometru.'}
+   {t:'mcq',tags:['U2 L5','Istorie L2'],d:'Capcană',q:'Într-un desen animat, oamenii din Preistorie călăresc dinozauri. Ce greșeală vezi?',o:['Niciuna','Dinozaurii mari dispăruseră cu peste 60 de milioane de ani înainte de apariția oamenilor','Oamenii nu călăreau nimic','Dinozaurii erau prea mici'],a:1,h:'Uită-te pe axa timpului: ≈ 66 față de ≈ 2–3 milioane de ani.',e:'Un anacronism uriaș: între dinozauri și primii oameni sunt peste 60 de milioane de ani. Oamenii din Preistorie au cunoscut însă mamuții.'},
+   {t:'mcq',tags:['U2 L5'],d:'Logică',q:'Care dintre acestea e o FOSILĂ?',o:['Un dinozaur de plastic din muzeu','Urma unei frunze, păstrată într-o piatră de milioane de ani','Un os de pui de la cină','Un desen cu un mamut'],a:1,h:'O fosilă e o urmă REALĂ, conservată în pământ foarte mult timp.',e:'Urma frunzei din piatră e o fosilă. Modelul de plastic e o reconstituire, făcută de oameni după fosile. Osul de la cină e prea nou, iar desenul nu e o urmă a vieții.'},
+   {t:'mcq',tags:['U2 L5','Istorie L1'],d:'Punte',q:'Poți afla vârsta unui os de tiranozaur cu metoda carbonului-14, de la istorie?',o:['Da, perfect','Nu: carbonul-14 merge doar până la aproximativ 50 000 de ani, iar tiranozaurul are zeci de milioane','Doar dacă e iarnă','Da, dar durează 66 de ani'],a:1,h:'Câte înjumătățiri de câte 5 730 de ani încap în 66 de milioane? Ar mai rămâne ceva de măsurat?',e:'Nu. După atâtea înjumătățiri nu mai rămâne carbon-14 de măsurat. Pentru fosile foarte vechi se folosesc alte metode, de exemplu straturile de rocă și alte „ceasuri” naturale din roci.'},
+   {t:'mcq',tags:['U2 L5'],d:'Știința se schimbă',q:'Manualul spune că reptilele de azi sunt urmașii dinozaurilor. Ce spun oamenii de știință de azi?',o:['Că șerpii sunt urmașii direcți ai T-rexului','Că păsările sunt urmașele dinozaurilor, iar reptilele sunt doar rude','Că dinozaurii nu au existat','Că mamiferele sunt urmașele lor'],a:1,h:'Citește slide-ul „Ce a aflat știința între timp”.',e:'Păsările sunt urmașele dinozaurilor. Fosile cu pene, găsite în China, au convins mulți cercetători. La test, scrie ce cere manualul (reptile), dar acum știi și restul poveștii.'},
+   {t:'mcq',tags:['U2 L5','U1'],d:'Clasa a III-a',q:'Cum se înmulțeau dinozaurii? Ca ce grupă de animale de azi?',o:['Prin pui vii, ca mamiferele','Prin ouă, ca reptilele și păsările','Prin semințe','Nu se înmulțeau'],a:1,h:'Ai văzut ouă de dinozaur în muzee?',e:'Prin ouă. S-au găsit chiar cuiburi fosile, cu ouă și pui. La fel se înmulțesc reptilele și păsările de azi.'},
+   {t:'mcq',tags:['U2 L5','U2 L4'],d:'Punte',q:'Mamutul avea blană deasă și lungă. Ce îți spune asta despre mediul în care trăia?',o:['Că era foarte cald','Că era foarte frig, cu zăpadă','Că trăia în apă','Nimic'],a:1,h:'La lecția 4: ce fac animalele toamna, înainte de frig?',e:'Era frig: epoca de gheață. Așa reconstituie oamenii de știință mediul din trecut. Corpul animalului e un indiciu despre locul în care a trăit.'},
+   {t:'num',tags:['U2 L5','Matematică'],d:'Matematică',q:'Dinozaurii au apărut acum aproximativ 230 de milioane de ani și au dispărut acum 66 de milioane. Câte milioane de ani au trăit?',a:164,h:'230 − 66.',e:'230 − 66 = 164 de milioane de ani. Oamenii există de doar 2–3 milioane de ani. Dinozaurii au „domnit” de peste 50 de ori mai mult!'},
+   {t:'mcq',tags:['U2 L5','Gândire critică'],d:'Verificare',q:'Manualul spune 14 tone pentru tiranozaur, alte surse dau 8–9 tone. De ce diferă cifrele?',o:['Unul dintre ei a cântărit greșit dinozaurul','Masa se ESTIMEAZĂ din oase, iar cercetătorii folosesc metode diferite','Tiranozaurul a slăbit','Nu diferă'],a:1,h:'Poate cineva să pună un tiranozaur pe cântar?',e:'Masa animalelor dispărute se estimează din mărimea oaselor. Estimările diferă de la un cercetător la altul. De aceea, la o cifră, întrebi: „Cum au aflat-o?”'},
+   {t:'mcq',tags:['U2 L5','Istorie L2'],d:'Istorie',q:'Ultimii mamuți au dispărut acum aproximativ 4 000 de ani. Ce construiseră deja egiptenii atunci?',o:['Avioane','Piramidele de la Giza (aproximativ 2560 î.H.)','Nimic, nu existau egipteni','Colosseumul'],a:1,h:'4 000 de ani în urmă înseamnă aproximativ anul 2000 î.H. Ce e mai vechi?',e:'Piramidele, construite pe la 2560 î.H., erau deja vechi de câteva sute de ani când ultimii mamuți încă trăiau pe o insulă din nordul Rusiei. Istoria și științele se suprapun!'}
   ];
 
 
@@ -489,24 +484,11 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
     });
   })();
 
-  (function(){
-    var O=['Școala','Parcul','Magazinul','Blocul'],R=['în fața','în dreapta','în spatele','în stânga'];
-    var f=0,rot=0,cur=null,kid=document.getElementById('lr-kid');
-    function setFace(){kid.style.transform='rotate('+rot+'deg)';document.getElementById('lr-face').textContent='Alex privește spre: '+O[f]+'.';}
-    function ask(){var rel=1+Math.floor(Math.random()*3);cur=rel;document.getElementById('lr-q').textContent='Ce se află '+R[rel]+' lui Alex?';document.getElementById('lr-fb').innerHTML='';
-      var box=document.getElementById('lr-opts');box.innerHTML=O.map(function(o,i){return '<button type="button" data-i="'+i+'">'+o+'</button>'}).join('');
-      box.querySelectorAll('button').forEach(function(b){b.onclick=function(){var i=+b.getAttribute('data-i'),ok=i===(f+cur)%4;
-        b.classList.add(ok?'right':'wrong');
-        document.getElementById('lr-fb').innerHTML='<div class="fb '+(ok?'ok':'h')+'">'+(ok?'✅ Corect! ':'💡 Nu încă. ')+(ok?'Acum rotește-l pe Alex și apasă „Altă întrebare”.':'Imaginează-ți că ești în locul lui Alex, cu fața spre '+O[f].toLowerCase()+'. Ridică mâna dreaptă.')+'</div>';};});}
-    document.getElementById('lr-left').onclick=function(){f=(f+3)%4;rot-=90;setFace();ask();};
-    document.getElementById('lr-right').onclick=function(){f=(f+1)%4;rot+=90;setFace();ask();};
-    document.getElementById('lr-new').onclick=ask;
-    setFace();ask();
-    var sl=document.getElementById('step-len'),sd=document.getElementById('step-dist'),so=document.getElementById('step-out');
-    function calc(){var p=+sl.value,d=+sd.value;document.getElementById('step-val').textContent=p;var n=Math.round(d*100/p);
-      so.innerHTML=d+' m = '+(d*100).toLocaleString('ro-RO')+' cm. '+(d*100).toLocaleString('ro-RO')+' : '+p+' ≈ <b>'+n.toLocaleString('ro-RO')+' de pași</b>. '+(p===40&&d===40?'Exact ca Emil!':'Un pas mai lung înseamnă mai puțini pași. De aceea pasul nu e o unitate de măsură sigură.');}
-    sl.oninput=calc;sd.onchange=calc;calc();
-  })();
+  (function(){var h=document.getElementById('deep'),inf=document.getElementById('deepinfo');
+    h.innerHTML=DEEP.map(function(d,i){return '<button type="button" aria-pressed="false" data-i="'+i+'">'+d[0]+' <small>('+d[1]+')</small></button>'}).join('');
+    var bs=h.querySelectorAll('button');
+    function show(i){var d=DEEP[i];bs.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});inf.innerHTML='<b>'+d[0]+(d[1]==='0'?':':' · acum '+d[1]+' milioane de ani:')+'</b> '+d[2];}
+    bs.forEach(function(b,i){b.onclick=function(){show(i)}});show(0);})();
   var host=document.getElementById('qhost'),bar=document.getElementById('qbar'),sc=document.getElementById('qscore');
   var qi=0,score=0,MAX=Q.length*2;
   function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}

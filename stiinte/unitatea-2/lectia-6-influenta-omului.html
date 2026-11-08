@@ -6,7 +6,7 @@
 <style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
 </head>
 <body>
-<title>Planul clasei și al localității</title>
+<title>Influența omului asupra mediului de viață</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
@@ -267,6 +267,20 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 .calc input[type=range]{max-width:none;flex:1;min-width:160px;padding:0}
 .out{background:var(--tint-yellow);border-radius:14px;padding:10px 16px;font-weight:700}
 .out b{font-family:var(--display);font-size:1.2em}
+
+.minbtns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.minbtns button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.35em .9em}
+.minbtns button[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+.eu-bar{position:relative;height:38px;border-radius:12px;background:var(--line);overflow:hidden;margin:8px 0}
+.eu-bar i{position:absolute;left:0;top:0;bottom:0;background:#2F6FD6;transition:width .4s}
+.eu-bar span{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-weight:800;color:#fff;font-family:var(--display);font-size:1.1em}
+@media (prefers-reduced-motion:reduce){.eu-bar i{transition:none}}
+
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}.pd summary{cursor:pointer;font-weight:800}.pd[open] summary{margin-bottom:6px}.pd:last-of-type{border-color:var(--green)}
+.threadgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.threadgrid .box{padding:12px 16px}
+.threadgrid .box b{display:block;font-family:var(--display);color:var(--soft);font-size:.9em}
+.threadgrid .box p{margin:.2em 0 0}
 </style>
 <main class="deck" id="deck">
 
@@ -275,143 +289,98 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
  <div class="wrap cover">
   <div>
    <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
-   <p style="font-weight:800;color:var(--soft);margin:0">Geografie, Unitatea 1, Lecția 3</p>
-   <h1>Planul clasei, al școlii, al locuinței, al cartierului și al localității</h1>
-   <p class="lead">Cum încape o stradă de 110 metri pe o foaie de caiet? Ce înseamnă semnele de pe un plan?</p>
+   <p style="font-weight:800;color:var(--soft);margin:0">Științe ale naturii · Unitatea 2 · Lecția 6 · manual pp. 28–29</p>
+   <h1>Influența omului asupra mediului de viață</h1>
+   <p class="lead">Omul folosește pădurile, apele și câmpurile. Când folosirea devine distrugere? Și cine apără capra neagră și bujorul de munte?</p>
    <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
   </div>
   <svg viewBox="0 0 220 220" aria-hidden="true">
-   <rect x="20" y="20" width="180" height="180" rx="10" fill="var(--paper)" stroke="var(--ink)" stroke-width="4"/>
-   <rect x="60" y="28" width="100" height="10" fill="#2E9D52"/>
-   <rect x="90" y="50" width="40" height="18" fill="#8A5A2B"/>
-   <g fill="#2F6FD6"><rect x="45" y="90" width="40" height="16"/><rect x="135" y="90" width="40" height="16"/><rect x="45" y="125" width="40" height="16"/><rect x="135" y="125" width="40" height="16"/><rect x="45" y="160" width="40" height="16"/><rect x="135" y="160" width="40" height="16"/></g>
-   <path d="M200 150 A30 30 0 0 0 170 180" fill="none" stroke="var(--ink)" stroke-width="3"/>
-   <text x="125" y="186" font-size="22" font-family="Baloo 2, sans-serif" font-weight="800" fill="#E2433A">X</text>
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="var(--tint-green)"/>
+   <g fill="#2E9D52"><path d="M40 150 L60 90 L80 150Z"/><path d="M70 150 L95 70 L120 150Z"/><path d="M110 150 L130 100 L150 150Z"/></g>
+   <g fill="#8A5A2B"><rect x="56" y="150" width="8" height="20"/><rect x="91" y="150" width="8" height="24"/><rect x="126" y="150" width="8" height="18"/></g>
+   <g fill="#B4874E"><rect x="160" y="160" width="14" height="10" rx="2"/><rect x="178" y="160" width="14" height="10" rx="2"/></g>
+   <path d="M20 190 Q110 170 200 190" stroke="#2F6FD6" stroke-width="8" fill="none"/>
   </svg>
  </div>
 </section>
 
-<!-- 2 OBSERV -->
-<section class="slide" aria-label="De sus, ca o pasăre">
+<!-- 2 OBSERVARE -->
+<section class="slide" aria-label="Observare">
  <div class="wrap">
-  <span class="badge" style="background:var(--blue)">Observ</span>
-  <h2>Aceeași clasă, din trei poziții</h2>
-  <div class="grid g3">
-   <div class="box"><span class="emo">🧍</span><h3>Din ușă</h3><p>Vezi băncile din lateral, unele ascund altele.</p></div>
-   <div class="box"><span class="emo">🪜</span><h3>De pe un scaun</h3><p>Vezi mai mult, dar tot pieziș.</p></div>
-   <div class="box"><span class="emo">🐦</span><h3>De sus</h3><p>Vezi tot, fără să se ascundă nimic. Așa se desenează un <b>plan</b>.</p></div>
+  <span class="badge" style="background:var(--red)">Observare · manual p. 28</span>
+  <h2>Ce ia omul din natură</h2>
+  <div class="grid g4">
+   <div class="box"><span class="emo">🪵</span><h3>Pădurea</h3><p>Lemn pentru case, mobilă, hârtie, foc.</p></div>
+   <div class="box"><span class="emo">🐟</span><h3>Apele</h3><p>Pește, apă de băut, energie.</p></div>
+   <div class="box"><span class="emo">🌾</span><h3>Terenurile agricole</h3><p>Grâu, porumb, legume, fructe.</p></div>
+   <div class="box"><span class="emo">🦌</span><h3>Vânătoarea</h3><p>Folositoare? Manualul îți cere să argumentezi.</p></div>
   </div>
-  <div class="tip y">🧠 <b>De gândit:</b> în planul clasei Andrei, băncile sunt dreptunghiuri, iar coșul de gunoi e un cerc. De ce crezi că a ales aceste forme?</div>
-  <span class="badge" style="background:var(--red);margin-top:18px">Ancheta de azi</span>
-  <div class="q"><span class="mark" style="background:var(--blue)">1</span>Ce este un plan și ce trebuie să aibă?</div>
-  <div class="q"><span class="mark" style="background:var(--green)">2</span>Cum se micșorează realitatea ca să încapă pe hârtie?</div>
+  <div class="tip y">❓ <b>Întrebarea zilei:</b> capra neagră și bujorul românesc sunt <b>ocrotite de lege</b>. De ce e nevoie de o lege ca să le apărăm?</div>
  </div>
 </section>
 
-<!-- 3 PLANUL -->
-<section class="slide" aria-label="Planul">
+<!-- 3 STUDIU -->
+<section class="slide" aria-label="De la folosire la distrugere">
  <div class="wrap">
-  <span class="badge" style="background:var(--red)">Rețin</span>
-  <h2>Planul are trei ingrediente</h2>
-  <div class="tip p" style="margin-top:0;font-size:1.05em"><b>Planul</b> este desenul prin care reprezentăm spații din orizontul apropiat: sala de clasă, școala, locuința, cartierul, localitatea.</div>
-  <div class="grid g3" style="margin-top:14px">
-   <div class="box"><span class="emo">🏷️</span><h3>1. Titlul</h3><p>Spune ce reprezintă: „Planul clasei”, „Planul cartierului Tei”.</p></div>
-   <div class="box"><span class="emo">🔬</span><h3>2. Micșorarea</h3><p>Totul e desenat <b>mai mic</b> decât în realitate. Cu cât spațiul e mai mare, cu atât îl micșorăm de mai multe ori.</p></div>
-   <div class="box"><span class="emo">🔣</span><h3>3. Legenda</h3><p>Simbolurile se numesc <b>semne convenționale</b>: figuri, culori, simboluri. Împreună formează <b>legenda</b>.</p></div>
-  </div>
-  <div class="tip r">🚨 <b>Planul școlii salvează vieți.</b> La un incendiu sau un cutremur, cine cunoaște coridoarele și ieșirile găsește repede drumul. De aceea, pe holurile școlilor sunt afișate planuri de evacuare.</div>
- </div>
-</section>
-
-<!-- 4 LEGENDA -->
-<section class="slide" aria-label="Citește legenda">
- <div class="wrap">
-  <span class="badge" style="background:var(--blue)">Aplic</span>
-  <h2>Ghicește legenda</h2>
-  <p>Acesta e planul unei clase. Pentru fiecare cifră, alege ce reprezintă, apoi verifică.</p>
-  <div class="grid g2" style="align-items:start">
-   <svg class="fig" viewBox="0 0 320 300" role="img" aria-label="Planul unei clase cu șapte elemente numerotate" style="background:var(--paper);border:2px solid var(--line)">
-    <rect x="20" y="20" width="280" height="260" fill="none" stroke="var(--ink)" stroke-width="5"/>
-    <rect x="90" y="24" width="140" height="10" fill="#2E9D52"/>
-    <rect x="130" y="50" width="60" height="26" fill="#8A5A2B"/>
-    <g fill="#2F6FD6"><rect x="60" y="110" width="70" height="22"/><rect x="190" y="110" width="70" height="22"/><rect x="60" y="160" width="70" height="22"/><rect x="190" y="160" width="70" height="22"/><rect x="60" y="210" width="70" height="22"/><rect x="190" y="210" width="70" height="22"/></g>
-    <rect x="296" y="200" width="10" height="60" fill="var(--paper)"/>
-    <path d="M300 200 A55 55 0 0 0 245 255" fill="none" stroke="var(--ink)" stroke-width="2"/>
-    <g stroke="#7FB8E6" stroke-width="4"><line x1="16" y1="90" x2="16" y2="140"/><line x1="24" y1="90" x2="24" y2="140"/><line x1="16" y1="180" x2="16" y2="230"/><line x1="24" y1="180" x2="24" y2="230"/></g>
-    <rect x="240" y="44" width="50" height="34" fill="#C9862A"/><line x1="240" y1="44" x2="290" y2="78" stroke="#fff" stroke-width="2"/><line x1="290" y1="44" x2="240" y2="78" stroke="#fff" stroke-width="2"/>
-    <circle cx="45" cy="258" r="12" fill="#6B4BC4"/>
-    <g font-size="15">
-     <circle cx="160" cy="14" r="11" fill="#F6C431"/><text x="160" y="19" text-anchor="middle">1</text>
-     <circle cx="206" cy="63" r="11" fill="#F6C431"/><text x="206" y="68" text-anchor="middle">2</text>
-     <circle cx="160" cy="121" r="11" fill="#F6C431"/><text x="160" y="126" text-anchor="middle">3</text>
-     <circle cx="262" cy="270" r="11" fill="#F6C431"/><text x="262" y="275" text-anchor="middle">4</text>
-     <circle cx="40" cy="115" r="11" fill="#F6C431"/><text x="40" y="120" text-anchor="middle">5</text>
-     <circle cx="265" cy="94" r="11" fill="#F6C431"/><text x="265" y="99" text-anchor="middle">6</text>
-     <circle cx="70" cy="258" r="11" fill="#F6C431"/><text x="70" y="263" text-anchor="middle">7</text>
-    </g>
-   </svg>
-   <div>
-    <div class="legq" id="legq"></div>
-    <div class="qnav" style="justify-content:flex-start"><button class="act" type="button" id="leg-check">Verifică legenda</button></div>
-    <div id="leg-fb" aria-live="polite"></div>
-   </div>
+  <span class="badge" style="background:var(--yellow);color:#1E2340">Studiu · manual p. 29</span>
+  <h2>De la folosire la distrugere</h2>
+  <p>Numărul oamenilor a crescut, iar nevoile lor la fel. Mediul natural e transformat pentru <b>așezări</b>, <b>drumuri</b> și <b>terenuri agricole</b>. Sortează activitățile:</p>
+  <div class="sort" id="sort-act"></div>
+  <div class="qnav" style="justify-content:flex-start"><button class="act" type="button" data-check="sort-act">Verifică</button><button class="act sec" type="button" data-reset="sort-act">Ia de la capăt</button></div>
+  <div id="sort-act-fb" aria-live="polite"></div>
+  <div class="vocab" style="margin-top:14px">
+   <div><b>defrișare</b>: tăierea unei păduri întregi.</div>
+   <div><b>braconaj</b>: vânătoare sau pescuit ilegal, fără permis sau în perioada interzisă.</div>
+   <div><b>poluare</b>: murdărirea apei, a aerului sau a solului cu substanțe dăunătoare.</div>
   </div>
  </div>
 </section>
 
-<!-- 5 MICSORAREA -->
-<section class="slide" aria-label="De câte ori micșorat">
+<!-- 4 REGULI DRUMETIE -->
+<section class="slide" aria-label="Respectăm natura">
  <div class="wrap">
-  <span class="badge" style="background:var(--purple)">Geografie + Matematică</span>
-  <h2>De câte ori a fost micșorat?</h2>
-  <p>Regula de aur: pune <b>ambele lungimi în aceeași unitate</b>, apoi împarte lungimea reală la cea de pe plan.</p>
-  <div class="calc">
-   <label for="sc-real" style="font-weight:800">În realitate:</label><input id="sc-real" type="number" min="1" value="110"><select id="sc-ru"><option value="1000">m</option><option value="10">cm</option><option value="1000000">km</option></select>
-   <label for="sc-plan" style="font-weight:800">Pe plan:</label><input id="sc-plan" type="number" min="1" value="11"><select id="sc-pu"><option value="1">mm</option><option value="10">cm</option></select>
+  <span class="badge" style="background:var(--green)">Teme de gândire · manual p. 28</span>
+  <h2>În drumeție, respectăm natura</h2>
+  <div class="grid g2">
+   <div class="box"><span class="emo">🌼</span><p>Nu rupem florile, puieții și crengile copacilor.</p></div>
+   <div class="box"><span class="emo">🪺</span><p>Ocrotim cuiburile păsărilor și vizuinele animalelor.</p></div>
+   <div class="box"><span class="emo">🔥</span><p>Nu aprindem focul în locuri neamenajate.</p></div>
+   <div class="box"><span class="emo">🗑️</span><p>Strângem gunoaiele. Cei care vin după noi au și ei dreptul la locuri curate.</p></div>
   </div>
-  <div class="ctrl" id="sc-presets">
-   <button type="button" data-r="110" data-ru="1000" data-p="11" data-pu="1">Strada Andrei: 110 m → 11 mm</button>
-   <button type="button" data-r="400" data-ru="1000" data-p="4" data-pu="10">Str. Micșunelelor: 400 m → 4 cm</button>
-   <button type="button" data-r="120" data-ru="10" data-p="12" data-pu="10">Banca: 120 cm → 12 cm</button>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Lista de reguli pentru drumeție.</p></div>
+   <div><span class="lab">🌍 Context · lege, obicei sau părere?</span><p>Unele dintre aceste reguli sunt <b>lege</b>: într-un parc național e interzis să rupi plante ocrotite sau să faci foc în afara locurilor amenajate, iar paznicii pot da amenzi. Altele sunt <b>bun-simț</b>, adică norme morale. Unealta de la educație civică funcționează și la științe!</p></div>
   </div>
-  <div class="out" id="sc-out" aria-live="polite"></div>
-  <div class="tip g">🔎 <b>De ce pe planul localității nu apar străzile din cartierul Tei?</b> Spațiul e mult mai mare, deci e micșorat de mult mai multe ori. O stradă mică ar ajunge cât un fir de păr. Pe plan rămân doar lucrurile mari și importante: Primăria, Poliția, Spitalul, Clubul Elevilor.</div>
  </div>
 </section>
 
-<!-- 6 PLANURI DIFERITE -->
-<section class="slide" aria-label="Același spațiu, planuri diferite">
+<!-- 5 PUNTE CIVICA -->
+<section class="slide" aria-label="Punte: cine apără natura">
  <div class="wrap">
-  <span class="badge" style="background:var(--red)">Rețin</span>
-  <h2>De la cameră la localitate</h2>
-  <p>Alege un plan și vezi ce apare și ce dispare pe el:</p>
-  <div class="levels" id="planlv">
-   <button type="button" aria-pressed="true" data-i="0"><b>📚 Clasa</b>câțiva metri</button>
-   <button type="button" aria-pressed="false" data-i="1"><b>🏫 Școala</b>zeci de metri</button>
-   <button type="button" aria-pressed="false" data-i="2"><b>🏠 Locuința</b>câteva camere</button>
-   <button type="button" aria-pressed="false" data-i="3"><b>🏘️ Cartierul Tei</b>sute de metri</button>
-   <button type="button" aria-pressed="false" data-i="4"><b>🏙️ Localitatea Basarab</b>kilometri</button>
-  </div>
-  <div class="tip b" id="planinfo" aria-live="polite"></div>
-  <div class="tip y">🔗 <b>Legătura cu istoria:</b> la L4 ai aflat că istoria unei localități se scrie în <b>monografie</b>. Monografiile au aproape mereu un plan al localității. Planul vechi și cel de azi, puse unul lângă altul, arată cum a crescut orașul.</div>
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Științe ↔ Educație civică ↔ Geografie</span>
+  <h2>Cine apără natura?</h2>
+  <details class="pd"><summary>Legea</summary><p>Manualul spune că multe state iau „măsuri reglementate prin legi”. În România, unele specii sunt <b>ocrotite</b>, iar zone întregi devin <b>parcuri naționale</b> și <b>rezervații</b>. Primul parc național al României a fost <b>Retezat</b>, în 1935.</p></details>
+  <details class="pd"><summary>Instituțiile (Civică U1 L1)</summary><p>Ca la comunitatea locală, fiecare problemă are o instituție: <b>Garda de Mediu</b> verifică poluarea, <b>administrațiile parcurilor</b> au paznici (rangeri), iar <b>primăria</b> organizează strângerea gunoiului. Manualul îți propune chiar să scrii o scrisoare autorităților locale!</p></details>
+  <details class="pd"><summary>Locul (Geografie)</summary><p>Caută pe hartă Delta Dunării: e <b>rezervație a biosferei</b> și e pe lista UNESCO, despre care ai auzit la civică (U1 L3). Aici trăiesc pelicanii din atlasul manualului.</p></details>
+  <details class="pd"><summary>Tu</summary><p>Un copil nu face legi, dar poate să nu arunce gunoaie, să ducă bateriile la colectare și să spună unui adult când vede pe cineva care strică natura. E responsabilitatea cetățeanului, de la civică!</p></details>
  </div>
 </section>
 
-
-<!-- PUNTE -->
-<section class="slide" aria-label="Punte: planul ca izvor istoric">
+<!-- 6 ATLAS -->
+<section class="slide" aria-label="Atlas: specii ocrotite">
  <div class="wrap">
-  <span class="badge" style="background:var(--purple)">🌉 Punte · Geografie ↔ Istorie</span>
-  <h2>Un plan vechi e un izvor istoric</h2>
-  <p>La istorie (L1), hărțile intră la <b>surse scrise</b>. Când găsești un plan vechi al localității tale, geografia te învață să-l <b>citești</b> (titlu, legendă, micșorare), iar istoria te învață să-l <b>cercetezi</b>:</p>
-  <div class="grid g3">
-   <div class="box"><span class="emo">✍️</span><h3>Cine l-a făcut?</h3><p>Primăria, armata, un călător? Fiecare desena ce era important pentru el.</p></div>
-   <div class="box"><span class="emo">📅</span><h3>Când?</h3><p>Străzile, clădirile și chiar numele lor se schimbă.</p></div>
-   <div class="box"><span class="emo">🎯</span><h3>De ce?</h3><p>Un plan militar arată podurile și drumurile. Unul pentru turiști arată muzeele.</p></div>
+  <span class="badge" style="background:var(--green)">Atlas · manual p. 35</span>
+  <h2>Animale ocrotite</h2>
+  <div class="chips"><span>🦬 zimbrul (bizonul european)</span><span>🐈 râsul</span><span>🪿 pelicanul</span><span>🕊️ egreta albă</span><span>🐢 țestoasa dobrogeană</span><span>🦃 dropia</span></div>
+  <p>Marile pericole pentru viața sălbatică: <b>dispariția mediilor naturale</b>, <b>exploatarea excesivă</b> și <b>poluarea</b>.</p>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>„Aproape jumătate dintre mamiferele din Europa și o treime dintre reptile, pești și păsări sunt pe cale de dispariție.” (după un site al Comisiei Europene)</p></div>
+   <div><span class="lab">🌍 Context · unealta de istorie</span><p>E o cifră mare și importantă, deci merită verificată ca un izvor: <b>cine</b> a spus-o (Comisia Europeană), <b>când</b> și <b>ce înseamnă exact</b> „pe cale de dispariție”? Unele surse numără doar speciile „amenințate”, altele și pe cele „în scădere”, așa că cifrele diferă. Cercetează cu un adult!</p></div>
   </div>
-  <div class="tip y">🔎 <b>Încearcă:</b> pune un plan vechi lângă unul nou (le găsești în monografii sau pe internet, cu ajutorul părinților). Ce stradă și-a schimbat numele? Ce cartier nu exista?</div>
+  <div class="tip g">🦬 <b>O poveste cu final bun:</b> zimbrul dispăruse din România. A fost adus înapoi și eliberat în munți, de exemplu în Carpații Meridionali. Uneori, oamenii pot repara ce au stricat.</div>
  </div>
 </section>
+
 <!-- 7 MISIUNI -->
 <section class="slide" aria-label="Misiunile">
  <div class="wrap" style="max-width:920px">
@@ -430,11 +399,10 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
   <span class="badge" style="background:var(--green)">Am învățat</span>
   <h2>Ce luăm cu noi din lecție</h2>
   <div class="grid g3">
-   <div class="box" style="border-color:var(--blue)"><span class="emo">🗺️</span><p><b>Planul</b> este un desen al unui spațiu din orizontul apropiat, văzut de sus.</p></div>
-   <div class="box" style="border-color:var(--green)"><span class="emo">🔬</span><p>Pe plan, totul e <b>micșorat</b>. Cu cât spațiul e mai mare, cu atât îl micșorăm de mai multe ori.</p></div>
-   <div class="box" style="border-color:var(--purple)"><span class="emo">🔣</span><p>Orice plan are <b>titlu</b> și <b>legendă</b> cu <b>semne convenționale</b>.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">🏗️</span><p>Omul transformă mediul pentru așezări, drumuri și agricultură.</p></div>
+   <div class="box" style="border-color:#C9862A"><span class="emo">⚠️</span><p><b>Defrișarea</b>, vânatul și pescuitul în exces, <b>braconajul</b> și <b>poluarea</b> pun în pericol multe viețuitoare.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">🛡️</span><p>Multe state au <b>legi</b> care ocrotesc plantele și animalele.</p></div>
   </div>
-  <div class="tip y">🧭 <b>Urmează:</b> orizontul, linia orizontului și punctele cardinale (lecția 4).</div>
  </div>
 </section>
 
@@ -442,7 +410,7 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 
 
 <nav class="bar" aria-label="Navigare prezentare">
- <a class="home" href="../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
+ <a class="home" href="../../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
  <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
  <div class="dots" id="dots"></div>
  <span class="count" id="count"></span>
@@ -450,7 +418,7 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 </nav>
 <script>
 (function(){
-  var KEY='geo-l3-slide';
+  var KEY='sn-l6-slide';
   var slides=[].slice.call(document.querySelectorAll('.slide'));
   var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
   var cur=0;
@@ -482,24 +450,19 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
     b.onclick=function(){d.hidden=!d.hidden;b.textContent=d.hidden?label:'Ascunde';};
   });
 /* ---------- missions ---------- */
-    var SORTERS={};
-  var LEG=['tabla','catedra','o bancă','ușa','fereastra','dulapul','coșul de gunoi'];
-  var PLANS=[
-   '📚 <b>Planul clasei</b>: se văd toate băncile, catedra, tabla, ușa, ferestrele, chiar și coșul de gunoi. Micșorăm de puține ori, cam de 10–50 de ori.',
-   '🏫 <b>Planul școlii</b>: se văd sălile, biblioteca, cancelaria, coridoarele, intrarea. Băncile dispar, pentru că sunt prea mici.',
-   '🏠 <b>Planul locuinței</b>: camerele, holul, bucătăria, baia, balconul. Fiecare încăpere are altă culoare sau altă literă.',
-   '🏘️ <b>Planul cartierului Tei</b>: străzile cu nume, blocurile și clădirile importante (farmacie, dispensar, magazin, biserică, bancă). Încăperile dispar.',
-   '🏙️ <b>Planul localității Basarab</b>: cartierele, străzile mari și instituțiile importante (Primăria, Poliția, Spitalul, Clubul Elevilor). Străzile mici din cartierul Tei dispar.'
-  ];
+    var SORTERS={
+   'sort-act':{cats:{a:'ajută natura',p:'pune în pericol'},items:[['Plantarea de puieți','a'],['Defrișarea unei păduri întregi','p'],['Braconajul','p'],['Colectarea separată a deșeurilor','a'],['Aruncarea uleiului uzat în râu','p'],['Culesul masiv al plantelor pentru vânzare','p'],['Hrănirea păsărilor iarna, cu hrană potrivită','a']],
+    expl:'Plantarea, reciclarea și hrănirea corectă a păsărilor ajută. Defrișarea, braconajul, poluarea apelor și culesul în exces pun în pericol viețuitoarele. Atenție: tăierea copacilor nu e întotdeauna rea. Pădurile se pot exploata „cu cap”, plantând la loc ce tai.'}
+  };
   var Q=[
-   {t:'mcq',tags:['L3'],d:'Logică',q:'Un desen al clasei tale nu are titlu și nici legendă, doar figuri. Este un plan complet?',o:['Da, figurile ajung','Nu: orice plan are titlu și legendă','Da, dacă e colorat','Nu, pentru că lipsesc oamenii'],a:1,h:'Amintește-ți cele trei ingrediente ale planului.',e:'Fără titlu nu știi ce reprezintă desenul, iar fără legendă nu știi ce înseamnă figurile. Un plan complet are titlu, micșorare și legendă.'},
-   {t:'num',tags:['L3'],d:'Matematică',q:'Strada Micșunelelor are în realitate 400 m. Pe plan are 4 cm. De câte ori a fost micșorată?',a:10000,h:'400 m = ? cm (1 m = 100 cm). Apoi împarte la 4.',e:'400 m = 40 000 cm. 40 000 : 4 = 10 000. Ca la strada Andrei: 110 m = 110 000 mm, iar 110 000 : 11 = 10 000. Planurile cartierelor sunt micșorate la fel.'},
-   {t:'mcq',tags:['L3'],d:'Matematică',q:'Un plan al clasei este micșorat de 10 ori. Tabla are în realitate 3 m. Cât are pe plan?',o:['3 cm','30 cm','3 m','300 cm'],a:1,h:'3 m = 300 cm. Împarte la 10.',e:'300 cm : 10 = 30 cm. Pe un caiet, un plan micșorat de 10 ori ar fi mult prea mare. De aceea, pentru clase se folosesc micșorări mai mari, de 50 sau 100 de ori.'},
-   {t:'mcq',tags:['L3'],d:'Logică',q:'Andra a desenat banca drept dreptunghi și coșul de gunoi drept cerc. De ce?',o:['Pentru că așa a vrut','Pentru că, privite de sus, banca are forma unui dreptunghi, iar coșul a unui cerc','Pentru că cercul e mai frumos','Pentru că învățătoarea i-a cerut'],a:1,h:'Planul e desenat ca și cum ai privi de sus.',e:'Semnele convenționale seamănă adesea cu forma obiectului privit de sus. Așa le recunoști mai ușor. Nu e o regulă: la hărți vei vedea și simboluri care nu seamănă deloc cu obiectul.'},
-   {t:'mcq',tags:['L3','Educație civică'],d:'Siguranță',q:'Ești la etajul 1 și sună alarma de incendiu. Ce te ajută cel mai mult să ieși repede?',o:['Să știi planul școlii, cu scările și ieșirile','Să știi numărul de bănci','Liftul','Să aștepți în clasă'],a:0,h:'De ce sunt afișate planuri pe holuri?',e:'Planul de evacuare arată drumul cel mai scurt spre ieșire. La incendiu nu se folosește liftul. Exercițiile de evacuare de la școală servesc exact la asta.'},
-   {t:'mcq',tags:['L3','L1'],d:'Logică',q:'Pe planul cartierului Tei apare farmacia, dar pe planul localității Basarab nu mai apare. Unde a dispărut?',o:['A fost demolată','E acolo, dar e prea mică pentru cât de mult e micșorat planul localității','E pe alt plan','Farmaciile nu apar niciodată pe planuri'],a:1,h:'Planul localității acoperă un spațiu mult mai mare.',e:'Farmacia există, dar pe planul localității ar fi un punct minuscul. Cartograful alege să arate doar lucrurile importante la acea mărime: Primăria, Spitalul, Poliția.'},
-   {t:'mcq',tags:['L3','Istorie L1'],d:'Istorie',q:'Un istoric găsește planul orașului din 1850 și îl compară cu cel de azi. Ce tip de sursă istorică este planul vechi?',o:['Nescrisă, pentru că e un desen','Scrisă: hărțile și planurile intră la surse scrise','Nu este o sursă istorică','Arheologică'],a:1,h:'Amintește-ți lista surselor scrise de la istorie, L1.',e:'La istorie, hărțile sunt surse scrise, alături de documente, inscripții și monede. Planurile vechi arată cum arăta o localitate în trecut: ce străzi existau, unde era piața.'},
-   {t:'num',tags:['L3','Matematică'],d:'Matematică',q:'Clasa ta are 8 m lungime. Vrei s-o desenezi micșorată de 50 de ori. Câți centimetri va avea peretele pe plan?',a:16,h:'8 m = 800 cm. Împarte la 50.',e:'800 : 50 = 16 cm, adică încape bine pe o pagină de caiet. Alegerea micșorării depinde de spațiul real și de foaia pe care desenezi.'}
+   {t:'mcq',tags:['U2 L6','Civică'],d:'Civică',q:'Capra neagră e ocrotită de lege. Ce înseamnă asta pentru un vânător?',o:['Poate s-o vâneze oricând','Nu are voie s-o vâneze, sau doar în condițiile stricte ale legii; altfel e braconaj și se pedepsește','Trebuie s-o hrănească','Nimic'],a:1,h:'Ce e braconajul?',e:'Ocrotit de lege înseamnă că vânătoarea ei e interzisă sau strict limitată, iar cine încalcă legea poate fi amendat sau chiar pedepsit mai sever. Legea e unealta civică pentru protejarea naturii.'},
+   {t:'mcq',tags:['U2 L6','U2 L4'],d:'Punte',q:'De ce defrișarea unei păduri pune în pericol și animalele, nu doar copacii?',o:['Nu le pune','Pentru că animalele pierd adăpostul, hrana și locul unde își cresc puii','Pentru că animalelor nu le place zgomotul','Pentru că copacii sunt animale'],a:1,h:'Unde își fac cuibul păsările? Ce mănâncă veverițele?',e:'Pădurea e casa, cămara și grădinița animalelor. Fără ea, se mută sau mor. Așa dispar specii întregi: le dispare mediul de viață.'},
+   {t:'mcq',tags:['U2 L6','U1'],d:'Clasa a III-a',q:'Pădurile produc mult oxigen. Ce lecție din clasa a III-a explică asta?',o:['Stările de agregare','Plantele verzi produc oxigen la lumină','Forțele și deformarea','Volumul'],a:1,h:'Recapitularea Unității 1: atmosfera.',e:'Plantele verzi produc oxigen în prezența luminii. Mai puține păduri înseamnă mai puțin oxigen produs. Toate lecțiile se leagă!'},
+   {t:'mcq',tags:['U2 L6','Geografie'],d:'Geografie',q:'Delta Dunării e rezervație a biosferei. În ce regiune istorică a României se află?',o:['Transilvania','Dobrogea','Banat','Maramureș'],a:1,h:'Amintește-ți harta de la istorie (L4) și stema (civică U1 L2).',e:'În Dobrogea, unde trăiesc și lipovenii pescari. Pelicanii din atlas trăiesc tot acolo.'},
+   {t:'mcq',tags:['U2 L6'],d:'Gândire',q:'Manualul întreabă: vânătoarea e folositoare omului? Care e cel mai bun răspuns?',o:['Da, mereu','Nu, niciodată','Depinde: vânătoarea controlată, după lege, poate ține echilibrul în natură; vânătoarea în exces și braconajul fac rău','Doar iarna'],a:2,h:'E o întrebare cu „depinde”. De ce depinde?',e:'Depinde de cum se face. Răspunsurile de tip „mereu” sau „niciodată” sunt rar corecte la întrebările complicate. Un argument bun explică DE CE.'},
+   {t:'mcq',tags:['U2 L6','Istorie L1'],d:'Verificare',q:'Citești: „Jumătate dintre mamiferele Europei sunt pe cale de dispariție.” Care e prima întrebare de cercetător?',o:['E înfricoșător?','Cine a spus asta, când, și ce înseamnă exact „pe cale de dispariție”?','Câte mamifere am eu acasă?','E mult sau puțin?'],a:1,h:'Cele trei întrebări de la istorie, despre orice izvor.',e:'Cine, când, ce înseamnă. Cifrele mari despre natură sunt importante, dar trebuie înțelese corect. Sursele diferite numără diferit.'},
+   {t:'num',tags:['U2 L6','Matematică'],d:'Matematică',q:'Retezat a devenit primul parc național al României în 1935. Câți ani are în 2026?',a:91,h:'2026 − 1935.',e:'91 de ani. Parcul e mai vechi decât Convenția drepturilor copilului (1989) și decât Uniunea Europeană (1993).'},
+   {t:'mcq',tags:['U2 L6','Civică'],d:'Civică',q:'Vezi pe malul râului din localitatea ta un morman de gunoaie. Ce poți face, ca cetățean de 10 ani?',o:['Nimic, nu e treaba mea','Le spui părinților; împreună puteți anunța primăria sau Garda de Mediu și, poate, organiza o strângere','Le arunci în râu','Faci o poză și atât'],a:1,h:'La civică (U1 L1): fiecare problemă are o instituție. Și cine te poate ajuta?',e:'Anunți un adult și instituția potrivită. Mulți copii au organizat cu școala acțiuni de ecologizare. Și asta înseamnă responsabilitate în comunitate.'}
   ];
 
 
@@ -516,26 +479,6 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
       document.querySelector('[data-reset="'+id+'"]').onclick=build;
       build();
     });
-  })();
-
-  (function(){
-    var host=document.getElementById('legq'),opts=LEG.slice().sort();
-    host.innerHTML=LEG.map(function(n,i){return '<div class="srow" data-i="'+i+'" style="margin-bottom:6px"><b>'+(i+1)+'</b><select aria-label="Elementul '+(i+1)+'"><option value="">alege…</option>'+opts.map(function(o){return '<option>'+o+'</option>'}).join('')+'</select></div>'}).join('');
-    host.classList.add('sort');
-    document.getElementById('leg-check').onclick=function(){var n=0,empty=0;host.querySelectorAll('.srow').forEach(function(r){var i=+r.getAttribute('data-i'),v=r.querySelector('select').value;if(!v)empty++;var g=v===LEG[i];if(g)n++;r.classList.toggle('ok',g);r.classList.toggle('bad',!!v&&!g);});
-      document.getElementById('leg-fb').innerHTML=empty?'<div class="fb h">Alege câte un nume pentru fiecare cifră.</div>':'<div class="fb '+(n===LEG.length?'ok':'h')+'"><b>'+n+' din '+LEG.length+'.</b> '+(n===LEG.length?'Ai citit legenda perfect!':'Indiciu: ușa are un arc, adică direcția în care se deschide. Fereastra e o linie dublă, ca sticla dintr-un perete.')+'</div>';};
-    var ri=document.getElementById('sc-real'),ru=document.getElementById('sc-ru'),pi=document.getElementById('sc-plan'),pu=document.getElementById('sc-pu'),out=document.getElementById('sc-out');
-    var U={'1000':'m','10':'cm','1000000':'km','1':'mm'};
-    function f(x){return x.toLocaleString('ro-RO')}
-    function sc(){var r=+ri.value,p=+pi.value;if(!(r>0&&p>0)){out.textContent='Scrie două numere mai mari decât 0.';return;}
-      var rmm=r*(+ru.value),pmm=p*(+pu.value),k=rmm/pmm;
-      out.innerHTML='În milimetri: '+f(r)+' '+U[ru.value]+' = '+f(rmm)+' mm și '+f(p)+' '+U[pu.value]+' = '+f(pmm)+' mm. '+f(rmm)+' : '+f(pmm)+' = <b>'+(k>=1?'micșorat de '+f(Math.round(k*100)/100)+(k>=20?' de ori':' ori'):'planul e mai mare decât realitatea!')+'</b>';}
-    [ri,ru,pi,pu].forEach(function(e){e.oninput=sc;e.onchange=sc});
-    document.querySelectorAll('#sc-presets button').forEach(function(b){b.onclick=function(){ri.value=b.getAttribute('data-r');ru.value=b.getAttribute('data-ru');pi.value=b.getAttribute('data-p');pu.value=b.getAttribute('data-pu');sc();};});
-    sc();
-    var bs=document.querySelectorAll('#planlv button'),pinfo=document.getElementById('planinfo');
-    function show(i){bs.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});pinfo.innerHTML=PLANS[i];}
-    bs.forEach(function(b,i){b.onclick=function(){show(i)}});show(0);
   })();
   var host=document.getElementById('qhost'),bar=document.getElementById('qbar'),sc=document.getElementById('qscore');
   var qi=0,score=0,MAX=Q.length*2;
