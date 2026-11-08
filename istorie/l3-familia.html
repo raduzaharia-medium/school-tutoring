@@ -1,0 +1,554 @@
+<!doctype html><html lang="ro"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
+</head><body>
+<title>Familia. Arborele genealogic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+/* Same design system as „Timpul istoric și mediul geografic”: slide deck, bottom nav bar, colored badges */
+:root{
+  --bg:#F3F7FF; --paper:#FFFFFF; --ink:#1E2340; --soft:#4A5078; --line:#D5DDF0;
+  --red:#E2433A; --green:#2E9D52; --blue:#2F6FD6; --yellow:#F6C431; --purple:#6B4BC4; --brown:#8A5A2B;
+  --tint-red:#FDE6E4; --tint-green:#E1F4E7; --tint-blue:#E2ECFC; --tint-yellow:#FFF4CF; --tint-purple:#ECE6FA;
+  --display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+    --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+  --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%}
+body{
+  height:100%;margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--body);font-weight:500;
+  font-size:clamp(16px,1.05vw + 10px,21px);line-height:1.5;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.7rem,2.6vw + .6rem,2.8rem);font-weight:800;margin-bottom:.35em}
+h3{font-size:1.2em;font-weight:700}
+p{margin:.3em 0 .7em}
+b,strong{font-weight:800}
+
+.deck{flex:1;position:relative;min-height:0}
+.slide{position:absolute;inset:0;overflow-y:auto;padding:clamp(18px,3vw,48px) clamp(16px,5vw,80px) 24px;display:none}
+.slide.active{display:block;animation:in .35s ease-out}
+@keyframes in{from{opacity:.2;transform:translateX(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slide.active{animation:none}}
+.wrap{max-width:1080px;margin:0 auto}
+.lead{font-size:1.15em;color:var(--soft);max-width:60ch}
+.badge{display:inline-block;font-weight:800;font-size:.85em;padding:.2em .8em;border-radius:99px;margin-bottom:.8em;color:#fff}
+
+.bar{display:flex;align-items:center;gap:12px;padding:10px clamp(12px,3vw,32px);padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));background:var(--paper);border-top:2px solid var(--line)}
+.bar button.nav{font:inherit;font-weight:800;border:0;border-radius:14px;padding:.55em 1.1em;cursor:pointer;background:var(--blue);color:#fff;min-width:48px}
+.bar button.nav:disabled{opacity:.35;cursor:default}
+.dots{flex:1;display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.dots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
+.dots button.on{background:var(--red);transform:scale(1.3)}
+.count{font-weight:800;color:var(--soft);min-width:4.5ch;text-align:center;font-variant-numeric:tabular-nums}
+button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+
+.cover{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;min-height:100%}
+.cover > *{min-width:0}
+.cover h1{font-size:clamp(2.4rem,5vw + .5rem,4.8rem);font-weight:800;margin:.2em 0 .3em}
+.stripes{display:flex;height:14px;border-radius:8px;overflow:hidden;max-width:420px;margin-bottom:1em}
+.stripes span{flex:1}
+@media (max-width:760px){.cover{grid-template-columns:1fr}.cover svg{max-width:220px;margin:0 auto;display:block}}
+
+.grid{display:grid;gap:16px}
+.grid > *{min-width:0}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.box{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:18px 20px}
+.box .emo{font-size:2.2em;line-height:1;display:block;margin-bottom:.25em}
+.tip{border-radius:18px;padding:14px 20px;margin-top:18px;border-left:8px solid}
+.tip.y{background:var(--tint-yellow);border-color:var(--yellow)}
+.tip.g{background:var(--tint-green);border-color:var(--green)}
+.tip.b{background:var(--tint-blue);border-color:var(--blue)}
+.tip.r{background:var(--tint-red);border-color:var(--red)}
+.tip.p{background:var(--tint-purple);border-color:var(--purple)}
+
+.q{display:flex;gap:16px;align-items:center;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px 20px;margin-bottom:14px;font-size:1.15em;font-weight:700}
+.q .mark{flex:none;width:2.2em;height:2.2em;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:var(--display);font-weight:800;font-size:1.1em}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chips span{background:var(--tint-purple);border-radius:10px;padding:.25em .7em;font-weight:800}
+.ladder{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 6px}
+.step{background:var(--tint-blue);border-radius:12px;padding:.35em .8em;font-weight:800;text-align:center}
+.arrow{color:var(--soft);font-weight:800}
+
+/* events interactive */
+.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0 14px}
+.events button{font:inherit;font-weight:800;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:12px 10px;text-align:center}
+.events button span{display:block;font-size:1.9em;line-height:1.1}
+.events button[aria-pressed="true"]{border-color:var(--red);background:var(--tint-red)}
+.doc-card{background:var(--paper);border:2px dashed var(--brown);border-radius:18px;padding:16px 20px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;min-height:6.5em}
+.doc-card .big{font-size:3em;line-height:1}
+.doc-card > div{min-width:0}
+
+/* family types */
+.fam svg{width:100%;height:auto;display:block;margin-bottom:10px}
+
+/* timeline */
+.axis-wrap{overflow-x:auto;margin:8px 0}
+.axis{width:100%;min-width:620px;height:auto;display:block}
+
+/* tree */
+.tree{display:grid;gap:10px;margin-top:6px}
+.tree .row{display:grid;gap:10px;justify-items:center}
+.tree .r1{grid-template-columns:1fr}
+.tree .r2{grid-template-columns:1fr 1fr}
+.tree .r3{grid-template-columns:repeat(4,1fr)}
+.tree .lbl{font-family:var(--display);font-weight:800;font-size:.8em;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);text-align:center}
+.person{font:inherit;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:10px 12px;text-align:center;width:100%;max-width:260px}
+.person b{display:block}
+.person small{color:var(--soft);font-weight:700;font-variant-numeric:tabular-nums}
+.person.child{border-color:var(--red);background:var(--tint-red)}
+.person.dad,.person.pat{border-color:var(--blue)}
+.person.mom,.person.mat{border-color:var(--green)}
+.person[aria-pressed="true"]{box-shadow:0 0 0 4px var(--yellow)}
+.side{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.side .lbl{grid-column:1/-1}
+.tree-info{margin-top:12px}
+@media (max-width:620px){.tree .r3{grid-template-columns:1fr 1fr}}
+
+blockquote{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,1.4vw + .5rem,1.7rem);line-height:1.3;border-left:10px solid var(--red);padding:.2em 0 .2em .8em}
+cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weight:700;font-family:var(--body);font-size:.75em}
+
+/* „Manualul spune / Context” */
+.mc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;margin-top:18px;border:2px solid var(--line);border-radius:18px;overflow:hidden;background:var(--paper)}
+.mc > div{padding:14px 20px;min-width:0}
+.mc .m{background:var(--tint-yellow)}
+.mc .lab{display:block;font-family:var(--display);font-weight:800;font-size:.8em;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin-bottom:.3em}
+.mc .m p{font-style:italic}
+.mc p{margin:0 0 .4em}
+
+.quiz .item{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:14px 18px;margin-bottom:12px}
+.quiz .item p{margin:0;font-weight:700}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.reveal{font:inherit;font-weight:800;border:0;border-radius:12px;padding:.35em .9em;background:var(--tint-yellow);color:var(--ink);cursor:pointer}
+.reveal.hint{background:var(--tint-blue)}
+.ans{margin-top:8px;font-weight:800}
+.ans.a{color:var(--green)}
+.ans.h{color:var(--blue)}
+</style>
+
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Istorie, Unitatea 1, Lecția 3</p>
+   <h1>Familia. Arborele genealogic</h1>
+   <p class="lead">Familia are și ea o istorie. Aflăm ce evenimente o unesc, ce documente le păstrează și cum desenăm „copacul” cu rădăcinile noastre.</p>
+   <p style="color:var(--soft)">Folosește săgețile de jos sau tastele ← → ca să mergi mai departe.</p>
+  </div>
+  <svg viewBox="0 0 220 260" aria-hidden="true">
+   <path d="M104 250 C100 200 102 170 110 140 C118 170 120 200 116 250Z" fill="#8A5A2B"/>
+   <path d="M110 170 C90 160 70 150 60 130 M110 160 C130 150 150 140 160 120 M110 140 L110 90" stroke="#8A5A2B" stroke-width="8" fill="none" stroke-linecap="round"/>
+   <circle cx="110" cy="80" r="62" fill="#2E9D52"/>
+   <circle cx="55" cy="120" r="36" fill="#3FAE63"/>
+   <circle cx="165" cy="115" r="36" fill="#3FAE63"/>
+   <circle cx="110" cy="45" r="22" fill="#F6C431" stroke="#fff" stroke-width="4"/>
+   <circle cx="62" cy="112" r="17" fill="#2F6FD6" stroke="#fff" stroke-width="4"/>
+   <circle cx="158" cy="108" r="17" fill="#2F6FD6" stroke="#fff" stroke-width="4"/>
+   <circle cx="88" cy="95" r="17" fill="#E2433A" stroke="#fff" stroke-width="4"/>
+   <circle cx="132" cy="92" r="17" fill="#E2433A" stroke="#fff" stroke-width="4"/>
+   <path d="M60 250 H160" stroke="#8A5A2B" stroke-width="6" stroke-linecap="round"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 STIM + VREM SA STIM -->
+<section class="slide" aria-label="Ce știm și ce vrem să aflăm">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Știm deja</span>
+  <div class="grid g3">
+   <div class="box"><span class="emo">🏠</span><p>Familia este <b>primul grup</b> din care facem parte.</p></div>
+   <div class="box"><span class="emo">👵👨‍👩‍👧</span><p>O familie este formată din <b>bunici, părinți și copii</b>.</p></div>
+   <div class="box"><span class="emo">🤝</span><p>În familie ne bazăm pe <b>înțelegere, ajutor și iubire</b>.</p></div>
+  </div>
+  <span class="badge" style="background:var(--red);margin-top:26px">Vrem să știm</span>
+  <div class="q"><span class="mark" style="background:var(--blue)">?</span>Care sunt evenimentele importante din viața unei familii?</div>
+  <div class="q"><span class="mark" style="background:var(--purple)">?</span>Ce documente dovedesc aceste evenimente?</div>
+  <div class="tip y">🕵️ Și familia ta are o istorie! Azi devii istoricul propriei tale familii.</div>
+ </div>
+</section>
+
+<!-- 3 DESCOPERIM -->
+<section class="slide" aria-label="Descoperim">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Descoperim</span>
+  <h2>Privește familia din imagine</h2>
+  <svg viewBox="0 0 760 210" style="width:100%;height:auto;display:block" role="img" aria-label="O familie cu trei generații: doi bunici, doi părinți și doi copii">
+   <rect x="0" y="180" width="760" height="10" rx="5" fill="var(--line)"/>
+   <!-- bunici -->
+   <g><circle cx="90" cy="70" r="26" fill="#E8C39E"/><path d="M64 60 Q90 30 116 60" fill="#D8D8D8"/><rect x="58" y="98" width="64" height="82" rx="24" fill="#6B4BC4"/></g>
+   <g><circle cx="175" cy="72" r="25" fill="#E8C39E"/><path d="M150 62 Q175 34 200 62 L200 80 Q175 70 150 80Z" fill="#D8D8D8"/><rect x="144" y="99" width="62" height="81" rx="24" fill="#E2433A"/></g>
+   <text x="132" y="24" text-anchor="middle" fill="var(--ink)" font-family="Nunito, sans-serif" font-weight="800" font-size="18">bunicii</text>
+   <!-- parinti -->
+   <g><circle cx="330" cy="58" r="26" fill="#D9A77C"/><path d="M304 50 Q330 24 356 50" fill="#5A3A22"/><rect x="298" y="86" width="64" height="94" rx="24" fill="#2F6FD6"/></g>
+   <g><circle cx="420" cy="60" r="25" fill="#E8C39E"/><path d="M395 55 Q420 26 445 55 L448 90 Q420 76 392 90Z" fill="#8A5A2B"/><rect x="389" y="87" width="62" height="93" rx="24" fill="#2E9D52"/></g>
+   <text x="375" y="18" text-anchor="middle" fill="var(--ink)" font-family="Nunito, sans-serif" font-weight="800" font-size="18">părinții</text>
+   <!-- copii -->
+   <g><circle cx="570" cy="100" r="21" fill="#E8C39E"/><path d="M549 96 Q570 72 591 96" fill="#8A5A2B"/><rect x="545" y="123" width="50" height="57" rx="18" fill="#F6C431"/></g>
+   <g><circle cx="650" cy="106" r="19" fill="#D9A77C"/><path d="M631 102 Q650 80 669 102" fill="#5A3A22"/><rect x="628" y="127" width="44" height="53" rx="18" fill="#E2433A"/></g>
+   <text x="610" y="60" text-anchor="middle" fill="var(--ink)" font-family="Nunito, sans-serif" font-weight="800" font-size="18">copiii</text>
+  </svg>
+  <div class="quiz" style="margin-top:12px">
+   <div class="item"><p>1. Câte generații vezi în imagine?</p><div class="btns"><button class="reveal hint" data-t="Gândește-te: bunicii sunt o generație, părinții alta… și?">Indiciu</button><button class="reveal" data-t="3 generații: bunicii, părinții și copiii.">Verifică</button></div></div>
+   <div class="item"><p>2. Câți membri are fiecare generație?</p><div class="btns"><button class="reveal" data-t="Câte 2 membri în fiecare generație.">Verifică</button></div></div>
+   <div class="item"><p>3. Ce relații sunt între membrii familiei? De ce?</p><div class="btns"><button class="reveal hint" data-t="Cine are grijă de cine? Cine povestește și cine ascultă? Cine învață de la cine?">Indiciu</button></div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 4 CE ESTE FAMILIA -->
+<section class="slide" aria-label="Ce este familia">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Reținem</span>
+  <h2>Ce este familia?</h2>
+  <div class="tip p" style="margin-top:0;font-size:1.1em"><b>Familia</b> este un grup care are la bază legături de <b>căsătorie</b> și de <b>rudenie</b> între persoanele care o alcătuiesc.</div>
+  <div class="grid g3" style="margin-top:18px">
+   <div class="box"><span class="emo">🦴</span><h3>Foarte veche</h3><p>Familia există <b>din cele mai vechi timpuri</b>. Chiar și în Preistorie, între părinți și copii era o legătură foarte puternică.</p></div>
+   <div class="box"><span class="emo">🏡</span><h3>O casă și o gospodărie</h3><p>Orice familie are o <b>locuință</b>, o <b>gospodărie</b>. Aici se petrec activitățile de zi cu zi, evenimentele importante și sărbătorile.</p></div>
+   <div class="box"><span class="emo">♾️</span><h3>Mereu prezentă</h3><p>Popoarele, domnitorii și uneltele s-au schimbat, dar <b>familia</b> a rămas de-a lungul întregii istorii.</p></div>
+  </div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Familia are la bază legături de căsătorie și de rudenie.</p><p style="font-style:normal;font-size:.9em">Aceasta este definiția de reținut pentru lecție.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Familiile se formează în <b>multe feluri</b>. De exemplu, un copil poate intra într-o familie prin <b>adopție</b>, iar legea îl consideră rudă cu toată familia lui.</p></div>
+  </div>
+  <div class="tip y">🤔 Gândește-te: la ce sărbătoare se strânge familia ta?</div>
+ </div>
+</section>
+
+<!-- 5 EVENIMENTE SI DOCUMENTE -->
+<section class="slide" aria-label="Evenimente și documente">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Reținem</span>
+  <h2>Evenimente care adună familia</h2>
+  <p>Fiecare eveniment important lasă în urmă o <b>dovadă</b>. <b>Apasă pe un eveniment</b> ca să vezi ce document îl păstrează!</p>
+  <div class="events" id="events">
+   <button aria-pressed="true" data-i="0"><span>👶</span>Nașterea</button>
+   <button aria-pressed="false" data-i="1"><span>🕯️</span>Botezul</button>
+   <button aria-pressed="false" data-i="2"><span>💍</span>Căsătoria</button>
+   <button aria-pressed="false" data-i="3"><span>🎂</span>Aniversarea</button>
+   <button aria-pressed="false" data-i="4"><span>🎓</span>Terminarea studiilor</button>
+   <button aria-pressed="false" data-i="5"><span>🚚</span>Mutarea în altă casă</button>
+  </div>
+  <div class="doc-card" id="doc" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 6 TIPURI DE FAMILIE -->
+<section class="slide" aria-label="Familia restrânsă și familia extinsă">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Reținem</span>
+  <h2>Familia mică și familia mare</h2>
+  <div class="grid g2">
+   <div class="box fam" style="border-color:var(--blue)">
+    <svg viewBox="0 0 300 110" aria-hidden="true">
+     <circle cx="100" cy="40" r="20" fill="#2F6FD6"/><rect x="82" y="62" width="36" height="44" rx="14" fill="#2F6FD6"/>
+     <circle cx="160" cy="40" r="20" fill="#2E9D52"/><rect x="142" y="62" width="36" height="44" rx="14" fill="#2E9D52"/>
+     <circle cx="215" cy="62" r="14" fill="#F6C431"/><rect x="202" y="78" width="26" height="28" rx="10" fill="#F6C431"/>
+    </svg>
+    <h3>Familia restrânsă</h3><p>Formată din <b>soț, soție</b> și <b>copiii minori</b>.</p>
+    <p style="color:var(--soft);font-size:.92em">Uneori are <b>un singur părinte</b> și copiii. Se numește <b>familie monoparentală</b>. Și ea este o familie întreagă, unită prin grijă și iubire.</p>
+   </div>
+   <div class="box fam" style="border-color:var(--green)">
+    <svg viewBox="0 0 300 110" aria-hidden="true">
+     <circle cx="30" cy="44" r="16" fill="#6B4BC4"/><rect x="16" y="62" width="28" height="40" rx="12" fill="#6B4BC4"/>
+     <circle cx="68" cy="44" r="16" fill="#6B4BC4"/><rect x="54" y="62" width="28" height="40" rx="12" fill="#6B4BC4"/>
+     <circle cx="112" cy="40" r="18" fill="#2F6FD6"/><rect x="96" y="60" width="32" height="42" rx="12" fill="#2F6FD6"/>
+     <circle cx="154" cy="40" r="18" fill="#2E9D52"/><rect x="138" y="60" width="32" height="42" rx="12" fill="#2E9D52"/>
+     <circle cx="194" cy="60" r="12" fill="#F6C431"/><rect x="183" y="74" width="22" height="28" rx="9" fill="#F6C431"/>
+     <circle cx="236" cy="42" r="16" fill="#E2433A"/><rect x="222" y="60" width="28" height="42" rx="12" fill="#E2433A"/>
+     <circle cx="274" cy="60" r="12" fill="#C9862A"/><rect x="263" y="74" width="22" height="28" rx="9" fill="#C9862A"/>
+    </svg>
+    <h3>Familia extinsă</h3><p>Cuprinde și <b>alte rude</b>: bunici, unchi, mătuși, verișori.</p>
+    <p style="color:var(--soft);font-size:.92em">Se adună mai ales la evenimentele mari: nunți, botezuri, sărbători.</p>
+   </div>
+  </div>
+  <div class="tip b">💬 <b>Discutăm:</b> Câți verișori ai? Unde îi întâlnești cel mai des?</div>
+ </div>
+</section>
+
+<!-- 7 PASTRATORII AMINTIRILOR -->
+<section class="slide" aria-label="Păstrătorii amintirilor">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Păstrătorii amintirilor</span>
+  <h2>Cine ține minte istoria familiei?</h2>
+  <div class="grid g2">
+   <div class="box"><span class="emo">👴🗣️</span><h3>Bunicii povestesc</h3><p>Persoanele <b>vârstnice</b> din familie le povestesc celor tineri despre cele mai importante evenimente din viața <b>înaintașilor</b> (a celor care au trăit înaintea noastră).</p></div>
+   <div class="box"><span class="emo">🧒📦</span><h3>Tinerii pot păstra mai departe</h3><p>Documentele și amintirile ajung, cu timpul, la cei tineri. Ei <b>aleg</b> ce păstrează și pot adăuga poveștile lor pentru cei care vin după ei.</p></div>
+  </div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>„Tinerii au datoria de a păstra documentele și amintirile de familie.”</p><p style="font-style:normal;font-size:.9em">Pentru lecție, asta reții: tinerii sunt cei care duc amintirile familiei mai departe.</p></div>
+   <div><span class="lab">🌍 Context</span><p><b>Nicio lege</b> nu te obligă să păstrezi fotografii, scrisori sau amintiri de familie. Este o <b>alegere</b>, iar familiile fac alegeri diferite.</p><p>Mulți oameni aleg să le păstreze pentru că îi ajută să-și cunoască rădăcinile. Pentru istorici, ele sunt <b>izvoare istorice</b> prețioase.</p></div>
+  </div>
+  <h3 style="margin-top:22px">Dovezile trecutului unei familii</h3>
+  <div class="chips"><span>📷 fotografii</span><span>✉️ scrisori</span><span>📔 jurnale</span><span>📝 note</span><span>📄 acte</span><span>📚 memorii</span></div>
+  <div class="tip y">🔍 <b>Misiune, dacă vrei:</b> Întreabă-ți bunicii ce obiect sau fotografie veche păstrează ei cu grijă. Ce poveste are? Tu ce ai alege să păstrezi din copilăria ta?</div>
+ </div>
+</section>
+
+<!-- 8 AXA TIMPULUI -->
+<section class="slide" aria-label="Axa timpului familiei">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Aplicăm</span>
+  <h2>Familia ta pe axa timpului</h2>
+  <p>Îți amintești de secole și milenii din lecția trecută? Iată cum arată ultimii ani pe axa timpului:</p>
+  <div class="axis-wrap">
+   <svg class="axis" viewBox="0 0 800 200" role="img" aria-label="Axa timpului cu anii 2000, 2010 și 2020, deceniile 1, 2, 3, secolele XX și XXI, mileniile II și III">
+    <rect x="20" y="10" width="110" height="30" rx="8" fill="#C9862A"/>
+    <text x="75" y="31" text-anchor="middle" fill="#fff" font-family="Baloo 2, sans-serif" font-weight="800" font-size="16">Mileniul II</text>
+    <rect x="140" y="10" width="640" height="30" rx="8" fill="#6B4BC4"/>
+    <text x="460" y="31" text-anchor="middle" fill="#fff" font-family="Baloo 2, sans-serif" font-weight="800" font-size="16">Mileniul III</text>
+    <rect x="20" y="92" width="760" height="14" rx="7" fill="var(--line)"/>
+    <line x1="135" y1="70" x2="135" y2="128" stroke="var(--ink)" stroke-width="3"/>
+    <line x1="345" y1="80" x2="345" y2="118" stroke="var(--ink)" stroke-width="3"/>
+    <line x1="555" y1="80" x2="555" y2="118" stroke="var(--ink)" stroke-width="3"/>
+    <line x1="765" y1="80" x2="765" y2="118" stroke="var(--ink)" stroke-width="3"/>
+    <text x="135" y="64" text-anchor="middle" fill="var(--ink)" font-family="Nunito, sans-serif" font-weight="800" font-size="16">2000</text>
+    <text x="345" y="74" text-anchor="middle" fill="var(--ink)" font-family="Nunito, sans-serif" font-weight="800" font-size="16">2010</text>
+    <text x="555" y="74" text-anchor="middle" fill="var(--ink)" font-family="Nunito, sans-serif" font-weight="800" font-size="16">2020</text>
+    <text x="765" y="74" text-anchor="middle" fill="var(--ink)" font-family="Nunito, sans-serif" font-weight="800" font-size="16">2030</text>
+    <rect x="140" y="138" width="200" height="26" rx="8" fill="var(--tint-blue)"/>
+    <rect x="350" y="138" width="200" height="26" rx="8" fill="var(--tint-blue)"/>
+    <rect x="560" y="138" width="200" height="26" rx="8" fill="var(--tint-yellow)"/>
+    <text x="240" y="156" text-anchor="middle" fill="var(--ink)" font-family="Nunito, sans-serif" font-weight="800" font-size="15">Deceniul 1 (2001–2010)</text>
+    <text x="450" y="156" text-anchor="middle" fill="var(--ink)" font-family="Nunito, sans-serif" font-weight="800" font-size="15">Deceniul 2 (2011–2020)</text>
+    <text x="660" y="156" text-anchor="middle" fill="var(--ink)" font-family="Nunito, sans-serif" font-weight="800" font-size="15">Deceniul 3 (2021–2030)</text>
+    <text x="75" y="190" text-anchor="middle" fill="var(--soft)" font-family="Nunito, sans-serif" font-weight="800" font-size="15">← Sec. XX</text>
+    <text x="460" y="190" text-anchor="middle" fill="var(--soft)" font-family="Nunito, sans-serif" font-weight="800" font-size="15">Sec. XXI →</text>
+    <circle cx="681" cy="99" r="11" fill="#E2433A" stroke="#fff" stroke-width="3"/>
+    <text x="681" y="130" text-anchor="middle" fill="#E2433A" font-family="Nunito, sans-serif" font-weight="800" font-size="13">azi, 2026</text>
+   </svg>
+  </div>
+  <div class="quiz">
+   <div class="item"><p>Te-ai născut acum aproximativ 10 ani. În ce deceniu, secol și mileniu cade anul nașterii tale?</p><div class="btns"><button class="reveal hint" data-t="Scade 10 din 2026. Apoi caută anul pe axă: între ce borne se află?">Indiciu</button></div></div>
+  </div>
+  <div class="tip g">🗣️ Povestește evenimentele familiei tale <b>în ordine cronologică</b>, folosind cuvintele:
+   <div class="chips" style="margin-bottom:0"><span>mai întâi</span><span>apoi</span><span>în același timp</span><span>pe urmă</span><span>în final</span></div></div>
+ </div>
+</section>
+
+<!-- 9 ARBORELE GENEALOGIC -->
+<section class="slide" aria-label="Arborele genealogic al lui Andrei">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Arborele genealogic</span>
+  <h2>Familia lui Andrei Popescu</h2>
+  <p>Un <b>arbore genealogic</b> arată cine sunt rudele noastre și cum sunt legate între ele. <b>Apasă pe o persoană!</b></p>
+  <div class="tree" id="tree">
+   <div class="row r1"><div class="lbl">Copilul</div><button class="person child" data-i="0"><b>Popescu Andrei</b><small>n. 10.12.2010</small></button></div>
+   <div class="row r2">
+    <div style="width:100%;display:grid;gap:6px;justify-items:center"><div class="lbl">Tatăl</div><button class="person dad" data-i="1"><b>Popescu Bogdan</b><small>n. 1.12.1974</small></button></div>
+    <div style="width:100%;display:grid;gap:6px;justify-items:center"><div class="lbl">Mama</div><button class="person mom" data-i="2"><b>Popescu Ioana</b><small>n. 5.02.1975</small></button></div>
+   </div>
+   <div class="row r2">
+    <div class="side"><div class="lbl">Bunicii paterni</div>
+     <button class="person pat" data-i="3"><b>Popescu Ion</b><small>n. 14.03.1949</small></button>
+     <button class="person pat" data-i="4"><b>Popescu Maria</b><small>n. 30.09.1949</small></button></div>
+    <div class="side"><div class="lbl">Bunicii materni</div>
+     <button class="person mat" data-i="5"><b>Mareș Grigore</b><small>n. 11.07.1947</small></button>
+     <button class="person mat" data-i="6"><b>Mareș Ionela</b><small>n. 4.06.1948</small></button></div>
+   </div>
+  </div>
+  <div class="tip b tree-info" id="treeinfo" aria-live="polite">👆 Alege o persoană din arbore.</div>
+ </div>
+</section>
+
+<!-- 10 DETECTIV IN ARBORE -->
+<section class="slide" aria-label="Detectiv în arbore">
+ <div class="wrap quiz" style="max-width:900px">
+  <span class="badge" style="background:var(--purple)">Truc de istoric</span>
+  <h2>Detectiv în arborele lui Andrei</h2>
+  <div class="item"><p>1. De ce bunicii dinspre mamă se numesc Mareș, și nu Popescu?</p><div class="btns"><button class="reveal hint" data-t="Mama, Ioana, s-a născut în familia Mareș. Ce nume a primit după căsătorie?">Indiciu</button><button class="reveal" data-t="Mama s-a născut Mareș și a luat numele Popescu la căsătorie. Părinții ei au rămas Mareș.">Verifică</button></div></div>
+  <div class="item"><p>2. Cine este cel mai vârstnic membru din arbore?</p><div class="btns"><button class="reveal hint" data-t="Caută anul cel mai mic dintre bunici.">Indiciu</button><button class="reveal" data-t="Bunicul Mareș Grigore, născut în 1947.">Verifică</button></div></div>
+  <div class="item"><p>3. Câți ani avea tatăl lui Andrei când s-a născut Andrei?</p><div class="btns"><button class="reveal hint" data-t="Scade anul nașterii tatălui din anul nașterii lui Andrei: 2010 − 1974.">Indiciu</button><button class="reveal" data-t="36 de ani (Andrei s-a născut în decembrie, după ziua tatălui).">Verifică</button></div></div>
+  <div class="item"><p>4. În ce secol s-au născut bunicii? Dar Andrei?</p><div class="btns"><button class="reveal hint" data-t="Regula din lecția trecută: primele două cifre ale anului + 1.">Indiciu</button><button class="reveal" data-t="Bunicii: 19 + 1 = secolul XX. Andrei: 20 + 1 = secolul XXI.">Verifică</button></div></div>
+  <div class="tip y">✏️ <b>Acum e rândul tău:</b> desenează arborele genealogic al familiei tale, cu numele și data nașterii fiecăruia. Apoi prezintă-l, membru cu membru.</div>
+ </div>
+</section>
+
+<!-- 11 KOGALNICEANU -->
+<section class="slide" aria-label="Izvor istoric: Mihail Kogălniceanu">
+ <div class="wrap quiz" style="max-width:900px">
+  <span class="badge" style="background:var(--red)">Izvoare istorice</span>
+  <h2 style="margin-bottom:.6em">Un om mare își prezintă familia</h2>
+  <blockquote>„Sunt născut la Iași, la anul 1817, luna septembrie, în șase. Tatăl meu a fost vornicul Ilie Kogălniceanu; muma mea a fost soția sa, Catinca, născută Stavilă, familie românească din Basarabia; de pe tată și de pe mumă, din moși strămoși, mă fălesc dară că sunt român moldovean […]”<cite>Mihail Kogălniceanu (1817 – 1891), istoric și om politic</cite></blockquote>
+  <p style="margin-top:14px;color:var(--soft)"><b>Cuvinte vechi:</b> <i>muma</i> = mama · <i>vornic</i> = dregător, om important la curtea domnitorului · <i>mă fălesc</i> = mă mândresc</p>
+  <div class="item"><p>1. Ce informații îți dă textul? (loc, dată, părinți)</p><div class="btns"><button class="reveal hint" data-t="Caută în text: UNDE s-a născut? CÂND? Cum îi chema pe tată și pe mamă?">Indiciu</button><button class="reveal" data-t="Născut la Iași, pe 6 septembrie 1817. Tatăl: vornicul Ilie Kogălniceanu. Mama: Catinca, născută Stavilă, din Basarabia.">Verifică</button></div></div>
+  <div class="item"><p>2. Care este cea mai importantă trăsătură a familiei, după autor?</p><div class="btns"><button class="reveal hint" data-t="Citește ultima parte: de ce „se fălește” el?">Indiciu</button><button class="reveal" data-t="Faptul că familia este, din moși strămoși, de români moldoveni.">Verifică</button></div></div>
+  <div class="item"><p>3. Ce sentimente are autorul față de familia sa?</p><div class="btns"><button class="reveal hint" data-t="Cuvântul „mă fălesc” te ajută.">Indiciu</button></div></div>
+ </div>
+</section>
+
+<!-- 12 CREANGA -->
+<section class="slide" aria-label="Amintiri din copilărie">
+ <div class="wrap quiz">
+  <span class="badge" style="background:var(--blue)">Aplicăm</span>
+  <h2 style="margin-bottom:.6em">Casa copilăriei lui Ion Creangă</h2>
+  <blockquote style="border-color:var(--green);font-size:clamp(1rem,1vw + .5rem,1.35rem)">„[…] când mă gândesc la locul nașterii mele, la casa părintească din Humulești, la stâlpul hornului unde lega mama o șfară cu motocei la capăt, de crăpau mâțele jucându-se cu ei, […] la cuptiorul pe care mă ascundeam, când ne jucam noi, băieții, de-a mijoarca […] parcă-mi saltă și acum inima de bucurie! Și, Doamne, frumos era pe atunci, căci și părinții, și frații, și surorile îmi erau sănătoși […]”<cite>Ion Creangă, Amintiri din copilărie</cite></blockquote>
+  <p style="margin-top:12px;color:var(--soft)"><b>Cuvinte vechi:</b> <i>motocei</i> = ghemotoace de lână · <i>mâțele</i> = pisicile · <i>mijoarca</i> = de-a v-ați ascunselea</p>
+  <div class="grid g2" style="margin-top:8px">
+   <div class="item"><p>👨‍👩‍👧‍👦 Ce membri ai familiei apar în fragment?</p><div class="btns"><button class="reveal hint" data-t="Caută în ultima propoziție: cine „îi erau sănătoși”?">Indiciu</button><button class="reveal" data-t="Mama, părinții, frații și surorile.">Verifică</button></div></div>
+   <div class="item"><p>💛 Numește două emoții din text.</p><div class="btns"><button class="reveal hint" data-t="Ce îi „saltă” inimii? Cum era „pe atunci”?">Indiciu</button><button class="reveal" data-t="Bucurie, veselie, dor de copilărie.">Verifică</button></div></div>
+   <div class="item"><p>🎲 La ce jocuri se referă autorul?</p><div class="btns"><button class="reveal" data-t="De-a mijoarca (de-a v-ați ascunselea); pisicile se jucau cu motoceii.">Verifică</button></div></div>
+   <div class="item"><p>🖍️ Desenează un colț din casa lui Creangă.</p><div class="btns"><button class="reveal hint" data-t="Alege din text: stâlpul hornului, vatra sau cuptiorul pe care se ascundea.">Idei</button></div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 13 ACTIVITATI -->
+<section class="slide" aria-label="Activități">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#1E2340">Proiecte pentru acasă și la clasă</span>
+  <h2>Devino istoricul familiei tale</h2>
+  <div class="grid g2">
+   <div class="box"><span class="emo">📔</span><h3>Jurnalul familiei</h3><p>Notează evenimentele importante ale familiei: <b>data, locul, însemnătatea</b>. Adaugă dovezi: copii după documente, invitații, fotografii. Poți cere ajutorul părinților.</p></div>
+   <div class="box"><span class="emo">🧺</span><h3>Expoziție de obiecte vechi</h3><p>Împreună cu colegii, aduceți obiecte vechi din familie. Spuneți <b>cât de vechi sunt</b>, <b>de unde provin</b> și <b>la ce foloseau</b>.</p></div>
+   <div class="box"><span class="emo">🎤</span><h3>Joc de rol: reporterul</h3><p>Imaginează-ți că ești reporter. Relatează un eveniment la care ai fost cu familia și spune de ce a fost important pentru tine.</p></div>
+   <div class="box"><span class="emo">📜</span><h3>Fișa înaintașilor</h3><p>Întreabă-i pe cei mai vârstnici din familie și notează: <b>numele</b>, <b>locul și data nașterii</b>, <b>meseria</b> și <b>un eveniment istoric</b> trăit de ei.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 14 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g2">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">👨‍👩‍👧‍👦</span><p><b>Familia</b>, cel mai important grup din care facem parte, se bazează pe <b>relații de rudenie</b>.</p></div>
+   <div class="box" style="border-color:var(--yellow)"><span class="emo">📄</span><p>Istoria unei familii este păstrată în <b>diferite documente</b>: acte, fotografii, scrisori, jurnale.</p></div>
+  </div>
+  <div class="tip p">⭐ <b>Știai că…</b> familia este unul dintre puținele lucruri care au existat <b>în toate epocile istorice</b>, din Preistorie până azi?</div>
+ </div>
+</section>
+
+<!-- 15 QUIZ -->
+<section class="slide" aria-label="Verifică-te">
+ <div class="wrap quiz" style="max-width:860px">
+  <span class="badge" style="background:var(--purple)">Verifică-te</span>
+  <h2>Mic test de istoric al familiei</h2>
+  <div class="item"><p>1. Ce document dovedește că un copil s-a născut?</p><div class="btns"><button class="reveal" data-t="Certificatul de naștere.">Verifică</button></div></div>
+  <div class="item"><p>2. Din cine este formată familia restrânsă?</p><div class="btns"><button class="reveal hint" data-t="E familia „mică”, cea care locuiește de obicei în aceeași casă.">Indiciu</button><button class="reveal" data-t="Soț, soție și copiii minori.">Verifică</button></div></div>
+  <div class="item"><p>3. Unchii și verișorii fac parte din familia restrânsă sau extinsă?</p><div class="btns"><button class="reveal" data-t="Din familia extinsă.">Verifică</button></div></div>
+  <div class="item"><p>4. Cum se numește desenul care arată rudele unei persoane pe generații?</p><div class="btns"><button class="reveal" data-t="Arborele genealogic.">Verifică</button></div></div>
+  <div class="item"><p>5. Ce rol au bunicii în păstrarea istoriei familiei?</p><div class="btns"><button class="reveal hint" data-t="Gândește-te la ce faci tu când stai de vorbă cu bunicii.">Indiciu</button><button class="reveal" data-t="Le povestesc celor tineri despre evenimentele importante din viața înaintașilor.">Verifică</button></div></div>
+  <div class="item"><p>6. Adevărat sau fals? „Legea te obligă să păstrezi fotografiile vechi ale familiei.”</p><div class="btns"><button class="reveal hint" data-t="Amintește-ți caseta „Context” de la slide-ul despre păstrătorii amintirilor.">Indiciu</button><button class="reveal" data-t="Fals. Nicio lege nu obligă la asta. Mulți oameni aleg să le păstreze, pentru că spun povestea familiei.">Verifică</button></div></div>
+ </div>
+</section>
+
+</main>
+
+<nav class="bar" aria-label="Navigare prezentare">
+ <a class="home" href="../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
+ <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
+ <div class="dots" id="dots"></div>
+ <span class="count" id="count"></span>
+ <button class="nav" id="next" aria-label="Slide-ul următor">→</button>
+</nav>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
+  var cur=0;
+  slides.forEach(function(s,i){
+    var b=document.createElement('button');
+    b.setAttribute('aria-label','Mergi la slide-ul '+(i+1));
+    b.onclick=function(){go(i)};
+    dots.appendChild(b);
+  });
+  function go(i){
+    if(i<0||i>=slides.length)return;
+    slides[cur].classList.remove('active');dots.children[cur].classList.remove('on');
+    cur=i;
+    slides[cur].classList.add('active');dots.children[cur].classList.add('on');
+    slides[cur].scrollTop=0;
+    prev.disabled=cur===0;next.disabled=cur===slides.length-1;
+    count.textContent=(cur+1)+' / '+slides.length;
+    
+  }
+  prev.onclick=function(){go(cur-1)};
+  next.onclick=function(){go(cur+1)};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown')go(cur+1);
+    if(e.key==='ArrowLeft'||e.key==='PageUp')go(cur-1);
+  });
+  var sx=null,deck=document.getElementById('deck');
+  deck.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  deck.addEventListener('touchend',function(e){
+    if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>60)go(cur+(dx<0?1:-1));sx=null;
+  },{passive:true});
+  var start=0;
+  
+  slides[0].classList.add('active');dots.children[0].classList.add('on');
+  go(start);
+
+  /* hint / answer buttons: each reveals its own line under the buttons */
+  document.querySelectorAll('.reveal').forEach(function(b){
+    var d=document.createElement('div');
+    d.className='ans '+(b.classList.contains('hint')?'h':'a');
+    d.hidden=true;
+    d.textContent=(b.classList.contains('hint')?'💡 ':'✅ ')+b.getAttribute('data-t');
+    b.parentNode.parentNode.appendChild(d);
+    var label=b.textContent;
+    b.onclick=function(){d.hidden=!d.hidden;b.textContent=d.hidden?label:'Ascunde';};
+  });
+
+  /* events -> documents */
+  var docs=[
+    {e:'📄',t:'Certificatul de naștere',d:'Arată numele copilului, data și locul nașterii și cine sunt părinții. Este primul document din viața fiecăruia dintre noi.'},
+    {e:'📷',t:'Fotografii și invitații',d:'Botezul unui nou membru al familiei rămâne în fotografii și în invitațiile trimise rudelor. Întreabă-ți părinții dacă au poze de la botezul tău!'},
+    {e:'📜',t:'Certificatul de căsătorie',d:'Dovedește că doi oameni au întemeiat o familie nouă. Pe el sunt scrise data și locul căsătoriei.'},
+    {e:'🎉',t:'Fotografii și amintiri',d:'La aniversări se adună familia. Pozele cu tortul și lumânările devin, peste ani, dovezi ale acestor momente.'},
+    {e:'🎓',t:'Diploma',d:'Arată că cineva a terminat o școală. Și diplomele tale de la școală pot deveni, cu timpul, documente de familie!'},
+    {e:'🏠',t:'Titlul de proprietate',d:'Arată că familia deține o casă sau un teren. Apare când familia își schimbă locuința.'}
+  ];
+  var doc=document.getElementById('doc'),ebtns=document.querySelectorAll('#events button');
+  function showDoc(i){
+    var p=docs[i];
+    ebtns.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});
+    doc.innerHTML='<span class="big" aria-hidden="true">'+p.e+'</span><div><h3>'+p.t+'</h3><p style="margin-bottom:0">'+p.d+'</p></div>';
+  }
+  ebtns.forEach(function(b,i){b.onclick=function(){showDoc(i)}});
+  showDoc(0);
+
+  /* family tree info */
+  var info=[
+    '<b>Andrei</b> este copilul. Pentru el s-a făcut arborele. S-a născut în <b>2010</b>, în secolul XXI.',
+    '<b>Bogdan</b> este <b>tatăl</b> lui Andrei. Părinții lui, Ion și Maria, sunt <b>bunicii paterni</b> (dinspre tată).',
+    '<b>Ioana</b> este <b>mama</b> lui Andrei. Părinții ei, Grigore și Ionela, sunt <b>bunicii materni</b> (dinspre mamă).',
+    '<b>Ion</b> este tatăl lui Bogdan, deci <b>bunicul patern</b> al lui Andrei. Născut în 1949.',
+    '<b>Maria</b> este mama lui Bogdan, deci <b>bunica paternă</b> a lui Andrei. Născută în 1949.',
+    '<b>Grigore</b> este tatăl Ioanei, deci <b>bunicul matern</b> al lui Andrei. Născut în 1947.',
+    '<b>Ionela</b> este mama Ioanei, deci <b>bunica maternă</b> a lui Andrei. Născută în 1948.'
+  ];
+  var pbtns=document.querySelectorAll('#tree .person'),ti=document.getElementById('treeinfo');
+  pbtns.forEach(function(b){
+    b.setAttribute('aria-pressed','false');
+    b.onclick=function(){
+      pbtns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+      ti.innerHTML='🌳 '+info[+b.getAttribute('data-i')];
+    };
+  });
+})();
+</script>
+
+</body></html>

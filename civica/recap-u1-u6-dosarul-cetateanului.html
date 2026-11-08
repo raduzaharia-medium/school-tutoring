@@ -1,0 +1,641 @@
+<!doctype html><html lang="ro"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
+</head><body>
+<title>Dosarul Cetățeanului</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+/* Same design system as „Dosarul Timpului”: slide deck, bottom nav bar, colored badges */
+:root{
+  --bg:#F3F7FF; --paper:#FFFFFF; --ink:#1E2340; --soft:#4A5078; --line:#D5DDF0;
+  --red:#E2433A; --green:#2E9D52; --blue:#2F6FD6; --yellow:#F6C431; --purple:#6B4BC4; --brown:#8A5A2B;
+  --tint-red:#FDE6E4; --tint-green:#E1F4E7; --tint-blue:#E2ECFC; --tint-yellow:#FFF4CF; --tint-purple:#ECE6FA;
+  --display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+    --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+  --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%}
+body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:500;font-size:clamp(16px,1.05vw + 10px,21px);line-height:1.5;display:flex;flex-direction:column;overflow:hidden}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.7rem,2.6vw + .6rem,2.8rem);font-weight:800;margin-bottom:.35em}
+h3{font-size:1.2em;font-weight:700}
+p{margin:.3em 0 .7em}
+b,strong{font-weight:800}
+.deck{flex:1;position:relative;min-height:0}
+.slide{position:absolute;inset:0;overflow-y:auto;padding-top:clamp(18px,3vw,48px);padding-bottom:24px;padding-left:max(clamp(16px,5vw,80px),env(safe-area-inset-left,0px));padding-right:max(clamp(16px,5vw,80px),env(safe-area-inset-right,0px));display:none}
+.slide.active{display:block;animation:in .35s ease-out}
+@keyframes in{from{opacity:.2;transform:translateX(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slide.active{animation:none}}
+.wrap{max-width:1080px;margin:0 auto}
+.lead{font-size:1.15em;color:var(--soft);max-width:60ch}
+.badge{display:inline-block;font-weight:800;font-size:.85em;padding:.2em .8em;border-radius:99px;margin-bottom:.8em;color:#fff}
+.bar{display:flex;align-items:center;gap:12px;padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));padding-left:max(clamp(12px,3vw,32px),env(safe-area-inset-left,0px));padding-right:max(clamp(12px,3vw,32px),env(safe-area-inset-right,0px));background:var(--paper);border-top:2px solid var(--line)}
+.bar button.nav{font:inherit;font-weight:800;border:0;border-radius:14px;padding:.55em 1.1em;cursor:pointer;background:var(--blue);color:#fff;min-width:48px}
+.bar button.nav:disabled{opacity:.35;cursor:default}
+.dots{flex:1;display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.dots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
+.dots button.on{background:var(--red);transform:scale(1.3)}
+.count{font-weight:800;color:var(--soft);min-width:4.5ch;text-align:center;font-variant-numeric:tabular-nums}
+button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.cover{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;min-height:100%}
+.cover > *{min-width:0}
+.cover h1{font-size:clamp(2.4rem,5vw + .5rem,4.8rem);font-weight:800;margin:.2em 0 .3em}
+.stripes{display:flex;height:14px;border-radius:8px;overflow:hidden;max-width:420px;margin-bottom:1em}
+.stripes span{flex:1}
+@media (max-width:760px){.cover{grid-template-columns:1fr}.cover svg{max-width:220px;margin:0 auto;display:block}}
+.grid{display:grid;gap:16px}
+.grid > *{min-width:0}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.box{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:18px 20px}
+.tip{border-radius:18px;padding:14px 20px;margin-top:18px;border-left:8px solid}
+.tip.y{background:var(--tint-yellow);border-color:var(--yellow)}
+.tip.g{background:var(--tint-green);border-color:var(--green)}
+.tip.b{background:var(--tint-blue);border-color:var(--blue)}
+.tip.r{background:var(--tint-red);border-color:var(--red)}
+.tip.p{background:var(--tint-purple);border-color:var(--purple)}
+.mono{font-variant-numeric:tabular-nums}
+.mc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;margin-top:14px;border:2px solid var(--line);border-radius:18px;overflow:hidden;background:var(--paper)}
+.mc > div{padding:14px 20px;min-width:0}
+.mc .m{background:var(--tint-yellow)}
+.mc .lab{display:block;font-family:var(--display);font-weight:800;font-size:.8em;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin-bottom:.3em}
+.mc .m p{font-style:italic}
+.mc p{margin:0 0 .4em}
+.dossier{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.dossier > *{min-width:0}
+.dossier .box{position:relative;padding-top:22px}
+.dossier .tag{position:absolute;top:-12px;left:16px;font-family:var(--display);font-weight:800;font-size:.8em;color:#fff;padding:.1em .7em;border-radius:99px}
+.dossier ul{margin:.2em 0 0;padding-left:1.1em}
+.dossier li{margin:.25em 0;font-size:.93em}
+.tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0 14px}
+.tabs button{font:inherit;font-weight:800;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:10px;text-align:center}
+.tabs button[aria-pressed="true"]{border-color:var(--red);background:var(--tint-red)}
+.tabs button span{display:block;font-size:1.7em;line-height:1.1}
+.panel{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px 20px}
+.panel ul{margin:.2em 0;padding-left:1.1em}
+.panel li{margin:.25em 0}
+.eu-big{font-family:var(--display);font-weight:800;font-size:clamp(3rem,6vw,5rem);line-height:1}
+.eu-track{height:14px;background:var(--line);border-radius:99px;overflow:hidden;margin:10px 0}
+.eu-track i{display:block;height:100%;background:var(--blue);transition:width .35s}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chips span{background:var(--tint-purple);border-radius:10px;padding:.2em .7em;font-weight:800;font-size:.95em}
+.chips span.out{background:var(--tint-red);text-decoration:line-through}
+.flips{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.flip{font:inherit;text-align:left;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-left-width:10px;border-radius:18px;padding:14px 18px;min-width:0}
+.flip h3{font-size:1.15em}
+.flip small{display:block;color:var(--soft);font-weight:700;margin-top:.3em}
+.flip .back{margin-top:.5em;font-size:.93em}
+.flip .back p{margin:.2em 0}
+.sortrow{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 14px;margin-bottom:10px}
+.sortrow.ok{border-color:var(--green);background:var(--tint-green)}
+.sortrow p{margin:0 0 6px;font-weight:700}
+.seg{display:inline-flex;flex-wrap:wrap;border:2px solid var(--line);border-radius:12px;overflow:hidden}
+.seg button{font:inherit;font-weight:800;border:0;padding:.35em .9em;background:var(--paper);color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--blue);color:#fff}
+.seg button.bad{background:var(--tint-red);color:var(--ink);text-decoration:line-through}
+.seg button.good{background:var(--green);color:#fff}
+.note{margin:6px 0 0;font-size:.92em;font-weight:700}
+.rule3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:14px}
+.rule3 .box{padding:12px 16px}
+.rule3 h3{font-size:1.05em;margin-bottom:.2em}
+.rule3 p{margin:0;font-size:.92em}
+.upd{display:grid;gap:10px}
+.upd .mc{margin-top:0}
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.qmeta{display:flex;gap:6px;flex-wrap:wrap}
+.qmeta span{font-size:.8em;font-weight:800;padding:.15em .7em;border-radius:99px;background:var(--tint-purple)}
+.qmeta span.d{background:var(--tint-green)}
+.score{font-family:var(--display);font-weight:800;font-size:1.1em;font-variant-numeric:tabular-nums}
+.qprog{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:14px}
+.qprog i{display:block;height:100%;background:var(--green);width:0;transition:width .3s}
+.qcard{background:var(--paper);border:2px solid var(--line);border-radius:20px;padding:18px 22px}
+.qcard .stem{font-size:1.12em;font-weight:700;margin:0 0 12px}
+.opts{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.opts button{font:inherit;text-align:left;font-weight:700;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:10px 14px;cursor:pointer}
+.opts button.right{border-color:var(--green);background:var(--tint-green)}
+.opts button.wrong{border-color:var(--red);background:var(--tint-red);opacity:.75}
+.opts button.picked{border-color:var(--blue);background:var(--tint-blue)}
+.opts button:disabled{cursor:default}
+.numrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.numrow input{font:inherit;font-weight:800;font-size:1.2em;width:7ch;padding:.25em .5em;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+.act{font:inherit;font-weight:800;border:0;border-radius:12px;padding:.45em 1em;background:var(--blue);color:#fff;cursor:pointer}
+.act.sec{background:var(--tint-yellow);color:var(--ink)}
+.sort{display:grid;gap:8px}
+.sort .srow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border:2px solid var(--line);border-radius:12px;padding:6px 10px;background:var(--bg)}
+.sort .srow.ok{border-color:var(--green);background:var(--tint-green)}
+.sort .srow.bad{border-color:var(--red);background:var(--tint-red)}
+.fb{margin-top:12px;border-radius:14px;padding:10px 14px}
+.fb.h{background:var(--tint-blue)}
+.fb.ok{background:var(--tint-green)}
+.fb.no{background:var(--tint-red)}
+.qnav{display:flex;justify-content:flex-end;gap:8px;margin-top:12px;flex-wrap:wrap}
+.rank{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;margin:.1em 0}
+</style>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--blue)"></span><span style="background:var(--yellow)"></span><span style="background:var(--red)"></span><span style="background:var(--green)"></span><span style="background:var(--purple)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Educație civică, clasa a IV-a · Unitățile 1–6</p>
+   <h1>Dosarul Cetățeanului</h1>
+   <p class="lead">Recapitulăm cele șase unități pe scurt, apoi lucrăm cu exemple interactive: reguli, drepturi, valori și dileme. La final urmează 23 de misiuni care leagă civica de matematică, geografie, știință, istorie și limba română.</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →. Casetele „Manualul spune” arată ce trebuie să știi la școală; casetele „Context” adaugă ce s-a mai aflat între timp.</p>
+  </div>
+  <svg viewBox="0 0 220 240" aria-hidden="true">
+   <rect x="20" y="40" width="180" height="180" rx="12" fill="#2F6FD6"/>
+   <path d="M20 52 Q20 40 32 40 H80 L92 26 H188 Q200 26 200 38 V52Z" fill="#1F4FA3"/>
+   <rect x="34" y="62" width="152" height="146" rx="8" fill="var(--paper)"/>
+   <circle cx="110" cy="140" r="62" fill="none" stroke="#F6C431" stroke-width="8"/>
+   <circle cx="110" cy="140" r="40" fill="none" stroke="#E2433A" stroke-width="8"/>
+   <circle cx="110" cy="140" r="18" fill="#2E9D52"/>
+   <text x="110" y="86" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="800" font-size="16" fill="var(--ink)">LOCAL · ȚARĂ · EUROPA</text>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 DOSAR U1-U3 -->
+<section class="slide" aria-label="Dosarul pe scurt, unitățile 1 la 3">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Dosarul pe scurt (1/2)</span>
+  <h2>Unitățile 1–3</h2>
+  <div class="dossier">
+   <div class="box"><span class="tag" style="background:var(--blue)">U1 · Locuri de apartenență</span>
+    <ul>
+     <li><b>Comunitatea locală</b>: oamenii dintr-o localitate cu interese, credințe și norme comune. Localitate <b>urbană</b> sau <b>rurală</b>; <b>domiciliu</b> = locul unde locuiești statornic.</li>
+     <li><b>Țara natală</b>: însemne = drapel tricolor (albastru, galben, roșu, de la lance), <b>1 Decembrie</b>, stemă, sigiliu, imnul „Deșteaptă-te, române!”. Limba oficială: româna. Capitala: București. <b>Diaspora</b> = românii din afara țării.</li>
+     <li><b>UE</b>: 27 de state; România a intrat la <b>1 ianuarie 2007</b>. Însemne: 12 stele pe fond albastru, „Oda bucuriei”, <b>9 Mai</b>, euro. Deviza: „Unitate în diversitate”.</li>
+    </ul></div>
+   <div class="box"><span class="tag" style="background:var(--green)">U2 · Valori morale (I)</span>
+    <ul>
+     <li><b>Bine – Rău</b>: faptele bune te integrează în grup; cele rele creează relații negative.</li>
+     <li><b>Altruism – Egoism</b>: altruistul oferă timp, energie sau bunuri <b>fără să aștepte ceva în schimb</b>; egoistul nesocotește interesele altora.</li>
+     <li><b>Cinste – Necinste</b>: omul cinstit își asumă cuvintele și faptele.</li>
+     <li>Lecturi: „Vulturul”, „Sâmburele”, „Uriașul cel egoist”.</li>
+    </ul></div>
+   <div class="box"><span class="tag" style="background:var(--yellow);color:#1E2340">U3 · Valori morale (II)</span>
+    <ul>
+     <li><b>Respect – Lipsă de respect</b>: iei în considerare nevoile, gândurile și părerile altora; se arată prin gesturi, mimică, vorbe și fapte.</li>
+     <li><b>Responsabilitate</b>: îndeplinită, aduce încredere; neîndeplinită, atrage <b>sancțiuni</b>.</li>
+     <li><b>Solidaritate</b>: înțelegi o situație gravă și ajuți <b>voluntar</b>. Opusul: indiferența.</li>
+     <li><b>20 decembrie</b>: Ziua Internațională a Solidarității Umane.</li>
+    </ul></div>
+  </div>
+  <div class="tip y">🧩 <b>Firul roșu:</b> pentru orice dilemă morală pune întrebările din „Explozia solară” (manual p. 66): <b>Ce? Cine? Unde? Când? Cum?</b> și apoi încă una: <b>De ce?</b></div>
+ </div>
+</section>
+
+<!-- 3 DOSAR U4-U6 -->
+<section class="slide" aria-label="Dosarul pe scurt, unitățile 4 la 6">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Dosarul pe scurt (2/2)</span>
+  <h2>Unitățile 4–6</h2>
+  <div class="dossier">
+   <div class="box"><span class="tag" style="background:var(--purple)">U4 · Norme moral-civice (I)</span>
+    <ul>
+     <li><b>Normă</b> = model de acțiune sau regulă de comportament cu caracter obligatoriu. Normele morale sunt respectate de mulți oameni și devin modele.</li>
+     <li>Comportamentul în <b>familie</b>, în <b>școală și grupul de prieteni</b>, în <b>locuri publice</b>.</li>
+     <li>Nerespectarea normelor morale atrage <b>respingerea din partea grupului</b>; unele reguli din spațiul public sunt <b>sancționate prin lege</b>.</li>
+    </ul></div>
+   <div class="box"><span class="tag" style="background:var(--green)">U5 · Norme moral-civice (II)</span>
+    <ul>
+     <li><b>Prosocial</b>: efecte pozitive asupra altora (ajutorare, cooperare, competiție, toleranță, sprijin, voluntariat).</li>
+     <li><b>Antisocial</b>: nu respectă normele și încalcă drepturile altora (furie, ceartă, insultă, <b>calomnie</b>, răzbunare, bătaie). Conflictul poate fi verbal sau fizic.</li>
+     <li>Se învață de la <b>modele</b> și se poate schimba prin dezbateri și modele pozitive.</li>
+    </ul></div>
+   <div class="box"><span class="tag" style="background:var(--blue)">U6 · Drepturile copilului</span>
+    <ul>
+     <li><b>Declarația</b> drepturilor copilului (ONU, 1959); <b>Convenția</b> cu privire la drepturile copilului (1989), semnată de România în 1990.</li>
+     <li>Drepturi: viață, nume, cetățenie, familie, egalitate, liberă exprimare, asistență medicală, educație, odihnă și joacă.</li>
+     <li><b>UNICEF</b> susține respectarea drepturilor. În România ajută instituții de protecție a copilului și <b>Telefonul copilului</b>.</li>
+    </ul></div>
+  </div>
+ </div>
+</section>
+
+<!-- 4 CERCURILE APARTENENTEI -->
+<section class="slide" aria-label="Cercurile apartenenței">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Interactiv</span>
+  <h2>Cercurile apartenenței</h2>
+  <p>Aparținem mai multor comunități în același timp. Alege un cerc.</p>
+  <div class="tabs" id="ring-tabs">
+   <button type="button" aria-pressed="true" data-r="0"><span>🏘️</span>Local</button>
+   <button type="button" aria-pressed="false" data-r="1"><span>🇷🇴</span>România</button>
+   <button type="button" aria-pressed="false" data-r="2"><span>🇪🇺</span>Europa</button>
+  </div>
+  <div class="panel" id="ring-out" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 5 EXTINDERILE UE -->
+<section class="slide" aria-label="Extinderile Uniunii Europene">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Interactiv</span>
+  <h2>Cum a crescut Uniunea Europeană</h2>
+  <p>Apasă pe o dată și urmărește cum se schimbă numărul statelor membre (datele din lectura „Din istoria UE”, manual p. 21).</p>
+  <div class="tabs" id="eu-tabs"></div>
+  <div class="panel" aria-live="polite">
+   <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+    <div class="eu-big mono" id="eu-n">6</div>
+    <div style="min-width:0;flex:1"><b id="eu-eq"></b><div class="eu-track"><i id="eu-bar"></i></div><span style="color:var(--soft);font-weight:700">state membre (scara se oprește la 28)</span></div>
+   </div>
+   <p style="margin:.6em 0 .2em;font-weight:800" id="eu-lbl">Intrate atunci:</p>
+   <div class="chips" id="eu-chips"></div>
+   <p id="eu-note" style="font-weight:700;margin:.4em 0 0"></p>
+  </div>
+  <div class="tip g">🧠 <b>Calcul de verificare:</b> numerele din tabel se adună. Încearcă să prevezi numărul înainte să apeși pe o dată nouă, apoi compară.</div>
+ </div>
+</section>
+<!-- 6 VALORI -->
+<section class="slide" aria-label="Valorile morale">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Interactiv</span>
+  <h2>Șase valori, șase opuse</h2>
+  <p>Apasă pe o carte ca să vezi definiția din manual și lectura la care apare.</p>
+  <div class="flips" id="flips"></div>
+ </div>
+</section>
+
+<!-- 7 REGULI -->
+<section class="slide" aria-label="Lege, obicei sau valoare">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Interactiv</span>
+  <h2>Lege, obicei sau valoare personală?</h2>
+  <div class="rule3">
+   <div class="box"><h3>🏛️ Lege</h3><p>Obligatorie pentru toți. Încălcarea ei poate aduce sancțiuni (amendă, măsuri, uneori închisoare).</p></div>
+   <div class="box"><h3>🎎 Obicei</h3><p>Ce fac mulți oameni dintr-o comunitate, transmis în timp. Diferă de la familie la familie și de la zonă la zonă.</p></div>
+   <div class="box"><h3>💛 Valoare personală</h3><p>O alegere a ta și a familiei tale, pornind de la ce crezi că e bine.</p></div>
+  </div>
+  <p style="margin:.2em 0 .6em"><b>Sortează fiecare enunț.</b> O faptă poate fi în mai multe categorii (furtul e și normă morală, și interzis de lege); alege cea mai potrivită. <span class="mono" id="rule-tally" style="font-weight:800">0 din 8 din prima încercare</span></p>
+  <div id="rule-list"></div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>„Părinții și bunicii trebuie să fie respectați.” (U3, lecția 1) · „Nimic nu este mai detestabil decât respectul bazat pe teamă.” (Camus)</p></div>
+   <div><span class="lab">🌍 Context</span><p>Codul civil (art. 485) spune că <b>copilul datorează respect părinților săi, indiferent de vârstă</b>. Același cod (art. 483) spune că părinții își exercită autoritatea <b>în interesul copilului și cu respectul datorat persoanei lui</b>. Respectul merge deci în ambele sensuri. Față de bunici, legea nu folosește aceeași formulare; mulți copii îi respectă din afecțiune și din felul în care au fost crescuți.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 8 DREPTURI -->
+<section class="slide" aria-label="Drepturile copilului">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Interactiv</span>
+  <h2>Drepturi și îndatoriri</h2>
+  <p><b>1959</b> Declarația · <b>20 noiembrie 1989</b> Convenția ONU · <b>1990</b> România (ratificată prin Legea 18/1990). Convenția privește pe orice ființă umană <b>sub 18 ani</b>. Alege un drept din manual, apoi vezi un exemplu de îndatorire.</p>
+  <div class="tabs" id="rt-tabs"></div>
+  <div class="panel" id="rt-out" aria-live="polite"></div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>„Fiecărui drept îi revine o îndatorire pe care copiii, la rândul lor, trebuie să o respecte.” La evaluare, enunțul „Unui drept al copilului nu-i revine nicio îndatorire” este fals.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Îndatoririle există: a învăța, a respecta regulile și pe ceilalți. Dar <b>drepturile copilului nu se pierd</b> pentru că a greșit. Un copil care și-a uitat tema nu pierde dreptul la educație; poate urma o consecință potrivită vârstei. Convenția spune și că părerea copilului trebuie ascultată (art. 12), ținând cont de vârsta și maturitatea lui.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 9 CINE AJUTA -->
+<section class="slide" aria-label="Cine ne ajută">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Instituții și numere utile</span>
+  <h2>Cine ajută un copil</h2>
+  <div class="dossier">
+   <div class="box"><span class="tag" style="background:var(--green)">În casă și la școală</span>
+    <ul><li><b>Părinții</b> răspund în primul rând de creșterea copilului (Legea 272/2004).</li>
+     <li><b>Școala</b>: învățătoarea, profesorii, consilierul școlar.</li>
+     <li>Un <b>adult de încredere</b>: bunic, vecin, medic.</li></ul></div>
+   <div class="box"><span class="tag" style="background:var(--purple)">Instituții</span>
+    <ul><li><b>Autoritatea Națională pentru Protecția Drepturilor Copilului și Adopție</b> (la nivel național).</li>
+     <li><b>DGASPC</b>: direcția de asistență socială și protecția copilului din fiecare județ și sector.</li>
+     <li>Profesorii și alți specialiști trebuie să anunțe DGASPC dacă suspectează abuz sau neglijare.</li>
+     <li><b>UNICEF</b>: organizația ONU pentru copii.</li></ul></div>
+   <div class="box"><span class="tag" style="background:var(--red)">Numere de telefon</span>
+    <ul><li><b class="mono">116 111</b>: linie europeană de asistență pentru copii și părinți (e trecută și în manual, pagina a doua), gratuită.</li>
+     <li><b class="mono">119</b>: Telefonul Copilului, număr național gratuit, non-stop.</li>
+     <li><b class="mono">112</b>: pericol imediat (incendiu, accident, violență).</li></ul></div>
+  </div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Precossi neagă că e bătut: „Nu-i adevărat! Tatăl meu nu mă bate niciodată!” Lacrimile îi curg pe bancă. (U6, lecția 3)</p></div>
+   <div><span class="lab">🌍 Context</span><p>Uneori copiii se tem sau se rușinează să spună. <b>Nu este niciodată vina copilului</b> dacă un adult îl rănește. Poate vorbi cu un adult în care are încredere sau poate suna gratuit la 116 111 sau 119.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 10 ACTUALIZARI -->
+<section class="slide" aria-label="Ce s-a schimbat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#1E2340">Date actualizate</span>
+  <h2>Ce s-a schimbat din 2022</h2>
+  <p>Manualul e din 2022. La școală răspunzi ca în manual; mai jos vezi ce s-a întâmplat între timp.</p>
+  <div class="upd">
+   <div class="mc"><div class="m"><span class="lab">📘 Manualul spune</span><p>Euro a fost introdus în 19 state (p. 21).</p></div><div><span class="lab">🌍 Context</span><p>Azi sunt <b>21</b>: Croația (2023) și Bulgaria (1 ianuarie 2026). România folosește încă leul.</p></div></div>
+   <div class="mc"><div class="m"><span class="lab">📘 Manualul spune</span><p>Candidate: Turcia, Albania, Muntenegru, Serbia.</p></div><div><span class="lab">🌍 Context</span><p>Azi sunt <b>9 țări candidate</b>: Albania, Bosnia și Herțegovina, Georgia, Macedonia de Nord, Moldova, Muntenegru, Serbia, Turcia, Ucraina.</p></div></div>
+   <div class="mc"><div class="m"><span class="lab">📘 Manualul spune</span><p>Marea Britanie a părăsit alianța la 31 decembrie 2020.</p></div><div><span class="lab">🌍 Context</span><p>Ieșirea oficială a fost la <b>31 ianuarie 2020</b>; până la 31 decembrie 2020 a urmat o perioadă de tranziție. Pentru test, folosește data din manual.</p></div></div>
+   <div class="mc"><div class="m"><span class="lab">📘 Manualul spune</span><p>„Consiliul Europei, instituție a UE din care fac parte toți șefii de stat sau de guvern” (Evaluare U1).</p></div><div><span class="lab">🌍 Context</span><p>Descrierea se potrivește <b>Consiliului European</b>. <b>Consiliul Europei</b> e o organizație separată, cu 46 de state, care apără drepturile omului.</p></div></div>
+   <div class="mc"><div class="m"><span class="lab">📘 Manualul spune</span><p>Acordurile Schengen permit treptat circulația fără verificarea pașapoartelor.</p></div><div><span class="lab">🌍 Context</span><p>România e în Schengen: din <b>31 martie 2024</b> pe aer și mare, din <b>1 ianuarie 2025</b> și pe uscat (fără controale la frontierele cu Ungaria și Bulgaria).</p></div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 11 DILEME -->
+<section class="slide" aria-label="Dileme">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Gândește singur</span>
+  <h2>Trei dileme din manual</h2>
+  <p>Aici nu există un singur răspuns corect. Alege o variantă și citește întrebările care îți apar, apoi poți încerca alta.</p>
+  <div id="dil"></div>
+ </div>
+</section>
+
+<!-- 12 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile dosarului</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+</main>
+
+<nav class="bar" aria-label="Navigare prezentare">
+ <a class="home" href="../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
+ <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
+ <div class="dots" id="dots"></div>
+ <span class="count" id="count"></span>
+ <button class="nav" id="next" aria-label="Slide-ul următor">→</button>
+</nav>
+<script>
+(function(){
+  var KEY='civica-slide';
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
+  var cur=0;
+  function $(id){return document.getElementById(id)}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  slides.forEach(function(s,i){var b=document.createElement('button');b.setAttribute('aria-label','Mergi la slide-ul '+(i+1));b.onclick=function(){go(i)};dots.appendChild(b);});
+  function go(i){
+    if(i<0||i>=slides.length)return;
+    slides[cur].classList.remove('active');dots.children[cur].classList.remove('on');
+    cur=i;slides[cur].classList.add('active');dots.children[cur].classList.add('on');slides[cur].scrollTop=0;
+    prev.disabled=cur===0;next.disabled=cur===slides.length-1;count.textContent=(cur+1)+' / '+slides.length;
+    
+  }
+  prev.onclick=function(){go(cur-1)};next.onclick=function(){go(cur+1)};
+  document.addEventListener('keydown',function(e){
+    var t=e.target&&e.target.tagName;if(t==='INPUT'||t==='TEXTAREA')return;
+    if(e.key==='ArrowRight'||e.key==='PageDown')go(cur+1);
+    if(e.key==='ArrowLeft'||e.key==='PageUp')go(cur-1);
+  });
+  var sx=null,deck=$('deck');
+  deck.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  deck.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>60)go(cur+(dx<0?1:-1));sx=null;},{passive:true});
+
+  /* ---------- cercurile apartenentei ---------- */
+  var RINGS=[
+   '<h3>🏘️ Comunitatea locală</h3><ul><li>Oamenii dintr-o localitate (sat, comună, oraș) cu <b>interese, credințe și norme de viață comune</b>.</li><li>Instituții: primărie, poliție, școală, poștă. Ocupații diverse: profesori, doctori, notari, șoferi.</li><li>Relații de vecinătate, prietenie, colaborare, competiție, uneori conflict. Drepturi, dar și responsabilități.</li><li><b>Domiciliu</b> (model din manual): nume, județ, localitate, stradă, sector, cartier.</li></ul><div class="mc"><div class="m"><span class="lab">📘 Manualul spune</span><p>Obiceiurile și tradițiile populare „sunt păstrate și respectate de toți membrii localității”.</p></div><div><span class="lab">🌍 Context</span><p>Nicio lege nu te obligă să participi la o tradiție locală (Sorcova, colindele). Mulți aleg să le păstreze, iar cei care vin din altă regiune sau țară le pot învăța.</p></div></div>',
+   '<h3>🇷🇴 Țara natală</h3><ul><li><b>Drapel</b>: culorile pe verticală, de la lance: albastru, galben, roșu. <b>Ziua națională</b>: 1 Decembrie. <b>Stemă și sigiliu</b>. <b>Imn</b>: „Deșteaptă-te, române!”.</li><li>Limba oficială: româna (Constituția, art. 13). Stema și sigiliul se stabilesc prin lege organică (art. 12). Capitala: București.</li><li><b>Diaspora</b> = românii care trăiesc în afara granițelor. Pe teritoriul țării trăiesc și minorități: maghiari, romi, germani, ucraineni, turci, evrei, sârbi, greci, tătari.</li></ul><div class="mc"><div class="m"><span class="lab">📘 Manualul spune</span><p>„Țara […] nu se servește cu declarații de dragoste, ci cu muncă cinstită” (Sadoveanu). Simbolurile țării trebuie respectate.</p></div><div><span class="lab">🌍 Context</span><p>Oamenii își arată dragostea de țară în feluri diferite: muncă cinstită, grijă pentru natură, respect pentru colegi. Minoritățile au drepturi garantate de Constituție (art. 6, dreptul la identitate; art. 62, reprezentare în Parlament). În trecut au existat nedreptăți, de pildă robia romilor, abolită în 1855–1856.</p></div></div>',
+   '<h3>🇪🇺 Uniunea Europeană</h3><ul><li><b>27 de state membre</b>. România: 1 ianuarie 2007. Numele „Uniunea Europeană”: 1993.</li><li><b>Însemne</b>: drapel cu 12 stele aurii în cerc pe fond albastru, imnul „Oda bucuriei” (Beethoven, versuri de Schiller), <b>Ziua Europei: 9 Mai</b>, euro.</li><li>Deviza (4 mai 2000): <b>„Unitate în diversitate”</b>. Scopul: pace, dreptate, egalitate, prosperitate.</li></ul><div class="mc"><div class="m"><span class="lab">📘 Manualul spune</span><p>Euro a fost introdus în 19 state; Turcia, Albania, Muntenegru și Serbia sunt candidate.</p></div><div><span class="lab">🌍 Context</span><p>În 2026 euro e folosit în 21 de state (din 27 în UE), iar UE are 9 țări candidate. Vezi slide-ul „Ce s-a schimbat din 2022”.</p></div></div>'
+  ];
+  var rt=document.querySelectorAll('#ring-tabs button');
+  function ring(i){rt.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-r')==i?'true':'false')});$('ring-out').innerHTML=RINGS[i];}
+  rt.forEach(function(b){b.onclick=function(){ring(+b.getAttribute('data-r'))}});ring(0);
+
+  /* ---------- extinderile UE ---------- */
+  var EU=[
+   {y:'anii 1950',add:['Belgia','Franța','Germania','Italia','Luxemburg','Olanda'],note:'Cele șase state fondatoare ale Comunității Economice Europene (manualul spune „începând cu anul 1950”).'},
+   {y:'1973',add:['Danemarca','Irlanda','Marea Britanie'],note:'Numărul țărilor membre ajunge la nouă.'},
+   {y:'1981',add:['Grecia']},
+   {y:'1986',add:['Spania','Portugalia'],note:'La cinci ani după Grecia.'},
+   {y:'1995',add:['Austria','Finlanda','Suedia'],note:'Manualul amintește aici de acordurile Schengen, numite după un orășel din Luxemburg.'},
+   {y:'2004',add:['Cehia','Cipru','Estonia','Letonia','Lituania','Malta','Polonia','Slovacia','Slovenia','Ungaria'],note:'Cel mai mare val: zece state odată.'},
+   {y:'2007',add:['Bulgaria','România'],note:'România: 1 ianuarie 2007.'},
+   {y:'2013',add:['Croația'],note:'Cel mai recent stat intrat în UE.'},
+   {y:'2020',out:['Marea Britanie'],note:'Prima țară care pleacă. Manualul dă data de 31 decembrie 2020; ieșirea oficială a fost la 31 ianuarie 2020, urmată de o tranziție.'}
+  ];
+  var set={},counts=[],eqs=[];
+  EU.forEach(function(s,i){
+    var before=Object.keys(set).length;
+    (s.add||[]).forEach(function(n){set[n]=1});(s.out||[]).forEach(function(n){delete set[n]});
+    var n=Object.keys(set).length;counts.push(n);
+    eqs.push(i===0?String(n)+' state':before+(s.out?' − ':' + ')+(s.out?s.out.length:s.add.length)+' = '+n);
+  });
+  var et=$('eu-tabs');
+  EU.forEach(function(s,i){var b=document.createElement('button');b.type='button';b.textContent=s.y;b.setAttribute('aria-pressed','false');b.onclick=function(){euShow(i)};et.appendChild(b);});
+  function euShow(i){
+    var s=EU[i];[].forEach.call(et.children,function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});
+    $('eu-n').textContent=counts[i];$('eu-eq').textContent=eqs[i];$('eu-bar').style.width=Math.min(100,counts[i]/28*100)+'%';
+    $('eu-lbl').textContent=s.out?'Pleacă:':'Intrate atunci:';
+    $('eu-chips').innerHTML=(s.add||s.out).map(function(n){return '<span class="'+(s.out?'out':'')+'">'+esc(n)+'</span>'}).join('');
+    $('eu-note').textContent=s.note||'';
+  }
+  euShow(0);
+
+  /* ---------- valori ---------- */
+  var VAL=[
+   {t:'Bine ↔ Rău',c:'var(--green)',d:'Persoanele care fac fapte bune sunt acceptate în grupuri; faptele rele generează relații negative.',s:'Lectura: Povestea lui Harap-Alb (furnicile). Proverb: „Ce ție nu-ți place, altuia nu-i face.”'},
+   {t:'Altruism ↔ Egoism',c:'var(--blue)',d:'Altruistul oferă timp, energie și bunuri fără să aștepte ceva în schimb. Egoistul se preocupă exagerat de sine și nesocotește interesele altora.',s:'Lecturile: „Vulturul” (Tolstoi), „Uriașul cel egoist” (Wilde).'},
+   {t:'Cinste ↔ Necinste',c:'var(--yellow)',d:'Omul cinstit face fapte lăudabile și își asumă responsabilitatea pentru vorbe și fapte. Opusul este necinstea.',s:'Lectura: „Sâmburele” (Tolstoi). Fabula: „Corbul și vulpea”.'},
+   {t:'Respect ↔ Lipsă de respect',c:'var(--red)',d:'Respectul ia în considerare nevoile, gândurile, sentimentele și părerile altuia. Lipsa de respect înseamnă desconsiderarea celor din jur. Se manifestă față de sine, de lucruri, de oameni, de o idee sau o instituție.',s:'Lectura: „Soldații” (De Amicis).'},
+   {t:'Responsabilitate ↔ Lipsa ei',c:'var(--purple)',d:'Îndeplinirea responsabilităților aduce încredere și aprobare. Neîndeplinirea atrage sancțiuni. Responsabilitățile aparțin și persoanelor, și instituțiilor, și statului.',s:'Lectura: „Carnetul elevului”.'},
+   {t:'Solidaritate ↔ Lipsă de solidaritate',c:'var(--brown)',d:'Înțelegi o situație gravă și îi ajuți voluntar pe cei care au nevoie. Lipsa de solidaritate înseamnă indiferență față de problemele grave ale altora.',s:'Lectura: „Convalescența” (De Amicis). Ziua Solidarității Umane: 20 decembrie.'}
+  ];
+  var fl=$('flips');
+  VAL.forEach(function(v){
+    var b=document.createElement('button');b.type='button';b.className='flip';b.style.borderLeftColor=v.c;b.setAttribute('aria-expanded','false');
+    b.innerHTML='<h3>'+esc(v.t)+'</h3><small>Apasă pentru definiție</small><div class="back" hidden><p>'+esc(v.d)+'</p><p style="color:var(--soft);font-weight:700">'+esc(v.s)+'</p></div>';
+    b.onclick=function(){var bk=b.querySelector('.back'),open=bk.hidden;bk.hidden=!open;b.setAttribute('aria-expanded',open?'true':'false');b.querySelector('small').hidden=open;};
+    fl.appendChild(b);
+  });
+
+  /* ---------- lege / obicei / valoare ---------- */
+  var RO=['Lege','Obicei','Valoare personală'];
+  var RULES=[
+   {q:'Furtul este interzis și pedepsit.',a:0,h:'Poate duce la amendă sau privare de libertate?',e:'Lege (Codul penal). Este și normă morală („Să nu furi!”), dar sancțiunea vine din lege.'},
+   {q:'„Sărut-mâna, bunico!”',a:1,h:'Spun toți copiii așa, în toate familiile și zonele?',e:'Obicei. În unele familii și zone se spune așa, în altele „Bună ziua”. Nu există nicio lege despre asta.'},
+   {q:'Copilul datorează respect părinților săi, indiferent de vârstă.',a:0,h:'Atenție: și legile vorbesc despre familie, nu doar obiceiurile.',e:'Lege: Codul civil, art. 485. Iar art. 483 cere părinților să respecte persoana copilului.'},
+   {q:'Colindele și Sorcova la început de an.',a:1,h:'Se transmit din generație în generație într-o comunitate.',e:'Obicei (tradiție populară). Manualul numește Sorcova „tradiție populară transmisă din generație în generație”.'},
+   {q:'Donez haine pentru familii din zone inundate.',a:2,h:'Poate cineva să te oblige să donezi?',e:'Valoare personală: solidaritate. Manualul spune că oamenii ajută „în mod voluntar”.'},
+   {q:'Copiii sub 14 ani nu răspund penal.',a:0,h:'Este scris într-un cod al țării.',e:'Lege: Codul penal, art. 113. Nu înseamnă „nu se întâmplă nimic”: intervin familia, școala și serviciile de protecție a copilului.'},
+   {q:'Iert un coleg care mi-a greșit și îl invit la joacă.',a:2,h:'E o alegere a ta, nu o obligație.',e:'Valoare personală: nimeni nu te poate obliga să ierți; mulți aleg să o facă din înțelegere.'},
+   {q:'Orice copil are dreptul la învățătură.',a:0,h:'Gândește-te la Constituție și la Convenția ONU.',e:'Lege: Constituția (art. 32) și Convenția cu privire la drepturile copilului (art. 28).'}
+  ];
+  var tally=0,rl=$('rule-list');
+  RULES.forEach(function(r){
+    var row=document.createElement('div');row.className='sortrow';var tried=false,done=false;
+    row.innerHTML='<p>'+esc(r.q)+'</p><div class="seg"></div><p class="note" hidden></p>';
+    var seg=row.querySelector('.seg'),note=row.querySelector('.note');
+    RO.forEach(function(name,i){
+      var b=document.createElement('button');b.type='button';b.textContent=name;
+      b.onclick=function(){
+        if(done)return;
+        if(i===r.a){b.className='good';done=true;row.classList.add('ok');if(!tried){tally++;$('rule-tally').textContent=tally+' din 8 din prima încercare';}note.hidden=false;note.textContent='✅ '+r.e;[].forEach.call(seg.children,function(x){x.disabled=true});}
+        else{tried=true;b.className='bad';b.disabled=true;note.hidden=false;note.textContent='💡 '+r.h;}
+      };
+      seg.appendChild(b);
+    });
+    rl.appendChild(row);
+  });
+
+  /* ---------- drepturi si indatoriri ---------- */
+  var RT=[
+   ['Educație','Să învăț și să respect regulile școlii și bunurile ei (de exemplu, nu atingem exponatele din muzeu).'],
+   ['Liberă exprimare','Să ascult și părerile celorlalți și să le respect dreptul de a vorbi.'],
+   ['Odihnă și joacă','Să mă joc fără să rănesc sau să deranjez pe alții și să respect regulile jocului.'],
+   ['Asistență medicală','Să respect sfaturile medicului și regulile de igienă.'],
+   ['Egalitate','Să nu jignesc și să nu las pe nimeni deoparte din cauza religiei, limbii sau a altor deosebiri.'],
+   ['Nume, cetățenie, familie','Să respect legile țării și regulile familiei.'],
+   ['Viață','Să respect regulile de siguranță, pentru mine și pentru ceilalți.']
+  ];
+  var rtt=$('rt-tabs');
+  RT.forEach(function(r,i){var b=document.createElement('button');b.type='button';b.textContent=r[0];b.setAttribute('aria-pressed','false');b.onclick=function(){[].forEach.call(rtt.children,function(x,j){x.setAttribute('aria-pressed',j===i?'true':'false')});$('rt-out').innerHTML='<p style="margin:0 0 .3em"><b>Dreptul:</b> '+esc(r[0].toLowerCase())+'</p><p style="margin:0"><b>Exemplu de îndatorire:</b> '+esc(r[1])+'</p>';};rtt.appendChild(b);});
+  $('rt-out').innerHTML='<p style="margin:0;color:var(--soft)">Alege un drept de mai sus.</p>';
+
+  /* ---------- dileme ---------- */
+  var DIL=[
+   {t:'Testul ascuns (U2, lecția 3)',s:'Un elev le ascunde părinților testul cu calificativul insuficient. Un prieten îi susține comportamentul, un altul le spune părinților.',o:[
+     ['Îl susțin pe elevul care ascunde testul','În joc: loialitatea față de prieten, dar și cinstea și responsabilitatea. Întreabă-te: ce se întâmplă cu încrederea părinților când vor afla? Cum se va simți elevul peste o săptămână?'],
+     ['Le-aș spune părinților','În joc: cinstea și grija pentru prieten, dar și încrederea dintre prieteni. Întreabă-te: l-ai fi putut convinge mai întâi să le spună singur? Ce ar însemna să-l ajuți să repare situația?'],
+     ['Aș vorbi mai întâi cu elevul','În joc: prietenia și cinstea. Întreabă-te: ce faci dacă nu vrea să le spună? Cât timp aștepți?']]},
+   {t:'Excursia (U5, lecția 1)',s:'Se organizează o excursie, dar un coleg cu o situație financiară grea nu poate participa. Unii colegi vor să-l ajute, alții spun că ar fi cheltuieli prea mari.',o:[
+     ['Strângem bani pentru el','În joc: solidaritatea. Întreabă-te: cum se simte colegul dacă toată clasa află? Poate ajutorul să fie dat discret?'],
+     ['Vorbim cu învățătoarea despre cum să ajutăm','În joc: responsabilitatea și respectul. Întreabă-te: ce rol au școala și părinții? Ce soluții ar mai exista în afară de bani?'],
+     ['Alegem o excursie mai ieftină, la care poate veni toată clasa','În joc: egalitatea și cooperarea. Întreabă-te: ceilalți colegi ar accepta? Cum votați corect?']]},
+   {t:'Emilia și Tudor (U3, lecția 3)',s:'Tudor și-a fracturat piciorul la un meci. Mihaela propune să-l vizitezi, dar Emilia refuză: nu-i place sportul și spune că Tudor e vinovat.',o:[
+     ['Emilia are dreptul să refuze','În joc: libertatea de a alege. Manualul spune că solidaritatea este voluntară. Întreabă-te: mai contează cine e vinovat când cineva are nevoie de prieteni?'],
+     ['Emilia ar fi putut să meargă măcar o dată','În joc: solidaritatea. Întreabă-te: o poți convinge fără să o forțezi? Ce ar câștiga Tudor?'],
+     ['Eu aș merge și i-aș povesti Emiliei cum a fost','În joc: solidaritatea și înțelegerea. Întreabă-te: ce ar putea face Emilia altfel decât o vizită?']]}
+  ];
+  var dh=$('dil');
+  DIL.forEach(function(d){
+    var box=document.createElement('div');box.className='panel';box.style.marginBottom='14px';
+    box.innerHTML='<h3>'+esc(d.t)+'</h3><p>'+esc(d.s)+'</p><div class="opts"></div><div class="fb h" hidden></div>';
+    var op=box.querySelector('.opts'),fb=box.querySelector('.fb');
+    d.o.forEach(function(x,i){var b=document.createElement('button');b.type='button';b.textContent=x[0];b.onclick=function(){[].forEach.call(op.children,function(y){y.classList.remove('picked')});b.classList.add('picked');fb.hidden=false;fb.textContent=x[1];};op.appendChild(b);});
+    dh.appendChild(box);
+  });
+
+  var start=0;
+  slides[0].classList.add('active');dots.children[0].classList.add('on');go(start);
+  window.__civ={esc:esc,$:$};
+})();
+(function(){
+  var C=window.__civ,$=C.$,esc=C.esc;
+  var Q=[
+   {t:'mcq',u:'U1',s:'Civică',q:'Care sunt culorile drapelului României, începând de la lance?',o:['Roșu, galben, albastru','Albastru, galben, roșu','Galben, albastru, roșu','Albastru, roșu, galben'],a:1,h:'Lancea este lângă prăjina drapelului. Gândește-te la ordinea din imnul culorilor: începe cu cerul.',e:'Albastru, galben, roșu, pe verticală (Constituția, art. 12).'},
+   {t:'num',u:'U1',s:'Matematică',q:'România a intrat în UE la 1 ianuarie 2007. Câți ani se împlinesc de atunci până la 1 ianuarie 2027?',a:20,h:'Scade: 2027 − 2007.',e:'2027 − 2007 = 20 de ani.'},
+   {t:'num',u:'U1',s:'Matematică + Istorie',q:'Înainte de 2004, UE avea 15 state membre (după 1995). În 2004 au intrat 10 state odată. Câte state membre erau după 2004?',a:25,h:'Adună cele două numere.',e:'15 + 10 = 25. Apoi 2007 (+2) a dus numărul la 27.'},
+   {t:'mcq',u:'U1',s:'Civică',q:'Care dintre acestea NU este un însemn al Uniunii Europene?',o:['Drapelul cu 12 stele galbene pe fond albastru','„Oda bucuriei”','Ziua de 9 Mai','Ziua de 1 Decembrie'],a:3,h:'Una dintre date este sărbătoarea țării noastre, nu a Europei.',e:'1 Decembrie este Ziua națională a României. Ziua Europei este 9 Mai.'},
+   {t:'mcq',u:'U1',s:'Limba română',q:'Care este deviza Uniunii Europene?',o:['Toți pentru unul','Unitate în diversitate','Pace și prosperitate pentru toți','Dreptate și egalitate'],a:1,h:'Statele sunt diferite, dar rămân împreună.',e:'Deviza UE, stabilită în anul 2000, este „Unitate în diversitate”.'},
+   {t:'mcq',u:'U1',s:'Civică',q:'Cum se numește instituția UE din care fac parte toți șefii de stat sau de guvern ai statelor membre?',o:['Consiliul European','Consiliul Europei','Parlamentul European','Comisia Europeană'],a:0,h:'Atenție la un singur cuvânt: nu este „Europei”, ci altă formă a cuvântului.',e:'Consiliul European. În manual apare scris „Consiliul Europei”, dar acesta este o organizație separată (46 de state, drepturile omului).'},
+   {t:'num',u:'U1',s:'Matematică',q:'La 1 decembrie 2026, UE are 27 de state membre, iar 21 dintre ele folosesc euro. Câte state membre nu folosesc euro?',a:6,h:'Scade numărul statelor cu euro din total.',e:'27 − 21 = 6 (printre ele, România, care folosește leul).'},
+   {t:'mcq',u:'U2',s:'Civică',q:'Un copil donează jucăriile lui unor copii din alt oraș, fără să aștepte nimic în schimb. Ce valoare arată?',o:['Egoism','Altruism','Necinste','Lipsă de respect'],a:1,h:'Cuvântul vine de la „alții”.',e:'Altruismul: oferi timp, energie sau bunuri fără să aștepți ceva în schimb.'},
+   {t:'mcq',u:'U2',s:'Limba română',q:'Care este cuvântul opus lui „egoist”?',o:['Cinstit','Altruist','Îndrăzneț','Singuratic'],a:1,h:'Gândește-te la titlurile lecturilor: „Uriașul cel egoist” versus un personaj care dăruiește.',e:'Opusul egoistului este altruistul.'},
+   {t:'mcq',u:'U3',s:'Civică + Lege',q:'Codul civil (art. 485) spune că un copil datorează respect…',o:['doar profesorilor','părinților săi, indiferent de vârstă','doar celor mai mari de 18 ani','doar bunicilor'],a:1,h:'Este articolul despre familie. Același cod spune că și părinții trebuie să respecte persoana copilului.',e:'Copilul datorează respect părinților săi, indiferent de vârstă. Respectul merge în ambele sensuri (art. 483).'},
+   {t:'num',u:'U3',s:'Matematică',q:'Convenția ONU a drepturilor copilului este din 20 noiembrie 1989, iar Ziua Solidarității Umane este pe 20 decembrie. Câte zile trec de la 20 noiembrie la 20 decembrie?',a:30,h:'Noiembrie are 30 de zile. De la 20 noiembrie la 20 decembrie ai exact o lună.',e:'Noiembrie are 30 de zile, deci între cele două date sunt 30 de zile.'},
+   {t:'mcq',u:'U4',s:'Civică',q:'Ce este o normă?',o:['O părere personală','Un model de acțiune sau o regulă de comportament cu caracter obligatoriu','O glumă dintre prieteni','Un cadou'],a:1,h:'Cuvântul cheie din manual este „obligatoriu”.',e:'Norma este un model de acțiune sau o regulă de comportament cu caracter obligatoriu.'},
+   {t:'sort',u:'U6',s:'Istorie',q:'Pune evenimentele în ordine cronologică (1 = cel mai vechi).',items:[['Declarația drepturilor copilului (ONU)',1],['Convenția cu privire la drepturile copilului',2],['România ratifică Convenția',3],['România intră în UE',4]],h:'Declarația este mai veche decât Convenția. România ratifică Convenția în anul după adoptarea ei.',e:'1959 → 1989 → 1990 → 2007.'},
+   {t:'num',u:'U4',s:'Civică + Lege',q:'Sub ce vârstă (în ani) copiii nu răspund penal, conform Codului penal (art. 113)?',a:14,h:'Este o vârstă cu două cifre, mai mică decât 18.',e:'Sub 14 ani nu există răspundere penală; intervin însă familia, școala și serviciile de protecție a copilului.'},
+   {t:'mcq',u:'U5',s:'Civică',q:'Care este un comportament prosocial?',o:['Calomnia','Răzbunarea','Cooperarea','Insulta'],a:2,h:'Prosocial = cu efecte pozitive pentru alții.',e:'Cooperarea. Celelalte sunt comportamente antisociale.'},
+   {t:'mcq',u:'U5',s:'Civică',q:'Un coleg răspândește zvonuri false despre altul. Cum se numește acest comportament antisocial?',o:['Calomnie','Toleranță','Voluntariat','Sprijin'],a:0,h:'Este în lista cuvintelor din manual care încep cu „c” și au legătură cu minciuna.',e:'Calomnia: afirmații false care strică reputația cuiva.'},
+   {t:'num',u:'U6',s:'Matematică',q:'Convenția privește persoanele sub 18 ani. Tu ai 10 ani. Câți ani mai ai până la 18?',a:8,h:'18 − 10.',e:'18 − 10 = 8 ani.'},
+   {t:'mcq',u:'U6',s:'Civică',q:'Enunțul „Unui drept al copilului nu-i revine nicio îndatorire” este…',o:['adevărat','fals'],a:1,h:'Citește din nou ce spune manualul despre drepturi.',e:'Fals: fiecărui drept îi revine o îndatorire. Dar drepturile copilului nu se pierd dacă greșește.'},
+   {t:'mcq',u:'U6',s:'Civică',q:'Ce număr suni dacă este pericol imediat (incendiu, accident, violență)?',o:['119','112','116 111','118'],a:1,h:'Numărul de urgență unic european.',e:'112. Telefonul Copilului este 119, iar linia europeană pentru copii și părinți este 116 111.'},
+   {t:'mcq',u:'U6',s:'Civică',q:'Un copil se simte speriat și nu știe cui să spună. Care este cea mai bună variantă?',o:['Nu spune nimănui','Vorbește cu un adult de încredere sau sună gratuit la 116 111 sau 119','Așteaptă să treacă singur','Postează pe internet detalii personale'],a:1,h:'Caută varianta în care copilul cere ajutor.',e:'Nu este niciodată vina copilului. Poate vorbi cu un adult de încredere sau suna gratuit la 116 111 / 119.'},
+   {t:'num',u:'Actualizări',s:'Matematică',q:'Manualul spune că euro e în 19 state. Din 2022, Croația și Bulgaria au adoptat și ele euro. Câte state folosesc euro acum?',a:21,h:'19 + 2.',e:'19 + 2 = 21 de state.'},
+   {t:'mcq',u:'Actualizări',s:'Geografie',q:'Din ce dată nu se mai fac controale la frontierele terestre dintre România și celelalte state din Schengen?',o:['1 ianuarie 2007','31 martie 2024','1 ianuarie 2025','1 decembrie 2018'],a:2,h:'Pe 31 martie 2024 a început doar pe aer și pe mare. A urmat și uscatul.',e:'Din 1 ianuarie 2025 (pe aer și mare: din 31 martie 2024).'},
+   {t:'num',u:'U1',s:'Istorie + Matematică',q:'Ziua națională, 1 Decembrie, amintește de Marea Unire din 1918. Câți ani se împlinesc la 1 decembrie 2026?',a:108,h:'Scade: 2026 − 1918.',e:'2026 − 1918 = 108 ani.'}
+  ];
+  var MAX=Q.length*2,host=$('qhost'),bar=$('qbar'),sc=$('qscore');
+  var i=0,score=0,pts=[];
+  function shuffle(a){a=a.slice();for(var k=a.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1)),t=a[k];a[k]=a[j];a[j]=t}return a}
+  function setScore(){sc.textContent=score+' puncte'}
+  function render(){
+    setScore();bar.style.width=(i/Q.length*100)+'%';
+    if(i>=Q.length)return finish();
+    var q=Q[i],miss=false,hinted=false,done=false;
+    host.innerHTML='<div class="qcard"><div class="qmeta"><span>Misiunea '+(i+1)+' din '+Q.length+'</span><span class="d">'+esc(q.s)+'</span><span>'+esc(q.u)+'</span></div><p class="stem" style="margin-top:.7em">'+esc(q.q)+'</p><div id="qbody"></div><div class="fb h" id="qhint" hidden></div><div class="fb" id="qfb" hidden aria-live="polite"></div><div class="qnav"><button class="act sec" id="qh" type="button">💡 Indiciu (valorează 1 punct)</button><button class="act" id="qn" type="button" hidden></button></div></div>';
+    var body=$('qbody'),hint=$('qhint'),fb=$('qfb'),hb=$('qh'),nb=$('qn');
+    hb.onclick=function(){hinted=true;hint.hidden=false;hint.textContent='💡 '+q.h;hb.disabled=true;};
+    function win(){
+      done=true;var p=(miss||hinted)?1:2;pts[i]=p;score+=p;setScore();
+      fb.hidden=false;fb.className='fb ok';fb.textContent='✅ '+(p===2?'+2 puncte. ':'+1 punct. ')+q.e;
+      hb.hidden=true;hint.hidden=true;nb.hidden=false;nb.textContent=i===Q.length-1?'Vezi rezultatul':'Următoarea →';nb.focus();
+    }
+    function lose(){
+      done=true;pts[i]=0;fb.hidden=false;fb.className='fb no';fb.textContent='📖 Fără puncte de data asta. '+q.e;hb.hidden=true;hint.hidden=true;nb.hidden=false;nb.textContent=i===Q.length-1?'Vezi rezultatul':'Următoarea →';
+    }
+    nb.onclick=function(){i++;render();window.scrollTo(0,0)};
+    if(q.t==='mcq'){
+      var op=document.createElement('div');op.className='opts';body.appendChild(op);
+      var order=shuffle(q.o.map(function(x,k){return k}));
+      if(q.o.length===2)order=[0,1];
+      order.forEach(function(k){
+        var b=document.createElement('button');b.type='button';b.textContent=q.o[k];
+        b.onclick=function(){
+          if(done)return;
+          if(k===q.a){b.classList.add('right');[].forEach.call(op.children,function(x){x.disabled=true});win();}
+          else{miss=true;b.classList.add('wrong');b.disabled=true;fb.hidden=false;fb.className='fb h';fb.textContent='Nu chiar. Citește din nou și încearcă altă variantă (vei primi cel mult 1 punct).';}
+        };
+        op.appendChild(b);
+      });
+    }else if(q.t==='num'){
+      body.innerHTML='<div class="numrow"><input id="qin" type="text" inputmode="numeric" autocomplete="off" aria-label="Răspunsul tău"><button class="act" id="qok" type="button">Verifică</button><button class="act sec" id="qgive" type="button">Nu știu</button></div>';
+      var inp=$('qin');
+      function check(){
+        if(done)return;var v=parseFloat(inp.value.replace(',','.'));
+        if(isNaN(v)){fb.hidden=false;fb.className='fb h';fb.textContent='Scrie un număr.';return}
+        if(v===q.a){inp.disabled=true;$('qok').disabled=true;$('qgive').disabled=true;win();}
+        else{miss=true;fb.hidden=false;fb.className='fb h';fb.textContent='Nu chiar. Recalculează și încearcă din nou (vei primi cel mult 1 punct).';inp.select();}
+      }
+      $('qok').onclick=check;$('qgive').onclick=function(){if(done)return;inp.disabled=true;$('qok').disabled=true;$('qgive').disabled=true;lose();};
+      inp.addEventListener('keydown',function(e){if(e.key==='Enter')check()});
+    }else{
+      var sort=document.createElement('div');sort.className='sort';body.appendChild(sort);
+      var items=shuffle(q.items),sels=[];
+      items.forEach(function(it){
+        var r=document.createElement('div');r.className='srow';
+        var sp=document.createElement('span');sp.textContent=it[0];
+        var sel=document.createElement('select');sel.setAttribute('aria-label','Poziția pentru '+it[0]);
+        var d=document.createElement('option');d.value='';d.textContent='?';sel.appendChild(d);
+        for(var n=1;n<=items.length;n++){var o=document.createElement('option');o.value=n;o.textContent=n;sel.appendChild(o);}
+        sel.style.cssText='font:inherit;font-weight:800;padding:.2em .4em;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--ink)';
+        r.appendChild(sp);r.appendChild(sel);sort.appendChild(r);sels.push([r,sel,it[1]]);
+      });
+      var vb=document.createElement('button');vb.type='button';vb.className='act';vb.textContent='Verifică ordinea';vb.style.marginTop='10px';
+      vb.onclick=function(){
+        if(done)return;var all=true,ok=true;
+        sels.forEach(function(s){var v=parseInt(s[1].value,10);if(!v){all=false;return}if(v===s[2]){s[0].className='srow ok'}else{s[0].className='srow bad';ok=false}});
+        if(!all){fb.hidden=false;fb.className='fb h';fb.textContent='Alege o poziție pentru fiecare eveniment.';return}
+        if(ok){vb.disabled=true;sels.forEach(function(s){s[1].disabled=true});win();}
+        else{miss=true;fb.hidden=false;fb.className='fb h';fb.textContent='Nu chiar: cele marcate cu roșu sunt la locul greșit. Mai încearcă (cel mult 1 punct).';}
+      };
+      body.appendChild(vb);
+    }
+  }
+  function finish(){
+    bar.style.width='100%';setScore();
+    var r=score>=Math.round(MAX*.9)?['Cetățean exemplar','🏆']:score>=Math.round(MAX*.7)?['Consilier local','🥇']:score>=Math.round(MAX*.45)?['Cetățean activ','🥈']:['Cetățean în formare','🌱'];
+    var rev=[];Q.forEach(function(q,k){if(pts[k]<2)rev.push('<li><b>Misiunea '+(k+1)+'</b> ('+esc(q.u)+'): '+esc(q.e)+'</li>')});
+    host.innerHTML='<div class="qcard" style="text-align:center"><div style="font-size:3rem">'+r[1]+'</div><div class="rank">'+r[0]+'</div><p style="font-size:1.2em;font-weight:800">'+score+' din '+MAX+' puncte</p>'+(rev.length?'<div style="text-align:left"><p style="font-weight:800;margin-bottom:.2em">De revăzut (ai luat mai puțin de 2 puncte):</p><ul>'+rev.join('')+'</ul></div>':'<p>Ai luat punctajul maxim la toate misiunile. Bravo!</p>')+'<div class="qnav" style="justify-content:center"><button class="act" id="qre" type="button">Reîncepe misiunile</button></div></div>';
+    $('qre').onclick=function(){i=0;score=0;pts=[];render();};
+  }
+  render();
+})();
+</script>
+
+</body></html>

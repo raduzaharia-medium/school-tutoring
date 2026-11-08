@@ -1,0 +1,504 @@
+<!doctype html><html lang="ro"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
+</head><body>
+<title>Sistemul Solar. Planetele</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F7FF; --paper:#FFFFFF; --ink:#1E2340; --soft:#4A5078; --line:#D5DDF0;
+  --red:#E2433A; --green:#2E9D52; --blue:#2F6FD6; --yellow:#F6C431; --purple:#6B4BC4;
+  --tint-red:#FDE6E4; --tint-green:#E1F4E7; --tint-blue:#E2ECFC; --tint-yellow:#FFF4CF; --tint-purple:#ECE6FA;
+  --night:#1F2A5C; --day:#FFE08A; --space:#0F1432;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+    --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+    --night:#0B1030; --day:#C9A640; --space:#080B20; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+  --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+  --night:#0B1030; --day:#C9A640; --space:#080B20; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%}
+body{
+  height:100%;margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;font-weight:500;
+  font-size:clamp(16px,1.05vw + 10px,21px);line-height:1.5;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+h1,h2,h3,h4{font-family:"Baloo 2","Trebuchet MS",system-ui,sans-serif;line-height:1.1;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.7rem,2.6vw + .6rem,2.8rem);font-weight:800;margin-bottom:.35em}
+h3{font-size:1.2em;font-weight:700}
+p{margin:.3em 0 .7em}
+b,strong{font-weight:800}
+.deck{flex:1;position:relative;min-height:0}
+.slide{
+  position:absolute;inset:0;overflow-y:auto;display:none;
+  padding-block:clamp(18px,3vw,48px) 24px;
+  padding-left:max(16px,env(safe-area-inset-left,0px),min(5vw,80px));
+  padding-right:max(16px,env(safe-area-inset-right,0px),min(5vw,80px));
+}
+.slide.active{display:block;animation:in .35s ease-out}
+@keyframes in{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slide.active{animation:none}}
+.wrap{max-width:1080px;margin:0 auto}
+.lead{font-size:1.15em;color:var(--soft);max-width:60ch}
+.badge{display:inline-block;font-weight:800;font-size:.85em;padding:.2em .8em;border-radius:99px;margin-bottom:.8em;color:#fff}
+.src{font-size:.8em;color:var(--soft);font-weight:700}
+.bar{
+  display:flex;align-items:center;gap:12px;padding-block:10px;
+  padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px));
+  background:var(--paper);border-top:2px solid var(--line);
+}
+button{font-family:inherit}
+.bar button.nav{font:inherit;font-weight:800;border:0;border-radius:14px;padding:.55em 1.1em;cursor:pointer;background:var(--blue);color:#fff;min-width:48px}
+.bar button.nav:disabled{opacity:.35;cursor:default}
+.dots{flex:1;display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.dots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
+.dots button.on{background:var(--red);transform:scale(1.3)}
+.count{font-weight:800;color:var(--soft);min-width:4.5ch;text-align:center}
+button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.cover{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;min-height:100%}
+.cover h1{font-size:clamp(2.2rem,4.6vw + .5rem,4.4rem);font-weight:800;margin:.2em 0 .3em}
+.stripes{display:flex;height:14px;border-radius:8px;overflow:hidden;max-width:420px;margin-bottom:1em}
+.stripes span{flex:1}
+.cover svg{width:100%;height:auto;max-width:420px;justify-self:center}
+@media (max-width:760px){.cover{grid-template-columns:1fr}.cover svg{max-width:260px;margin:0 auto}}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.box{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:18px 20px;min-width:0}
+.box .emo{font-size:2.2em;line-height:1;display:block;margin-bottom:.25em}
+.tip{border-radius:18px;padding:14px 20px;margin-top:18px;border-left:8px solid}
+.tip.y{background:var(--tint-yellow);border-color:var(--yellow)}
+.tip.g{background:var(--tint-green);border-color:var(--green)}
+.tip.b{background:var(--tint-blue);border-color:var(--blue)}
+.tip.r{background:var(--tint-red);border-color:var(--red)}
+.q{display:flex;gap:16px;align-items:center;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:14px 20px;margin-bottom:12px;font-size:1.1em;font-weight:700}
+.q .mark{flex:none;width:2.2em;height:2.2em;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:"Baloo 2",sans-serif;font-weight:800;font-size:1.1em}
+.ladder{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 6px}
+.step{background:var(--tint-blue);border-radius:12px;padding:.35em .8em;font-weight:800;text-align:center}
+.step small{display:block;font-weight:700;color:var(--soft);font-size:.72em}
+.arrow{color:var(--soft);font-weight:800}
+/* manual vs context */
+.dual{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;margin-bottom:14px}
+.mb,.ctx{border-radius:18px;padding:14px 18px;border:2px solid;min-width:0}
+.mb{background:var(--tint-purple);border-color:var(--purple)}
+.ctx{background:var(--tint-green);border-color:var(--green)}
+.mb h4,.ctx h4{font-size:1.02em;margin-bottom:.3em}
+.mb p,.ctx p{margin:.2em 0;font-size:.97em}
+/* generic buttons */
+.btn{font:inherit;font-weight:800;border:0;border-radius:12px;padding:.45em 1em;cursor:pointer;background:var(--blue);color:#fff}
+.btn.alt{background:var(--tint-yellow);color:var(--ink)}
+.btn.ghost{background:var(--tint-blue);color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.chip{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.35em .9em;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+/* reveal/quiz */
+.item{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:14px 18px;margin-bottom:12px}
+.item p{margin:0 0 .4em;font-weight:700}
+.item .num{display:inline-grid;place-items:center;width:1.8em;height:1.8em;border-radius:50%;background:var(--purple);color:#fff;font-weight:800;font-size:.85em;margin-right:.5em}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.reveal,.hintbtn,.ansbtn{font:inherit;font-weight:800;border:0;border-radius:12px;padding:.35em .9em;background:var(--tint-yellow);color:var(--ink);cursor:pointer}
+.ansbtn{background:var(--tint-blue)}
+.hint{margin-top:8px;background:var(--tint-yellow);border-radius:12px;padding:.4em .8em;font-weight:700}
+.ans{margin-top:8px;color:var(--ink);background:var(--tint-green);border-radius:12px;padding:.5em .9em}
+.ans .why{display:block;color:var(--soft);font-weight:600;margin-top:.2em}
+.selfscore{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px;font-weight:700}
+.selfscore button{font:inherit;font-weight:800;border:0;border-radius:12px;padding:.3em .8em;cursor:pointer}
+.selfscore .ok{background:var(--green);color:#fff}
+.selfscore .no{background:var(--tint-red);color:var(--ink)}
+.selfscore .done{color:var(--soft)}
+.scorebig{font-family:"Baloo 2",sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:800;line-height:1}
+.ans-inline{display:inline-block}
+/* tables */
+.tblwrap{overflow-x:auto;max-width:100%}
+table.t{border-collapse:collapse;width:100%;background:var(--paper);border-radius:14px;overflow:hidden}
+table.t th,table.t td{border:2px solid var(--line);padding:.45em .7em;text-align:left;vertical-align:top}
+table.t th{background:var(--tint-blue)}
+/* tree */
+.tree{display:flex;flex-direction:column;align-items:center;gap:10px}
+.tree .root{background:var(--blue);color:#fff;font-family:"Baloo 2",sans-serif;font-weight:800;font-size:1.3em;border-radius:16px;padding:.3em 1.2em}
+.tree .branches{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;width:100%}
+.tree .br{background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:12px 14px;min-width:0}
+.tree .br h3{margin-bottom:.2em}
+.tree .br p{margin:.1em 0;font-size:.95em}
+.tree .stem{width:4px;height:18px;background:var(--line);border-radius:2px}
+svg text{font-family:"Nunito",sans-serif}
+.svgbox{background:var(--space);border-radius:18px;padding:6px;max-width:100%;overflow-x:auto}
+.svgbox svg{width:100%;min-width:560px;height:auto;display:block}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@media (prefers-reduced-motion:reduce){.shake{animation:none}}
+</style>
+<main class="deck" id="deck">
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Științe ale naturii · Unitatea 2 · Lecția 1 · <span style='white-space:nowrap'>manual pp. 16–17</span></p>
+   <h1>Sistemul Solar. Planetele</h1>
+   <p class="lead">Ce este o stea, ce este o planetă și în ce ordine stau în jurul Soarelui.</p>
+   <p style="color:var(--soft)">Folosește săgețile de jos sau tastele ← → ca să mergi mai departe.</p>
+  </div>
+  <svg viewBox="0 0 300 300" aria-hidden="true">
+ <rect width="300" height="300" rx="28" fill="var(--space)"/>
+ <circle cx="40" cy="150" r="64" fill="#F6A623"/><circle cx="40" cy="150" r="52" fill="#FFD04A"/>
+ <circle cx="125" cy="150" r="6" fill="#B0A59A"/>
+ <circle cx="152" cy="150" r="10" fill="#E5B76A"/>
+ <circle cx="184" cy="150" r="11" fill="#3E7BD9"/><circle cx="184" cy="150" r="11" fill="none" stroke="#5DBB63" stroke-width="3" stroke-dasharray="10 12"/>
+ <circle cx="214" cy="150" r="8" fill="#D2603A"/>
+ <circle cx="246" cy="150" r="22" fill="#D9A066"/>
+ <circle cx="282" cy="150" r="14" fill="#E7D08A"/><ellipse cx="282" cy="150" rx="22" ry="5" fill="none" stroke="#E7D08A" stroke-width="3"/>
+ <path d="M20 240 Q150 205 285 240" fill="none" stroke="#fff" stroke-opacity=".25" stroke-dasharray="4 6"/>
+ <g fill="#fff" opacity=".8"><circle cx="90" cy="40" r="2"/><circle cx="200" cy="60" r="2"/><circle cx="250" cy="30" r="1.5"/><circle cx="130" cy="260" r="2"/><circle cx="60" cy="270" r="1.5"/></g>
+</svg>
+ </div>
+</section>
+<section class="slide" aria-label="Observare">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Observare</span>
+  <h2>Să discutăm înainte de lecție</h2>
+  <p class="src">Observare, manual p. 16</p>
+  <div class="q"><span class="mark" style="background:var(--blue)">1</span>Priviți imaginea cu Soarele și planetele. Care este cel mai mare corp ceresc din ea?</div><div class="q"><span class="mark" style="background:var(--green)">2</span>A câta planetă de la Soare este Pământul? Care e cea mai apropiată de Soare, dar cea mai îndepărtată?</div><div class="q"><span class="mark" style="background:var(--purple)">3</span>Cum se numește cea mai mare planetă din Sistemul Solar?</div><div class="q"><span class="mark" style="background:var(--red)">4</span>Imaginile cu băiatul din cameră: ce moment al zilei vezi în fiecare? De unde vine lumina în prima? De ce e întuneric în a doua?</div>
+  <div class="tip y">❓ <b>Întrebarea zilei:</b> manualul spune că o formulezi tu, împreună cu echipa. Ea trebuie să înceapă cu „De ce”, „Cum” sau „Care”. Încearcă: ce ai vrea să afli despre Soare și planete?<br><span class="src">Atenție: imaginile cu băiatul din cameră sunt despre zi și noapte. Ele pregătesc lecția 2!</span></div>
+ </div>
+</section>
+<section class="slide" aria-label="Stea și planetă">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Studiu · manual p. 17</span>
+  <h2>Stea sau planetă?</h2>
+  <div class="grid g2">
+   <div class="box" style="border-color:var(--yellow)"><span class="emo">⭐</span><h3>Steaua</h3>
+    <p>Are <b>lumină proprie</b>.</p><p>Este un amestec de <b>gaze</b> la o temperatură <b>foarte ridicată</b>.</p><p>Luminează și <b>încălzește</b> corpurile care se rotesc în jurul ei.</p><p>Exemplu: <b>Soarele</b>, cel mai mare corp ceresc din Sistemul Solar.</p></div>
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🪐</span><h3>Planeta</h3>
+    <p><b>Nu are lumină proprie.</b></p><p>Se rotește în jurul stelei.</p><p>Exemplu: <b>Pământul (Terra)</b> este fierbinte în interior și mai rece la suprafață.</p></div>
+  </div>
+  <div class="tip g"><b>Sistemul Solar</b> = Soarele și toate corpurile cerești care se rotesc în jurul lui. Cuvântul „solar” vine de la „Soare”, deci Sistemul Solar este „sistemul Soarelui”.</div>
+  <div class="tip b">🤔 <b>Gândește-te:</b> dacă planetele nu au lumină proprie, cum de le putem vedea pe cer?
+   <div class="row"><button class="reveal">Arată răspunsul</button><div class="ans" hidden>Lumina Soarelui cade pe ele. Noi vedem lumina care se întoarce de la ele.</div></div></div>
+ </div>
+</section>
+<section class="slide" aria-label="Planetele">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Explorează</span>
+  <h2>Soarele și cele 8 planete</h2>
+  <p>Apasă pe fiecare corp ceresc. Desenul arată <b>ordinea</b>, nu mărimile reale și nici distanțele.</p>
+  <div class="svgbox"><svg id="ss" viewBox="0 0 800 190" role="img" aria-label="Soarele și cele opt planete în ordine"></svg></div>
+  <div class="box" id="pcard" style="margin-top:14px" aria-live="polite"></div>
+ </div>
+</section>
+<section class="slide" aria-label="Ordinea planetelor">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Joc de ordonare · manual p. 17, ex. 3</span>
+  <h2>Pune planetele în ordine</h2>
+  <p>Apasă pe planete în ordinea în care se află față de Soare, <b>începând cu cea mai apropiată</b>. Ordinea de mai jos e cea din manual.</p>
+  <div class="chips" id="pool"></div>
+  <p style="margin:.2em 0"><b>Șirul tău:</b></p>
+  <div class="ladder" id="line"><span class="step" style="background:var(--tint-yellow)">☀️ Soarele</span></div>
+  <p id="gmsg" style="font-weight:800;min-height:1.6em" aria-live="polite"></p>
+  <button class="btn ghost" id="greset">Reia jocul</button>
+ </div>
+</section>
+<section class="slide" aria-label="Alte corpuri cerești">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Studiu · manual p. 17</span>
+  <h2>Nu doar planete</h2>
+  <div class="grid g4">
+   <div class="box"><span class="emo">🌙</span><h3>Sateliți naturali</h3><p>Corpuri care se învârt în jurul unor planete.</p><p>Al Pământului: <b>Luna</b>.</p></div>
+   <div class="box"><span class="emo">🔴</span><h3>Planete pitice</h3><p>Un alt fel de corpuri cerești. Exemplu: <b>Pluto</b>.</p></div>
+   <div class="box"><span class="emo">☄️</span><h3>Comete</h3><p>Gheață, gaze și praf. Când se apropie de Soare, se încălzesc și formează o <b>coadă de gaz</b>.</p></div>
+   <div class="box"><span class="emo">🪨</span><h3>Asteroizi</h3><p>Corpuri <b>prea mici</b> ca să fie planete. Cei mai mulți sunt din rocă sau metal.</p></div>
+  </div>
+  <div class="tip y">🎭 <b>Joc de rol din manual:</b> imaginează-ți un dialog între un asteroid și o cometă. Folosește cel puțin două informații din lecție.</div>
+ </div>
+</section>
+<section class="slide" aria-label="Harta Sistemului Solar">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Ca să le ții minte</span>
+  <h2>Harta Sistemului Solar</h2>
+  <div class="tree">
+   <div class="root">Sistemul Solar</div><div class="stem"></div>
+   <div class="branches">
+    <div class="br" style="border-color:var(--yellow)"><h3>⭐ Steaua</h3><p>Soarele</p></div>
+    <div class="br" style="border-color:var(--blue)"><h3>🪐 Planete (8)</h3><p>Mercur, Venus, Terra, Marte, Jupiter, Saturn, Uranus, Neptun</p></div>
+    <div class="br" style="border-color:var(--green)"><h3>🌙 Sateliți naturali</h3><p>Exemplu: Luna, satelitul Pământului</p></div>
+    <div class="br" style="border-color:var(--red)"><h3>☄️ Alte corpuri cerești</h3><p>planete pitice (Pluto), comete, asteroizi</p></div>
+   </div>
+  </div>
+  <div class="tip b">📝 La pagina 23 din manual ai o fișă în formă de copac, cu exact aceste patru ramuri. Dacă știi harta, știi și fișa.</div>
+ </div>
+</section>
+<section class="slide" aria-label="Manualul spune și context">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Atenție la detalii</span>
+  <h2>Manualul spune / Context</h2>
+  <div class="dual">
+   <div class="mb"><h4>📘 Manualul spune</h4><p>„Planetele sunt corpuri cerești care nu au lumină proprie.” Pentru lecție, aceasta este informația de reținut.</p></div>
+   <div class="ctx"><h4>🌍 Context</h4><p>Venus sau Jupiter strălucesc pe cerul nopții tocmai pentru că lumina Soarelui cade pe ele. La fel se întâmplă cu Luna.</p></div>
+  </div>
+  <div class="dual">
+   <div class="mb"><h4>📘 Manualul spune</h4><p>Imaginea de la pagina 16 arată Soarele și planetele aliniate, de la stânga la dreapta.</p></div>
+   <div class="ctx"><h4>🌍 Context</h4><p>Desenul arată doar <b>ordinea</b>. În realitate, Soarele e mult mai mare, iar distanțele dintre planete sunt uriașe, așa că nu încap într-un desen la scară.</p></div>
+  </div>
+  <div class="dual">
+   <div class="mb"><h4>📘 Manualul spune</h4><p>Pluto este o <b>planetă pitică</b>. Sistemul Solar are 8 planete.</p></div>
+   <div class="ctx"><h4>🌍 Context</h4><p>Până în 2006, mulți oameni numărau 9 planete, cu Pluto. Din 2006, astronomii l-au trecut printre planetele pitice. Cărțile mai vechi pot spune încă „nouă planete”.</p></div>
+  </div>
+ </div>
+</section>
+<section class="slide" aria-label="Matematică">
+ <div class="wrap" style="max-width:860px">
+  <span class="badge" style="background:var(--green)">Matematică în spațiu · manual p. 17, „Să ne amuzăm un pic”</span>
+  <h2>Cureaua Lunii</h2>
+  <div class="grid g2">
+   <div class="box"><span class="emo">🌙</span><h3>Luna</h3><p>Cureaua care o încinge: <b>10 917 km</b>.</p></div>
+   <div class="box"><span class="emo">🌍</span><h3>Pământul</h3><p>Cureaua care i se potrivește: <b>40 075 km</b>.</p></div>
+  </div>
+  <p style="margin-top:14px">Luna îi dăruiește Pământului cureaua ei. <b>De câtă mătase mai este nevoie?</b></p>
+  <div class="row"><button class="hintbtn" onclick="var h=document.getElementById('cm1');h.hidden=!h.hidden">💡 Indiciu</button><button class="reveal">Arată răspunsul</button><div class="ans" hidden><b>40 075 − 10 917 = 29 158 km</b><span class="why">Probă: 29 158 + 10 917 = 40 075.</span></div></div>
+  <div class="hint" id="cm1" hidden>Cureaua Lunii acoperă o parte din ce îți trebuie. Cauți partea care lipsește: scazi sau aduni?</div>
+  <div class="tip b">🔎 Bonus de estimare: 40 075 este cam de câte ori mai mare decât 10 917? Rotunjește la 40 000 și 10 000, apoi la 11 000.
+   <div class="row"><button class="reveal">Arată răspunsul</button><div class="ans" hidden>Aproape de 4 ori (40 000 : 10 000 = 4; 40 000 : 11 000 e puțin sub 4).</div></div></div>
+ </div>
+</section>
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--yellow)"><span class="emo">⭐</span><p>Soarele este o <b>stea</b>: are lumină proprie și este foarte fierbinte. Planetele <b>nu</b> au lumină proprie.</p></div>
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🪐</span><p>Planetele, în ordine de la Soare: <b>Mercur, Venus, Terra, Marte, Jupiter, Saturn, Uranus, Neptun</b>. Cea mai mare e Jupiter, cea mai mică Mercur.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">☄️</span><p>Mai există <b>sateliți naturali</b> (Luna), <b>planete pitice</b> (Pluto), <b>comete</b> și <b>asteroizi</b>.</p></div>
+  </div>
+  <div class="tip y">🌉 <b>Legătură cu lecția următoare:</b> Soarele luminează și încălzește Pământul. Cum se face că pe Pământ e când zi, când noapte?</div>
+ </div>
+</section>
+<section class="slide" aria-label="Test 1"><div class="wrap" style="max-width:860px"><span class="badge" style="background:var(--purple)">Verifică-te</span><h2>Test de explorator (1/2)</h2><p class="src">Încearcă să răspunzi tu, apoi cere un indiciu dacă ai nevoie.</p><div class="item" data-q>
+  <p><span class="num">1</span>Seara, Venus strălucește pe cer. Înseamnă că are lumină proprie, ca Soarele?</p>
+  <div class="row"><button class="hintbtn">💡 Indiciu</button><button class="ansbtn">Vezi răspunsul</button></div>
+  <div class="hint" hidden>Ce spune manualul despre planete și lumina proprie?</div>
+  <div class="ans" hidden><b>Nu.</b><span class="why">Planetele nu au lumină proprie. Venus se vede pentru că lumina Soarelui cade pe ea.</span></div>
+  <div class="selfscore"><span>Ai răspuns corect înainte să vezi?</span><button class="ok">Da ✔</button><button class="no">Încă nu</button><span class="done" hidden></span></div>
+</div><div class="item" data-q>
+  <p><span class="num">2</span>Luna este cel mai mare corp ceresc pe care îl observăm noaptea. Este stea, planetă sau altceva?</p>
+  <div class="row"><button class="hintbtn">💡 Indiciu</button><button class="ansbtn">Vezi răspunsul</button></div>
+  <div class="hint" hidden>Ce se rotește în jurul Pământului? Cum se numește un corp care se învârte în jurul unei planete?</div>
+  <div class="ans" hidden><b>Satelit natural al Pământului.</b><span class="why">Nu e stea (nu are lumină proprie) și nu e planetă (se rotește în jurul unei planete, nu în jurul Soarelui).</span></div>
+  <div class="selfscore"><span>Ai răspuns corect înainte să vezi?</span><button class="ok">Da ✔</button><button class="no">Încă nu</button><span class="done" hidden></span></div>
+</div><div class="item" data-q>
+  <p><span class="num">3</span>Câte planete sunt mai aproape de Soare decât Pământul? Dar mai departe?</p>
+  <div class="row"><button class="hintbtn">💡 Indiciu</button><button class="ansbtn">Vezi răspunsul</button></div>
+  <div class="hint" hidden>Terra este a treia planetă. Numără pe banda din lecție.</div>
+  <div class="ans" hidden><b>2 mai aproape (Mercur, Venus) și 5 mai departe (Marte, Jupiter, Saturn, Uranus, Neptun).</b><span class="why">Verificare: 2 + 1 (Pământul) + 5 = 8 planete.</span></div>
+  <div class="selfscore"><span>Ai răspuns corect înainte să vezi?</span><button class="ok">Da ✔</button><button class="no">Încă nu</button><span class="done" hidden></span></div>
+</div></div></section>
+<section class="slide" aria-label="Test 2"><div class="wrap" style="max-width:860px"><span class="badge" style="background:var(--purple)">Verifică-te</span><h2>Test de explorator (2/2)</h2><div class="item" data-q>
+  <p><span class="num">4</span>Câte planete se află între Marte și Neptun? Numește-le.</p>
+  <div class="row"><button class="hintbtn">💡 Indiciu</button><button class="ansbtn">Vezi răspunsul</button></div>
+  <div class="hint" hidden>Marte este a patra, Neptun a opta. Ce număr de poziții sunt între ele?</div>
+  <div class="ans" hidden><b>3: Jupiter, Saturn și Uranus.</b><span class="why">Pozițiile 5, 6 și 7.</span></div>
+  <div class="selfscore"><span>Ai răspuns corect înainte să vezi?</span><button class="ok">Da ✔</button><button class="no">Încă nu</button><span class="done" hidden></span></div>
+</div><div class="item" data-q>
+  <p><span class="num">5</span>Cureaua Lunii are 10 917 km, iar cea a Pământului 40 075 km. Cât mai trebuie adăugat la cureaua Lunii pentru Pământ?</p>
+  <div class="row"><button class="hintbtn">💡 Indiciu</button><button class="ansbtn">Vezi răspunsul</button></div>
+  <div class="hint" hidden>Cauți ce lipsește. Scazi sau aduni?</div>
+  <div class="ans" hidden><b>29 158 km.</b><span class="why">40 075 − 10 917 = 29 158. Probă: 29 158 + 10 917 = 40 075.</span></div>
+  <div class="selfscore"><span>Ai răspuns corect înainte să vezi?</span><button class="ok">Da ✔</button><button class="no">Încă nu</button><span class="done" hidden></span></div>
+</div><div class="item" data-q>
+  <p><span class="num">6</span>O cometă are coadă doar când se apropie de Soare. Ce crezi că se întâmplă cu ea acolo?</p>
+  <div class="row"><button class="hintbtn">💡 Indiciu</button><button class="ansbtn">Vezi răspunsul</button></div>
+  <div class="hint" hidden>Din ce este făcută o cometă? Ce face gheața când se încălzește?</div>
+  <div class="ans" hidden><b>Se încălzește și formează o coadă de gaz.</b><span class="why">Cometa e din gheață, gaze și praf. Căldura Soarelui o schimbă.</span></div>
+  <div class="selfscore"><span>Ai răspuns corect înainte să vezi?</span><button class="ok">Da ✔</button><button class="no">Încă nu</button><span class="done" hidden></span></div>
+</div><div class="item" data-q>
+  <p><span class="num">7</span>Pluto și un asteroid nu sunt planete. Ce sunt, fiecare? Cum le deosebești?</p>
+  <div class="row"><button class="hintbtn">💡 Indiciu</button><button class="ansbtn">Vezi răspunsul</button></div>
+  <div class="hint" hidden>Gândește-te la mărime și la cum le numește manualul.</div>
+  <div class="ans" hidden><b>Pluto este planetă pitică. Asteroidul este prea mic ca să fie planetă.</b><span class="why">Cei mai mulți asteroizi sunt din rocă sau metal.</span></div>
+  <div class="selfscore"><span>Ai răspuns corect înainte să vezi?</span><button class="ok">Da ✔</button><button class="no">Încă nu</button><span class="done" hidden></span></div>
+</div></div></section>
+<section class="slide" aria-label="Scor">
+ <div class="wrap" style="max-width:760px;text-align:center">
+  <span class="badge" style="background:var(--green)">Rezultat</span>
+  <h2>Scorul tău</h2>
+  <div class="scorebig"><span id="score-val">0</span> / <span id="score-max">0</span></div>
+  <p class="lead" style="margin:.6em auto">Întrebări bifate: <b id="score-done"></b></p>
+  <p id="score-msg" style="font-weight:700"></p>
+  <button class="btn alt" id="score-reset" style="margin-top:12px">Începe testul de la capăt</button>
+ </div>
+</section>
+</main>
+<nav class="bar" aria-label="Navigare prezentare">
+ <a class="home" href="../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
+ <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
+ <div class="dots" id="dots"></div>
+ <span class="count" id="count"></span>
+ <button class="nav" id="next" aria-label="Slide-ul următor">→</button>
+</nav>
+<script>
+
+(function(){
+  var KEY='sn-u2l1';
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
+  var cur=0;
+  slides.forEach(function(s,i){
+    var b=document.createElement('button');
+    b.setAttribute('aria-label','Mergi la slide-ul '+(i+1));
+    b.onclick=function(){go(i)};
+    dots.appendChild(b);
+  });
+  function go(i){
+    if(i<0||i>=slides.length)return;
+    slides[cur].classList.remove('active');dots.children[cur].classList.remove('on');
+    cur=i;
+    slides[cur].classList.add('active');dots.children[cur].classList.add('on');
+    slides[cur].scrollTop=0;
+    prev.disabled=cur===0;next.disabled=cur===slides.length-1;
+    count.textContent=(cur+1)+' / '+slides.length;
+    
+  }
+  prev.onclick=function(){go(cur-1)};
+  next.onclick=function(){go(cur+1)};
+  document.addEventListener('keydown',function(e){
+    if(e.target&&(e.target.tagName==='INPUT'))return;
+    if(e.key==='ArrowRight'||e.key==='PageDown')go(cur+1);
+    if(e.key==='ArrowLeft'||e.key==='PageUp')go(cur-1);
+  });
+  var sx=null;
+  var deck=document.getElementById('deck');
+  deck.addEventListener('touchstart',function(e){sx=(e.target.closest&&e.target.closest('.svgbox,input,.tblwrap'))?null:e.touches[0].clientX},{passive:true});
+  deck.addEventListener('touchend',function(e){
+    if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>80)go(cur+(dx<0?1:-1));sx=null;
+  },{passive:true});
+  var start=0;
+  
+  slides[0].classList.add('active');dots.children[0].classList.add('on');
+  go(start);
+
+  /* simple reveals */
+  document.querySelectorAll('.reveal').forEach(function(b){
+    b.onclick=function(){
+      var a=b.nextElementSibling;a.hidden=!a.hidden;
+      b.textContent=a.hidden?'Arată răspunsul':'Ascunde răspunsul';
+    };
+  });
+
+  /* quiz with hint, answer, self-score */
+  var items=[].slice.call(document.querySelectorAll('.item[data-q]'));
+  var total=0,maxp=items.length*2,answered=0;
+  function upd(){
+    var s=document.getElementById('score-val');if(!s)return;
+    s.textContent=total;
+    document.getElementById('score-max').textContent=maxp;
+    document.getElementById('score-done').textContent=answered+' din '+items.length;
+    var m=document.getElementById('score-msg');
+    var r=answered?total/(answered*2):0;
+    m.textContent=answered<items.length?'Mai ai întrebări de rezolvat. Fiecare răspuns corect din prima valorează 2 puncte.':
+      (r>=.85?'Excelent! Ești gata pentru lecția următoare.':r>=.55?'Foarte bine! Mai privește întrebările la care ai avut nevoie de indiciu.':'Un început bun. Recitește lecția în manual, apoi încearcă din nou întrebările.');
+  }
+  items.forEach(function(it){
+    var hb=it.querySelector('.hintbtn'),ab=it.querySelector('.ansbtn'),h=it.querySelector('.hint'),a=it.querySelector('.ans');
+    var usedHint=false,done=false;
+    hb.onclick=function(){h.hidden=!h.hidden;if(!h.hidden)usedHint=true;};
+    ab.onclick=function(){a.hidden=!a.hidden;ab.textContent=a.hidden?'Vezi răspunsul':'Ascunde răspunsul';};
+    var ok=it.querySelector('.selfscore .ok'),no=it.querySelector('.selfscore .no'),dn=it.querySelector('.selfscore .done');
+    function fin(p){
+      if(done)return;done=true;total+=p;answered++;
+      ok.hidden=true;no.hidden=true;dn.hidden=false;
+      dn.textContent=p===2?'+2 puncte (din prima)':p===1?'+1 punct (cu indiciu)':'0 puncte, mai încearcă mai târziu';
+      upd();
+    }
+    ok.onclick=function(){fin(usedHint?1:2)};
+    no.onclick=function(){fin(0)};
+  });
+  upd();
+  var rs=document.getElementById('score-reset');
+  if(rs)rs.onclick=function(){try{localStorage.setItem(KEY,0)}catch(e){}location.reload()};
+})();
+
+(function(){
+  var P=[
+   {n:'Soarele',c:'#FFC933',r:46,t:'Steaua Sistemului Solar',l:['Este o stea: are lumină proprie și este foarte fierbinte.','Este cel mai mare corp ceresc din Sistemul Solar.','Luminează și încălzește corpurile care se rotesc în jurul lui.'],g:'Planetele se rotesc în jurul lui. Ce înseamnă asta pentru lumina pe care o primesc?'},
+   {n:'Mercur',c:'#B9AFA5',r:7,t:'Planeta 1',l:['Cea mai apropiată de Soare.','Cea mai mică planetă din Sistemul Solar.'],g:'Dacă e cea mai mică, ce loc ocupă Jupiter la mărime?'},
+   {n:'Venus',c:'#E8BE6F',r:12,t:'Planeta 2',l:['Vecină cu Pământul (între ea și Pământ nu mai e nicio planetă).'],g:'Ce planetă este vecina Pământului pe cealaltă parte?'},
+   {n:'Terra',c:'#3E7BD9',r:13,t:'Planeta 3: Pământul',l:['Este fierbinte în interior și mai rece la suprafață.','Are un satelit natural: Luna.','Pe ea este posibilă viața (vezi lecția 2).'],g:'Ce poți spune despre viața pe Pământ după lecția de azi și cea de mâine?'},
+   {n:'Marte',c:'#D2603A',r:10,t:'Planeta 4',l:['Vecină cu Pământul, pe partea dinspre Jupiter.'],g:'Câte planete sunt între Marte și Neptun?'},
+   {n:'Jupiter',c:'#D9A066',r:30,t:'Planeta 5',l:['Cea mai mare planetă din Sistemul Solar.'],g:'Este mai mare sau mai mic decât Soarele? Ce spune manualul despre cel mai mare corp?'},
+   {n:'Saturn',c:'#E7D08A',r:24,t:'Planeta 6',l:['În imaginea din manual are inele în jurul ei.'],g:'Câte planete sunt între Saturn și Pământ?'},
+   {n:'Uranus',c:'#7CC8D9',r:17,t:'Planeta 7',l:['A șaptea planetă de la Soare.'],g:'Câte planete sunt mai aproape de Soare decât Uranus?'},
+   {n:'Neptun',c:'#4A63D9',r:16,t:'Planeta 8',l:['Cea mai îndepărtată planetă de Soare.'],g:'Soarele încălzește corpurile din jurul lui. Ce crezi că primește cea mai îndepărtată: mai multă sau mai puțină căldură?'}
+  ];
+  var svg=document.getElementById('ss'),card=document.getElementById('pcard');
+  var NS='http://www.w3.org/2000/svg';
+  var xs=[46,150,212,276,350,445,560,660,745];
+  var sel=0;
+  function draw(){
+    svg.innerHTML='';
+    P.forEach(function(p,i){
+      var g=document.createElementNS(NS,'g');g.setAttribute('tabindex','0');g.setAttribute('role','button');g.setAttribute('aria-label',p.n);g.style.cursor='pointer';
+      var cx=i===0?10:xs[i], cy=88;
+      if(i===0){cx=10;}
+      var c=document.createElementNS(NS,'circle');c.setAttribute('cx',cx);c.setAttribute('cy',cy);c.setAttribute('r',i===0?70:p.r);c.setAttribute('fill',p.c);
+      if(i===sel){c.setAttribute('stroke','#fff');c.setAttribute('stroke-width','4');}
+      g.appendChild(c);
+      if(i===6){var e=document.createElementNS(NS,'ellipse');e.setAttribute('cx',cx);e.setAttribute('cy',cy);e.setAttribute('rx',p.r+16);e.setAttribute('ry',6);e.setAttribute('fill','none');e.setAttribute('stroke',p.c);e.setAttribute('stroke-width','3');g.appendChild(e);}
+      var t=document.createElementNS(NS,'text');t.setAttribute('x',i===0?60:cx);t.setAttribute('y',i===0?172:170);t.setAttribute('text-anchor','middle');t.setAttribute('fill','#fff');t.setAttribute('font-size','15');t.setAttribute('font-weight','800');t.textContent=p.n;
+      if(i===0){t.setAttribute('x',30);}
+      g.appendChild(t);
+      var n=document.createElementNS(NS,'text');n.setAttribute('x',i===0?30:cx);n.setAttribute('y',i===0?190:24);n.setAttribute('text-anchor','middle');n.setAttribute('fill','#B8C0F0');n.setAttribute('font-size','13');n.setAttribute('font-weight','700');n.textContent=i===0?'':String(i);
+      g.appendChild(n);
+      g.onclick=function(){sel=i;show();};
+      g.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();sel=i;show();}};
+      svg.appendChild(g);
+    });
+  }
+  function show(){
+    var p=P[sel];draw();
+    card.innerHTML='<h3>'+p.n+' <span style="color:var(--soft);font-size:.8em">· '+p.t+'</span></h3><ul style="margin:.4em 0 .6em;padding-left:1.2em">'+p.l.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><p style="background:var(--tint-yellow);border-radius:12px;padding:.4em .8em;font-weight:700;margin:0">🤔 '+p.g+'</p>';
+  }
+  show();
+
+  /* ordering game */
+  var order=['Mercur','Venus','Terra','Marte','Jupiter','Saturn','Uranus','Neptun'];
+  var shown=['Uranus','Marte','Terra','Jupiter','Mercur','Saturn','Venus','Neptun'];
+  var pool=document.getElementById('pool'),line=document.getElementById('line'),msg=document.getElementById('gmsg');
+  var k=0;
+  function build(){
+    k=0;pool.innerHTML='';msg.textContent='';
+    while(line.children.length>1)line.removeChild(line.lastChild);
+    shown.forEach(function(n){
+      var b=document.createElement('button');b.className='chip';b.textContent=n==='Terra'?'Terra (Pământ)':n;b.dataset.n=n;
+      b.onclick=function(){
+        if(n===order[k]){
+          k++;b.remove();
+          var a=document.createElement('span');a.className='arrow';a.textContent='›';
+          var s=document.createElement('span');s.className='step';s.innerHTML=k+'<small>'+(n==='Terra'?'Terra (Pământ)':n)+'</small>';
+          line.appendChild(a);line.appendChild(s);
+          msg.textContent=k===8?'🎉 Perfect! Mercur, Venus, Terra, Marte, Jupiter, Saturn, Uranus, Neptun.':'Corect! Care urmează?';
+          msg.style.color='var(--green)';
+        }else{
+          msg.style.color='var(--red)';
+          msg.textContent='Încă nu. Indiciu: ești la poziția '+(k+1)+'. Câte planete trebuie să fie între Soare și planeta aleasă?';
+          b.classList.remove('shake');void b.offsetWidth;b.classList.add('shake');
+        }
+      };
+      pool.appendChild(b);
+    });
+  }
+  document.getElementById('greset').onclick=build;
+  build();
+})();
+
+</script>
+
+</body></html>

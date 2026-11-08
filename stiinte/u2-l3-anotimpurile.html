@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
+</head>
+<body>
+
+<title>Anotimpurile și modificările vremii</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F7FF; --paper:#FFFFFF; --ink:#1E2340; --soft:#4A5078; --line:#D5DDF0;
+  --red:#E2433A; --green:#2E9D52; --blue:#2F6FD6; --yellow:#F6C431; --purple:#6B4BC4;
+  --tint-red:#FDE6E4; --tint-green:#E1F4E7; --tint-blue:#E2ECFC; --tint-yellow:#FFF4CF; --tint-purple:#ECE6FA;
+  --night:#1F2A5C; --day:#FFE08A; --space:#0F1432;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+    --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+    --night:#0B1030; --day:#C9A640; --space:#080B20; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+  --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+  --night:#0B1030; --day:#C9A640; --space:#080B20; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%}
+body{
+  height:100%;margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;font-weight:500;
+  font-size:clamp(16px,1.05vw + 10px,21px);line-height:1.5;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+h1,h2,h3,h4{font-family:"Baloo 2","Trebuchet MS",system-ui,sans-serif;line-height:1.1;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.7rem,2.6vw + .6rem,2.8rem);font-weight:800;margin-bottom:.35em}
+h3{font-size:1.2em;font-weight:700}
+p{margin:.3em 0 .7em}
+b,strong{font-weight:800}
+.deck{flex:1;position:relative;min-height:0}
+.slide{
+  position:absolute;inset:0;overflow-y:auto;display:none;
+  padding-block:clamp(18px,3vw,48px) 24px;
+  padding-left:max(16px,env(safe-area-inset-left,0px),min(5vw,80px));
+  padding-right:max(16px,env(safe-area-inset-right,0px),min(5vw,80px));
+}
+.slide.active{display:block;animation:in .35s ease-out}
+@keyframes in{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slide.active{animation:none}}
+.wrap{max-width:1080px;margin:0 auto}
+.lead{font-size:1.15em;color:var(--soft);max-width:60ch}
+.badge{display:inline-block;font-weight:800;font-size:.85em;padding:.2em .8em;border-radius:99px;margin-bottom:.8em;color:#fff}
+.src{font-size:.8em;color:var(--soft);font-weight:700}
+.bar{
+  display:flex;align-items:center;gap:12px;padding-block:10px;
+  padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px));
+  background:var(--paper);border-top:2px solid var(--line);
+}
+button{font-family:inherit}
+.bar button.nav{font:inherit;font-weight:800;border:0;border-radius:14px;padding:.55em 1.1em;cursor:pointer;background:var(--blue);color:#fff;min-width:48px}
+.bar button.nav:disabled{opacity:.35;cursor:default}
+.dots{flex:1;display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.dots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
+.dots button.on{background:var(--red);transform:scale(1.3)}
+.count{font-weight:800;color:var(--soft);min-width:4.5ch;text-align:center}
+button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.cover{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;min-height:100%}
+.cover h1{font-size:clamp(2.2rem,4.6vw + .5rem,4.4rem);font-weight:800;margin:.2em 0 .3em}
+.stripes{display:flex;height:14px;border-radius:8px;overflow:hidden;max-width:420px;margin-bottom:1em}
+.stripes span{flex:1}
+.cover svg{width:100%;height:auto;max-width:420px;justify-self:center}
+@media (max-width:760px){.cover{grid-template-columns:1fr}.cover svg{max-width:260px;margin:0 auto}}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.box{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:18px 20px;min-width:0}
+.box .emo{font-size:2.2em;line-height:1;display:block;margin-bottom:.25em}
+.tip{border-radius:18px;padding:14px 20px;margin-top:18px;border-left:8px solid}
+.tip.y{background:var(--tint-yellow);border-color:var(--yellow)}
+.tip.g{background:var(--tint-green);border-color:var(--green)}
+.tip.b{background:var(--tint-blue);border-color:var(--blue)}
+.tip.r{background:var(--tint-red);border-color:var(--red)}
+.q{display:flex;gap:16px;align-items:center;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:14px 20px;margin-bottom:12px;font-size:1.1em;font-weight:700}
+.q .mark{flex:none;width:2.2em;height:2.2em;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:"Baloo 2",sans-serif;font-weight:800;font-size:1.1em}
+.ladder{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 6px}
+.step{background:var(--tint-blue);border-radius:12px;padding:.35em .8em;font-weight:800;text-align:center}
+.step small{display:block;font-weight:700;color:var(--soft);font-size:.72em}
+.arrow{color:var(--soft);font-weight:800}
+/* manual vs context */
+.dual{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;margin-bottom:14px}
+.mb,.ctx{border-radius:18px;padding:14px 18px;border:2px solid;min-width:0}
+.mb{background:var(--tint-purple);border-color:var(--purple)}
+.ctx{background:var(--tint-green);border-color:var(--green)}
+.mb h4,.ctx h4{font-size:1.02em;margin-bottom:.3em}
+.mb p,.ctx p{margin:.2em 0;font-size:.97em}
+/* generic buttons */
+.btn{font:inherit;font-weight:800;border:0;border-radius:12px;padding:.45em 1em;cursor:pointer;background:var(--blue);color:#fff}
+.btn.alt{background:var(--tint-yellow);color:var(--ink)}
+.btn.ghost{background:var(--tint-blue);color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.chip{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.35em .9em;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+/* reveal/quiz */
+.item{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:14px 18px;margin-bottom:12px}
+.item p{margin:0 0 .4em;font-weight:700}
+.item .num{display:inline-grid;place-items:center;width:1.8em;height:1.8em;border-radius:50%;background:var(--purple);color:#fff;font-weight:800;font-size:.85em;margin-right:.5em}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.reveal,.hintbtn,.ansbtn{font:inherit;font-weight:800;border:0;border-radius:12px;padding:.35em .9em;background:var(--tint-yellow);color:var(--ink);cursor:pointer}
+.ansbtn{background:var(--tint-blue)}
+.hint{margin-top:8px;background:var(--tint-yellow);border-radius:12px;padding:.4em .8em;font-weight:700}
+.ans{margin-top:8px;color:var(--ink);background:var(--tint-green);border-radius:12px;padding:.5em .9em}
+.ans .why{display:block;color:var(--soft);font-weight:600;margin-top:.2em}
+.selfscore{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px;font-weight:700}
+.selfscore button{font:inherit;font-weight:800;border:0;border-radius:12px;padding:.3em .8em;cursor:pointer}
+.selfscore .ok{background:var(--green);color:#fff}
+.selfscore .no{background:var(--tint-red);color:var(--ink)}
+.selfscore .done{color:var(--soft)}
+.scorebig{font-family:"Baloo 2",sans-serif;font-size:clamp(3rem,8vw,5rem);font-weight:800;line-height:1}
+.ans-inline{display:inline-block}
+/* tables */
+.tblwrap{overflow-x:auto;max-width:100%}
+table.t{border-collapse:collapse;width:100%;background:var(--paper);border-radius:14px;overflow:hidden}
+table.t th,table.t td{border:2px solid var(--line);padding:.45em .7em;text-align:left;vertical-align:top}
+table.t th{background:var(--tint-blue)}
+/* tree */
+.tree{display:flex;flex-direction:column;align-items:center;gap:10px}
+.tree .root{background:var(--blue);color:#fff;font-family:"Baloo 2",sans-serif;font-weight:800;font-size:1.3em;border-radius:16px;padding:.3em 1.2em}
+.tree .branches{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;width:100%}
+.tree .br{background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:12px 14px;min-width:0}
+.tree .br h3{margin-bottom:.2em}
+.tree .br p{margin:.1em 0;font-size:.95em}
+.tree .stem{width:4px;height:18px;background:var(--line);border-radius:2px}
+svg text{font-family:"Nunito",sans-serif}
+.svgbox{background:var(--space);border-radius:18px;padding:6px;max-width:100%;overflow-x:auto}
+.svgbox svg{width:100%;min-width:560px;height:auto;display:block}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@media (prefers-reduced-motion:reduce){.shake{animation:none}}
+</style>
+<main class="deck" id="deck">
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Științe ale naturii · Unitatea 2 · Lecția 3 · <span style='white-space:nowrap'>manual pp. 20–21</span></p>
+   <h1>Anotimpurile și modificările vremii</h1>
+   <p class="lead">De ce avem patru anotimpuri și cum se schimbă vremea de la unul la altul.</p>
+   <p style="color:var(--soft)">Folosește săgețile de jos sau tastele ← → ca să mergi mai departe.</p>
+  </div>
+  <svg viewBox="0 0 300 300" aria-hidden="true">
+ <rect width="300" height="300" rx="28" fill="var(--space)"/>
+ <circle cx="150" cy="150" r="34" fill="#FFC933"/>
+ <ellipse cx="150" cy="150" rx="118" ry="60" fill="none" stroke="#fff" stroke-opacity=".35" stroke-dasharray="5 7"/>
+ <g><circle cx="268" cy="150" r="14" fill="#3E7BD9"/><line x1="261" y1="168" x2="275" y2="132" stroke="#fff" stroke-width="2"/></g>
+ <g><circle cx="150" cy="90" r="14" fill="#3E7BD9"/><line x1="143" y1="108" x2="157" y2="72" stroke="#fff" stroke-width="2"/></g>
+ <g><circle cx="32" cy="150" r="14" fill="#3E7BD9"/><line x1="25" y1="168" x2="39" y2="132" stroke="#fff" stroke-width="2"/></g>
+ <g><circle cx="150" cy="210" r="14" fill="#3E7BD9"/><line x1="143" y1="228" x2="157" y2="192" stroke="#fff" stroke-width="2"/></g>
+ <text x="150" y="272" font-size="14" font-weight="800" fill="#B8C0F0" text-anchor="middle">iarnă · primăvară · vară · toamnă</text>
+</svg>
+ </div>
+</section>
+<section class="slide" aria-label="Observare">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Observare</span>
+  <h2>Să discutăm înainte de lecție</h2>
+  <p class="src">Observare, manual p. 20</p>
+  <div class="q"><span class="mark" style="background:var(--green)">1</span>Priviți copacul în cele patru fotografii. Numiți anotimpurile și descrieți transformările prin care trece copacul.</div><div class="q"><span class="mark" style="background:var(--red)">2</span>În ce anotimp este cel mai cald? În care credeți că nopțile sunt mai lungi și mai reci decât în restul anului?</div><div class="q"><span class="mark" style="background:var(--blue)">3</span>Ce fenomene ale naturii vedeți în fotografiile cu ploaie și cu ninsoare? Cum se formează ploaia? Dar ninsoarea?</div><div class="q"><span class="mark" style="background:var(--purple)">4</span>Care sunt fenomenele naturale întâlnite mai des toamna?</div>
+  <div class="tip y">❓ <b>Întrebarea zilei:</b> formulează-ți propria întrebare, care începe cu „De ce”, „Cum” sau „Care”. Poate despre cum se formează anotimpurile sau despre cum se schimbă vremea?</div>
+ </div>
+</section>
+<section class="slide" aria-label="Rotație și revoluție">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Studiu · manual pp. 20–21</span>
+  <h2>Două mișcări ale Pământului</h2>
+  <div class="grid g2">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🔄</span><h3>Rotația (lecția 2)</h3><p>Pământul se rotește în jurul <b>axei sale</b>.</p><p>Durează <b>24 de ore</b>.</p><p>Rezultat: <b>ziua și noaptea</b>.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">☀️🌍</span><h3>Revoluția (lecția 3)</h3><p>Pământul se mișcă în jurul <b>Soarelui</b>.</p><p>Durează <b>365 de zile și aproape 6 ore</b>.</p><p>Rezultat, împreună cu <b>înclinarea axei</b>: <b>anotimpurile</b>.</p></div>
+  </div>
+  <div class="tip y">🧠 <b>Cum să nu le încurci:</b> <b>rotația</b> e ca un titirez care se învârte pe loc. <b>Revoluția</b> e ca un drum în jurul unui stâlp. Pământul face amândouă în același timp.</div>
+  <div class="tip b">🤔 <b>Gândește-te:</b> care mișcare durează mai mult? De câte ori mai mult, aproximativ? (24 de ore față de 365 de zile.)
+   <div class="row"><button class="reveal">Arată răspunsul</button><div class="ans" hidden>Revoluția. Într-o revoluție încap aproximativ 365 de rotații, adică aproximativ 365 de zile și nopți.</div></div></div>
+ </div>
+</section>
+<section class="slide" aria-label="Pământul în jurul Soarelui">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Teme de gândire · manual p. 20</span>
+  <h2>Axa înclinată și drumul în jurul Soarelui</h2>
+  <p>Alege o poziție a Pământului pe drumul în jurul Soarelui. Observă <b>cum e înclinată axa</b> în fiecare poziție și <b>ce parte e luminată</b>. Locuim în emisfera nordică, partea de sus a Pământului.</p>
+  <div class="svgbox"><svg id="orb" viewBox="0 0 640 380" role="img" aria-label="Patru poziții ale Pământului în jurul Soarelui, cu axa înclinată în aceeași direcție"></svg></div>
+  <p class="src">Săgețile galbene arată sensul mișcării. Jumătatea luminată a Pământului este cea întoarsă spre Soare. „N” marchează Polul Nord.</p>
+  <div class="chips" id="seas">
+   <button class="chip" aria-pressed="true" data-i="0">❄️ Iarna</button>
+   <button class="chip" aria-pressed="false" data-i="1">🌸 Primăvara</button>
+   <button class="chip" aria-pressed="false" data-i="2">☀️ Vara</button>
+   <button class="chip" aria-pressed="false" data-i="3">🍂 Toamna</button>
+   <button class="btn alt" id="nxt">Următorul anotimp ›</button>
+  </div>
+  <div class="box" id="seabox" aria-live="polite"></div>
+  <div class="tip b">🔎 <b>Observă:</b> în toate cele patru poziții, axa e înclinată în aceeași direcție. Ce se schimbă de la o poziție la alta?
+   <div class="row"><button class="reveal">Arată răspunsul</button><div class="ans" hidden>Se schimbă locul Pământului față de Soare, deci care parte primește mai multă lumină și căldură. Când Polul Nord e înclinat spre Soare, în emisfera nordică e vară. Când e înclinat în partea opusă, e iarnă.</div></div></div>
+ </div>
+</section>
+<section class="slide" aria-label="Cele patru anotimpuri">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Studiu · manual p. 21</span>
+  <h2>Cele patru anotimpuri în România</h2>
+  <div class="grid g4">
+   <div class="box" style="border-color:#6BA7E0"><span class="emo">❄️</span><h3>Iarna</h3><p>Nopțile sunt <b>lungi</b>.</p><p>Temperatura este <b>scăzută</b>.</p><p>Frecvente: ninsoarea, viscolul, zăpada, înghețul.</p></div>
+   <div class="box" style="border-color:#E38AB0"><span class="emo">🌸</span><h3>Primăvara</h3><p>Nopțile <b>încep să scadă</b> (zilele cresc).</p><p>Temperaturile <b>urcă</b>.</p><p>Zăpada și gheața se topesc, arborii înfloresc.</p></div>
+   <div class="box" style="border-color:var(--yellow)"><span class="emo">☀️</span><h3>Vara</h3><p>Zilele sunt <b>cele mai lungi</b>.</p><p>Temperaturile sunt <b>cele mai ridicate</b>.</p></div>
+   <div class="box" style="border-color:#D9822B"><span class="emo">🍂</span><h3>Toamna</h3><p>Zilele <b>încep să scadă</b>.</p><p>Temperaturile <b>coboară</b>.</p><p>Arborilor încep să le cadă frunzele.</p></div>
+  </div>
+  <div class="tip y">🌧️ <b>Ploile</b> sunt specifice anotimpurilor calde. Ele pot fi însoțite de vânt, fulgere și tunete.</div>
+  <div class="tip b">🕵️ <b>Capcană:</b> primăvara și toamna au temperaturi asemănătoare. Cum le deosebești după lungimea zilei?
+   <div class="row"><button class="reveal">Arată răspunsul</button><div class="ans" hidden>Primăvara zilele cresc (nopțile scad), toamna zilele scad.</div></div></div>
+ </div>
+</section>
+<section class="slide" aria-label="Manualul spune și context">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Atenție la detalii</span>
+  <h2>Manualul spune / Context</h2>
+  <div class="dual">
+   <div class="mb"><h4>📘 Manualul spune</h4><p>„Înclinarea axei și rotația planetei în jurul Soarelui conduc la formarea anotimpurilor.”</p></div>
+   <div class="ctx"><h4>🌍 Context</h4><p>Mulți cred că vara e cald fiindcă Pământul e mai aproape de Soare. Nu e așa. Chiar în ianuarie, când e iarnă la noi, Pământul e puțin mai aproape de Soare decât în iulie. Contează <b>înclinarea axei</b>.</p></div>
+  </div>
+  <div class="dual">
+   <div class="mb"><h4>📘 Manualul spune</h4><p>„Unele zone ale Globului primesc mai multă lumină și căldură, altele mai puțină.”</p></div>
+   <div class="ctx"><h4>🌍 Context</h4><p>Când în emisfera nordică e iarnă, în cea sudică e vară. De aceea, în Australia, Crăciunul este în plină vară.</p></div>
+  </div>
+  <div class="dual">
+   <div class="mb"><h4>📘 Manualul spune</h4><p>„Mișcarea de rotație a Pământului în jurul Soarelui se numește mișcare de revoluție.” (p. 21)</p></div>
+   <div class="ctx"><h4>🌍 Context</h4><p>Ai grijă la cuvinte: în jurul <b>axei</b> = <b>rotație</b>; în jurul <b>Soarelui</b> = <b>revoluție</b>. La pagina 20, manualul folosește „rotație completă a Terrei în jurul Soarelui”. Pentru test, spune „revoluție”.</p></div>
+  </div>
+ </div>
+</section>
+<section class="slide" aria-label="Anul bisect">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#1E2340">Matematică · de la „aproape 6 ore”</span>
+  <h2>Orele care se adună</h2>
+  <p>O revoluție durează <b>365 de zile și aproape 6 ore</b>. Calendarul are doar 365 de zile. Ce se întâmplă cu cele 6 ore în plus? Apasă „Trece un an”.</p>
+  <div class="ladder" id="yrs"></div>
+  <div class="row" style="margin:6px 0 10px"><button class="btn" id="yadd">Trece un an ›</button><button class="btn ghost" id="yreset">De la început</button></div>
+  <div class="box" id="ybox" aria-live="polite"></div>
+  <div class="tip b">🌍 <b>Context (nu e în manual):</b> de aceea, din 4 în 4 ani, de obicei, anul are 366 de zile și luna februarie are 29. Se numește <b>an bisect</b>. Calculul exact e puțin mai fin, dar ideea de bază este asta.</div>
+ </div>
+</section>
+<section class="slide" aria-label="Ploaie și ninsoare">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Observare, întrebarea 5 · manual p. 20</span>
+  <h2>Cum se formează ploaia și ninsoarea?</h2>
+  <p>Manualul pune întrebarea, dar nu o explică. Încearcă să ordonezi pașii folosind lecția 2 (ce face Soarele cu apa?).</p>
+  <div class="ladder">
+   <div class="step">☀️ Soarele încălzește apa mărilor și a râurilor</div><span class="arrow">›</span>
+   <div class="step">💨 Apa se evaporă</div><span class="arrow">›</span>
+   <div class="step">☁️ Vaporii se răcesc și formează nori</div><span class="arrow">›</span>
+   <div class="step" style="background:var(--tint-green)">🌧️ Ploaie, dacă temperatura e peste 0 °C</div>
+   <div class="step" style="background:var(--tint-purple)">❄️ Ninsoare, dacă e sub 0 °C</div>
+  </div>
+  <div class="tip g">🌍 <b>Context (nu e în manual):</b> ninsoarea e formată din cristale mici de gheață. Legătura cu lecția 2: manualul spune că, dacă Soarele ar fi mult mai aproape, apele s-ar evapora. Evaporarea este chiar începutul acestui drum.</div>
+  <div class="tip b">🤔 <b>Gândește-te:</b> vara avem ploi cu fulgere și tunete, iarna avem viscol. De ce nu ninge vara?
+   <div class="row"><button class="reveal">Arată răspunsul</button><div class="ans" hidden>Vara temperaturile sunt cele mai ridicate (peste 0 °C), așa că norii dau ploaie, nu zăpadă.</div></div></div>
+ </div>
+</section>
+<section class="slide" aria-label="Fișa de observații meteo">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Exersare, ex. 4 · manual p. 21</span>
+  <h2>Fișa de observații a vremii</h2>
+  <div class="tblwrap"><table class="t"><thead><tr><th rowspan="2">Data</th><th rowspan="2">Cerul</th><th rowspan="2">Fenomene ale naturii</th><th colspan="2">Temperatura aerului</th></tr><tr><th>ziua</th><th>noaptea</th></tr></thead>
+  <tbody><tr><td>15.09</td><td>senin</td><td>vânt ușor</td><td>18 grade</td><td>9 grade</td></tr></tbody></table></div>
+  <p class="src">Rândul exemplu din manual.</p>
+  <div class="grid g2" style="margin-top:10px">
+   <div class="box"><h3>Citește tabelul</h3><p>Care este diferența dintre temperatura de zi și cea de noapte?</p><button class="reveal">Arată răspunsul</button><div class="ans" hidden>18 − 9 = 9 grade.</div></div>
+   <div class="box"><h3>Leagă cu lecția 2</h3><p>Cerul este senin. De ce credeți că noaptea e mai rece decât ziua?</p><button class="reveal">Arată răspunsul</button><div class="ans" hidden>Noaptea, locul nostru este pe partea opusă Soarelui, care este sursa de căldură.</div></div>
+  </div>
+  <div class="dual" style="margin-top:14px">
+   <div class="mb"><h4>📘 Manualul spune</h4><p>„Mercurul din termometre este foarte toxic.” Folosește termometrul cu grijă, ca să nu se spargă.</p></div>
+   <div class="ctx"><h4>🌍 Context</h4><p>Multe termometre de azi nu mai conțin mercur. Dacă un termometru se sparge, nu atinge ce s-a vărsat și anunță imediat un adult.</p></div>
+  </div>
+ </div>
+</section>
+<section class="slide" aria-label="Legături între lecții">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Legăm lecțiile</span>
+  <h2>Soarele, lanțul din spatele a tot</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--yellow)"><span class="emo">⭐</span><h3>Lecția 1</h3><p>Soarele este o stea. Luminează și încălzește corpurile din jurul lui.</p></div>
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🔄</span><h3>Lecția 2</h3><p>Pământul se rotește în 24 de ore. Rezultat: zi și noapte.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">🍂</span><h3>Lecția 3</h3><p>Pământul se mișcă în jurul Soarelui, cu axa înclinată. Rezultat: anotimpuri.</p></div>
+  </div>
+  <div class="tip y">🧩 Pământul face <b>două mișcări deodată</b>. Ce ar fi dacă axa nu ar fi înclinată, dar Pământul s-ar mișca la fel în jurul Soarelui? Ce s-ar întâmpla cu anotimpurile? Argumentează cu textul din manual.
+   <div class="row"><button class="reveal">Arată răspunsul</button><div class="ans" hidden>Manualul spune că înclinarea axei face ca lumina și căldura să nu cadă la fel peste tot. Fără înclinare, diferențele ar dispărea sau ar fi mult mai mici, deci nu am avea anotimpuri așa cum le știm.</div></div></div>
+ </div>
+</section>
+<section class="slide" aria-label="Pregătire pentru Am învățat până acum">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Pregătire pentru test · manual pp. 22–23</span>
+  <h2>„Am învățat până acum”</h2>
+  <p>Pagina 22 cere, între altele, trei propoziții adevărate despre Pământ folosind expresiile de mai jos. Încearcă să le formulezi singur, apoi compară.</p>
+  <div class="ladder"><span class="step">axa Pământului</span><span class="step">mișcarea de rotație</span><span class="step">mișcarea de revoluție</span></div>
+  <div class="row" style="margin-top:10px"><button class="reveal">Un exemplu de propoziții</button><div class="ans" hidden>Axa Pământului este o linie imaginară care unește Polul Nord cu Polul Sud.<br>Mișcarea de rotație a Pământului în jurul axei durează 24 de ore și produce ziua și noaptea.<br>Mișcarea de revoluție în jurul Soarelui durează 365 de zile și aproape 6 ore, iar împreună cu înclinarea axei produce anotimpurile.</div></div>
+  <div class="tip b">✅ <b>Lista rapidă:</b>
+   <ul style="margin:.4em 0 0;padding-left:1.2em">
+    <li>Sistemul Solar = Soarele și corpurile cerești care se rotesc în jurul lui (lecția 1).</li>
+    <li>Corpuri cerești: planete, sateliți naturali, planete pitice, comete, asteroizi.</li>
+    <li>Steaua: corp ceresc cu lumină proprie. Planeta cea mai mare: Jupiter. Pitică: Pluto. Vecină cu Terra: Venus (și Marte).</li>
+    <li>Interevaluare: o trăsătură pentru primăvară, toamnă și iarnă (vezi slide-ul cu anotimpurile).</li>
+   </ul></div>
+ </div>
+</section>
+<style>.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}.pd summary{cursor:pointer;font-weight:800}.pd[open] summary{margin-bottom:6px}.pd:last-of-type{border-color:var(--green)}</style>
+<!-- PUNTE -->
+<section class="slide" aria-label="Punte: Științe și Istorie">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Științe ↔ Istorie ↔ Geografie</span>
+  <h2>Anul bisect, calendarul istoricilor și umbra</h2>
+  <div class="grid g2">
+   <div class="box"><span class="emo">📅</span><h3>Istorie</h3><p>Istoricii numără anii pe ere și secole (L2). Dar ce e un „an”? Exact ce ai învățat aici: <b>o revoluție</b> a Pământului în jurul Soarelui.</p></div>
+   <div class="box"><span class="emo">🕶️</span><h3>Geografie</h3><p>La amiază, Soarele e în sud și umbra cade spre nord (L4). <b>Vara</b>, Soarele urcă mai sus, deci umbra de la amiază e <b>mai scurtă</b> decât iarna.</p></div>
+  </div>
+  <details class="pd"><summary>Întrebare-punte: ce s-ar întâmpla cu datele istorice fără ani bisecți?</summary><p>În fiecare an, calendarul ar rămâne în urmă cu aproape 6 ore față de mișcarea Pământului. În 4 ani se adună o zi, iar în 400 de ani, aproape 100 de zile. Sărbătorile de iarnă ar ajunge, încet, toamna. Datele istoricilor ar „aluneca” față de anotimpuri.</p></details>
+  <details class="pd"><summary>Întrebare de verificare: cum știi că umbra e mai scurtă vara?</summary><p>Nu crezi pe cuvânt: <b>măsori</b>. Înfige un băț în curte și marchează vârful umbrei la ora 13 (amiaza la noi, vara), o dată în iunie și o dată în decembrie. Așa lucrează și oamenii de știință.</p></details>
+ </div>
+</section>
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--red)"><span class="emo">🔁</span><p><b>Revoluția</b> Pământului în jurul Soarelui durează <b>365 de zile și aproape 6 ore</b>.</p></div>
+   <div class="box" style="border-color:var(--blue)"><span class="emo">📐</span><p>Din cauza <b>axei înclinate</b>, unele zone primesc mai multă lumină și căldură: se formează <b>anotimpurile</b>.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">🍃</span><p>Iarna: nopți lungi, frig. Primăvara: zilele cresc. Vara: cele mai lungi zile, cald. Toamna: zilele scad, frunzele cad.</p></div>
+  </div>
+ </div>
+</section>
+<section class="slide" aria-label="Test 1"><div class="wrap" style="max-width:860px"><span class="badge" style="background:var(--purple)">Verifică-te</span><h2>Test de meteorolog (1/2)</h2><p class="src">Încearcă să răspunzi tu, apoi cere un indiciu dacă ai nevoie.</p><div class="item" data-q>
+  <p><span class="num">1</span>Vara e cald pentru că Pământul se află mai aproape de Soare decât iarna?</p>
+  <div class="row"><button class="hintbtn">💡 Indiciu</button><button class="ansbtn">Vezi răspunsul</button></div>
+  <div class="hint" hidden>Ce spune manualul despre cauza anotimpurilor? Gândește-te la axă.</div>
+  <div class="ans" hidden><b>Nu. Cauza este înclinarea axei împreună cu mișcarea în jurul Soarelui.</b><span class="why">În ianuarie, când e iarnă la noi, Pământul e puțin mai aproape de Soare decât în iulie.</span></div>
+  <div class="selfscore"><span>Ai răspuns corect înainte să vezi?</span><button class="ok">Da ✔</button><button class="no">Încă nu</button><span class="done" hidden></span></div>
+</div><div class="item" data-q>
+  <p><span class="num">2</span>O revoluție durează 365 de zile și aproape 6 ore. Câte ore se adună după 4 ani? Ce se face cu ele?</p>
+  <div class="row"><button class="hintbtn">💡 Indiciu</button><button class="ansbtn">Vezi răspunsul</button></div>
+  <div class="hint" hidden>Înmulțește 6 cu 4. Câte ore are o zi?</div>
+  <div class="ans" hidden><b>6 × 4 = 24 de ore, adică o zi întreagă.</b><span class="why">Se adaugă o zi la calendar o dată la patru ani: 29 februarie, an bisect de 366 de zile.</span></div>
+  <div class="selfscore"><span>Ai răspuns corect înainte să vezi?</span><button class="ok">Da ✔</button><button class="no">Încă nu</button><span class="done" hidden></span></div>
+</div><div class="item" data-q>
+  <p><span class="num">3</span>Câte zile și nopți (rotații) are Pământul, aproximativ, într-o revoluție?</p>
+  <div class="row"><button class="hintbtn">💡 Indiciu</button><button class="ansbtn">Vezi răspunsul</button></div>
+  <div class="hint" hidden>O rotație durează 24 de ore (lecția 2). Câte zile are o revoluție?</div>
+  <div class="ans" hidden><b>Aproximativ 365.</b><span class="why">Fiecare rotație înseamnă o zi și o noapte.</span></div>
+  <div class="selfscore"><span>Ai răspuns corect înainte să vezi?</span><button class="ok">Da ✔</button><button class="no">Încă nu</button><span class="done" hidden></span></div>
+</div><div class="item" data-q>
+  <p><span class="num">4</span>În tabelul de la 15.09, ziua sunt 18 grade, iar noaptea 9 grade. Cu cât e mai frig noaptea? De ce e mai frig noaptea?</p>
+  <div class="row"><button class="hintbtn">💡 Indiciu</button><button class="ansbtn">Vezi răspunsul</button></div>
+  <div class="hint" hidden>Scazi. Apoi gândește-te: de unde vine căldura (lecția 2)?</div>
+  <div class="ans" hidden><b>Cu 9 grade (18 − 9 = 9). Noaptea nu primim lumină și căldură de la Soare.</b><span class="why">Noaptea locul nostru este pe partea opusă Soarelui.</span></div>
+  <div class="selfscore"><span>Ai răspuns corect înainte să vezi?</span><button class="ok">Da ✔</button><button class="no">Încă nu</button><span class="done" hidden></span></div>
+</div></div></section>
+<section class="slide" aria-label="Test 2"><div class="wrap" style="max-width:860px"><span class="badge" style="background:var(--purple)">Verifică-te</span><h2>Test de meteorolog (2/2)</h2><div class="item" data-q>
+  <p><span class="num">5</span>Primăvară sau toamnă? (a) zilele cresc și zăpada se topește; (b) zilele scad, frunzele cad.</p>
+  <div class="row"><button class="hintbtn">💡 Indiciu</button><button class="ansbtn">Vezi răspunsul</button></div>
+  <div class="hint" hidden>Manualul: primăvara nopțile încep să scadă. Toamna zilele încep să scadă.</div>
+  <div class="ans" hidden><b>(a) primăvară; (b) toamnă.</b><span class="why">În ambele temperaturile pot fi asemănătoare, dar lungimea zilei și semnele din natură le deosebesc.</span></div>
+  <div class="selfscore"><span>Ai răspuns corect înainte să vezi?</span><button class="ok">Da ✔</button><button class="no">Încă nu</button><span class="done" hidden></span></div>
+</div><div class="item" data-q>
+  <p><span class="num">6</span>Rotație sau revoluție? (a) 24 de ore; (b) în jurul Soarelui; (c) produce zi și noapte; (d) împreună cu înclinarea axei produce anotimpurile.</p>
+  <div class="row"><button class="hintbtn">💡 Indiciu</button><button class="ansbtn">Vezi răspunsul</button></div>
+  <div class="hint" hidden>Rotația e în jurul axei. Revoluția e în jurul Soarelui.</div>
+  <div class="ans" hidden><b>(a) rotație; (b) revoluție; (c) rotație; (d) revoluție.</b><span class="why">Ambele mișcări se petrec în același timp.</span></div>
+  <div class="selfscore"><span>Ai răspuns corect înainte să vezi?</span><button class="ok">Da ✔</button><button class="no">Încă nu</button><span class="done" hidden></span></div>
+</div><div class="item" data-q>
+  <p><span class="num">7</span>Cum se formează ploaia? Folosește ce știi din lecția 2 despre ce face Soarele cu apa.</p>
+  <div class="row"><button class="hintbtn">💡 Indiciu</button><button class="ansbtn">Vezi răspunsul</button></div>
+  <div class="hint" hidden>Ce se întâmplă cu apa încălzită? Unde ajunge?</div>
+  <div class="ans" hidden><b>Soarele încălzește apa, ea se evaporă, vaporii se răcesc și formează nori, iar din nori cade ploaia.</b><span class="why">Dacă e sub 0 °C, cade zăpadă, nu ploaie.</span></div>
+  <div class="selfscore"><span>Ai răspuns corect înainte să vezi?</span><button class="ok">Da ✔</button><button class="no">Încă nu</button><span class="done" hidden></span></div>
+</div><div class="item" data-q>
+  <p><span class="num">8</span>Când la noi, în emisfera nordică, e iarnă, ce anotimp este în emisfera sudică, de exemplu în Australia?</p>
+  <div class="row"><button class="hintbtn">💡 Indiciu</button><button class="ansbtn">Vezi răspunsul</button></div>
+  <div class="hint" hidden>Dacă partea de sus a Pământului primește mai puțină lumină, ce se întâmplă cu partea de jos?</div>
+  <div class="ans" hidden><b>Vară.</b><span class="why">Manualul spune că unele zone ale Globului primesc mai multă lumină și căldură, altele mai puțină. Anotimpurile sunt inversate.</span></div>
+  <div class="selfscore"><span>Ai răspuns corect înainte să vezi?</span><button class="ok">Da ✔</button><button class="no">Încă nu</button><span class="done" hidden></span></div>
+</div></div></section>
+<section class="slide" aria-label="Scor">
+ <div class="wrap" style="max-width:760px;text-align:center">
+  <span class="badge" style="background:var(--green)">Rezultat</span>
+  <h2>Scorul tău</h2>
+  <div class="scorebig"><span id="score-val">0</span> / <span id="score-max">0</span></div>
+  <p class="lead" style="margin:.6em auto">Întrebări bifate: <b id="score-done"></b></p>
+  <p id="score-msg" style="font-weight:700"></p>
+  <button class="btn alt" id="score-reset" style="margin-top:12px">Începe testul de la capăt</button>
+ </div>
+</section>
+</main>
+<nav class="bar" aria-label="Navigare prezentare">
+ <a class="home" href="../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
+ <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
+ <div class="dots" id="dots"></div>
+ <span class="count" id="count"></span>
+ <button class="nav" id="next" aria-label="Slide-ul următor">→</button>
+</nav>
+<script>
+
+(function(){
+  var KEY='sn-u2l3';
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
+  var cur=0;
+  slides.forEach(function(s,i){
+    var b=document.createElement('button');
+    b.setAttribute('aria-label','Mergi la slide-ul '+(i+1));
+    b.onclick=function(){go(i)};
+    dots.appendChild(b);
+  });
+  function go(i){
+    if(i<0||i>=slides.length)return;
+    slides[cur].classList.remove('active');dots.children[cur].classList.remove('on');
+    cur=i;
+    slides[cur].classList.add('active');dots.children[cur].classList.add('on');
+    slides[cur].scrollTop=0;
+    prev.disabled=cur===0;next.disabled=cur===slides.length-1;
+    count.textContent=(cur+1)+' / '+slides.length;
+    
+  }
+  prev.onclick=function(){go(cur-1)};
+  next.onclick=function(){go(cur+1)};
+  document.addEventListener('keydown',function(e){
+    if(e.target&&(e.target.tagName==='INPUT'))return;
+    if(e.key==='ArrowRight'||e.key==='PageDown')go(cur+1);
+    if(e.key==='ArrowLeft'||e.key==='PageUp')go(cur-1);
+  });
+  var sx=null;
+  var deck=document.getElementById('deck');
+  deck.addEventListener('touchstart',function(e){sx=(e.target.closest&&e.target.closest('.svgbox,input,.tblwrap'))?null:e.touches[0].clientX},{passive:true});
+  deck.addEventListener('touchend',function(e){
+    if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>80)go(cur+(dx<0?1:-1));sx=null;
+  },{passive:true});
+  var start=0;
+  
+  slides[0].classList.add('active');dots.children[0].classList.add('on');
+  go(start);
+
+  /* simple reveals */
+  document.querySelectorAll('.reveal').forEach(function(b){
+    b.onclick=function(){
+      var a=b.nextElementSibling;a.hidden=!a.hidden;
+      b.textContent=a.hidden?'Arată răspunsul':'Ascunde răspunsul';
+    };
+  });
+
+  /* quiz with hint, answer, self-score */
+  var items=[].slice.call(document.querySelectorAll('.item[data-q]'));
+  var total=0,maxp=items.length*2,answered=0;
+  function upd(){
+    var s=document.getElementById('score-val');if(!s)return;
+    s.textContent=total;
+    document.getElementById('score-max').textContent=maxp;
+    document.getElementById('score-done').textContent=answered+' din '+items.length;
+    var m=document.getElementById('score-msg');
+    var r=answered?total/(answered*2):0;
+    m.textContent=answered<items.length?'Mai ai întrebări de rezolvat. Fiecare răspuns corect din prima valorează 2 puncte.':
+      (r>=.85?'Excelent! Ești gata pentru lecția următoare.':r>=.55?'Foarte bine! Mai privește întrebările la care ai avut nevoie de indiciu.':'Un început bun. Recitește lecția în manual, apoi încearcă din nou întrebările.');
+  }
+  items.forEach(function(it){
+    var hb=it.querySelector('.hintbtn'),ab=it.querySelector('.ansbtn'),h=it.querySelector('.hint'),a=it.querySelector('.ans');
+    var usedHint=false,done=false;
+    hb.onclick=function(){h.hidden=!h.hidden;if(!h.hidden)usedHint=true;};
+    ab.onclick=function(){a.hidden=!a.hidden;ab.textContent=a.hidden?'Vezi răspunsul':'Ascunde răspunsul';};
+    var ok=it.querySelector('.selfscore .ok'),no=it.querySelector('.selfscore .no'),dn=it.querySelector('.selfscore .done');
+    function fin(p){
+      if(done)return;done=true;total+=p;answered++;
+      ok.hidden=true;no.hidden=true;dn.hidden=false;
+      dn.textContent=p===2?'+2 puncte (din prima)':p===1?'+1 punct (cu indiciu)':'0 puncte, mai încearcă mai târziu';
+      upd();
+    }
+    ok.onclick=function(){fin(usedHint?1:2)};
+    no.onclick=function(){fin(0)};
+  });
+  upd();
+  var rs=document.getElementById('score-reset');
+  if(rs)rs.onclick=function(){try{localStorage.setItem(KEY,0)}catch(e){}location.reload()};
+})();
+
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a,t){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(t!==undefined)e.textContent=t;return e}
+  var svg=document.getElementById('orb');
+  var sx=320,sy=190,rx=230,ry=105;
+  /* ordine pe ecran: dreapta (iarnă) -> sus (primăvară) -> stânga (vară) -> jos (toamnă) */
+  var POS=[{x:sx+rx,y:sy,n:'Iarna'},{x:sx,y:sy-ry,n:'Primăvara'},{x:sx-rx,y:sy,n:'Vara'},{x:sx,y:sy+ry,n:'Toamna'}];
+  var INFO=[
+   {t:'❄️ Iarna',d:'Polul Nord este înclinat în partea opusă Soarelui. Emisfera nordică primește mai puțină lumină și căldură.',m:'Nopțile sunt lungi, temperatura scăzută. Ninsoare, viscol, zăpadă, îngheț.'},
+   {t:'🌸 Primăvara',d:'Pământul ajunge într-o poziție în care lumina și căldura încep să crească în emisfera nordică.',m:'Nopțile încep să scadă, temperaturile urcă. Zăpada și gheața se topesc, arborii înfloresc.'},
+   {t:'☀️ Vara',d:'Polul Nord este înclinat spre Soare. Emisfera nordică primește mai multă lumină și căldură.',m:'Zilele sunt cele mai lungi, temperaturile cele mai ridicate. Ploi cu vânt, fulgere și tunete.'},
+   {t:'🍂 Toamna',d:'Lumina și căldura încep să scadă în emisfera nordică.',m:'Zilele încep să scadă, temperaturile coboară. Arborilor încep să le cadă frunzele.'}
+  ];
+  var sel=0;
+  var tilt=23.5*Math.PI/180;
+  function earth(g,p,i){
+    var r=26,th=Math.atan2(sy-p.y,sx-p.x);
+    var lit=el('circle',{cx:p.x,cy:p.y,r:r,fill:'#4C8BEA'});g.appendChild(lit);
+    var a1=th-Math.PI/2,a2=th+Math.PI/2;
+    var d='M '+(p.x+r*Math.cos(a1))+' '+(p.y+r*Math.sin(a1))+' A '+r+' '+r+' 0 0 0 '+(p.x+r*Math.cos(a2))+' '+(p.y+r*Math.sin(a2))+' Z';
+    g.appendChild(el('path',{d:d,fill:'#12194A'}));
+    if(i===sel)g.appendChild(el('circle',{cx:p.x,cy:p.y,r:r+7,fill:'none',stroke:'#F6C431','stroke-width':4}));
+    var dx=Math.sin(tilt),dy=-Math.cos(tilt);
+    g.appendChild(el('line',{x1:p.x-dx*(r+14),y1:p.y-dy*(r+14),x2:p.x+dx*(r+14),y2:p.y+dy*(r+14),stroke:'#fff','stroke-width':2.5,'stroke-linecap':'round'}));
+    g.appendChild(el('text',{x:p.x+dx*(r+26),y:p.y+dy*(r+22)+4,'text-anchor':'middle',fill:'#fff','font-size':14,'font-weight':800},'N'));
+    var side=[ {x:p.x+40,a:'start'}, {x:p.x+48,a:'start'}, {x:p.x-40,a:'end'}, {x:p.x+48,a:'start'} ][i];
+    g.appendChild(el('text',{x:side.x,y:p.y+6,'text-anchor':side.a,fill:'#fff','font-size':17,'font-weight':800},p.n));
+  }
+  function draw(){
+    svg.innerHTML='';
+    svg.appendChild(el('ellipse',{cx:sx,cy:sy,rx:rx,ry:ry,fill:'none',stroke:'#fff','stroke-opacity':.4,'stroke-dasharray':'6 8','stroke-width':2}));
+    [45,225].forEach(function(deg){
+      var t=deg*Math.PI/180,x=sx+rx*Math.cos(t),y=sy-ry*Math.sin(t);
+      var ang=Math.atan2(-ry*Math.cos(t),-rx*Math.sin(t))*180/Math.PI;
+      svg.appendChild(el('path',{d:'M 10 0 L -6 -7 L -6 7 Z',fill:'#F6C431',transform:'translate('+x+' '+y+') rotate('+ang+')'}));
+    });
+    svg.appendChild(el('circle',{cx:sx,cy:sy,r:36,fill:'#FFC933'}));
+    svg.appendChild(el('text',{x:sx,y:sy+5,'text-anchor':'middle',fill:'#1E2340','font-size':13,'font-weight':800},'Soarele'));
+    POS.forEach(function(p,i){
+      var g=el('g',{tabindex:0,role:'button','aria-label':p.n,style:'cursor:pointer'});
+      earth(g,p,i);
+      g.onclick=function(){sel=i;show()};
+      g.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();sel=i;show()}};
+      svg.appendChild(g);
+    });
+  }
+  function show(){
+    var b=document.querySelectorAll('#seas .chip');
+    b.forEach(function(x,j){x.setAttribute('aria-pressed',j===sel?'true':'false')});
+    var f=INFO[sel];
+    document.getElementById('seabox').innerHTML='<h3>'+f.t+' în România</h3><p style="margin:.3em 0">'+f.d+'</p><p style="margin:.3em 0"><b>Din manual:</b> '+f.m+'</p>';
+    draw();
+  }
+  document.querySelectorAll('#seas .chip').forEach(function(x){x.onclick=function(){sel=parseInt(x.dataset.i,10);show()}});
+  document.getElementById('nxt').onclick=function(){sel=(sel+1)%4;show()};
+  show();
+
+  /* ani bisecți */
+  var y=0;
+  var yb=document.getElementById('yrs'),ybox=document.getElementById('ybox');
+  function yr(){
+    yb.innerHTML='';
+    for(var i=1;i<=4;i++){
+      var s=document.createElement('span');s.className='step';
+      s.style.opacity=i<=y?1:.35;
+      s.innerHTML='An '+i+'<small>'+(i<=y?('+ 6 ore = '+(6*i)+' ore'):'')+'</small>';
+      yb.appendChild(s);
+    }
+    if(y===0)ybox.innerHTML='<b>Începe:</b> după fiecare an, aproape 6 ore rămân în plus. Câte ore s-au strâns după 4 ani?';
+    else if(y<4)ybox.innerHTML='După '+y+' an'+(y>1?'i':'')+': <b>'+(6*y)+' ore</b> în plus. Mai este nevoie de '+(24-6*y)+' ore ca să se formeze o zi întreagă.';
+    else ybox.innerHTML='<b>6 × 4 = 24 de ore = o zi întreagă!</b> Această zi se adaugă o dată la 4 ani: 29 februarie.';
+    document.getElementById('yadd').disabled=y>=4;
+  }
+  document.getElementById('yadd').onclick=function(){if(y<4){y++;yr()}};
+  document.getElementById('yreset').onclick=function(){y=0;yr()};
+  yr();
+})();
+
+</script>
+
+</body>
+</html>

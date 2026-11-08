@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
+</head>
+<body>
+<title>Influența omului asupra mediului</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+/* Same design system as „Timpul istoric și mediul geografic”: slide deck, bottom nav bar, colored badges */
+:root{
+  --bg:#F3F7FF; --paper:#FFFFFF; --ink:#1E2340; --soft:#4A5078; --line:#D5DDF0;
+  --red:#E2433A; --green:#2E9D52; --blue:#2F6FD6; --yellow:#F6C431; --purple:#6B4BC4; --brown:#8A5A2B;
+  --tint-red:#FDE6E4; --tint-green:#E1F4E7; --tint-blue:#E2ECFC; --tint-yellow:#FFF4CF; --tint-purple:#ECE6FA;
+  --display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+    --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+  --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%}
+body{
+  height:100%;margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--body);font-weight:500;
+  font-size:clamp(16px,1.05vw + 10px,21px);line-height:1.5;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.7rem,2.6vw + .6rem,2.8rem);font-weight:800;margin-bottom:.35em}
+h3{font-size:1.2em;font-weight:700}
+p{margin:.3em 0 .7em}
+b,strong{font-weight:800}
+
+.deck{flex:1;position:relative;min-height:0}
+.slide{position:absolute;inset:0;overflow-y:auto;padding:clamp(18px,3vw,48px) clamp(16px,5vw,80px) 24px;display:none}
+.slide.active{display:block;animation:in .35s ease-out}
+@keyframes in{from{opacity:.2;transform:translateX(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slide.active{animation:none}}
+.wrap{max-width:1080px;margin:0 auto}
+.lead{font-size:1.15em;color:var(--soft);max-width:60ch}
+.badge{display:inline-block;font-weight:800;font-size:.85em;padding:.2em .8em;border-radius:99px;margin-bottom:.8em;color:#fff}
+
+.bar{display:flex;align-items:center;gap:12px;padding:10px clamp(12px,3vw,32px);padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));background:var(--paper);border-top:2px solid var(--line)}
+.bar button.nav{font:inherit;font-weight:800;border:0;border-radius:14px;padding:.55em 1.1em;cursor:pointer;background:var(--blue);color:#fff;min-width:48px}
+.bar button.nav:disabled{opacity:.35;cursor:default}
+.dots{flex:1;display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.dots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
+.dots button.on{background:var(--red);transform:scale(1.3)}
+.count{font-weight:800;color:var(--soft);min-width:4.5ch;text-align:center;font-variant-numeric:tabular-nums}
+button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+
+.cover{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;min-height:100%}
+.cover > *{min-width:0}
+.cover h1{font-size:clamp(2.4rem,5vw + .5rem,4.8rem);font-weight:800;margin:.2em 0 .3em}
+.stripes{display:flex;height:14px;border-radius:8px;overflow:hidden;max-width:420px;margin-bottom:1em}
+.stripes span{flex:1}
+@media (max-width:760px){.cover{grid-template-columns:1fr}.cover svg{max-width:220px;margin:0 auto;display:block}}
+
+.grid{display:grid;gap:16px}
+.grid > *{min-width:0}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.box{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:18px 20px}
+.box .emo{font-size:2.2em;line-height:1;display:block;margin-bottom:.25em}
+.tip{border-radius:18px;padding:14px 20px;margin-top:18px;border-left:8px solid}
+.tip.y{background:var(--tint-yellow);border-color:var(--yellow)}
+.tip.g{background:var(--tint-green);border-color:var(--green)}
+.tip.b{background:var(--tint-blue);border-color:var(--blue)}
+.tip.r{background:var(--tint-red);border-color:var(--red)}
+.tip.p{background:var(--tint-purple);border-color:var(--purple)}
+
+.q{display:flex;gap:16px;align-items:center;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px 20px;margin-bottom:14px;font-size:1.15em;font-weight:700}
+.q .mark{flex:none;width:2.2em;height:2.2em;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:var(--display);font-weight:800;font-size:1.1em}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chips span{background:var(--tint-purple);border-radius:10px;padding:.25em .7em;font-weight:800}
+.ladder{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 6px}
+.step{background:var(--tint-blue);border-radius:12px;padding:.35em .8em;font-weight:800;text-align:center}
+.arrow{color:var(--soft);font-weight:800}
+
+/* events interactive */
+.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0 14px}
+.events button{font:inherit;font-weight:800;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:12px 10px;text-align:center}
+.events button span{display:block;font-size:1.9em;line-height:1.1}
+.events button[aria-pressed="true"]{border-color:var(--red);background:var(--tint-red)}
+.doc-card{background:var(--paper);border:2px dashed var(--brown);border-radius:18px;padding:16px 20px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;min-height:6.5em}
+.doc-card .big{font-size:3em;line-height:1}
+.doc-card > div{min-width:0}
+
+/* family types */
+.fam svg{width:100%;height:auto;display:block;margin-bottom:10px}
+
+/* timeline */
+.axis-wrap{overflow-x:auto;margin:8px 0}
+.axis{width:100%;min-width:620px;height:auto;display:block}
+
+/* tree */
+.tree{display:grid;gap:10px;margin-top:6px}
+.tree .row{display:grid;gap:10px;justify-items:center}
+.tree .r1{grid-template-columns:1fr}
+.tree .r2{grid-template-columns:1fr 1fr}
+.tree .r3{grid-template-columns:repeat(4,1fr)}
+.tree .lbl{font-family:var(--display);font-weight:800;font-size:.8em;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);text-align:center}
+.person{font:inherit;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:10px 12px;text-align:center;width:100%;max-width:260px}
+.person b{display:block}
+.person small{color:var(--soft);font-weight:700;font-variant-numeric:tabular-nums}
+.person.child{border-color:var(--red);background:var(--tint-red)}
+.person.dad,.person.pat{border-color:var(--blue)}
+.person.mom,.person.mat{border-color:var(--green)}
+.person[aria-pressed="true"]{box-shadow:0 0 0 4px var(--yellow)}
+.side{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.side .lbl{grid-column:1/-1}
+.tree-info{margin-top:12px}
+@media (max-width:620px){.tree .r3{grid-template-columns:1fr 1fr}}
+
+blockquote{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,1.4vw + .5rem,1.7rem);line-height:1.3;border-left:10px solid var(--red);padding:.2em 0 .2em .8em}
+cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weight:700;font-family:var(--body);font-size:.75em}
+
+/* „Manualul spune / Context” */
+.mc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;margin-top:18px;border:2px solid var(--line);border-radius:18px;overflow:hidden;background:var(--paper)}
+.mc > div{padding:14px 20px;min-width:0}
+.mc .m{background:var(--tint-yellow)}
+.mc .lab{display:block;font-family:var(--display);font-weight:800;font-size:.8em;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin-bottom:.3em}
+.mc .m p{font-style:italic}
+.mc p{margin:0 0 .4em}
+
+.quiz .item{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:14px 18px;margin-bottom:12px}
+.quiz .item p{margin:0;font-weight:700}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.reveal{font:inherit;font-weight:800;border:0;border-radius:12px;padding:.35em .9em;background:var(--tint-yellow);color:var(--ink);cursor:pointer}
+.reveal.hint{background:var(--tint-blue)}
+.ans{margin-top:8px;font-weight:800}
+.ans.a{color:var(--green)}
+.ans.h{color:var(--blue)}
+</style>
+<style>
+/* recap additions */
+.dossier{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.dossier .box{position:relative;padding-top:22px}
+.dossier .tag{position:absolute;top:-12px;left:16px;font-family:var(--display);font-weight:800;font-size:.8em;color:#fff;padding:.1em .7em;border-radius:99px}
+.dossier ul{margin:.2em 0 0;padding-left:1.1em}
+.dossier li{margin:.25em 0;font-size:.95em}
+.dossier h3{font-size:1.05em;margin-bottom:.3em}
+.svgwrap{overflow-x:auto;margin:6px 0}
+.svgwrap svg{width:100%;min-width:640px;height:auto;display:block}
+.rule{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:12px}
+.mono{font-variant-numeric:tabular-nums}
+/* time machine */
+.tm{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:18px;align-items:start}
+@media (max-width:760px){.tm{grid-template-columns:1fr}}
+.tm-in{display:grid;gap:12px}
+.tm-in label{font-weight:800}
+.tm-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tm-row input{font:inherit;font-weight:800;font-size:1.4em;width:6.5ch;padding:.2em .4em;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font-variant-numeric:tabular-nums}
+.seg{display:inline-flex;border:2px solid var(--line);border-radius:12px;overflow:hidden}
+.seg button{font:inherit;font-weight:800;border:0;padding:.4em .9em;background:var(--paper);color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--blue);color:#fff}
+.presets{display:flex;flex-wrap:wrap;gap:6px}
+.presets button{font:inherit;font-size:.85em;font-weight:700;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.2em .7em;cursor:pointer}
+.tm-out{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tm-out .cell{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 14px;min-width:0}
+.tm-out .cell span{display:block;font-size:.78em;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.tm-out .cell b{font-family:var(--display);font-size:1.35em;line-height:1.15;display:block}
+.tm-out .wide{grid-column:1/-1}
+/* quiz engine */
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.qmeta{display:flex;gap:6px;flex-wrap:wrap}
+.qmeta span{font-size:.8em;font-weight:800;padding:.15em .7em;border-radius:99px;background:var(--tint-purple)}
+.qmeta span.d{background:var(--tint-green)}
+.score{font-family:var(--display);font-weight:800;font-size:1.1em;font-variant-numeric:tabular-nums}
+.qprog{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:14px}
+.qprog i{display:block;height:100%;background:var(--green);width:0;transition:width .3s}
+.qcard{background:var(--paper);border:2px solid var(--line);border-radius:20px;padding:18px 22px}
+.qcard .stem{font-size:1.12em;font-weight:700;margin:0 0 12px}
+.opts{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.opts button{font:inherit;text-align:left;font-weight:700;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:10px 14px;cursor:pointer}
+.opts button.right{border-color:var(--green);background:var(--tint-green)}
+.opts button.wrong{border-color:var(--red);background:var(--tint-red);opacity:.75}
+.opts button:disabled{cursor:default}
+.numrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.numrow input{font:inherit;font-weight:800;font-size:1.2em;width:7ch;padding:.25em .5em;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+.act{font:inherit;font-weight:800;border:0;border-radius:12px;padding:.45em 1em;background:var(--blue);color:#fff;cursor:pointer}
+.act.sec{background:var(--tint-yellow);color:var(--ink)}
+.order-pool,.order-done{display:flex;flex-wrap:wrap;gap:8px;min-height:2.6em}
+.order-pool button,.order-done span{font:inherit;font-weight:700;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:.35em .8em}
+.order-pool button{cursor:pointer}
+.order-done span{background:var(--tint-blue);border-color:var(--blue)}
+.order-done span.bad{background:var(--tint-red);border-color:var(--red)}
+.order-done span.ok{background:var(--tint-green);border-color:var(--green)}
+.sort{display:grid;gap:8px}
+.sort .srow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border:2px solid var(--line);border-radius:12px;padding:6px 10px;background:var(--bg)}
+.sort .srow.ok{border-color:var(--green);background:var(--tint-green)}
+.sort .srow.bad{border-color:var(--red);background:var(--tint-red)}
+.fb{margin-top:12px;border-radius:14px;padding:10px 14px}
+.fb.h{background:var(--tint-blue)}
+.fb.ok{background:var(--tint-green)}
+.fb.no{background:var(--tint-red)}
+.qnav{display:flex;justify-content:flex-end;gap:8px;margin-top:12px;flex-wrap:wrap}
+.rank{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;margin:.1em 0}
+</style>
+
+<style>
+.cmp-wrap{overflow-x:auto}
+.cmp{width:100%;border-collapse:separate;border-spacing:0;background:var(--paper);border:2px solid var(--line);border-radius:18px;overflow:hidden;min-width:480px}
+.cmp th,.cmp td{padding:10px 14px;text-align:left;border-bottom:2px solid var(--line);vertical-align:top}
+.cmp tr:last-child td{border-bottom:0}
+.cmp th{font-family:var(--display);background:var(--tint-blue)}
+.cmp td:first-child{font-weight:800;width:32%}
+.path{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.path .box{text-align:center;padding:16px 12px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.hbars{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:8px 12px;align-items:center;margin:8px 0}
+.hbars span{font-weight:800;font-size:.9em}
+.hbars div{display:flex;align-items:center;gap:8px;min-width:0}
+.hbars i{display:block;height:28px;border-radius:6px;flex:none}
+.hbars b{font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:520px){.hbars{grid-template-columns:1fr}.hbars span{margin-top:4px}}
+.step small{display:block;font-weight:700;color:var(--soft);font-size:.72em}
+.sort .seg{flex-wrap:wrap}
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
+.duo>div{border-radius:18px;padding:14px 18px;min-width:0}
+.duo .man{background:var(--tint-yellow);border:2px solid var(--yellow)}
+.duo .ctx{background:var(--tint-green);border:2px solid var(--green)}
+.duo h3{font-size:1em;margin-bottom:.3em}
+.duo p{margin:.2em 0;font-size:.95em}
+.vocab{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:14px}
+.vocab div{background:var(--tint-purple);border-radius:14px;padding:10px 14px}
+.vocab b{color:var(--purple)}
+:root[data-theme="dark"] .vocab b{color:#CBB9FF}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .vocab b{color:#CBB9FF}}
+.fig{width:100%;height:auto;display:block;border-radius:16px}
+.fig text{fill:var(--ink);font-family:"Nunito",sans-serif;font-weight:800}
+.sky{width:100%;height:auto;display:block;border-radius:16px}
+.sky text{font-family:"Nunito",sans-serif;font-weight:800;fill:#FFFFFF}
+.steps{display:grid;gap:10px;counter-reset:s;margin:0;padding:0;list-style:none}
+.steps li{counter-increment:s;background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 14px 10px 54px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:30px;height:30px;border-radius:50%;background:var(--purple);color:#fff;display:grid;place-items:center;font-family:"Baloo 2",sans-serif;font-weight:800}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.ctrl button{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:.4em 1em;cursor:pointer}
+.ctrl button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.tbl{width:100%;border-collapse:collapse;background:var(--paper);border-radius:14px;overflow:hidden}
+.tbl th,.tbl td{padding:.5em .8em;border-bottom:2px solid var(--line);text-align:left}
+.tbl th{background:var(--tint-blue)}
+.scroll{overflow-x:auto}
+
+.levels{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:10px}
+.levels button{font:inherit;text-align:left;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:10px 14px}
+.levels button b{display:block;font-family:var(--display);font-size:1.05em}
+.levels button[aria-pressed="true"]{border-color:var(--blue);background:var(--tint-blue)}
+.calc{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0}
+.calc input,.calc select{font:inherit;font-weight:800;padding:.3em .5em;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);max-width:9em}
+.calc input[type=range]{max-width:none;flex:1;min-width:160px;padding:0}
+.out{background:var(--tint-yellow);border-radius:14px;padding:10px 16px;font-weight:700}
+.out b{font-family:var(--display);font-size:1.2em}
+
+.minbtns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.minbtns button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.35em .9em}
+.minbtns button[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+.eu-bar{position:relative;height:38px;border-radius:12px;background:var(--line);overflow:hidden;margin:8px 0}
+.eu-bar i{position:absolute;left:0;top:0;bottom:0;background:#2F6FD6;transition:width .4s}
+.eu-bar span{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-weight:800;color:#fff;font-family:var(--display);font-size:1.1em}
+@media (prefers-reduced-motion:reduce){.eu-bar i{transition:none}}
+
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}.pd summary{cursor:pointer;font-weight:800}.pd[open] summary{margin-bottom:6px}.pd:last-of-type{border-color:var(--green)}
+.threadgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.threadgrid .box{padding:12px 16px}
+.threadgrid .box b{display:block;font-family:var(--display);color:var(--soft);font-size:.9em}
+.threadgrid .box p{margin:.2em 0 0}
+</style>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Științe ale naturii · Unitatea 2 · Lecția 6 · manual pp. 28–29</p>
+   <h1>Influența omului asupra mediului de viață</h1>
+   <p class="lead">Omul folosește pădurile, apele și câmpurile. Când folosirea devine distrugere? Și cine apără capra neagră și bujorul de munte?</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="var(--tint-green)"/>
+   <g fill="#2E9D52"><path d="M40 150 L60 90 L80 150Z"/><path d="M70 150 L95 70 L120 150Z"/><path d="M110 150 L130 100 L150 150Z"/></g>
+   <g fill="#8A5A2B"><rect x="56" y="150" width="8" height="20"/><rect x="91" y="150" width="8" height="24"/><rect x="126" y="150" width="8" height="18"/></g>
+   <g fill="#B4874E"><rect x="160" y="160" width="14" height="10" rx="2"/><rect x="178" y="160" width="14" height="10" rx="2"/></g>
+   <path d="M20 190 Q110 170 200 190" stroke="#2F6FD6" stroke-width="8" fill="none"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 OBSERVARE -->
+<section class="slide" aria-label="Observare">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Observare · manual p. 28</span>
+  <h2>Ce ia omul din natură</h2>
+  <div class="grid g4">
+   <div class="box"><span class="emo">🪵</span><h3>Pădurea</h3><p>Lemn pentru case, mobilă, hârtie, foc.</p></div>
+   <div class="box"><span class="emo">🐟</span><h3>Apele</h3><p>Pește, apă de băut, energie.</p></div>
+   <div class="box"><span class="emo">🌾</span><h3>Terenurile agricole</h3><p>Grâu, porumb, legume, fructe.</p></div>
+   <div class="box"><span class="emo">🦌</span><h3>Vânătoarea</h3><p>Folositoare? Manualul îți cere să argumentezi.</p></div>
+  </div>
+  <div class="tip y">❓ <b>Întrebarea zilei:</b> capra neagră și bujorul românesc sunt <b>ocrotite de lege</b>. De ce e nevoie de o lege ca să le apărăm?</div>
+ </div>
+</section>
+
+<!-- 3 STUDIU -->
+<section class="slide" aria-label="De la folosire la distrugere">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#1E2340">Studiu · manual p. 29</span>
+  <h2>De la folosire la distrugere</h2>
+  <p>Numărul oamenilor a crescut, iar nevoile lor la fel. Mediul natural e transformat pentru <b>așezări</b>, <b>drumuri</b> și <b>terenuri agricole</b>. Sortează activitățile:</p>
+  <div class="sort" id="sort-act"></div>
+  <div class="qnav" style="justify-content:flex-start"><button class="act" type="button" data-check="sort-act">Verifică</button><button class="act sec" type="button" data-reset="sort-act">Ia de la capăt</button></div>
+  <div id="sort-act-fb" aria-live="polite"></div>
+  <div class="vocab" style="margin-top:14px">
+   <div><b>defrișare</b>: tăierea unei păduri întregi.</div>
+   <div><b>braconaj</b>: vânătoare sau pescuit ilegal, fără permis sau în perioada interzisă.</div>
+   <div><b>poluare</b>: murdărirea apei, a aerului sau a solului cu substanțe dăunătoare.</div>
+  </div>
+ </div>
+</section>
+
+<!-- 4 REGULI DRUMETIE -->
+<section class="slide" aria-label="Respectăm natura">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Teme de gândire · manual p. 28</span>
+  <h2>În drumeție, respectăm natura</h2>
+  <div class="grid g2">
+   <div class="box"><span class="emo">🌼</span><p>Nu rupem florile, puieții și crengile copacilor.</p></div>
+   <div class="box"><span class="emo">🪺</span><p>Ocrotim cuiburile păsărilor și vizuinele animalelor.</p></div>
+   <div class="box"><span class="emo">🔥</span><p>Nu aprindem focul în locuri neamenajate.</p></div>
+   <div class="box"><span class="emo">🗑️</span><p>Strângem gunoaiele. Cei care vin după noi au și ei dreptul la locuri curate.</p></div>
+  </div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Lista de reguli pentru drumeție.</p></div>
+   <div><span class="lab">🌍 Context · lege, obicei sau părere?</span><p>Unele dintre aceste reguli sunt <b>lege</b>: într-un parc național e interzis să rupi plante ocrotite sau să faci foc în afara locurilor amenajate, iar paznicii pot da amenzi. Altele sunt <b>bun-simț</b>, adică norme morale. Unealta de la educație civică funcționează și la științe!</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 5 PUNTE CIVICA -->
+<section class="slide" aria-label="Punte: cine apără natura">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Științe ↔ Educație civică ↔ Geografie</span>
+  <h2>Cine apără natura?</h2>
+  <details class="pd"><summary>Legea</summary><p>Manualul spune că multe state iau „măsuri reglementate prin legi”. În România, unele specii sunt <b>ocrotite</b>, iar zone întregi devin <b>parcuri naționale</b> și <b>rezervații</b>. Primul parc național al României a fost <b>Retezat</b>, în 1935.</p></details>
+  <details class="pd"><summary>Instituțiile (Civică U1 L1)</summary><p>Ca la comunitatea locală, fiecare problemă are o instituție: <b>Garda de Mediu</b> verifică poluarea, <b>administrațiile parcurilor</b> au paznici (rangeri), iar <b>primăria</b> organizează strângerea gunoiului. Manualul îți propune chiar să scrii o scrisoare autorităților locale!</p></details>
+  <details class="pd"><summary>Locul (Geografie)</summary><p>Caută pe hartă Delta Dunării: e <b>rezervație a biosferei</b> și e pe lista UNESCO, despre care ai auzit la civică (U1 L3). Aici trăiesc pelicanii din atlasul manualului.</p></details>
+  <details class="pd"><summary>Tu</summary><p>Un copil nu face legi, dar poate să nu arunce gunoaie, să ducă bateriile la colectare și să spună unui adult când vede pe cineva care strică natura. E responsabilitatea cetățeanului, de la civică!</p></details>
+ </div>
+</section>
+
+<!-- 6 ATLAS -->
+<section class="slide" aria-label="Atlas: specii ocrotite">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Atlas · manual p. 35</span>
+  <h2>Animale ocrotite</h2>
+  <div class="chips"><span>🦬 zimbrul (bizonul european)</span><span>🐈 râsul</span><span>🪿 pelicanul</span><span>🕊️ egreta albă</span><span>🐢 țestoasa dobrogeană</span><span>🦃 dropia</span></div>
+  <p>Marile pericole pentru viața sălbatică: <b>dispariția mediilor naturale</b>, <b>exploatarea excesivă</b> și <b>poluarea</b>.</p>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>„Aproape jumătate dintre mamiferele din Europa și o treime dintre reptile, pești și păsări sunt pe cale de dispariție.” (după un site al Comisiei Europene)</p></div>
+   <div><span class="lab">🌍 Context · unealta de istorie</span><p>E o cifră mare și importantă, deci merită verificată ca un izvor: <b>cine</b> a spus-o (Comisia Europeană), <b>când</b> și <b>ce înseamnă exact</b> „pe cale de dispariție”? Unele surse numără doar speciile „amenințate”, altele și pe cele „în scădere”, așa că cifrele diferă. Cercetează cu un adult!</p></div>
+  </div>
+  <div class="tip g">🦬 <b>O poveste cu final bun:</b> zimbrul dispăruse din România. A fost adus înapoi și eliberat în munți, de exemplu în Carpații Meridionali. Uneori, oamenii pot repara ce au stricat.</div>
+ </div>
+</section>
+
+<!-- 7 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile lecției</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 8 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--red)"><span class="emo">🏗️</span><p>Omul transformă mediul pentru așezări, drumuri și agricultură.</p></div>
+   <div class="box" style="border-color:#C9862A"><span class="emo">⚠️</span><p><b>Defrișarea</b>, vânatul și pescuitul în exces, <b>braconajul</b> și <b>poluarea</b> pun în pericol multe viețuitoare.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">🛡️</span><p>Multe state au <b>legi</b> care ocrotesc plantele și animalele.</p></div>
+  </div>
+ </div>
+</section>
+
+</main>
+
+
+<nav class="bar" aria-label="Navigare prezentare">
+ <a class="home" href="../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
+ <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
+ <div class="dots" id="dots"></div>
+ <span class="count" id="count"></span>
+ <button class="nav" id="next" aria-label="Slide-ul următor">→</button>
+</nav>
+<script>
+(function(){
+  var KEY='sn-l6-slide';
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
+  var cur=0;
+  slides.forEach(function(s,i){var b=document.createElement('button');b.setAttribute('aria-label','Mergi la slide-ul '+(i+1));b.onclick=function(){go(i)};dots.appendChild(b);});
+  function go(i){
+    if(i<0||i>=slides.length)return;
+    slides[cur].classList.remove('active');dots.children[cur].classList.remove('on');
+    cur=i;slides[cur].classList.add('active');dots.children[cur].classList.add('on');slides[cur].scrollTop=0;
+    prev.disabled=cur===0;next.disabled=cur===slides.length-1;count.textContent=(cur+1)+' / '+slides.length;
+    
+  }
+  prev.onclick=function(){go(cur-1)};next.onclick=function(){go(cur+1)};
+  document.addEventListener('keydown',function(e){
+    var t=e.target&&e.target.tagName;if(t==='INPUT'||t==='TEXTAREA')return;
+    if(e.key==='ArrowRight'||e.key==='PageDown')go(cur+1);
+    if(e.key==='ArrowLeft'||e.key==='PageUp')go(cur-1);
+  });
+  var sx=null,deck=document.getElementById('deck');
+  deck.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  deck.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>60&&!(e.target.closest&&e.target.closest('.svgwrap')))go(cur+(dx<0?1:-1));sx=null;},{passive:true});
+  var start=0;
+  slides[0].classList.add('active');dots.children[0].classList.add('on');go(start);
+
+  
+  document.querySelectorAll('.reveal').forEach(function(b){
+    var d=document.createElement('div');d.className='ans '+(b.classList.contains('hint')?'h':'a');d.hidden=true;
+    d.textContent=(b.classList.contains('hint')?'💡 ':'✅ ')+b.getAttribute('data-t');
+    b.parentNode.parentNode.appendChild(d);var label=b.textContent;
+    b.onclick=function(){d.hidden=!d.hidden;b.textContent=d.hidden?label:'Ascunde';};
+  });
+/* ---------- missions ---------- */
+    var SORTERS={
+   'sort-act':{cats:{a:'ajută natura',p:'pune în pericol'},items:[['Plantarea de puieți','a'],['Defrișarea unei păduri întregi','p'],['Braconajul','p'],['Colectarea separată a deșeurilor','a'],['Aruncarea uleiului uzat în râu','p'],['Culesul masiv al plantelor pentru vânzare','p'],['Hrănirea păsărilor iarna, cu hrană potrivită','a']],
+    expl:'Plantarea, reciclarea și hrănirea corectă a păsărilor ajută. Defrișarea, braconajul, poluarea apelor și culesul în exces pun în pericol viețuitoarele. Atenție: tăierea copacilor nu e întotdeauna rea. Pădurile se pot exploata „cu cap”, plantând la loc ce tai.'}
+  };
+  var Q=[
+   {t:'mcq',tags:['U2 L6','Civică'],d:'Civică',q:'Capra neagră e ocrotită de lege. Ce înseamnă asta pentru un vânător?',o:['Poate s-o vâneze oricând','Nu are voie s-o vâneze, sau doar în condițiile stricte ale legii; altfel e braconaj și se pedepsește','Trebuie s-o hrănească','Nimic'],a:1,h:'Ce e braconajul?',e:'Ocrotit de lege înseamnă că vânătoarea ei e interzisă sau strict limitată, iar cine încalcă legea poate fi amendat sau chiar pedepsit mai sever. Legea e unealta civică pentru protejarea naturii.'},
+   {t:'mcq',tags:['U2 L6','U2 L4'],d:'Punte',q:'De ce defrișarea unei păduri pune în pericol și animalele, nu doar copacii?',o:['Nu le pune','Pentru că animalele pierd adăpostul, hrana și locul unde își cresc puii','Pentru că animalelor nu le place zgomotul','Pentru că copacii sunt animale'],a:1,h:'Unde își fac cuibul păsările? Ce mănâncă veverițele?',e:'Pădurea e casa, cămara și grădinița animalelor. Fără ea, se mută sau mor. Așa dispar specii întregi: le dispare mediul de viață.'},
+   {t:'mcq',tags:['U2 L6','U1'],d:'Clasa a III-a',q:'Pădurile produc mult oxigen. Ce lecție din clasa a III-a explică asta?',o:['Stările de agregare','Plantele verzi produc oxigen la lumină','Forțele și deformarea','Volumul'],a:1,h:'Recapitularea Unității 1: atmosfera.',e:'Plantele verzi produc oxigen în prezența luminii. Mai puține păduri înseamnă mai puțin oxigen produs. Toate lecțiile se leagă!'},
+   {t:'mcq',tags:['U2 L6','Geografie'],d:'Geografie',q:'Delta Dunării e rezervație a biosferei. În ce regiune istorică a României se află?',o:['Transilvania','Dobrogea','Banat','Maramureș'],a:1,h:'Amintește-ți harta de la istorie (L4) și stema (civică U1 L2).',e:'În Dobrogea, unde trăiesc și lipovenii pescari. Pelicanii din atlas trăiesc tot acolo.'},
+   {t:'mcq',tags:['U2 L6'],d:'Gândire',q:'Manualul întreabă: vânătoarea e folositoare omului? Care e cel mai bun răspuns?',o:['Da, mereu','Nu, niciodată','Depinde: vânătoarea controlată, după lege, poate ține echilibrul în natură; vânătoarea în exces și braconajul fac rău','Doar iarna'],a:2,h:'E o întrebare cu „depinde”. De ce depinde?',e:'Depinde de cum se face. Răspunsurile de tip „mereu” sau „niciodată” sunt rar corecte la întrebările complicate. Un argument bun explică DE CE.'},
+   {t:'mcq',tags:['U2 L6','Istorie L1'],d:'Verificare',q:'Citești: „Jumătate dintre mamiferele Europei sunt pe cale de dispariție.” Care e prima întrebare de cercetător?',o:['E înfricoșător?','Cine a spus asta, când, și ce înseamnă exact „pe cale de dispariție”?','Câte mamifere am eu acasă?','E mult sau puțin?'],a:1,h:'Cele trei întrebări de la istorie, despre orice izvor.',e:'Cine, când, ce înseamnă. Cifrele mari despre natură sunt importante, dar trebuie înțelese corect. Sursele diferite numără diferit.'},
+   {t:'num',tags:['U2 L6','Matematică'],d:'Matematică',q:'Retezat a devenit primul parc național al României în 1935. Câți ani are în 2026?',a:91,h:'2026 − 1935.',e:'91 de ani. Parcul e mai vechi decât Convenția drepturilor copilului (1989) și decât Uniunea Europeană (1993).'},
+   {t:'mcq',tags:['U2 L6','Civică'],d:'Civică',q:'Vezi pe malul râului din localitatea ta un morman de gunoaie. Ce poți face, ca cetățean de 10 ani?',o:['Nimic, nu e treaba mea','Le spui părinților; împreună puteți anunța primăria sau Garda de Mediu și, poate, organiza o strângere','Le arunci în râu','Faci o poză și atât'],a:1,h:'La civică (U1 L1): fiecare problemă are o instituție. Și cine te poate ajuta?',e:'Anunți un adult și instituția potrivită. Mulți copii au organizat cu școala acțiuni de ecologizare. Și asta înseamnă responsabilitate în comunitate.'}
+  ];
+
+
+  (function(){
+    Object.keys(SORTERS).forEach(function(id){
+      var S=SORTERS[id],host=document.getElementById(id),fb=document.getElementById(id+'-fb'),ans={};
+      function build(){ans={};fb.innerHTML='';host.innerHTML=S.items.map(function(it,i){return '<div class="srow" data-i="'+i+'"><span style="font-weight:700">'+it[0]+'</span><div class="seg">'+Object.keys(S.cats).map(function(k){return '<button type="button" aria-pressed="false" data-v="'+k+'">'+S.cats[k]+'</button>'}).join('')+'</div></div>'}).join('');
+        host.querySelectorAll('.srow').forEach(function(r){var i=r.getAttribute('data-i');r.querySelectorAll('button').forEach(function(b){b.onclick=function(){ans[i]=b.getAttribute('data-v');r.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});r.classList.remove('ok','bad');};});});}
+      document.querySelector('[data-check="'+id+'"]').onclick=function(){
+        if(Object.keys(ans).length<S.items.length){fb.innerHTML='<div class="fb h">Alege o variantă pentru fiecare rând.</div>';return;}
+        var n=0;host.querySelectorAll('.srow').forEach(function(r){var i=r.getAttribute('data-i'),g=ans[i]===S.items[i][1];if(g)n++;r.classList.toggle('ok',g);r.classList.toggle('bad',!g);});
+        fb.innerHTML='<div class="fb '+(n===S.items.length?'ok':'h')+'"><b>'+n+' din '+S.items.length+'.</b> '+S.expl+'</div>';
+      };
+      document.querySelector('[data-reset="'+id+'"]').onclick=build;
+      build();
+    });
+  })();
+  var host=document.getElementById('qhost'),bar=document.getElementById('qbar'),sc=document.getElementById('qscore');
+  var qi=0,score=0,MAX=Q.length*2;
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  function setScore(){sc.textContent=score+(score===1?' punct':' puncte');}
+  function render(){
+    bar.style.width=(qi/Q.length*100)+'%';
+    if(qi>=Q.length)return finish();
+    var q=Q[qi],tries=0,done=false;
+    var h='<div class="qcard"><div class="qtop" style="margin-bottom:6px"><div class="qmeta">'+q.tags.map(function(t){return '<span>'+t+'</span>'}).join('')+'<span class="d">'+q.d+'</span></div><span style="color:var(--soft);font-weight:800" class="mono">'+(qi+1)+' / '+Q.length+'</span></div><p class="stem">'+esc(q.q)+'</p><div id="qbody"></div><div id="qfb"></div><div class="qnav"><button class="act sec" id="qhint" type="button">💡 Indiciu</button><button class="act" id="qnext" type="button" hidden>Misiunea următoare →</button></div></div>';
+    host.innerHTML=h;
+    var body=document.getElementById('qbody'),fb=document.getElementById('qfb'),hint=document.getElementById('qhint'),nx=document.getElementById('qnext');
+    var hinted=false;
+    hint.onclick=function(){hinted=true;showFb('h','💡 '+q.h);hint.hidden=true;};
+    nx.onclick=function(){qi++;render();};
+    function showFb(k,txt){fb.innerHTML='<div class="fb '+k+'">'+txt+'</div>';}
+    function finishQ(ok){
+      done=true;var pts=ok?(tries===0&&!hinted?2:1):0;score+=pts;setScore();
+      showFb(ok?'ok':'no',(ok?'✅ <b>Corect! +'+pts+(pts===1?' punct':' puncte')+'</b> ':'🔎 <b>Răspunsul corect:</b> ')+esc(q.e));
+      hint.hidden=true;nx.hidden=false;nx.textContent=qi===Q.length-1?'Vezi rezultatul →':'Misiunea următoare →';nx.focus();
+    }
+    function miss(){
+      tries++;
+      if(tries>=2)return finishQ(false);
+      showFb('no','Nu încă. '+(hinted?'Mai citește indiciul și încearcă din nou.':'💡 '+q.h));hinted=true;hint.hidden=true;
+    }
+    if(q.t==='mcq'){
+      body.innerHTML='<div class="opts">'+q.o.map(function(o,i){return '<button type="button" data-i="'+i+'">'+esc(o)+'</button>'}).join('')+'</div>';
+      var bs=body.querySelectorAll('button');
+      bs.forEach(function(b){b.onclick=function(){
+        if(done)return;var i=+b.getAttribute('data-i');
+        if(i===q.a){b.classList.add('right');bs.forEach(function(x){x.disabled=true});finishQ(true);}
+        else{b.classList.add('wrong');b.disabled=true;miss();if(done){bs[q.a].classList.add('right');bs.forEach(function(x){x.disabled=true});}}
+      }});
+    }
+    if(q.t==='num'){
+      body.innerHTML='<div class="numrow"><input id="qnum" type="number" inputmode="numeric" aria-label="Răspunsul tău"><span style="font-weight:800">ani</span><button class="act" id="qcheck" type="button">Verifică</button></div>';
+      var inp=document.getElementById('qnum'),ck=document.getElementById('qcheck');
+      function chk(){if(done)return;var v=parseInt(inp.value,10);if(isNaN(v)){showFb('h','Scrie mai întâi un număr.');return;}if(v===q.a){finishQ(true);ck.disabled=true;inp.disabled=true;}else{miss();if(done){ck.disabled=true;inp.disabled=true;}}}
+      ck.onclick=chk;inp.addEventListener('keydown',function(e){if(e.key==='Enter')chk();});
+    }
+    if(q.t==='order'){
+      var picked=[];
+      body.innerHTML='<p style="margin:.2em 0;font-weight:800;color:var(--soft)">De ales:</p><div class="order-pool" id="opool"></div><p style="margin:.6em 0 .2em;font-weight:800;color:var(--soft)">Ordinea ta:</p><div class="order-done" id="odone"></div><div class="qnav" style="justify-content:flex-start"><button class="act sec" id="oreset" type="button">Ia de la capăt</button></div>';
+      var pool=document.getElementById('opool'),dn=document.getElementById('odone');
+      function draw(){
+        pool.innerHTML='';shuffledO.forEach(function(it){if(picked.indexOf(it)>-1)return;var b=document.createElement('button');b.type='button';b.textContent=it;b.onclick=function(){if(done)return;picked.push(it);draw();if(picked.length===q.items.length)check();};pool.appendChild(b);});
+        dn.innerHTML=picked.map(function(p){return '<span>'+esc(p)+'</span>'}).join('')||'<span style="opacity:.5">…</span>';
+      }
+      function check(){
+        var ok=picked.every(function(p,i){return p===q.items[i]});
+        var sp=dn.querySelectorAll('span');picked.forEach(function(p,i){sp[i].classList.add(p===q.items[i]?'ok':'bad')});
+        if(ok)finishQ(true);else{miss();if(!done){setTimeout(function(){picked=[];draw();},1200);}}
+      }
+      var shuffledO=shuffle(q.items);
+      document.getElementById('oreset').onclick=function(){if(done)return;picked=[];draw();};
+      draw();
+    }
+    if(q.t==='sort'){
+      body.innerHTML='<div class="sort">'+q.items.map(function(it,i){return '<div class="srow" data-i="'+i+'"><span style="font-weight:700">'+esc(it[0])+'</span><div class="seg"><button type="button" aria-pressed="false" data-v="s">'+((q.labels&&q.labels.s)||'scrisă')+'</button><button type="button" aria-pressed="false" data-v="n">'+((q.labels&&q.labels.n)||'nescrisă')+'</button></div></div>'}).join('')+'</div><div class="qnav" style="justify-content:flex-start"><button class="act" id="scheck" type="button">Verifică sortarea</button></div>';
+      var ans={};
+      body.querySelectorAll('.srow').forEach(function(r){var i=r.getAttribute('data-i');r.querySelectorAll('button').forEach(function(b){b.onclick=function(){if(done)return;ans[i]=b.getAttribute('data-v');r.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});r.classList.remove('ok','bad');};});});
+      document.getElementById('scheck').onclick=function(){
+        if(done)return;
+        if(Object.keys(ans).length<q.items.length){showFb('h','Alege o variantă pentru fiecare rând.');return;}
+        var ok=true;body.querySelectorAll('.srow').forEach(function(r){var i=r.getAttribute('data-i');var g=ans[i]===q.items[i][1];if(!g)ok=false;r.classList.toggle('ok',g);r.classList.toggle('bad',!g);});
+        if(ok)finishQ(true);else miss();
+        if(done)document.getElementById('scheck').disabled=true;
+      };
+    }
+  }
+  function finish(){
+    bar.style.width='100%';
+    var p=score/MAX,r=p>=.85?['Istoric de top','🏆','Ai făcut legături între lecții ca un adevărat istoric.']:p>=.6?['Cronicar','📜','Foarte bine! Mai treci o dată prin misiunile la care ai pierdut puncte.']:p>=.35?['Arhivist','🗂️','Bun început. Întoarce-te la Mașina timpului și la regulile secolelor, apoi reîncearcă.']:['Ucenic de istoric','🔍','Recitește Dosarul pe scurt și slide-ul cu erele, apoi mai încearcă o dată.'];
+    host.innerHTML='<div class="qcard" style="text-align:center"><div style="font-size:3em">'+r[1]+'</div><p style="margin:0;font-weight:800;color:var(--soft)">Rangul tău</p><p class="rank">'+r[0]+'</p><p class="mono" style="font-weight:800;font-size:1.2em">'+score+' din '+MAX+' puncte</p><p>'+r[2]+'</p><p style="color:var(--soft);font-size:.9em">2 puncte din prima încercare, fără indiciu · 1 punct cu indiciu sau din a doua încercare</p><button class="act" id="qagain" type="button">Joacă din nou</button></div>';
+    document.getElementById('qagain').onclick=function(){qi=0;score=0;setScore();render();};
+  }
+  setScore();render();
+})();
+</script>
+</body>
+</html>

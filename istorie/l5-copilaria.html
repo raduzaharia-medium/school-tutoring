@@ -1,0 +1,606 @@
+<!doctype html><html lang="ro"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
+</head><body>
+<title>Copilăria de ieri și de azi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+/* Same design system as „Timpul istoric și mediul geografic”: slide deck, bottom nav bar, colored badges */
+:root{
+  --bg:#F3F7FF; --paper:#FFFFFF; --ink:#1E2340; --soft:#4A5078; --line:#D5DDF0;
+  --red:#E2433A; --green:#2E9D52; --blue:#2F6FD6; --yellow:#F6C431; --purple:#6B4BC4; --brown:#8A5A2B;
+  --tint-red:#FDE6E4; --tint-green:#E1F4E7; --tint-blue:#E2ECFC; --tint-yellow:#FFF4CF; --tint-purple:#ECE6FA;
+  --display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+    --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+  --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%}
+body{
+  height:100%;margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--body);font-weight:500;
+  font-size:clamp(16px,1.05vw + 10px,21px);line-height:1.5;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.7rem,2.6vw + .6rem,2.8rem);font-weight:800;margin-bottom:.35em}
+h3{font-size:1.2em;font-weight:700}
+p{margin:.3em 0 .7em}
+b,strong{font-weight:800}
+
+.deck{flex:1;position:relative;min-height:0}
+.slide{position:absolute;inset:0;overflow-y:auto;padding:clamp(18px,3vw,48px) clamp(16px,5vw,80px) 24px;display:none}
+.slide.active{display:block;animation:in .35s ease-out}
+@keyframes in{from{opacity:.2;transform:translateX(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slide.active{animation:none}}
+.wrap{max-width:1080px;margin:0 auto}
+.lead{font-size:1.15em;color:var(--soft);max-width:60ch}
+.badge{display:inline-block;font-weight:800;font-size:.85em;padding:.2em .8em;border-radius:99px;margin-bottom:.8em;color:#fff}
+
+.bar{display:flex;align-items:center;gap:12px;padding:10px clamp(12px,3vw,32px);padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));background:var(--paper);border-top:2px solid var(--line)}
+.bar button.nav{font:inherit;font-weight:800;border:0;border-radius:14px;padding:.55em 1.1em;cursor:pointer;background:var(--blue);color:#fff;min-width:48px}
+.bar button.nav:disabled{opacity:.35;cursor:default}
+.dots{flex:1;display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.dots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
+.dots button.on{background:var(--red);transform:scale(1.3)}
+.count{font-weight:800;color:var(--soft);min-width:4.5ch;text-align:center;font-variant-numeric:tabular-nums}
+button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+
+.cover{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;min-height:100%}
+.cover > *{min-width:0}
+.cover h1{font-size:clamp(2.4rem,5vw + .5rem,4.8rem);font-weight:800;margin:.2em 0 .3em}
+.stripes{display:flex;height:14px;border-radius:8px;overflow:hidden;max-width:420px;margin-bottom:1em}
+.stripes span{flex:1}
+@media (max-width:760px){.cover{grid-template-columns:1fr}.cover svg{max-width:220px;margin:0 auto;display:block}}
+
+.grid{display:grid;gap:16px}
+.grid > *{min-width:0}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.box{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:18px 20px}
+.box .emo{font-size:2.2em;line-height:1;display:block;margin-bottom:.25em}
+.tip{border-radius:18px;padding:14px 20px;margin-top:18px;border-left:8px solid}
+.tip.y{background:var(--tint-yellow);border-color:var(--yellow)}
+.tip.g{background:var(--tint-green);border-color:var(--green)}
+.tip.b{background:var(--tint-blue);border-color:var(--blue)}
+.tip.r{background:var(--tint-red);border-color:var(--red)}
+.tip.p{background:var(--tint-purple);border-color:var(--purple)}
+
+.q{display:flex;gap:16px;align-items:center;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px 20px;margin-bottom:14px;font-size:1.15em;font-weight:700}
+.q .mark{flex:none;width:2.2em;height:2.2em;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:var(--display);font-weight:800;font-size:1.1em}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chips span{background:var(--tint-purple);border-radius:10px;padding:.25em .7em;font-weight:800}
+.ladder{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 6px}
+.step{background:var(--tint-blue);border-radius:12px;padding:.35em .8em;font-weight:800;text-align:center}
+.arrow{color:var(--soft);font-weight:800}
+
+/* events interactive */
+.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0 14px}
+.events button{font:inherit;font-weight:800;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:12px 10px;text-align:center}
+.events button span{display:block;font-size:1.9em;line-height:1.1}
+.events button[aria-pressed="true"]{border-color:var(--red);background:var(--tint-red)}
+.doc-card{background:var(--paper);border:2px dashed var(--brown);border-radius:18px;padding:16px 20px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;min-height:6.5em}
+.doc-card .big{font-size:3em;line-height:1}
+.doc-card > div{min-width:0}
+
+/* family types */
+.fam svg{width:100%;height:auto;display:block;margin-bottom:10px}
+
+/* timeline */
+.axis-wrap{overflow-x:auto;margin:8px 0}
+.axis{width:100%;min-width:620px;height:auto;display:block}
+
+/* tree */
+.tree{display:grid;gap:10px;margin-top:6px}
+.tree .row{display:grid;gap:10px;justify-items:center}
+.tree .r1{grid-template-columns:1fr}
+.tree .r2{grid-template-columns:1fr 1fr}
+.tree .r3{grid-template-columns:repeat(4,1fr)}
+.tree .lbl{font-family:var(--display);font-weight:800;font-size:.8em;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);text-align:center}
+.person{font:inherit;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:10px 12px;text-align:center;width:100%;max-width:260px}
+.person b{display:block}
+.person small{color:var(--soft);font-weight:700;font-variant-numeric:tabular-nums}
+.person.child{border-color:var(--red);background:var(--tint-red)}
+.person.dad,.person.pat{border-color:var(--blue)}
+.person.mom,.person.mat{border-color:var(--green)}
+.person[aria-pressed="true"]{box-shadow:0 0 0 4px var(--yellow)}
+.side{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.side .lbl{grid-column:1/-1}
+.tree-info{margin-top:12px}
+@media (max-width:620px){.tree .r3{grid-template-columns:1fr 1fr}}
+
+blockquote{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,1.4vw + .5rem,1.7rem);line-height:1.3;border-left:10px solid var(--red);padding:.2em 0 .2em .8em}
+cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weight:700;font-family:var(--body);font-size:.75em}
+
+/* „Manualul spune / Context” */
+.mc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;margin-top:18px;border:2px solid var(--line);border-radius:18px;overflow:hidden;background:var(--paper)}
+.mc > div{padding:14px 20px;min-width:0}
+.mc .m{background:var(--tint-yellow)}
+.mc .lab{display:block;font-family:var(--display);font-weight:800;font-size:.8em;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin-bottom:.3em}
+.mc .m p{font-style:italic}
+.mc p{margin:0 0 .4em}
+
+.quiz .item{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:14px 18px;margin-bottom:12px}
+.quiz .item p{margin:0;font-weight:700}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.reveal{font:inherit;font-weight:800;border:0;border-radius:12px;padding:.35em .9em;background:var(--tint-yellow);color:var(--ink);cursor:pointer}
+.reveal.hint{background:var(--tint-blue)}
+.ans{margin-top:8px;font-weight:800}
+.ans.a{color:var(--green)}
+.ans.h{color:var(--blue)}
+</style>
+<style>
+/* recap additions */
+.dossier{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.dossier .box{position:relative;padding-top:22px}
+.dossier .tag{position:absolute;top:-12px;left:16px;font-family:var(--display);font-weight:800;font-size:.8em;color:#fff;padding:.1em .7em;border-radius:99px}
+.dossier ul{margin:.2em 0 0;padding-left:1.1em}
+.dossier li{margin:.25em 0;font-size:.95em}
+.dossier h3{font-size:1.05em;margin-bottom:.3em}
+.svgwrap{overflow-x:auto;margin:6px 0}
+.svgwrap svg{width:100%;min-width:640px;height:auto;display:block}
+.rule{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:12px}
+.mono{font-variant-numeric:tabular-nums}
+/* time machine */
+.tm{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:18px;align-items:start}
+@media (max-width:760px){.tm{grid-template-columns:1fr}}
+.tm-in{display:grid;gap:12px}
+.tm-in label{font-weight:800}
+.tm-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tm-row input{font:inherit;font-weight:800;font-size:1.4em;width:6.5ch;padding:.2em .4em;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font-variant-numeric:tabular-nums}
+.seg{display:inline-flex;border:2px solid var(--line);border-radius:12px;overflow:hidden}
+.seg button{font:inherit;font-weight:800;border:0;padding:.4em .9em;background:var(--paper);color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--blue);color:#fff}
+.presets{display:flex;flex-wrap:wrap;gap:6px}
+.presets button{font:inherit;font-size:.85em;font-weight:700;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.2em .7em;cursor:pointer}
+.tm-out{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tm-out .cell{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 14px;min-width:0}
+.tm-out .cell span{display:block;font-size:.78em;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.tm-out .cell b{font-family:var(--display);font-size:1.35em;line-height:1.15;display:block}
+.tm-out .wide{grid-column:1/-1}
+/* quiz engine */
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.qmeta{display:flex;gap:6px;flex-wrap:wrap}
+.qmeta span{font-size:.8em;font-weight:800;padding:.15em .7em;border-radius:99px;background:var(--tint-purple)}
+.qmeta span.d{background:var(--tint-green)}
+.score{font-family:var(--display);font-weight:800;font-size:1.1em;font-variant-numeric:tabular-nums}
+.qprog{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:14px}
+.qprog i{display:block;height:100%;background:var(--green);width:0;transition:width .3s}
+.qcard{background:var(--paper);border:2px solid var(--line);border-radius:20px;padding:18px 22px}
+.qcard .stem{font-size:1.12em;font-weight:700;margin:0 0 12px}
+.opts{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.opts button{font:inherit;text-align:left;font-weight:700;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:10px 14px;cursor:pointer}
+.opts button.right{border-color:var(--green);background:var(--tint-green)}
+.opts button.wrong{border-color:var(--red);background:var(--tint-red);opacity:.75}
+.opts button:disabled{cursor:default}
+.numrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.numrow input{font:inherit;font-weight:800;font-size:1.2em;width:7ch;padding:.25em .5em;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+.act{font:inherit;font-weight:800;border:0;border-radius:12px;padding:.45em 1em;background:var(--blue);color:#fff;cursor:pointer}
+.act.sec{background:var(--tint-yellow);color:var(--ink)}
+.order-pool,.order-done{display:flex;flex-wrap:wrap;gap:8px;min-height:2.6em}
+.order-pool button,.order-done span{font:inherit;font-weight:700;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:.35em .8em}
+.order-pool button{cursor:pointer}
+.order-done span{background:var(--tint-blue);border-color:var(--blue)}
+.order-done span.bad{background:var(--tint-red);border-color:var(--red)}
+.order-done span.ok{background:var(--tint-green);border-color:var(--green)}
+.sort{display:grid;gap:8px}
+.sort .srow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border:2px solid var(--line);border-radius:12px;padding:6px 10px;background:var(--bg)}
+.sort .srow.ok{border-color:var(--green);background:var(--tint-green)}
+.sort .srow.bad{border-color:var(--red);background:var(--tint-red)}
+.fb{margin-top:12px;border-radius:14px;padding:10px 14px}
+.fb.h{background:var(--tint-blue)}
+.fb.ok{background:var(--tint-green)}
+.fb.no{background:var(--tint-red)}
+.qnav{display:flex;justify-content:flex-end;gap:8px;margin-top:12px;flex-wrap:wrap}
+.rank{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;margin:.1em 0}
+</style>
+
+<style>
+.cmp-wrap{overflow-x:auto}
+.cmp{width:100%;border-collapse:separate;border-spacing:0;background:var(--paper);border:2px solid var(--line);border-radius:18px;overflow:hidden;min-width:480px}
+.cmp th,.cmp td{padding:10px 14px;text-align:left;border-bottom:2px solid var(--line);vertical-align:top}
+.cmp tr:last-child td{border-bottom:0}
+.cmp th{font-family:var(--display);background:var(--tint-blue)}
+.cmp td:first-child{font-weight:800;width:32%}
+.path{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.path .box{text-align:center;padding:16px 12px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.hbars{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:8px 12px;align-items:center;margin:8px 0}
+.hbars span{font-weight:800;font-size:.9em}
+.hbars div{display:flex;align-items:center;gap:8px;min-width:0}
+.hbars i{display:block;height:28px;border-radius:6px;flex:none}
+.hbars b{font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:520px){.hbars{grid-template-columns:1fr}.hbars span{margin-top:4px}}
+</style>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Istorie, Unitatea 1, Lecția 5</p>
+   <h1>Copilăria de ieri și de azi</h1>
+   <p class="lead">Cum trăiau copiii acum 100 sau 200 de ani? Ce s-a schimbat de atunci și ce a rămas la fel? Ce înseamnă că azi copiii au drepturi?</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="10" y="20" width="96" height="180" rx="14" fill="#C9862A"/>
+   <rect x="114" y="20" width="96" height="180" rx="14" fill="#2F6FD6"/>
+   <circle cx="58" cy="70" r="18" fill="#E8C39E"/><path d="M40 64 Q58 44 76 64" fill="#5A3A22"/><rect x="42" y="90" width="32" height="46" rx="10" fill="#8A5A2B"/>
+   <path d="M30 170 Q58 150 86 170" stroke="#F4E9D8" stroke-width="6" fill="none"/><circle cx="40" cy="176" r="8" fill="#B4532F"/>
+   <circle cx="162" cy="70" r="18" fill="#E8C39E"/><path d="M144 64 Q162 44 180 64" fill="#8A5A2B"/><rect x="146" y="90" width="32" height="46" rx="10" fill="#E2433A"/>
+   <rect x="140" y="150" width="46" height="32" rx="4" fill="#1E2340"/><rect x="144" y="154" width="38" height="22" fill="#9FD3FF"/>
+   <text x="58" y="214" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="800" font-size="14" fill="var(--soft)">ieri</text>
+   <text x="162" y="214" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="800" font-size="14" fill="var(--soft)">azi</text>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 STIM / VREM -->
+<section class="slide" aria-label="Ce știm și ce vrem să aflăm">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Știm deja</span>
+  <div class="grid g2">
+   <div class="box"><span class="emo">🧸📚</span><p><b>Copilăria</b> este o etapă a vieții omului, destinată <b>jocului</b> și <b>învățăturii</b>.</p></div>
+   <div class="box"><span class="emo">🔄</span><p>De-a lungul timpului s-au schimbat <b>rolul copilului</b> și felul în care se poartă adulții cu el.</p></div>
+  </div>
+  <span class="badge" style="background:var(--red);margin-top:22px">Ancheta de azi</span>
+  <div class="grid g2">
+   <div class="q" style="margin:0"><span class="mark" style="background:var(--blue)">1</span>Ce făceau copiii în trecut?</div>
+   <div class="q" style="margin:0"><span class="mark" style="background:var(--purple)">2</span>Cu ce se jucau?</div>
+   <div class="q" style="margin:0"><span class="mark" style="background:var(--green)">3</span>Cum trăiesc copiii azi?</div>
+   <div class="q" style="margin:0"><span class="mark" style="background:var(--red)">4</span>Ce drepturi și ce obligații au azi copiii?</div>
+  </div>
+  <div class="tip y">🧩 <b>Legătura cu lecțiile trecute:</b> ai nevoie de <b>epoci</b> (L2), de <b>familie</b> (L3) și de <b>comunitate</b> (L4). Copilăria s-a schimbat odată cu ele.</div>
+ </div>
+</section>
+
+<!-- 3 DOCUMENT: CONVENTIA -->
+<section class="slide" aria-label="Convenția cu privire la Drepturile Copilului">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Aflu din documente</span>
+  <h2>Convenția cu privire la Drepturile Copilului</h2>
+  <p>Adoptată de <b>Adunarea Generală a Națiunilor Unite</b> în <b>1989</b>. Iată drepturile citate în manual:</p>
+  <div class="grid g4">
+   <div class="box"><span class="emo">❤️</span><p>dreptul <b>la viață</b></p></div>
+   <div class="box"><span class="emo">🪪</span><p>dreptul la un <b>nume</b>, o <b>cetățenie</b>, o <b>familie</b></p></div>
+   <div class="box"><span class="emo">🩺</span><p>dreptul la <b>asistență medicală</b></p></div>
+   <div class="box"><span class="emo">♿</span><p>o viață decentă și <b>îngrijire specială</b> pentru copiii cu nevoi speciale</p></div>
+   <div class="box"><span class="emo">🛡️</span><p>protecție împotriva <b>violenței fizice</b></p></div>
+   <div class="box"><span class="emo">🎓</span><p>dreptul la <b>educație</b>, cu <b>șanse egale</b></p></div>
+   <div class="box"><span class="emo">⛔</span><p>protecție împotriva <b>exploatării</b> și a muncii care dăunează sănătății</p></div>
+   <div class="box" style="background:var(--tint-yellow)"><span class="emo">🔎</span><p><b>Gândește:</b> care dintre aceste drepturi lipseau copiilor din trecut?</p></div>
+  </div>
+  <div class="tip b">📅 Convenția a fost adoptată pe <b>20 noiembrie 1989</b>. De aceea, <b>20 noiembrie</b> este Ziua internațională a drepturilor copilului. România a ratificat-o (a acceptat-o ca lege) în <b>1990</b>.</div>
+  <div class="tip p">🕰️ <b>De ce abia în 1989?</b> Înainte existau doar <b>declarații</b>, adică promisiuni fără putere de lege: una în 1924, după Primul Război Mondial, și una a ONU, pe <b>20 noiembrie 1959</b>. În 1978, Polonia a propus un tratat <b>obligatoriu</b>. Statele au negociat apoi <b>zece ani</b>, pentru că toate trebuiau să fie de acord cu fiecare articol. Textul a fost adoptat exact la <b>30 de ani</b> după declarația din 1959. Convenția nu a fost adoptată pe rând în diferite țări: este un singur tratat, pe care apoi fiecare țară decide dacă îl face lege. Azi, 196 de țări au făcut asta. Singurul stat din ONU care nu a ratificat-o sunt Statele Unite.</div>
+ </div>
+</section>
+
+<!-- 4 RETINEM: PRIMII ANI + RESPECT -->
+<section class="slide" aria-label="Copilul și cei din jur">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Reținem</span>
+  <h2>Copilul învață de la cei din jur</h2>
+  <p>Nașterea unui copil este un eveniment important în orice familie (amintește-ți de certificatul de naștere din L3). În primii ani, copilul învață de la cei din jur să <b>vorbească</b>, să <b>gândească</b>, să <b>meargă</b>, să <b>iubească</b> și să se <b>apere de primejdii</b>. Prin <b>educație</b> reușește să trăiască printre semenii lui.</p>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Copilul „datorează respect și dragoste atât familiei sale, cât și persoanelor din jurul său”.</p><p style="font-style:normal;font-size:.9em">Pentru lecție: copilul trăiește printre alți oameni și se poartă frumos cu ei.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Legea (Codul civil) spune că un copil datorează <b>respect</b> părinților. Iar respectul merge <b>în ambele sensuri</b>: legea le cere și adulților să respecte copilul, opinia și personalitatea lui.</p><p><b>Dragostea</b> nu poate fi cerută prin lege. Ea apare singură, din felul în care oamenii se poartă unii cu alții.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 5 COPIII IN TRECUT -->
+<section class="slide" aria-label="Copiii în trecut">
+ <div class="wrap">
+  <span class="badge" style="background:#8A5A2B">Ieri</span>
+  <h2>Cum trăiau copiii în trecut</h2>
+  <div class="grid g3">
+   <div class="box"><span class="emo">⚠️</span><h3>Vremuri grele</h3><p><b>Războaiele</b>, <b>bolile</b>, <b>calamitățile</b> și <b>foametea</b> făceau ca mulți copii să nu ajungă la vârsta de adult.</p></div>
+   <div class="box"><span class="emo">🌾</span><h3>La sat</h3><p>Munceau alături de părinți: la <b>cules</b> și <b>semănat</b>, la <b>creșterea animalelor</b>, la <b>pescuit</b> și <b>vânătoare</b>, la <b>meșteșuguri</b>. Luau parte și la evenimentele comunității.</p></div>
+   <div class="box"><span class="emo">🏪</span><h3>La oraș</h3><p>Își ajutau părinții în <b>ateliere</b>, în <b>prăvălii</b> (magazine) și la transportul mărfurilor. <b>Meseriile</b> treceau de la o generație la alta.</p></div>
+  </div>
+  <div class="tip p">📖 <b>Știutori de carte</b> = oameni care știau să citească și să scrie. În trecut, cei mai mulți proveneau din <b>familii bogate</b>.</div>
+  <div class="tip y">🧠 <b>Fă legătura:</b> ocupațiile copiilor depindeau de locul în care trăiau. Ce idee din lecția 2 explică asta?</div>
+ </div>
+</section>
+
+<!-- 6 MARTOR: CREANGA -->
+<section class="slide" aria-label="Un martor: Ion Creangă">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Un martor pe care îl cunoști deja</span>
+  <h2>Copilăria lui Ion Creangă</h2>
+  <p>Ai citit două fragmente din <i>Amintiri din copilărie</i>, la lecțiile 3 și 4. Creangă povestește copilăria lui din Humulești, de pe la mijlocul <b>secolului al XIX-lea</b>. Ce află un istoric din ele?</p>
+  <div class="cmp-wrap">
+   <table class="cmp">
+    <thead><tr><th>Ce căutăm</th><th>Indiciul din text</th></tr></thead>
+    <tbody>
+     <tr><td>Cu ce se jucau</td><td>de-a <b>mijoarca</b>, pe gheață și la <b>săniuș</b>, pisicile cu <b>motocei</b></td></tr>
+     <tr><td>Ce evenimente ale comunității</td><td><b>șezători</b>, <b>clăci</b>, <b>hore</b>, petreceri</td></tr>
+     <tr><td>Cu cine își petrecea timpul</td><td>părinții, frații, surorile, <b>băieții satului</b></td></tr>
+     <tr><td>Locul</td><td>casa părintească, râul <b>Ozana</b>, <b>Cetatea Neamțului</b></td></tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="quiz" style="margin-top:12px">
+   <div class="item"><p>Ce lipsește din copilăria lui Creangă, față de a ta? Și ce e la fel?</p><div class="btns"><button class="reveal hint" data-t="Gândește-te la jucăriile de fabrică, la ecrane, la școală. Apoi la ce rămâne: jocul cu prietenii, zăpada, familia.">Indiciu</button></div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 7 JUCARIILE -->
+<section class="slide" aria-label="Evoluția jucăriilor">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Evoluția jucăriilor</span>
+  <h2>De la lut la fabrică</h2>
+  <div class="path">
+   <div class="box"><span class="emo">🏺</span><b>Făcute acasă</b><p>Părinții le meștereau din ce aveau la îndemână: <b>piele</b>, <b>lut</b>, <b>lemn</b>.</p></div>
+   <div class="box"><span class="emo">🔨</span><b>Ateliere</b><p>Meșteșugari care făceau jucării pentru alții.</p></div>
+   <div class="box"><span class="emo">🏭</span><b>Fabrici</b><p>Produc multe jucării, foarte variate.</p></div>
+  </div>
+  <div class="tip g">🧠 <b>Fă legătura cu L2:</b> în ce epocă istorică au apărut <b>fabricile</b>? Îți amintești de trenul cu aburi?</div>
+  <div class="tip b">🧪 <b>Știință:</b> o jucărie de lut poate dura mii de ani în pământ, iar arheologii o găsesc la săpături. Ce fel de sursă istorică este, după L1?</div>
+ </div>
+</section>
+
+<!-- 8 COPIII AZI -->
+<section class="slide" aria-label="Copiii azi">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Azi</span>
+  <h2>Cum trăiesc copiii azi</h2>
+  <div class="grid g2">
+   <div class="box"><span class="emo">🏫</span><h3>La învățătură</h3><p>O parte din timp o petrec în <b>grădinițe</b>, <b>școli</b> și <b>licee</b>. Uneori învață și <b>online</b>.</p></div>
+   <div class="box"><span class="emo">⚽📖</span><h3>În timpul liber</h3><p>Se joacă, fac <b>sport</b>, <b>citesc</b>, se uită la <b>filme</b>, navighează pe <b>internet</b>.</p></div>
+  </div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>„În prezent, copiilor li se asigură șanse egale la educație.”</p><p style="font-style:normal;font-size:.9em">Pentru lecție: azi, legea garantează dreptul la educație pentru toți copiii.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Legea le garantează tuturor copiilor acest drept. În realitate, nu toți copiii au aceleași condiții, iar unii ajung să renunțe la școală.</p><p>Diferența dintre <b>ce spune legea</b> și <b>ce se întâmplă</b> e un subiect important pentru istorici și pentru cetățeni. Următorul slide explică de ce se întâmplă asta.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 8b DE CE RENUNTA -->
+<section class="slide" aria-label="De ce renunță unii copii la școală">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Istorie + Educație civică</span>
+  <h2>De ce renunță unii copii la școală?</h2>
+  <p>În 2025, în România, cam <b>3 din 20</b> de tineri între 18 și 24 de ani terminaseră doar școala generală, sau nici atât, și nu mai învățau nimic (<b>15,5%</b>). Este cel mai mare procent din Uniunea Europeană, unde media e 9,1%. Asta <b>nu</b> înseamnă că acei copii sunt leneși sau mai puțin deștepți. Cifrele arată unde le e mai greu.</p>
+  <h3 style="margin-top:14px">Indiciul nr. 1: contează unde locuiești</h3>
+  <div class="hbars" role="img" aria-label="Tineri care au părăsit școala devreme, 2024: sate 26,3%, orașe mici și suburbii 15,3%, orașe mari 3,3%">
+   <span>Sate</span><div><i style="width:calc((100% - 4.5em)*26.3/30);background:#E2433A"></i><b>26,3%</b></div>
+   <span>Orașe mici și suburbii</span><div><i style="width:calc((100% - 4.5em)*15.3/30);background:#C9862A"></i><b>15,3%</b></div>
+   <span>Orașe mari</span><div><i style="width:calc((100% - 4.5em)*3.3/30);background:#2F6FD6"></i><b>3,3%</b></div>
+  </div>
+  <p class="caption">Tineri de 18–24 de ani care au părăsit școala devreme, în 2024. Sursa: Comisia Europeană, Education and Training Monitor 2025.</p>
+  <h3 style="margin-top:16px">Cauzele, legate între ele</h3>
+  <div class="grid g2">
+   <div class="box"><span class="emo">💸</span><h3>Sărăcia</h3><p>Rechizitele, hainele și drumul costă. În unele familii sărace, copilul e nevoit să muncească sau să aibă grijă de frații mai mici, <b>la fel ca acum 150 de ani</b>, cum ai văzut la începutul lecției.</p></div>
+   <div class="box"><span class="emo">🚌</span><h3>Școala de la sat</h3><p>Uneori e departe, are mai puțini profesori și mai puține materiale. Rezultatele elevilor de la sat la matematică sunt mult mai slabe decât ale celor de la oraș. Când nu mai înțelegi lecțiile, e mai ușor să renunți.</p></div>
+   <div class="box"><span class="emo">🚪</span><h3>Discriminarea</h3><p>Abandonul e foarte mare în rândul copiilor <b>romi</b>. Mulți învață în școli unde aproape toți elevii sunt romi, separați de ceilalți. De obicei, acele școli au condiții mai slabe. Amintește-ți de nedreptățile din trecut, din lecția 4: urmările lor se simt și azi.</p></div>
+   <div class="box"><span class="emo">🏛️</span><h3>Banii pentru educație</h3><p>În 2023, România a dat pentru școli <b>3%</b> din <b>PIB</b>, adică din valoarea a tot ce produce țara într-un an. Este cel mai puțin din UE, unde media e <b>4,7%</b>. Din fiecare 100 de lei, școlile primesc 3 lei, nu aproape 5.</p></div>
+  </div>
+  <div class="tip b">🗳️ <b>Cine decide?</b> <b>Guvernul</b> propune bugetul țării, adică ce bani merg la școli, la spitale sau la drumuri, iar <b>Parlamentul</b> îl votează. Parlamentul este ales de <b>cetățeni</b>. Așa ajunge o problemă a unui copil de la sat să fie o problemă a tuturor.</div>
+  <div class="tip g">🔧 <b>Ce se face deja:</b> printr-un program național împotriva abandonului școlar, peste 2.000 de școli au primit bani pentru ajutor la teme, sprijin pentru familii și activități. În prima rundă, aproape jumătate dintre școli au raportat mai puțin abandon. Unii elevi primesc și burse lunare.</div>
+  <div class="quiz" style="margin-top:12px">
+   <div class="item"><p>💬 <b>De gândit:</b> dacă ai fi ministrul educației și ai avea bani doar pentru un singur lucru, ce ai alege? De ce?</p><div class="btns"><button class="reveal hint" data-t="Recitește cele patru cauze. Care crezi că le declanșează pe celelalte? Nu există un singur răspuns corect, dar trebuie să-l poți explica.">Indiciu</button></div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 9 DIAGRAMA -->
+<section class="slide" aria-label="Diagrama trecut și prezent">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Aplicăm · Diagrama</span>
+  <h2>Trecut, prezent sau amândouă?</h2>
+  <p>Pentru fiecare afirmație, alege unde se potrivește, apoi verifică. Atenție, unele sunt la granița dintre categorii.</p>
+  <div class="sort" id="venn"></div>
+  <div class="qnav" style="justify-content:flex-start"><button class="act" id="venn-check" type="button">Verifică diagrama</button><button class="act sec" id="venn-reset" type="button">Ia de la capăt</button></div>
+  <div id="venn-fb" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 10 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile lecției</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 11 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g2">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">📈</span><p>Azi, spre deosebire de trecut, <b>viața copiilor s-a îmbunătățit</b>: drepturile lor sunt <b>scrise în legi</b>, garantate și recunoscute.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">🧸📚</span><p>Principalele activități ale copiilor sunt <b>jocul</b> și <b>studiul</b>.</p></div>
+  </div>
+  <div class="tip y">📚 <b>Lectură, dacă vrei:</b> <i>Cuore, inimă de copil</i>, de Edmondo De Amicis (Italia, 1886). Este jurnalul unui elev din Torino. Caută ce se aseamănă și ce diferă față de școala ta.</div>
+ </div>
+</section>
+
+</main>
+
+<nav class="bar" aria-label="Navigare prezentare">
+ <a class="home" href="../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
+ <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
+ <div class="dots" id="dots"></div>
+ <span class="count" id="count"></span>
+ <button class="nav" id="next" aria-label="Slide-ul următor">→</button>
+</nav>
+<script>
+(function(){
+  var KEY='copilaria-slide';
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
+  var cur=0;
+  slides.forEach(function(s,i){var b=document.createElement('button');b.setAttribute('aria-label','Mergi la slide-ul '+(i+1));b.onclick=function(){go(i)};dots.appendChild(b);});
+  function go(i){
+    if(i<0||i>=slides.length)return;
+    slides[cur].classList.remove('active');dots.children[cur].classList.remove('on');
+    cur=i;slides[cur].classList.add('active');dots.children[cur].classList.add('on');slides[cur].scrollTop=0;
+    prev.disabled=cur===0;next.disabled=cur===slides.length-1;count.textContent=(cur+1)+' / '+slides.length;
+    
+  }
+  prev.onclick=function(){go(cur-1)};next.onclick=function(){go(cur+1)};
+  document.addEventListener('keydown',function(e){
+    var t=e.target&&e.target.tagName;if(t==='INPUT'||t==='TEXTAREA')return;
+    if(e.key==='ArrowRight'||e.key==='PageDown')go(cur+1);
+    if(e.key==='ArrowLeft'||e.key==='PageUp')go(cur-1);
+  });
+  var sx=null,deck=document.getElementById('deck');
+  deck.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  deck.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>60&&!(e.target.closest&&e.target.closest('.svgwrap')))go(cur+(dx<0?1:-1));sx=null;},{passive:true});
+  var start=0;
+  slides[0].classList.add('active');dots.children[0].classList.add('on');go(start);
+
+  
+  document.querySelectorAll('.reveal').forEach(function(b){
+    var d=document.createElement('div');d.className='ans '+(b.classList.contains('hint')?'h':'a');d.hidden=true;
+    d.textContent=(b.classList.contains('hint')?'💡 ':'✅ ')+b.getAttribute('data-t');
+    b.parentNode.parentNode.appendChild(d);var label=b.textContent;
+    b.onclick=function(){d.hidden=!d.hidden;b.textContent=d.hidden?label:'Ascunde';};
+  });
+/* ---------- missions ---------- */
+    var Q=[
+   {t:'mcq',tags:['L5','L2'],d:'Cronologie',q:'Convenția cu privire la Drepturile Copilului a fost adoptată în 1989. În ce secol, mileniu și epocă (după manual)?',o:['Sec. XX, mileniul II, la granița modernă / contemporană','Sec. XIX, mileniul II, epoca modernă','Sec. XX, mileniul III, epoca contemporană'],a:0,h:'1989 : 100 → rotunjești în sus. 1989 : 1000 → la fel. Apoi caută secolul XX pe banda epocilor.',e:'Secolul XX, mileniul II. Secolul XX este granița dintre epoca modernă (sec. XVIII–XX) și cea contemporană (din sec. XX).'},
+   {t:'num',tags:['L5'],d:'Matematică',q:'Convenția a fost adoptată pe 20 noiembrie 1989. Câți ani împlinește în noiembrie 2026?',a:37,h:'Scade: 2026 − 1989. Ziua ei este chiar în noiembrie.',e:'2026 − 1989 = 37 de ani, împliniți pe 20 noiembrie 2026. Pe 8 noiembrie avea încă 36, la fel ca la problema cu Kogălniceanu.'},
+   {t:'mcq',tags:['L5'],d:'Drepturi',q:'Un băiat de 10 ani, în anul 1850, lucra toată ziua într-un atelier din oraș și nu mergea la școală. Dacă ar trăi azi, ce drepturi din Convenție i-ar fi încălcate?',o:['Doar dreptul la un nume','Dreptul la educație și protecția împotriva exploatării','Dreptul la asistență medicală','Niciunul: era normal pe atunci'],a:1,h:'Uită-te la lista din „Aflu din documente”. Ce pierdea el lucrând toată ziua?',e:'Dreptul la educație și protecția împotriva exploatării prin muncă. În 1850 așa ceva era obișnuit, dar azi ar fi interzis. Asta înseamnă că drepturile copilului au o istorie.'},
+   {t:'order',tags:['L5','L2'],d:'Cronologie',q:'Pune jucăriile în ordinea în care au apărut. Apasă pe ele pe rând.',items:['Păpușă de lut făcută de părinți','Cal de lemn de la un meșteșugar','Mașinuță făcută în fabrică','Joc pe tabletă'],h:'Urmărește drumul din lecție: acasă → atelier → fabrică. Unde intră tableta?',e:'Lut (acasă) → lemn (atelier) → fabrică → tabletă. Fabricile aparțin epocii moderne, iar tableta epocii contemporane.'},
+   {t:'mcq',tags:['L5','L2','L4'],d:'Geografie',q:'Un copil din Delta Dunării, acum 150 de ani, își ajuta probabil părinții la…',o:['culesul strugurilor pe dealuri','pescuit','mineritul în munți','păstoritul pe pajiști alpine'],a:1,h:'Ce oferă mediul geografic din Deltă? Amintește-ți de lipovenii din L4.',e:'La pescuit. Ocupațiile copiilor erau ale familiei, iar ocupațiile familiei depindeau de mediul geografic (L2).'},
+   {t:'mcq',tags:['L5','L3'],d:'Matematică',q:'Meseriile treceau „din generație în generație”. Dacă o generație durează cam 25 de ani, câte generații trec între 1900 și 2000?',o:['2','4','10','25'],a:1,h:'Câți ani are un secol? Câte bucăți de 25 încap în el?',e:'100 : 25 = 4 generații într-un secol. Gândește-te la arborele lui Andrei: bunici, părinți, copil, adică trei generații în aproape 60 de ani.'},
+   {t:'mcq',tags:['L5','L1'],d:'Logică',q:'De ce, în trecut, cei mai mulți „știutori de carte” proveneau din familii bogate?',o:['Pentru că copiii bogați erau mai deștepți','Pentru că familiile sărace aveau nevoie de munca copiilor, iar școala costa','Pentru că cărțile erau interzise la sat','Pentru că nu existau litere'],a:1,h:'Gândește-te la ce făceau copiii din familiile sărace toată ziua.',e:'Copiii din familiile sărace munceau, iar învățătura costa bani. Inteligența nu are nicio legătură cu averea, doar șansele erau diferite. De aceea dreptul la educație cu șanse egale este atât de important.'},
+   {t:'sort',tags:['L5','L1'],d:'Surse istorice',q:'Un istoric cercetează copilăria din trecut. Sortează sursele: scrise sau nescrise?',items:[['Jucărie de lut găsită la săpături','n'],['Catalog școlar din 1900','s'],['Amintiri din copilărie, de Creangă','s'],['Leagăn de lemn într-un muzeu','n'],['Convenția cu privire la Drepturile Copilului','s'],['Ghiozdan de piele vechi de 100 de ani','n']],h:'Are textul pe el sau e doar un obiect?',e:'Cataloagele, cărțile și convențiile sunt surse scrise. Jucăriile, leagănele și ghiozdanele sunt surse nescrise, adică obiecte.'},
+   {t:'mcq',tags:['L5','L2'],d:'Detectiv',q:'Găsește intrusul: „În 1850, un copil de la sat păzea oile, se juca cu o păpușă de lut, făcea ore online și mergea cu părinții la claca satului.”',o:['păzitul oilor','păpușa de lut','orele online','claca'],a:2,h:'Ce lucru din listă are nevoie de o invenție din epoca contemporană?',e:'Orele online au nevoie de internet, care a apărut abia în epoca contemporană. Este un anacronism.'},
+   {t:'mcq',tags:['L5'],d:'Educație civică',q:'Pentru un copil din România de azi, școala este…',o:['doar un drept: poate alege să nu meargă','doar o obligație','și un drept, și o obligație','un privilegiu al familiilor bogate'],a:2,h:'Convenția vorbește de dreptul la educație. Dar poate un părinte să decidă că copilul lui nu merge deloc la școală?',e:'Și drept, și obligație. Constituția României spune că învățământul general este obligatoriu. Este o răspundere a părinților și a statului, pentru că educația e prea importantă pentru a fi lăsată la voia întâmplării.'},
+   {t:'mcq',tags:['L5'],d:'Matematică',q:'În 2024, au părăsit școala devreme 26,3% dintre tinerii de la sat și 3,3% dintre cei din orașele mari. Cam de câte ori mai mare este riscul la sat?',o:['de 2 ori','de 4 ori','de 8 ori','de 23 de ori'],a:2,h:'Rotunjește: 26 și 3. Câți de 3 încap în 26? Atenție, 23 este diferența, nu de câte ori.',e:'26,3 : 3,3 ≈ 8. La sat, riscul e de aproape 8 ori mai mare. 23 este diferența (26,3 − 3,3), o capcană clasică: diferența și raportul sunt lucruri diferite.'},
+   {t:'mcq',tags:['L5','Civică'],d:'Educație civică',q:'Cine votează, în final, câți bani primesc școlile din România într-un an?',o:['Directorul fiecărei școli','Parlamentul, prin bugetul țării','Comisia Europeană','Părinții, la ședința cu părinții'],a:1,h:'Guvernul propune bugetul. Cine îl aprobă? Și cine îi alege pe cei care îl aprobă?',e:'Parlamentul votează bugetul propus de Guvern, iar parlamentarii sunt aleși de cetățeni. De aceea, votul adulților influențează și școala ta.'},
+   {t:'mcq',tags:['L5'],d:'Limbi străine',q:'„Cuore” înseamnă „inimă” în italiană și vine din latinescul cor. Ce cuvânt românesc vine tot din cor?',o:['cort','coardă','cordial','corabie'],a:2,h:'Un om cordial te primește… cu toată inima.',e:'„Cordial” înseamnă din inimă, prietenos. Medicii spun și „cord” pentru inimă. Italiana și româna sunt surori, amândouă coborâte din latină.'},
+   {t:'mcq',tags:['L5','L3','L4'],d:'Gândire',q:'Ce avea copilăria lui Creangă și lipsește din multe copilării de azi, după fragmentele citite?',o:['Jucării din fabrică','Evenimente la care participa tot satul: clăci, șezători, hore','Lecții online','Dreptul la educație garantat prin lege'],a:1,h:'Recitește tabelul de la slide-ul despre Creangă: ce evenimente ale comunității amintește?',e:'Viața de comunitate: clăci, șezători, hore. Copilul lua parte la viața satului, așa cum spune și manualul. Azi, mulți copii trăiesc la oraș, unde vecinii se cunosc mai puțin.'}
+  ];
+  var VENN=[
+   ['Munca la câmp alături de părinți, toată ziua','t'],
+   ['Jucării făcute în casă, din lut sau lemn','t'],
+   ['Școala obligatorie pentru toți copiii','p'],
+   ['Lecții online','p'],
+   ['Jocul cu prietenii','c'],
+   ['Drepturi scrise în legi','p'],
+   ['Meseria moștenită de la părinți','t'],
+   ['Învățarea de la cei din familie','c'],
+   ['Participarea la sărbătorile comunității','c']
+  ];
+  var VENN_EXPL='Trecut: munca toată ziua, jucăriile din casă, meseria moștenită. Prezent: școala obligatorie, lecțiile online, drepturile scrise în legi. Comun: jocul cu prietenii, învățarea de la familie, sărbătorile comunității. Ai pus altfel ceva și poți explica de ce? Și asta e gândire de istoric: unele lucruri sunt la granița dintre categorii.';
+
+  (function(){
+    var host=document.getElementById('venn'),fb=document.getElementById('venn-fb'),ans={};
+    var L={t:'trecut',c:'amândouă',p:'prezent'};
+    function build(){ans={};fb.innerHTML='';host.innerHTML=VENN.map(function(it,i){return '<div class="srow" data-i="'+i+'"><span style="font-weight:700">'+it[0]+'</span><div class="seg">'+['t','c','p'].map(function(k){return '<button type="button" aria-pressed="false" data-v="'+k+'">'+L[k]+'</button>'}).join('')+'</div></div>'}).join('');
+      host.querySelectorAll('.srow').forEach(function(r){var i=r.getAttribute('data-i');r.querySelectorAll('button').forEach(function(b){b.onclick=function(){ans[i]=b.getAttribute('data-v');r.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});r.classList.remove('ok','bad');};});});}
+    document.getElementById('venn-check').onclick=function(){
+      if(Object.keys(ans).length<VENN.length){fb.innerHTML='<div class="fb h">Alege o variantă pentru fiecare rând.</div>';return;}
+      var n=0;host.querySelectorAll('.srow').forEach(function(r){var i=r.getAttribute('data-i'),g=ans[i]===VENN[i][1];if(g)n++;r.classList.toggle('ok',g);r.classList.toggle('bad',!g);});
+      fb.innerHTML='<div class="fb '+(n===VENN.length?'ok':'h')+'"><b>'+n+' din '+VENN.length+'.</b> '+(n===VENN.length?'Perfect! ':'')+VENN_EXPL+'</div>';
+    };
+    document.getElementById('venn-reset').onclick=build;
+    build();
+  })();
+  var host=document.getElementById('qhost'),bar=document.getElementById('qbar'),sc=document.getElementById('qscore');
+  var qi=0,score=0,MAX=Q.length*2;
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  function setScore(){sc.textContent=score+(score===1?' punct':' puncte');}
+  function render(){
+    bar.style.width=(qi/Q.length*100)+'%';
+    if(qi>=Q.length)return finish();
+    var q=Q[qi],tries=0,done=false;
+    var h='<div class="qcard"><div class="qtop" style="margin-bottom:6px"><div class="qmeta">'+q.tags.map(function(t){return '<span>'+t+'</span>'}).join('')+'<span class="d">'+q.d+'</span></div><span style="color:var(--soft);font-weight:800" class="mono">'+(qi+1)+' / '+Q.length+'</span></div><p class="stem">'+esc(q.q)+'</p><div id="qbody"></div><div id="qfb"></div><div class="qnav"><button class="act sec" id="qhint" type="button">💡 Indiciu</button><button class="act" id="qnext" type="button" hidden>Misiunea următoare →</button></div></div>';
+    host.innerHTML=h;
+    var body=document.getElementById('qbody'),fb=document.getElementById('qfb'),hint=document.getElementById('qhint'),nx=document.getElementById('qnext');
+    var hinted=false;
+    hint.onclick=function(){hinted=true;showFb('h','💡 '+q.h);hint.hidden=true;};
+    nx.onclick=function(){qi++;render();};
+    function showFb(k,txt){fb.innerHTML='<div class="fb '+k+'">'+txt+'</div>';}
+    function finishQ(ok){
+      done=true;var pts=ok?(tries===0&&!hinted?2:1):0;score+=pts;setScore();
+      showFb(ok?'ok':'no',(ok?'✅ <b>Corect! +'+pts+(pts===1?' punct':' puncte')+'</b> ':'🔎 <b>Răspunsul corect:</b> ')+esc(q.e));
+      hint.hidden=true;nx.hidden=false;nx.textContent=qi===Q.length-1?'Vezi rezultatul →':'Misiunea următoare →';nx.focus();
+    }
+    function miss(){
+      tries++;
+      if(tries>=2)return finishQ(false);
+      showFb('no','Nu încă. '+(hinted?'Mai citește indiciul și încearcă din nou.':'💡 '+q.h));hinted=true;hint.hidden=true;
+    }
+    if(q.t==='mcq'){
+      body.innerHTML='<div class="opts">'+q.o.map(function(o,i){return '<button type="button" data-i="'+i+'">'+esc(o)+'</button>'}).join('')+'</div>';
+      var bs=body.querySelectorAll('button');
+      bs.forEach(function(b){b.onclick=function(){
+        if(done)return;var i=+b.getAttribute('data-i');
+        if(i===q.a){b.classList.add('right');bs.forEach(function(x){x.disabled=true});finishQ(true);}
+        else{b.classList.add('wrong');b.disabled=true;miss();if(done){bs[q.a].classList.add('right');bs.forEach(function(x){x.disabled=true});}}
+      }});
+    }
+    if(q.t==='num'){
+      body.innerHTML='<div class="numrow"><input id="qnum" type="number" inputmode="numeric" aria-label="Răspunsul tău"><span style="font-weight:800">ani</span><button class="act" id="qcheck" type="button">Verifică</button></div>';
+      var inp=document.getElementById('qnum'),ck=document.getElementById('qcheck');
+      function chk(){if(done)return;var v=parseInt(inp.value,10);if(isNaN(v)){showFb('h','Scrie mai întâi un număr.');return;}if(v===q.a){finishQ(true);ck.disabled=true;inp.disabled=true;}else{miss();if(done){ck.disabled=true;inp.disabled=true;}}}
+      ck.onclick=chk;inp.addEventListener('keydown',function(e){if(e.key==='Enter')chk();});
+    }
+    if(q.t==='order'){
+      var picked=[];
+      body.innerHTML='<p style="margin:.2em 0;font-weight:800;color:var(--soft)">De ales:</p><div class="order-pool" id="opool"></div><p style="margin:.6em 0 .2em;font-weight:800;color:var(--soft)">Ordinea ta:</p><div class="order-done" id="odone"></div><div class="qnav" style="justify-content:flex-start"><button class="act sec" id="oreset" type="button">Ia de la capăt</button></div>';
+      var pool=document.getElementById('opool'),dn=document.getElementById('odone');
+      function draw(){
+        pool.innerHTML='';shuffledO.forEach(function(it){if(picked.indexOf(it)>-1)return;var b=document.createElement('button');b.type='button';b.textContent=it;b.onclick=function(){if(done)return;picked.push(it);draw();if(picked.length===q.items.length)check();};pool.appendChild(b);});
+        dn.innerHTML=picked.map(function(p){return '<span>'+esc(p)+'</span>'}).join('')||'<span style="opacity:.5">…</span>';
+      }
+      function check(){
+        var ok=picked.every(function(p,i){return p===q.items[i]});
+        var sp=dn.querySelectorAll('span');picked.forEach(function(p,i){sp[i].classList.add(p===q.items[i]?'ok':'bad')});
+        if(ok)finishQ(true);else{miss();if(!done){setTimeout(function(){picked=[];draw();},1200);}}
+      }
+      var shuffledO=shuffle(q.items);
+      document.getElementById('oreset').onclick=function(){if(done)return;picked=[];draw();};
+      draw();
+    }
+    if(q.t==='sort'){
+      body.innerHTML='<div class="sort">'+q.items.map(function(it,i){return '<div class="srow" data-i="'+i+'"><span style="font-weight:700">'+esc(it[0])+'</span><div class="seg"><button type="button" aria-pressed="false" data-v="s">scrisă</button><button type="button" aria-pressed="false" data-v="n">nescrisă</button></div></div>'}).join('')+'</div><div class="qnav" style="justify-content:flex-start"><button class="act" id="scheck" type="button">Verifică sortarea</button></div>';
+      var ans={};
+      body.querySelectorAll('.srow').forEach(function(r){var i=r.getAttribute('data-i');r.querySelectorAll('button').forEach(function(b){b.onclick=function(){if(done)return;ans[i]=b.getAttribute('data-v');r.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});r.classList.remove('ok','bad');};});});
+      document.getElementById('scheck').onclick=function(){
+        if(done)return;
+        if(Object.keys(ans).length<q.items.length){showFb('h','Alege „scrisă” sau „nescrisă” pentru fiecare rând.');return;}
+        var ok=true;body.querySelectorAll('.srow').forEach(function(r){var i=r.getAttribute('data-i');var g=ans[i]===q.items[i][1];if(!g)ok=false;r.classList.toggle('ok',g);r.classList.toggle('bad',!g);});
+        if(ok)finishQ(true);else miss();
+        if(done)document.getElementById('scheck').disabled=true;
+      };
+    }
+  }
+  function finish(){
+    bar.style.width='100%';
+    var p=score/MAX,r=p>=.85?['Istoric de top','🏆','Ai făcut legături între lecții ca un adevărat istoric.']:p>=.6?['Cronicar','📜','Foarte bine! Mai treci o dată prin misiunile la care ai pierdut puncte.']:p>=.35?['Arhivist','🗂️','Bun început. Întoarce-te la Mașina timpului și la regulile secolelor, apoi reîncearcă.']:['Ucenic de istoric','🔍','Recitește Dosarul pe scurt și slide-ul cu erele, apoi mai încearcă o dată.'];
+    host.innerHTML='<div class="qcard" style="text-align:center"><div style="font-size:3em">'+r[1]+'</div><p style="margin:0;font-weight:800;color:var(--soft)">Rangul tău</p><p class="rank">'+r[0]+'</p><p class="mono" style="font-weight:800;font-size:1.2em">'+score+' din '+MAX+' puncte</p><p>'+r[2]+'</p><p style="color:var(--soft);font-size:.9em">2 puncte din prima încercare, fără indiciu · 1 punct cu indiciu sau din a doua încercare</p><button class="act" id="qagain" type="button">Joacă din nou</button></div>';
+    document.getElementById('qagain').onclick=function(){qi=0;score=0;setScore();render();};
+  }
+  setScore();render();
+})();
+</script>
+
+</body></html>

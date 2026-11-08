@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Timpul istoric și mediul geografic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#F3F7FF;
+  --paper:#FFFFFF;
+  --ink:#1E2340;
+  --soft:#4A5078;
+  --line:#D5DDF0;
+  --red:#E2433A;
+  --green:#2E9D52;
+  --blue:#2F6FD6;
+  --yellow:#F6C431;
+  --purple:#6B4BC4;
+  --tint-red:#FDE6E4;
+  --tint-green:#E1F4E7;
+  --tint-blue:#E2ECFC;
+  --tint-yellow:#FFF4CF;
+  --tint-purple:#ECE6FA;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+    --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+  --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  height:100%;margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;font-weight:500;
+  font-size:clamp(16px,1.05vw + 10px,21px);line-height:1.5;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+h1,h2,h3{font-family:"Baloo 2","Trebuchet MS",system-ui,sans-serif;line-height:1.1;margin:0}
+h2{font-size:clamp(1.7rem,2.6vw + .6rem,2.8rem);font-weight:800;margin-bottom:.35em}
+h3{font-size:1.2em;font-weight:700}
+p{margin:.3em 0 .7em}
+b,strong{font-weight:800}
+
+/* stage */
+.deck{flex:1;position:relative;min-height:0}
+.slide{
+  position:absolute;inset:0;overflow-y:auto;padding:clamp(18px,3vw,48px) clamp(16px,5vw,80px) 24px;
+  display:none;
+}
+.slide.active{display:block;animation:in .35s ease-out}
+@keyframes in{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slide.active{animation:none}}
+.wrap{max-width:1080px;margin:0 auto}
+.lead{font-size:1.15em;color:var(--soft);max-width:60ch}
+.badge{display:inline-block;font-weight:800;font-size:.85em;padding:.2em .8em;border-radius:99px;margin-bottom:.8em;color:#fff}
+
+/* bottom bar */
+.bar{
+  display:flex;align-items:center;gap:12px;padding:10px clamp(12px,3vw,32px);
+  background:var(--paper);border-top:2px solid var(--line);
+}
+.bar button.nav{
+  font:inherit;font-weight:800;border:0;border-radius:14px;padding:.55em 1.1em;cursor:pointer;
+  background:var(--blue);color:#fff;min-width:48px;
+}
+.bar button.nav:disabled{opacity:.35;cursor:default}
+.dots{flex:1;display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.dots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
+.dots button.on{background:var(--red);transform:scale(1.3)}
+.count{font-weight:800;color:var(--soft);min-width:4.5ch;text-align:center}
+button:focus-visible,.card-btn:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+
+/* cover */
+.cover{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;min-height:100%}
+.cover h1{font-size:clamp(2.4rem,5vw + .5rem,4.8rem);font-weight:800;margin:.2em 0 .3em}
+.stripes{display:flex;height:14px;border-radius:8px;overflow:hidden;max-width:420px;margin-bottom:1em}
+.stripes span{flex:1}
+@media (max-width:760px){.cover{grid-template-columns:1fr}.cover svg{max-width:220px;margin:0 auto}}
+
+/* generic grids */
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g5{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.box{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:18px 20px}
+.box .emo{font-size:2.2em;line-height:1;display:block;margin-bottom:.25em}
+.tip{border-radius:18px;padding:14px 20px;margin-top:18px;border-left:8px solid}
+.tip.y{background:var(--tint-yellow);border-color:var(--yellow)}
+.tip.g{background:var(--tint-green);border-color:var(--green)}
+.tip.b{background:var(--tint-blue);border-color:var(--blue)}
+.tip.r{background:var(--tint-red);border-color:var(--red)}
+
+/* questions */
+.q{display:flex;gap:16px;align-items:center;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px 20px;margin-bottom:14px;font-size:1.15em;font-weight:700}
+.q .mark{flex:none;width:2.2em;height:2.2em;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:"Baloo 2",sans-serif;font-weight:800;font-size:1.1em}
+
+/* ladder */
+.ladder{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;margin:10px 0 6px}
+.step{background:var(--tint-blue);border-radius:12px;padding:.35em .8em;font-weight:800;text-align:center}
+.step small{display:block;font-weight:700;color:var(--soft);font-size:.72em}
+.arrow{color:var(--soft);font-weight:800}
+
+/* clocks */
+.clock{position:relative}
+.clock .num{position:absolute;top:12px;right:14px;font-family:"Baloo 2",sans-serif;font-weight:800;color:var(--soft);font-size:.9em}
+.clock h3{margin-bottom:.2em}
+.clock p{font-size:.92em;margin:.2em 0}
+.clock .plus{color:var(--green);font-weight:800}
+.clock .minus{color:var(--red);font-weight:800}
+
+/* era line */
+.eraline{width:100%;height:auto;display:block;margin:6px 0}
+
+/* epochs interactive */
+.river{display:flex;border-radius:16px;overflow:hidden;margin:10px 0 16px;min-height:74px}
+.river button{
+  font:inherit;border:0;cursor:pointer;color:#fff;font-family:"Baloo 2",sans-serif;font-weight:800;
+  padding:10px 8px;line-height:1.1;font-size:.95em;position:relative;text-align:center;
+}
+.river button small{display:block;font-family:"Nunito",sans-serif;font-weight:700;font-size:.72em;opacity:.95;margin-top:3px}
+.river button[aria-pressed="true"]{box-shadow:inset 0 -8px 0 rgba(255,255,255,.85)}
+.river button:nth-child(1){flex:2.2;background:#8A5A2B}
+.river button:nth-child(2){flex:1.4;background:#C9862A}
+.river button:nth-child(3){flex:1.4;background:#2F6FD6}
+.river button:nth-child(4){flex:1;background:#6B4BC4}
+.river button:nth-child(5){flex:1;background:#2E9D52}
+.epoch-card{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:18px 22px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.epoch-card .big{font-size:3.4em;line-height:1}
+.epoch-card ul{margin:.3em 0 0;padding-left:1.2em}
+.epoch-card li{margin:.2em 0}
+@media (max-width:640px){
+  .river{flex-direction:column}
+  .river button{text-align:left;padding:10px 14px}
+  .epoch-card{grid-template-columns:1fr}
+}
+
+/* evolution path */
+.path{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;counter-reset:p}
+.path .box{text-align:center;padding:16px 12px}
+.path .box::before{counter-increment:p;content:counter(p);display:inline-grid;place-items:center;width:1.8em;height:1.8em;border-radius:50%;background:var(--green);color:#fff;font-weight:800;font-size:.85em;margin-bottom:6px}
+
+/* houses */
+.house svg{width:100%;height:auto;border-radius:12px;display:block;margin-bottom:10px}
+.house p{font-size:.95em}
+
+/* quote */
+blockquote{margin:0;font-family:"Baloo 2",sans-serif;font-weight:700;font-size:clamp(1.4rem,2vw + .5rem,2.2rem);line-height:1.25;border-left:10px solid var(--red);padding:.2em 0 .2em .8em}
+cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weight:700}
+
+/* journal */
+.journal{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:8px 20px}
+.entry{display:grid;grid-template-columns:7.5em 1fr;gap:14px;padding:12px 0;border-bottom:2px dashed var(--line)}
+.entry:last-child{border-bottom:0}
+.entry .d{font-family:"Baloo 2",sans-serif;font-weight:800;color:var(--blue)}
+
+/* quiz */
+.quiz .item{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:14px 18px;margin-bottom:12px}
+.quiz .item p{margin:0;font-weight:700}
+.reveal{font:inherit;font-weight:800;margin-top:8px;border:0;border-radius:12px;padding:.35em .9em;background:var(--tint-yellow);color:var(--ink);cursor:pointer}
+.ans{display:none;margin-top:8px;color:var(--green);font-weight:800}
+.ans.show{display:block}
+
+.roman{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.roman span{background:var(--tint-purple);border-radius:10px;padding:.25em .7em;font-weight:800}
+</style>
+<style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Istorie, Unitatea 1, Lecția 2</p>
+   <h1>Timpul istoric și mediul geografic</h1>
+   <p class="lead">O călătorie prin timp: cum măsurăm trecutul, cum l-au împărțit istoricii și de ce oamenii trăiesc diferit în locuri diferite.</p>
+   <p style="color:var(--soft)">Folosește săgețile de jos sau tastele ← → ca să mergi mai departe.</p>
+  </div>
+  <svg viewBox="0 0 200 260" aria-hidden="true">
+   <rect x="30" y="10" width="140" height="18" rx="6" fill="#8A5A2B"/>
+   <rect x="30" y="232" width="140" height="18" rx="6" fill="#8A5A2B"/>
+   <rect x="38" y="28" width="10" height="204" fill="#C9862A"/><rect x="152" y="28" width="10" height="204" fill="#C9862A"/>
+   <path d="M60 30 H140 C140 90 106 110 102 130 C106 150 140 170 140 230 H60 C60 170 94 150 98 130 C94 110 60 90 60 30Z" fill="var(--tint-blue)" stroke="var(--blue)" stroke-width="4"/>
+   <path d="M76 70 H124 C118 95 104 110 100 126 C96 110 82 95 76 70Z" fill="var(--yellow)"/>
+   <path d="M100 132 L100 190" stroke="var(--yellow)" stroke-width="3" stroke-dasharray="4 5"/>
+   <path d="M66 226 C75 196 125 196 134 226Z" fill="var(--yellow)"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 INTREBARI -->
+<section class="slide" aria-label="Ce vrem să aflăm">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Vrem să știm</span>
+  <h2>Trei întrebări pentru azi</h2>
+  <div class="q"><span class="mark" style="background:var(--blue)">?</span>Cum se măsoară timpul în istorie?</div>
+  <div class="q"><span class="mark" style="background:var(--green)">?</span>În ce mod influențează mediul geografic viața oamenilor?</div>
+  <div class="q"><span class="mark" style="background:var(--purple)">?</span>Cum a evoluat omul de la o perioadă la alta?</div>
+  <div class="tip y">🕵️ Istoricul e ca un detectiv: ca să rezolve un „caz” din trecut, are nevoie de indicii. Hai să vedem ce unelte folosește!</div>
+ </div>
+</section>
+
+<!-- 3 UNITATI DE TIMP -->
+<section class="slide" aria-label="Cum măsurăm timpul">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Știm deja</span>
+  <h2>Timpul se măsoară în…</h2>
+  <div class="ladder">
+   <div class="step">secunde</div><span class="arrow">›</span>
+   <div class="step">minute</div><span class="arrow">›</span>
+   <div class="step">ore</div><span class="arrow">›</span>
+   <div class="step">zile</div><span class="arrow">›</span>
+   <div class="step">săptămâni</div><span class="arrow">›</span>
+   <div class="step">luni</div><span class="arrow">›</span>
+   <div class="step">ani</div><span class="arrow">›</span>
+   <div class="step" style="background:var(--tint-yellow)">secole<small>100 de ani</small></div><span class="arrow">›</span>
+   <div class="step" style="background:var(--tint-red)">milenii<small>1000 de ani</small></div>
+  </div>
+  <div class="grid g3" style="margin-top:18px">
+   <div class="box"><span class="emo">🎂</span><h3>Tu</h3><p>Ai în jur de 10 ani. Asta e doar <b>a zecea parte</b> dintr-un secol!</p></div>
+   <div class="box"><span class="emo">👵</span><h3>Bunica</h3><p>Dacă împlinește 100 de ani, a trăit <b>un secol întreg</b>.</p></div>
+   <div class="box"><span class="emo">🏰</span><h3>Istoria</h3><p>Istoricii lucrează cu perioade uriașe, așa că folosesc mai ales <b>secolele și mileniile</b>.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 4 CEASURI -->
+<section class="slide" aria-label="Instrumente de măsurare a timpului">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Album istoric</span>
+  <h2>Cum au măsurat oamenii timpul</h2>
+  <p class="lead">De la umbra unui băț până la ceasul din buzunar, în ordinea în care au apărut:</p>
+  <div class="grid g5">
+   <div class="box clock"><span class="num">1</span><span class="emo">☀️</span><h3>Ceasul solar</h3><p>Un băț aruncă o umbră pe un cadran. Unde cade umbra, acolo e ora.</p><p class="minus">Noaptea și pe nori nu merge.</p></div>
+   <div class="box clock"><span class="num">2</span><span class="emo">💧</span><h3>Ceasul cu apă</h3><p>Apa se scurge încet dintr-un vas. Cât a scăzut apa arată cât timp a trecut.</p><p class="plus">Merge și noaptea!</p></div>
+   <div class="box clock"><span class="num">3</span><span class="emo">⏳</span><h3>Clepsidra</h3><p>Nisipul curge dintr-o parte în alta a sticlei. Bună pentru timp scurt, ca la fiertul unui ou.</p></div>
+   <div class="box clock"><span class="num">4</span><span class="emo">🕰️</span><h3>Orologiul</h3><p>Un ceas mare, pus în turnul unei clădiri, ca să-l vadă tot orașul.</p><p class="plus">Tot orașul știe ora.</p></div>
+   <div class="box clock"><span class="num">5</span><span class="emo">⌚</span><h3>Ceasul mecanic</h3><p>Merge cu rotițe și arcuri. Atât de mic încât încape în buzunar.</p><p class="plus">Cel mai precis dintre ele.</p></div>
+  </div>
+  <div class="tip b">💬 Discutăm: care ceas ți se pare cel mai precis? Care ar fi cel mai greu de luat cu tine în excursie?</div>
+ </div>
+</section>
+
+<!-- 5 DATA SI CRONOLOGIE -->
+<section class="slide" aria-label="Data istorică și cronologia">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Reținem</span>
+  <h2>Două indicii pentru orice eveniment</h2>
+  <div class="grid g2">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">📅</span><h3>CÂND? = timpul</h3><p>Momentul în care s-a petrecut un eveniment se numește <b>dată istorică</b>.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">📍</span><h3>UNDE? = locul</h3><p>Locul îl găsim cu ajutorul <b>hărților</b>.</p></div>
+  </div>
+  <div class="tip y">🇷🇴 <b>Exemplu:</b> Marea Unire a avut loc pe <b>1 Decembrie 1918</b> (când), la <b>Alba Iulia</b> (unde).</div>
+  <h3 style="margin-top:22px">Cronologia = evenimentele puse în ordine</h3>
+  <p>Poți face și tu cronologia vieții tale:</p>
+  <div class="ladder">
+   <div class="step">👶 M-am născut</div><span class="arrow">›</span>
+   <div class="step">🚶 Primii pași</div><span class="arrow">›</span>
+   <div class="step">🎒 Prima zi de școală</div><span class="arrow">›</span>
+   <div class="step" style="background:var(--tint-yellow)">📚 Clasa de acum</div>
+  </div>
+ </div>
+</section>
+
+<!-- 6 ERELE -->
+<section class="slide" aria-label="Erele">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Reținem</span>
+  <h2>Cele două ere</h2>
+  <p class="lead">Istoricii au ales un punct de pornire: <b>nașterea lui Isus Hristos</b>. Tot ce e înainte și tot ce e după se numără de la acest punct.</p>
+  <svg class="eraline" viewBox="0 0 800 170" role="img" aria-label="Axa timpului cu era înainte de Hristos la stânga și era după Hristos la dreapta">
+   <rect x="10" y="70" width="385" height="34" rx="17" fill="#C9862A"/>
+   <rect x="405" y="70" width="385" height="34" rx="17" fill="#2E9D52"/>
+   <text x="200" y="93" text-anchor="middle" fill="#fff" font-family="Baloo 2, sans-serif" font-weight="800" font-size="20">înainte de Hristos (î.H.)</text>
+   <text x="600" y="93" text-anchor="middle" fill="#fff" font-family="Baloo 2, sans-serif" font-weight="800" font-size="20">după Hristos (d.H.)</text>
+   <circle cx="400" cy="87" r="20" fill="#F6C431" stroke="#fff" stroke-width="4"/>
+   <text x="400" y="93" text-anchor="middle" font-size="18">⭐</text>
+   <text x="400" y="140" text-anchor="middle" fill="currentColor" font-family="Nunito, sans-serif" font-weight="800" font-size="16">nașterea lui Isus</text>
+   <text x="110" y="45" text-anchor="middle" fill="currentColor" font-family="Nunito, sans-serif" font-weight="800" font-size="16">← mai vechi</text>
+   <text x="690" y="45" text-anchor="middle" fill="currentColor" font-family="Nunito, sans-serif" font-weight="800" font-size="16">mai nou →</text>
+   <line x1="260" y1="104" x2="260" y2="125" stroke="currentColor" stroke-width="3"/>
+   <text x="260" y="142" text-anchor="middle" fill="currentColor" font-family="Nunito, sans-serif" font-size="15">Burebista, sec. I î.H.</text>
+   <line x1="530" y1="104" x2="530" y2="125" stroke="currentColor" stroke-width="3"/>
+   <text x="560" y="142" text-anchor="middle" fill="currentColor" font-family="Nunito, sans-serif" font-size="15">Traian cucerește Dacia, 106 d.H.</text>
+  </svg>
+  <div class="grid g2">
+   <div class="box"><span class="emo">⏪</span><h3>Înainte de Hristos</h3><p>Numărăm <b>înapoi</b>, ca la o numărătoare inversă. Anul 500 î.H. este <b>mai vechi</b> decât anul 100 î.H.</p></div>
+   <div class="box"><span class="emo">⏩</span><h3>După Hristos</h3><p>Numărăm <b>înainte</b>, ca de obicei. Noi trăim acum în anul <b>2026 d.H.</b></p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 7 SECOLE SI CIFRE ROMANE -->
+<section class="slide" aria-label="Secolele și cifrele romane">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Truc de istoric</span>
+  <h2>În ce secol suntem?</h2>
+  <p>Secolele se scriu cu <b>cifre romane</b>. Iată câteva de care ai nevoie:</p>
+  <div class="roman"><span>I = 1</span><span>V = 5</span><span>X = 10</span><span>XV = 15</span><span>XIX = 19</span><span>XX = 20</span><span>XXI = 21</span></div>
+  <div class="tip g">🔑 <b>Regula:</b> ia primele două cifre ale anului și adaugă 1.<br>
+  2026 → 20 + 1 = <b>21</b> → suntem în <b>secolul XXI</b>.</div>
+  <p style="margin-top:18px"><b>De ce +1?</b> Pentru că primul secol a cuprins anii 1–100. Anii 1901–2000 au fost al 20-lea secol, iar de la 2001 a început al 21-lea.</p>
+  <div class="quiz" style="margin-top:14px">
+   <div class="item"><p>Încearcă tu: în ce secol a fost Marea Unire din 1918?</p><button class="reveal">Arată răspunsul</button><div class="ans">19 + 1 = 20 → secolul XX</div></div>
+   <div class="item"><p>Dar Unirea Principatelor, din 1859?</p><button class="reveal">Arată răspunsul</button><div class="ans">18 + 1 = 19 → secolul XIX</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 8 EPOCILE -->
+<section class="slide" aria-label="Epocile istorice">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Reținem</span>
+  <h2>Cele cinci epoci istorice</h2>
+  <p>Istoricii au împărțit timpul în perioade lungi, fiecare cu trăsăturile ei. <b>Apasă pe fiecare epocă!</b></p>
+  <div class="river" id="river">
+   <button aria-pressed="true" data-i="0">Epoca străveche<small>Preistoria</small></button>
+   <button aria-pressed="false" data-i="1">Epoca antică<small>Antichitatea</small></button>
+   <button aria-pressed="false" data-i="2">Epoca medievală<small>Evul Mediu</small></button>
+   <button aria-pressed="false" data-i="3">Epoca modernă<small>sec. XVIII – XX</small></button>
+   <button aria-pressed="false" data-i="4">Epoca contemporană<small>din sec. XX</small></button>
+  </div>
+  <div class="epoch-card" id="epoch" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 9 EVOLUTIA OMULUI -->
+<section class="slide" aria-label="Cum a evoluat omul">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Cum a evoluat omul</span>
+  <h2>Pas cu pas, de-a lungul a milioane de ani</h2>
+  <div class="path">
+   <div class="box"><span class="emo">👨‍👩‍👧‍👦</span><b>Trăiau în grup</b><p>în cete, ginți sau triburi</p></div>
+   <div class="box"><span class="emo">🫐</span><b>Culegeau hrana</b><p>fructe, rădăcini și vânat din natură</p></div>
+   <div class="box"><span class="emo">🕳️</span><b>Se adăposteau</b><p>în peșteri și păduri</p></div>
+   <div class="box"><span class="emo">🔥</span><b>Au descoperit focul</b><p>pentru căldură, lumină și gătit</p></div>
+   <div class="box"><span class="emo">🪓</span><b>Au făcut unelte</b><p>din piatră, apoi din bronz, apoi din fier</p></div>
+   <div class="box"><span class="emo">🛖</span><b>Și-au ridicat case</b><p>primele adăposturi construite de ei</p></div>
+  </div>
+  <div class="tip y">🤔 Gândește-te: de ce crezi că descoperirea focului a schimbat atât de mult viața oamenilor?</div>
+ </div>
+</section>
+
+<!-- 10 MEDIUL GEOGRAFIC -->
+<section class="slide" aria-label="Mediul geografic">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Mediul geografic</span>
+  <h2>Casa ta depinde de locul unde trăiești</h2>
+  <p><b>Mediul înconjurător</b> înseamnă toate condițiile naturale dintr-un loc: temperatura, relieful, apa, solul. Oamenii s-au adaptat mereu la ele.</p>
+  <div class="grid g3">
+   <div class="box house">
+    <svg viewBox="0 0 240 130" aria-hidden="true"><rect width="240" height="130" fill="#BFE3F7"/><path d="M0 95 C60 60 130 70 240 85 V130 H0Z" fill="#6DBB5A"/><path d="M80 70 L120 40 L160 70Z" fill="#8B3A2B"/><rect x="88" y="70" width="64" height="40" fill="#7A5230"/><rect x="112" y="84" width="16" height="26" fill="#3E2A1A"/><circle cx="190" cy="80" r="16" fill="#E0892F"/><rect x="187" y="92" width="6" height="18" fill="#5B3A1E"/></svg>
+    <h3>🌳 La deal</h3><p>Lemn e din belșug, așa că oamenii construiesc <b>case din lemn</b>, cu <b>acoperiș înclinat</b> ca să alunece ploaia și zăpada. Cresc animale și livezi.</p>
+   </div>
+   <div class="box house">
+    <svg viewBox="0 0 240 130" aria-hidden="true"><rect width="240" height="130" fill="#DCEBFA"/><rect y="100" width="240" height="30" fill="#FFFFFF"/><path d="M60 102 A60 55 0 0 1 180 102Z" fill="#F4F9FF" stroke="#9FBCE0" stroke-width="3"/><path d="M75 80 H165 M68 92 H172 M90 66 H150" stroke="#9FBCE0" stroke-width="2"/><path d="M104 102 A16 18 0 0 1 136 102Z" fill="#46546E"/></svg>
+    <h3>❄️ În zona polară</h3><p>Nu cresc copaci, dar zăpadă e peste tot. De aceea <b>iglul</b> e făcut din blocuri de zăpadă, care țin frigul afară.</p>
+   </div>
+   <div class="box house">
+    <svg viewBox="0 0 240 130" aria-hidden="true"><rect width="240" height="130" fill="#FFE2A8"/><circle cx="200" cy="30" r="16" fill="#F6C431"/><rect y="104" width="240" height="26" fill="#E9B872"/><rect x="40" y="56" width="70" height="50" fill="#C0603A"/><rect x="100" y="42" width="70" height="64" fill="#B4532F"/><rect x="60" y="72" width="8" height="10" fill="#5A2615"/><rect x="128" y="58" width="8" height="10" fill="#5A2615"/><rect x="146" y="80" width="12" height="26" fill="#5A2615"/></svg>
+    <h3>🏜️ În deșert</h3><p>E foarte cald și sunt puțini copaci. Casele sunt din <b>lut</b>, cu <b>ziduri groase</b> și <b>ferestre mici</b>, ca să rămână răcoare înăuntru.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- 11 IORGA -->
+<section class="slide" aria-label="Izvor istoric">
+ <div class="wrap" style="max-width:860px">
+  <span class="badge" style="background:var(--red)">Izvoare istorice</span>
+  <h2 style="margin-bottom:.8em">Ce spunea un mare istoric</h2>
+  <blockquote>„Viața unui neam este adeseori hotărâtă […] de către aria geografică pe care a trebuit să se dezvolte.”<cite>Nicolae Iorga (1871 – 1940), istoric</cite></blockquote>
+  <div class="tip g" style="margin-top:28px"><b>Pe înțelesul nostru:</b> felul în care trăiește un popor depinde foarte mult de locul unde s-a așezat: munți, câmpii, mare sau deșert.</div>
+  <div class="tip b">💬 <b>Discutăm:</b> Tu locuiești la oraș sau la sat? La munte, la deal sau la câmpie? Ce lucruri din viața ta ar fi diferite dacă ai trăi în deșert?</div>
+ </div>
+</section>
+
+<!-- 12 APLICAM -->
+<section class="slide" aria-label="Jurnalul clasei">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Aplicăm, activitate în echipă</span>
+  <h2>📔 Jurnalul clasei noastre</h2>
+  <p>Notăm, <b>în ordine cronologică</b>, cele mai importante evenimente din viața clasei. Așa devenim istoricii propriei noastre povești!</p>
+  <div class="journal">
+   <div class="entry"><span class="d">15 septembrie</span><span>🎒 Prima zi de școală. Ne-am revăzut colegii după vacanță.</span></div>
+   <div class="entry"><span class="d">octombrie</span><span>🍂 Excursie la muzeu. Am văzut unelte din piatră și bronz!</span></div>
+   <div class="entry"><span class="d">decembrie</span><span>🎄 Serbarea de Crăciun, cu colinde și costume.</span></div>
+   <div class="entry"><span class="d">iunie</span><span>🏅 Festivitatea de premiere și diplomele.</span></div>
+  </div>
+  <div class="tip y">📸 Adăugați <b>fotografii</b> (cu acordul părinților), <b>fișe de observații</b>, <b>impresii</b> și <b>diplome</b> care completează ce ați notat.</div>
+ </div>
+</section>
+
+<!-- 13 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">📅📍</span><p>Un eveniment istoric se petrece <b>într-un anumit moment</b> și <b>într-un anumit loc</b>.</p></div>
+   <div class="box" style="border-color:var(--yellow)"><span class="emo">🗂️</span><p>Timpul istoric a fost împărțit în <b>ere</b> (î.H. și d.H.) și în <b>cinci epoci istorice</b>.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">🌍</span><p>Între viața omului și <b>mediul geografic</b> în care trăiește există o <b>strânsă legătură</b>.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 14 QUIZ -->
+<section class="slide" aria-label="Verifică-te">
+ <div class="wrap quiz" style="max-width:860px">
+  <span class="badge" style="background:var(--purple)">Verifică-te</span>
+  <h2>Mic test de detectiv</h2>
+  <div class="item"><p>1. Câți ani are un mileniu?</p><button class="reveal">Arată răspunsul</button><div class="ans">1000 de ani</div></div>
+  <div class="item"><p>2. Care e mai vechi: anul 300 î.H. sau anul 30 î.H.?</p><button class="reveal">Arată răspunsul</button><div class="ans">Anul 300 î.H., pentru că înainte de Hristos numărăm înapoi.</div></div>
+  <div class="item"><p>3. Cum se numește șirul de evenimente puse în ordinea în care s-au petrecut?</p><button class="reveal">Arată răspunsul</button><div class="ans">Cronologie</div></div>
+  <div class="item"><p>4. În ce epocă istorică trăim noi?</p><button class="reveal">Arată răspunsul</button><div class="ans">Epoca contemporană</div></div>
+  <div class="item"><p>5. De ce au casele din deșert ziduri groase și ferestre mici?</p><button class="reveal">Arată răspunsul</button><div class="ans">Ca să păstreze răcoarea înăuntru și să oprească arșița soarelui.</div></div>
+ </div>
+</section>
+
+</main>
+
+<nav class="bar" aria-label="Navigare prezentare">
+ <a class="home" href="../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
+ <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
+ <div class="dots" id="dots"></div>
+ <span class="count" id="count"></span>
+ <button class="nav" id="next" aria-label="Slide-ul următor">→</button>
+</nav>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
+  var cur=0;
+  slides.forEach(function(s,i){
+    var b=document.createElement('button');
+    b.setAttribute('aria-label','Mergi la slide-ul '+(i+1));
+    b.onclick=function(){go(i)};
+    dots.appendChild(b);
+  });
+  function go(i){
+    if(i<0||i>=slides.length)return;
+    slides[cur].classList.remove('active');dots.children[cur].classList.remove('on');
+    cur=i;
+    slides[cur].classList.add('active');dots.children[cur].classList.add('on');
+    slides[cur].scrollTop=0;
+    prev.disabled=cur===0;next.disabled=cur===slides.length-1;
+    count.textContent=(cur+1)+' / '+slides.length;
+    
+  }
+  prev.onclick=function(){go(cur-1)};
+  next.onclick=function(){go(cur+1)};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown')go(cur+1);
+    if(e.key==='ArrowLeft'||e.key==='PageUp')go(cur-1);
+  });
+  var sx=null;
+  document.getElementById('deck').addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  document.getElementById('deck').addEventListener('touchend',function(e){
+    if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>60)go(cur+(dx<0?1:-1));sx=null;
+  },{passive:true});
+  var start=0;
+  
+  slides[0].classList.add('active');dots.children[0].classList.add('on');
+  go(start);
+
+  document.querySelectorAll('.reveal').forEach(function(b){
+    b.onclick=function(){
+      var a=b.nextElementSibling;var s=a.classList.toggle('show');
+      b.textContent=s?'Ascunde răspunsul':'Arată răspunsul';
+    };
+  });
+
+  var epochs=[
+    {e:'🔥',t:'Epoca străveche (Preistoria)',d:'de acum câteva milioane de ani până în sec. I î.H.',
+     l:['Oamenii locuiau în peșteri și trăiau în grupuri mici.','Vânau, pescuiau și culegeau fructe.','Au descoperit focul și au făcut primele unelte.','Desenau animale pe pereții peșterilor.'],
+     x:'Cea mai lungă epocă! A durat mult mai mult decât toate celelalte la un loc.'},
+    {e:'🏛️',t:'Epoca antică (Antichitatea)',d:'sec. I î.H. – sec. VII d.H.',
+     l:['Au apărut orașele, scrisul și primele state.','Egiptenii au construit piramidele.','Grecii au inventat Jocurile Olimpice.','Dacii lui Decebal s-au luptat cu romanii lui Traian.'],
+     x:'Din amestecul dacilor cu romanii s-a format, mai târziu, poporul român.'},
+    {e:'🏰',t:'Epoca medievală (Evul Mediu)',d:'sec. VII – XVII',
+     l:['Regii și domnitorii locuiau în castele și cetăți.','Cavalerii purtau armuri și săbii.','S-au construit biserici și mănăstiri frumoase.','Au domnit Mircea cel Bătrân, Ștefan cel Mare și Mihai Viteazul.'],
+     x:'Mănăstirile pictate din Bucovina sunt din această epocă.'},
+    {e:'🚂',t:'Epoca modernă',d:'sec. XVIII – XX',
+     l:['Au apărut fabricile și trenul cu aburi.','S-au inventat becul electric și telefonul.','Oamenii au călătorit mai repede și mai departe.','Au avut loc Unirea din 1859 și Marea Unire din 1918.'],
+     x:'Multe lucruri pe care le folosești azi au fost inventate atunci.'},
+    {e:'📱',t:'Epoca contemporană',d:'începând cu sec. XX',
+     l:['Avioane, mașini și rachete spațiale.','Televizor, calculator și internet.','Telefoane mobile în buzunarul oricui.','Primul om a pășit pe Lună în 1969.'],
+     x:'Aceasta este epoca în care trăiești TU!'}
+  ];
+  var card=document.getElementById('epoch'),btns=document.querySelectorAll('#river button');
+  function showEpoch(i){
+    var p=epochs[i];
+    btns.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});
+    card.innerHTML='<span class="big" aria-hidden="true">'+p.e+'</span><div><h3>'+p.t+'</h3><p style="color:var(--soft);font-weight:800;margin:.1em 0 .4em">'+p.d+'</p><ul>'+p.l.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ul><p style="margin-top:.7em"><b>⭐ Știai că?</b> '+p.x+'</p></div>';
+  }
+  btns.forEach(function(b,i){b.onclick=function(){showEpoch(i)}});
+  showEpoch(0);
+})();
+</script>
+</body>
+</html>

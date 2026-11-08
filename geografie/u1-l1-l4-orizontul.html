@@ -1,0 +1,892 @@
+<!doctype html><html lang="ro"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
+</head><body>
+<title>Orizontul și punctele cardinale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F7FF;--paper:#FFFFFF;--ink:#1E2340;--soft:#4A5078;--line:#D5DDF0;
+  --red:#E2433A;--green:#2E9D52;--blue:#2F6FD6;--yellow:#F6C431;--purple:#6B4BC4;
+  --tint-red:#FDE6E4;--tint-green:#E1F4E7;--tint-blue:#E2ECFC;--tint-yellow:#FFF4CF;--tint-purple:#ECE6FA;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121633;--paper:#1C2147;--ink:#F1F3FF;--soft:#B8BEE6;--line:#343B6E;
+    --tint-red:#3E2230;--tint-green:#1C3A30;--tint-blue:#1E2E5A;--tint-yellow:#3C3522;--tint-purple:#2E2757;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121633;--paper:#1C2147;--ink:#F1F3FF;--soft:#B8BEE6;--line:#343B6E;
+  --tint-red:#3E2230;--tint-green:#1C3A30;--tint-blue:#1E2E5A;--tint-yellow:#3C3522;--tint-purple:#2E2757;color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%}
+body{
+  height:100%;margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;font-weight:500;
+  font-size:clamp(16px,1.05vw + 10px,21px);line-height:1.5;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+h1,h2,h3{font-family:"Baloo 2","Trebuchet MS",system-ui,sans-serif;line-height:1.1;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.7rem,2.6vw + .6rem,2.8rem);font-weight:800;margin-bottom:.35em}
+h3{font-size:1.2em;font-weight:700}
+p{margin:.3em 0 .7em}
+b,strong{font-weight:800}
+.deck{flex:1;position:relative;min-height:0}
+.slide{position:absolute;inset:0;overflow-y:auto;padding:clamp(18px,3vw,48px) max(16px,clamp(16px,5vw,80px)) 24px;display:none}
+.slide.active{display:block;animation:in .35s ease-out}
+@keyframes in{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slide.active{animation:none}}
+.wrap{max-width:1080px;margin:0 auto}
+.lead{font-size:1.15em;color:var(--soft);max-width:60ch}
+.badge{display:inline-block;font-weight:800;font-size:.85em;padding:.2em .8em;border-radius:99px;margin-bottom:.8em;color:#fff}
+.bar{display:flex;align-items:center;gap:12px;padding:10px max(12px,clamp(12px,3vw,32px));background:var(--paper);border-top:2px solid var(--line)}
+.bar button.nav{font:inherit;font-weight:800;border:0;border-radius:14px;padding:.55em 1.1em;cursor:pointer;background:var(--blue);color:#fff;min-width:48px}
+.bar button.nav:disabled{opacity:.35;cursor:default}
+.dots{flex:1;display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.dots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
+.dots button.on{background:var(--red);transform:scale(1.3)}
+.count{font-weight:800;color:var(--soft);min-width:4.5ch;text-align:center}
+button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.cover{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;min-height:100%}
+.cover>*{min-width:0}
+.cover h1{font-size:clamp(2.4rem,5vw + .5rem,4.8rem);font-weight:800;margin:.2em 0 .3em}
+.stripes{display:flex;height:14px;border-radius:8px;overflow:hidden;max-width:420px;margin-bottom:1em}
+.stripes span{flex:1}
+@media (max-width:760px){.cover{grid-template-columns:1fr}.cover svg{max-width:220px;margin:0 auto}}
+.grid{display:grid;gap:16px}
+.grid>*{min-width:0}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.box{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:18px 20px}
+.box .emo{font-size:2.2em;line-height:1;display:block;margin-bottom:.25em}
+.box p:last-child{margin-bottom:0}
+.tip{border-radius:18px;padding:14px 20px;margin-top:18px;border-left:8px solid}
+.tip.y{background:var(--tint-yellow);border-color:var(--yellow)}
+.tip.g{background:var(--tint-green);border-color:var(--green)}
+.tip.b{background:var(--tint-blue);border-color:var(--blue)}
+.tip.r{background:var(--tint-red);border-color:var(--red)}
+.tip.p{background:var(--tint-purple);border-color:var(--purple)}
+.q{display:flex;gap:16px;align-items:center;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px 20px;margin-bottom:14px;font-size:1.15em;font-weight:700}
+.q .mark{flex:none;width:2.2em;height:2.2em;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:"Baloo 2",sans-serif;font-weight:800;font-size:1.1em}
+.ladder{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 6px}
+.step{background:var(--tint-blue);border-radius:12px;padding:.35em .8em;font-weight:800;text-align:center}
+.step small{display:block;font-weight:700;color:var(--soft);font-size:.72em}
+.arrow{color:var(--soft);font-weight:800}
+/* manual vs context */
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
+.duo>div{border-radius:18px;padding:14px 18px;min-width:0}
+.duo .man{background:var(--tint-yellow);border:2px solid var(--yellow)}
+.duo .ctx{background:var(--tint-green);border:2px solid var(--green)}
+.duo h3{font-size:1em;margin-bottom:.3em}
+.duo p{margin:.2em 0;font-size:.95em}
+/* vocab */
+.vocab{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:14px}
+.vocab div{background:var(--tint-purple);border-radius:14px;padding:10px 14px}
+.vocab b{color:var(--purple)}
+:root[data-theme="dark"] .vocab b{color:#CBB9FF}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .vocab b{color:#CBB9FF}}
+/* svg */
+.fig{width:100%;height:auto;display:block;border-radius:16px}
+.fig text{fill:var(--ink);font-family:"Nunito",sans-serif;font-weight:800}
+.sky{width:100%;height:auto;display:block;border-radius:16px}
+.sky text{font-family:"Nunito",sans-serif;font-weight:800;fill:#FFFFFF}
+.steps{display:grid;gap:10px;counter-reset:s;margin:0;padding:0;list-style:none}
+.steps li{counter-increment:s;background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 14px 10px 54px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:30px;height:30px;border-radius:50%;background:var(--purple);color:#fff;display:grid;place-items:center;font-family:"Baloo 2",sans-serif;font-weight:800}
+/* shadow control */
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.ctrl button{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:.4em 1em;cursor:pointer}
+.ctrl button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+/* table */
+.tbl{width:100%;border-collapse:collapse;background:var(--paper);border-radius:14px;overflow:hidden}
+.tbl th,.tbl td{padding:.5em .8em;border-bottom:2px solid var(--line);text-align:left}
+.tbl th{background:var(--tint-blue)}
+.scroll{overflow-x:auto}
+/* missions */
+.mission{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px 20px;margin-bottom:14px}
+.mission .qt{font-weight:800;margin:0 0 .6em}
+.mission .qt span{color:var(--purple);font-family:"Baloo 2",sans-serif}
+.opts{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.opts button{font:inherit;font-weight:700;text-align:left;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:.5em .8em;cursor:pointer}
+.opts button.bad{background:var(--tint-red);border-color:var(--red);opacity:.8}
+.opts button.good{background:var(--tint-green);border-color:var(--green)}
+.opts button:disabled{cursor:default}
+.hintbtn{font:inherit;font-weight:800;margin-top:10px;border:0;border-radius:12px;padding:.3em .9em;background:var(--tint-yellow);color:var(--ink);cursor:pointer}
+.hint,.expl{display:none;margin-top:10px;border-radius:12px;padding:8px 14px}
+.hint{background:var(--tint-yellow)}
+.expl{background:var(--tint-green)}
+.hint.show,.expl.show{display:block}
+.pts{font-weight:800;color:var(--green)}
+.scorebox{text-align:center}
+.scorebox .big{font-family:"Baloo 2",sans-serif;font-weight:800;font-size:clamp(3rem,8vw,5.5rem);line-height:1}
+.pill{display:inline-block;background:var(--tint-purple);border-radius:99px;padding:.1em .8em;font-weight:800;margin-left:.5em;font-size:.85em}
+</style>
+
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Geografie, clasa a IV-a, Unitatea 1, lecțiile 1–4</p>
+   <h1>Orizontul și punctele cardinale</h1>
+   <p class="lead">De la banca ta din clasă până la linia zării: cum ne orientăm, cum măsurăm distanțe și cum desenăm spațiile pe un plan.</p>
+   <p style="color:var(--soft)">Folosește săgețile de jos sau tastele ← → ca să mergi mai departe.</p>
+  </div>
+  <svg viewBox="0 0 200 200" aria-hidden="true">
+   <circle cx="100" cy="100" r="92" fill="var(--tint-blue)" stroke="var(--blue)" stroke-width="4"/>
+   <circle cx="100" cy="100" r="70" fill="none" stroke="var(--blue)" stroke-width="2" stroke-dasharray="4 6"/>
+   <polygon points="100,14 112,100 100,186 88,100" fill="var(--red)"/>
+   <polygon points="14,100 100,88 186,100 100,112" fill="var(--blue)"/>
+   <polygon points="100,14 106,100 100,100 94,100" fill="var(--yellow)"/>
+   <circle cx="100" cy="100" r="9" fill="var(--paper)" stroke="var(--ink)" stroke-width="3"/>
+   <text x="100" y="12" text-anchor="middle" font-size="14" font-weight="800" fill="var(--ink)" font-family="Baloo 2, sans-serif">N</text>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 INTREBARI -->
+<section class="slide" aria-label="Ce vrem să aflăm">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Vrem să știm</span>
+  <h2>Patru întrebări pentru azi</h2>
+  <div class="q"><span class="mark" style="background:var(--blue)">?</span>Ce spațiu numim orizont apropiat și ce spațiu numim orizont?</div>
+  <div class="q"><span class="mark" style="background:var(--green)">?</span>Cum ne orientăm și cum măsurăm distanțele?</div>
+  <div class="q"><span class="mark" style="background:var(--purple)">?</span>Cum arată un plan și de ce are legendă?</div>
+  <div class="q"><span class="mark" style="background:var(--red)">?</span>Cum găsim nordul cu ajutorul Soarelui și al busolei?</div>
+  <div class="tip y">🧭 Geograful e un explorator: își pune întrebări despre locul în care se află. Hai să facem la fel!</div>
+ </div>
+</section>
+
+<!-- 3 GEOGRAFIE IN ZIUA TA -->
+<section class="slide" aria-label="Geografia din ziua ta">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Cuvânt-înainte</span>
+  <h2>Geografia începe de la trezire</h2>
+  <p class="lead">Manualul spune că toată dimineața ta este geografie. Uite de ce:</p>
+  <div class="grid g4">
+   <div class="box"><span class="emo">🌅</span><h3>Ziua și noaptea</h3><p>Pământul se rotește în jurul axei sale. De aceea dimineața afară e lumină. Se numește ciclul zi–noapte.</p></div>
+   <div class="box"><span class="emo">🚰</span><h3>Apa de la robinet</h3><p>Vine dintr-un râu, un lac sau din ape subterane, trece printr-o stație de tratare și ajunge la tine.</p></div>
+   <div class="box"><span class="emo">💡</span><h3>Becul</h3><p>Lumina vine de la o centrală electrică. Industria energiei electrice face parte din geografia umană.</p></div>
+   <div class="box"><span class="emo">🪑</span><h3>Masa</h3><p>Este făcută din lemn, o resursă naturală. Și pădurea este geografie.</p></div>
+  </div>
+  <div class="tip b">🔤 <b>Geo + grafia:</b> în greacă, <i>geo</i> înseamnă Pământ, iar <i>grafia</i> înseamnă a reprezenta. Geografia reprezintă ce se află pe suprafața Pământului: pe planuri și pe hărți.</div>
+  <div class="tip y">💬 <b>Discutăm:</b> ce alt lucru din dimineața ta ar putea fi „geografie”?</div>
+ </div>
+</section>
+
+<!-- 4 L1 -->
+<section class="slide" aria-label="Orizontul apropiat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Lecția 1</span>
+  <h2>Orizontul apropiat</h2>
+  <p class="lead">Spațiul din jur, în care îți desfășori activitățile zilnice, este <b>orizontul apropiat</b>. El cuprinde locuința, școala, sala de clasă, drumul de acasă până la școală și locurile prin care treci.</p>
+  <div class="ladder">
+   <div class="step">🛏️ locuința</div><span class="arrow">›</span>
+   <div class="step">🚶 drumul</div><span class="arrow">›</span>
+   <div class="step">🏫 școala</div><span class="arrow">›</span>
+   <div class="step">📚 sala de clasă</div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🏙️</span><h3>Dacă locuiești la oraș</h3><p>Orizontul apropiat este <b>cartierul</b> unde se află locuința și școala ta. Ioana locuiește în cartierul Unirea, renumit pentru blocurile cu peste zece etaje.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">🏡</span><h3>Dacă locuiești la sat</h3><p>Orizontul apropiat este <b>întreaga localitate rurală</b>. Bunicii Ioanei trăiesc într-un sat mic, unde toată lumea se cunoaște și se salută.</p></div>
+  </div>
+  <div class="vocab">
+   <div><b>localitate</b> – așezare omenească, un spațiu clar delimitat de natura înconjurătoare.</div>
+   <div><b>sat</b> – localitate mică, a cărei populație se ocupă în principal cu agricultura.</div>
+   <div><b>oraș</b> – localitate mai mare, cu populație mai numeroasă, cu industrie, comerț, sănătate, cultură.</div>
+   <div><b>cartier</b> – o parte a unui oraș.</div>
+  </div>
+ </div>
+</section>
+
+<!-- 5 L2 ORIENTARE -->
+<section class="slide" aria-label="Orientarea">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Lecția 2</span>
+  <h2>Cum ne orientăm în orizontul apropiat</h2>
+  <p class="lead"><b>A te orienta</b> înseamnă să știi unde ești, unde vrei să ajungi și în ce direcție trebuie să mergi.</p>
+  <div class="grid g4">
+   <div class="box" style="text-align:center"><span class="emo">⬅️</span><b>stânga</b></div>
+   <div class="box" style="text-align:center"><span class="emo">➡️</span><b>dreapta</b></div>
+   <div class="box" style="text-align:center"><span class="emo">⬆️</span><b>înainte (în față)</b></div>
+   <div class="box" style="text-align:center"><span class="emo">⬇️</span><b>înapoi (în spate)</b></div>
+  </div>
+  <div class="tip g">📍 <b>Folosim repere.</b> Poziția unui lucru se spune raportat la un element cunoscut de multe persoane. Exemple din manual: „Dacă mergi spre Primărie, casa mea se află pe partea dreaptă a străzii.” sau „Școala este situată în spatele magazinului Orizont.”</div>
+  <div class="tip b">✉️ <b>Din manual:</b> Bianca i-a scris Alinei că blocul ei este „în fața mașinii”. Alina a găsit în e-mail trei greșeli de orientare. Gândește-te: de ce nu e bine să folosești o mașină drept reper?</div>
+ </div>
+</section>
+
+<!-- 6 DISTANTE -->
+<section class="slide" aria-label="Distanțele">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Lecția 2</span>
+  <h2>Distanțele: metri sau kilometri?</h2>
+  <div class="grid g2">
+   <div class="box"><span class="emo">📏</span><h3>Spații mici</h3><p>În cartier (sau într-un sat mic) distanțele se exprimă în <b>metri</b>. Le măsori cu instrumente simple: riglă, metru, ruletă.</p></div>
+   <div class="box"><span class="emo">🛣️</span><h3>Spații mari</h3><p>Când elementele sunt depărtate, distanțele se exprimă în <b>kilometri</b>.</p></div>
+  </div>
+  <div class="tip y">⚽ <b>Povestea lui Emil și a lui Daniel:</b> au măsurat cu ruleta distanța dintre cele două porți ale terenului de sport și au aflat <b>40 m</b>. Ruleta măsoară cel mult <b>10 m</b> o dată.<br>Emil a măsurat distanța și în pași. Un pas al lui are <b>40 cm</b>.</div>
+  <div class="grid g2" style="margin-top:6px">
+   <div class="box"><b>Gândește-te:</b> cum au măsurat 40 m cu o ruletă de 10 m?</div>
+   <div class="box"><b>Calculează:</b> câți pași a numărat Emil? De ce un pas nu e un instrument de măsură la fel de bun ca ruleta?</div>
+  </div>
+  <p style="color:var(--soft)">Răspunsurile le găsești în misiunile de la final.</p>
+ </div>
+</section>
+
+<!-- 7 L3 PLAN -->
+<section class="slide" aria-label="Planul">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Lecția 3</span>
+  <h2>Planul: un desen micșorat</h2>
+  <p class="lead">Desenul prin care reprezentăm sala de clasă, școala, locuința, cartierul sau localitatea se numește <b>plan</b>.</p>
+  <div class="grid g3">
+   <div class="box"><span class="emo">🏷️</span><h3>Titlu</h3><p>Orice plan are un titlu, de exemplu „Planul clasei” sau „Planul cartierului Tei”.</p></div>
+   <div class="box"><span class="emo">🔬</span><h3>Micșorare</h3><p>Elementele sunt redate într-o formă <b>micșorată</b>. Cu cât spațiul e mai mare, cu atât dimensiunile se micșorează de mai multe ori.</p></div>
+   <div class="box"><span class="emo">🔣</span><h3>Legendă</h3><p>Simbolurile se numesc <b>semne convenționale</b>. Ele alcătuiesc <b>legenda</b>, care însoțește orice plan.</p></div>
+  </div>
+  <div class="tip g">🧩 <b>Exemplu din legenda Andrei:</b> pe planul școlii, cifra 1 = săli de clasă, 2 = bibliotecă, 3 = cancelarie, 4 = secretariat, 5 = biroul directorului, 6 = coridoarele.</div>
+  <div class="tip r">🚨 <b>Planul școlii te poate ajuta la o evacuare</b> (incendiu, cutremur). Cine știe unde sunt ieșirile și coridoarele găsește mai repede drumul.</div>
+ </div>
+</section>
+
+<!-- 8 PLAN: SCARA -->
+<section class="slide" aria-label="Plan, cartier, localitate">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Lecția 3</span>
+  <h2>Același spațiu, planuri diferite</h2>
+  <div class="grid g3">
+   <div class="box"><span class="emo">🏠</span><h3>Planul locuinței</h3><p>Andra își vede apartamentul din poziții diferite și apoi îl reprezintă pe plan: camere, hol, bucătărie, baie.</p></div>
+   <div class="box"><span class="emo">🏘️</span><h3>Planul cartierului Tei</h3><p>Se văd străzile și clădirile importante: farmacie, dispensar, magazin universal, biserică, bancă.</p></div>
+   <div class="box"><span class="emo">🏙️</span><h3>Planul localității Basarab</h3><p>Se văd instituții: Primăria, Poliția, Spitalul, Clubul Elevilor.</p></div>
+  </div>
+  <div class="tip b">🔢 <b>Din manual:</b> strada pe care locuiește Andra are în realitate <b>110 m</b>, iar pe planul cartierului are <b>11 mm</b>. Câte ori a fost micșorată? Atenție la unitățile de măsură!</div>
+  <div class="tip y">🤔 <b>Gândește-te:</b> de ce nu au fost marcate pe planul localității străzile și clădirile din cartierul Tei, deși cartierul face parte din localitate?</div>
+ </div>
+</section>
+
+<!-- 9 L4 ORIZONT -->
+<section class="slide" aria-label="Orizontul și linia orizontului">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Lecția 4</span>
+  <h2>Orizontul și linia orizontului</h2>
+  <p class="lead">Linia imaginară unde ni se pare că <b>cerul se unește cu pământul</b> se numește <b>linia orizontului</b> sau <b>zare</b>. Tot spațiul cuprins cu privirea până la ea este <b>orizontul</b>.</p>
+  <div class="grid g2">
+   <div class="box" style="border-color:var(--red)"><span class="emo">🏢</span><h3>Jos, între clădiri</h3><p>Cuprinzi cu privirea un spațiu <b>mai mic</b>, iar linia orizontului pare <b>mai apropiată</b>.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">⛰️</span><h3>Sus, pe un loc înalt</h3><p>Spațiul vizibil este <b>mai întins</b>, iar linia orizontului pare <b>mai îndepărtată</b>.</p></div>
+  </div>
+  <div class="tip g">🌾 <b>Pe un teren deschis, întins și neted</b>, linia orizontului este departe și are o formă mai degrabă dreaptă. Dacă sunt dealuri, clădiri sau copaci, linia devine frântă.</div>
+  <div class="tip y">🧗 <b>Din manual:</b> Bogdan merge cu tatăl lui în excursii. Dacă ar urca pe munte, ar atinge cerul? Gândește-te ce se întâmplă cu linia orizontului când te apropii de ea.</div>
+ </div>
+</section>
+
+<!-- 10 SOARELE -->
+<section class="slide" aria-label="Soarele și punctele cardinale">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Lecția 4</span>
+  <h2>Soarele ne arată punctele cardinale</h2>
+  <div class="grid g2">
+   <div class="box" style="border-color:var(--yellow)"><span class="emo">🌄</span><h3>Dimineața</h3><p>Soarele răsare în partea numită <b>răsărit = est (E)</b>.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">☀️</span><h3>La amiază</h3><p>Soarele ajunge în cel mai înalt punct, în partea numită <b>miazăzi = sud (S)</b>.</p></div>
+   <div class="box" style="border-color:var(--purple)"><span class="emo">🌇</span><h3>Seara</h3><p>Soarele coboară și dispare sub linia orizontului în <b>apus = vest (V)</b>.</p></div>
+   <div class="box" style="border-color:var(--blue)"><span class="emo">⭐</span><h3>Opusul sudului</h3><p>Partea orizontului opusă miazăzilor este <b>miazănoapte = nord (N)</b>.</p></div>
+  </div>
+  <p style="margin-top:14px">Estul, vestul, sudul și nordul se numesc <b>puncte cardinale</b>. Sunt mereu în aceleași părți ale orizontului.</p>
+  <div class="duo">
+   <div class="man"><h3>📘 Manualul spune</h3><p>„Soarele răsare, în fiecare dimineață, din aceeași parte a orizontului, numită răsărit sau est.” Pentru lecția de față, aceasta este informația de reținut.</p></div>
+   <div class="ctx"><h3>🌍 Context</h3><p>Soarele răsare exact la est doar de două ori pe an, primăvara și toamna (în jurul zilelor de 21 martie și 23 septembrie). Vara răsare ceva mai spre nord-est, iarna mai spre sud-est. Partea rămâne aceeași, așa că regula funcționează pentru orientare. Soarele doar <i>pare</i> că se mișcă, pentru că Pământul se rotește.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 11 ROZA -->
+<section class="slide" aria-label="Roza vânturilor">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Lecția 4</span>
+  <h2>Roza vânturilor</h2>
+  <div class="grid g2" style="align-items:center">
+   <svg class="fig" viewBox="0 0 300 300" role="img" aria-label="Roza vânturilor cu cele patru puncte cardinale și patru intercardinale" style="background:var(--tint-blue)">
+    <circle cx="150" cy="150" r="108" fill="none" stroke="var(--soft)" stroke-width="2" stroke-dasharray="5 6"/>
+    <polygon points="150,40 164,150 150,260 136,150" fill="var(--blue)"/>
+    <polygon points="40,150 150,136 260,150 150,164" fill="var(--blue)"/>
+    <polygon points="150,40 157,150 150,150 143,150" fill="var(--yellow)"/>
+    <polygon points="73,73 154,138 227,227 146,162" fill="var(--purple)" opacity=".55"/>
+    <polygon points="227,73 162,154 73,227 138,146" fill="var(--purple)" opacity=".55"/>
+    <circle cx="150" cy="150" r="7" fill="var(--paper)" stroke="var(--ink)" stroke-width="3"/>
+    <text x="150" y="28" text-anchor="middle" font-size="24">N</text>
+    <text x="150" y="294" text-anchor="middle" font-size="24">S</text>
+    <text x="282" y="159" text-anchor="middle" font-size="24">E</text>
+    <text x="18" y="159" text-anchor="middle" font-size="24">V</text>
+    <text x="232" y="56" text-anchor="middle" font-size="17">NE</text>
+    <text x="232" y="256" text-anchor="middle" font-size="17">SE</text>
+    <text x="68" y="256" text-anchor="middle" font-size="17">SV</text>
+    <text x="68" y="56" text-anchor="middle" font-size="17">NV</text>
+   </svg>
+   <div class="scroll">
+    <table class="tbl">
+     <tr><th>Punct cardinal</th><th>Altfel i se spune</th><th>Abrev.</th></tr>
+     <tr><td>nord</td><td>miazănoapte</td><td>N</td></tr>
+     <tr><td>sud</td><td>miazăzi</td><td>S</td></tr>
+     <tr><td>est</td><td>răsărit</td><td>E</td></tr>
+     <tr><td>vest</td><td>apus</td><td>V</td></tr>
+    </table>
+   </div>
+  </div>
+  <div class="tip g">🧭 Între punctele cardinale se află <b>punctele intercardinale</b>: nord-est (NE), sud-est (SE), sud-vest (SV), nord-vest (NV). Numele lor spune între ce puncte se află.</div>
+  <div class="tip p">🎵 <b>Poezia din manual:</b> „La apus mă culc cu grabă!”, „Miazăzi eu îți vestesc!”. Poți recunoaște în versuri toate cele patru puncte cardinale?</div>
+ </div>
+</section>
+
+<!-- 12 UMBRA INTERACTIVA -->
+<section class="slide" aria-label="Soare și umbră">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#1E2340">Explorăm</span>
+  <h2>Soarele și umbra copacului</h2>
+  <p>Alege momentul zilei sau mută cursorul. Observă unde e Soarele și cum se schimbă umbra. Trage cu mouse-ul sau cu degetul ca să rotești scena.</p>
+  <div class="ctrl" id="sunctl" role="group" aria-label="Momentul zilei">
+   <button data-t="0" aria-pressed="true">🌄 Dimineața</button>
+   <button data-t="1" aria-pressed="false">☀️ La amiază</button>
+   <button data-t="2" aria-pressed="false">🌇 Seara</button>
+  </div>
+  <div id="sce" role="img" aria-label="Scenă 3D cu un copac, Soarele și umbra pe teren, care poate fi rotită" style="width:100%;height:clamp(280px,52vh,460px);border-radius:16px;background:var(--tint-blue);overflow:hidden;touch-action:none"></div>
+  <svg class="fig" id="sunfig" hidden viewBox="0 0 600 260" role="img" aria-label="Copac, Soare și umbră" style="background:var(--tint-blue)">
+   <rect y="205" width="600" height="55" fill="var(--tint-green)"/>
+   <line x1="0" y1="205" x2="600" y2="205" stroke="var(--green)" stroke-width="3"/>
+   <path id="shadow" d="M300 205 L450 205" stroke="var(--ink)" stroke-opacity=".35" stroke-width="16" stroke-linecap="round"/>
+   <rect x="290" y="130" width="20" height="75" fill="#8A5A2B"/>
+   <circle cx="300" cy="105" r="44" fill="var(--green)"/>
+   <g id="sun"><circle cx="90" cy="150" r="22" fill="var(--yellow)"/></g>
+   <text x="12" y="30" font-size="20">E (răsărit)</text>
+   <text x="588" y="30" font-size="20" text-anchor="end">V (apus)</text>
+   <text x="300" y="30" font-size="20" text-anchor="middle">S (miazăzi)</text>
+  </svg>
+  <div class="tip y" id="suntext" aria-live="polite"></div>
+  <div class="ctrl" style="align-items:center"><label for="sunrange" style="font-weight:800">🌅 dimineață → seară 🌇</label><input type="range" id="sunrange" min="0" max="100" value="12" style="flex:1;min-width:160px"></div>
+  <p style="color:var(--soft);font-size:.9em">Scena e privită de sus, ca o hartă: nordul e în fundal, estul în dreapta. Rotește-o ca să vezi și din alte părți. Pe teren sunt scrise N, S, E, V.</p>
+ </div>
+</section>
+
+<!-- 13 REPERE SI BUSOLA -->
+<section class="slide" aria-label="Repere naturale și busola">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Lecția 4</span>
+  <h2>Alte repere și busola</h2>
+  <p class="lead">Noaptea sau când cerul e acoperit de nori, Soarele nu ne mai ajută.</p>
+  <div class="duo">
+   <div class="man"><h3>📘 Manualul spune</h3>
+    <p>„Mușchiul crescut pe trunchiul copacilor indică nordul, iar intrarea în mușuroiul de furnici este așezată spre sud.”</p>
+    <p>„Putem folosi și Steaua Polară și mușchiul copacilor, care ne indică nordul.”</p>
+    <p>Busola este instrumentul pentru determinarea punctelor cardinale. Ea ne arată nordul oriunde și oricând.</p></div>
+   <div class="ctx"><h3>🌍 Context</h3>
+    <p>Mușchiul crește bine unde e umbră și umezeală, adesea pe partea dinspre nord a trunchiului, dar nu întotdeauna. Același lucru e valabil pentru furnicare. Sunt <b>indicii</b>, nu dovezi.</p>
+    <p>Busola și Steaua Polară sunt mai sigure. Steaua Polară nu se vede însă dacă norii acoperă cerul.</p></div>
+  </div>
+  <div class="tip g">🧲 <b>Cum funcționează busola:</b> acul ei magnetic se aliniază pe direcția nord–sud. Rotești busola până când semnul N de pe cadran ajunge sub vârful acului.</div>
+  <div class="tip y">⭐ <b>Pe slide-ul următor:</b> cum găsim nordul noaptea cu Steaua Polară, și apoi puzzle-ul lui Bogdan, în 3D.</div>
+ </div>
+</section>
+
+<!-- 13b STEAUA POLARA -->
+<section class="slide" aria-label="Steaua Polară">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Lecția 4</span>
+  <h2>Nordul noaptea: Steaua Polară</h2>
+  <div class="grid g2" style="align-items:start">
+   <svg class="sky" viewBox="0 0 600 380" role="img" aria-label="Schemă a cerului de noapte: Carul Mare, două stele care arată spre Steaua Polară">
+    <rect width="600" height="380" fill="#0E1433"/>
+    <g fill="none" stroke="#7F8CC9" stroke-opacity=".5" stroke-dasharray="4 6"><circle cx="488" cy="86" r="70"/><circle cx="488" cy="86" r="150"/><circle cx="488" cy="86" r="240"/></g>
+    <g fill="#AEB7E6"><circle cx="40" cy="50" r="1.8"/><circle cx="110" cy="110" r="1.5"/><circle cx="200" cy="40" r="2"/><circle cx="260" cy="120" r="1.5"/><circle cx="330" cy="60" r="1.8"/><circle cx="380" cy="140" r="1.5"/><circle cx="60" cy="310" r="1.8"/><circle cx="130" cy="340" r="1.5"/><circle cx="240" cy="340" r="2"/><circle cx="540" cy="250" r="1.8"/><circle cx="560" cy="330" r="1.5"/><circle cx="450" cy="350" r="2"/></g>
+    <polyline points="165,222 222,214 272,236 335,258 330,308 400,300 414,266 335,258" fill="none" stroke="#F6C431" stroke-width="2.5"/>
+    <g fill="#FFF4CF"><circle cx="165" cy="222" r="5"/><circle cx="222" cy="214" r="5"/><circle cx="272" cy="236" r="5"/><circle cx="335" cy="258" r="5"/><circle cx="330" cy="308" r="5"/><circle cx="400" cy="300" r="6"/><circle cx="414" cy="266" r="6"/></g>
+    <line x1="400" y1="300" x2="484" y2="96" stroke="#FF6B5E" stroke-width="3" stroke-dasharray="8 6"/>
+    <g fill="#FF6B5E"><circle cx="428" cy="232" r="3"/><circle cx="442" cy="198" r="3"/><circle cx="456" cy="164" r="3"/><circle cx="470" cy="130" r="3"/></g>
+    <g font-size="14"><text x="436" y="236">1</text><text x="450" y="202">2</text><text x="464" y="168">3</text><text x="478" y="134">4</text></g>
+    <circle cx="488" cy="86" r="15" fill="none" stroke="#FFFFFF" stroke-opacity=".6" stroke-width="2"/>
+    <circle cx="488" cy="86" r="7" fill="#FFFFFF"/>
+    <text x="466" y="80" font-size="18" text-anchor="end">Steaua Polară</text>
+    <text x="150" y="262" font-size="18">Carul Mare</text>
+    <text x="376" y="326" font-size="14">Merak</text>
+    <text x="424" y="272" font-size="14">Dubhe</text>
+    <text x="14" y="370" font-size="13" style="fill:#AEB7E6">schemă, nu la scară</text>
+   </svg>
+   <ol class="steps">
+    <li><b>Găsește Carul Mare.</b> Sunt șapte stele luminoase, ca o cană cu coadă. Noaptea, pe cer senin.</li>
+    <li><b>Privește cele două stele din marginea „cănii”</b>, cele mai depărtate de coadă (Merak și Dubhe).</li>
+    <li><b>Prelungește linia dintre ele</b> în sus. Pune cu ochiul distanța dintre cele două stele de aproximativ <b>5 ori</b>. Acolo e Steaua Polară.</li>
+    <li><b>Stăi cu fața spre ea.</b> În față ai <b>nordul</b>, în spate <b>sudul</b>, în dreapta <b>estul</b>, în stânga <b>vestul</b>.</li>
+   </ol>
+  </div>
+  <div class="duo">
+   <div class="man"><h3>📘 Manualul spune</h3><p>„Pentru a stabili punctele cardinale putem folosi și Steaua Polară […], care ne indică nordul.” Pentru lecția de față, aceasta este informația de reținut.</p></div>
+   <div class="ctx"><h3>🌍 Context</h3><p>Steaua Polară nu e cea mai strălucitoare stea de pe cer, de aceea o găsim cu ajutorul Carului Mare. Se vede doar noaptea, pe cer senin. Celelalte stele par să se rotească în jurul ei, pentru că Pământul se rotește, iar ea rămâne aproape pe loc. La noi, în România, o vezi cam la jumătatea drumului dintre orizont și punctul de deasupra capului.</p></div>
+  </div>
+  <div class="tip y">🧠 <b>Gândește-te:</b> dacă Steaua Polară e în fața ta, în ce parte e vestul? Cum ai verifica a doua zi dimineața, cu ajutorul Soarelui, că ai gândit corect?</div>
+ </div>
+</section>
+
+<!-- 13c PUZZLE BOGDAN 3D -->
+<section class="slide" aria-label="Puzzle Bogdan">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#1E2340">Puzzle din manual</span>
+  <h2>Ce e în dreapta lui Bogdan?</h2>
+  <p>Bunicul îi spune lui Bogdan să stea <b>cu spatele spre partea de unde a răsărit Soarele</b>. Ce punct cardinal e în dreapta lui? Privește scena și gândește-te înainte să ceri indicii.</p>
+  <div id="pz" role="img" aria-label="Scenă 3D cu Bogdan care stă cu spatele spre Soarele răsărit" style="width:100%;height:clamp(280px,50vh,440px);border-radius:16px;background:var(--tint-blue);overflow:hidden;touch-action:none"></div>
+  <div class="ctrl" id="pzbtns" role="group" aria-label="Indicii">
+   <button data-s="1" aria-pressed="false">💡 Indiciul 1</button>
+   <button data-s="2" aria-pressed="false">💡 Indiciul 2</button>
+   <button data-s="3" aria-pressed="false">🧭 Arată punctele cardinale</button>
+   <button data-s="4" aria-pressed="false">✅ Soluția</button>
+   <button data-s="0" aria-pressed="false">↺ De la capăt</button>
+  </div>
+  <div class="ctrl" id="pzcam" role="group" aria-label="Camera">
+   <button data-c="top" aria-pressed="true">🗺️ Vedere de sus</button>
+   <button data-c="back" aria-pressed="false">🧍 Din spatele lui Bogdan</button>
+  </div>
+  <div class="tip y" id="pztext" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 14 LEGATURI -->
+<section class="slide" aria-label="Legături între discipline">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Legături între materii</span>
+  <h2>Geografia se leagă de tot</h2>
+  <div class="grid g3">
+   <div class="box"><span class="emo">➗</span><h3>Matematică</h3><p>Metri și kilometri, transformări în centimetri sau milimetri, împărțiri pentru a afla de câte ori e micșorat un plan.</p></div>
+   <div class="box"><span class="emo">🔬</span><h3>Științe</h3><p>Rotația Pământului, mișcarea aparentă a Soarelui, lungimea umbrei, magnetul din busolă.</p></div>
+   <div class="box"><span class="emo">🏛️</span><h3>Istorie</h3><p>La istorie, orice eveniment are un <b>CÂND</b> și un <b>UNDE</b>. Pentru „unde” ai nevoie de orientare, plan sau hartă. Exemplu: Marea Unire, 1 Decembrie 1918, Alba Iulia.</p></div>
+   <div class="box"><span class="emo">📖</span><h3>Limba română</h3><p>Sinonime: răsărit = est, apus = vest, miazăzi = sud, miazănoapte = nord. Și poezia cu punctele cardinale.</p></div>
+   <div class="box"><span class="emo">🌐</span><h3>Limba engleză</h3><p>north, south, east, west. Vestul se numește <i>west</i>, deci abrevierea englezească este W, nu V.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 15 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g4">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🏫</span><p><b>Orizontul apropiat</b> este spațiul vieții tale de zi cu zi: cartierul (la oraș) sau localitatea (la sat).</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">📍</span><p>Ne orientăm cu <b>stânga, dreapta, înainte, înapoi</b> și cu <b>repere</b>. Distanțele se spun în metri sau kilometri.</p></div>
+   <div class="box" style="border-color:var(--purple)"><span class="emo">🗺️</span><p><b>Planul</b> are titlu, spațiul redat micșorat și o <b>legendă</b> cu semne convenționale.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">🧭</span><p><b>Linia orizontului</b> se schimbă după înălțime. <b>Punctele cardinale</b> N, S, E, V se află cu Soarele, busola sau Steaua Polară.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 16-18 MISIUNI -->
+<section class="slide" aria-label="Misiuni 1–4">
+ <div class="wrap" style="max-width:900px">
+  <span class="badge" style="background:var(--purple)">Misiuni</span>
+  <h2>Misiuni de detectiv geograf <span class="pill">1–4</span></h2>
+  <p style="color:var(--soft)">2 puncte dacă răspunzi corect din prima, fără indiciu. 1 punct dacă folosești indiciul sau încerci a doua oară.</p>
+  <div id="m1"></div>
+ </div>
+</section>
+<section class="slide" aria-label="Misiuni 5–8">
+ <div class="wrap" style="max-width:900px">
+  <span class="badge" style="background:var(--purple)">Misiuni</span>
+  <h2>Misiuni de detectiv geograf <span class="pill">5–8</span></h2>
+  <div id="m2"></div>
+ </div>
+</section>
+<section class="slide" aria-label="Misiuni 9–13">
+ <div class="wrap" style="max-width:900px">
+  <span class="badge" style="background:var(--purple)">Misiuni</span>
+  <h2>Misiuni de detectiv geograf <span class="pill">9–13</span></h2>
+  <div id="m3"></div>
+ </div>
+</section>
+
+<section class="slide" aria-label="Misiuni 14–16">
+ <div class="wrap" style="max-width:900px">
+  <span class="badge" style="background:var(--purple)">Misiuni</span>
+  <h2>Misiuni sub cerul nopții <span class="pill">14–16</span></h2>
+  <p style="color:var(--soft)">Despre Steaua Polară. Aceeași regulă de punctaj: 2 puncte din prima, 1 punct cu indiciu sau la a doua încercare.</p>
+  <div id="m4"></div>
+ </div>
+</section>
+
+<!-- 19 SCOR -->
+<section class="slide" aria-label="Scor">
+ <div class="wrap scorebox" style="max-width:700px">
+  <span class="badge" style="background:var(--green)">Rezultat</span>
+  <h2>Punctajul tău</h2>
+  <div class="big"><span id="score">0</span> / <span id="max">0</span></div>
+  <p class="lead" id="verdict" style="margin:.6em auto"></p>
+  <div class="tip b" style="text-align:left">🔁 Misiunile la care ai greșit sau ai cerut indiciu merită refăcute în altă zi. Încearcă să explici cu vorbele tale de ce e corect răspunsul.</div>
+ </div>
+</section>
+
+</main>
+
+<nav class="bar" aria-label="Navigare prezentare">
+ <a class="home" href="../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
+ <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
+ <div class="dots" id="dots"></div>
+ <span class="count" id="count"></span>
+ <button class="nav" id="next" aria-label="Slide-ul următor">→</button>
+</nav>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
+  var cur=0;
+  slides.forEach(function(s,i){
+    var b=document.createElement('button');
+    b.setAttribute('aria-label','Mergi la slide-ul '+(i+1));
+    b.onclick=function(){go(i)};
+    dots.appendChild(b);
+  });
+  function go(i){
+    if(i<0||i>=slides.length)return;
+    slides[cur].classList.remove('active');dots.children[cur].classList.remove('on');
+    cur=i;
+    slides[cur].classList.add('active');dots.children[cur].classList.add('on');
+    slides[cur].scrollTop=0;
+    prev.disabled=cur===0;next.disabled=cur===slides.length-1;
+    count.textContent=(cur+1)+' / '+slides.length;
+    if(cur===slides.length-1)showScore();
+    
+  }
+  prev.onclick=function(){go(cur-1)};
+  next.onclick=function(){go(cur+1)};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown')go(cur+1);
+    if(e.key==='ArrowLeft'||e.key==='PageUp')go(cur-1);
+  });
+  var sx=null,deck=document.getElementById('deck');
+  deck.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  deck.addEventListener('touchend',function(e){
+    if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>80)go(cur+(dx<0?1:-1));sx=null;
+  },{passive:true});
+
+  /* sun & shadow */
+  var sunData=[
+    {x:90,y:150,sx:150,txt:'🌄 Dimineața: Soarele e jos, în est (răsărit). Umbra este lungă și cade spre vest (apus), în partea opusă Soarelui.'},
+    {x:300,y:42,sx:34,txt:'☀️ La amiază: Soarele e sus, în sud (miazăzi). Umbra este cea mai scurtă și cade spre nord (miazănoapte), în partea opusă sudului.'},
+    {x:510,y:150,sx:-150,txt:'🌇 Seara: Soarele e jos, în vest (apus). Umbra este lungă și cade spre est (răsărit).'}
+  ];
+  var sunBtns=document.querySelectorAll('#sunctl button');
+  function showSun(i){
+    var d=sunData[i];
+    sunBtns.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});
+    document.getElementById('sun').innerHTML='<circle cx="'+d.x+'" cy="'+d.y+'" r="22" fill="var(--yellow)"/>';
+    var x2=300+d.sx;
+    document.getElementById('shadow').setAttribute('d','M300 205 L'+x2+' 205');
+    document.getElementById('suntext').textContent=d.txt;
+  }
+  sunBtns.forEach(function(b,i){b.onclick=function(){showSun(i)}});
+  showSun(0);
+
+  /* missions */
+  var M=[
+   {q:'Ioana locuiește în cartierul Unirea, într-un bloc cu peste zece etaje. Bunicii ei trăiesc într-un sat mic. Care afirmație despre orizontul lor apropiat este corectă?',
+    o:['Pentru amândoi este cartierul.','Pentru Ioana este cartierul, pentru bunici este întreaga localitate (satul).','Pentru amândoi este orașul.','Pentru bunici este doar casa lor.'],c:1,
+    h:'Într-un oraș, orizontul apropiat este o parte din oraș. Dar într-un sat mic, ce parte ai putea alege?',
+    e:'La oraș, orizontul apropiat este cartierul unde sunt locuința și școala. La sat, este întreaga localitate rurală, unde bunicii locuiesc, muncesc și se relaxează.'},
+   {q:'Vrei să-i explici unui prieten unde este locuința ta. Care este cel mai bun reper?',
+    o:['un copac','numele școlii la care înveți','o mașină văzută dimineața în fața școlii','o clădire importantă din apropierea locuinței'],c:3,
+    h:'Un reper bun nu se mută de la o zi la alta și îl cunosc multe persoane.',
+    e:'O clădire importantă (Primăria, biserica, farmacia) stă mereu la locul ei și o știu mulți oameni. Mașina pleacă, iar copacii sunt prea mulți.'},
+   {q:'Poarta de la un capăt al terenului de sport e la 40 m de cealaltă. Un pas al lui Emil măsoară 40 cm. Câți pași a numărat el?',
+    o:['10','100','1 000','160'],c:1,
+    h:'Transformă 40 m în centimetri (1 m = 100 cm), apoi împarte la lungimea unui pas.',
+    e:'40 m = 4 000 cm. 4 000 : 40 = 100 de pași. Cu un pas de 50 cm ar fi fost doar 80 de pași. Pasul diferă de la om la om, așa că ruleta e mai exactă.'},
+   {q:'Strada Andrei are în realitate 110 m. Pe planul cartierului are 11 mm. De câte ori a fost micșorată lungimea ei?',
+    o:['de 10 ori','de 100 de ori','de 1 000 de ori','de 10 000 de ori'],c:3,
+    h:'Pune ambele lungimi în aceeași unitate. 1 m = 1 000 mm.',
+    e:'110 m = 110 000 mm. 110 000 : 11 = 10 000. Ai ajuns la același rezultat dacă ai făcut 400 m : 4 cm = 40 000 cm : 4 cm = 10 000 la strada Micșunelelor din recapitulare.'},
+   {q:'Un plan este micșorat de 10 ori. Banca din clasă are în realitate 120 cm lungime. Cât are pe plan?',
+    o:['1,2 cm','12 cm','120 cm','1 200 cm'],c:1,
+    h:'„Micșorat de 10 ori” înseamnă că împarți lungimea reală la 10.',
+    e:'120 cm : 10 = 12 cm. Toate elementele de pe plan se micșorează de același număr de ori, ca desenul să rămână fidel realității.'},
+   {q:'De ce nu apar pe planul localității Basarab străzile și clădirile din cartierul Tei, deși cartierul face parte din localitate?',
+    o:['Cineva a uitat să le deseneze.','Spațiul e mare, deci e micșorat de mult mai multe ori și detaliile mici nu mai încap.','Cartierul Tei nu face parte din localitate.','Planurile localităților nu au legendă.'],c:1,
+    h:'Cu cât spațiul reprezentat este mai mare, cu atât dimensiunile se micșorează de mai multe ori. Ce se întâmplă cu lucrurile foarte mici?',
+    e:'Planul localității acoperă un spațiu mult mai mare decât cel al cartierului, așa că apar doar elementele mari: Primăria, Poliția, Spitalul, Clubul Elevilor.'},
+   {q:'Bogdan urcă de pe o stradă între blocuri pe un deal înalt. Ce se întâmplă cu orizontul lui?',
+    o:['Spațiul vizibil se micșorează, iar linia orizontului se apropie.','Spațiul vizibil crește, iar linia orizontului pare mai îndepărtată.','Nu se schimbă nimic.','Bogdan atinge cerul.'],c:1,
+    h:'Compară ce vezi de la parter cu ce vezi de la etajul 10 al unui bloc.',
+    e:'Mărimea orizontului depinde de locul și de înălțimea de unde privești. Linia orizontului este doar locul unde cerul pare că se unește cu pământul, deci nu o poți atinge: se îndepărtează pe măsură ce te apropii.'},
+   {q:'Bogdan stă cu spatele spre partea de unde a răsărit Soarele. Ce punct cardinal e în dreapta lui?',
+    o:['nord','sud','est','vest'],c:0,
+    h:'Dacă spatele e spre est, fața e spre partea opusă. Care este aceea? Apoi gândește-te unde îți e mâna dreaptă.',
+    e:'Spatele spre est înseamnă fața spre vest. Cu fața spre vest, în dreapta este nordul, iar în stânga sudul.'},
+   {q:'La amiază Soarele e în sud. Spre ce punct cardinal cade umbra unui copac din România?',
+    o:['sud','nord','est','vest'],c:1,
+    h:'Umbra cade în partea opusă Soarelui. Care este opusul sudului?',
+    e:'Partea opusă miazăzilor este miazănoaptea, deci nordul. Umbra de la amiază este și cea mai scurtă, pentru că Soarele e sus.'},
+   {q:'Seara Soarele coboară spre apus. În ce parte cade umbra copacului și cum arată ea?',
+    o:['spre vest, scurtă','spre est, lungă','spre sud, lungă','spre est, scurtă'],c:1,
+    h:'Soarele e jos pe cer. Umbra cade mereu în partea opusă lui.',
+    e:'Soarele e în vest și foarte jos, deci umbra cade spre est și e lungă. Dimineața este invers: Soarele în est, umbra spre vest.'},
+   {q:'Care afirmație despre roza vânturilor este corectă?',
+    o:['Nord-vest se află între nord și sud.','Nord-est se află între nord și est.','Sud-est se află între sud și vest.','Nord-est se află între sud și est.'],c:1,
+    h:'Numele unui punct intercardinal spune între ce puncte cardinale se află.',
+    e:'Nord-est e între nord și est. Nord-vest e între nord și vest, sud-est între sud și est, iar sud-vest între sud și vest.'},
+   {q:'Ești într-o excursie, noaptea, iar cerul e complet acoperit de nori. Care este cea mai sigură metodă de a afla nordul?',
+    o:['Soarele','Steaua Polară','busola','mușchiul de pe trunchiul copacilor'],c:2,
+    h:'Care metodă nu depinde nici de lumină, nici de cer senin, și nici de „obiceiurile” plantelor?',
+    e:'Soarele nu se vede noaptea, iar Steaua Polară e ascunsă de nori. Mușchiul e doar un indiciu nesigur. Acul busolei arată nordul oriunde și oricând.'},
+   {q:'La engleză, vestul se numește „west”. Cum ar abrevia un englez nord-vestul?',
+    o:['NV','NW','WN','VN'],c:1,
+    h:'Folosește prima literă din „north” și prima din „west”.',
+    e:'north + west = NW. În română, nord-vest se scrie NV, pentru că „vest” se abreviază V. Aceeași direcție, două limbi, două abrevieri.'},
+   {q:'Noaptea, cerul e senin. Stai cu fața spre Steaua Polară și vrei să mergi spre vest. Încotro o iei?',
+    o:['înainte, spre stea','la dreapta','la stânga','înapoi, cu spatele spre stea'],c:2,
+    h:'Steaua Polară îți arată nordul. Imaginează-ți roza vânturilor: dacă nordul e în fața ta, de ce parte este vestul?',
+    e:'Cu fața spre nord, estul e în dreapta și vestul în stânga. Sudul rămâne în spate. Ca să ajungi spre vest, o iei la stânga.'},
+   {q:'Cum găsești Steaua Polară cu ajutorul Carului Mare? Câte ori pui cu ochiul distanța dintre cele două stele din marginea „cănii”, în sus, pe linia dintre ele?',
+    o:['o dată','de 2 ori','de aproximativ 5 ori','de 50 de ori'],c:2,
+    h:'Privește schema de pe slide-ul cu Steaua Polară: punctele roșii sunt numerotate. Câte ar mai fi până la stea?',
+    e:'Prelungești linia dintre Merak și Dubhe cu cam 5 ori distanța dintre ele și ajungi la Steaua Polară, aflată la capătul cozii Carului Mic.'},
+   {q:'Un coleg spune: „Steaua Polară e cea mai strălucitoare stea, o recunosc ușor.” Ce îi răspunzi?',
+    o:['Are dreptate, e cea mai strălucitoare.','Nu are dreptate: nu e cea mai strălucitoare, de aceea o căutăm cu ajutorul Carului Mare.','Nu are dreptate: se vede și ziua.','Nu are dreptate: își schimbă locul pe tot cerul.'],c:1,
+    h:'Dacă ar fi cea mai strălucitoare stea, ai mai avea nevoie de Carul Mare ca s-o găsești?',
+    e:'Steaua Polară nu iese în evidență prin strălucire. O găsim cu Carul Mare. Ea rămâne aproape pe loc, iar celelalte stele par să se rotească în jurul ei, pentru că Pământul se rotește.'}
+  ];
+  var total=0,done=0,maxPts=M.length*2;
+  document.getElementById('max').textContent=maxPts;
+  var holders=[document.getElementById('m1'),document.getElementById('m2'),document.getElementById('m3'),document.getElementById('m4')];
+  function holderFor(i){return i<4?0:(i<8?1:(i<13?2:3))}
+  M.forEach(function(m,i){
+    var st={wrong:0,hint:false,solved:false};
+    var box=document.createElement('div');box.className='mission';
+    var qt=document.createElement('p');qt.className='qt';
+    qt.innerHTML='<span>Misiunea '+(i+1)+'.</span> ';qt.appendChild(document.createTextNode(m.q));
+    box.appendChild(qt);
+    var opts=document.createElement('div');opts.className='opts';
+    var hb=document.createElement('button');hb.className='hintbtn';hb.textContent='💡 Cer un indiciu';
+    var hint=document.createElement('div');hint.className='hint';hint.textContent=m.h;
+    var ex=document.createElement('div');ex.className='expl';
+    var btns=m.o.map(function(t,k){
+      var b=document.createElement('button');b.textContent=t;
+      b.onclick=function(){
+        if(st.solved)return;
+        if(k===m.c){
+          st.solved=true;
+          var p=(st.wrong===0&&!st.hint)?2:1;total+=p;done++;
+          b.classList.add('good');
+          btns.forEach(function(x){x.disabled=true});hb.disabled=true;
+          ex.innerHTML='<span class="pts">+'+p+(p===1?' punct':' puncte')+'.</span> ';
+          ex.appendChild(document.createTextNode(m.e));ex.classList.add('show');
+        }else{
+          st.wrong++;b.classList.add('bad');b.disabled=true;
+          hint.textContent='Mai încearcă. '+m.h;hint.classList.add('show');
+        }
+      };
+      opts.appendChild(b);return b;
+    });
+    hb.onclick=function(){st.hint=true;hint.classList.add('show')};
+    box.appendChild(opts);box.appendChild(hb);box.appendChild(hint);box.appendChild(ex);
+    holders[holderFor(i)].appendChild(box);
+  });
+  function showScore(){
+    document.getElementById('score').textContent=total;
+    var v=document.getElementById('verdict');
+    if(done<M.length)v.textContent='Ai rezolvat '+done+' din '+M.length+' misiuni. Întoarce-te la cele rămase.';
+    else if(total>=maxPts*0.8)v.textContent='Foarte bine! Ai înțeles orizontul, planul și orientarea.';
+    else if(total>=maxPts*0.55)v.textContent='Bine! Mai citește lecțiile la care ai cerut indiciu.';
+    else v.textContent='Un început bun. Reciți lecțiile și încearcă din nou, cu indiciile.';
+  }
+  var start=0;
+  
+  slides[0].classList.add('active');dots.children[0].classList.add('on');
+  go(start);
+})();
+</script>
+<script src="../vendor/three.min.js"></script>
+<script src="../vendor/OrbitControls.js"></script>
+<script>
+(function(){
+  var host=document.getElementById('sce'),fig=document.getElementById('sunfig');
+  var btns=document.querySelectorAll('#sunctl button'),rng=document.getElementById('sunrange'),txt=document.getElementById('suntext');
+  function fallback(){fig.hidden=false;host.hidden=true;rng.parentNode.hidden=true;}
+  var ok=false;
+  try{var tc=document.createElement('canvas');ok=!!(window.THREE&&THREE.OrbitControls&&(tc.getContext('webgl')||tc.getContext('experimental-webgl')));}catch(e){}
+  if(!ok){fallback();return;}
+  host.addEventListener('touchstart',function(e){e.stopPropagation()},{passive:true});
+  host.addEventListener('touchend',function(e){e.stopPropagation()},{passive:true});
+  var T=[0.12,0.5,0.88],R=9,TH=3.2,MAXL=7;
+  var renderer,scene,camera,controls,sun,shadow,light,t=0.12,ready=false;
+  function pos(u){var s=Math.sin(Math.PI*u);return new THREE.Vector3(R*Math.cos(Math.PI*u),0.85*R*s+0.5,0.45*R*s);}
+  function label(big,small,col){
+    var c=document.createElement('canvas');c.width=256;c.height=128;var g=c.getContext('2d');
+    g.fillStyle='rgba(255,255,255,0.9)';g.beginPath();g.moveTo(20,0);g.arcTo(256,0,256,128,28);g.arcTo(256,128,0,128,28);g.arcTo(0,128,0,0,28);g.arcTo(0,0,256,0,28);g.fill();
+    g.textAlign='center';g.fillStyle=col;g.font='800 64px sans-serif';g.fillText(big,128,70);
+    g.fillStyle='#1E2340';g.font='700 26px sans-serif';g.fillText(small,128,108);
+    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c)}));sp.scale.set(3.2,1.6,1);return sp;
+  }
+  function init(){
+    var w=host.clientWidth,h=host.clientHeight;
+    renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.setSize(w,h);
+    host.appendChild(renderer.domElement);
+    scene=new THREE.Scene();
+    camera=new THREE.PerspectiveCamera(45,w/h,0.1,100);camera.position.set(0,10,15);
+    controls=new THREE.OrbitControls(camera,renderer.domElement);
+    controls.target.set(0,1.2,0);controls.enablePan=false;controls.minDistance=8;controls.maxDistance=26;controls.maxPolarAngle=Math.PI/2.05;
+    controls.update();controls.addEventListener('change',render);
+    scene.add(new THREE.AmbientLight(0xffffff,0.65));
+    light=new THREE.DirectionalLight(0xffffff,0.8);scene.add(light);
+    var ground=new THREE.Mesh(new THREE.CircleGeometry(8,72),new THREE.MeshLambertMaterial({color:0x6DBB5A}));
+    ground.rotation.x=-Math.PI/2;scene.add(ground);
+    [[0.14,16,0],[16,0.14,0]].forEach(function(d){
+      var m=new THREE.Mesh(new THREE.PlaneGeometry(d[0]||0.14,d[1]||0.14),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:0.7}));
+      m.rotation.x=-Math.PI/2;m.position.y=0.01;scene.add(m);
+    });
+    var tr=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.24,1.6,16),new THREE.MeshLambertMaterial({color:0x8A5A2B}));tr.position.y=0.8;scene.add(tr);
+    var cr=new THREE.Mesh(new THREE.SphereGeometry(0.95,24,16),new THREE.MeshLambertMaterial({color:0x2E9D52}));cr.position.y=2.25;scene.add(cr);
+    var L=[['N','miazănoapte',0,-7,'#2F6FD6'],['S','miazăzi',0,7,'#E2433A'],['E','răsărit',7,0,'#C9862A'],['V','apus',-7,0,'#6B4BC4']];
+    L.forEach(function(a){var s=label(a[0],a[1],a[4]);s.position.set(a[2],0.9,a[3]);scene.add(s);});
+    var pts=[];for(var i=0;i<=40;i++)pts.push(pos(i/40));
+    scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:0xF0A020})));
+    sun=new THREE.Mesh(new THREE.SphereGeometry(0.65,24,16),new THREE.MeshBasicMaterial({color:0xF6C431}));scene.add(sun);
+    var sg=new THREE.BoxGeometry(1,0.02,0.7);sg.translate(0.5,0,0);
+    shadow=new THREE.Mesh(sg,new THREE.MeshBasicMaterial({color:0x1E2340,transparent:true,opacity:0.45}));shadow.position.y=0.03;scene.add(shadow);
+    ready=true;apply();
+  }
+  function render(){if(ready)renderer.render(scene,camera);}
+  var msgs=[
+   [0.25,'🌄 Dimineața: Soarele e jos, în est (răsărit). Umbra este lungă și cade spre vest (apus), în partea opusă Soarelui.'],
+   [0.42,'🌤️ Soarele urcă spre sud. Umbra se scurtează și se mută spre nord-vest.'],
+   [0.58,'☀️ La amiază: Soarele e sus, în sud (miazăzi). Umbra este cea mai scurtă și cade spre nord (miazănoapte).'],
+   [0.75,'🌥️ Soarele coboară spre vest. Umbra se lungește și se mută spre nord-est.'],
+   [1.01,'🌇 Seara: Soarele e jos, în vest (apus). Umbra este lungă și cade spre est (răsărit).']
+  ];
+  function apply(){
+    var p=pos(t);
+    btns.forEach(function(b,i){b.setAttribute('aria-pressed',Math.abs(t-T[i])<0.02?'true':'false')});
+    rng.value=Math.round(t*100);
+    for(var k=0;k<msgs.length;k++){if(t<msgs[k][0]){txt.textContent=msgs[k][1];break;}}
+    if(!ready)return;
+    sun.position.copy(p);light.position.copy(p);
+    var dx=-p.x,dz=-p.z,d=Math.sqrt(dx*dx+dz*dz)||1;
+    var len=Math.min(MAXL,Math.max(0.3,TH*d/p.y));
+    shadow.scale.x=len;shadow.rotation.y=Math.atan2(-dz,dx);
+    render();
+  }
+  function setT(v){t=v;apply();}
+  btns.forEach(function(b,i){b.onclick=function(){setT(T[i])}});
+  rng.oninput=function(){setT(rng.value/100)};
+  setT(t);
+  function fit(){
+    var w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;
+    if(!ready){try{init();}catch(e){ready=false;fallback();}return;}
+    renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();render();
+  }
+  if(window.ResizeObserver)new ResizeObserver(fit).observe(host);else window.addEventListener('resize',fit);
+})();
+</script>
+<script>
+(function(){
+  var host=document.getElementById('pz');
+  var sb=document.querySelectorAll('#pzbtns button'),cb=document.querySelectorAll('#pzcam button'),txt=document.getElementById('pztext');
+  var TX=[
+   'Gândește-te: Bogdan stă cu spatele spre Soare. Încotro privește el? Dacă ai nevoie, apasă pe un indiciu.',
+   'Indiciul 1: linia galbenă pornește din spatele lui Bogdan spre Soare. Soarele răsare în est, deci spatele lui Bogdan e spre est.',
+   'Indiciul 2: fața lui e în partea opusă spatelui. Săgeata albastră arată încotro privește. Care este opusul estului? Apasă pe „Din spatele lui Bogdan” și vezi ce are în dreapta.',
+   'Pe teren au apărut N, S, E și V. Verifică: spatele spre est înseamnă fața spre vest. Acum privește în dreapta lui Bogdan.',
+   'Soluția: în dreapta lui Bogdan este NORDUL. Cu fața spre vest, nordul e la mâna dreaptă, iar sudul la mâna stângă. Încearcă și tu, în clasă, cu fața spre vest.'
+  ];
+  var s=0,ready=false,okGL=false;
+  try{var tc=document.createElement('canvas');okGL=!!(window.THREE&&THREE.OrbitControls&&(tc.getContext('webgl')||tc.getContext('experimental-webgl')));}catch(e){}
+  var renderer,scene,camera,controls,backLine,backLab,faceArr,faceLab,labels,rArm,armArr,armLab;
+  function lab(text,col,wd){
+    var c=document.createElement('canvas');c.width=256;c.height=96;var g=c.getContext('2d');
+    g.fillStyle='rgba(255,255,255,0.92)';g.beginPath();g.moveTo(20,0);g.arcTo(256,0,256,96,24);g.arcTo(256,96,0,96,24);g.arcTo(0,96,0,0,24);g.arcTo(0,0,256,0,24);g.fill();
+    g.textAlign='center';g.fillStyle=col;g.font='800 42px sans-serif';g.fillText(text,128,64);
+    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c),depthTest:false}));sp.scale.set(wd||2.6,(wd||2.6)*0.375,1);return sp;
+  }
+  function big(l,n,col){
+    var c=document.createElement('canvas');c.width=256;c.height=128;var g=c.getContext('2d');
+    g.fillStyle='rgba(255,255,255,0.92)';g.beginPath();g.moveTo(20,0);g.arcTo(256,0,256,128,28);g.arcTo(256,128,0,128,28);g.arcTo(0,128,0,0,28);g.arcTo(0,0,256,0,28);g.fill();
+    g.textAlign='center';g.fillStyle=col;g.font='800 64px sans-serif';g.fillText(l,128,70);g.fillStyle='#1E2340';g.font='700 26px sans-serif';g.fillText(n,128,108);
+    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c)}));sp.scale.set(3.2,1.6,1);return sp;
+  }
+  function mat(c){return new THREE.MeshLambertMaterial({color:c});}
+  function init(){
+    var w=host.clientWidth,h=host.clientHeight;
+    renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.setSize(w,h);host.appendChild(renderer.domElement);
+    scene=new THREE.Scene();
+    camera=new THREE.PerspectiveCamera(45,w/h,0.1,100);camera.position.set(0,10,15);
+    controls=new THREE.OrbitControls(camera,renderer.domElement);
+    controls.target.set(0,1.2,0);controls.enablePan=false;controls.minDistance=4;controls.maxDistance=26;controls.maxPolarAngle=Math.PI/2.05;
+    controls.update();controls.addEventListener('change',render);
+    scene.add(new THREE.AmbientLight(0xffffff,0.7));
+    var dl=new THREE.DirectionalLight(0xffffff,0.7);dl.position.set(9,4,0);scene.add(dl);
+    var ground=new THREE.Mesh(new THREE.CircleGeometry(8,72),mat(0x6DBB5A));ground.rotation.x=-Math.PI/2;scene.add(ground);
+    [[0.14,16],[16,0.14]].forEach(function(d){var m=new THREE.Mesh(new THREE.PlaneGeometry(d[0],d[1]),new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:0.7}));m.rotation.x=-Math.PI/2;m.position.y=0.01;scene.add(m);});
+    var sun=new THREE.Mesh(new THREE.SphereGeometry(0.7,24,16),new THREE.MeshBasicMaterial({color:0xF6C431}));sun.position.set(9,2.6,0);scene.add(sun);
+    /* Bogdan: priveste spre vest (-x); dreapta lui = nord (-z) */
+    var B=new THREE.Group();scene.add(B);
+    [-0.13,0.13].forEach(function(z){var l=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.7,0.2),mat(0x2F6FD6));l.position.set(0,0.35,z);B.add(l);});
+    var body=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.3,0.8,20),mat(0xE2833A));body.position.y=1.1;B.add(body);
+    var head=new THREE.Mesh(new THREE.SphereGeometry(0.26,20,16),mat(0xF2C9A0));head.position.y=1.75;B.add(head);
+    var nose=new THREE.Mesh(new THREE.ConeGeometry(0.07,0.2,12),mat(0xD08B5B));nose.rotation.z=Math.PI/2;nose.position.set(-0.3,1.73,0);B.add(nose);
+    var ag=new THREE.CylinderGeometry(0.07,0.07,0.7,10);ag.translate(0,-0.35,0);
+    var lArm=new THREE.Mesh(ag,mat(0xF2C9A0));lArm.position.set(0,1.45,0.37);B.add(lArm);
+    rArm=new THREE.Mesh(ag,mat(0xF2C9A0));rArm.position.set(0,1.45,-0.37);B.add(rArm);
+    /* indicii */
+    var gp=[new THREE.Vector3(0.6,0.5,0),new THREE.Vector3(8.4,2.5,0)];
+    backLine=new THREE.Line(new THREE.BufferGeometry().setFromPoints(gp),new THREE.LineDashedMaterial({color:0xF0A020,dashSize:0.35,gapSize:0.2}));backLine.computeLineDistances();scene.add(backLine);
+    backLab=lab('spatele','#B26A00',2.2);backLab.position.set(3,1.5,0);scene.add(backLab);
+    faceArr=new THREE.ArrowHelper(new THREE.Vector3(-1,0,0),new THREE.Vector3(-0.6,1.75,0),3.2,0x2F6FD6,0.6,0.4);scene.add(faceArr);
+    faceLab=lab('fața','#2F6FD6',1.8);faceLab.position.set(-3.2,2.5,0);scene.add(faceLab);
+    labels=new THREE.Group();
+    [['N','miazănoapte',0,-7,'#2F6FD6'],['S','miazăzi',0,7,'#E2433A'],['E','răsărit',7,0,'#B26A00'],['V','apus',-7,0,'#6B4BC4']].forEach(function(a){var l=big(a[0],a[1],a[4]);l.position.set(a[2],0.9,a[3]);labels.add(l);});
+    scene.add(labels);
+    armArr=new THREE.ArrowHelper(new THREE.Vector3(0,0,-1),new THREE.Vector3(0,1.45,-1.2),3,0xE2433A,0.6,0.4);scene.add(armArr);
+    armLab=lab('mâna dreaptă','#E2433A',3);armLab.position.set(0,2.6,-2.6);scene.add(armLab);
+    ready=true;apply();
+  }
+  function render(){if(ready)renderer.render(scene,camera);}
+  function apply(){
+    sb.forEach(function(b){var k=+b.getAttribute('data-s');b.setAttribute('aria-pressed',(k>0&&k===s)?'true':'false')});
+    txt.textContent=TX[s];
+    if(!ready)return;
+    backLine.visible=backLab.visible=s>=1;
+    faceArr.visible=faceLab.visible=s>=2;
+    labels.visible=s>=3;
+    armArr.visible=armLab.visible=s>=4;
+    rArm.rotation.x=s>=4?Math.PI/2:0;
+    render();
+  }
+  function cam(c){
+    cb.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-c')===c?'true':'false')});
+    if(!ready)return;
+    if(c==='back'){controls.target.set(-3,1.4,0);camera.position.set(5.5,3.4,0.01);}
+    else{controls.target.set(0,1.2,0);camera.position.set(0,10,15);}
+    controls.update();render();
+  }
+  sb.forEach(function(b){b.onclick=function(){s=+b.getAttribute('data-s');apply();}});
+  cb.forEach(function(b){b.onclick=function(){cam(b.getAttribute('data-c'));}});
+  txt.textContent=TX[0];
+  if(!okGL){
+    host.innerHTML='<p style="padding:20px;margin:0">Scena 3D nu poate fi afișată pe acest dispozitiv. Citește indiciile de mai jos și imaginează-ți scena.</p>';
+    host.style.touchAction='auto';
+    document.getElementById('pzcam').hidden=true;
+    return;
+  }
+  host.addEventListener('touchstart',function(e){e.stopPropagation()},{passive:true});
+  host.addEventListener('touchend',function(e){e.stopPropagation()},{passive:true});
+  function fit(){
+    var w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;
+    if(!ready){try{init();}catch(e){ready=false;host.textContent='Scena 3D nu a putut fi pornită.';}return;}
+    renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();render();
+  }
+  if(window.ResizeObserver)new ResizeObserver(fit).observe(host);else window.addEventListener('resize',fit);
+})();
+</script>
+
+</body></html>

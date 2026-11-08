@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Caietul Clasei a IV-a</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+/* Same design system as the lesson decks: Baloo 2 + Nunito, five subject colors, paper cards on a cool ground */
+:root{
+  --bg:#F3F7FF; --paper:#FFFFFF; --ink:#1E2340; --soft:#4A5078; --line:#D5DDF0;
+  --red:#E2433A; --green:#2E9D52; --blue:#2F6FD6; --yellow:#F6C431; --purple:#6B4BC4; --brown:#8A5A2B;
+  --tint-red:#FDE6E4; --tint-green:#E1F4E7; --tint-blue:#E2ECFC; --tint-yellow:#FFF4CF; --tint-purple:#ECE6FA; --tint-brown:#F3E6D8;
+  --display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+    --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757; --tint-brown:#3A2C22;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+  --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757; --tint-brown:#3A2C22;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:500;font-size:clamp(16px,.6vw + 13px,19px);line-height:1.5;
+  padding:calc(env(safe-area-inset-top,0px) + clamp(20px,4vw,48px)) 16px calc(env(safe-area-inset-bottom,0px) + 48px)}
+.wrap{max-width:1100px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance}
+a{color:inherit}
+.stripes{display:flex;height:12px;border-radius:8px;overflow:hidden;max-width:320px;margin-bottom:14px}
+.stripes span{flex:1}
+header h1{font-size:clamp(2.2rem,4vw + 1rem,4rem);font-weight:800}
+header .lead{color:var(--soft);font-size:1.1em;max-width:62ch;margin:.4em 0 0}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.stats span{background:var(--paper);border:2px solid var(--line);border-radius:99px;padding:.25em .9em;font-weight:800;font-variant-numeric:tabular-nums}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:22px}
+.legend div{background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:12px 16px;font-size:.95em}
+.legend b{font-family:var(--display)}
+section.subject{margin-top:40px}
+.subject-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.subject-head h2{font-size:clamp(1.6rem,1.5vw + 1rem,2.2rem);font-weight:800}
+.subject .unit{color:var(--soft);font-weight:700;margin:0 0 14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.card{display:flex;flex-direction:column;gap:6px;text-decoration:none;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px 18px;transition:transform .15s,border-color .15s;min-width:0}
+.card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.card:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.card .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.card .lbl{font-weight:800;font-size:.8em;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.card .kind{font-size:.75em;font-weight:800;padding:.1em .6em;border-radius:99px;background:var(--tint);color:var(--ink)}
+.card .kind.rec{background:var(--yellow);color:#1E2340}
+.card h3{font-size:1.25em;font-weight:800}
+.card p{margin:0;color:var(--soft);font-size:.95em}
+.note{color:var(--soft);font-size:.9em;margin-top:10px}
+footer{margin-top:48px;color:var(--soft);font-size:.85em;border-top:2px solid var(--line);padding-top:14px}
+@media (prefers-reduced-motion:reduce){.card{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <header>
+  <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+  <h1>Caietul Clasei a IV-a</h1>
+  <p class="lead">Prezentări interactive, făcute după manualele de clasa a IV-a. Fiecare are misiuni cu indicii, capcane și legături între materii.</p>
+  <div class="stats" id="stats"></div>
+  <div class="legend">
+   <div><b>💡 Indiciu, apoi răspuns.</b> Încearcă singur întâi. Primești 2 puncte din prima, 1 punct cu indiciu.</div>
+   <div><b>📘 Manualul spune / 🌍 Context.</b> Pentru școală reții ce scrie în manual. Contextul îți arată ce s-a schimbat sau ce e mai complicat.</div>
+   <div><b>⌨️ Navigare.</b> Săgețile de jos, tastele ← → sau glisare pe telefon. Butonul „Cuprins” te aduce aici.</div>
+  </div>
+ </header>
+ <main id="subjects"></main>
+ <footer>Ultima actualizare: 8 noiembrie 2026. Fonturile se încarcă de pe internet; fără internet, paginile folosesc fonturile calculatorului. Lecția de geografie are nevoie de internet pentru modelul 3D.</footer>
+</div>
+<script>
+(function(){
+  var S=[
+   {name:'Istorie',color:'var(--red)',tint:'var(--tint-red)',unit:'Unitatea 1. Trecutul și prezentul din jurul nostru',items:[
+    {f:'istorie/l1-ce-este-istoria.html',l:'Lecția 1',t:'Ce este istoria?',d:'Istoricii și arheologii, sursele scrise și nescrise și cum aflăm cât de vechi e un obiect.'},
+    {f:'istorie/l2-timpul-istoric.html',l:'Lecția 2',t:'Timpul istoric și mediul geografic',d:'Cum măsurăm trecutul, erele și epocile, și de ce oamenii trăiesc diferit în locuri diferite.'},
+    {f:'istorie/l3-familia.html',l:'Lecția 3',t:'Familia. Arborele genealogic',d:'Evenimentele familiei, documentele care le dovedesc și arborele lui Andrei Popescu.'},
+    {f:'istorie/l4-comunitatea.html',l:'Lecția 4',t:'Comunitatea locală și națională',d:'Satul și orașul, minoritățile din România pe hartă, monografia localității.'},
+    {f:'istorie/recap-l1-l4-dosarul-timpului.html',l:'Lecțiile 1–4',t:'Dosarul Timpului',d:'Erele, secolele și epocile, Mașina timpului și 17 misiuni.',r:1},
+    {f:'istorie/l5-copilaria.html',l:'Lecția 5',t:'Copilăria de ieri și de azi',d:'Copiii în trecut și azi, Convenția din 1989 și de ce unii copii renunță la școală.'},
+    {f:'istorie/l6-popoare.html',l:'Lecția 6',t:'Popoare de ieri și de azi',d:'Latini, germanici și slavi; ce a moștenit limba română de la vecini.'},
+    {f:'istorie/recap-l1-l6-marele-dosar.html',l:'Lecțiile 1–6',t:'Marele Dosar',d:'Firele care leagă lecțiile, Mașina timpului și 16 misiuni noi, mai grele.',r:1}]},
+   {name:'Științe ale naturii',color:'var(--green)',tint:'var(--tint-green)',unit:'Unitatea 1. Am învățat în clasa a III-a · Unitatea 2. Științe ale Pământului',items:[
+    {f:'stiinte/u1-recapitulare-clasa-a-III-a.html',l:'Unitatea 1',t:'Am învățat în clasa a III-a',d:'Lumea vie, stările și transformările corpurilor, masă și greutate, plus quiz.',r:1},
+    {f:'stiinte/u2-l1-sistemul-solar.html',l:'Lecția 1',t:'Sistemul Solar. Planetele',d:'Ce este o stea, ce este o planetă și în ce ordine stau în jurul Soarelui.'},
+    {f:'stiinte/u2-l2-soarele.html',l:'Lecția 2',t:'Soarele, sursă de căldură. Ciclul zi-noapte',d:'De ce primim lumină și căldură de la Soare și de ce pe Pământ se face când zi, când noapte.'},
+    {f:'stiinte/u2-l3-anotimpurile.html',l:'Lecția 3',t:'Anotimpurile și modificările vremii',d:'De ce avem patru anotimpuri și cum se schimbă vremea de la unul la altul.'},
+    {f:'stiinte/u2-l4-ritmurile-vietuitoarelor.html',l:'Lecția 4',t:'Ritmuri cotidiene și anuale ale viețuitoarelor',d:'Diurne și nocturne, viața de-a lungul anului, migrația și hibernarea.'},
+    {f:'stiinte/u2-l5-fosilele.html',l:'Lecția 5',t:'Mărturii ale vieții din trecut: fosilele',d:'Dinozauri și mamuți pe axa timpului; ce a aflat știința între timp.'},
+    {f:'stiinte/u2-l6-influenta-omului.html',l:'Lecția 6',t:'Influența omului asupra mediului de viață',d:'De la folosire la distrugere; cine apără natura și cum poți ajuta.'},
+    {f:'stiinte/u2-recapitulare.html',l:'Unitatea 2',t:'Pământul, mediu de viață',d:'Recapitularea lecțiilor 1–6 și un quiz cu 14 misiuni.',r:1}]},
+   {name:'Geografie',color:'var(--blue)',tint:'var(--tint-blue)',unit:'Unitatea 1. Elemente de geografie a orizontului local și apropiat',items:[
+    {f:'geografie/u1-l1-clasa-scoala-cartierul.html',l:'Lecția 1',t:'Clasa, școala, cartierul, localitatea',d:'Orizontul apropiat; sat, oraș și cartier; clădirile de pe drumul spre școală.'},
+    {f:'geografie/u1-l2-orientarea-distantele.html',l:'Lecția 2',t:'Orientarea și distanțele',d:'Repere bune și slabe, jocul „Stânga cui?” și calculatorul de pași.'},
+    {f:'geografie/u1-l3-planul.html',l:'Lecția 3',t:'Planul clasei și al localității',d:'Titlu, micșorare, legendă; calculatorul „De câte ori micșorat?”.'},
+    {f:'geografie/u1-l4-orizontul-punctele-cardinale.html',l:'Lecția 4',t:'Orizontul, linia orizontului, punctele cardinale',d:'Cât de departe vezi, Soarele și umbra în 3D, busola, Steaua Polară.'},
+    {f:'geografie/u1-l1-l4-orizontul.html',l:'Lecțiile 1–4',t:'Orizontul și punctele cardinale',d:'Rezumatul celor patru lecții și 16 misiuni.',r:1}]},
+   {name:'Educație civică',color:'var(--purple)',tint:'var(--tint-purple)',unit:'Unitatea 1. Locuri de apartenență',items:[
+    {f:'civica/u1-l1-apartenenta-locala.html',l:'Lecția 1',t:'Apartenența locală. Localitatea și domiciliul',d:'Comunitatea locală, instituțiile, relațiile dintre oameni și adresa de domiciliu.'},
+    {f:'civica/u1-l2-apartenenta-nationala.html',l:'Lecția 2',t:'Apartenența națională. Însemnele țării',d:'Drapelul, stema pe provincii, imnul, ziua națională și diaspora.'},
+    {f:'civica/u1-l3-uniunea-europeana.html',l:'Lecția 3',t:'România, membră a Uniunii Europene',d:'Însemnele UE, cum a crescut Uniunea și ce s-a schimbat din 2022.'},
+    {f:'civica/recap-u1-u6-dosarul-cetateanului.html',l:'Unitățile 1–6',t:'Dosarul Cetățeanului',d:'Recapitularea întregului manual: reguli, drepturi, valori, dileme și 23 de misiuni.',r:1}]}
+  ];
+  var host=document.getElementById('subjects'),total=0,recs=0;
+  S.forEach(function(s){
+    var sec=document.createElement('section');sec.className='subject';
+    var h='<div class="subject-head"><h2>'+s.name+'</h2></div><p class="unit">'+s.unit+'</p><div class="cards">';
+    s.items.forEach(function(it){
+      total++;if(it.r)recs++;
+      h+='<a class="card" href="'+it.f+'" style="--accent:'+s.color+';--tint:'+s.tint+'"><div class="meta"><span class="lbl">'+it.l+'</span><span class="kind'+(it.r?' rec':'')+'">'+(it.r?'Recapitulare':'Lecție')+'</span></div><h3>'+it.t+'</h3><p>'+it.d+'</p>'+'</a>';
+    });
+    h+='</div>'+(s.note?'<p class="note">'+s.note+'</p>':'');
+    sec.innerHTML=h;host.appendChild(sec);
+  });
+  document.getElementById('stats').innerHTML='<span>'+S.length+' materii</span><span>'+(total-recs)+' lecții</span><span>'+recs+' recapitulări</span>';
+})();
+</script>
+</body>
+</html>

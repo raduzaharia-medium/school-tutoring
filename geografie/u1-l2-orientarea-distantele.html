@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
+</head>
+<body>
+<title>Orientarea și distanțele</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+/* Same design system as „Timpul istoric și mediul geografic”: slide deck, bottom nav bar, colored badges */
+:root{
+  --bg:#F3F7FF; --paper:#FFFFFF; --ink:#1E2340; --soft:#4A5078; --line:#D5DDF0;
+  --red:#E2433A; --green:#2E9D52; --blue:#2F6FD6; --yellow:#F6C431; --purple:#6B4BC4; --brown:#8A5A2B;
+  --tint-red:#FDE6E4; --tint-green:#E1F4E7; --tint-blue:#E2ECFC; --tint-yellow:#FFF4CF; --tint-purple:#ECE6FA;
+  --display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+    --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
+  --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{height:100%}
+body{
+  height:100%;margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--body);font-weight:500;
+  font-size:clamp(16px,1.05vw + 10px,21px);line-height:1.5;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.7rem,2.6vw + .6rem,2.8rem);font-weight:800;margin-bottom:.35em}
+h3{font-size:1.2em;font-weight:700}
+p{margin:.3em 0 .7em}
+b,strong{font-weight:800}
+
+.deck{flex:1;position:relative;min-height:0}
+.slide{position:absolute;inset:0;overflow-y:auto;padding:clamp(18px,3vw,48px) clamp(16px,5vw,80px) 24px;display:none}
+.slide.active{display:block;animation:in .35s ease-out}
+@keyframes in{from{opacity:.2;transform:translateX(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slide.active{animation:none}}
+.wrap{max-width:1080px;margin:0 auto}
+.lead{font-size:1.15em;color:var(--soft);max-width:60ch}
+.badge{display:inline-block;font-weight:800;font-size:.85em;padding:.2em .8em;border-radius:99px;margin-bottom:.8em;color:#fff}
+
+.bar{display:flex;align-items:center;gap:12px;padding:10px clamp(12px,3vw,32px);padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));background:var(--paper);border-top:2px solid var(--line)}
+.bar button.nav{font:inherit;font-weight:800;border:0;border-radius:14px;padding:.55em 1.1em;cursor:pointer;background:var(--blue);color:#fff;min-width:48px}
+.bar button.nav:disabled{opacity:.35;cursor:default}
+.dots{flex:1;display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.dots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
+.dots button.on{background:var(--red);transform:scale(1.3)}
+.count{font-weight:800;color:var(--soft);min-width:4.5ch;text-align:center;font-variant-numeric:tabular-nums}
+button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+
+.cover{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;min-height:100%}
+.cover > *{min-width:0}
+.cover h1{font-size:clamp(2.4rem,5vw + .5rem,4.8rem);font-weight:800;margin:.2em 0 .3em}
+.stripes{display:flex;height:14px;border-radius:8px;overflow:hidden;max-width:420px;margin-bottom:1em}
+.stripes span{flex:1}
+@media (max-width:760px){.cover{grid-template-columns:1fr}.cover svg{max-width:220px;margin:0 auto;display:block}}
+
+.grid{display:grid;gap:16px}
+.grid > *{min-width:0}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.box{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:18px 20px}
+.box .emo{font-size:2.2em;line-height:1;display:block;margin-bottom:.25em}
+.tip{border-radius:18px;padding:14px 20px;margin-top:18px;border-left:8px solid}
+.tip.y{background:var(--tint-yellow);border-color:var(--yellow)}
+.tip.g{background:var(--tint-green);border-color:var(--green)}
+.tip.b{background:var(--tint-blue);border-color:var(--blue)}
+.tip.r{background:var(--tint-red);border-color:var(--red)}
+.tip.p{background:var(--tint-purple);border-color:var(--purple)}
+
+.q{display:flex;gap:16px;align-items:center;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px 20px;margin-bottom:14px;font-size:1.15em;font-weight:700}
+.q .mark{flex:none;width:2.2em;height:2.2em;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:var(--display);font-weight:800;font-size:1.1em}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chips span{background:var(--tint-purple);border-radius:10px;padding:.25em .7em;font-weight:800}
+.ladder{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 6px}
+.step{background:var(--tint-blue);border-radius:12px;padding:.35em .8em;font-weight:800;text-align:center}
+.arrow{color:var(--soft);font-weight:800}
+
+/* events interactive */
+.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0 14px}
+.events button{font:inherit;font-weight:800;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:12px 10px;text-align:center}
+.events button span{display:block;font-size:1.9em;line-height:1.1}
+.events button[aria-pressed="true"]{border-color:var(--red);background:var(--tint-red)}
+.doc-card{background:var(--paper);border:2px dashed var(--brown);border-radius:18px;padding:16px 20px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;min-height:6.5em}
+.doc-card .big{font-size:3em;line-height:1}
+.doc-card > div{min-width:0}
+
+/* family types */
+.fam svg{width:100%;height:auto;display:block;margin-bottom:10px}
+
+/* timeline */
+.axis-wrap{overflow-x:auto;margin:8px 0}
+.axis{width:100%;min-width:620px;height:auto;display:block}
+
+/* tree */
+.tree{display:grid;gap:10px;margin-top:6px}
+.tree .row{display:grid;gap:10px;justify-items:center}
+.tree .r1{grid-template-columns:1fr}
+.tree .r2{grid-template-columns:1fr 1fr}
+.tree .r3{grid-template-columns:repeat(4,1fr)}
+.tree .lbl{font-family:var(--display);font-weight:800;font-size:.8em;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);text-align:center}
+.person{font:inherit;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:10px 12px;text-align:center;width:100%;max-width:260px}
+.person b{display:block}
+.person small{color:var(--soft);font-weight:700;font-variant-numeric:tabular-nums}
+.person.child{border-color:var(--red);background:var(--tint-red)}
+.person.dad,.person.pat{border-color:var(--blue)}
+.person.mom,.person.mat{border-color:var(--green)}
+.person[aria-pressed="true"]{box-shadow:0 0 0 4px var(--yellow)}
+.side{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.side .lbl{grid-column:1/-1}
+.tree-info{margin-top:12px}
+@media (max-width:620px){.tree .r3{grid-template-columns:1fr 1fr}}
+
+blockquote{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,1.4vw + .5rem,1.7rem);line-height:1.3;border-left:10px solid var(--red);padding:.2em 0 .2em .8em}
+cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weight:700;font-family:var(--body);font-size:.75em}
+
+/* „Manualul spune / Context” */
+.mc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;margin-top:18px;border:2px solid var(--line);border-radius:18px;overflow:hidden;background:var(--paper)}
+.mc > div{padding:14px 20px;min-width:0}
+.mc .m{background:var(--tint-yellow)}
+.mc .lab{display:block;font-family:var(--display);font-weight:800;font-size:.8em;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin-bottom:.3em}
+.mc .m p{font-style:italic}
+.mc p{margin:0 0 .4em}
+
+.quiz .item{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:14px 18px;margin-bottom:12px}
+.quiz .item p{margin:0;font-weight:700}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.reveal{font:inherit;font-weight:800;border:0;border-radius:12px;padding:.35em .9em;background:var(--tint-yellow);color:var(--ink);cursor:pointer}
+.reveal.hint{background:var(--tint-blue)}
+.ans{margin-top:8px;font-weight:800}
+.ans.a{color:var(--green)}
+.ans.h{color:var(--blue)}
+</style>
+<style>
+/* recap additions */
+.dossier{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.dossier .box{position:relative;padding-top:22px}
+.dossier .tag{position:absolute;top:-12px;left:16px;font-family:var(--display);font-weight:800;font-size:.8em;color:#fff;padding:.1em .7em;border-radius:99px}
+.dossier ul{margin:.2em 0 0;padding-left:1.1em}
+.dossier li{margin:.25em 0;font-size:.95em}
+.dossier h3{font-size:1.05em;margin-bottom:.3em}
+.svgwrap{overflow-x:auto;margin:6px 0}
+.svgwrap svg{width:100%;min-width:640px;height:auto;display:block}
+.rule{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:12px}
+.mono{font-variant-numeric:tabular-nums}
+/* time machine */
+.tm{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:18px;align-items:start}
+@media (max-width:760px){.tm{grid-template-columns:1fr}}
+.tm-in{display:grid;gap:12px}
+.tm-in label{font-weight:800}
+.tm-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tm-row input{font:inherit;font-weight:800;font-size:1.4em;width:6.5ch;padding:.2em .4em;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font-variant-numeric:tabular-nums}
+.seg{display:inline-flex;border:2px solid var(--line);border-radius:12px;overflow:hidden}
+.seg button{font:inherit;font-weight:800;border:0;padding:.4em .9em;background:var(--paper);color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--blue);color:#fff}
+.presets{display:flex;flex-wrap:wrap;gap:6px}
+.presets button{font:inherit;font-size:.85em;font-weight:700;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.2em .7em;cursor:pointer}
+.tm-out{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tm-out .cell{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 14px;min-width:0}
+.tm-out .cell span{display:block;font-size:.78em;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.tm-out .cell b{font-family:var(--display);font-size:1.35em;line-height:1.15;display:block}
+.tm-out .wide{grid-column:1/-1}
+/* quiz engine */
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.qmeta{display:flex;gap:6px;flex-wrap:wrap}
+.qmeta span{font-size:.8em;font-weight:800;padding:.15em .7em;border-radius:99px;background:var(--tint-purple)}
+.qmeta span.d{background:var(--tint-green)}
+.score{font-family:var(--display);font-weight:800;font-size:1.1em;font-variant-numeric:tabular-nums}
+.qprog{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:14px}
+.qprog i{display:block;height:100%;background:var(--green);width:0;transition:width .3s}
+.qcard{background:var(--paper);border:2px solid var(--line);border-radius:20px;padding:18px 22px}
+.qcard .stem{font-size:1.12em;font-weight:700;margin:0 0 12px}
+.opts{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.opts button{font:inherit;text-align:left;font-weight:700;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:14px;padding:10px 14px;cursor:pointer}
+.opts button.right{border-color:var(--green);background:var(--tint-green)}
+.opts button.wrong{border-color:var(--red);background:var(--tint-red);opacity:.75}
+.opts button:disabled{cursor:default}
+.numrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.numrow input{font:inherit;font-weight:800;font-size:1.2em;width:7ch;padding:.25em .5em;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+.act{font:inherit;font-weight:800;border:0;border-radius:12px;padding:.45em 1em;background:var(--blue);color:#fff;cursor:pointer}
+.act.sec{background:var(--tint-yellow);color:var(--ink)}
+.order-pool,.order-done{display:flex;flex-wrap:wrap;gap:8px;min-height:2.6em}
+.order-pool button,.order-done span{font:inherit;font-weight:700;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:.35em .8em}
+.order-pool button{cursor:pointer}
+.order-done span{background:var(--tint-blue);border-color:var(--blue)}
+.order-done span.bad{background:var(--tint-red);border-color:var(--red)}
+.order-done span.ok{background:var(--tint-green);border-color:var(--green)}
+.sort{display:grid;gap:8px}
+.sort .srow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border:2px solid var(--line);border-radius:12px;padding:6px 10px;background:var(--bg)}
+.sort .srow.ok{border-color:var(--green);background:var(--tint-green)}
+.sort .srow.bad{border-color:var(--red);background:var(--tint-red)}
+.fb{margin-top:12px;border-radius:14px;padding:10px 14px}
+.fb.h{background:var(--tint-blue)}
+.fb.ok{background:var(--tint-green)}
+.fb.no{background:var(--tint-red)}
+.qnav{display:flex;justify-content:flex-end;gap:8px;margin-top:12px;flex-wrap:wrap}
+.rank{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;margin:.1em 0}
+</style>
+
+<style>
+.cmp-wrap{overflow-x:auto}
+.cmp{width:100%;border-collapse:separate;border-spacing:0;background:var(--paper);border:2px solid var(--line);border-radius:18px;overflow:hidden;min-width:480px}
+.cmp th,.cmp td{padding:10px 14px;text-align:left;border-bottom:2px solid var(--line);vertical-align:top}
+.cmp tr:last-child td{border-bottom:0}
+.cmp th{font-family:var(--display);background:var(--tint-blue)}
+.cmp td:first-child{font-weight:800;width:32%}
+.path{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.path .box{text-align:center;padding:16px 12px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.hbars{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:8px 12px;align-items:center;margin:8px 0}
+.hbars span{font-weight:800;font-size:.9em}
+.hbars div{display:flex;align-items:center;gap:8px;min-width:0}
+.hbars i{display:block;height:28px;border-radius:6px;flex:none}
+.hbars b{font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:520px){.hbars{grid-template-columns:1fr}.hbars span{margin-top:4px}}
+.step small{display:block;font-weight:700;color:var(--soft);font-size:.72em}
+.sort .seg{flex-wrap:wrap}
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
+.duo>div{border-radius:18px;padding:14px 18px;min-width:0}
+.duo .man{background:var(--tint-yellow);border:2px solid var(--yellow)}
+.duo .ctx{background:var(--tint-green);border:2px solid var(--green)}
+.duo h3{font-size:1em;margin-bottom:.3em}
+.duo p{margin:.2em 0;font-size:.95em}
+.vocab{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:14px}
+.vocab div{background:var(--tint-purple);border-radius:14px;padding:10px 14px}
+.vocab b{color:var(--purple)}
+:root[data-theme="dark"] .vocab b{color:#CBB9FF}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .vocab b{color:#CBB9FF}}
+.fig{width:100%;height:auto;display:block;border-radius:16px}
+.fig text{fill:var(--ink);font-family:"Nunito",sans-serif;font-weight:800}
+.sky{width:100%;height:auto;display:block;border-radius:16px}
+.sky text{font-family:"Nunito",sans-serif;font-weight:800;fill:#FFFFFF}
+.steps{display:grid;gap:10px;counter-reset:s;margin:0;padding:0;list-style:none}
+.steps li{counter-increment:s;background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 14px 10px 54px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:30px;height:30px;border-radius:50%;background:var(--purple);color:#fff;display:grid;place-items:center;font-family:"Baloo 2",sans-serif;font-weight:800}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.ctrl button{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:.4em 1em;cursor:pointer}
+.ctrl button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.tbl{width:100%;border-collapse:collapse;background:var(--paper);border-radius:14px;overflow:hidden}
+.tbl th,.tbl td{padding:.5em .8em;border-bottom:2px solid var(--line);text-align:left}
+.tbl th{background:var(--tint-blue)}
+.scroll{overflow-x:auto}
+
+.levels{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:10px}
+.levels button{font:inherit;text-align:left;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:10px 14px}
+.levels button b{display:block;font-family:var(--display);font-size:1.05em}
+.levels button[aria-pressed="true"]{border-color:var(--blue);background:var(--tint-blue)}
+.calc{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0}
+.calc input,.calc select{font:inherit;font-weight:800;padding:.3em .5em;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);max-width:9em}
+.calc input[type=range]{max-width:none;flex:1;min-width:160px;padding:0}
+.out{background:var(--tint-yellow);border-radius:14px;padding:10px 16px;font-weight:700}
+.out b{font-family:var(--display);font-size:1.2em}
+</style>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Geografie, Unitatea 1, Lecția 2</p>
+   <h1>Orientarea și distanțele în orizontul apropiat</h1>
+   <p class="lead">Cum explici cuiva drumul până la tine acasă? Ce reper alegi? Și cum măsori 40 de metri cu o ruletă de 10 metri?</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="var(--tint-green)"/>
+   <path d="M30 180 C70 170 60 120 110 110 C160 100 150 50 190 40" stroke="#C9862A" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="2 16"/>
+   <rect x="160" y="22" width="40" height="34" rx="4" fill="var(--blue)"/><path d="M156 24 L180 8 L204 24Z" fill="#E2433A"/>
+   <circle cx="34" cy="180" r="14" fill="var(--yellow)" stroke="#fff" stroke-width="4"/>
+   <path d="M100 150 h40 M120 140 v20" stroke="var(--ink)" stroke-width="4"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 OBSERV -->
+<section class="slide" aria-label="Ce vrem să aflăm">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Observ</span>
+  <h2>Ionela, Ana și școala</h2>
+  <p>În manual, o imagine arată locuința Ionelei, locuința Anei și școala. Manualul întreabă: <b>care dintre cele două fete ajunge mai repede la școală, și de ce?</b></p>
+  <div class="tip y">🧠 Ca să răspunzi, ai nevoie de două lucruri: <b>direcția</b> (în ce parte e școala?) și <b>distanța</b> (cât de departe?). Despre ele e lecția de azi.</div>
+  <span class="badge" style="background:var(--red);margin-top:18px">Ancheta de azi</span>
+  <div class="q"><span class="mark" style="background:var(--blue)">1</span>Ce înseamnă să te orientezi?</div>
+  <div class="q"><span class="mark" style="background:var(--purple)">2</span>Ce este un reper bun?</div>
+  <div class="q"><span class="mark" style="background:var(--green)">3</span>Cu ce și în ce unități măsurăm distanțele?</div>
+ </div>
+</section>
+
+<!-- 3 ORIENTAREA -->
+<section class="slide" aria-label="Orientarea">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Rețin</span>
+  <h2>Ce înseamnă să te orientezi</h2>
+  <div class="tip p" style="margin-top:0;font-size:1.05em"><b>Orientarea</b> înseamnă să afli unde te afli, unde vrei să ajungi și în ce direcție trebuie să mergi.</div>
+  <div class="grid g4" style="margin-top:14px">
+   <div class="box" style="text-align:center"><span class="emo">⬅️</span><b>stânga</b></div>
+   <div class="box" style="text-align:center"><span class="emo">➡️</span><b>dreapta</b></div>
+   <div class="box" style="text-align:center"><span class="emo">⬆️</span><b>înainte</b> (în față)</div>
+   <div class="box" style="text-align:center"><span class="emo">⬇️</span><b>înapoi</b> (în spate)</div>
+  </div>
+  <div class="tip g">📍 <b>Repere.</b> Poziția unui loc se spune față de un element cunoscut de multă lume. Exemple din manual: „Dacă mergi spre Primărie, casa mea se află pe partea dreaptă a străzii.” sau „Școala este situată în spatele magazinului Orizont.”</div>
+  <div class="tip b">✉️ <b>E-mailul Biancăi:</b> Bianca i-a scris Alinei că blocul ei e „în fața mașinii”. Alina a găsit în e-mail trei greșeli de orientare. Una e ușor de văzut fără imagine: o mașină parcată nu e un reper bun. De ce?</div>
+ </div>
+</section>
+
+<!-- 4 STANGA CUI -->
+<section class="slide" aria-label="Stânga cui">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Explorăm</span>
+  <h2>Stânga cui?</h2>
+  <p>Alex stă în mijlocul curții. <b>Rotește-l</b> și răspunde la întrebare. Privește de sus, ca pe un plan.</p>
+  <div class="grid g2" style="align-items:start">
+   <svg class="fig" id="lr-svg" viewBox="0 0 300 300" role="img" aria-label="Alex în mijlocul curții, înconjurat de școală, parc, magazin și bloc" style="background:var(--tint-green)">
+    <rect x="105" y="10" width="90" height="50" rx="8" fill="#2F6FD6"/><text x="150" y="42" text-anchor="middle" font-size="18" style="fill:#fff">🏫 Școala</text>
+    <rect x="235" y="110" width="58" height="80" rx="8" fill="#2E9D52"/><text x="264" y="146" text-anchor="middle" font-size="22">🌳</text><text x="264" y="172" text-anchor="middle" font-size="14" style="fill:#fff">Parcul</text>
+    <rect x="95" y="240" width="110" height="50" rx="8" fill="#C9862A"/><text x="150" y="272" text-anchor="middle" font-size="17" style="fill:#fff">🛒 Magazinul</text>
+    <rect x="7" y="110" width="58" height="80" rx="8" fill="#6B4BC4"/><text x="36" y="146" text-anchor="middle" font-size="22">🏢</text><text x="36" y="172" text-anchor="middle" font-size="14" style="fill:#fff">Blocul</text>
+    <g id="lr-kid" style="transition:transform .4s;transform-origin:150px 150px">
+     <circle cx="150" cy="150" r="26" fill="#F2C9A0" stroke="#1E2340" stroke-width="3"/>
+     <path d="M150 104 L136 128 L164 128 Z" fill="#E2433A"/>
+     <circle cx="141" cy="144" r="3" fill="#1E2340"/><circle cx="159" cy="144" r="3" fill="#1E2340"/>
+    </g>
+   </svg>
+   <div>
+    <div class="ctrl"><button type="button" id="lr-left">↺ Rotește la stânga</button><button type="button" id="lr-right">↻ Rotește la dreapta</button></div>
+    <p id="lr-face" style="font-weight:800"></p>
+    <p id="lr-q" class="stem" style="font-size:1.1em;font-weight:800"></p>
+    <div class="opts" id="lr-opts"></div>
+    <div id="lr-fb" aria-live="polite"></div>
+    <div class="qnav" style="justify-content:flex-start"><button class="act sec" type="button" id="lr-new">Altă întrebare</button></div>
+   </div>
+  </div>
+  <div class="tip y">🧭 <b>Concluzie:</b> stânga și dreapta depind de încotro privești. Școala nu se mută, dar poate fi „în stânga” sau „în dreapta”. De aceea, în lecția 4, învățăm punctele cardinale: ele rămân mereu aceleași.</div>
+ </div>
+</section>
+
+<!-- 5 REPERE -->
+<section class="slide" aria-label="Repere bune">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Aplic</span>
+  <h2>Reper bun sau reper slab?</h2>
+  <p>Un reper bun <b>nu se mută</b>, se <b>vede ușor</b> și îl <b>cunosc mulți oameni</b>. Sortează:</p>
+  <div class="sort" id="sort-rep"></div>
+  <div class="qnav" style="justify-content:flex-start"><button class="act" type="button" data-check="sort-rep">Verifică</button><button class="act sec" type="button" data-reset="sort-rep">Ia de la capăt</button></div>
+  <div id="sort-rep-fb" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 6 DISTANTE -->
+<section class="slide" aria-label="Distanțele">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Rețin</span>
+  <h2>Distanțele: metri sau kilometri?</h2>
+  <div class="grid g2">
+   <div class="box"><span class="emo">📏</span><h3>În cartier sau într-un sat mic</h3><p>Distanțele se spun de obicei în <b>metri</b>. Le măsori cu <b>rigla</b>, <b>metrul</b> sau <b>ruleta</b>.</p></div>
+   <div class="box"><span class="emo">🛣️</span><h3>Când locurile sunt departe</h3><p>Distanțele se spun în <b>kilometri</b>. 1 km = 1&nbsp;000 m.</p></div>
+  </div>
+  <div class="tip y">⚽ <b>Problema lui Emil și Daniel:</b> au măsurat distanța dintre porțile terenului de sport: <b>40 m</b>. Ruleta lor măsura cel mult <b>10 m</b> o dată. Cum au făcut?</div>
+  <div class="quiz" style="margin-top:6px"><div class="item"><div class="btns"><button class="reveal hint" data-t="Gândește-te la un șnur de 10 m pe care îl întinzi, faci un semn la capăt, apoi îl muți.">Indiciu</button><button class="reveal" data-t="Au întins ruleta de 4 ori la rând, marcând de fiecare dată capătul: 4 × 10 m = 40 m.">Verifică</button></div></div></div>
+  <h3 style="margin-top:18px">🦶 Calculatorul de pași</h3>
+  <p>Emil a măsurat terenul și cu pasul. Pasul lui are <b>40 cm</b>. Dar pasul tău? Mută cursorul și alege distanța.</p>
+  <div class="calc">
+   <label for="step-len" style="font-weight:800">Pasul: <span id="step-val">40</span> cm</label>
+   <input type="range" id="step-len" min="30" max="80" value="40">
+   <label for="step-dist" style="font-weight:800">Distanța:</label>
+   <select id="step-dist"><option value="40">terenul de sport, 40 m</option><option value="110">strada Andrei, 110 m</option><option value="1000">1 kilometru</option></select>
+  </div>
+  <div class="out" id="step-out" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 7 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile lecției</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 8 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🧭</span><p><b>Orientarea</b>: știi unde ești, unde vrei să ajungi și încotro să mergi.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">📍</span><p>Folosim <b>stânga, dreapta, înainte, înapoi</b> și <b>repere</b> care nu se mută.</p></div>
+   <div class="box" style="border-color:var(--purple)"><span class="emo">📏</span><p>Distanțele se măsoară în <b>metri</b> sau <b>kilometri</b>, cu riglă, metru sau ruletă.</p></div>
+  </div>
+  <div class="tip y">🗺️ <b>Urmează:</b> cum desenăm spațiile pe un plan (lecția 3).</div>
+ </div>
+</section>
+
+</main>
+
+
+<nav class="bar" aria-label="Navigare prezentare">
+ <a class="home" href="../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
+ <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
+ <div class="dots" id="dots"></div>
+ <span class="count" id="count"></span>
+ <button class="nav" id="next" aria-label="Slide-ul următor">→</button>
+</nav>
+<script>
+(function(){
+  var KEY='geo-l2-slide';
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
+  var cur=0;
+  slides.forEach(function(s,i){var b=document.createElement('button');b.setAttribute('aria-label','Mergi la slide-ul '+(i+1));b.onclick=function(){go(i)};dots.appendChild(b);});
+  function go(i){
+    if(i<0||i>=slides.length)return;
+    slides[cur].classList.remove('active');dots.children[cur].classList.remove('on');
+    cur=i;slides[cur].classList.add('active');dots.children[cur].classList.add('on');slides[cur].scrollTop=0;
+    prev.disabled=cur===0;next.disabled=cur===slides.length-1;count.textContent=(cur+1)+' / '+slides.length;
+    
+  }
+  prev.onclick=function(){go(cur-1)};next.onclick=function(){go(cur+1)};
+  document.addEventListener('keydown',function(e){
+    var t=e.target&&e.target.tagName;if(t==='INPUT'||t==='TEXTAREA')return;
+    if(e.key==='ArrowRight'||e.key==='PageDown')go(cur+1);
+    if(e.key==='ArrowLeft'||e.key==='PageUp')go(cur-1);
+  });
+  var sx=null,deck=document.getElementById('deck');
+  deck.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  deck.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>60&&!(e.target.closest&&e.target.closest('.svgwrap')))go(cur+(dx<0?1:-1));sx=null;},{passive:true});
+  var start=0;
+  slides[0].classList.add('active');dots.children[0].classList.add('on');go(start);
+
+  
+  document.querySelectorAll('.reveal').forEach(function(b){
+    var d=document.createElement('div');d.className='ans '+(b.classList.contains('hint')?'h':'a');d.hidden=true;
+    d.textContent=(b.classList.contains('hint')?'💡 ':'✅ ')+b.getAttribute('data-t');
+    b.parentNode.parentNode.appendChild(d);var label=b.textContent;
+    b.onclick=function(){d.hidden=!d.hidden;b.textContent=d.hidden?label:'Ascunde';};
+  });
+/* ---------- missions ---------- */
+    var SORTERS={
+   'sort-rep':{cats:{b:'reper bun',r:'reper slab'},items:[
+     ['Primăria','b'],['O mașină parcată','r'],['Biserica din centru','b'],['Un nor ciudat','r'],['Școala ta','b'],['Câinele vecinului','r'],['Statuia din parc','b'],['„Un copac”, într-o pădure','r']],
+    expl:'Repere bune: Primăria, biserica, școala, statuia. Nu se mută și le știe multă lume. Repere slabe: mașina pleacă, norul se schimbă, câinele aleargă, iar „un copac” într-o pădure nu spune nimic, pentru că sunt sute.'}
+  };
+  var Q=[
+   {t:'mcq',tags:['L2'],d:'Logică',q:'Alex stă cu fața spre Doru. Ana e în dreapta lui Alex. Doru se întoarce cu fața spre Alex. De ce parte a lui Doru este Ana?',o:['În dreapta lui Doru','În stânga lui Doru','În spatele lui Doru','Nu se poate ști'],a:1,h:'Când doi oameni stau față în față, dreapta unuia este stânga celuilalt. Încearcă cu cineva din familie!',e:'În stânga lui Doru. Față în față, dreapta și stânga se inversează. De aceea, pentru orientare, folosim repere fixe și, mai târziu, punctele cardinale.'},
+   {t:'num',tags:['L2'],d:'Matematică',q:'Emil a mers de la o poartă a terenului la cealaltă: 40 m. Un pas al lui are 40 cm. Câți pași a făcut?',a:100,h:'Transformă 40 m în centimetri: 1 m = 100 cm. Apoi împarte la 40.',e:'40 m = 4 000 cm. 4 000 : 40 = 100 de pași.'},
+   {t:'mcq',tags:['L2'],d:'Gândire',q:'De ce distanța măsurată cu pasul e mai puțin exactă decât cea măsurată cu ruleta?',o:['Pentru că pașii nu sunt toți la fel de lungi și diferă de la om la om','Pentru că ruleta e mai scumpă','Pentru că pașii se măsoară în kilometri','Nu e mai puțin exactă'],a:0,h:'Ar face un adult și un copil același număr de pași pe același teren?',e:'Pașii diferă de la un om la altul și chiar de la un pas la altul. Ruleta are diviziuni egale, deci măsoară la fel pentru oricine. De aceea s-au inventat unitățile de măsură standard, ca metrul.'},
+   {t:'mcq',tags:['L2'],d:'Matematică',q:'De ce nu e potrivită rigla de 30 cm pentru a măsura distanța de la tablă la ultima bancă (8 m)?',o:['Rigla nu măsoară în metri','Ar trebui pusă de aproape 27 de ori, iar fiecare mutare adaugă o mică greșeală','Rigla e prea grea','Distanța e prea mică'],a:1,h:'8 m = 800 cm. Câte rigle de 30 cm încap?',e:'800 : 30 ≈ 27 de mutări. La fiecare mutare poți greși cu câțiva milimetri, iar greșelile se adună. Pentru distanțe mari se folosește ruleta sau metrul.'},
+   {t:'mcq',tags:['L2'],d:'Unități',q:'Care distanță se exprimă cel mai potrivit în kilometri?',o:['lungimea clasei','de la tablă la ușă','de acasă până la bunicii din alt oraș','lungimea terenului de sport'],a:2,h:'Kilometrii sunt pentru locuri depărtate.',e:'Drumul până în alt oraș are zeci sau sute de kilometri. Celelalte distanțe au câțiva metri sau câteva zeci de metri.'},
+   {t:'mcq',tags:['L2','Istorie L1'],d:'Istorie',q:'Înainte de metru, oamenii măsurau cu palma, cotul sau pasul. Ce problemă aveau?',o:['Nicio problemă','Fiecare om avea alte măsuri, deci rezultatele nu se potriveau','Nu știau să numere','Măsurau doar noaptea'],a:1,h:'Ai calculat deja: un pas de 40 cm față de unul de 60 cm.',e:'Mâinile și pașii oamenilor diferă. Metrul a apărut în Franța, pe la 1790–1800, ca o unitate egală pentru toți. Măsura e și ea o descoperire cu istorie!'},
+   {t:'mcq',tags:['L2'],d:'Orientare',q:'Care e cea mai bună descriere a drumului până la casa ta?',o:['„Mergi drept, apoi o iei la stânga.”','„De la Primărie mergi spre biserică; casa mea e a treia pe dreapta, după farmacie.”','„E lângă o mașină roșie.”','„E aproape.”'],a:1,h:'Caută descrierea cu repere fixe și cu un punct de plecare clar.',e:'Are un punct de plecare (Primăria), o direcție (spre biserică), repere fixe (farmacia) și o poziție exactă (a treia pe dreapta). Prima variantă nu spune de unde pleci.'},
+   {t:'num',tags:['L2','Matematică'],d:'Matematică',q:'Strada lui Andrei are 110 m. Câți metri parcurge el dacă merge pe toată strada de 3 ori, dus și întors?',a:660,h:'Un dus și un întors înseamnă de 2 ori strada. Și asta se repetă de 3 ori.',e:'110 × 2 × 3 = 660 m. Este mai mult de jumătate de kilometru.'}
+  ];
+
+
+  (function(){
+    Object.keys(SORTERS).forEach(function(id){
+      var S=SORTERS[id],host=document.getElementById(id),fb=document.getElementById(id+'-fb'),ans={};
+      function build(){ans={};fb.innerHTML='';host.innerHTML=S.items.map(function(it,i){return '<div class="srow" data-i="'+i+'"><span style="font-weight:700">'+it[0]+'</span><div class="seg">'+Object.keys(S.cats).map(function(k){return '<button type="button" aria-pressed="false" data-v="'+k+'">'+S.cats[k]+'</button>'}).join('')+'</div></div>'}).join('');
+        host.querySelectorAll('.srow').forEach(function(r){var i=r.getAttribute('data-i');r.querySelectorAll('button').forEach(function(b){b.onclick=function(){ans[i]=b.getAttribute('data-v');r.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});r.classList.remove('ok','bad');};});});}
+      document.querySelector('[data-check="'+id+'"]').onclick=function(){
+        if(Object.keys(ans).length<S.items.length){fb.innerHTML='<div class="fb h">Alege o variantă pentru fiecare rând.</div>';return;}
+        var n=0;host.querySelectorAll('.srow').forEach(function(r){var i=r.getAttribute('data-i'),g=ans[i]===S.items[i][1];if(g)n++;r.classList.toggle('ok',g);r.classList.toggle('bad',!g);});
+        fb.innerHTML='<div class="fb '+(n===S.items.length?'ok':'h')+'"><b>'+n+' din '+S.items.length+'.</b> '+S.expl+'</div>';
+      };
+      document.querySelector('[data-reset="'+id+'"]').onclick=build;
+      build();
+    });
+  })();
+
+  (function(){
+    var O=['Școala','Parcul','Magazinul','Blocul'],R=['în fața','în dreapta','în spatele','în stânga'];
+    var f=0,rot=0,cur=null,kid=document.getElementById('lr-kid');
+    function setFace(){kid.style.transform='rotate('+rot+'deg)';document.getElementById('lr-face').textContent='Alex privește spre: '+O[f]+'.';}
+    function ask(){var rel=1+Math.floor(Math.random()*3);cur=rel;document.getElementById('lr-q').textContent='Ce se află '+R[rel]+' lui Alex?';document.getElementById('lr-fb').innerHTML='';
+      var box=document.getElementById('lr-opts');box.innerHTML=O.map(function(o,i){return '<button type="button" data-i="'+i+'">'+o+'</button>'}).join('');
+      box.querySelectorAll('button').forEach(function(b){b.onclick=function(){var i=+b.getAttribute('data-i'),ok=i===(f+cur)%4;
+        b.classList.add(ok?'right':'wrong');
+        document.getElementById('lr-fb').innerHTML='<div class="fb '+(ok?'ok':'h')+'">'+(ok?'✅ Corect! ':'💡 Nu încă. ')+(ok?'Acum rotește-l pe Alex și apasă „Altă întrebare”.':'Imaginează-ți că ești în locul lui Alex, cu fața spre '+O[f].toLowerCase()+'. Ridică mâna dreaptă.')+'</div>';};});}
+    document.getElementById('lr-left').onclick=function(){f=(f+3)%4;rot-=90;setFace();ask();};
+    document.getElementById('lr-right').onclick=function(){f=(f+1)%4;rot+=90;setFace();ask();};
+    document.getElementById('lr-new').onclick=ask;
+    setFace();ask();
+    var sl=document.getElementById('step-len'),sd=document.getElementById('step-dist'),so=document.getElementById('step-out');
+    function calc(){var p=+sl.value,d=+sd.value;document.getElementById('step-val').textContent=p;var n=Math.round(d*100/p);
+      so.innerHTML=d+' m = '+(d*100).toLocaleString('ro-RO')+' cm. '+(d*100).toLocaleString('ro-RO')+' : '+p+' ≈ <b>'+n.toLocaleString('ro-RO')+' de pași</b>. '+(p===40&&d===40?'Exact ca Emil!':'Un pas mai lung înseamnă mai puțini pași. De aceea pasul nu e o unitate de măsură sigură.');}
+    sl.oninput=calc;sd.onchange=calc;calc();
+  })();
+  var host=document.getElementById('qhost'),bar=document.getElementById('qbar'),sc=document.getElementById('qscore');
+  var qi=0,score=0,MAX=Q.length*2;
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  function setScore(){sc.textContent=score+(score===1?' punct':' puncte');}
+  function render(){
+    bar.style.width=(qi/Q.length*100)+'%';
+    if(qi>=Q.length)return finish();
+    var q=Q[qi],tries=0,done=false;
+    var h='<div class="qcard"><div class="qtop" style="margin-bottom:6px"><div class="qmeta">'+q.tags.map(function(t){return '<span>'+t+'</span>'}).join('')+'<span class="d">'+q.d+'</span></div><span style="color:var(--soft);font-weight:800" class="mono">'+(qi+1)+' / '+Q.length+'</span></div><p class="stem">'+esc(q.q)+'</p><div id="qbody"></div><div id="qfb"></div><div class="qnav"><button class="act sec" id="qhint" type="button">💡 Indiciu</button><button class="act" id="qnext" type="button" hidden>Misiunea următoare →</button></div></div>';
+    host.innerHTML=h;
+    var body=document.getElementById('qbody'),fb=document.getElementById('qfb'),hint=document.getElementById('qhint'),nx=document.getElementById('qnext');
+    var hinted=false;
+    hint.onclick=function(){hinted=true;showFb('h','💡 '+q.h);hint.hidden=true;};
+    nx.onclick=function(){qi++;render();};
+    function showFb(k,txt){fb.innerHTML='<div class="fb '+k+'">'+txt+'</div>';}
+    function finishQ(ok){
+      done=true;var pts=ok?(tries===0&&!hinted?2:1):0;score+=pts;setScore();
+      showFb(ok?'ok':'no',(ok?'✅ <b>Corect! +'+pts+(pts===1?' punct':' puncte')+'</b> ':'🔎 <b>Răspunsul corect:</b> ')+esc(q.e));
+      hint.hidden=true;nx.hidden=false;nx.textContent=qi===Q.length-1?'Vezi rezultatul →':'Misiunea următoare →';nx.focus();
+    }
+    function miss(){
+      tries++;
+      if(tries>=2)return finishQ(false);
+      showFb('no','Nu încă. '+(hinted?'Mai citește indiciul și încearcă din nou.':'💡 '+q.h));hinted=true;hint.hidden=true;
+    }
+    if(q.t==='mcq'){
+      body.innerHTML='<div class="opts">'+q.o.map(function(o,i){return '<button type="button" data-i="'+i+'">'+esc(o)+'</button>'}).join('')+'</div>';
+      var bs=body.querySelectorAll('button');
+      bs.forEach(function(b){b.onclick=function(){
+        if(done)return;var i=+b.getAttribute('data-i');
+        if(i===q.a){b.classList.add('right');bs.forEach(function(x){x.disabled=true});finishQ(true);}
+        else{b.classList.add('wrong');b.disabled=true;miss();if(done){bs[q.a].classList.add('right');bs.forEach(function(x){x.disabled=true});}}
+      }});
+    }
+    if(q.t==='num'){
+      body.innerHTML='<div class="numrow"><input id="qnum" type="number" inputmode="numeric" aria-label="Răspunsul tău"><span style="font-weight:800">ani</span><button class="act" id="qcheck" type="button">Verifică</button></div>';
+      var inp=document.getElementById('qnum'),ck=document.getElementById('qcheck');
+      function chk(){if(done)return;var v=parseInt(inp.value,10);if(isNaN(v)){showFb('h','Scrie mai întâi un număr.');return;}if(v===q.a){finishQ(true);ck.disabled=true;inp.disabled=true;}else{miss();if(done){ck.disabled=true;inp.disabled=true;}}}
+      ck.onclick=chk;inp.addEventListener('keydown',function(e){if(e.key==='Enter')chk();});
+    }
+    if(q.t==='order'){
+      var picked=[];
+      body.innerHTML='<p style="margin:.2em 0;font-weight:800;color:var(--soft)">De ales:</p><div class="order-pool" id="opool"></div><p style="margin:.6em 0 .2em;font-weight:800;color:var(--soft)">Ordinea ta:</p><div class="order-done" id="odone"></div><div class="qnav" style="justify-content:flex-start"><button class="act sec" id="oreset" type="button">Ia de la capăt</button></div>';
+      var pool=document.getElementById('opool'),dn=document.getElementById('odone');
+      function draw(){
+        pool.innerHTML='';shuffledO.forEach(function(it){if(picked.indexOf(it)>-1)return;var b=document.createElement('button');b.type='button';b.textContent=it;b.onclick=function(){if(done)return;picked.push(it);draw();if(picked.length===q.items.length)check();};pool.appendChild(b);});
+        dn.innerHTML=picked.map(function(p){return '<span>'+esc(p)+'</span>'}).join('')||'<span style="opacity:.5">…</span>';
+      }
+      function check(){
+        var ok=picked.every(function(p,i){return p===q.items[i]});
+        var sp=dn.querySelectorAll('span');picked.forEach(function(p,i){sp[i].classList.add(p===q.items[i]?'ok':'bad')});
+        if(ok)finishQ(true);else{miss();if(!done){setTimeout(function(){picked=[];draw();},1200);}}
+      }
+      var shuffledO=shuffle(q.items);
+      document.getElementById('oreset').onclick=function(){if(done)return;picked=[];draw();};
+      draw();
+    }
+    if(q.t==='sort'){
+      body.innerHTML='<div class="sort">'+q.items.map(function(it,i){return '<div class="srow" data-i="'+i+'"><span style="font-weight:700">'+esc(it[0])+'</span><div class="seg"><button type="button" aria-pressed="false" data-v="s">'+((q.labels&&q.labels.s)||'scrisă')+'</button><button type="button" aria-pressed="false" data-v="n">'+((q.labels&&q.labels.n)||'nescrisă')+'</button></div></div>'}).join('')+'</div><div class="qnav" style="justify-content:flex-start"><button class="act" id="scheck" type="button">Verifică sortarea</button></div>';
+      var ans={};
+      body.querySelectorAll('.srow').forEach(function(r){var i=r.getAttribute('data-i');r.querySelectorAll('button').forEach(function(b){b.onclick=function(){if(done)return;ans[i]=b.getAttribute('data-v');r.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});r.classList.remove('ok','bad');};});});
+      document.getElementById('scheck').onclick=function(){
+        if(done)return;
+        if(Object.keys(ans).length<q.items.length){showFb('h','Alege o variantă pentru fiecare rând.');return;}
+        var ok=true;body.querySelectorAll('.srow').forEach(function(r){var i=r.getAttribute('data-i');var g=ans[i]===q.items[i][1];if(!g)ok=false;r.classList.toggle('ok',g);r.classList.toggle('bad',!g);});
+        if(ok)finishQ(true);else miss();
+        if(done)document.getElementById('scheck').disabled=true;
+      };
+    }
+  }
+  function finish(){
+    bar.style.width='100%';
+    var p=score/MAX,r=p>=.85?['Istoric de top','🏆','Ai făcut legături între lecții ca un adevărat istoric.']:p>=.6?['Cronicar','📜','Foarte bine! Mai treci o dată prin misiunile la care ai pierdut puncte.']:p>=.35?['Arhivist','🗂️','Bun început. Întoarce-te la Mașina timpului și la regulile secolelor, apoi reîncearcă.']:['Ucenic de istoric','🔍','Recitește Dosarul pe scurt și slide-ul cu erele, apoi mai încearcă o dată.'];
+    host.innerHTML='<div class="qcard" style="text-align:center"><div style="font-size:3em">'+r[1]+'</div><p style="margin:0;font-weight:800;color:var(--soft)">Rangul tău</p><p class="rank">'+r[0]+'</p><p class="mono" style="font-weight:800;font-size:1.2em">'+score+' din '+MAX+' puncte</p><p>'+r[2]+'</p><p style="color:var(--soft);font-size:.9em">2 puncte din prima încercare, fără indiciu · 1 punct cu indiciu sau din a doua încercare</p><button class="act" id="qagain" type="button">Joacă din nou</button></div>';
+    document.getElementById('qagain').onclick=function(){qi=0;score=0;setScore();render();};
+  }
+  setScore();render();
+})();
+</script>
+</body>
+</html>
