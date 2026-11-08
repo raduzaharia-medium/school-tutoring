@@ -1,5 +1,11 @@
-<!doctype html><html lang="ro"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
-</head><body>
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
+</head>
+<body>
 <title>Dosarul Timpului</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -141,6 +147,16 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 .ans{margin-top:8px;font-weight:800}
 .ans.a{color:var(--green)}
 .ans.h{color:var(--blue)}
+
+.rebus{display:grid;gap:8px}
+.rebus .rw{display:grid;grid-template-columns:minmax(0,1fr) minmax(130px,220px);gap:10px;align-items:center;background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:8px 12px}
+.rebus .rw.ok{border-color:var(--green);background:var(--tint-green)}
+.rebus .rw.bad{border-color:var(--red);background:var(--tint-red)}
+.rebus input{font:inherit;font-weight:800;text-transform:uppercase;padding:.25em .5em;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+.rebus .key{color:var(--red)}
+@media (max-width:520px){.rebus .rw{grid-template-columns:1fr}}
+.calc{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0}
+.calc input,.calc select{font:inherit;font-weight:800;padding:.3em .5em;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);width:7em}
 </style>
 <style>
 /* recap additions */
@@ -208,72 +224,76 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 .rank{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;margin:.1em 0}
 </style>
 
+<style>
+.minbtns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.minbtns button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.35em .9em}
+.minbtns button[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+.threadgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.threadgrid .box{padding:12px 16px}
+.threadgrid .box b{display:block;font-family:var(--display);color:var(--soft);font-size:.85em;letter-spacing:.05em}
+.threadgrid .box p{margin:.2em 0 0}
+</style>
 <main class="deck" id="deck">
-
 <!-- 1 COPERTA -->
 <section class="slide" aria-label="Copertă">
  <div class="wrap cover">
   <div>
    <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
-   <p style="font-weight:800;color:var(--soft);margin:0">Istorie, Unitatea 1 · Recapitulare lecțiile 1–4</p>
+   <p style="font-weight:800;color:var(--soft);margin:0">Istorie · Recapitularea Unității 1, „Trecutul și prezentul din jurul nostru” · lecțiile 1–7 · manual pp. 32–35</p>
    <h1>Dosarul Timpului</h1>
-   <p class="lead">Patru lecții, un singur dosar. Recapitulăm pe scurt, antrenăm erele și secolele, apoi urmează 17 misiuni care leagă lecțiile între ele, dar și cu matematica, știința și limba română.</p>
+   <p class="lead">Tot ce îți trebuie pentru testul de la finalul unității: ce conține fiecare lecție, erele, secolele și epocile, exercițiile din recapitularea manualului și un quiz mare, cu întrebările din evaluare.</p>
    <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
   </div>
-  <svg viewBox="0 0 220 240" aria-hidden="true">
-   <rect x="30" y="40" width="160" height="180" rx="12" fill="#C9862A"/>
-   <path d="M30 52 Q30 40 42 40 H90 L102 26 H178 Q190 26 190 38 V52Z" fill="#8A5A2B"/>
-   <rect x="44" y="62" width="132" height="146" rx="8" fill="var(--paper)"/>
-   <text x="110" y="92" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="800" font-size="20" fill="var(--ink)">STRICT</text>
-   <text x="110" y="114" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="800" font-size="20" fill="#E2433A">ISTORIC</text>
-   <line x1="60" y1="134" x2="160" y2="134" stroke="var(--line)" stroke-width="4"/>
-   <line x1="60" y1="150" x2="140" y2="150" stroke="var(--line)" stroke-width="4"/>
-   <line x1="60" y1="166" x2="150" y2="166" stroke="var(--line)" stroke-width="4"/>
-   <circle cx="150" cy="186" r="30" fill="none" stroke="#2F6FD6" stroke-width="7"/>
-   <line x1="171" y1="207" x2="196" y2="232" stroke="#2F6FD6" stroke-width="9" stroke-linecap="round"/>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="20" y="30" width="180" height="170" rx="14" fill="#8A5A2B"/>
+   <rect x="34" y="20" width="152" height="160" rx="10" fill="#C9862A"/>
+   <rect x="46" y="10" width="128" height="150" rx="8" fill="var(--paper)"/>
+   <g font-family="Baloo 2, sans-serif" font-weight="800" font-size="15" fill="var(--ink)">
+    <text x="58" y="38">L1 · L2 · L3 · L4</text><text x="58" y="60">L5 · L6 · L7</text>
+   </g>
+   <g stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M62 84 C90 100 120 74 156 94" stroke="#E2433A"/>
+    <path d="M62 104 C90 120 120 94 156 114" stroke="#2F6FD6"/>
+    <path d="M62 124 C90 140 120 114 156 134" stroke="#2E9D52"/>
+   </g>
   </svg>
  </div>
 </section>
 
 <!-- 2 DOSARUL -->
-<section class="slide" aria-label="Dosarul pe scurt">
+<section class="slide" aria-label="Unitatea pe scurt">
  <div class="wrap">
-  <span class="badge" style="background:var(--red)">Dosarul pe scurt</span>
-  <h2>Ce conține dosarul</h2>
+  <span class="badge" style="background:var(--red)">Unitatea pe scurt</span>
+  <h2>Șapte lecții, pe o pagină</h2>
   <div class="dossier">
-   <div class="box"><span class="tag" style="background:var(--blue)">L1 · Ce este istoria?</span>
-    <ul>
-     <li><b>Istoria</b> este știința care studiază evoluția societății omenești, de la origini până azi.</li>
-     <li><b>Istoricii</b> interpretează, <b>arheologii</b> descoperă și datează.</li>
-     <li>Surse <b>scrise</b>: documente, hărți, inscripții, monede. Surse <b>nescrise</b>: arme, podoabe, vase de ceramică.</li>
-     <li>Le găsim în <b>muzee</b>, <b>biblioteci</b>, <b>arhive</b>.</li>
-    </ul></div>
-   <div class="box"><span class="tag" style="background:var(--green)">L2 · Timpul și locul</span>
-    <ul>
-     <li>Orice eveniment are o <b>dată istorică</b> (când) și un <b>loc</b> (unde, pe hartă).</li>
-     <li><b>Cronologie</b> = evenimentele în ordinea în care s-au petrecut.</li>
-     <li>2 <b>ere</b> (î.H. / d.H.), 5 <b>epoci</b>.</li>
-     <li><b>Mediul geografic</b> modelează casele și ocupațiile oamenilor.</li>
-    </ul></div>
-   <div class="box"><span class="tag" style="background:var(--yellow);color:#1E2340">L3 · Familia</span>
-    <ul>
-     <li>Familia are la bază legături de <b>căsătorie</b> și <b>rudenie</b>.</li>
-     <li>Familie <b>restrânsă</b> sau <b>extinsă</b>.</li>
-     <li>Evenimentele lasă <b>documente</b>: certificat de naștere, de căsătorie, diplomă, titlu de proprietate.</li>
-     <li><b>Arborele genealogic</b> arată generațiile.</li>
-    </ul></div>
-   <div class="box"><span class="tag" style="background:var(--purple)">L4 · Comunitatea</span>
-    <ul>
-     <li>Comunitatea <b>locală</b> face parte din comunitatea <b>națională</b>.</li>
-     <li><b>Minoritățile naționale</b>: maghiari, germani, sârbi, ucraineni, turci, tătari, romi ș.a.</li>
-     <li>Așezările depind de factori <b>geografici</b> și <b>istorici</b>.</li>
-     <li>Istoria unei localități se scrie într-o <b>monografie</b>.</li>
-    </ul></div>
+   <div class="box"><span class="tag" style="background:var(--blue)">L1 · Ce este istoria?</span><ul><li>Știința despre trecutul omenirii.</li><li>Istorici și arheologi.</li><li>Izvoare <b>scrise</b> și <b>nescrise</b>; muzee, biblioteci, arhive.</li></ul></div>
+   <div class="box"><span class="tag" style="background:var(--green)">L2 · Timpul și locul</span><ul><li>Dată istorică, <b>cronologie</b>.</li><li>2 <b>ere</b>, 5 <b>epoci</b>, secole, milenii.</li><li><b>Mediul geografic</b> modelează viața.</li></ul></div>
+   <div class="box"><span class="tag" style="background:var(--yellow);color:#1E2340">L3 · Familia</span><ul><li>Rudenie și căsătorie.</li><li>Evenimente → <b>documente</b> (certificate, diplomă).</li><li><b>Arborele genealogic</b>.</li></ul></div>
+   <div class="box"><span class="tag" style="background:var(--purple)">L4 · Comunitatea</span><ul><li>Locală → națională.</li><li><b>Minoritățile</b> naționale.</li><li><b>Monografia</b> localității.</li></ul></div>
+   <div class="box"><span class="tag" style="background:var(--red)">L5 · Copilăria</span><ul><li>Ieri: muncă, puțină școală.</li><li>Azi: joc și studiu.</li><li><b>Convenția</b> drepturilor copilului, 1989.</li></ul></div>
+   <div class="box"><span class="tag" style="background:#8A5A2B">L6 · Popoarele</span><ul><li>Familie → comunitate → <b>popor</b>.</li><li>Latini, germanici, slavi.</li><li>Cele mai multe popoare s-au format în <b>Evul Mediu</b>.</li></ul></div>
+   <div class="box"><span class="tag" style="background:#2F6FD6">L7 · Călătorii</span><ul><li>Marco Polo, Columb, Magellan.</li><li>Milescu, Csoma de Kőrös, Badea Cârțan, Racoviță.</li><li>Gagarin (1961), Apollo 11 (1969).</li></ul></div>
   </div>
-  <div class="tip y">🧩 <b>Firul roșu:</b> toate patru lecțiile răspund la aceleași întrebări din „steluța” de la lecția 1: <b>Cine? Ce? Când? Unde? Cum?</b> La misiuni, verifică mereu la care dintre ele răspunzi.</div>
  </div>
 </section>
 
+<!-- 3 FIRELE -->
+<section class="slide" aria-label="Firele care leagă lecțiile">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Firele roșii</span>
+  <h2>Ce leagă cele șapte lecții?</h2>
+  <p>Aceleași cinci idei apar în fiecare dintre cele șapte lecții, de fiecare dată în altă formă. <b>Alege un fir</b> și urmărește-l prin dosar.</p>
+  <div class="minbtns" id="threads">
+   <button type="button" aria-pressed="true" data-i="0">⏳ Timpul</button>
+   <button type="button" aria-pressed="false" data-i="1">📍 Locul</button>
+   <button type="button" aria-pressed="false" data-i="2">📜 Dovezile</button>
+   <button type="button" aria-pressed="false" data-i="3">👥 Oamenii împreună</button>
+   <button type="button" aria-pressed="false" data-i="4">🔄 Schimbarea</button>
+  </div>
+  <div class="threadgrid" id="threadgrid" aria-live="polite"></div>
+  <div class="tip y" id="threadq"></div>
+ </div>
+</section>
 <!-- 3 ERELE SI SECOLELE -->
 <section class="slide" aria-label="Erele și secolele">
  <div class="wrap">
@@ -342,7 +362,7 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
   <div class="tip g">🧠 <b>Observă granițele:</b> secolul de la capătul unei epoci este și începutul următoarei (sec. I î.H., sec. VII, sec. XX). De aceea istoricii spun „la granița dintre două epoci”.</div>
   <div class="mc">
    <div class="m"><span class="lab">📘 Manualul spune</span><p>Antichitatea: sec. I î.H. – sec. VII d.H.</p><p style="font-style:normal;font-size:.9em">La școală, folosește limitele din manual.</p></div>
-   <div><span class="lab">🌍 Context</span><p>În istoria lumii, mulți istorici încep Antichitatea odată cu <b>apariția scrisului</b>, acum circa 5000 de ani, în Mesopotamia și Egipt. Limitele din manual se potrivesc mai bine cu istoria teritoriului nostru. Vei da peste această diferență la una dintre misiuni.</p></div>
+   <div><span class="lab">🌍 Context</span><p>În istoria lumii, mulți istorici încep Antichitatea odată cu <b>apariția scrisului</b>, acum circa 5000 de ani, în Mesopotamia și Egipt. Limitele din manual se potrivesc mai bine cu istoria teritoriului nostru. Amintește-ți de piramidele egiptene din primul dosar.</p></div>
   </div>
  </div>
 </section>
@@ -357,20 +377,22 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
    <div class="tm-in">
     <label for="tm-year">Anul</label>
     <div class="tm-row">
-     <input id="tm-year" type="number" min="1" max="9999" value="1859" inputmode="numeric">
+     <input id="tm-year" type="number" min="1" max="9999" value="842" inputmode="numeric">
      <div class="seg" id="tm-era"><button type="button" aria-pressed="false" data-e="ih">î.H.</button><button type="button" aria-pressed="true" data-e="dh">d.H.</button></div>
      <button class="act" id="tm-go" type="button">Calculează</button>
     </div>
     <div><p style="margin:.2em 0;font-weight:800;color:var(--soft)">Ani din lecțiile noastre:</p>
      <div class="presets" id="tm-presets">
-      <button type="button" data-y="44" data-e="ih">44 î.H. Burebista</button>
-      <button type="button" data-y="106" data-e="dh">106 Traian</button>
+      <button type="button" data-y="52" data-e="ih">52 î.H. Vercingetorix</button>
+      <button type="button" data-y="602" data-e="dh">602 slavii</button>
+      <button type="button" data-y="842" data-e="dh">842 documentul francez</button>
+      <button type="button" data-y="1000" data-e="dh">1000 capcană!</button>
+      <button type="button" data-y="1301" data-e="dh">1301 otomanii</button>
+      <button type="button" data-y="1492" data-e="dh">1492 Columb</button>
+      <button type="button" data-y="1508" data-e="dh">1508 prima carte tipărită la noi</button>
+      <button type="button" data-y="1961" data-e="dh">1961 Gagarin</button>
       <button type="button" data-y="1817" data-e="dh">1817 Kogălniceanu</button>
-      <button type="button" data-y="1859" data-e="dh">1859 Unirea</button>
-      <button type="button" data-y="1900" data-e="dh">1900 capcană!</button>
-      <button type="button" data-y="1918" data-e="dh">1918 Marea Unire</button>
-      <button type="button" data-y="1969" data-e="dh">1969 Luna</button>
-      <button type="button" data-y="2010" data-e="dh">2010 Andrei</button>
+      <button type="button" data-y="1989" data-e="dh">1989 Convenția</button>
      </div></div>
    </div>
    <div class="tm-out" id="tm-out" aria-live="polite">
@@ -382,6 +404,37 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
     <div class="cell wide" style="background:var(--tint-yellow)"><span>Cum s-a calculat</span><p id="o-how" style="margin:.2em 0 0;font-weight:700">Alege un an și apasă Calculează.</p></div>
    </div>
   </div>
+ </div>
+</section>
+
+<!-- SECOLE TABEL -->
+<section class="slide" aria-label="Anii fiecărui secol">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Recapitulare · ex. 2, p. 32</span>
+  <h2>Anii de început și de sfârșit ai unui secol</h2>
+  <p>Manualul îți cere să completezi tabelul pentru secolele I–XXII. Exersează: alege un secol, scrie primul și ultimul an, apoi verifică.</p>
+  <div class="calc">
+   <label for="cy-s" style="font-weight:800">Secolul</label>
+   <select id="cy-s"></select>
+   <label for="cy-a" style="font-weight:800">de la anul</label><input id="cy-a" type="number" min="1">
+   <label for="cy-b" style="font-weight:800">până la anul</label><input id="cy-b" type="number" min="1">
+   <button class="act" type="button" id="cy-go">Verifică</button>
+   <button class="act sec" type="button" id="cy-rnd">Alt secol, la întâmplare</button>
+  </div>
+  <div id="cy-fb" aria-live="polite"></div>
+  <div class="tip g">🔑 <b>Regula:</b> secolul N începe cu anul <b>(N − 1) × 100 + 1</b> și se termină cu anul <b>N × 100</b>. Secolul XV: 1401–1500. Mileniul III a început în <b>2001</b>, nu în 2000.</div>
+ </div>
+</section>
+
+<!-- REBUS -->
+<section class="slide" aria-label="Rebusul">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Recapitulare · ex. 9, p. 33</span>
+  <h2>Rebusul din manual</h2>
+  <p>Scrie cuvintele (merge și fără diacritice). Din fiecare cuvânt, o literă intră pe verticala A–B: „știința care se ocupă cu studiul evoluției societății omenești, de la origini până în prezent”.</p>
+  <div class="rebus" id="rebus"></div>
+  <div class="qnav" style="justify-content:flex-start"><button class="act" type="button" id="rb-check">Verifică rebusul</button><button class="act sec" type="button" id="rb-hint">💡 Un indiciu</button></div>
+  <div id="rb-fb" aria-live="polite"></div>
  </div>
 </section>
 
@@ -399,6 +452,7 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 
 </main>
 
+
 <nav class="bar" aria-label="Navigare prezentare">
  <a class="home" href="../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
  <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
@@ -409,7 +463,7 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 
 <script>
 (function(){
-  var KEY='recap-u1-slide';
+  var KEY='istorie-u1-recap-slide';
   var slides=[].slice.call(document.querySelectorAll('.slide'));
   var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
   var cur=0;
@@ -467,25 +521,520 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
   document.querySelectorAll('#tm-presets button').forEach(function(b){b.onclick=function(){yIn.value=b.getAttribute('data-y');setEra(b.getAttribute('data-e'));calc();};});
 
   /* ---------- missions ---------- */
-  var Q=[
-   {t:'mcq',tags:['L2'],d:'Matematică',q:'Anul 1900 a fost în secolul…',o:['XIX','XX','XXI'],a:0,h:'Folosește regula sigură: 1900 : 100 = ? Rezultatul e fix sau cu virgulă?',e:'1900 : 100 = 19 fix, deci secolul XIX. Secolul XIX a cuprins anii 1801–1900. Regula „+1” te păcălea aici.'},
-   {t:'mcq',tags:['L2'],d:'Matematică',q:'Secolul XIV cuprinde anii…',o:['1400 – 1499','1301 – 1400','1401 – 1500'],a:1,h:'Secolul I a fost 1–100. Secolul II: 101–200. Continuă modelul.',e:'Secolul XIV: anii 1301–1400. Fiecare secol începe cu un an terminat în 01 și se termină cu unul terminat în 00.'},
-   {t:'num',tags:['L2'],d:'Matematică',q:'Burebista a murit în anul 44 î.H. Traian a cucerit Dacia în anul 106 d.H. Câți ani au trecut între cele două evenimente?',a:149,h:'Nu e 44 + 106. Uită-te pe axa erelor: după anul 1 î.H. urmează direct anul 1 d.H. Ce lipsește?',e:'44 + 106 − 1 = 149 de ani. Scădem 1 pentru că nu există anul 0.'},
-   {t:'order',tags:['L2'],d:'Cronologie',q:'Pune anii în ordine cronologică, de la cel mai vechi la cel mai nou. Apasă pe ei pe rând.',items:['300 î.H.','3 î.H.','30 d.H.','1300 d.H.'],h:'Înainte de Hristos, cu cât numărul e mai mare, cu atât anul e mai vechi.',e:'300 î.H. → 3 î.H. → 30 d.H. → 1300 d.H. În era î.H. numărăm înapoi, deci 300 î.H. este cel mai vechi.'},
-   {t:'mcq',tags:['L2'],d:'Gândire logică',q:'Care epocă istorică se întinde în ambele ere, și înainte, și după Hristos?',o:['Epoca străveche','Epoca antică','Epoca medievală','Niciuna'],a:1,h:'Uită-te pe banda epocilor: unde trece linia galbenă?',e:'Epoca antică: din sec. I î.H. până în sec. VII d.H. Nașterea lui Hristos cade în timpul ei.'},
-   {t:'mcq',tags:['L2','L1'],d:'Istorie universală',q:'Piramidele de la Giza au fost construite cam în anul 2560 î.H. Conform limitelor din manual, în ce epocă ar cădea acest an?',o:['Epoca străveche','Epoca antică','Epoca medievală'],a:0,h:'Calculează secolul: 2560 î.H. este mult înainte de sec. I î.H. Unde începe Antichitatea în manual?',e:'După manual, epoca străveche, pentru că Antichitatea începe abia în sec. I î.H. Dar egiptenii aveau deja scrierea! De aceea, în istoria lumii, piramidele sunt considerate antice. Împărțirea în epoci este o convenție a istoricilor și poate diferi de la o regiune la alta.'},
-   {t:'mcq',tags:['L2'],d:'Știință',q:'Un ceas solar arată ora prin umbra unui băț. La ce oră a zilei este umbra cea mai scurtă?',o:['Dimineața, la răsărit','Pe la amiază','Seara, la apus','Este mereu la fel de lungă'],a:1,h:'Când e Soarele cel mai sus pe cer? Gândește-te la umbra ta pe terenul de sport.',e:'Pe la amiază, când Soarele urcă cel mai sus pe cer. Dimineața și seara Soarele e jos, iar umbrele sunt lungi. Același lucru îl vei învăța și la științe.'},
-   {t:'sort',tags:['L1','L3'],d:'Clasificare',q:'Sortează sursele istorice: scrise sau nescrise? Atenție, una e o capcană.',items:[['Monedă antică','s'],['Vas de ceramică','n'],['Hartă veche','s'],['Sabie','n'],['Inscripție în piatră','s'],['Certificatul de naștere al lui Andrei','s'],['Podoabă de aur','n']],h:'O monedă e un obiect, dar ce are pe ea? Gândește-te la lecția 1.',e:'Manualul pune monedele la surse scrise, pentru că au inscripții: nume de regi, ani, locuri. Certificatul lui Andrei este un document, deci peste 300 de ani va fi o sursă scrisă pentru istorici.'},
-   {t:'mcq',tags:['L3','L2'],d:'Matematică',q:'Bunicul Ion, din arborele lui Andrei, s-a născut în 1949. Ce eveniment din epoca contemporană s-a petrecut în anul în care el a împlinit 20 de ani?',o:['Marea Unire','Unirea Principatelor','Primul om pe Lună','Nașterea lui Andrei'],a:2,h:'1949 + 20 = ? Caută anul în lista epocii contemporane din lecția 2.',e:'1949 + 20 = 1969, anul în care primul om a pășit pe Lună. Bunicul l-a putut vedea poate la televizor, un alt semn al epocii contemporane.'},
-   {t:'mcq',tags:['L3','L2'],d:'Matematică',q:'Bunicul Grigore (n. 1947) și nepotul Andrei (n. 2010) s-au născut în același mileniu?',o:['Da, amândoi în mileniul II','Da, amândoi în mileniul III','Nu, bunicul în mileniul II, Andrei în mileniul III'],a:2,h:'Împarte fiecare an la 1000 și rotunjește în sus.',e:'1947 → mileniul II, 2010 → mileniul III. Andrei s-a născut chiar în primul deceniu al noului mileniu.'},
-   {t:'num',tags:['L3','L2'],d:'Matematică',q:'Mihail Kogălniceanu s-a născut pe 6 septembrie 1817. La Unirea Principatelor, din 24 ianuarie 1859, a fost unul dintre oamenii importanți ai Unirii. Câți ani împlinise atunci?',a:41,h:'1859 − 1817 = 42. Dar împlinise deja ziua de naștere din 1859? Uită-te la lună.',e:'41 de ani. În ianuarie 1859 nu ajunsese încă la ziua lui din septembrie, deci avea 41, nu 42.'},
-   {t:'mcq',tags:['L1','L3'],d:'Istorie',q:'Nicolae Bălcescu (1819 – 1852) și Mihail Kogălniceanu (1817 – 1891), doi istorici citați în manual, au trăit în aceeași epocă. Care?',o:['Epoca medievală','Epoca modernă','Epoca contemporană'],a:1,h:'În ce secol sunt anii lor de naștere? Caută secolul pe banda epocilor.',e:'Secolul XIX, deci epoca modernă (sec. XVIII–XX).'},
-   {t:'mcq',tags:['L4','L2'],d:'Geografie',q:'Lipovenii din Delta Dunării sunt de multă vreme pescari. Sașii au construit biserici cu ziduri de apărare. Ce factori explică cele două lucruri?',o:['Ambele: factori geografici','Pescuitul: geografic. Zidurile: istoric','Pescuitul: istoric. Zidurile: geografic','Ambele: factori istorici'],a:1,h:'Ce oferă natura în Deltă? De cine trebuia să se apere o comunitate în trecut?',e:'Apele Deltei sunt un factor geografic (ca la mediul geografic din lecția 2). Pericolul atacurilor este un factor istoric (lecția 4).'},
-   {t:'mcq',tags:['L4'],d:'Limba română',q:'În fragmentul lui Creangă apar mai multe cuvinte vechi. Care dintre ele se potrivește cel mai bine cu ideea de „ajutor reciproc” din comunitate?',o:['hora','săniușul','claca','mijoarca'],a:2,h:'Care dintre ele înseamnă muncă, nu joacă?',e:'Claca: vecinii munceau împreună, pe rând, unii pentru alții. Hora și săniușul sunt distracții, iar mijoarca e un joc.'},
-   {t:'mcq',tags:['L2'],d:'Limbi străine',q:'În engleză, „secol” se spune century, de la cuvântul latinesc centum, care înseamnă 100. Ce cuvânt românesc vine tot din centum?',o:['ceas','centimetru','cetate','centură'],a:1,h:'Ce unitate de măsură e a suta parte dintr-un metru?',e:'Centimetrul este a suta parte dintr-un metru. Și „mileniu” vine din latină: mille = o mie, ca în „milimetru”. Româna a moștenit multe cuvinte din latină, de la romani.'},
-   {t:'mcq',tags:['L4','L1'],d:'Cercetare',q:'Vrei să afli de unde vine numele localității tale și cine a întemeiat-o. Ce sursă cauți mai întâi?',o:['Arborele genealogic','Monografia localității','Certificatul de naștere','O clepsidră'],a:1,h:'Ce carte scriu unele personalități despre localitatea lor?',e:'Monografia povestește întemeierea, originea numelui și dezvoltarea localității. O găsești la bibliotecă sau la muzeul local.'},
-   {t:'mcq',tags:['L2','L4'],d:'Detectiv',q:'Găsește intrusul din poveste: „În Evul Mediu, Ștefan cel Mare a aflat ora de la ceasul solar al cetății, a citit o scrisoare de la un domnitor vecin, apoi a trimis soldații cu trenul spre Suceava.”',o:['ceasul solar','scrisoarea','trenul','cetatea'],a:2,h:'Care dintre aceste lucruri a apărut abia în epoca modernă?',e:'Trenul cu aburi a apărut în epoca modernă, la sute de ani după Ștefan cel Mare. Un astfel de lucru pus în epoca greșită se numește anacronism.'}
+  var THREADS=[
+   {c:['Istoria studiază trecutul, de la origini până azi.','Ere, epoci, secole, milenii.','Axa timpului a familiei, pe decenii.','Calea Victoriei, ieri și azi.','Copilăria în 1850 și în 2026; Convenția din 1989.','Axa popoarelor: de la 52 î.H. la 1301.','Opt secole de călătorii: de la 1271 la 1969.'],q:'De gândit: în care lecții ai avut nevoie de calcule cu ani? Ce capcană a apărut de mai multe ori?'},
+   {c:['Săpăturile arheologice: trecutul e îngropat într-un loc anume.','Mediul geografic: casele de la deal, din zona polară, din deșert.','Locuința și gospodăria familiei.','Satul și orașul; harta minorităților.','Sat sau oraș: șansele la școală diferă.','Râuri-granițe (Rinul), Delta, Câmpia Panonică.','Oceane, continente, Polul Nord, Antarctica, Luna.'],q:'De gândit: unde ai văzut că locul în care trăiești îți alege ocupația? Și ce l-a împins pe om să plece din locul lui?'},
+   {c:['Surse scrise și nescrise; muzee, biblioteci, arhive.','Citatul lui Iorga; ceasurile vechi.','Certificate, diplome; textul lui Kogălniceanu.','Monografii; fragmentele lui Creangă.','Convenția; jucăriile de lut.','Documentul francez din 842; coroana Ungariei.','Jurnalele călătorilor: Marco Polo, Pigafetta, Milescu.'],q:'De gândit: la ce sursă ai descoperit că tradiția și datele nu se potrivesc?'},
+   {c:['Istorici și arheologi lucrează împreună.','Cete, ginți, triburi.','Familia restrânsă și extinsă.','Comunitatea locală și națională, clacă și ajutor reciproc.','Copilul învață de la cei din jur; drepturile lui.','Poporul: aceeași limbă, aceleași obiceiuri.','Echipajele expedițiilor: din 270 de oameni s-au întors 18.'],q:'De gândit: ordonează grupurile de la cel mai mic la cel mai mare. Unde se încadrează familia ta?'},
+   {c:['Istoria se corectează când apar dovezi noi.','Unelte: piatră → bronz → fier.','Generațiile se succed; amintirile trec mai departe.','Sașii au plecat, satele lor au rămas.','Copiii au căpătat drepturi scrise în legi.','Migrații, cuceriri, limbi care împrumută cuvinte.','Lumea „mică” a Europei medievale a devenit tot Pământul.'],q:'De gândit: ce schimbare din unitate ți se pare cea mai importantă? Ce s-a pierdut și ce s-a câștigat?'}
   ];
+  var Q=[
+ {
+  "t": "mcq",
+  "tags": [
+   "L2"
+  ],
+  "d": "Matematică",
+  "q": "Anul 1900 a fost în secolul…",
+  "o": [
+   "XIX",
+   "XX",
+   "XXI"
+  ],
+  "a": 0,
+  "h": "Folosește regula sigură: 1900 : 100 = ? Rezultatul e fix sau cu virgulă?",
+  "e": "1900 : 100 = 19 fix, deci secolul XIX. Secolul XIX a cuprins anii 1801–1900. Regula „+1” te păcălea aici."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L2"
+  ],
+  "d": "Matematică",
+  "q": "Secolul XIV cuprinde anii…",
+  "o": [
+   "1400 – 1499",
+   "1301 – 1400",
+   "1401 – 1500"
+  ],
+  "a": 1,
+  "h": "Secolul I a fost 1–100. Secolul II: 101–200. Continuă modelul.",
+  "e": "Secolul XIV: anii 1301–1400. Fiecare secol începe cu un an terminat în 01 și se termină cu unul terminat în 00."
+ },
+ {
+  "t": "num",
+  "tags": [
+   "L2"
+  ],
+  "d": "Matematică",
+  "q": "Burebista a murit în anul 44 î.H. Traian a cucerit Dacia în anul 106 d.H. Câți ani au trecut între cele două evenimente?",
+  "a": 149,
+  "h": "Nu e 44 + 106. Uită-te pe axa erelor: după anul 1 î.H. urmează direct anul 1 d.H. Ce lipsește?",
+  "e": "44 + 106 − 1 = 149 de ani. Scădem 1 pentru că nu există anul 0."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L2"
+  ],
+  "d": "Gândire logică",
+  "q": "Care epocă istorică se întinde în ambele ere, și înainte, și după Hristos?",
+  "o": [
+   "Epoca străveche",
+   "Epoca antică",
+   "Epoca medievală",
+   "Niciuna"
+  ],
+  "a": 1,
+  "h": "Uită-te pe banda epocilor: unde trece linia galbenă?",
+  "e": "Epoca antică: din sec. I î.H. până în sec. VII d.H. Nașterea lui Hristos cade în timpul ei."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L2",
+   "Evaluare"
+  ],
+  "d": "Evaluare",
+  "q": "Prima epocă din istoria omenirii a fost:",
+  "o": [
+   "Preistoria",
+   "Evul Mediu",
+   "Epoca antică"
+  ],
+  "a": 0,
+  "h": "Ce înseamnă „pre-”? Înainte de…",
+  "e": "Preistoria, adică epoca străveche, de dinainte de scris. „Pre-” înseamnă „înainte”."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L2",
+   "L1"
+  ],
+  "d": "Istorie universală",
+  "q": "Piramidele de la Giza au fost construite cam în anul 2560 î.H. Conform limitelor din manual, în ce epocă ar cădea acest an?",
+  "o": [
+   "Epoca străveche",
+   "Epoca antică",
+   "Epoca medievală"
+  ],
+  "a": 0,
+  "h": "Calculează secolul: 2560 î.H. este mult înainte de sec. I î.H. Unde începe Antichitatea în manual?",
+  "e": "După manual, epoca străveche, pentru că Antichitatea începe abia în sec. I î.H. Dar egiptenii aveau deja scrierea! De aceea, în istoria lumii, piramidele sunt considerate antice. Împărțirea în epoci este o convenție a istoricilor și poate diferi de la o regiune la alta."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L6",
+   "Evaluare"
+  ],
+  "d": "Evaluare",
+  "q": "Slavii s-au așezat la sud de Dunăre în anul 602. În ce secol?",
+  "o": [
+   "al VI-lea",
+   "al VII-lea",
+   "al VIII-lea"
+  ],
+  "a": 1,
+  "h": "602 : 100 = 6,02. Rotunjește în sus.",
+  "e": "Secolul VII (601–700). Exact secolul de graniță dintre Antichitate și Evul Mediu, după manual."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L2"
+  ],
+  "d": "Capcană",
+  "q": "Anul 1000, în care a început Regatul Ungariei, este în…",
+  "o": [
+   "secolul XI, mileniul II",
+   "secolul X, mileniul I",
+   "secolul X, mileniul II",
+   "secolul XI, mileniul I"
+  ],
+  "a": 1,
+  "h": "1000 : 100 = 10 fix. 1000 : 1000 = 1 fix. Ce înseamnă un rezultat „fix”?",
+  "e": "Secolul X și mileniul I. Anul 1000 este ULTIMUL an din mileniul I, la fel cum 1900 a fost ultimul an din secolul XIX. Mileniul II a început în 1001."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L2",
+   "L6"
+  ],
+  "d": "Capcană",
+  "q": "Germanii au întemeiat „Sfântul Imperiu Roman” în secolul X. Din ce epocă face parte?",
+  "o": [
+   "Epoca antică, pentru că e „roman”",
+   "Epoca medievală",
+   "Epoca modernă"
+  ],
+  "a": 1,
+  "h": "Nu te lua după nume. Caută secolul X pe banda epocilor.",
+  "e": "Epoca medievală (sec. VII–XVII). Numele „roman” arată doar că germanii voiau să pară urmașii marelui imperiu antic. Un nume nu este o dată."
+ },
+ {
+  "t": "sort",
+  "tags": [
+   "L1",
+   "L3"
+  ],
+  "d": "Clasificare",
+  "q": "Sortează sursele istorice: scrise sau nescrise? Atenție, una e o capcană.",
+  "items": [
+   [
+    "Monedă antică",
+    "s"
+   ],
+   [
+    "Vas de ceramică",
+    "n"
+   ],
+   [
+    "Hartă veche",
+    "s"
+   ],
+   [
+    "Sabie",
+    "n"
+   ],
+   [
+    "Inscripție în piatră",
+    "s"
+   ],
+   [
+    "Certificatul de naștere al lui Andrei",
+    "s"
+   ],
+   [
+    "Podoabă de aur",
+    "n"
+   ]
+  ],
+  "h": "O monedă e un obiect, dar ce are pe ea? Gândește-te la lecția 1.",
+  "e": "Manualul pune monedele la surse scrise, pentru că au inscripții: nume de regi, ani, locuri. Certificatul lui Andrei este un document, deci peste 300 de ani va fi o sursă scrisă pentru istorici."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L1",
+   "L4",
+   "Recapitulare"
+  ],
+  "d": "Recapitulare",
+  "q": "Ex. 4 din manual: care coloană cuprinde DOAR instituții care pot păstra dovezi ale trecutului unei localități?",
+  "o": [
+   "fabrică, muzeu, turnuri, atelier, monumente",
+   "mănăstire, cetate, șantier, dispensar, magazin",
+   "muzeu, arhiva școlii, primărie, casă memorială, biserică"
+  ],
+  "a": 2,
+  "h": "Caută în fiecare coloană un „intrus” care nu păstrează dovezi.",
+  "e": "A treia. Prima are fabrica și atelierul, a doua are șantierul, dispensarul și magazinul. Primăria păstrează documente vechi, iar bisericile au registre și obiecte."
+ },
+ {
+  "t": "sort",
+  "tags": [
+   "Recapitulare"
+  ],
+  "d": "Adevărat / fals",
+  "q": "Ex. 5 din manual: adevărat sau fals?",
+  "items": [
+   [
+    "Mediul geografic influențează viața membrilor unei comunități.",
+    "s"
+   ],
+   [
+    "Arborele genealogic oferă informații despre înaintașii și urmașii unei persoane.",
+    "s"
+   ],
+   [
+    "În zilele noastre, toți copiii se bucură de aceleași condiții de trai și de educație.",
+    "n"
+   ],
+   [
+    "Multe dintre popoarele contemporane s-au format la începutul Evului Mediu.",
+    "s"
+   ]
+  ],
+  "labels": {
+   "s": "adevărat",
+   "n": "fals"
+  },
+  "h": "Atenție la cuvântul „toți”. Amintește-ți de L5.",
+  "e": "Al treilea e FALS: legea garantează aceleași drepturi, dar condițiile nu sunt egale (la sat, abandonul școlar e de aproape 8 ori mai mare decât în orașele mari). Celelalte sunt adevărate."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L3",
+   "L2"
+  ],
+  "d": "Matematică",
+  "q": "Bunicul Ion, din arborele lui Andrei, s-a născut în 1949. Ce eveniment din epoca contemporană s-a petrecut în anul în care el a împlinit 20 de ani?",
+  "o": [
+   "Marea Unire",
+   "Unirea Principatelor",
+   "Primul om pe Lună",
+   "Nașterea lui Andrei"
+  ],
+  "a": 2,
+  "h": "1949 + 20 = ? Caută anul în lista epocii contemporane din lecția 2.",
+  "e": "1949 + 20 = 1969, anul în care primul om a pășit pe Lună. Bunicul l-a putut vedea poate la televizor, un alt semn al epocii contemporane."
+ },
+ {
+  "t": "num",
+  "tags": [
+   "L3",
+   "L2"
+  ],
+  "d": "Matematică",
+  "q": "Mihail Kogălniceanu s-a născut pe 6 septembrie 1817. La Unirea Principatelor, din 24 ianuarie 1859, a fost unul dintre oamenii importanți ai Unirii. Câți ani împlinise atunci?",
+  "a": 41,
+  "h": "1859 − 1817 = 42. Dar împlinise deja ziua de naștere din 1859? Uită-te la lună.",
+  "e": "41 de ani. În ianuarie 1859 nu ajunsese încă la ziua lui din septembrie, deci avea 41, nu 42."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L1",
+   "L6"
+  ],
+  "d": "Gândire critică",
+  "q": "Despre Vercingetorix știm mai ales din scrierile lui Iulius Cezar, generalul roman care l-a învins. Ce trebuie să facă un istoric cu această sursă?",
+  "o": [
+   "Să o creadă în totalitate: e o sursă scrisă",
+   "Să o arunce: e scrisă de un dușman",
+   "Să o folosească, dar să țină cont că autorul putea să se laude și să-și prezinte dușmanul în felul lui",
+   "Să caute doar surse nescrise"
+  ],
+  "a": 2,
+  "h": "Dacă un coleg ar povesti o ceartă cu tine, ar spune exact ce ai spune tu?",
+  "e": "O sursă scrisă de o singură tabără poate fi părtinitoare. Istoricul o folosește, dar o compară cu alte dovezi, de exemplu cu descoperirile arheologice. Asta e meseria lui de detectiv."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L6",
+   "Recapitulare"
+  ],
+  "d": "Recapitulare",
+  "q": "Comunitatea în care oamenii vorbesc aceeași limbă, locuiesc pe un teritoriu comun și au obiceiuri comune se numește:",
+  "o": [
+   "familie",
+   "localitate",
+   "popor"
+  ],
+  "a": 2,
+  "h": "L6: familie → comunitate → …",
+  "e": "Popor. Familia are la bază rudenia, iar localitatea e un loc, nu o comunitate cu limbă comună."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L6",
+   "Evaluare"
+  ],
+  "d": "Evaluare",
+  "q": "Cuvinte ca plug, sapă, coasă sunt moștenite de la:",
+  "o": [
+   "unguri",
+   "romani",
+   "slavi"
+  ],
+  "a": 2,
+  "h": "L6: cuvinte din agricultură și din organizarea socială.",
+  "e": "De la slavi, ca și boier, rob, voievod. Cuvintele de bază ale limbii (om, apă, casă) sunt însă latinești."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L6",
+   "Evaluare"
+  ],
+  "d": "Evaluare",
+  "q": "Cea mai veche civilizație a lumii, după manual, a fost cea:",
+  "o": [
+   "greacă",
+   "romană",
+   "sumeriană"
+  ],
+  "a": 2,
+  "h": "Rubrica „Știați că…” de la L6.",
+  "e": "Sumeriană (și egipteană). Grecii și romanii sunt cele mai vechi civilizații ale EUROPEI, nu ale lumii. Capcana e în cuvântul „lumii”."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L4",
+   "L2"
+  ],
+  "d": "Geografie",
+  "q": "Lipovenii din Delta Dunării sunt de multă vreme pescari. Sașii au construit biserici cu ziduri de apărare. Ce factori explică cele două lucruri?",
+  "o": [
+   "Ambele: factori geografici",
+   "Pescuitul: geografic. Zidurile: istoric",
+   "Pescuitul: istoric. Zidurile: geografic",
+   "Ambele: factori istorici"
+  ],
+  "a": 1,
+  "h": "Ce oferă natura în Deltă? De cine trebuia să se apere o comunitate în trecut?",
+  "e": "Apele Deltei sunt un factor geografic (ca la mediul geografic din lecția 2). Pericolul atacurilor este un factor istoric (lecția 4)."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L3",
+   "L6"
+  ],
+  "d": "Limba română",
+  "q": "„Popă” este un cuvânt de origine slavă și înseamnă „preot”. Iar terminația „-escu” arăta, în vechime, al cui fiu ești. Ce ne spune numele Popescu despre un strămoș al lui Andrei?",
+  "o": [
+   "Că era slav",
+   "Că probabil era fiul unui preot",
+   "Că era boier",
+   "Nimic, numele sunt întâmplătoare"
+  ],
+  "a": 1,
+  "h": "Desparte numele în două: Pop + escu.",
+  "e": "Popescu înseamnă cam „fiul popii”. Multe nume de familie românești păstrează meseria sau porecla unui strămoș. Și numele sunt izvoare istorice!"
+ },
+ {
+  "t": "order",
+  "tags": [
+   "L5",
+   "L6"
+  ],
+  "d": "Cauză și efect",
+  "q": "Pune în ordine lanțul de cauze și efecte.",
+  "items": [
+   "Gutenberg inventează tiparul",
+   "Cărțile devin mai ieftine",
+   "Mai mulți oameni învață să citească",
+   "Apare ideea că toți copiii au dreptul la școală"
+  ],
+  "h": "Fiecare pas îl face posibil pe următorul. Ce trebuie să existe înainte ca mulți oameni să citească?",
+  "e": "Tiparul → cărți ieftine → mai mulți știutori de carte → dreptul tuturor la educație. Istoria e plină de astfel de lanțuri: o invenție tehnică schimbă, în timp, și legile."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L7",
+   "Evaluare"
+  ],
+  "d": "Evaluare",
+  "q": "Cine a fost numit „un dac care a coborât de pe Columna lui Traian”?",
+  "o": [
+   "Badea Cârțan",
+   "Nicolae Milescu",
+   "Marco Polo"
+  ],
+  "a": 0,
+  "h": "Cine a mers pe jos până la Roma ca să vadă Columna?",
+  "e": "Badea Cârțan, în 1896, care a dormit învelit în cojoc la baza Columnei."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L7"
+  ],
+  "d": "Gândire critică",
+  "q": "Magellan a murit în 1521, iar expediția s-a întors în 1522. Ce e corect?",
+  "o": [
+   "Magellan a făcut singur înconjurul lumii",
+   "Expediția lui Magellan a făcut prima călătorie în jurul lumii, încheiată de Elcano",
+   "Columb a făcut înconjurul lumii",
+   "Nimeni nu a făcut înconjurul lumii"
+  ],
+  "a": 1,
+  "h": "Poate cineva să termine o călătorie după ce a murit?",
+  "e": "Expediția a fost a lui Magellan, dar a încheiat-o Juan Sebastián Elcano. La test poți spune „expediția lui Magellan”."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L2",
+   "L4"
+  ],
+  "d": "Detectiv",
+  "q": "Găsește intrusul din poveste: „În Evul Mediu, Ștefan cel Mare a aflat ora de la ceasul solar al cetății, a citit o scrisoare de la un domnitor vecin, apoi a trimis soldații cu trenul spre Suceava.”",
+  "o": [
+   "ceasul solar",
+   "scrisoarea",
+   "trenul",
+   "cetatea"
+  ],
+  "a": 2,
+  "h": "Care dintre aceste lucruri a apărut abia în epoca modernă?",
+  "e": "Trenul cu aburi a apărut în epoca modernă, la sute de ani după Ștefan cel Mare. Un astfel de lucru pus în epoca greșită se numește anacronism."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L1",
+   "L4",
+   "L6"
+  ],
+  "d": "Cercetare",
+  "q": "Vrei să scrii monografia Sibiului. Care sursă NU te-ar ajuta?",
+  "o": [
+   "Primul document în care apare numele orașului",
+   "Bisericile fortificate ale sașilor",
+   "O hartă veche a orașului",
+   "Arborele genealogic al lui Andrei Popescu"
+  ],
+  "a": 3,
+  "h": "Monografia e despre o localitate. Ce sursă e despre altceva?",
+  "e": "Arborele lui Andrei este o sursă despre o familie, nu despre Sibiu. O monografie folosește documente, monumente și hărți ale locului."
+ },
+ {
+  "t": "mcq",
+  "tags": [
+   "L6",
+   "Civică"
+  ],
+  "d": "Educație civică",
+  "q": "Galii și germanii, despărțiți de Rin, s-au războit secole întregi. Azi, Franța și Germania sunt printre statele care au întemeiat Uniunea Europeană. Ce arată asta?",
+  "o": [
+   "Că războaiele nu au existat",
+   "Că foștii dușmani pot deveni parteneri, dacă aleg să coopereze",
+   "Că râurile nu mai există",
+   "Că francezii au devenit germani"
+  ],
+  "a": 1,
+  "h": "Gândește-te la ce ai învățat la educație civică despre Uniunea Europeană.",
+  "e": "Trecutul nu hotărăște viitorul. După războaiele mondiale, Franța și Germania au ales să coopereze, iar din colaborarea lor a pornit Uniunea Europeană."
+ }
+];
+
+
+  (function(){
+    var bs=document.querySelectorAll('#threads button'),g=document.getElementById('threadgrid'),q=document.getElementById('threadq');
+    function show(i){bs.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});
+      g.innerHTML=THREADS[i].c.map(function(t,k){return '<div class="box"><b>L'+(k+1)+'</b><p>'+t+'</p></div>'}).join('');
+      q.textContent='🤔 '+THREADS[i].q;}
+    bs.forEach(function(b,i){b.onclick=function(){show(i)}});show(0);
+  })();
+
+  (function(){
+    function roman(n){var m=[[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']],r='';m.forEach(function(p){while(n>=p[0]){r+=p[1];n-=p[0];}});return r;}
+    var sel=document.getElementById('cy-s');for(var i=1;i<=22;i++){var o=document.createElement('option');o.value=i;o.textContent=roman(i);sel.appendChild(o);}sel.value=15;
+    var fb=document.getElementById('cy-fb'),A=document.getElementById('cy-a'),B=document.getElementById('cy-b');
+    function chk(){var n=+sel.value,a=+A.value,b=+B.value,ea=(n-1)*100+1,eb=n*100;
+      if(!A.value||!B.value){fb.innerHTML='<div class="fb h">Scrie ambii ani.</div>';return;}
+      fb.innerHTML=(a===ea&&b===eb)?'<div class="fb ok">✅ Corect! Secolul '+roman(n)+': '+ea+'–'+eb+'.</div>':'<div class="fb h">💡 Nu încă. '+(b===eb-1||a===ea-1?'Atenție la capcana cu 00: secolul se TERMINĂ cu anul rotund.':'Folosește regula de mai jos.')+'</div>';}
+    document.getElementById('cy-go').onclick=chk;
+    document.getElementById('cy-rnd').onclick=function(){sel.value=1+Math.floor(Math.random()*22);A.value='';B.value='';fb.innerHTML='';A.focus();};
+    sel.onchange=function(){A.value='';B.value='';fb.innerHTML='';};
+    var R=[['1. Grup de persoane bazat pe legături de sânge și de căsătorie',['FAMILIE'],3],['2. O sută de ani',['SECOL'],0],['3. Oameni care studiază istoria',['ISTORICI'],2],['4. Dovezi istorice',['IZVOARE'],3],['5. Știința care se ocupă cu ordonarea evenimentelor istorice',['CRONOLOGIE'],1],['6. Lucrare care oferă informații despre mediul geografic și trecutul unei localități',['MONOGRAFIE'],8],['7. Epoci (un sinonim)',['PERIOADE'],5]];
+    var host=document.getElementById('rebus');
+    host.innerHTML=R.map(function(r,i){return '<div class="rw" data-i="'+i+'"><span>'+r[0]+' <small style="color:var(--soft)">('+r[1][0].length+' litere; litera de pe verticală e a '+(r[2]+1)+'-a)</small></span><input type="text" aria-label="Răspuns '+(i+1)+'" autocomplete="off"></div>'}).join('');
+    function norm(s){return s.toUpperCase().replace(/Ă|Â/g,'A').replace(/Î/g,'I').replace(/Ș|Ş/g,'S').replace(/Ț|Ţ/g,'T').trim();}
+    document.getElementById('rb-check').onclick=function(){var n=0,col='';host.querySelectorAll('.rw').forEach(function(rw){var i=+rw.getAttribute('data-i'),v=norm(rw.querySelector('input').value),ok=R[i][1].indexOf(v)>-1;if(ok)n++;col+=ok?R[i][1][0][R[i][2]]:'_';rw.classList.toggle('ok',ok);rw.classList.toggle('bad',!!v&&!ok);});
+      document.getElementById('rb-fb').innerHTML='<div class="fb '+(n===R.length?'ok':'h')+'"><b>'+n+' din '+R.length+'.</b> Verticala A–B: <b>'+col+'</b>'+(n===R.length?'. Bravo: ISTORIA, știința despre evoluția societății omenești!':'')+'</div>';};
+    document.getElementById('rb-hint').onclick=function(){var rows=[].slice.call(host.querySelectorAll('.rw')).filter(function(rw){return !rw.classList.contains('ok')});if(!rows.length)return;var rw=rows[0],i=+rw.getAttribute('data-i');rw.querySelector('input').value=R[i][1][0].slice(0,2);rw.querySelector('input').focus();};
+  })();
   var host=document.getElementById('qhost'),bar=document.getElementById('qbar'),sc=document.getElementById('qscore');
   var qi=0,score=0,MAX=Q.length*2;
   function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
@@ -566,5 +1115,5 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
   setScore();render();
 })();
 </script>
-
-</body></html>
+</body>
+</html>
