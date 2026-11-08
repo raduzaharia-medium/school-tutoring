@@ -46,7 +46,9 @@ header .lead{color:var(--soft);font-size:1.1em;max-width:62ch;margin:.4em 0 0}
 section.subject{margin-top:40px}
 .subject-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
 .subject-head h2{font-size:clamp(1.6rem,1.5vw + 1rem,2.2rem);font-weight:800}
-.subject .unit{color:var(--soft);font-weight:700;margin:0 0 14px}
+.unitblock{margin-top:18px;padding-left:14px;border-left:4px solid var(--accent)}
+.unitblock + .unitblock{margin-top:28px}
+.unitblock h3.unit{font-size:1.15em;font-weight:800;color:var(--ink);margin:0 0 12px}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
 .card{display:flex;flex-direction:column;gap:6px;text-decoration:none;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px 18px;transition:transform .15s,border-color .15s;min-width:0}
 .card:hover{transform:translateY(-2px);border-color:var(--accent)}
@@ -81,45 +83,55 @@ footer{margin-top:48px;color:var(--soft);font-size:.85em;border-top:2px solid va
 <script>
 (function(){
   var S=[
-   {name:'Istorie',color:'var(--red)',tint:'var(--tint-red)',unit:'Unitatea 1. Trecutul și prezentul din jurul nostru',items:[
-    {f:'istorie/l1-ce-este-istoria.html',l:'Lecția 1',t:'Ce este istoria?',d:'Istoricii și arheologii, sursele scrise și nescrise și cum aflăm cât de vechi e un obiect.'},
-    {f:'istorie/l2-timpul-istoric.html',l:'Lecția 2',t:'Timpul istoric și mediul geografic',d:'Cum măsurăm trecutul, erele și epocile, și de ce oamenii trăiesc diferit în locuri diferite.'},
-    {f:'istorie/l3-familia.html',l:'Lecția 3',t:'Familia. Arborele genealogic',d:'Evenimentele familiei, documentele care le dovedesc și arborele lui Andrei Popescu.'},
-    {f:'istorie/l4-comunitatea.html',l:'Lecția 4',t:'Comunitatea locală și națională',d:'Satul și orașul, minoritățile din România pe hartă, monografia localității.'},
-    {f:'istorie/l5-copilaria.html',l:'Lecția 5',t:'Copilăria de ieri și de azi',d:'Copiii în trecut și azi, Convenția din 1989 și de ce unii copii renunță la școală.'},
-    {f:'istorie/l6-popoare.html',l:'Lecția 6',t:'Popoare de ieri și de azi',d:'Latini, germanici și slavi; ce a moștenit limba română de la vecini.'},
-    {f:'istorie/l7-calatorii.html',l:'Lecția 7',t:'Cunoașterea lumii prin călători',d:'De la Marco Polo la Apollo 11; ce au căutat exploratorii și ce au schimbat.'},
-    {f:'istorie/recapitulare-unitatea-1.html',l:'Unitatea 1',t:'Recapitularea unității',d:'Toate cele 7 lecții înainte de test: ere și secole, rebusul din manual, quiz cu 26 de misiuni.',r:1}]},
-   {name:'Științe ale naturii',color:'var(--green)',tint:'var(--tint-green)',unit:'Unitatea 1. Am învățat în clasa a III-a · Unitatea 2. Științe ale Pământului',items:[
-    {f:'stiinte/u1-recapitulare-clasa-a-III-a.html',l:'Unitatea 1',t:'Am învățat în clasa a III-a',d:'Lumea vie, stările și transformările corpurilor, masă și greutate, plus quiz.',r:1},
-    {f:'stiinte/u2-l1-sistemul-solar.html',l:'Lecția 1',t:'Sistemul Solar. Planetele',d:'Ce este o stea, ce este o planetă și în ce ordine stau în jurul Soarelui.'},
-    {f:'stiinte/u2-l2-soarele.html',l:'Lecția 2',t:'Soarele, sursă de căldură. Ciclul zi-noapte',d:'De ce primim lumină și căldură de la Soare și de ce pe Pământ se face când zi, când noapte.'},
-    {f:'stiinte/u2-l3-anotimpurile.html',l:'Lecția 3',t:'Anotimpurile și modificările vremii',d:'De ce avem patru anotimpuri și cum se schimbă vremea de la unul la altul.'},
-    {f:'stiinte/u2-l4-ritmurile-vietuitoarelor.html',l:'Lecția 4',t:'Ritmuri cotidiene și anuale ale viețuitoarelor',d:'Diurne și nocturne, viața de-a lungul anului, migrația și hibernarea.'},
-    {f:'stiinte/u2-l5-fosilele.html',l:'Lecția 5',t:'Mărturii ale vieții din trecut: fosilele',d:'Dinozauri și mamuți pe axa timpului; ce a aflat știința între timp.'},
-    {f:'stiinte/u2-l6-influenta-omului.html',l:'Lecția 6',t:'Influența omului asupra mediului de viață',d:'De la folosire la distrugere; cine apără natura și cum poți ajuta.'},
-    {f:'stiinte/u2-recapitulare.html',l:'Unitatea 2',t:'Pământul, mediu de viață',d:'Recapitularea lecțiilor 1–6 și un quiz cu 14 misiuni.',r:1}]},
-   {name:'Geografie',color:'var(--blue)',tint:'var(--tint-blue)',unit:'Unitatea 1. Elemente de geografie a orizontului local și apropiat',items:[
-    {f:'geografie/u1-l1-clasa-scoala-cartierul.html',l:'Lecția 1',t:'Clasa, școala, cartierul, localitatea',d:'Orizontul apropiat; sat, oraș și cartier; clădirile de pe drumul spre școală.'},
-    {f:'geografie/u1-l2-orientarea-distantele.html',l:'Lecția 2',t:'Orientarea și distanțele',d:'Repere bune și slabe, jocul „Stânga cui?” și calculatorul de pași.'},
-    {f:'geografie/u1-l3-planul.html',l:'Lecția 3',t:'Planul clasei și al localității',d:'Titlu, micșorare, legendă; calculatorul „De câte ori micșorat?”.'},
-    {f:'geografie/u1-l4-orizontul-punctele-cardinale.html',l:'Lecția 4',t:'Orizontul, linia orizontului, punctele cardinale',d:'Cât de departe vezi, Soarele și umbra în 3D, busola, Steaua Polară.'},
-    {f:'geografie/u1-l1-l4-orizontul.html',l:'Lecțiile 1–4',t:'Orizontul și punctele cardinale',d:'Rezumatul celor patru lecții și 16 misiuni.',r:1}]},
-   {name:'Educație civică',color:'var(--purple)',tint:'var(--tint-purple)',unit:'Unitatea 1. Locuri de apartenență',items:[
-    {f:'civica/u1-l1-apartenenta-locala.html',l:'Lecția 1',t:'Apartenența locală. Localitatea și domiciliul',d:'Comunitatea locală, instituțiile, relațiile dintre oameni și adresa de domiciliu.'},
-    {f:'civica/u1-l2-apartenenta-nationala.html',l:'Lecția 2',t:'Apartenența națională. Însemnele țării',d:'Drapelul, stema pe provincii, imnul, ziua națională și diaspora.'},
-    {f:'civica/u1-l3-uniunea-europeana.html',l:'Lecția 3',t:'România, membră a Uniunii Europene',d:'Însemnele UE, cum a crescut Uniunea și ce s-a schimbat din 2022.'},
-    {f:'civica/recap-u1-u6-dosarul-cetateanului.html',l:'Unitățile 1–6',t:'Dosarul Cetățeanului',d:'Recapitularea întregului manual: reguli, drepturi, valori, dileme și 23 de misiuni.',r:1}]}
+   {name:'Istorie',color:'var(--red)',tint:'var(--tint-red)',units:[
+     {u:'Unitatea 1. Trecutul și prezentul din jurul nostru',items:[
+      {f:'istorie/l1-ce-este-istoria.html',l:'Lecția 1',t:'Ce este istoria?',d:'Istoricii și arheologii, sursele scrise și nescrise și cum aflăm cât de vechi e un obiect.'},
+      {f:'istorie/l2-timpul-istoric.html',l:'Lecția 2',t:'Timpul istoric și mediul geografic',d:'Cum măsurăm trecutul, erele și epocile, și de ce oamenii trăiesc diferit în locuri diferite.'},
+      {f:'istorie/l3-familia.html',l:'Lecția 3',t:'Familia. Arborele genealogic',d:'Evenimentele familiei, documentele care le dovedesc și arborele lui Andrei Popescu.'},
+      {f:'istorie/l4-comunitatea.html',l:'Lecția 4',t:'Comunitatea locală și națională',d:'Satul și orașul, minoritățile din România pe hartă, monografia localității.'},
+      {f:'istorie/l5-copilaria.html',l:'Lecția 5',t:'Copilăria de ieri și de azi',d:'Copiii în trecut și azi, Convenția din 1989 și de ce unii copii renunță la școală.'},
+      {f:'istorie/l6-popoare.html',l:'Lecția 6',t:'Popoare de ieri și de azi',d:'Latini, germanici și slavi; ce a moștenit limba română de la vecini.'},
+      {f:'istorie/l7-calatorii.html',l:'Lecția 7',t:'Cunoașterea lumii prin călători',d:'De la Marco Polo la Apollo 11; ce au căutat exploratorii și ce au schimbat.'},
+      {f:'istorie/recapitulare-unitatea-1.html',l:'Unitatea 1',t:'Dosarul Timpului',d:'Recapitularea întregii unități, înainte de test: ere și secole, rebusul din manual, quiz cu 26 de misiuni.',r:1}]}]},
+   {name:'Științe ale naturii',color:'var(--green)',tint:'var(--tint-green)',units:[
+     {u:'Unitatea 1. Am învățat în clasa a III-a',items:[
+      {f:'stiinte/u1-recapitulare-clasa-a-III-a.html',l:'Unitatea 1',t:'Am învățat în clasa a III-a',d:'Lumea vie, stările și transformările corpurilor, masă și greutate, plus quiz.',r:1}]},
+     {u:'Unitatea 2. Științe ale Pământului',items:[
+      {f:'stiinte/u2-l1-sistemul-solar.html',l:'Lecția 1',t:'Sistemul Solar. Planetele',d:'Ce este o stea, ce este o planetă și în ce ordine stau în jurul Soarelui.'},
+      {f:'stiinte/u2-l2-soarele.html',l:'Lecția 2',t:'Soarele, sursă de căldură. Ciclul zi-noapte',d:'De ce primim lumină și căldură de la Soare și de ce pe Pământ se face când zi, când noapte.'},
+      {f:'stiinte/u2-l3-anotimpurile.html',l:'Lecția 3',t:'Anotimpurile și modificările vremii',d:'De ce avem patru anotimpuri și cum se schimbă vremea de la unul la altul.'},
+      {f:'stiinte/u2-l4-ritmurile-vietuitoarelor.html',l:'Lecția 4',t:'Ritmuri cotidiene și anuale ale viețuitoarelor',d:'Diurne și nocturne, viața de-a lungul anului, migrația și hibernarea.'},
+      {f:'stiinte/u2-l5-fosilele.html',l:'Lecția 5',t:'Mărturii ale vieții din trecut: fosilele',d:'Dinozauri și mamuți pe axa timpului; ce a aflat știința între timp.'},
+      {f:'stiinte/u2-l6-influenta-omului.html',l:'Lecția 6',t:'Influența omului asupra mediului de viață',d:'De la folosire la distrugere; cine apără natura și cum poți ajuta.'},
+      {f:'stiinte/u2-recapitulare.html',l:'Unitatea 2',t:'Pământul, mediu de viață',d:'Recapitularea lecțiilor 1–6 și un quiz cu 14 misiuni.',r:1}]}]},
+   {name:'Geografie',color:'var(--blue)',tint:'var(--tint-blue)',units:[
+     {u:'Unitatea 1. Elemente de geografie a orizontului local și apropiat',items:[
+      {f:'geografie/u1-l1-clasa-scoala-cartierul.html',l:'Lecția 1',t:'Clasa, școala, cartierul, localitatea',d:'Orizontul apropiat; sat, oraș și cartier; clădirile de pe drumul spre școală.'},
+      {f:'geografie/u1-l2-orientarea-distantele.html',l:'Lecția 2',t:'Orientarea și distanțele',d:'Repere bune și slabe, jocul „Stânga cui?” și calculatorul de pași.'},
+      {f:'geografie/u1-l3-planul.html',l:'Lecția 3',t:'Planul clasei și al localității',d:'Titlu, micșorare, legendă; calculatorul „De câte ori micșorat?”.'},
+      {f:'geografie/u1-l4-orizontul-punctele-cardinale.html',l:'Lecția 4',t:'Orizontul, linia orizontului, punctele cardinale',d:'Cât de departe vezi, Soarele și umbra în 3D, busola, Steaua Polară.'},
+      {f:'geografie/u1-l1-l4-orizontul.html',l:'Lecțiile 1–4',t:'Orizontul și punctele cardinale',d:'Rezumatul celor patru lecții și 16 misiuni.',r:1}]}]},
+   {name:'Educație civică',color:'var(--purple)',tint:'var(--tint-purple)',units:[
+     {u:'Unitatea 1. Locuri de apartenență',items:[
+      {f:'civica/u1-l1-apartenenta-locala.html',l:'Lecția 1',t:'Apartenența locală. Localitatea și domiciliul',d:'Comunitatea locală, instituțiile, relațiile dintre oameni și adresa de domiciliu.'},
+      {f:'civica/u1-l2-apartenenta-nationala.html',l:'Lecția 2',t:'Apartenența națională. Însemnele țării',d:'Drapelul, stema pe provincii, imnul, ziua națională și diaspora.'},
+      {f:'civica/u1-l3-uniunea-europeana.html',l:'Lecția 3',t:'România, membră a Uniunii Europene',d:'Însemnele UE, cum a crescut Uniunea și ce s-a schimbat din 2022.'}]},
+     {u:'Recapitularea întregului manual · Unitățile 1–6',items:[
+      {f:'civica/recap-u1-u6-dosarul-cetateanului.html',l:'Unitățile 1–6',t:'Dosarul Cetățeanului',d:'Recapitularea întregului manual: reguli, drepturi, valori, dileme și 23 de misiuni.',r:1}]}]}
   ];
   var host=document.getElementById('subjects'),total=0,recs=0;
   S.forEach(function(s){
     var sec=document.createElement('section');sec.className='subject';
-    var h='<div class="subject-head"><h2>'+s.name+'</h2></div><p class="unit">'+s.unit+'</p><div class="cards">';
-    s.items.forEach(function(it){
-      total++;if(it.r)recs++;
-      h+='<a class="card" href="'+it.f+'" style="--accent:'+s.color+';--tint:'+s.tint+'"><div class="meta"><span class="lbl">'+it.l+'</span><span class="kind'+(it.r?' rec':'')+'">'+(it.r?'Recapitulare':'Lecție')+'</span></div><h3>'+it.t+'</h3><p>'+it.d+'</p>'+'</a>';
+    var h='<div class="subject-head"><h2>'+s.name+'</h2></div>';
+    s.units.forEach(function(u){
+      h+='<div class="unitblock" style="--accent:'+s.color+'"><h3 class="unit">'+u.u+'</h3><div class="cards">';
+      u.items.forEach(function(it){
+        total++;if(it.r)recs++;
+        h+='<a class="card" href="'+it.f+'" style="--accent:'+s.color+';--tint:'+s.tint+'"><div class="meta"><span class="lbl">'+it.l+'</span><span class="kind'+(it.r?' rec':'')+'">'+(it.r?'Recapitulare':'Lecție')+'</span></div><h3>'+it.t+'</h3><p>'+it.d+'</p></a>';
+      });
+      h+='</div></div>';
     });
-    h+='</div>'+(s.note?'<p class="note">'+s.note+'</p>':'');
+    h+=(s.note?'<p class="note">'+s.note+'</p>':'');
     sec.innerHTML=h;host.appendChild(sec);
   });
   document.getElementById('stats').innerHTML='<span>'+S.length+' materii</span><span>'+(total-recs)+' lecții</span><span>'+recs+' recapitulări</span>';
