@@ -1,119 +1,36 @@
-<!doctype html><html lang="ro"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
-</head><body>
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Orizontul și punctele cardinale</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/caiet.css">
 <style>
-:root{
-  --bg:#F3F7FF;--paper:#FFFFFF;--ink:#1E2340;--soft:#4A5078;--line:#D5DDF0;
-  --red:#E2433A;--green:#2E9D52;--blue:#2F6FD6;--yellow:#F6C431;--purple:#6B4BC4;
-  --tint-red:#FDE6E4;--tint-green:#E1F4E7;--tint-blue:#E2ECFC;--tint-yellow:#FFF4CF;--tint-purple:#ECE6FA;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121633;--paper:#1C2147;--ink:#F1F3FF;--soft:#B8BEE6;--line:#343B6E;
-    --tint-red:#3E2230;--tint-green:#1C3A30;--tint-blue:#1E2E5A;--tint-yellow:#3C3522;--tint-purple:#2E2757;color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#121633;--paper:#1C2147;--ink:#F1F3FF;--soft:#B8BEE6;--line:#343B6E;
-  --tint-red:#3E2230;--tint-green:#1C3A30;--tint-blue:#1E2E5A;--tint-yellow:#3C3522;--tint-purple:#2E2757;color-scheme:dark;
-}
-*,*::before,*::after{box-sizing:border-box}
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}
+img{max-width:100%}
+[hidden]:not([hidden=until-found i]){display:none!important}
+:root{--bg:#F3F7FF;--paper:#FFFFFF;--ink:#1E2340;--soft:#4A5078;--line:#D5DDF0;--red:#E2433A;--green:#2E9D52;--blue:#2F6FD6;--yellow:#F6C431;--purple:#6B4BC4;--tint-red:#FDE6E4;--tint-green:#E1F4E7;--tint-blue:#E2ECFC;--tint-yellow:#FFF4CF;--tint-purple:#ECE6FA;}
 html{height:100%}
-body{
-  height:100%;margin:0;background:var(--bg);color:var(--ink);
-  font-family:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;font-weight:500;
-  font-size:clamp(16px,1.05vw + 10px,21px);line-height:1.5;
-  display:flex;flex-direction:column;overflow:hidden;
-}
+body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;font-weight:500;font-size:clamp(16px,1.05vw + 10px,21px);line-height:1.5;display:flex;flex-direction:column;overflow:hidden;}
 h1,h2,h3{font-family:"Baloo 2","Trebuchet MS",system-ui,sans-serif;line-height:1.1;margin:0;text-wrap:balance}
-h2{font-size:clamp(1.7rem,2.6vw + .6rem,2.8rem);font-weight:800;margin-bottom:.35em}
-h3{font-size:1.2em;font-weight:700}
-p{margin:.3em 0 .7em}
-b,strong{font-weight:800}
-.deck{flex:1;position:relative;min-height:0}
 .slide{position:absolute;inset:0;overflow-y:auto;padding:clamp(18px,3vw,48px) max(16px,clamp(16px,5vw,80px)) 24px;display:none}
-.slide.active{display:block;animation:in .35s ease-out}
 @keyframes in{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.slide.active{animation:none}}
-.wrap{max-width:1080px;margin:0 auto}
-.lead{font-size:1.15em;color:var(--soft);max-width:60ch}
-.badge{display:inline-block;font-weight:800;font-size:.85em;padding:.2em .8em;border-radius:99px;margin-bottom:.8em;color:#fff}
 .bar{display:flex;align-items:center;gap:12px;padding:10px max(12px,clamp(12px,3vw,32px));background:var(--paper);border-top:2px solid var(--line)}
-.bar button.nav{font:inherit;font-weight:800;border:0;border-radius:14px;padding:.55em 1.1em;cursor:pointer;background:var(--blue);color:#fff;min-width:48px}
-.bar button.nav:disabled{opacity:.35;cursor:default}
-.dots{flex:1;display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
-.dots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
-.dots button.on{background:var(--red);transform:scale(1.3)}
 .count{font-weight:800;color:var(--soft);min-width:4.5ch;text-align:center}
-button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
-.cover{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;min-height:100%}
-.cover>*{min-width:0}
-.cover h1{font-size:clamp(2.4rem,5vw + .5rem,4.8rem);font-weight:800;margin:.2em 0 .3em}
-.stripes{display:flex;height:14px;border-radius:8px;overflow:hidden;max-width:420px;margin-bottom:1em}
-.stripes span{flex:1}
-@media (max-width:760px){.cover{grid-template-columns:1fr}.cover svg{max-width:220px;margin:0 auto}}
-.grid{display:grid;gap:16px}
-.grid>*{min-width:0}
-.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-.box{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:18px 20px}
-.box .emo{font-size:2.2em;line-height:1;display:block;margin-bottom:.25em}
+@media (max-width:760px){
+  .cover{grid-template-columns:1fr}
+  .cover svg{max-width:220px;margin:0 auto}
+}
 .box p:last-child{margin-bottom:0}
-.tip{border-radius:18px;padding:14px 20px;margin-top:18px;border-left:8px solid}
-.tip.y{background:var(--tint-yellow);border-color:var(--yellow)}
-.tip.g{background:var(--tint-green);border-color:var(--green)}
-.tip.b{background:var(--tint-blue);border-color:var(--blue)}
-.tip.r{background:var(--tint-red);border-color:var(--red)}
-.tip.p{background:var(--tint-purple);border-color:var(--purple)}
-.q{display:flex;gap:16px;align-items:center;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px 20px;margin-bottom:14px;font-size:1.15em;font-weight:700}
 .q .mark{flex:none;width:2.2em;height:2.2em;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:"Baloo 2",sans-serif;font-weight:800;font-size:1.1em}
-.ladder{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 6px}
-.step{background:var(--tint-blue);border-radius:12px;padding:.35em .8em;font-weight:800;text-align:center}
-.step small{display:block;font-weight:700;color:var(--soft);font-size:.72em}
-.arrow{color:var(--soft);font-weight:800}
-/* manual vs context */
-.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
-.duo>div{border-radius:18px;padding:14px 18px;min-width:0}
-.duo .man{background:var(--tint-yellow);border:2px solid var(--yellow)}
-.duo .ctx{background:var(--tint-green);border:2px solid var(--green)}
-.duo h3{font-size:1em;margin-bottom:.3em}
-.duo p{margin:.2em 0;font-size:.95em}
-/* vocab */
-.vocab{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:14px}
-.vocab div{background:var(--tint-purple);border-radius:14px;padding:10px 14px}
-.vocab b{color:var(--purple)}
-:root[data-theme="dark"] .vocab b{color:#CBB9FF}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .vocab b{color:#CBB9FF}}
-/* svg */
-.fig{width:100%;height:auto;display:block;border-radius:16px}
-.fig text{fill:var(--ink);font-family:"Nunito",sans-serif;font-weight:800}
-.sky{width:100%;height:auto;display:block;border-radius:16px}
-.sky text{font-family:"Nunito",sans-serif;font-weight:800;fill:#FFFFFF}
-.steps{display:grid;gap:10px;counter-reset:s;margin:0;padding:0;list-style:none}
-.steps li{counter-increment:s;background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 14px 10px 54px;position:relative}
-.steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:30px;height:30px;border-radius:50%;background:var(--purple);color:#fff;display:grid;place-items:center;font-family:"Baloo 2",sans-serif;font-weight:800}
-/* shadow control */
-.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
-.ctrl button{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:.4em 1em;cursor:pointer}
-.ctrl button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
-/* table */
-.tbl{width:100%;border-collapse:collapse;background:var(--paper);border-radius:14px;overflow:hidden}
-.tbl th,.tbl td{padding:.5em .8em;border-bottom:2px solid var(--line);text-align:left}
-.tbl th{background:var(--tint-blue)}
-.scroll{overflow-x:auto}
-/* missions */
 .mission{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px 20px;margin-bottom:14px}
 .mission .qt{font-weight:800;margin:0 0 .6em}
 .mission .qt span{color:var(--purple);font-family:"Baloo 2",sans-serif}
-.opts{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .opts button{font:inherit;font-weight:700;text-align:left;border:2px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:.5em .8em;cursor:pointer}
 .opts button.bad{background:var(--tint-red);border-color:var(--red);opacity:.8}
 .opts button.good{background:var(--tint-green);border-color:var(--green)}
-.opts button:disabled{cursor:default}
 .hintbtn{font:inherit;font-weight:800;margin-top:10px;border:0;border-radius:12px;padding:.3em .9em;background:var(--tint-yellow);color:var(--ink);cursor:pointer}
 .hint,.expl{display:none;margin-top:10px;border-radius:12px;padding:8px 14px}
 .hint{background:var(--tint-yellow)}
@@ -124,7 +41,8 @@ button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
 .scorebox .big{font-family:"Baloo 2",sans-serif;font-weight:800;font-size:clamp(3rem,8vw,5.5rem);line-height:1}
 .pill{display:inline-block;background:var(--tint-purple);border-radius:99px;padding:.1em .8em;font-weight:800;margin-left:.5em;font-size:.85em}
 </style>
-
+</head>
+<body>
 <main class="deck" id="deck">
 
 <!-- 1 COPERTA -->
@@ -526,182 +444,10 @@ button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
 
 </main>
 
-<nav class="bar" aria-label="Navigare prezentare">
- <a class="home" href="../../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
- <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
- <div class="dots" id="dots"></div>
- <span class="count" id="count"></span>
- <button class="nav" id="next" aria-label="Slide-ul următor">→</button>
-</nav>
-
+<script src="../../assets/caiet.js"></script>
 <script>
 (function(){
-  var slides=[].slice.call(document.querySelectorAll('.slide'));
-  var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
-  var cur=0;
-  slides.forEach(function(s,i){
-    var b=document.createElement('button');
-    b.setAttribute('aria-label','Mergi la slide-ul '+(i+1));
-    b.onclick=function(){go(i)};
-    dots.appendChild(b);
-  });
-  function go(i){
-    if(i<0||i>=slides.length)return;
-    slides[cur].classList.remove('active');dots.children[cur].classList.remove('on');
-    cur=i;
-    slides[cur].classList.add('active');dots.children[cur].classList.add('on');
-    slides[cur].scrollTop=0;
-    prev.disabled=cur===0;next.disabled=cur===slides.length-1;
-    count.textContent=(cur+1)+' / '+slides.length;
-    if(cur===slides.length-1)showScore();
-    
-  }
-  prev.onclick=function(){go(cur-1)};
-  next.onclick=function(){go(cur+1)};
-  document.addEventListener('keydown',function(e){
-    if(e.key==='ArrowRight'||e.key==='PageDown')go(cur+1);
-    if(e.key==='ArrowLeft'||e.key==='PageUp')go(cur-1);
-  });
-  var sx=null,deck=document.getElementById('deck');
-  deck.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
-  deck.addEventListener('touchend',function(e){
-    if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;
-    if(Math.abs(dx)>80)go(cur+(dx<0?1:-1));sx=null;
-  },{passive:true});
-
-  /* sun & shadow */
-  var sunData=[
-    {x:90,y:150,sx:150,txt:'🌄 Dimineața: Soarele e jos, în est (răsărit). Umbra este lungă și cade spre vest (apus), în partea opusă Soarelui.'},
-    {x:300,y:42,sx:34,txt:'☀️ La amiază: Soarele e sus, în sud (miazăzi). Umbra este cea mai scurtă și cade spre nord (miazănoapte), în partea opusă sudului.'},
-    {x:510,y:150,sx:-150,txt:'🌇 Seara: Soarele e jos, în vest (apus). Umbra este lungă și cade spre est (răsărit).'}
-  ];
-  var sunBtns=document.querySelectorAll('#sunctl button');
-  function showSun(i){
-    var d=sunData[i];
-    sunBtns.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});
-    document.getElementById('sun').innerHTML='<circle cx="'+d.x+'" cy="'+d.y+'" r="22" fill="var(--yellow)"/>';
-    var x2=300+d.sx;
-    document.getElementById('shadow').setAttribute('d','M300 205 L'+x2+' 205');
-    document.getElementById('suntext').textContent=d.txt;
-  }
-  sunBtns.forEach(function(b,i){b.onclick=function(){showSun(i)}});
-  showSun(0);
-
-  /* missions */
-  var M=[
-   {q:'Ioana locuiește în cartierul Unirea, într-un bloc cu peste zece etaje. Bunicii ei trăiesc într-un sat mic. Care afirmație despre orizontul lor apropiat este corectă?',
-    o:['Pentru amândoi este cartierul.','Pentru Ioana este cartierul, pentru bunici este întreaga localitate (satul).','Pentru amândoi este orașul.','Pentru bunici este doar casa lor.'],c:1,
-    h:'Într-un oraș, orizontul apropiat este o parte din oraș. Dar într-un sat mic, ce parte ai putea alege?',
-    e:'La oraș, orizontul apropiat este cartierul unde sunt locuința și școala. La sat, este întreaga localitate rurală, unde bunicii locuiesc, muncesc și se relaxează.'},
-   {q:'Vrei să-i explici unui prieten unde este locuința ta. Care este cel mai bun reper?',
-    o:['un copac','numele școlii la care înveți','o mașină văzută dimineața în fața școlii','o clădire importantă din apropierea locuinței'],c:3,
-    h:'Un reper bun nu se mută de la o zi la alta și îl cunosc multe persoane.',
-    e:'O clădire importantă (Primăria, biserica, farmacia) stă mereu la locul ei și o știu mulți oameni. Mașina pleacă, iar copacii sunt prea mulți.'},
-   {q:'Poarta de la un capăt al terenului de sport e la 40 m de cealaltă. Un pas al lui Emil măsoară 40 cm. Câți pași a numărat el?',
-    o:['10','100','1 000','160'],c:1,
-    h:'Transformă 40 m în centimetri (1 m = 100 cm), apoi împarte la lungimea unui pas.',
-    e:'40 m = 4 000 cm. 4 000 : 40 = 100 de pași. Cu un pas de 50 cm ar fi fost doar 80 de pași. Pasul diferă de la om la om, așa că ruleta e mai exactă.'},
-   {q:'Strada Andrei are în realitate 110 m. Pe planul cartierului are 11 mm. De câte ori a fost micșorată lungimea ei?',
-    o:['de 10 ori','de 100 de ori','de 1 000 de ori','de 10 000 de ori'],c:3,
-    h:'Pune ambele lungimi în aceeași unitate. 1 m = 1 000 mm.',
-    e:'110 m = 110 000 mm. 110 000 : 11 = 10 000. Ai ajuns la același rezultat dacă ai făcut 400 m : 4 cm = 40 000 cm : 4 cm = 10 000 la strada Micșunelelor din recapitulare.'},
-   {q:'Un plan este micșorat de 10 ori. Banca din clasă are în realitate 120 cm lungime. Cât are pe plan?',
-    o:['1,2 cm','12 cm','120 cm','1 200 cm'],c:1,
-    h:'„Micșorat de 10 ori” înseamnă că împarți lungimea reală la 10.',
-    e:'120 cm : 10 = 12 cm. Toate elementele de pe plan se micșorează de același număr de ori, ca desenul să rămână fidel realității.'},
-   {q:'De ce nu apar pe planul localității Basarab străzile și clădirile din cartierul Tei, deși cartierul face parte din localitate?',
-    o:['Cineva a uitat să le deseneze.','Spațiul e mare, deci e micșorat de mult mai multe ori și detaliile mici nu mai încap.','Cartierul Tei nu face parte din localitate.','Planurile localităților nu au legendă.'],c:1,
-    h:'Cu cât spațiul reprezentat este mai mare, cu atât dimensiunile se micșorează de mai multe ori. Ce se întâmplă cu lucrurile foarte mici?',
-    e:'Planul localității acoperă un spațiu mult mai mare decât cel al cartierului, așa că apar doar elementele mari: Primăria, Poliția, Spitalul, Clubul Elevilor.'},
-   {q:'Bogdan urcă de pe o stradă între blocuri pe un deal înalt. Ce se întâmplă cu orizontul lui?',
-    o:['Spațiul vizibil se micșorează, iar linia orizontului se apropie.','Spațiul vizibil crește, iar linia orizontului pare mai îndepărtată.','Nu se schimbă nimic.','Bogdan atinge cerul.'],c:1,
-    h:'Compară ce vezi de la parter cu ce vezi de la etajul 10 al unui bloc.',
-    e:'Mărimea orizontului depinde de locul și de înălțimea de unde privești. Linia orizontului este doar locul unde cerul pare că se unește cu pământul, deci nu o poți atinge: se îndepărtează pe măsură ce te apropii.'},
-   {q:'Bogdan stă cu spatele spre partea de unde a răsărit Soarele. Ce punct cardinal e în dreapta lui?',
-    o:['nord','sud','est','vest'],c:0,
-    h:'Dacă spatele e spre est, fața e spre partea opusă. Care este aceea? Apoi gândește-te unde îți e mâna dreaptă.',
-    e:'Spatele spre est înseamnă fața spre vest. Cu fața spre vest, în dreapta este nordul, iar în stânga sudul.'},
-   {q:'La amiază Soarele e în sud. Spre ce punct cardinal cade umbra unui copac din România?',
-    o:['sud','nord','est','vest'],c:1,
-    h:'Umbra cade în partea opusă Soarelui. Care este opusul sudului?',
-    e:'Partea opusă miazăzilor este miazănoaptea, deci nordul. Umbra de la amiază este și cea mai scurtă, pentru că Soarele e sus.'},
-   {q:'Seara Soarele coboară spre apus. În ce parte cade umbra copacului și cum arată ea?',
-    o:['spre vest, scurtă','spre est, lungă','spre sud, lungă','spre est, scurtă'],c:1,
-    h:'Soarele e jos pe cer. Umbra cade mereu în partea opusă lui.',
-    e:'Soarele e în vest și foarte jos, deci umbra cade spre est și e lungă. Dimineața este invers: Soarele în est, umbra spre vest.'},
-   {q:'Care afirmație despre roza vânturilor este corectă?',
-    o:['Nord-vest se află între nord și sud.','Nord-est se află între nord și est.','Sud-est se află între sud și vest.','Nord-est se află între sud și est.'],c:1,
-    h:'Numele unui punct intercardinal spune între ce puncte cardinale se află.',
-    e:'Nord-est e între nord și est. Nord-vest e între nord și vest, sud-est între sud și est, iar sud-vest între sud și vest.'},
-   {q:'Ești într-o excursie, noaptea, iar cerul e complet acoperit de nori. Care este cea mai sigură metodă de a afla nordul?',
-    o:['Soarele','Steaua Polară','busola','mușchiul de pe trunchiul copacilor'],c:2,
-    h:'Care metodă nu depinde nici de lumină, nici de cer senin, și nici de „obiceiurile” plantelor?',
-    e:'Soarele nu se vede noaptea, iar Steaua Polară e ascunsă de nori. Mușchiul e doar un indiciu nesigur. Acul busolei arată nordul oriunde și oricând.'},
-   {q:'La engleză, vestul se numește „west”. Cum ar abrevia un englez nord-vestul?',
-    o:['NV','NW','WN','VN'],c:1,
-    h:'Folosește prima literă din „north” și prima din „west”.',
-    e:'north + west = NW. În română, nord-vest se scrie NV, pentru că „vest” se abreviază V. Aceeași direcție, două limbi, două abrevieri.'},
-   {q:'Noaptea, cerul e senin. Stai cu fața spre Steaua Polară și vrei să mergi spre vest. Încotro o iei?',
-    o:['înainte, spre stea','la dreapta','la stânga','înapoi, cu spatele spre stea'],c:2,
-    h:'Steaua Polară îți arată nordul. Imaginează-ți roza vânturilor: dacă nordul e în fața ta, de ce parte este vestul?',
-    e:'Cu fața spre nord, estul e în dreapta și vestul în stânga. Sudul rămâne în spate. Ca să ajungi spre vest, o iei la stânga.'},
-   {q:'Cum găsești Steaua Polară cu ajutorul Carului Mare? Câte ori pui cu ochiul distanța dintre cele două stele din marginea „cănii”, în sus, pe linia dintre ele?',
-    o:['o dată','de 2 ori','de aproximativ 5 ori','de 50 de ori'],c:2,
-    h:'Privește schema de pe slide-ul cu Steaua Polară: punctele roșii sunt numerotate. Câte ar mai fi până la stea?',
-    e:'Prelungești linia dintre Merak și Dubhe cu cam 5 ori distanța dintre ele și ajungi la Steaua Polară, aflată la capătul cozii Carului Mic.'},
-   {q:'Un coleg spune: „Steaua Polară e cea mai strălucitoare stea, o recunosc ușor.” Ce îi răspunzi?',
-    o:['Are dreptate, e cea mai strălucitoare.','Nu are dreptate: nu e cea mai strălucitoare, de aceea o căutăm cu ajutorul Carului Mare.','Nu are dreptate: se vede și ziua.','Nu are dreptate: își schimbă locul pe tot cerul.'],c:1,
-    h:'Dacă ar fi cea mai strălucitoare stea, ai mai avea nevoie de Carul Mare ca s-o găsești?',
-    e:'Steaua Polară nu iese în evidență prin strălucire. O găsim cu Carul Mare. Ea rămâne aproape pe loc, iar celelalte stele par să se rotească în jurul ei, pentru că Pământul se rotește.'}
-  ];
-  var total=0,done=0,maxPts=M.length*2;
-  document.getElementById('max').textContent=maxPts;
-  var holders=[document.getElementById('m1'),document.getElementById('m2'),document.getElementById('m3'),document.getElementById('m4')];
-  function holderFor(i){return i<4?0:(i<8?1:(i<13?2:3))}
-  M.forEach(function(m,i){
-    var st={wrong:0,hint:false,solved:false};
-    var box=document.createElement('div');box.className='mission';
-    var qt=document.createElement('p');qt.className='qt';
-    qt.innerHTML='<span>Misiunea '+(i+1)+'.</span> ';qt.appendChild(document.createTextNode(m.q));
-    box.appendChild(qt);
-    var opts=document.createElement('div');opts.className='opts';
-    var hb=document.createElement('button');hb.className='hintbtn';hb.textContent='💡 Cer un indiciu';
-    var hint=document.createElement('div');hint.className='hint';hint.textContent=m.h;
-    var ex=document.createElement('div');ex.className='expl';
-    var btns=m.o.map(function(t,k){
-      var b=document.createElement('button');b.textContent=t;
-      b.onclick=function(){
-        if(st.solved)return;
-        if(k===m.c){
-          st.solved=true;
-          var p=(st.wrong===0&&!st.hint)?2:1;total+=p;done++;
-          b.classList.add('good');
-          btns.forEach(function(x){x.disabled=true});hb.disabled=true;
-          ex.innerHTML='<span class="pts">+'+p+(p===1?' punct':' puncte')+'.</span> ';
-          ex.appendChild(document.createTextNode(m.e));ex.classList.add('show');
-        }else{
-          st.wrong++;b.classList.add('bad');b.disabled=true;
-          hint.textContent='Mai încearcă. '+m.h;hint.classList.add('show');
-        }
-      };
-      opts.appendChild(b);return b;
-    });
-    hb.onclick=function(){st.hint=true;hint.classList.add('show')};
-    box.appendChild(opts);box.appendChild(hb);box.appendChild(hint);box.appendChild(ex);
-    holders[holderFor(i)].appendChild(box);
-  });
-  function showScore(){
-    document.getElementById('score').textContent=total;
-    var v=document.getElementById('verdict');
-    if(done<M.length)v.textContent='Ai rezolvat '+done+' din '+M.length+' misiuni. Întoarce-te la cele rămase.';
-    else if(total>=maxPts*0.8)v.textContent='Foarte bine! Ai înțeles orizontul, planul și orientarea.';
-    else if(total>=maxPts*0.55)v.textContent='Bine! Mai citește lecțiile la care ai cerut indiciu.';
-    else v.textContent='Un început bun. Reciți lecțiile și încearcă din nou, cu indiciile.';
-  }
-  var start=0;
-  
-  slides[0].classList.add('active');dots.children[0].classList.add('on');
-  go(start);
+  Caiet.start();
 })();
 </script>
 <script src="../../vendor/three.min.js"></script>
@@ -888,5 +634,5 @@ button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
   if(window.ResizeObserver)new ResizeObserver(fit).observe(host);else window.addEventListener('resize',fit);
 })();
 </script>
-
-</body></html>
+</body>
+</html>

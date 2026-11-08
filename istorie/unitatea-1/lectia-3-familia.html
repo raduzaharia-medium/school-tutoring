@@ -1,148 +1,22 @@
-<!doctype html><html lang="ro"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><style>.bar a.home{display:inline-flex;align-items:center;gap:.3em;font:inherit;font-weight:800;text-decoration:none;border-radius:14px;padding:.55em .9em;background:var(--tint-blue,#E2ECFC);color:var(--ink,#1E2340);white-space:nowrap}.bar a.home:focus-visible{outline:3px solid var(--yellow,#F6C431);outline-offset:3px}@media (max-width:520px){.bar a.home span{display:none}}</style>
-</head><body>
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Familia. Arborele genealogic</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/caiet.css">
 <style>
-/* Same design system as „Timpul istoric și mediul geografic”: slide deck, bottom nav bar, colored badges */
-:root{
-  --bg:#F3F7FF; --paper:#FFFFFF; --ink:#1E2340; --soft:#4A5078; --line:#D5DDF0;
-  --red:#E2433A; --green:#2E9D52; --blue:#2F6FD6; --yellow:#F6C431; --purple:#6B4BC4; --brown:#8A5A2B;
-  --tint-red:#FDE6E4; --tint-green:#E1F4E7; --tint-blue:#E2ECFC; --tint-yellow:#FFF4CF; --tint-purple:#ECE6FA;
-  --display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
-  --body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
-    --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
-  --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757;
-  color-scheme:dark;
-}
-*,*::before,*::after{box-sizing:border-box}
+:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}
+img{max-width:100%}
+[hidden]:not([hidden=until-found i]){display:none!important}
+:root{--bg:#F3F7FF;--paper:#FFFFFF;--ink:#1E2340;--soft:#4A5078;--line:#D5DDF0;--red:#E2433A;--green:#2E9D52;--blue:#2F6FD6;--yellow:#F6C431;--purple:#6B4BC4;--brown:#8A5A2B;--tint-red:#FDE6E4;--tint-green:#E1F4E7;--tint-blue:#E2ECFC;--tint-yellow:#FFF4CF;--tint-purple:#ECE6FA;--display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;--body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;}
 html{height:100%}
-body{
-  height:100%;margin:0;background:var(--bg);color:var(--ink);
-  font-family:var(--body);font-weight:500;
-  font-size:clamp(16px,1.05vw + 10px,21px);line-height:1.5;
-  display:flex;flex-direction:column;overflow:hidden;
-}
-h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance}
-h2{font-size:clamp(1.7rem,2.6vw + .6rem,2.8rem);font-weight:800;margin-bottom:.35em}
-h3{font-size:1.2em;font-weight:700}
-p{margin:.3em 0 .7em}
-b,strong{font-weight:800}
-
-.deck{flex:1;position:relative;min-height:0}
-.slide{position:absolute;inset:0;overflow-y:auto;padding:clamp(18px,3vw,48px) clamp(16px,5vw,80px) 24px;display:none}
-.slide.active{display:block;animation:in .35s ease-out}
-@keyframes in{from{opacity:.2;transform:translateX(18px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.slide.active{animation:none}}
-.wrap{max-width:1080px;margin:0 auto}
-.lead{font-size:1.15em;color:var(--soft);max-width:60ch}
-.badge{display:inline-block;font-weight:800;font-size:.85em;padding:.2em .8em;border-radius:99px;margin-bottom:.8em;color:#fff}
-
-.bar{display:flex;align-items:center;gap:12px;padding:10px clamp(12px,3vw,32px);padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));background:var(--paper);border-top:2px solid var(--line)}
-.bar button.nav{font:inherit;font-weight:800;border:0;border-radius:14px;padding:.55em 1.1em;cursor:pointer;background:var(--blue);color:#fff;min-width:48px}
-.bar button.nav:disabled{opacity:.35;cursor:default}
-.dots{flex:1;display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
-.dots button{width:12px;height:12px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer}
-.dots button.on{background:var(--red);transform:scale(1.3)}
-.count{font-weight:800;color:var(--soft);min-width:4.5ch;text-align:center;font-variant-numeric:tabular-nums}
-button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
-
-.cover{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;min-height:100%}
-.cover > *{min-width:0}
-.cover h1{font-size:clamp(2.4rem,5vw + .5rem,4.8rem);font-weight:800;margin:.2em 0 .3em}
-.stripes{display:flex;height:14px;border-radius:8px;overflow:hidden;max-width:420px;margin-bottom:1em}
-.stripes span{flex:1}
-@media (max-width:760px){.cover{grid-template-columns:1fr}.cover svg{max-width:220px;margin:0 auto;display:block}}
-
-.grid{display:grid;gap:16px}
-.grid > *{min-width:0}
-.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-.box{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:18px 20px}
-.box .emo{font-size:2.2em;line-height:1;display:block;margin-bottom:.25em}
-.tip{border-radius:18px;padding:14px 20px;margin-top:18px;border-left:8px solid}
-.tip.y{background:var(--tint-yellow);border-color:var(--yellow)}
-.tip.g{background:var(--tint-green);border-color:var(--green)}
-.tip.b{background:var(--tint-blue);border-color:var(--blue)}
-.tip.r{background:var(--tint-red);border-color:var(--red)}
-.tip.p{background:var(--tint-purple);border-color:var(--purple)}
-
-.q{display:flex;gap:16px;align-items:center;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px 20px;margin-bottom:14px;font-size:1.15em;font-weight:700}
-.q .mark{flex:none;width:2.2em;height:2.2em;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:var(--display);font-weight:800;font-size:1.1em}
-
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
-.chips span{background:var(--tint-purple);border-radius:10px;padding:.25em .7em;font-weight:800}
-.ladder{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 6px}
-.step{background:var(--tint-blue);border-radius:12px;padding:.35em .8em;font-weight:800;text-align:center}
-.arrow{color:var(--soft);font-weight:800}
-
-/* events interactive */
-.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0 14px}
-.events button{font:inherit;font-weight:800;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:12px 10px;text-align:center}
-.events button span{display:block;font-size:1.9em;line-height:1.1}
-.events button[aria-pressed="true"]{border-color:var(--red);background:var(--tint-red)}
-.doc-card{background:var(--paper);border:2px dashed var(--brown);border-radius:18px;padding:16px 20px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;min-height:6.5em}
-.doc-card .big{font-size:3em;line-height:1}
-.doc-card > div{min-width:0}
-
-/* family types */
-.fam svg{width:100%;height:auto;display:block;margin-bottom:10px}
-
-/* timeline */
-.axis-wrap{overflow-x:auto;margin:8px 0}
-.axis{width:100%;min-width:620px;height:auto;display:block}
-
-/* tree */
-.tree{display:grid;gap:10px;margin-top:6px}
-.tree .row{display:grid;gap:10px;justify-items:center}
-.tree .r1{grid-template-columns:1fr}
-.tree .r2{grid-template-columns:1fr 1fr}
-.tree .r3{grid-template-columns:repeat(4,1fr)}
-.tree .lbl{font-family:var(--display);font-weight:800;font-size:.8em;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);text-align:center}
-.person{font:inherit;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:10px 12px;text-align:center;width:100%;max-width:260px}
-.person b{display:block}
-.person small{color:var(--soft);font-weight:700;font-variant-numeric:tabular-nums}
-.person.child{border-color:var(--red);background:var(--tint-red)}
-.person.dad,.person.pat{border-color:var(--blue)}
-.person.mom,.person.mat{border-color:var(--green)}
-.person[aria-pressed="true"]{box-shadow:0 0 0 4px var(--yellow)}
-.side{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.side .lbl{grid-column:1/-1}
-.tree-info{margin-top:12px}
-@media (max-width:620px){.tree .r3{grid-template-columns:1fr 1fr}}
-
-blockquote{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,1.4vw + .5rem,1.7rem);line-height:1.3;border-left:10px solid var(--red);padding:.2em 0 .2em .8em}
-cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weight:700;font-family:var(--body);font-size:.75em}
-
-/* „Manualul spune / Context” */
-.mc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;margin-top:18px;border:2px solid var(--line);border-radius:18px;overflow:hidden;background:var(--paper)}
-.mc > div{padding:14px 20px;min-width:0}
-.mc .m{background:var(--tint-yellow)}
-.mc .lab{display:block;font-family:var(--display);font-weight:800;font-size:.8em;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin-bottom:.3em}
-.mc .m p{font-style:italic}
-.mc p{margin:0 0 .4em}
-
-.quiz .item{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:14px 18px;margin-bottom:12px}
-.quiz .item p{margin:0;font-weight:700}
-.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-.reveal{font:inherit;font-weight:800;border:0;border-radius:12px;padding:.35em .9em;background:var(--tint-yellow);color:var(--ink);cursor:pointer}
-.reveal.hint{background:var(--tint-blue)}
-.ans{margin-top:8px;font-weight:800}
-.ans.a{color:var(--green)}
-.ans.h{color:var(--blue)}
+body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:500;font-size:clamp(16px,1.05vw + 10px,21px);line-height:1.5;display:flex;flex-direction:column;overflow:hidden;}
 </style>
-
+</head>
+<body>
 <main class="deck" id="deck">
 
 <!-- 1 COPERTA -->
@@ -455,62 +329,10 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
 
 </main>
 
-<nav class="bar" aria-label="Navigare prezentare">
- <a class="home" href="../../index.html" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>
- <button class="nav" id="prev" aria-label="Slide-ul anterior">←</button>
- <div class="dots" id="dots"></div>
- <span class="count" id="count"></span>
- <button class="nav" id="next" aria-label="Slide-ul următor">→</button>
-</nav>
-
+<script src="../../assets/caiet.js"></script>
 <script>
 (function(){
-  var slides=[].slice.call(document.querySelectorAll('.slide'));
-  var dots=document.getElementById('dots'),prev=document.getElementById('prev'),next=document.getElementById('next'),count=document.getElementById('count');
-  var cur=0;
-  slides.forEach(function(s,i){
-    var b=document.createElement('button');
-    b.setAttribute('aria-label','Mergi la slide-ul '+(i+1));
-    b.onclick=function(){go(i)};
-    dots.appendChild(b);
-  });
-  function go(i){
-    if(i<0||i>=slides.length)return;
-    slides[cur].classList.remove('active');dots.children[cur].classList.remove('on');
-    cur=i;
-    slides[cur].classList.add('active');dots.children[cur].classList.add('on');
-    slides[cur].scrollTop=0;
-    prev.disabled=cur===0;next.disabled=cur===slides.length-1;
-    count.textContent=(cur+1)+' / '+slides.length;
-    
-  }
-  prev.onclick=function(){go(cur-1)};
-  next.onclick=function(){go(cur+1)};
-  document.addEventListener('keydown',function(e){
-    if(e.key==='ArrowRight'||e.key==='PageDown')go(cur+1);
-    if(e.key==='ArrowLeft'||e.key==='PageUp')go(cur-1);
-  });
-  var sx=null,deck=document.getElementById('deck');
-  deck.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
-  deck.addEventListener('touchend',function(e){
-    if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;
-    if(Math.abs(dx)>60)go(cur+(dx<0?1:-1));sx=null;
-  },{passive:true});
-  var start=0;
-  
-  slides[0].classList.add('active');dots.children[0].classList.add('on');
-  go(start);
-
-  /* hint / answer buttons: each reveals its own line under the buttons */
-  document.querySelectorAll('.reveal').forEach(function(b){
-    var d=document.createElement('div');
-    d.className='ans '+(b.classList.contains('hint')?'h':'a');
-    d.hidden=true;
-    d.textContent=(b.classList.contains('hint')?'💡 ':'✅ ')+b.getAttribute('data-t');
-    b.parentNode.parentNode.appendChild(d);
-    var label=b.textContent;
-    b.onclick=function(){d.hidden=!d.hidden;b.textContent=d.hidden?label:'Ascunde';};
-  });
+  Caiet.start();
 
   /* events -> documents */
   var docs=[
@@ -550,5 +372,5 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
   });
 })();
 </script>
-
-</body></html>
+</body>
+</html>

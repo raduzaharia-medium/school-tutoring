@@ -1,70 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Caietul Clasei a IV-a</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap&subset=latin-ext" rel="stylesheet">
-<style>
-/* Same design system as the lesson decks: Baloo 2 + Nunito, five subject colors, paper cards on a cool ground */
-:root{
-  --bg:#F3F7FF; --paper:#FFFFFF; --ink:#1E2340; --soft:#4A5078; --line:#D5DDF0;
-  --red:#E2433A; --green:#2E9D52; --blue:#2F6FD6; --yellow:#F6C431; --purple:#6B4BC4; --brown:#8A5A2B;
-  --tint-red:#FDE6E4; --tint-green:#E1F4E7; --tint-blue:#E2ECFC; --tint-yellow:#FFF4CF; --tint-purple:#ECE6FA; --tint-brown:#F3E6D8;
-  --display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
-  --body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
-    --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757; --tint-brown:#3A2C22;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#121633; --paper:#1C2147; --ink:#F1F3FF; --soft:#B8BEE6; --line:#343B6E;
-  --tint-red:#3E2230; --tint-green:#1C3A30; --tint-blue:#1E2E5A; --tint-yellow:#3C3522; --tint-purple:#2E2757; --tint-brown:#3A2C22;
-  color-scheme:dark;
-}
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:500;font-size:clamp(16px,.6vw + 13px,19px);line-height:1.5;
-  padding:calc(env(safe-area-inset-top,0px) + clamp(20px,4vw,48px)) 16px calc(env(safe-area-inset-bottom,0px) + 48px)}
-.wrap{max-width:1100px;margin:0 auto}
-h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance}
-a{color:inherit}
-.stripes{display:flex;height:12px;border-radius:8px;overflow:hidden;max-width:320px;margin-bottom:14px}
-.stripes span{flex:1}
-header h1{font-size:clamp(2.2rem,4vw + 1rem,4rem);font-weight:800}
-header .lead{color:var(--soft);font-size:1.1em;max-width:62ch;margin:.4em 0 0}
-.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-.stats span{background:var(--paper);border:2px solid var(--line);border-radius:99px;padding:.25em .9em;font-weight:800;font-variant-numeric:tabular-nums}
-.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:22px}
-.legend div{background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:12px 16px;font-size:.95em}
-.legend b{font-family:var(--display)}
-section.subject{margin-top:40px}
-.subject-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
-.subject-head h2{font-size:clamp(1.6rem,1.5vw + 1rem,2.2rem);font-weight:800}
-.unitblock{margin-top:18px;padding-left:14px;border-left:4px solid var(--accent)}
-.unitblock + .unitblock{margin-top:28px}
-.unitblock h3.unit{font-size:1.15em;font-weight:800;color:var(--ink);margin:0 0 12px}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
-.card{display:flex;flex-direction:column;gap:6px;text-decoration:none;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px 18px;transition:transform .15s,border-color .15s;min-width:0}
-.card:hover{transform:translateY(-2px);border-color:var(--accent)}
-.card:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
-.card .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.card .lbl{font-weight:800;font-size:.8em;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
-.card .kind{font-size:.75em;font-weight:800;padding:.1em .6em;border-radius:99px;background:var(--tint);color:var(--ink)}
-.card .kind.rec{background:var(--yellow);color:#1E2340}
-.card h3{font-size:1.25em;font-weight:800}
-.card p{margin:0;color:var(--soft);font-size:.95em}
-.note{color:var(--soft);font-size:.9em;margin-top:10px}
-footer{margin-top:48px;color:var(--soft);font-size:.85em;border-top:2px solid var(--line);padding-top:14px}
-@media (prefers-reduced-motion:reduce){.card{transition:none}}
-</style>
+<link rel="stylesheet" href="assets/caiet.css">
 </head>
-<body>
+<body class="cuprins">
 <div class="wrap">
  <header>
   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
@@ -78,8 +20,10 @@ footer{margin-top:48px;color:var(--soft);font-size:.85em;border-top:2px solid va
   </div>
  </header>
  <main id="subjects"></main>
- <footer>Ultima actualizare: 8 noiembrie 2026. Fonturile se încarcă de pe internet; fără internet, paginile folosesc fonturile calculatorului. Lecția de geografie are nevoie de internet pentru modelul 3D.</footer>
+ <footer>Ultima actualizare: 8 noiembrie 2026. Fonturile se încarcă de pe internet; fără internet, paginile folosesc fonturile calculatorului.</footer>
 </div>
+
+<script src="assets/caiet.js"></script>
 <script>
 (function(){
   var S=[
@@ -118,22 +62,7 @@ footer{margin-top:48px;color:var(--soft);font-size:.85em;border-top:2px solid va
       {f:'civica/unitatea-1/lectia-3-uniunea-europeana.html',l:'Lecția 3',t:'România, membră a Uniunii Europene',d:'Însemnele UE, cum a crescut Uniunea și ce s-a schimbat din 2022.'},
       {f:'civica/unitatea-1/recapitulare.html',l:'Toată unitatea',t:'Cercurile apartenenței',d:'Recapitularea unității, înainte de test: monedele UE, ce s-a schimbat de la manual, 18 misiuni.',r:1}]}]}
   ];
-  var host=document.getElementById('subjects'),total=0,recs=0;
-  S.forEach(function(s){
-    var sec=document.createElement('section');sec.className='subject';
-    var h='<div class="subject-head"><h2>'+s.name+'</h2></div>';
-    s.units.forEach(function(u){
-      h+='<div class="unitblock" style="--accent:'+s.color+'"><h3 class="unit">'+u.u+'</h3><div class="cards">';
-      u.items.forEach(function(it){
-        total++;if(it.r)recs++;
-        h+='<a class="card" href="'+it.f+'" style="--accent:'+s.color+';--tint:'+s.tint+'"><div class="meta"><span class="lbl">'+it.l+'</span><span class="kind'+(it.r?' rec':'')+'">'+(it.r?'Recapitulare':'Lecție')+'</span></div><h3>'+it.t+'</h3><p>'+it.d+'</p></a>';
-      });
-      h+='</div></div>';
-    });
-    h+=(s.note?'<p class="note">'+s.note+'</p>':'');
-    sec.innerHTML=h;host.appendChild(sec);
-  });
-  document.getElementById('stats').innerHTML='<span>'+S.length+' materii</span><span>'+(total-recs)+' lecții</span><span>'+recs+' recapitulări</span>';
+  Caiet.cuprins(S);
 })();
 </script>
 </body>
