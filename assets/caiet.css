@@ -254,7 +254,7 @@ body.cuprins{height:auto;display:block;overflow:visible;font-size:clamp(16px,.6v
 .cuprins .subject-head h2{font-size:clamp(1.6rem,1.5vw + 1rem,2.2rem);font-weight:800}
 .cuprins .unitblock{margin-top:18px;padding-left:14px;border-left:4px solid var(--accent)}
 .cuprins .unitblock + .unitblock{margin-top:28px}
-.cuprins .unitblock h3.unit{font-size:1.15em;font-weight:800;color:var(--ink);margin:0 0 12px}
+.cuprins .unitblock h2.unit,.cuprins .unitblock h3.unit{font-size:1.15em;font-weight:800;color:var(--ink);margin:0 0 12px}
 .cuprins .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
 .cuprins .card{display:flex;flex-direction:column;gap:6px;text-decoration:none;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px 18px;transition:transform .15s,border-color .15s;min-width:0}
 .cuprins .card:hover{transform:translateY(-2px);border-color:var(--accent)}
@@ -269,4 +269,24 @@ body.cuprins{height:auto;display:block;overflow:visible;font-size:clamp(16px,.6v
 .cuprins footer{margin-top:48px;color:var(--soft);font-size:.85em;border-top:2px solid var(--line);padding-top:14px}
 @media (prefers-reduced-motion:reduce){
   .cuprins .card{transition:none}
+}
+
+/* carduri de materie (index.html) */
+.cuprins .subjects{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:32px}
+.cuprins .subjcard{display:flex;flex-direction:column;gap:8px;text-decoration:none;background:var(--paper);border:2px solid var(--line);border-top:10px solid var(--accent);border-radius:20px;padding:18px 20px;transition:transform .15s,border-color .15s;min-width:0}
+.cuprins .subjcard:hover{transform:translateY(-3px);border-color:var(--accent)}
+.cuprins .subjcard:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.cuprins .subjcard .emo{font-size:2.2em;line-height:1}
+.cuprins .subjcard h2{font-size:1.6em;font-weight:800;color:var(--accent)}
+.cuprins .subjcard p{color:var(--soft);font-size:.95em}
+.cuprins .subjcard ul{margin:0;padding-left:1.1em;font-weight:700;font-size:.92em}
+.cuprins .subjcard .mini{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.cuprins .subjcard .mini span{background:var(--tint);border-radius:99px;padding:.1em .7em;font-weight:800;font-size:.8em}
+/* pagina unei materii */
+.cuprins .back{display:inline-flex;align-items:center;gap:.4em;font-weight:800;text-decoration:none;background:var(--tint-blue);border-radius:14px;padding:.45em .9em;margin-bottom:18px}
+.cuprins .back:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.cuprins .mstripe{height:12px;max-width:320px;border-radius:8px;background:var(--accent);margin-bottom:14px}
+.cuprins main .unitblock:first-child{margin-top:32px}
+@media (prefers-reduced-motion:reduce){
+  .cuprins .subjcard{transition:none}
 }

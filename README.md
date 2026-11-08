@@ -7,7 +7,9 @@ Site static cu prezentările interactive pentru clasa a IV-a.
 - **Pe internet (opțional):** urcă tot folderul `site` pe orice găzduire de pagini statice, de exemplu GitHub Pages, Netlify sau Cloudflare Pages. Nu are nevoie de server sau de bază de date.
 
 ## Structură
-- `index.html`: cuprinsul, pe materii și unități. Folosește tot framework-ul (`<body class="cuprins">` și `Caiet.cuprins(S)`); pentru o lecție nouă adaugi doar un rând în lista `S`.
+- `index.html`: pagina principală, cu câte un card pentru fiecare materie (`Caiet.materii()`).
+- `<materie>/index.html` (istorie, stiinte, geografie, civica): pagina materiei, cu unitățile și lecțiile ei (`Caiet.materie('istorie')`). Butonul „Cuprins” din lecții duce aici.
+- `assets/cuprins.js`: lista tuturor materiilor, unităților și lecțiilor. **Pentru o lecție nouă adaugi doar un rând aici**; pagina principală și pagina materiei se actualizează singure.
 - `istorie/`, `stiinte/`, `geografie/`, `civica/`: câte un folder pe materie, cu un subfolder pentru fiecare unitate (`unitatea-1/`, `unitatea-2/`…).
 - În fiecare unitate: `lectia-N-<subiect>.html` pentru fiecare lecție și `recapitulare.html` pentru recapitularea unității.
 - `assets/caiet.css` și `assets/caiet.js`: framework-ul comun (vezi mai jos).

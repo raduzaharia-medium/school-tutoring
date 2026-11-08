@@ -3,7 +3,8 @@
      Caiet.start({ Q: [...], SORTERS: {...}, ranks: [...] });
    Toate cheile sunt opționale. Ce nu e în framework rămâne în scriptul paginii.
 
-   Cuprinsul (index.html) folosește <body class="cuprins"> și Caiet.cuprins(S).
+   Cuprinsul: index.html folosește Caiet.materii(), iar <materie>/index.html folosește Caiet.materie(id);
+   ambele citesc lista din assets/cuprins.js. Butonul „Cuprins” din lecții duce la pagina materiei.
 
    Ce face:
    - bara de jos (Cuprins, ←, puncte, contor, →), navigare cu tastele ← → și glisare pe telefon;
@@ -36,7 +37,7 @@
     nav.className = 'bar';
     nav.setAttribute('aria-label','Navigare prezentare');
     nav.innerHTML =
-      '<a class="home" href="' + (Caiet.home || '../../index.html') + '" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>' +
+      '<a class="home" href="' + (Caiet.home || '../index.html') + '" aria-label="Înapoi la cuprins">☰<span> Cuprins</span></a>' +
       '<button class="nav" id="prev" type="button" aria-label="Slide-ul anterior">←</button>' +
       '<div class="dots" id="dots"></div>' +
       '<span class="count" id="count"></span>' +
@@ -284,29 +285,53 @@
     setScore(); render();
   };
 
-  /* ---------- cuprinsul (index.html) ----------
-     S = [{name, color, tint, units:[{u:'Unitatea N. Titlu', items:[{f, l, t, d, r}]}]}]
-     f = fișierul, l = eticheta („Lecția 1”), t = titlul, d = descrierea, r:1 = recapitulare */
-  Caiet.cuprins = function(S){
-    var host = $('subjects'), total = 0, recs = 0;
-    S.forEach(function(s){
-      var sec = document.createElement('section');
-      sec.className = 'subject';
-      var h = '<div class="subject-head"><h2>'+s.name+'</h2></div>';
-      s.units.forEach(function(u){
-        h += '<div class="unitblock" style="--accent:'+s.color+'"><h3 class="unit">'+u.u+'</h3><div class="cards">';
-        u.items.forEach(function(it){
-          total++; if (it.r) recs++;
-          h += '<a class="card" href="'+it.f+'" style="--accent:'+s.color+';--tint:'+s.tint+'"><div class="meta"><span class="lbl">'+it.l+'</span><span class="kind'+(it.r?' rec':'')+'">'+(it.r?'Recapitulare':'Lecție')+'</span></div><h3>'+it.t+'</h3><p>'+it.d+'</p></a>';
-        });
-        h += '</div></div>';
-      });
-      if (s.note) h += '<p class="note">'+s.note+'</p>';
-      sec.innerHTML = h;
-      host.appendChild(sec);
-    });
+  /* ---------- cuprinsul ----------
+     Datele sunt în assets/cuprins.js (Caiet.CUPRINS).
+     index.html (rădăcina)      → Caiet.materii(): câte un card pentru fiecare materie.
+     <materie>/index.html       → Caiet.materie('istorie'): unitățile și lecțiile materiei. */
+  function counts(m){
+    var n = {units:m.units.length, lessons:0, recaps:0};
+    m.units.forEach(function(u){u.items.forEach(function(it){if (it.r) n.recaps++; else n.lessons++;});});
+    return n;
+  }
+  function plural(n, one, many){return n+' '+(n===1?one:many);}
+  function statsHtml(n){
+    return '<span>'+plural(n.units,'unitate','unități')+'</span><span>'+plural(n.lessons,'lecție','lecții')+'</span><span>'+plural(n.recaps,'recapitulare','recapitulări')+'</span>';
+  }
+
+  Caiet.materii = function(){
+    var host = $('subjects'), all = {units:0, lessons:0, recaps:0};
+    host.className = 'subjects';
+    host.innerHTML = Caiet.CUPRINS.map(function(m){
+      var n = counts(m);
+      all.units += n.units; all.lessons += n.lessons; all.recaps += n.recaps;
+      return '<a class="subjcard" href="'+m.id+'/index.html" style="--accent:'+m.color+';--tint:'+m.tint+'">'+
+        '<span class="emo" aria-hidden="true">'+m.emoji+'</span><h2>'+m.name+'</h2><p>'+m.desc+'</p>'+
+        '<ul>'+m.units.map(function(u){return '<li>'+u.u+'</li>';}).join('')+'</ul>'+
+        '<div class="mini">'+statsHtml(n)+'</div></a>';
+    }).join('');
     var st = $('stats');
-    if (st) st.innerHTML = '<span>'+S.length+' materii</span><span>'+(total-recs)+' lecții</span><span>'+recs+' recapitulări</span>';
+    if (st) st.innerHTML = '<span>'+plural(Caiet.CUPRINS.length,'materie','materii')+'</span><span>'+plural(all.lessons,'lecție','lecții')+'</span><span>'+plural(all.recaps,'recapitulare','recapitulări')+'</span>';
+  };
+
+  Caiet.materie = function(id){
+    var m = Caiet.CUPRINS.filter(function(x){return x.id===id;})[0];
+    if (!m) return;
+    document.title = m.name+' · Caietul Clasei a IV-a';
+    document.documentElement.style.setProperty('--accent', m.color);
+    var t = $('mtitle'); if (t) t.innerHTML = '<span aria-hidden="true">'+m.emoji+'</span> '+m.name;
+    var d = $('mdesc'); if (d) d.textContent = m.desc;
+    var st = $('stats'); if (st) st.innerHTML = statsHtml(counts(m));
+    var host = $('subjects'), pre = id+'/', h = '';
+    m.units.forEach(function(u){
+      h += '<section class="unitblock" style="--accent:'+m.color+'"><h2 class="unit">'+u.u+'</h2><div class="cards">';
+      u.items.forEach(function(it){
+        var f = it.f.indexOf(pre)===0 ? it.f.slice(pre.length) : '../'+it.f;
+        h += '<a class="card" href="'+f+'" style="--accent:'+m.color+';--tint:'+m.tint+'"><div class="meta"><span class="lbl">'+it.l+'</span><span class="kind'+(it.r?' rec':'')+'">'+(it.r?'Recapitulare':'Lecție')+'</span></div><h3>'+it.t+'</h3><p>'+it.d+'</p></a>';
+      });
+      h += '</div></section>';
+    });
+    host.innerHTML = h;
   };
 
   /* ---------- pornirea ---------- */
