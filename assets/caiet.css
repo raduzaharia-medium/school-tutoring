@@ -41,6 +41,8 @@ b,strong{font-weight:800}
 button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
 .cover{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;min-height:100%}
 .cover>*{min-width:0}
+/* Safari: un SVG fără width/height într-o grilă se poate întinde peste coloană; îi dăm dimensiuni explicite */
+.cover svg{display:block;width:100%;height:auto;max-width:420px;max-height:65vh;margin:0 auto}
 .cover h1{font-size:clamp(2.4rem,5vw + .5rem,4.8rem);font-weight:800;margin:.2em 0 .3em}
 .stripes{display:flex;height:14px;border-radius:8px;overflow:hidden;max-width:420px;margin-bottom:1em}
 .stripes span{flex:1}
