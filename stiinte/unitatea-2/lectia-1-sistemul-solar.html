@@ -141,6 +141,22 @@ svg text{font-family:"Nunito",sans-serif}
   <div class="box" id="pcard" style="margin-top:14px" aria-live="polite"></div>
  </div>
 </section>
+
+<section class="slide" aria-label="Sistemul Solar în 3D">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🪐 Model 3D</span>
+  <h2>Sistemul Solar în 3D</h2>
+
+  <p>Rotește modelul cu degetul sau cu mouse-ul. Apoi schimbă modul: niciun desen nu poate arăta <b>în același timp</b> mărimile și distanțele adevărate. Află de ce.</p>
+  <div class="ctrl" id="ss3-mod">
+   <button type="button" aria-pressed="true" data-m="ord">Ordinea</button>
+   <button type="button" aria-pressed="false" data-m="mar">Mărimi adevărate</button>
+   <button type="button" aria-pressed="false" data-m="dist">Distanțe adevărate</button>
+  </div>
+  <div id="ss3"></div>
+  <div class="map-info" id="ss3-info" aria-live="polite"></div>
+ </div>
+</section>
 <section class="slide" aria-label="Ordinea planetelor">
  <div class="wrap">
   <span class="badge" style="background:var(--purple)">Joc de ordonare · manual p. 17, ex. 3</span>
@@ -283,6 +299,8 @@ svg text{font-family:"Nunito",sans-serif}
 </section>
 </main>
 
+<script src="../../vendor/three.min.js"></script>
+<script src="../../vendor/OrbitControls.js"></script>
 <script src="../../assets/caiet.js"></script>
 <script>
 (function(){
@@ -401,6 +419,47 @@ svg text{font-family:"Nunito",sans-serif}
   }
   document.getElementById('greset').onclick=build;
   build();
+})();
+</script>
+<script>
+(function(){
+  var P=[['Mercur',2440,.39,88,'#B9AFA5'],['Venus',6052,.72,225,'#E8BE6F'],['Terra',6371,1,365,'#3E7BD9'],['Marte',3390,1.52,687,'#D2603A'],
+         ['Jupiter',69911,5.2,4333,'#D9A066'],['Saturn',58232,9.58,10759,'#E7D08A'],['Uranus',25362,19.2,30687,'#7CC8D9'],['Neptun',24622,30.05,60190,'#4A63D9']];
+  var TXT={ord:'<b>Ordinea.</b> Distanțele sunt egale între ele și planetele sunt mărite, ca să le vezi pe toate. Așa arată desenele din manual.',
+   mar:'<b>Mărimi adevărate</b> (față de Pământ). Soarele e atât de mare încât abia îi vezi marginea în stânga: în el ar încăpea peste un milion de Pământuri. Jupiter e de 11 ori mai lat decât Pământul.',
+   dist:'<b>Distanțe adevărate.</b> Neptun e de 30 de ori mai departe de Soare decât Pământul. Planetele sunt aici doar niște puncte: la mărimea lor adevărată nu le-ai vedea deloc. Uită-te și cât de încet merg cele îndepărtate.'};
+  var T,sun,pl=[],orbits=[],mode='ord',ang=P.map(function(p,i){return i*0.8;});
+  var ctx;Caiet.scena3d('ss3',{camera:[0,14,22],setup:function(T_,scene,cam,c){ctx=c;
+    T=T_;scene.add(new T.AmbientLight(0xffffff,.35));var L=new T.PointLight(0xffffff,1.3,0,0);scene.add(L);
+    sun=new T.Mesh(new T.SphereGeometry(1,48,32),new T.MeshBasicMaterial({color:0xFFC933}));scene.add(sun);
+    sun.add(Caiet.label3d(T,'Soarele',{size:.7}));sun.children[0].position.set(0,1.6,0);
+    P.forEach(function(p){var m=new T.Mesh(new T.SphereGeometry(1,32,24),new T.MeshStandardMaterial({color:p[4],roughness:.8}));
+      if(p[0]==='Saturn'){var r=new T.Mesh(new T.RingGeometry(1.4,2.2,48),new T.MeshBasicMaterial({color:0xE7D08A,side:T.DoubleSide,transparent:true,opacity:.7}));r.rotation.x=Math.PI/2.4;m.add(r);}
+      var lb=Caiet.label3d(T,p[0],{size:.9});lb.userData.w=lb.scale.x;lb.userData.h=lb.scale.y;m.userData.lb=lb;scene.add(lb);scene.add(m);pl.push(m);
+      var o=new T.Mesh(new T.RingGeometry(1,1.012,128),new T.MeshBasicMaterial({color:0x5566aa,side:T.DoubleSide,transparent:true,opacity:.6}));o.rotation.x=-Math.PI/2;scene.add(o);orbits.push(o);});
+    layout();},
+   tick:function(t,dt){
+    P.forEach(function(p,i){var m=pl[i],r=m.userData.R;
+      if(mode!=='mar')ang[i]+=dt*2*Math.PI/(12*p[3]/365);
+      var a=mode==='mar'?0:ang[i];m.position.set(mode==='mar'?m.userData.X:r*Math.cos(a),0,mode==='mar'?0:-r*Math.sin(a));
+      m.userData.lb.position.set(m.position.x,m.userData.s+(mode==='dist'?3:.8),m.position.z);m.rotation.y+=dt;});}});
+  function layout(){
+    var cam=ctx.camera;
+    P.forEach(function(p,i){var m=pl[i],s,R;
+      if(mode==='ord'){s=.25+Math.sqrt(p[1]/6371)*.32;R=3+i*2.1;}
+      if(mode==='dist'){s=.4;R=p[2]*2.1;}
+      if(mode==='mar'){s=p[1]/6371*.35;R=0;}
+      m.scale.setScalar(s);m.userData.s=s;m.userData.R=R;
+      var k=mode==='dist'?5:1,lb=m.userData.lb;lb.scale.set(lb.userData.w*k,lb.userData.h*k,1);lb.visible=!(mode==='dist'&&['Mercur','Venus','Marte'].indexOf(p[0])>-1);
+      orbits[i].visible=mode!=='mar';orbits[i].scale.setScalar(R||1);});
+    if(mode==='mar'){var x=2;P.forEach(function(p,i){var s=pl[i].userData.s,e=p[0]==='Saturn'?s*2.2:s;x+=e;pl[i].userData.X=x;x+=e+.6;});
+      sun.scale.setScalar(696340/6371*.35);sun.position.set(-696340/6371*.35+.6,0,0);cam.position.set(14,4,26);ctx.controls.target.set(14,0,0);}
+    else{sun.position.set(0,0,0);sun.scale.setScalar(mode==='dist'?.45:1.6);
+      if(mode==='dist'){cam.position.set(0,55,70);}else{cam.position.set(0,14,22);}ctx.controls.target.set(0,0,0);}
+    sun.children[0].visible=mode!=='mar';
+    document.getElementById('ss3-info').innerHTML=TXT[mode];}
+  document.querySelectorAll('#ss3-mod button').forEach(function(b){b.onclick=function(){mode=b.getAttribute('data-m');
+    document.querySelectorAll('#ss3-mod button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});layout();};});
 })();
 </script>
 </body>

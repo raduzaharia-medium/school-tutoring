@@ -73,6 +73,16 @@
  </div>
 </section>
 
+<section class="slide" aria-label="Cercurile orizontului">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">🎯 Schemă</span>
+  <h2>Spații unul în altul</h2>
+
+  <p>Fiecare spațiu îl cuprinde pe cel dinăuntru. Apasă pe cercuri, de la cel mic spre cel mare.</p>
+  <div class="grid g2" style="align-items:center"><div id="orz"></div><div class="map-info" id="orz-info" aria-live="polite">Camera ta e în locuință, locuința e în cartier sau în sat, iar acestea sunt în localitate. Ce spațiu ar urma după localitate? (Indiciu: Civică, lecția 1 și 2.)</div></div>
+ </div>
+</section>
+
 <!-- 4 SAT ORAS CARTIER -->
 <section class="slide" aria-label="Sat, oraș, cartier">
  <div class="wrap">
@@ -185,6 +195,16 @@
   (function(){var bs=document.querySelectorAll('#levels button'),li=document.getElementById('levelinfo');
     function show(i){bs.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});li.innerHTML=LEVELS[i];}
     bs.forEach(function(b,i){b.onclick=function(){show(i)}});show(0);})();
+})();
+</script>
+<script>
+(function(){
+  Caiet.cercuri('orz',{info:'orz-info',label:'Orizontul apropiat ca cercuri unul în altul',items:[
+   {label:'Localitatea',emoji:'🏙️',color:'#2E9D52',text:'satul, comuna sau orașul. Are o primărie (Civică L1).'},
+   {label:'Cartierul',emoji:'🏘️',color:'#2F6FD6',text:'o parte dintr-un oraș. La sat, satul însuși joacă acest rol.'},
+   {label:'Școala',emoji:'🏫',color:'#6B4BC4',text:'clădirea și curtea, cu toate sălile. Drumul spre ea face parte din orizontul apropiat.'},
+   {label:'Sala de clasă',emoji:'📚',color:'#E2433A',text:'unde înveți. O vei desena ca plan la lecția 3.'},
+   {label:'Banca ta',emoji:'✏️',color:'#C9862A',text:'cel mai mic spațiu de aici, de unde începe orizontul tău apropiat.'}]});
 })();
 </script>
 </body>

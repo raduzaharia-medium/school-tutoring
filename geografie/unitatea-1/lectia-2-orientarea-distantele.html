@@ -129,6 +129,20 @@
  </div>
 </section>
 
+<section class="slide" aria-label="Drumul pe plan">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">🧭 Joc</span>
+  <h2>Du-l pe Alex la școală</h2>
+
+  <p>Alex privește în direcția săgeții. Folosește doar <b>înainte</b>, <b>stânga</b> și <b>dreapta</b>. Un pătrățel are <b>50 m</b>. Poți ajunge cu mai puțin de 500 m?</p>
+  <div class="grid g2" style="align-items:start">
+   <svg class="fig" id="tr" viewBox="0 0 400 300" role="img" aria-label="Planul cartierului cu casa lui Alex și școala" style="max-width:460px"></svg>
+   <div><div class="ctrl"><button type="button" id="tr-l">↶ Stânga</button><button type="button" id="tr-f">⬆ Înainte 50 m</button><button type="button" id="tr-r">Dreapta ↷</button><button type="button" id="tr-0">Ia de la capăt</button></div>
+   <div class="map-info" id="tr-info" aria-live="polite"></div></div>
+  </div>
+ </div>
+</section>
+
 <!-- 7 MISIUNI -->
 <section class="slide" aria-label="Misiunile">
  <div class="wrap" style="max-width:920px">
@@ -197,6 +211,23 @@
       so.innerHTML=d+' m = '+(d*100).toLocaleString('ro-RO')+' cm. '+(d*100).toLocaleString('ro-RO')+' : '+p+' ≈ <b>'+n.toLocaleString('ro-RO')+' de pași</b>. '+(p===40&&d===40?'Exact ca Emil!':'Un pas mai lung înseamnă mai puțini pași. De aceea pasul nu e o unitate de măsură sigură.');}
     sl.oninput=calc;sd.onchange=calc;calc();
   })();
+})();
+</script>
+<script>
+(function(){
+  var S=document.getElementById('tr'),C=50,W=8,H=6,B={'2,1':1,'3,1':1,'2,2':1,'3,2':1,'5,3':1,'5,4':1,'6,3':1,'1,4':1,'2,4':1};
+  var start=[0,5],goal=[7,0],pos,dir,dist,path,DX=[[0,-1],[1,0],[0,1],[-1,0]];
+  function reset(){pos=start.slice();dir=0;dist=0;path=[pos.slice()];draw('Alex pornește de acasă și privește spre nord, în sus pe plan.');}
+  function draw(msg){S.innerHTML='';for(var x=0;x<W;x++)for(var y=0;y<H;y++){var b=B[x+','+y];Caiet.svg('rect',{x:x*C,y:y*C,width:C,height:C,fill:b?'#C9D3E6':'#EAF6E4',stroke:'#fff','stroke-width':2},S);}
+    Object.keys(B).forEach(function(k){var p=k.split(',');var t=Caiet.svg('text',{x:p[0]*C+25,y:p[1]*C+33,'text-anchor':'middle','font-size':20},S);t.textContent='🏢';});
+    var g1=Caiet.svg('text',{x:goal[0]*C+25,y:goal[1]*C+35,'text-anchor':'middle','font-size':28},S);g1.textContent='🏫';var h1=Caiet.svg('text',{x:start[0]*C+25,y:start[1]*C+35,'text-anchor':'middle','font-size':26},S);h1.textContent='🏠';
+    Caiet.svg('polyline',{points:path.map(function(p){return (p[0]*C+25)+','+(p[1]*C+25)}).join(' '),fill:'none',stroke:'#E2433A','stroke-width':5,'stroke-linecap':'round','stroke-linejoin':'round',opacity:.8},S);
+    var a=Caiet.svg('g',{transform:'translate('+(pos[0]*C+25)+','+(pos[1]*C+25)+') rotate('+(dir*90)+')'},S);Caiet.svg('circle',{r:14,fill:'#2F6FD6',stroke:'#fff','stroke-width':3},a);Caiet.svg('path',{d:'M0 -11 L7 3 L-7 3Z',fill:'#fff'},a);
+    document.getElementById('tr-info').innerHTML=(msg?msg+'<br>':'')+'Distanța parcursă: <b>'+dist+' m</b>.';}
+  function fwd(){var n=[pos[0]+DX[dir][0],pos[1]+DX[dir][1]];if(n[0]<0||n[1]<0||n[0]>=W||n[1]>=H){draw('Acolo se termină planul. Întoarce-te!');return;}if(B[n[0]+','+n[1]]){draw('🏢 E un bloc în față. Ocolește-l!');return;}
+    pos=n;dist+=C;path.push(pos.slice());if(pos[0]===goal[0]&&pos[1]===goal[1]){draw(dist<=600?'🎉 <b>Ai ajuns la școală!</b> '+(dist===600?'Ăsta e cel mai scurt drum: 7 pătrățele la dreapta și 5 în sus, adică 12 × 50 m = 600 m. Era o capcană: mai puțin de 500 m nu se poate!':''):'🎉 Ai ajuns, dar pe un drum mai lung. Cel mai scurt are 600 m.');}else draw('');}
+  document.getElementById('tr-f').onclick=fwd;document.getElementById('tr-l').onclick=function(){dir=(dir+3)%4;draw('Alex s-a întors spre stânga lui.');};
+  document.getElementById('tr-r').onclick=function(){dir=(dir+1)%4;draw('Alex s-a întors spre dreapta lui.');};document.getElementById('tr-0').onclick=reset;reset();
 })();
 </script>
 </body>

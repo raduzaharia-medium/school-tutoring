@@ -156,18 +156,8 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
      <button aria-pressed="false" data-i="4">Ruși-lipoveni</button>
      <button aria-pressed="false" data-i="5">Ucraineni</button>
     </div>
-    <div class="tiles" role="img" aria-label="Hartă schematică a regiunilor istorice ale României">
-     <div class="tile t-mm" data-r="mm">Maramureș</div>
-     <div class="tile t-bu" data-r="bu">Bucovina</div>
-     <div class="tile t-cr" data-r="cr">Crișana</div>
-     <div class="tile t-tr" data-r="tr">Transilvania</div>
-     <div class="tile t-mo" data-r="mo">Moldova</div>
-     <div class="tile t-ba" data-r="ba">Banat</div>
-     <div class="tile t-ol" data-r="ol">Oltenia</div>
-     <div class="tile t-mu" data-r="mu">Muntenia</div>
-     <div class="tile t-do" data-r="do">Dobrogea</div>
-    </div>
-    <p class="caption">Hartă schematică a regiunilor istorice, nu la scară. Compară cu harta din manual (fig. 11, după recensământul din 2011).</p>
+    <div id="minmap"></div>
+    <p class="caption">Harta României pe județe. Sunt colorate județele numite în lecție, unde comunitatea e mai numeroasă. Apasă pe un județ ca să-i afli numele.</p>
    </div>
    <div class="box" id="mininfo" aria-live="polite"></div>
   </div>
@@ -344,6 +334,7 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 </main>
 
 <script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/romania.js"></script>
 <script>
 (function(){
   Caiet.start();
@@ -361,18 +352,18 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
 
   /* minorities map */
   var mins=[
-    {r:['tr','cr'],t:'Maghiarii',d:'Cea mai mare minoritate din România. Trăiesc mai ales în <b>centrul și estul Transilvaniei</b> (Harghita, Covasna, Mureș) și în <b>Crișana</b> (Bihor, Satu Mare).'},
-    {r:['tr','ba'],t:'Germanii (sașii și șvabii)',d:'<b>Sașii</b> au trăit în <b>sudul Transilvaniei</b>, iar <b>șvabii</b> în <b>Banat</b>. Mulți au plecat în Germania, dar au rămas satele și bisericile lor fortificate.'},
-    {r:['ba'],t:'Sârbii',d:'Trăiesc mai ales în <b>Banat</b>, în județele Timiș și Caraș-Severin, aproape de Dunăre și de granița cu Serbia.'},
-    {r:['do'],t:'Turcii și tătarii',d:'Trăiesc mai ales în <b>Dobrogea</b>, în județul Constanța. Acolo vezi și <b>moschei</b>, lăcașurile lor de cult.'},
-    {r:['do'],t:'Rușii-lipovenii',d:'Trăiesc mai ales în <b>Delta Dunării</b> (județul Tulcea, în Dobrogea). Mulți sunt <b>pescari</b>: o ocupație potrivită cu mediul geografic!'},
-    {r:['mm','bu'],t:'Ucrainenii',d:'Trăiesc mai ales în <b>Maramureș</b> și în <b>Bucovina</b> (județul Suceava), aproape de granița cu Ucraina.'}
+    {r:['tr','cr'],c:['harghita','covasna','mures','bihor','satu-mare'],t:'Maghiarii',d:'Cea mai mare minoritate din România. Trăiesc mai ales în <b>centrul și estul Transilvaniei</b> (Harghita, Covasna, Mureș) și în <b>Crișana</b> (Bihor, Satu Mare).'},
+    {r:['tr','ba'],c:['sibiu','brasov','timis','arad','satu-mare'],t:'Germanii (sașii și șvabii)',d:'<b>Sașii</b> au trăit în <b>sudul Transilvaniei</b>, iar <b>șvabii</b> în <b>Banat</b>. Mulți au plecat în Germania, dar au rămas satele și bisericile lor fortificate.'},
+    {r:['ba'],c:['timis','caras-severin'],t:'Sârbii',d:'Trăiesc mai ales în <b>Banat</b>, în județele Timiș și Caraș-Severin, aproape de Dunăre și de granița cu Serbia.'},
+    {r:['do'],c:['constanta'],t:'Turcii și tătarii',d:'Trăiesc mai ales în <b>Dobrogea</b>, în județul Constanța. Acolo vezi și <b>moschei</b>, lăcașurile lor de cult.'},
+    {r:['do'],c:['tulcea'],t:'Rușii-lipovenii',d:'Trăiesc mai ales în <b>Delta Dunării</b> (județul Tulcea, în Dobrogea). Mulți sunt <b>pescari</b>: o ocupație potrivită cu mediul geografic!'},
+    {r:['mm','bu'],c:['maramures','suceava'],t:'Ucrainenii',d:'Trăiesc mai ales în <b>Maramureș</b> și în <b>Bucovina</b> (județul Suceava), aproape de granița cu Ucraina.'}
   ];
-  var mb=document.querySelectorAll('#minbtns button'),tiles=document.querySelectorAll('.tile'),mi=document.getElementById('mininfo');
+  var mb=document.querySelectorAll('#minbtns button'),mi=document.getElementById('mininfo');
   function showMin(i){
     var m=mins[i];
     mb.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});
-    tiles.forEach(function(t){t.classList.toggle('on',m.r.indexOf(t.getAttribute('data-r'))>-1)});
+    Caiet.harta('minmap',{map:'romania',label:'Unde trăiesc '+m.t,fill:function(z){return m.c.indexOf(z.id)>-1?'#6B4BC4':null;},info:'mininfo',text:function(z){return '<h3>'+z.name+'</h3><p style="margin-bottom:0">'+(m.c.indexOf(z.id)>-1?'Aici trăiește o comunitate numeroasă de '+m.t.toLowerCase().replace(/ \(.*\)/,'')+'.':'Județul '+z.name+'.')+'</p>';}});
     mi.innerHTML='<h3>'+m.t+'</h3><p style="margin-bottom:0">'+m.d+'</p><p class="caption">💡 Romii trăiesc în aproape toate regiunile țării.</p>';
   }
   mb.forEach(function(b,i){b.onclick=function(){showMin(i)}});

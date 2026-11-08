@@ -219,6 +219,18 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
  </div>
 </section>
 
+<section class="slide" aria-label="Viețile familiei">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">📊 Grafic</span>
+  <h2>Trei generații, pe aceeași axă</h2>
+
+  <p>Fiecare bară e viața unei persoane din familia lui Andrei, de la naștere până azi. Mută anul și vezi ce vârstă avea fiecare atunci.</p>
+  <div class="fig-wrap"><svg class="fig" id="fam" viewBox="0 0 800 330" role="img" aria-label="Barele vieții membrilor familiei lui Andrei, între 1945 și 2026"></svg></div>
+  <div class="ctrl"><label for="fam-y" style="font-weight:800">Anul:</label><input id="fam-y" type="range" min="1945" max="2026" value="1969"><b id="fam-yl" style="min-width:5ch"></b></div>
+  <div class="map-info" id="fam-info" aria-live="polite"></div>
+ </div>
+</section>
+
 <!-- 9 ARBORELE GENEALOGIC -->
 <section class="slide" aria-label="Arborele genealogic al lui Andrei">
  <div class="wrap">
@@ -370,6 +382,21 @@ body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(
       ti.innerHTML='🌳 '+info[+b.getAttribute('data-i')];
     };
   });
+})();
+</script>
+<script>
+(function(){
+  var F=[['Grigore (bunic matern)',1947,'#C9862A'],['Ionela (bunică maternă)',1948,'#C9862A'],['Ion (bunic patern)',1949,'#2F6FD6'],['Maria (bunică paternă)',1949,'#2F6FD6'],['Bogdan (tatăl)',1974,'#2E9D52'],['Ioana (mama)',1975,'#2E9D52'],['Andrei',2010,'#E2433A']];
+  var EV={1969:'Omul ajunge pe Lună (Apollo 11, istorie L7).',1989:'Se adoptă Convenția drepturilor copilului (L5).',2007:'România intră în Uniunea Europeană.',2010:'Se naște Andrei.',1974:'Se naște Bogdan, tatăl lui Andrei.',1975:'Se naște Ioana, mama lui Andrei.'};
+  var S=document.getElementById('fam'),x0=200,x1=780,A=1945,Z=2026;function X(y){return x0+(y-A)/(Z-A)*(x1-x0);}
+  for(var y=1950;y<=2020;y+=10){Caiet.svg('line',{x1:X(y),y1:20,x2:X(y),y2:300,stroke:'var(--line)'},S);var t=Caiet.svg('text',{x:X(y),y:320,'text-anchor':'middle','font-size':13,'font-weight':700,fill:'var(--soft)'},S);t.textContent=y;}
+  F.forEach(function(p,i){var yy=26+i*39;var l=Caiet.svg('text',{x:x0-10,y:yy+19,'text-anchor':'end','font-size':15,'font-weight':800,fill:'var(--ink)'},S);l.textContent=p[0];
+    Caiet.svg('rect',{x:X(p[1]),y:yy+4,width:X(Z)-X(p[1]),height:24,rx:8,fill:p[2]},S);p.ag=Caiet.svg('text',{y:yy+21,'font-size':14,'font-weight':800,fill:'#fff'},S);});
+  var ln=Caiet.svg('line',{y1:14,y2:302,stroke:'#E2433A','stroke-width':3},S);
+  function set(){var y=+document.getElementById('fam-y').value;ln.setAttribute('x1',X(y));ln.setAttribute('x2',X(y));document.getElementById('fam-yl').textContent=y;
+    var parts=F.map(function(p){var a=y-p[1];p.ag.setAttribute('x',X(y)+6);p.ag.textContent=a>=0?a+' ani':'';p.ag.setAttribute('fill',a>=0?'#fff':'none');return a>=0?p[0].split(' ')[0]+': '+a+' ani':null;}).filter(Boolean);
+    document.getElementById('fam-info').innerHTML='<b>În '+y+'</b> '+(EV[y]?'· '+EV[y]+'<br>':'<br>')+(parts.length?parts.join(' · '):'Niciunul nu se născuse încă.')+'<br><small>Vârstele sunt aproximative: depind de ziua de naștere din acel an.</small>';}
+  document.getElementById('fam-y').oninput=set;set();
 })();
 </script>
 </body>

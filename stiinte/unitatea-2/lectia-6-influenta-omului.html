@@ -101,6 +101,9 @@
  <div class="wrap">
   <span class="badge" style="background:var(--purple)">🌉 Punte · Științe ↔ Educație civică ↔ Geografie</span>
   <h2>Cine apără natura?</h2>
+<div class="fig-wrap"><div id="parcuri"></div><p class="fig-cap">🟢 Câteva parcuri naționale și Delta Dunării (rezervație a biosferei). Pozițiile sunt aproximative. Apasă pe un județ ca să vezi ce parcuri are.</p></div>
+  <div class="map-info" id="parcuri-info" aria-live="polite">Cele mai multe parcuri naționale sunt în <b>munți</b>, în Carpați. De ce crezi? (Indiciu: unde e mai puțină agricultură și mai puține orașe?)</div>
+
   <details class="pd"><summary>Legea</summary><p>Manualul spune că multe state iau „măsuri reglementate prin legi”. În România, unele specii sunt <b>ocrotite</b>, iar zone întregi devin <b>parcuri naționale</b> și <b>rezervații</b>. Primul parc național al României a fost <b>Retezat</b>, în 1935.</p></details>
   <details class="pd"><summary>Instituțiile (Civică U1 L1)</summary><p>Ca la comunitatea locală, fiecare problemă are o instituție: <b>Garda de Mediu</b> verifică poluarea, <b>administrațiile parcurilor</b> au paznici (rangeri), iar <b>primăria</b> organizează strângerea gunoiului. Manualul îți propune chiar să scrii o scrisoare autorităților locale!</p></details>
   <details class="pd"><summary>Locul (Geografie)</summary><p>Caută pe hartă Delta Dunării: e <b>rezervație a biosferei</b> și e pe lista UNESCO, despre care ai auzit la civică (U1 L3). Aici trăiesc pelicanii din atlasul manualului.</p></details>
@@ -151,6 +154,7 @@
 </main>
 
 <script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/romania.js"></script>
 <script>
 (function(){
 
@@ -171,6 +175,15 @@
 
   Caiet.start({Q:Q,SORTERS:SORTERS});
 
+})();
+</script>
+<script>
+(function(){
+  var P=[['Retezat',22.85,45.38,'hunedoara','primul parc național al României, din 1935'],['Domogled–Valea Cernei',22.55,45.0,'caras-severin',''],['Cheile Nerei',21.9,44.95,'caras-severin',''],['Defileul Jiului',23.37,45.2,'gorj',''],['Cozia',24.3,45.32,'valcea',''],['Piatra Craiului',25.22,45.52,'brasov',''],['Călimani',25.2,47.1,'suceava',''],['Ceahlău',25.95,46.98,'neamt',''],['Munții Rodnei',24.8,47.55,'maramures',''],['Munții Măcinului',28.3,45.25,'tulcea','singurul parc național din Dobrogea, cu munți foarte vechi'],['Delta Dunării',29.2,45.15,'tulcea','rezervație a biosferei și pe lista UNESCO']];
+  var J={};P.forEach(function(p){(J[p[3]]=J[p[3]]||[]).push(p);});
+  Caiet.harta('parcuri',{map:'romania',label:'Parcuri naționale din România',fill:function(z){return J[z.id]?'#BFE5C8':null;},info:'parcuri-info',
+    text:function(z){var l=J[z.id];return '<b>'+z.name+'</b>: '+(l?l.map(function(p){return p[0]+(p[4]?' ('+p[4]+')':'')}).join(', '):'niciun parc național pe această hartă');},
+    points:P.map(function(p){return {lon:p[1],lat:p[2],color:'#2E9D52',r:6,text:p[0]==='Retezat'||p[0]==='Delta Dunării'||p[0]==='Ceahlău'?p[0]:''};})});
 })();
 </script>
 </body>

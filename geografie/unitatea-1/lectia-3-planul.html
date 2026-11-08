@@ -50,6 +50,18 @@
  </div>
 </section>
 
+<section class="slide" aria-label="Din lateral până la plan">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🧊 Model 3D</span>
+  <h2>Urcă privirea până devine plan</h2>
+
+  <p>Mută glisorul: privești clasa din ușă, apoi tot mai de sus. Sus de tot, apasă „Fă-l plan” și vezi cum obiectele devin <b>semne</b>.</p>
+  <div id="pl3"></div>
+  <div class="ctrl"><span style="font-weight:800">🧍 Din ușă</span><input id="pl3-a" type="range" min="0" max="100" value="15" aria-label="Înălțimea privirii"><span style="font-weight:800">🐦 De sus</span><button type="button" id="pl3-p" aria-pressed="false">Fă-l plan</button></div>
+  <div class="map-info" id="pl3-info" aria-live="polite"></div>
+ </div>
+</section>
+
 <!-- 3 PLANUL -->
 <section class="slide" aria-label="Planul">
  <div class="wrap">
@@ -182,6 +194,8 @@
 
 </main>
 
+<script src="../../vendor/three.min.js"></script>
+<script src="../../vendor/OrbitControls.js"></script>
 <script src="../../assets/caiet.js"></script>
 <script>
 (function(){
@@ -225,6 +239,27 @@
     function show(i){bs.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});pinfo.innerHTML=PLANS[i];}
     bs.forEach(function(b,i){b.onclick=function(){show(i)}});show(0);
   })();
+})();
+</script>
+<script>
+(function(){
+  var T,objs=[],ctx,plan=false;
+  var LEG='<b>Legenda planului:</b> <span style="display:inline-block;width:14px;height:10px;background:#C9862A;vertical-align:middle"></span> bancă · <span style="display:inline-block;width:14px;height:10px;background:#2E9D52;vertical-align:middle"></span> catedră · <span style="display:inline-block;width:14px;height:10px;background:#1E2340;vertical-align:middle"></span> tablă · <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#E2433A;vertical-align:middle"></span> coș · <span style="display:inline-block;width:14px;height:4px;background:#2F6FD6;vertical-align:middle"></span> ușă';
+  Caiet.scena3d('pl3',{background:0xEAF2FF,camera:[0,2,10],setup:function(T_,scene,cam,c){T=T_;ctx=c;ctx.controls.enabled=false;
+    scene.add(new T.AmbientLight(0xffffff,.6));var L=new T.DirectionalLight(0xffffff,.7);L.position.set(4,10,6);scene.add(L);
+    var floor=new T.Mesh(new T.PlaneGeometry(12,9),new T.MeshStandardMaterial({color:0xF4E9D8}));floor.rotation.x=-Math.PI/2;scene.add(floor);
+    function box(w,h,d,x,z,col,flat){var m=new T.Mesh(new T.BoxGeometry(w,h,d),new T.MeshStandardMaterial({color:col}));m.position.set(x,h/2,z);m.userData={col:col,h:h,flat:flat};scene.add(m);objs.push(m);return m;}
+    for(var r=0;r<3;r++)for(var k=0;k<3;k++){box(1.8,.8,.9,-3.5+k*3.5,-1+r*2.2,0xC9862A);}
+    box(2.2,.9,1,-3.2,-3.2,0x2E9D52);box(5,1.6,.15,0,-4.4,0x1E2340);
+    var bin=new T.Mesh(new T.CylinderGeometry(.35,.3,.7,24),new T.MeshStandardMaterial({color:0xE2433A}));bin.position.set(5,.35,-3.6);bin.userData={col:0xE2433A,h:.7};scene.add(bin);objs.push(bin);
+    var door=box(1.3,2.2,.1,4.4,4.45,0x2F6FD6);
+    var walls=new T.LineSegments(new T.EdgesGeometry(new T.BoxGeometry(12,2.6,9)),new T.LineBasicMaterial({color:0x8899bb}));walls.position.y=1.3;scene.add(walls);set();}});
+  function set(){var a=+document.getElementById('pl3-a').value/100,ang=a*Math.PI/2*0.999,R=13;
+    ctx.camera.position.set(0,1.6+Math.sin(ang)*R,Math.cos(ang)*R+.01);ctx.camera.lookAt(0,0,0);ctx.controls.target.set(0,0,0);
+    var top=a>.97,btn=document.getElementById('pl3-p');btn.disabled=!top;if(!top&&plan){plan=false;flat();}
+    document.getElementById('pl3-info').innerHTML=plan?'✅ <b>Acum e un plan</b>: vedere de sus, cu forme simple și o legendă. Băncile au devenit dreptunghiuri, coșul un cerc.<br>'+LEG:a<.3?'🧍 Din ușă vezi băncile din lateral. Unele le ascund pe altele.':a<.97?'🪜 Mai sus vezi mai mult, dar tot pieziș: băncile din spate par mai mici.':'🐦 Acum privești <b>de sus</b>, ca o pasăre. Nimic nu mai ascunde nimic. Apasă „Fă-l plan”.';}
+  function flat(){objs.forEach(function(m){m.scale.y=plan?.02:1;m.position.y=plan?.01:m.userData.h/2;m.material=plan?new T.MeshBasicMaterial({color:m.userData.col}):new T.MeshStandardMaterial({color:m.userData.col});});}
+  document.getElementById('pl3-a').oninput=set;document.getElementById('pl3-p').onclick=function(){plan=!plan;this.setAttribute('aria-pressed',plan);flat();set();};
 })();
 </script>
 </body>

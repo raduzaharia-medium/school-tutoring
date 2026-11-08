@@ -75,6 +75,11 @@ svg text{font-family:"Nunito",sans-serif}
 @media (prefers-reduced-motion:reduce){
   .shake{animation:none}
 }
+.wc-st{cursor:pointer}.wc-st.sel circle{fill:#E2433A}.wc-st.sel text{fill:#fff}
+.wc-flow{animation:wcflow 1.2s linear infinite}@keyframes wcflow{to{stroke-dashoffset:-32}}
+.wc-fall{animation:wcfall 1s linear infinite}@keyframes wcfall{from{transform:translateY(-8px);opacity:.3}to{transform:translateY(16px);opacity:1}}
+.wc-drift{animation:wcdrift 6s ease-in-out infinite alternate}@keyframes wcdrift{to{transform:translateX(-30px)}}
+@media (prefers-reduced-motion:reduce){.wc-flow,.wc-fall,.wc-drift{animation:none}}
 </style>
 </head>
 <body>
@@ -141,6 +146,23 @@ svg text{font-family:"Nunito",sans-serif}
    <div class="row"><button class="reveal">Arată răspunsul</button><div class="ans" hidden>Se schimbă locul Pământului față de Soare, deci care parte primește mai multă lumină și căldură. Când Polul Nord e înclinat spre Soare, în emisfera nordică e vară. Când e înclinat în partea opusă, e iarnă.</div></div></div>
  </div>
 </section>
+
+<section class="slide" aria-label="Revoluția în 3D">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌍 Model 3D</span>
+  <h2>Un an întreg în jurul Soarelui</h2>
+
+  <p>Mută luna și urmărește <b>axa</b> (bețișorul alb): e înclinată mereu în aceeași direcție. Uită-te ce se întâmplă cu România (punctul roșu) și cu lungimea zilei.</p>
+  <div id="o3"></div>
+  <div class="ctrl"><button type="button" id="o3-play" aria-pressed="false">▶ Pornește anul</button><input id="o3-d" type="range" min="0" max="364" step="1" value="172" aria-label="Ziua din an"><b id="o3-dl" style="min-width:9ch"></b></div>
+  <div class="grid g3" style="margin-top:8px">
+   <div class="box"><h3 id="o3-s">Anotimpul</h3><p id="o3-sd"></p></div>
+   <div class="box"><h3>☀️ Ziua în București</h3><p id="o3-day"></p></div>
+   <div class="box"><h3>📐 Soarele la amiază</h3><p id="o3-alt"></p></div>
+  </div>
+  <p class="sursa">Distanțele și mărimile nu sunt la scară. Lungimea zilei și înălțimea Soarelui sunt calculate pentru București (44,4° latitudine nordică).</p>
+ </div>
+</section>
 <section class="slide" aria-label="Cele patru anotimpuri">
  <div class="wrap">
   <span class="badge" style="background:var(--green)">Studiu · manual p. 21</span>
@@ -200,6 +222,37 @@ svg text{font-family:"Nunito",sans-serif}
   <div class="tip g">🌍 <b>Context (nu e în manual):</b> ninsoarea e formată din cristale mici de gheață. Legătura cu lecția 2: manualul spune că, dacă Soarele ar fi mult mai aproape, apele s-ar evapora. Evaporarea este chiar începutul acestui drum.</div>
   <div class="tip b">🤔 <b>Gândește-te:</b> vara avem ploi cu fulgere și tunete, iarna avem viscol. De ce nu ninge vara?
    <div class="row"><button class="reveal">Arată răspunsul</button><div class="ans" hidden>Vara temperaturile sunt cele mai ridicate (peste 0 °C), așa că norii dau ploaie, nu zăpadă.</div></div></div>
+ </div>
+</section>
+
+<section class="slide" aria-label="Ciclul apei">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">🎬 Animație</span>
+  <h2>Drumul apei, în cerc</h2>
+
+  <p>Apasă pe fiecare pas, apoi schimbă temperatura din nor. Aceeași apă face mereu același drum: din mare în nor și înapoi.</p>
+  <div class="fig-wrap"><svg class="fig" id="wc" viewBox="0 0 800 380" role="img" aria-label="Ciclul apei: Soarele încălzește marea, apa se evaporă, se formează nori, cade ploaie sau ninsoare, râurile duc apa înapoi în mare">
+   <defs><linearGradient id="wc-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BFE3F7"/><stop offset="1" stop-color="#EAF6FF"/></linearGradient></defs>
+   <rect width="800" height="380" fill="url(#wc-sky)"/>
+   <circle cx="90" cy="70" r="40" fill="#FFC933"/>
+   <path d="M0 300 Q120 285 240 300 T480 300 V380 H0Z" fill="#2F6FD6"/>
+   <path d="M440 380 L520 170 L600 110 L700 190 L800 160 V380Z" fill="#7A8F5A"/>
+   <path d="M560 150 L600 110 L640 140 L620 150 L600 135 L580 155Z" fill="#fff"/>
+   <path id="wc-river" d="M600 200 C560 260 520 270 470 300" stroke="#2F6FD6" stroke-width="10" fill="none" stroke-linecap="round"/>
+   <g id="wc-evap" stroke="#2F6FD6" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="6 10" class="wc-flow"><path d="M140 285 C130 230 160 200 150 150"/><path d="M220 285 C210 230 240 200 230 150"/><path d="M300 285 C290 230 320 200 310 150"/></g>
+   <g id="wc-cloud" class="wc-drift"><g fill="#fff" stroke="#C9D3E6" stroke-width="2"><ellipse cx="420" cy="90" rx="70" ry="34"/><ellipse cx="470" cy="70" rx="55" ry="36"/><ellipse cx="520" cy="92" rx="60" ry="30"/></g>
+    <g id="wc-rain" stroke="#2F6FD6" stroke-width="4" stroke-linecap="round" class="wc-fall"><path d="M430 130 l-6 18"/><path d="M465 135 l-6 18"/><path d="M500 130 l-6 18"/><path d="M535 135 l-6 18"/><path d="M450 160 l-6 18"/><path d="M515 162 l-6 18"/></g>
+    <g id="wc-snow" fill="#fff" stroke="#9AA9C8" stroke-width="1.5" class="wc-fall" style="display:none"><circle cx="430" cy="140" r="6"/><circle cx="465" cy="150" r="6"/><circle cx="500" cy="138" r="6"/><circle cx="535" cy="152" r="6"/><circle cx="450" cy="172" r="6"/><circle cx="515" cy="176" r="6"/></g></g>
+   <g font-family="Baloo 2, sans-serif" font-weight="800" font-size="17" fill="#1E2340" id="wc-steps">
+    <g data-s="0" class="wc-st"><circle cx="90" cy="135" r="15" fill="#F6C431"/><text x="90" y="141" text-anchor="middle">1</text></g>
+    <g data-s="1" class="wc-st"><circle cx="255" cy="210" r="15" fill="#F6C431"/><text x="255" y="216" text-anchor="middle">2</text></g>
+    <g data-s="2" class="wc-st"><circle cx="360" cy="60" r="15" fill="#F6C431"/><text x="360" y="66" text-anchor="middle">3</text></g>
+    <g data-s="3" class="wc-st"><circle cx="560" cy="200" r="15" fill="#F6C431"/><text x="560" y="206" text-anchor="middle">4</text></g>
+    <g data-s="4" class="wc-st"><circle cx="500" cy="300" r="15" fill="#F6C431"/><text x="500" y="306" text-anchor="middle">5</text></g>
+   </g>
+  </svg></div>
+  <div class="ctrl"><span style="font-weight:800">Temperatura în nor:</span><button type="button" id="wc-warm" aria-pressed="true">peste 0 °C</button><button type="button" id="wc-cold" aria-pressed="false">sub 0 °C</button></div>
+  <div class="map-info" id="wc-info" aria-live="polite">Apasă pe cifrele galbene de pe desen.</div>
  </div>
 </section>
 <section class="slide" aria-label="Fișa de observații meteo">
@@ -335,7 +388,10 @@ svg text{font-family:"Nunito",sans-serif}
 </section>
 </main>
 
+<script src="../../vendor/three.min.js"></script>
+<script src="../../vendor/OrbitControls.js"></script>
 <script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/glob.js"></script>
 <script>
 (function(){
   var KEY='sn-u2l3';
@@ -458,6 +514,48 @@ svg text{font-family:"Nunito",sans-serif}
   document.getElementById('yadd').onclick=function(){if(y<4){y++;yr()}};
   document.getElementById('yreset').onclick=function(){y=0;yr()};
   yr();
+})();
+</script>
+<script>
+(function(){
+  var T,earth,tiltG,day=172,play=false,R=7;
+  var LUNI=['ianuarie','februarie','martie','aprilie','mai','iunie','iulie','august','septembrie','octombrie','noiembrie','decembrie'],ZL=[31,28,31,30,31,30,31,31,30,31,30,31];
+  Caiet.scena3d('o3',{camera:[0,5.5,11.5],setup:function(T_,scene){
+    T=T_;scene.add(new T.AmbientLight(0x8899ff,.2));scene.add(new T.PointLight(0xffffff,1.6,0,0));
+    var s=new T.Mesh(new T.SphereGeometry(1.4,48,32),new T.MeshBasicMaterial({color:0xFFC933}));scene.add(s);
+    var o=new T.Mesh(new T.RingGeometry(R-.02,R+.02,160),new T.MeshBasicMaterial({color:0x5566aa,side:T.DoubleSide}));o.rotation.x=-Math.PI/2;scene.add(o);
+    [['Vara la noi',Math.PI],['Iarna la noi',0]].forEach(function(q){var l=Caiet.label3d(T,q[0],{size:.8});l.position.set(R*Math.cos(q[1]),2.2,0);scene.add(l);});
+    tiltG=new T.Group();tiltG.rotation.z=-23.44*Math.PI/180;scene.add(tiltG);
+    earth=new T.Mesh(new T.SphereGeometry(1.4,48,32),new T.MeshStandardMaterial({map:Caiet.globTexture(T),roughness:.9}));tiltG.add(earth);
+    var ax=new T.Mesh(new T.CylinderGeometry(.035,.035,4,8),new T.MeshBasicMaterial({color:0xffffff}));tiltG.add(ax);
+    var n=Caiet.label3d(T,'N',{size:.35});n.position.set(0,2.3,0);tiltG.add(n);set();},
+   tick:function(t,dt){earth.rotation.y+=dt*1.5;if(play){day=(day+dt*24)%365;document.getElementById('o3-d').value=Math.floor(day);set();}}});
+  function set(){var a=Math.PI+2*Math.PI*(day-172)/365;tiltG.position.set(R*Math.cos(a),0,-R*Math.sin(a));
+    var d=Math.floor(day),m=0;while(d>=ZL[m]){d-=ZL[m];m++;}
+    document.getElementById('o3-dl').textContent=(d+1)+' '+LUNI[m];
+    var S=[[11,0,1,'❄️ Iarna','Polul Nord e înclinat în partea opusă Soarelui: razele cad mai pieziș și ziua e scurtă.'],[2,3,4,'🌸 Primăvara','Zilele cresc. Pe 20–21 martie, ziua e egală cu noaptea.'],[5,6,7,'☀️ Vara','Polul Nord e înclinat spre Soare: razele cad mai drept și ziua e lungă.'],[8,9,10,'🍂 Toamna','Zilele scad. Pe 22–23 septembrie, ziua e egală cu noaptea.']].filter(function(q){return q.indexOf(m)>-1&&q.indexOf(m)<3;})[0];
+    document.getElementById('o3-s').textContent=S[3];document.getElementById('o3-sd').textContent=S[4]+' (anotimpurile pe luni, ca în manual)';
+    var dec=23.44*Math.sin(2*Math.PI*(day-80)/365)*Math.PI/180,phi=44.4*Math.PI/180;
+    var H=2*Math.acos(-Math.tan(phi)*Math.tan(dec))*180/Math.PI/15,hh=Math.floor(H),mm=Math.round((H-hh)*60);if(mm===60){hh++;mm=0;}
+    document.getElementById('o3-day').innerHTML='<b>'+hh+' ore și '+mm+' minute</b> de lumină';
+    document.getElementById('o3-alt').innerHTML='<b>'+Math.round(90-44.4+dec*180/Math.PI)+'°</b> deasupra orizontului';}
+  document.getElementById('o3-d').oninput=function(){day=+this.value;set();};
+  document.getElementById('o3-play').onclick=function(){play=!play;this.setAttribute('aria-pressed',play);this.textContent=play?'⏸ Oprește':'▶ Pornește anul';};
+})();
+</script>
+<script>
+(function(){
+  var S=['<b>1. Soarele încălzește</b> apa mărilor, a lacurilor și a râurilor (lecția 2: Soarele, sursă de căldură).',
+   '<b>2. Evaporarea:</b> apa încălzită se transformă în vapori, pe care nu-i vezi, și urcă. E o transformare de stare, ca la clasa a III-a: lichid → gaz.',
+   '<b>3. Norii:</b> sus e mai frig. Vaporii se răcesc și formează picături foarte mici sau cristale de gheață. Multe la un loc fac un nor.',
+   '<b>4. Precipitațiile:</b> picăturile se unesc, devin grele și cad. Dacă în nor și sub el e sub 0 °C, cad fulgi de zăpadă.',
+   '<b>5. Drumul înapoi:</b> apa curge pe munte în râuri, râurile se varsă în mare, iar drumul începe din nou.'];
+  var info=document.getElementById('wc-info');
+  document.querySelectorAll('#wc .wc-st').forEach(function(g){g.addEventListener('click',function(){document.querySelectorAll('#wc .wc-st').forEach(function(x){x.classList.toggle('sel',x===g)});info.innerHTML=S[+g.getAttribute('data-s')];});});
+  function t(c){document.getElementById('wc-rain').style.display=c?'none':'';document.getElementById('wc-snow').style.display=c?'':'none';
+    document.getElementById('wc-warm').setAttribute('aria-pressed',!c);document.getElementById('wc-cold').setAttribute('aria-pressed',c);
+    info.innerHTML=c?'❄️ <b>Sub 0 °C</b>: apa din nor îngheață în cristale, care se lipesc în fulgi. Ninge.':'🌧️ <b>Peste 0 °C</b>: picăturile rămân lichide. Plouă.';}
+  document.getElementById('wc-warm').onclick=function(){t(false)};document.getElementById('wc-cold').onclick=function(){t(true)};
 })();
 </script>
 </body>

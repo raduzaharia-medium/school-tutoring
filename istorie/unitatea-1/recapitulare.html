@@ -157,6 +157,17 @@
  </div>
 </section>
 
+<section class="slide" aria-label="Axa unității">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">📏 Axa timpului</span>
+  <h2>Toată unitatea, pe o singură axă</h2>
+
+  <p>Evenimentele din cele șapte lecții, puse în ordine. Apasă pe ele și spune: în ce <b>secol</b> și în ce <b>epocă</b> sunt?</p>
+  <div id="axu"></div>
+  <div class="map-info" id="axu-info" aria-live="polite">Apasă pe un punct de pe axă.</div>
+ </div>
+</section>
+
 <!-- 5 MASINA TIMPULUI -->
 <section class="slide" aria-label="Mașina timpului">
  <div class="wrap">
@@ -794,6 +805,15 @@
       document.getElementById('rb-fb').innerHTML='<div class="fb '+(n===R.length?'ok':'h')+'"><b>'+n+' din '+R.length+'.</b> Verticala A–B: <b>'+col+'</b>'+(n===R.length?'. Bravo: ISTORIA, știința despre evoluția societății omenești!':'')+'</div>';};
     document.getElementById('rb-hint').onclick=function(){var rows=[].slice.call(host.querySelectorAll('.rw')).filter(function(rw){return !rw.classList.contains('ok')});if(!rows.length)return;var rw=rows[0],i=+rw.getAttribute('data-i');rw.querySelector('input').value=R[i][1][0].slice(0,2);rw.querySelector('input').focus();};
   })();
+})();
+</script>
+<script>
+(function(){
+  var B=[{from:600,to:1700,label:'medievală',color:'#2F6FD6'},{from:1700,to:1918,label:'modernă',color:'#6B4BC4'},{from:1918,to:2026,label:'contemporană',color:'#2E9D52'}];
+  function ep(y){return y<=1700?'Evul Mediu':y<1918?'epoca modernă':'epoca contemporană';}
+  function sec(y){var c=Math.ceil(y/100),m=[[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']],r='';m.forEach(function(p){while(c>=p[0]){r+=p[1];c-=p[0];}});return r;}
+  var E=[[1271,'Marco Polo','pleacă spre China (L7)'],[1492,'Columb','ajunge în America (L7)'],[1519,'Magellan','pornește în jurul lumii (L7)'],[1675,'Milescu','pleacă spre China (L7)'],[1859,'Unirea mică','Moldova și Țara Românească (L2)'],[1896,'Badea Cârțan','ajunge la Roma (L7)'],[1918,'Marea Unire','1 Decembrie (L2)'],[1949,'bunicul Ion','se naște (L3)'],[1961,'Gagarin','primul om în spațiu (L7)'],[1969,'Apollo 11','oamenii pe Lună (L7)'],[1989,'Convenția','drepturile copilului (L5)'],[2010,'Andrei','se naște (L3)']].map(function(e){return {y:e[0],label:e[1],info:e[2]+'. <details class="pd" style="margin:.4em 0 0"><summary>În ce secol și în ce epocă? Gândește, apoi verifică</summary><p>Secolul <b>'+sec(e[0])+'</b>, '+ep(e[0])+'.</p></details>'};});
+  Caiet.axa('axu',{from:1200,to:2026,bands:B,events:E,info:'axu-info',views:[{label:'1200–2026',from:1200,to:2026},{label:'1850–2026',from:1850,to:2026}]});
 })();
 </script>
 </body>

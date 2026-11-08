@@ -84,6 +84,19 @@
  </div>
 </section>
 
+<section class="slide" aria-label="Harta familiilor de popoare">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">🗺️ Hartă</span>
+  <h2>Pe hartă: o „insulă latină”</h2>
+
+  <p>Fiecare țară e colorată după familia limbii vorbite de cei mai mulți locuitori. Apasă pe o familie sau pe o țară. Ce vezi în jurul României?</p>
+  <div class="legend-chips" id="lf-chips"></div>
+  <div class="fig-wrap"><div id="lf-map"></div></div>
+  <div class="map-info" id="lf-info" aria-live="polite">România vorbește o limbă <b>latină</b>, dar e înconjurată de vecini <b>slavi</b> (Ucraina, Serbia, Bulgaria) și de <b>maghiari</b>. Republica Moldova vorbește tot româna.</div>
+  <p class="sursa">Simplificare: o țară are o singură culoare, chiar dacă în ea se vorbesc mai multe limbi (de exemplu, Belgia și Elveția au și limbi latine, și germanice).</p>
+ </div>
+</section>
+
 <!-- 5 GALI SI GERMANI -->
 <section class="slide" aria-label="Galii și germanii">
  <div class="wrap">
@@ -202,6 +215,7 @@
 </main>
 
 <script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/europa.js"></script>
 <script>
 (function(){
 
@@ -227,6 +241,21 @@
 
   Caiet.start({Q:Q,SORTERS:SORTERS});
 
+})();
+</script>
+<script>
+(function(){
+  var FAM={lat:['Latini','#E2433A','642 498 380 250 724 620'],ger:['Germanici','#C9862A','276 040 528 826 372 208 578 752 352 442 056 756'],sla:['Slavi','#2F6FD6','616 203 703 705 191 070 688 499 807 100 804 112 643'],alt:['Alte familii','#6B4BC4','348 246 233 300 008 440 428 792 196 470']};
+  var NOTE={'348':'Maghiarii vorbesc o limbă fino-ugrică, înrudită de departe cu finlandeza și estona, nu cu limbile slave din jur.','300':'Greaca e o familie singură, foarte veche.','008':'Albaneza e și ea o familie singură.','440':'Lituaniana și letona sunt limbi baltice.','428':'Lituaniana și letona sunt limbi baltice.','792':'Turca face parte din limbile turcice.','246':'Finlandeza e fino-ugrică, ca maghiara.','233':'Estona e fino-ugrică, ca maghiara.','642':'România: limbă latină, soră cu italiana, franceza, spaniola și portugheza.','498':'Republica Moldova: limba română, latină.'};
+  var of={};Object.keys(FAM).forEach(function(k){FAM[k][2].split(' ').forEach(function(id){of[id]=k;});});
+  var sel=null,info=document.getElementById('lf-info');
+  function draw(){Caiet.harta('lf-map',{map:'europa',label:'Europa colorată după familiile de limbi',fill:function(z){var k=of[z.id];if(!k)return null;return (!sel||sel===k)?FAM[k][1]:'var(--map-off)';},info:'lf-info',
+    text:function(z){var k=of[z.id];return '<b>'+z.name+'</b>: '+(k?FAM[k][0].toLowerCase().replace('alte familii','altă familie de limbi'):'nu e colorată pe această hartă')+'. '+(NOTE[z.id]||'');},
+    labels:[{lon:25,lat:45.9,text:'România'}]});}
+  var ch=document.getElementById('lf-chips');
+  Object.keys(FAM).forEach(function(k){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','false');b.innerHTML='<i style="background:'+FAM[k][1]+'"></i>'+FAM[k][0];
+    b.onclick=function(){sel=sel===k?null:k;ch.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b&&sel?'true':'false');});draw();};ch.appendChild(b);});
+  draw();
 })();
 </script>
 </body>

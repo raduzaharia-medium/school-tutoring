@@ -21,6 +21,7 @@
 .threadgrid .box{padding:12px 16px}
 .threadgrid .box b{display:block;font-family:var(--display);color:var(--soft);font-size:.9em}
 .threadgrid .box p{margin:.2em 0 0}
+#fos .f2,#fos .f3,#fos .f4{transition:opacity .6s}
 </style>
 </head>
 <body>
@@ -77,6 +78,30 @@
  </div>
 </section>
 
+<section class="slide" aria-label="Cum se formează o fosilă">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow)">🎬 Pas cu pas</span>
+  <h2>Cum ajunge un os în piatră</h2>
+
+  <p>Apasă pe pași, în ordine. Unde ai mai văzut straturile? La istorie (L1), la arheolog.</p>
+  <div class="ctrl" id="fos-b"><button type="button" aria-pressed="true" data-i="0">1</button><button type="button" aria-pressed="false" data-i="1">2</button><button type="button" aria-pressed="false" data-i="2">3</button><button type="button" aria-pressed="false" data-i="3">4</button></div>
+  <div class="fig-wrap"><svg class="fig" id="fos" viewBox="0 0 800 300" role="img" aria-label="Formarea unei fosile în patru pași">
+   <rect width="800" height="300" fill="#BFE3F7"/>
+   <g id="fos-l">
+    <rect x="0" y="190" width="800" height="110" fill="#C9A26B"/>
+    <rect class="f2" x="0" y="160" width="800" height="30" fill="#A98654"/>
+    <rect class="f3" x="0" y="100" width="800" height="60" fill="#8E6E43"/><rect class="f3" x="0" y="60" width="800" height="40" fill="#B78E58"/>
+    <path class="f4" d="M0 60 H260 L330 20 H800 V0 H0Z" fill="#BFE3F7"/>
+   </g>
+   <path class="f1" d="M0 190 H800" stroke="#2F6FD6" stroke-width="10"/>
+   <g id="fos-ani"><path class="f1" d="M330 150 q40 -60 120 -20 q40 -40 70 0 l20 40 h-200z" fill="#6E8B5A"/></g>
+   <g id="fos-bone" fill="#F4E9D8" stroke="#5A3A22" stroke-width="2"><rect x="360" y="172" width="150" height="12" rx="6"/><circle cx="360" cy="172" r="9"/><circle cx="360" cy="184" r="9"/><circle cx="510" cy="172" r="9"/><circle cx="510" cy="184" r="9"/></g>
+   <g class="f4" font-size="34"><text x="270" y="60">⛏️</text></g>
+  </svg></div>
+  <div class="map-info" id="fos-info" aria-live="polite"></div>
+ </div>
+</section>
+
 <!-- 4 AXA TIMPULUI -->
 <section class="slide" aria-label="Când au trăit">
  <div class="wrap">
@@ -86,6 +111,18 @@
   <div class="minbtns" id="deep"></div>
   <div class="tip b" id="deepinfo" aria-live="polite"></div>
   <div class="tip y">🧠 <b>Legătura cu istoria:</b> manualul de istorie spune că Preistoria a început acum <b>1–8 milioane de ani</b>. Dinozaurii dispăruseră deja de peste <b>55 de milioane de ani</b>! Mamuții, însă, au trăit în aceeași vreme cu oamenii din Preistorie, iar oamenii i-au pictat pe pereții peșterilor.</div>
+ </div>
+</section>
+
+<section class="slide" aria-label="Timpul adânc, la scară">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">📏 Axa timpului</span>
+  <h2>Cât de lungi sunt aceste perioade, de fapt?</h2>
+
+  <p>Aceeași axă, privită de la trei „distanțe”. Apasă pe butoane: în prima imagine, oamenii nici nu se văd!</p>
+  <div id="deepaxa"></div>
+  <div class="map-info" id="deepaxa-info" aria-live="polite">Apasă pe un punct de pe axă.</div>
+  <div class="tip y">🧮 Dacă toată epoca dinozaurilor (230 → 66 milioane de ani) ar fi un teren de fotbal lung de <b>100 m</b>, oamenii moderni (300 000 de ani) ar ocupa doar <b>18 cm</b>. Verifică: 164 de milioane de ani : 100 m ≈ 1,64 milioane de ani pe metru.</div>
  </div>
 </section>
 
@@ -177,6 +214,30 @@
     var bs=h.querySelectorAll('button');
     function show(i){var d=DEEP[i];bs.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});inf.innerHTML='<b>'+d[0]+(d[1]==='0'?':':' · acum '+d[1]+' milioane de ani:')+'</b> '+d[2];}
     bs.forEach(function(b,i){b.onclick=function(){show(i)}});show(0);})();
+})();
+</script>
+<script>
+(function(){
+  Caiet.axa('deepaxa',{ago:true,from:250e6,to:0,info:'deepaxa-info',
+    bands:[{from:230e6,to:66e6,label:'🦕 dinozaurii',color:'#2E9D52'},{from:5e6,to:4000,label:'🦣 mamuții',color:'#8A5A2B'},{from:300000,to:0,label:'🧍 oamenii de azi',color:'#E2433A'}],
+    events:[{y:230e6,label:'primii dinozauri',info:'Apar primii dinozauri.'},{y:66e6,label:'asteroidul',info:'Dispar dinozaurii mari. Rămân cei mici, cu pene: strămoșii păsărilor.'},
+     {y:2.8e6,label:'primii oameni',info:'Cei mai vechi oameni (genul Homo). Manualul de istorie dă 1–8 milioane de ani.'},{y:300000,label:'oamenii de azi',info:'Apare specia noastră, Homo sapiens.'},
+     {y:50000,label:'limita C-14',info:'Până aici merge datarea cu carbon-14 (istorie, L1). Fosilele mai vechi se datează altfel.'},{y:40000,label:'picturi în peșteri',info:'Oamenii pictează animale, inclusiv mamuți, pe pereții peșterilor.'},
+     {y:4500,label:'piramidele',info:'Egiptenii construiesc marile piramide.'},{y:4000,label:'ultimii mamuți',info:'Ultimii mamuți trăiesc pe o insulă din nordul Rusiei.'}],
+    views:[{label:'250 de milioane de ani',from:250e6,to:0},{label:'5 milioane de ani',from:5e6,to:0},{label:'50 000 de ani',from:50000,to:0}]});
+})();
+</script>
+<script>
+(function(){
+  var T=['<b>1. Un animal moare</b> lângă un râu sau un lac. Părțile moi putrezesc repede; rămân oasele și dinții.',
+   '<b>2. Mâlul și nisipul îl acoperă</b> repede. Fără aer, oasele nu se strică.',
+   '<b>3. Trec milioane de ani.</b> Se adună strat peste strat. Apa din pământ aduce minerale care iau, încet, locul osului: osul devine <b>piatră</b>, dar își păstrează forma.',
+   '<b>4. Fosila iese la iveală.</b> Ploaia, râurile sau o săpătură scot la suprafață straturile vechi. Paleontologul o găsește, o curăță și o datează. Cu cât stratul e mai adânc, cu atât e mai vechi.'];
+  function set(i){document.querySelectorAll('#fos-b button').forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});
+    [['f1',i===0],['f2',i>=1],['f3',i>=2],['f4',i>=3]].forEach(function(q){document.querySelectorAll('#fos .'+q[0]).forEach(function(e){e.style.opacity=q[1]?1:0;});});
+    document.getElementById('fos-ani').style.opacity=i===0?1:0;var bone=document.getElementById('fos-bone');bone.setAttribute('fill',i>=2?'#9C9C9C':'#F4E9D8');
+    document.getElementById('fos-info').innerHTML=T[i];}
+  document.querySelectorAll('#fos-b button').forEach(function(b,i){b.onclick=function(){set(i)};});set(0);
 })();
 </script>
 </body>

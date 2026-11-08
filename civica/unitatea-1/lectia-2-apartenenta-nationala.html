@@ -82,6 +82,8 @@
    <button type="button" aria-pressed="false" data-i="4">Dobrogea</button>
   </div>
   <div class="tip y" id="stemainfo" aria-live="polite"></div>
+<div class="fig-wrap"><div id="stema-map"></div><p class="fig-cap">Provinciile istorice, aproximate pe județele de azi. Granițele lor vechi nu se potrivesc perfect cu județele.</p></div>
+
   <div class="mc">
    <div class="m"><span class="lab">📘 Manualul spune</span><p>„Precizați semnificația culorilor drapelului.”</p></div>
    <div><span class="lab">🌍 Context</span><p>Legea stabilește culorile și ordinea lor, dar <b>nu</b> le dă o semnificație oficială. Explicațiile pe care le auzi des (albastru = cerul, galben = grânele, roșu = sângele eroilor) sunt <b>interpretări populare</b>. Le poți folosi la școală, dar știi că nu sunt „scrise în lege”.</p></div>
@@ -109,6 +111,8 @@
  <div class="wrap">
   <span class="badge" style="background:var(--red)">Reținem</span>
   <h2>Țara natală, țara în care locuiești</h2>
+<div class="grid g2" style="align-items:center"><div class="fig-wrap" style="margin:0"><div id="dia-map"></div></div><div class="map-info" id="dia-info">🟠 Țările europene unde trăiesc cei mai mulți români plecați din țară: <b>Italia, Spania, Germania, Marea Britanie</b>. Apasă pe ele. 🔴 România.</div></div>
+
   <div class="grid g2">
    <div class="box"><span class="emo">✈️</span><h3>Diaspora română</h3><p>Românii care trăiesc în afara granițelor țării formează <b>diaspora</b>. Sunt milioane, mai ales în Italia, Spania, Germania, Marea Britanie. Mulți copii din diaspora vorbesc două limbi.</p></div>
    <div class="box"><span class="emo">🌍</span><h3>Minoritățile din România</h3><p>Maghiari, romi, germani, ucraineni, turci, evrei, sârbi, greci, tătari și alții. Ai văzut harta lor la istorie, L4.</p></div>
@@ -147,6 +151,8 @@
 </main>
 
 <script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/europa.js"></script>
+<script src="../../assets/harti/romania.js"></script>
 <script>
 (function(){
   var STEMA=[
@@ -173,6 +179,19 @@
   (function(){var bs=document.querySelectorAll('#stema button'),inf=document.getElementById('stemainfo');
     function show(i){bs.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});inf.innerHTML=STEMA[i];}
     bs.forEach(function(b,i){b.onclick=function(){show(i)}});show(0);})();
+})();
+</script>
+<script>
+(function(){
+  var PR=[['muntenia'],['moldova'],['transilvania'],['banat','oltenia'],['dobrogea']],COL=['#2F6FD6','#E2433A','#6B4BC4','#C9862A','#2E9D52'];
+  function show(i){Caiet.harta('stema-map',{map:'romania',label:'Provincia de pe stemă, pe hartă',fill:function(z){return PR[i].indexOf(z.prov)>-1?COL[i]:null;}});}
+  document.querySelectorAll('#stema button').forEach(function(b){b.addEventListener('click',function(){show(+b.getAttribute('data-i'));});});show(0);
+})();
+</script>
+<script>
+(function(){
+  var D={'380':'Italia: aici trăiește una dintre cele mai mari comunități de români din străinătate. Limba italiană e și ea latină, deci românii o învață ușor.','724':'Spania: o comunitate foarte mare de români, mai ales în jurul Madridului.','276':'Germania: tot mai mulți români lucrează aici. Aici trăiesc și mulți dintre sașii plecați din Transilvania (istorie, L4).','826':'Marea Britanie: mulți români s-au mutat aici după 2014. Marea Britanie nu mai e în UE din 2020.'};
+  Caiet.harta('dia-map',{map:'europa',label:'Diaspora română în Europa',fill:function(z){return z.id==='642'?'#E2433A':D[z.id]?'#F6A03C':null;},info:'dia-info',text:function(z){return D[z.id]?'<b>'+D[z.id]+'</b>':z.id==='642'?'<b>România</b>, țara natală.':'<b>'+z.name+'</b>';}});
 })();
 </script>
 </body>

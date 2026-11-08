@@ -108,6 +108,8 @@
     </tbody>
    </table>
   </div>
+<div class="grid g2" style="align-items:center;margin-top:8px"><div class="fig-wrap" style="margin:0"><div id="dom-map"></div></div><div class="map-info" id="dom-info">🔎 Adresa merge <b>de la mare la mic</b>: întâi județul (aici, <b>Cluj</b>, colorat pe hartă), apoi localitatea (punctul), apoi cartierul și strada. Apasă pe județul tău!</div></div>
+
   <div class="tip g">🧩 <b>De la mare la mic:</b> județ → localitate → cartier sau sector → stradă → număr. Seamănă cu cercurile de la geografie (L1), de la localitate la camera ta.</div>
   <div class="mc">
    <div class="m"><span class="lab">📘 Manualul spune</span><p>Prezentați colegilor datele despre domiciliul vostru: nume, județ, stradă, localitate, sector, cartier.</p></div>
@@ -177,6 +179,7 @@
 </main>
 
 <script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/romania.js"></script>
 <script>
 (function(){
 
@@ -205,6 +208,13 @@
     document.getElementById('inst-check').onclick=function(){var n=0,empty=0;host.querySelectorAll('.srow').forEach(function(r){var i=+r.getAttribute('data-i'),v=r.querySelector('select').value;if(!v)empty++;var g=v===INST[i][1];if(g)n++;r.classList.toggle('ok',g);r.classList.toggle('bad',!!v&&!g);});
       document.getElementById('inst-fb').innerHTML=empty?'<div class="fb h">Alege câte o instituție pentru fiecare problemă.</div>':'<div class="fb '+(n===INST.length?'ok':'h')+'"><b>'+n+' din '+INST.length+'.</b> Primăria se ocupă de ce e al tuturor: străzi, iluminat, parcuri. Poliția apără siguranța și bunurile oamenilor. Poșta duce scrisori și colete. Școala te învață. Instituțiile sunt plătite din banii tuturor, prin taxe.</div>';};
   })();
+})();
+</script>
+<script>
+(function(){
+  Caiet.harta('dom-map',{map:'romania',label:'Județul Cluj pe harta României',fill:function(z){return z.id==='cluj'?'#6B4BC4':null;},info:'dom-info',
+    text:function(z){return 'Județul <b>'+z.name+'</b>. '+(z.id==='bucuresti'?'București nu e județ: e municipiu, împărțit în 6 sectoare. De aceea adresele de acolo au și „sector”.':'Adresa ta ar începe cu: „Județul '+z.name+', …”');},
+    points:[{lon:23.6,lat:46.77,text:'Cluj-Napoca',color:'#1E2340'}]});
 })();
 </script>
 </body>

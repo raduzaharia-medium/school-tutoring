@@ -129,6 +129,18 @@
  </div>
 </section>
 
+<section class="slide" aria-label="Ceasul carbonului-14">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">📉 Grafic</span>
+  <h2>Ceasul carbonului-14</h2>
+
+  <p>Mută glisorul ca să „îmbătrânești” un os. La fiecare <b>5 730 de ani</b> se înjumătățește carbonul-14 rămas în el. Ce observi după vreo 50 000 de ani?</p>
+  <div class="fig-wrap"><svg class="fig" id="c14" viewBox="0 0 800 330" role="img" aria-label="Graficul carbonului-14 rămas într-un os, în funcție de vârstă"></svg></div>
+  <div class="ctrl"><label for="c14-a" style="font-weight:800">Vârsta osului:</label><input id="c14-a" type="range" min="0" max="60000" step="500" value="11460"><b id="c14-al" style="min-width:9ch"></b></div>
+  <div class="map-info" id="c14-info" aria-live="polite"></div>
+ </div>
+</section>
+
 <!-- 7 IZVOARE -->
 <section class="slide" aria-label="Izvoare istorice">
  <div class="wrap quiz" style="max-width:920px">
@@ -250,6 +262,24 @@
       };});}
     build();
   })();
+})();
+</script>
+<script>
+(function(){
+  var S=document.getElementById('c14'),x0=70,x1=770,y0=280,y1=30,MX=60000;
+  function X(a){return x0+(a/MX)*(x1-x0);}function Y(f){return y0-f*(y0-y1);}
+  Caiet.svg('line',{x1:x0,y1:y0,x2:x1,y2:y0,stroke:'currentColor','stroke-width':2},S);Caiet.svg('line',{x1:x0,y1:y0,x2:x0,y2:y1,stroke:'currentColor','stroke-width':2},S);
+  for(var k=0;k<=10;k++){var a=k*5730;if(a>MX)break;var gx=X(a);Caiet.svg('line',{x1:gx,y1:y0,x2:gx,y2:y1,stroke:'var(--line)','stroke-width':1},S);var t=Caiet.svg('text',{x:gx,y:y0+20,'text-anchor':'middle','font-size':13,'font-weight':700,fill:'var(--soft)'},S);t.textContent=k===0?'0':(a/1000).toLocaleString('ro-RO')+' mii';}
+  [[1,'tot'],[.5,'1/2'],[.25,'1/4'],[.125,'1/8']].forEach(function(q){var t=Caiet.svg('text',{x:x0-8,y:Y(q[0])+5,'text-anchor':'end','font-size':14,'font-weight':800,fill:'var(--ink)'},S);t.textContent=q[1];});
+  var d='';for(var a=0;a<=MX;a+=250){d+=(a?'L':'M')+X(a).toFixed(1)+' '+Y(Math.pow(.5,a/5730)).toFixed(1);}
+  Caiet.svg('path',{d:d,fill:'none',stroke:'#6B4BC4','stroke-width':4},S);
+  var lim=Caiet.svg('rect',{x:X(50000),y:y1,width:X(MX)-X(50000),height:y0-y1,fill:'#E2433A',opacity:.12},S);var lt=Caiet.svg('text',{x:X(55000),y:y1+20,'text-anchor':'middle','font-size':13,'font-weight':800,fill:'#E2433A'},S);lt.textContent='prea puțin';
+  var tx=Caiet.svg('text',{x:x1,y:y0+20,'text-anchor':'end','font-size':13,'font-weight':800,fill:'var(--soft)'},S);tx.textContent='';
+  var ln=Caiet.svg('line',{stroke:'#E2433A','stroke-width':2,'stroke-dasharray':'5 5'},S),dot=Caiet.svg('circle',{r:9,fill:'#E2433A',stroke:'#fff','stroke-width':3},S);
+  function set(){var a=+document.getElementById('c14-a').value,f=Math.pow(.5,a/5730);dot.setAttribute('cx',X(a));dot.setAttribute('cy',Y(f));ln.setAttribute('x1',X(a));ln.setAttribute('x2',X(a));ln.setAttribute('y1',y0);ln.setAttribute('y2',Y(f));
+    document.getElementById('c14-al').textContent=a.toLocaleString('ro-RO')+' ani';var pr=Math.round(f*1000)/10;
+    document.getElementById('c14-info').innerHTML='A mai rămas <b>'+(pr>=1?pr.toLocaleString('ro-RO'):'sub 1').toString()+'%</b> din carbonul-14 de la început (adică '+(a/5730).toLocaleString('ro-RO',{maximumFractionDigits:1})+' înjumătățiri). '+(a>=50000?'<b>E prea puțin ca să mai fie măsurat bine</b>: de aceea metoda merge doar până la aproximativ 50 000 de ani.':a>0?'Măsurând cât a rămas, cercetătorul citește vârsta pe grafic, ca pe un ceas.':'Osul unui animal abia mort are tot carbonul-14.');}
+  document.getElementById('c14-a').oninput=set;set();
 })();
 </script>
 </body>

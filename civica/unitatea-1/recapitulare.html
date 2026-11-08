@@ -39,6 +39,8 @@
  <div class="wrap">
   <span class="badge" style="background:var(--red)">Unitatea pe scurt</span>
   <h2>Trei cercuri, unul în altul</h2>
+<div class="grid g2" style="align-items:center"><div id="cerc-rec"></div><div class="map-info" id="cerc-rec-info" aria-live="polite">Apasă pe cercuri. Fiecare te cuprinde: ești în toate în același timp.</div></div>
+
   <div class="grid g3">
    <div class="box" style="border-color:var(--green)"><span class="emo">🏘️</span><h3>L1 · Apartenența locală</h3><p><b>Comunitatea locală</b>: oamenii unei localități, cu interese, credințe și norme comune; au <b>drepturi și responsabilități</b>. Relații: vecinătate, prietenie, colaborare, competiție, conflict. <b>Instituțiile</b>: primăria, poliția, școala, poșta. <b>Domiciliul</b> și adresa. Tradițiile locale.</p></div>
    <div class="box" style="border-color:var(--red)"><span class="emo">🇷🇴</span><h3>L2 · Apartenența națională</h3><p><b>Țara natală.</b> Însemnele: <b>drapelul</b> (albastru, galben, roșu), <b>stema</b>, <b>imnul</b> „Deșteaptă-te, române!”, <b>Ziua Națională</b> (1 Decembrie). <b>Constituția</b>, legea cea mai importantă. 41 de județe și municipiul București. <b>Diaspora</b>.</p></div>
@@ -57,6 +59,17 @@
   <div class="sort" id="sort-euro"></div>
   <div class="qnav" style="justify-content:flex-start"><button class="act" type="button" data-check="sort-euro">Verifică</button><button class="act sec" type="button" data-reset="sort-euro">Ia de la capăt</button></div>
   <div id="sort-euro-fb" aria-live="polite"></div>
+ </div>
+</section>
+
+<section class="slide" aria-label="Harta monedelor">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🗺️ Hartă</span>
+  <h2>Verifică pe hartă</h2>
+
+  <p>După ce ai sortat, verifică pe hartă. Apasă pe o țară ca să vezi ce monedă are.</p>
+  <div class="fig-wrap"><div id="mon-map"></div><p class="fig-cap">🟡 UE, cu euro · 🔵 UE, cu altă monedă</p></div>
+  <div class="map-info" id="mon-info" aria-live="polite">Câte state ale UE <b>nu</b> folosesc euro? Numără-le pe hartă, apoi verifică: 27 − 21.</div>
  </div>
 </section>
 
@@ -105,6 +118,7 @@
 </main>
 
 <script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/europa.js"></script>
 <script>
 (function(){
 
@@ -136,6 +150,30 @@
 
   Caiet.start({Q:Q,SORTERS:SORTERS});
 
+})();
+</script>
+<script>
+(function(){
+  Caiet.cercuri('cerc-rec',{info:'cerc-rec-info',label:'Cercurile apartenenței',items:[
+   {label:'Uniunea Europeană',emoji:'🇪🇺',color:'#2F6FD6',text:'27 de state. Ești și cetățean european (L3).'},
+   {label:'România',emoji:'🇷🇴',color:'#E2433A',text:'țara natală, cu însemnele ei: drapel, stemă, imn, ziua națională (L2).'},
+   {label:'Județul',emoji:'🗺️',color:'#C9862A',text:'41 de județe și municipiul București.'},
+   {label:'Localitatea',emoji:'🏘️',color:'#2E9D52',text:'comunitatea locală, cu primăria și tradițiile ei (L1).'},
+   {label:'Familia',emoji:'👨‍👩‍👧',color:'#6B4BC4',text:'primul loc de apartenență (istorie, L3).'}]});
+})();
+</script>
+<script>
+(function(){
+  var JOIN={1957:'056 250 276 380 442 528',1973:'208 372 826',1981:'300',1986:'724 620',1995:'040 246 752',2004:'196 203 233 348 428 440 470 616 703 705',2007:'100 642',2013:'191'};
+  var EURO='040 056 100 191 196 233 246 250 276 300 372 380 428 440 442 470 528 620 703 705 724'.split(' ');
+  var SCH_UE='040 056 100 191 203 208 233 246 250 276 300 348 380 428 440 442 470 528 616 620 642 703 705 724 752'.split(' '),SCH_NON='352 578 756 438'.split(' ');
+  function joinedBy(y){var a=[];Object.keys(JOIN).forEach(function(k){if(+k<=y)a=a.concat(JOIN[k].split(' '));});if(y>=2020)a=a.filter(function(i){return i!=='826';});return a;}
+  function yearOf(id){var r=null;Object.keys(JOIN).forEach(function(k){if(JOIN[k].split(' ').indexOf(id)>-1)r=+k;});return r;}
+
+  var M={'642':'leul românesc','348':'forintul','616':'zlotul','203':'coroana cehă','752':'coroana suedeză','208':'coroana daneză'};
+  var ue=joinedBy(2026);
+  Caiet.harta('mon-map',{map:'europa',label:'Monedele statelor UE',fill:function(z){return EURO.indexOf(z.id)>-1?'#F6C431':ue.indexOf(z.id)>-1?'#2F6FD6':null;},info:'mon-info',
+    text:function(z){return EURO.indexOf(z.id)>-1?'<b>'+z.name+'</b>: euro.':M[z.id]?'<b>'+z.name+'</b>: '+M[z.id]+'. E în UE, dar nu în zona euro.':'<b>'+z.name+'</b>: nu e în UE.';}});
 })();
 </script>
 </body>

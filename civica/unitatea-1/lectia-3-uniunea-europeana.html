@@ -75,6 +75,8 @@
   <div class="minbtns" id="eu-years"></div>
   <div class="eu-bar"><i id="eu-fill"></i><span id="eu-n"></span></div>
   <div class="tip b" id="eu-info" aria-live="polite"></div>
+<div class="fig-wrap"><div id="eu-map"></div><p class="fig-cap">🔵 statele membre în anul ales · 🟡 cele care au intrat chiar atunci · ⚪ Marea Britanie după ieșire</p></div>
+
  </div>
 </section>
 
@@ -97,6 +99,18 @@
    <div><span class="lab">🌍 Context</span><p>Oficial, a ieșit pe <b>31 ianuarie 2020</b>. Până la 31 decembrie 2020 a urmat o perioadă de tranziție, în care regulile au rămas la fel.</p></div>
   </div>
   <div class="tip g">🛂 <b>Schengen:</b> numele vine de la un orășel din Luxemburg. Din <b>2024</b>, românii nu mai sunt controlați la granițele UE când călătoresc cu avionul sau cu vaporul, iar din <b>1 ianuarie 2025</b>, nici când călătoresc cu mașina.</div>
+ </div>
+</section>
+
+<section class="slide" aria-label="Harta: UE, euro, Schengen">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">🗺️ Hartă</span>
+  <h2>Trei „cluburi” diferite</h2>
+
+  <p>Mulți încurcă aceste trei lucruri. Comută între ele și găsește <b>România</b> (conturată cu negru). În care e, în care nu?</p>
+  <div class="legend-chips" id="club-b"><button type="button" aria-pressed="true" data-k="ue"><i style="background:#2F6FD6"></i>Uniunea Europeană (27)</button><button type="button" aria-pressed="false" data-k="euro"><i style="background:#F6C431"></i>Zona euro (21)</button><button type="button" aria-pressed="false" data-k="sch"><i style="background:#2E9D52"></i>Spațiul Schengen</button></div>
+  <div class="fig-wrap"><div id="club-map"></div></div>
+  <div class="map-info" id="club-info" aria-live="polite"></div>
  </div>
 </section>
 
@@ -140,6 +154,7 @@
 </main>
 
 <script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/europa.js"></script>
 <script>
 (function(){
   var EU=[
@@ -172,6 +187,37 @@
     var bs=host.querySelectorAll('button');
     function show(i){var e=EU[i];bs.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});fill.style.width=(e[1]/28*100)+'%';n.textContent=e[1]+' state';inf.innerHTML='<b>'+e[0]+':</b> '+e[2];}
     bs.forEach(function(b,i){b.onclick=function(){show(i)}});show(0);})();
+})();
+</script>
+<script>
+(function(){
+  var JOIN={1957:'056 250 276 380 442 528',1973:'208 372 826',1981:'300',1986:'724 620',1995:'040 246 752',2004:'196 203 233 348 428 440 470 616 703 705',2007:'100 642',2013:'191'};
+  var EURO='040 056 100 191 196 233 246 250 276 300 372 380 428 440 442 470 528 620 703 705 724'.split(' ');
+  var SCH_UE='040 056 100 191 203 208 233 246 250 276 300 348 380 428 440 442 470 528 616 620 642 703 705 724 752'.split(' '),SCH_NON='352 578 756 438'.split(' ');
+  function joinedBy(y){var a=[];Object.keys(JOIN).forEach(function(k){if(+k<=y)a=a.concat(JOIN[k].split(' '));});if(y>=2020)a=a.filter(function(i){return i!=='826';});return a;}
+  function yearOf(id){var r=null;Object.keys(JOIN).forEach(function(k){if(JOIN[k].split(' ').indexOf(id)>-1)r=+k;});return r;}
+
+  function show(y){var j=joinedBy(y),nw=(JOIN[y]||'').split(' ');
+    Caiet.harta('eu-map',{map:'europa',label:'Statele Uniunii Europene în '+y,fill:function(z){if(z.id==='826'&&y>=2020)return '#C9D3E6';return nw.indexOf(z.id)>-1?'#F6C431':j.indexOf(z.id)>-1?'#2F6FD6':null;}});}
+  var ys=Object.keys(JOIN).concat(['2020']);
+  function hook(){document.querySelectorAll('#eu-years button').forEach(function(b){b.addEventListener('click',function(){var y=parseInt(b.textContent,10);show(y);});});}
+  hook();show(1957);
+})();
+</script>
+<script>
+(function(){
+  var JOIN={1957:'056 250 276 380 442 528',1973:'208 372 826',1981:'300',1986:'724 620',1995:'040 246 752',2004:'196 203 233 348 428 440 470 616 703 705',2007:'100 642',2013:'191'};
+  var EURO='040 056 100 191 196 233 246 250 276 300 372 380 428 440 442 470 528 620 703 705 724'.split(' ');
+  var SCH_UE='040 056 100 191 203 208 233 246 250 276 300 348 380 428 440 442 470 528 616 620 642 703 705 724 752'.split(' '),SCH_NON='352 578 756 438'.split(' ');
+  function joinedBy(y){var a=[];Object.keys(JOIN).forEach(function(k){if(+k<=y)a=a.concat(JOIN[k].split(' '));});if(y>=2020)a=a.filter(function(i){return i!=='826';});return a;}
+  function yearOf(id){var r=null;Object.keys(JOIN).forEach(function(k){if(JOIN[k].split(' ').indexOf(id)>-1)r=+k;});return r;}
+
+  var T={ue:'🔵 <b>Uniunea Europeană:</b> 27 de state. România e membră din 2007.',euro:'🟡 <b>Zona euro:</b> 21 de state plătesc în euro (Bulgaria din 2026). <b>România nu</b>: la noi se plătește în lei.',sch:'🟢 <b>Schengen:</b> nu se mai verifică actele la granițele dintre aceste țări. România e în Schengen pe deplin din 2025. Atenție: și unele țări din afara UE (Norvegia, Elveția, Islanda) sunt în Schengen, iar Irlanda și Cipru, deși sunt în UE, nu sunt.'};
+  function show(k){var ue=joinedBy(2026);
+    Caiet.harta('club-map',{map:'europa',label:'Harta: '+k,fill:function(z){if(k==='ue')return ue.indexOf(z.id)>-1?'#2F6FD6':null;if(k==='euro')return EURO.indexOf(z.id)>-1?'#F6C431':ue.indexOf(z.id)>-1?'#C9D3E6':null;return SCH_UE.indexOf(z.id)>-1||SCH_NON.indexOf(z.id)>-1?'#2E9D52':null;},
+      after:function(svg){var ro=svg.querySelector('path[aria-label="România"]');if(ro){ro.setAttribute('stroke','#000');ro.setAttribute('stroke-width','2.5');ro.parentNode.appendChild(ro);}}});
+    document.getElementById('club-info').innerHTML=T[k];}
+  document.querySelectorAll('#club-b button').forEach(function(b){b.onclick=function(){document.querySelectorAll('#club-b button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});show(b.getAttribute('data-k'));};});show('ue');
 })();
 </script>
 </body>

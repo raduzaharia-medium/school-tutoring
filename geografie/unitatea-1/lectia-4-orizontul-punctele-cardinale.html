@@ -72,6 +72,8 @@
   <h2>Cât de departe e linia orizontului?</h2>
   <p>Pământul e rotund, așa că suprafața lui se „curbează” și ascunde ce e departe. Cu cât urci mai sus, cu atât vezi mai departe. Pe un teren complet neted sau pe mare, oamenii de știință folosesc o regulă:</p>
   <div class="out" style="background:var(--tint-blue)">distanța până la orizont (km) ≈ 3,57 × √înălțimea ochilor (m)</div>
+<div class="fig-wrap"><svg class="fig" id="curb" viewBox="0 0 800 260" role="img" aria-label="Desen: Pământul curbat, omul și linia privirii până la orizont"></svg><p class="fig-cap">Desen exagerat, ca să se vadă: linia privirii atinge Pământul în punctul de orizont. Ce e mai departe e ascuns după curbură.</p></div>
+
   <p style="color:var(--soft);font-size:.9em">√ se citește „radical”. Vei învăța despre el mai târziu, la matematică. Calculatorul face socoteala pentru tine.</p>
   <div class="calc">
    <label for="hz-h" style="font-weight:800">Înălțimea ochilor: <span id="hz-v">1,3</span> m</label>
@@ -506,6 +508,23 @@
     renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();render();
   }
   if(window.ResizeObserver)new ResizeObserver(fit).observe(host);else window.addEventListener('resize',fit);
+})();
+</script>
+<script>
+(function(){
+  var S=document.getElementById('curb'),cx=400,cy=1460,R=1300;
+  function draw(){var v=parseFloat((document.getElementById('hz-v')||{}).textContent.replace(',','.'))||1.3;
+    var hp=12+Math.log10(1+v)*40,top=cy-R,eye=[cx-250,0],ex=eye[0],ang=Math.asin((ex-cx)/R),gx=cx+R*Math.sin(ang),gy=cy-R*Math.cos(ang),ey=gy-hp;
+    var d=Math.hypot(ex-cx,ey-cy),th=Math.atan2(ey-cy,ex-cx)+Math.acos(R/d),tx=cx+R*Math.cos(th),ty=cy+R*Math.sin(th);
+    S.innerHTML='';Caiet.svg('rect',{width:800,height:260,fill:'#DCEFFF'},S);Caiet.svg('circle',{cx:cx,cy:cy,r:R,fill:'#7FB069'},S);
+    Caiet.svg('line',{x1:ex,y1:ey,x2:tx+(tx-ex)*.35,y2:ty+(ty-ey)*.35,stroke:'#E2433A','stroke-width':3,'stroke-dasharray':'8 6'},S);
+    Caiet.svg('line',{x1:ex,y1:gy,x2:ex,y2:ey,stroke:'#1E2340','stroke-width':5},S);Caiet.svg('circle',{cx:ex,cy:ey,r:7,fill:'#F6C431',stroke:'#1E2340','stroke-width':2},S);
+    Caiet.svg('circle',{cx:tx,cy:ty,r:8,fill:'#E2433A'},S);var t=Caiet.svg('text',{x:tx,y:ty-14,'text-anchor':'middle','font-size':16,'font-weight':800,fill:'#1E2340'},S);t.textContent='orizontul';
+    var t2=Caiet.svg('text',{x:ex-10,y:ey-12,'text-anchor':'middle','font-size':16,'font-weight':800,fill:'#1E2340'},S);t2.textContent='ochii ('+(v+'').replace('.',',')+' m)';
+    var far=cx+R*Math.cos(th+.12),fy=cy+R*Math.sin(th+.12);var tr=Caiet.svg('text',{x:far,y:fy-4,'text-anchor':'middle','font-size':26},S);tr.textContent='🌲';
+    var t3=Caiet.svg('text',{x:far,y:fy+26,'text-anchor':'middle','font-size':13,'font-weight':800,fill:'#1E2340'},S);t3.textContent='ascuns';}
+  var h=document.getElementById('hz-h');if(h)h.addEventListener('input',function(){setTimeout(draw,0)});
+  document.querySelectorAll('#hz-presets button').forEach(function(b){b.addEventListener('click',function(){setTimeout(draw,0)});});draw();
 })();
 </script>
 </body>

@@ -64,3 +64,10 @@ O pagină nouă are doar conținutul ei și, eventual, câteva stiluri și scrip
 ```
 
 Tipuri de misiuni: `mcq` (variante), `num` (număr, cu unitatea opțională `u`), `order` (pui în ordine; `items` în ordinea corectă), `sort` (două categorii, `labels:{s:…, n:…}`). Fiecare are indiciu (`h`) și explicație (`e`).
+
+## Grafică (în `caiet.js`)
+- **Hărți:** `Caiet.harta('id', {map:'romania'|'europa'|'lume', fill, text, info, routes, points, labels, view})`. Datele hărților sunt în `assets/harti/` (Romania pe județe; Europa și lumea din Natural Earth) și trebuie încărcate după `caiet.js`, de exemplu `<script src="../../assets/harti/romania.js"></script>`. Merg și fără internet.
+- **Axa timpului:** `Caiet.axa('id', {from, to, bands, events, views, info})`, cu zoom prin butoane. Cu `ago:true`, anii sunt „în urmă” (pentru timpul adânc).
+- **Grafic cu bare:** `Caiet.bare('id', {items:[{label, value, color}], unit, max, source})`.
+- **Cercuri unul în altul:** `Caiet.cercuri('id', {items:[{label, emoji, color, text}], info})`.
+- **Modele 3D:** `Caiet.scena3d('id', {setup, tick, camera})`, cu three.js din `vendor/`. Ajutoare: `Caiet.globTexture` (globul pământesc desenat din `assets/harti/glob.js`), `Caiet.latLon3d`, `Caiet.label3d`. Scena se desenează doar cât timp slide-ul e vizibil.

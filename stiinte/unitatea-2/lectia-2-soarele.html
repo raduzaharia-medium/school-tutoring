@@ -138,6 +138,19 @@ svg text{font-family:"Nunito",sans-serif}
   <div class="tip b">🍎 <b>Experiment din manual (opțional):</b> un măr înțepat cu un băț este Pământul, o lanternă este Soarele. Înainte să încerci, prezice: ce parte a mărului va fi luminată când îl rotești încet?</div>
  </div>
 </section>
+
+<section class="slide" aria-label="Pământul în 3D">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌍 Model 3D</span>
+  <h2>Rotește Pământul: unde e zi acum?</h2>
+
+  <p>Punctul roșu e <b>România</b>. Soarele luminează Pământul din stânga. Mută ora sau apasă „Pornește” și urmărește când ajunge România în lumină. Poți roti modelul cu degetul.</p>
+  <div id="e3"></div>
+  <div class="ctrl"><button type="button" id="e3-play" aria-pressed="false">▶ Pornește</button><label for="e3-h" style="font-weight:800">Ora în România:</label><input id="e3-h" type="range" min="0" max="24" step="0.25" value="12"><b id="e3-hl" style="min-width:4ch"></b></div>
+  <div class="map-info" id="e3-info" aria-live="polite"></div>
+  <p class="sursa">Model simplificat: ziua de 12 ore, ca la echinocțiu (martie și septembrie). Înclinarea axei e cea reală, 23,4°.</p>
+ </div>
+</section>
 <section class="slide" aria-label="Manualul spune și context">
  <div class="wrap">
   <span class="badge" style="background:var(--purple)">Atenție la detalii</span>
@@ -272,7 +285,10 @@ svg text{font-family:"Nunito",sans-serif}
 </section>
 </main>
 
+<script src="../../vendor/three.min.js"></script>
+<script src="../../vendor/OrbitControls.js"></script>
 <script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/glob.js"></script>
 <script>
 (function(){
   var KEY='sn-u2l2';
@@ -390,6 +406,29 @@ svg text{font-family:"Nunito",sans-serif}
   b.appendChild(el('text',{x:10+12*29,y:20,'text-anchor':'middle',fill:'#fff','font-size':13,'font-weight':800},'zi (12 ore)'));
   b.appendChild(el('text',{x:10+3*29,y:20,'text-anchor':'middle',fill:'#B8C0F0','font-size':13,'font-weight':800},'noapte'));
   b.appendChild(el('text',{x:10+21*29,y:20,'text-anchor':'middle',fill:'#B8C0F0','font-size':13,'font-weight':800},'noapte'));
+})();
+</script>
+<script>
+(function(){
+  var T,earth,tiltG,mk,hour=12,play=false,base=0,glow;
+  var ctx=Caiet.scena3d('e3',{camera:[-3,2.5,10],setup:function(T_,scene){
+    T=T_;scene.add(new T.AmbientLight(0x8899ff,.18));var L=new T.DirectionalLight(0xffffff,1.25);L.position.set(-10,0,0);scene.add(L);
+    var s=new T.Mesh(new T.SphereGeometry(.9,32,24),new T.MeshBasicMaterial({color:0xFFC933}));s.position.set(-8,0,0);scene.add(s);
+    var sl=Caiet.label3d(T,'Soarele',{size:.5});sl.position.set(-8,1.4,0);scene.add(sl);
+    tiltG=new T.Group();tiltG.rotation.x=23.4*Math.PI/180;scene.add(tiltG);
+    earth=new T.Mesh(new T.SphereGeometry(2.6,64,48),new T.MeshStandardMaterial({map:Caiet.globTexture(T),roughness:.9}));tiltG.add(earth);
+    var ax=new T.Mesh(new T.CylinderGeometry(.03,.03,7,8),new T.MeshBasicMaterial({color:0xffffff}));tiltG.add(ax);
+    var n=Caiet.label3d(T,'N',{size:.45});n.position.set(0,3.8,0);tiltG.add(n);
+    mk=new T.Mesh(new T.SphereGeometry(.12,16,12),new T.MeshBasicMaterial({color:0xffffff}));mk.position.copy(Caiet.latLon3d(T,45.9,25,2.66));earth.add(mk);
+    var v=Caiet.latLon3d(T,45.9,25,1);base=Math.atan2(v.z,v.x)+Math.PI;set();},
+   tick:function(t,dt){if(play){hour=(hour+dt*2)%24;document.getElementById('e3-h').value=hour;set();}}});
+  function set(){earth.rotation.y=base+(hour-12)/24*2*Math.PI;
+    var p=new T.Vector3();mk.updateMatrixWorld(true);mk.getWorldPosition(p);var sun=new T.Vector3(-1,0,0);var c=p.normalize().dot(sun);
+    var h=Math.floor(hour),m=Math.round((hour-h)*60);document.getElementById('e3-hl').textContent=(h%24)+':'+(m<10?'0':'')+m;
+    var st=c>0.12?'☀️ <b>Zi</b> în România':c<-0.12?'🌙 <b>Noapte</b> în România':(hour<12?'🌅 <b>Răsărit</b> în România':'🌇 <b>Apus</b> în România');
+    document.getElementById('e3-info').innerHTML=st+'. '+(c>0.12?'România e pe partea întoarsă spre Soare.':c<-0.12?'România e pe partea întoarsă în cealaltă parte. Pe partea opusă a Pământului, în America, e zi.':'România e la granița dintre lumină și întuneric.');}
+  document.getElementById('e3-h').oninput=function(){hour=+this.value;set();};
+  document.getElementById('e3-play').onclick=function(){play=!play;this.setAttribute('aria-pressed',play);this.textContent=play?'⏸ Oprește':'▶ Pornește';};
 })();
 </script>
 </body>

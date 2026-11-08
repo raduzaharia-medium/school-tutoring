@@ -230,6 +230,19 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
  </div>
 </section>
 
+<section class="slide" aria-label="Epocile pe axa timpului">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">📏 Axa timpului</span>
+  <h2>Epocile, la scară</h2>
+
+  <p>Aceeași axă, cu zoom. Apasă pe puncte. Scrie și <b>anul nașterii tale</b>, ca să te vezi pe axă!</p>
+  <div id="ax2"></div>
+  <div class="ctrl"><label for="ax2-y" style="font-weight:800">Anul nașterii tale:</label><input id="ax2-y" type="number" min="1900" max="2026" placeholder="ex. 2016" style="font:inherit;font-weight:800;width:7em;padding:.25em .5em;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink)"><button type="button" id="ax2-go">Pune-mă pe axă</button></div>
+  <div class="map-info" id="ax2-info" aria-live="polite">Apasă pe un punct de pe axă.</div>
+  <p class="sursa">Granițele dintre epoci nu sunt linii fixe: manualul le dă în secole (p. 13). Epoca străveche începe acum câteva milioane de ani, mult în stânga acestei axe.</p>
+ </div>
+</section>
+
 <!-- 9 EVOLUTIA OMULUI -->
 <section class="slide" aria-label="Cum a evoluat omul">
  <div class="wrap">
@@ -362,6 +375,19 @@ cite{display:block;font-style:normal;color:var(--soft);margin-top:.6em;font-weig
   }
   btns.forEach(function(b,i){b.onclick=function(){showEpoch(i)}});
   showEpoch(0);
+})();
+</script>
+<script>
+(function(){
+  var B=[{from:-3000,to:-100,label:'străveche',color:'#8A5A2B'},{from:-100,to:600,label:'antică',color:'#C9862A'},{from:600,to:1700,label:'medievală',color:'#2F6FD6'},{from:1700,to:1918,label:'modernă',color:'#6B4BC4'},{from:1918,to:2026,label:'contemporană',color:'#2E9D52'}];
+  var E=[{y:-2560,label:'piramidele',info:'Egiptenii construiesc Marea Piramidă (epoca străveche, după împărțirea din manual).'},{y:-44,label:'Burebista',info:'Moare Burebista, regele dacilor.'},{y:106,label:'Traian, Decebal',info:'Romanii cuceresc Dacia.'},{y:1457,label:'Ștefan cel Mare',info:'Începe domnia lui Ștefan cel Mare în Moldova.'},{y:1859,label:'Unirea mică',info:'Unirea Moldovei cu Țara Românească.'},{y:1918,label:'Marea Unire',info:'1 Decembrie 1918.'},{y:1969,label:'omul pe Lună',info:'Apollo 11.'}];
+  var views=[{label:'Ultimii 5 000 de ani',from:-3000,to:2026},{label:'Ultimii 1 000 de ani',from:1026,to:2026},{label:'Ultimii 150 de ani',from:1876,to:2026}];
+  var ax=Caiet.axa('ax2',{from:-3000,to:2026,bands:B,events:E,views:views,info:'ax2-info'});
+  document.getElementById('ax2-go').onclick=function(){var y=parseInt(document.getElementById('ax2-y').value,10),inf=document.getElementById('ax2-info');
+    if(!(y>=1900&&y<=2026)){inf.innerHTML='Scrie un an între 1900 și 2026.';return;}
+    var ev=E.concat([{y:y,label:'⭐ TU',color:'#F6C431',info:'Te-ai născut în '+y+': secolul '+(y>2000?'XXI':'XX')+', mileniul '+(y>2000?'III':'II')+', epoca contemporană. De atunci au trecut '+(2026-y)+' ani.'}]);
+    ax=Caiet.axa('ax2',{from:-3000,to:2026,bands:B,events:ev,views:[views[2],views[1],views[0]],info:'ax2-info'});
+    inf.innerHTML='⭐ <b>Te-ai născut în '+y+'.</b> Pe axa de 5 000 de ani ești chiar la margine, aproape de linie. Mărește cu butoanele ca să te vezi mai bine.';};
 })();
 </script>
 </body>
