@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cinste – Necinste</title>
+<link rel="stylesheet" href="../../assets/caiet.css">
+<style>
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}
+.pd summary{cursor:pointer;font-weight:800}
+.pd[open] summary{margin-bottom:6px}
+.pd:last-of-type{border-color:var(--green)}
+.vl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.vl button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.4em 1em}
+.vl button[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+.vs2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.vs2{grid-template-columns:1fr}}
+.vs2 .box h3{margin-top:0}
+.ch{display:grid;gap:8px;margin:10px 0}
+.ch button{font:inherit;text-align:left;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:14px;padding:.6em .9em}
+.ch button[aria-pressed="true"]{border-color:var(--purple);background:var(--tint-purple)}
+.meter{height:20px;background:var(--line);border-radius:99px;overflow:hidden;margin:6px 0}
+.meter i{display:block;height:100%;width:100%;background:var(--green);transition:width .35s,background .35s}
+.lad{display:grid;gap:6px;margin:8px 0}
+.lad div{background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:.45em .8em}
+.lad div.l{border-color:var(--red);background:var(--tint-red)}
+.lad div.t{border-color:var(--green);background:var(--tint-green)}
+.cptree{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+@media (max-width:700px){.cptree{grid-template-columns:1fr}}
+.cptree .cpside{background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:10px 12px}
+.cptree .trunk{text-align:center;font-family:var(--display);font-weight:800;font-size:1.2em;border-radius:12px;padding:.2em .6em;margin-bottom:6px}
+.cptree .br{margin:.4em 0;padding:.2em .5em;border-left:5px solid var(--green);background:var(--tint-green);border-radius:8px}
+.cptree .br h4{margin:0;font-size:.85em;color:var(--soft)}
+.cptree .cpside.n .br{border-left-color:var(--red);background:var(--tint-red)}
+.chip{display:inline-block;margin:.15em .3em .15em 0;padding:.1em .6em;border-radius:99px;background:var(--paper);border:2px solid var(--line);font-weight:700;font-size:.9em}
+.addrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.addrow input,.addrow select{font:inherit;padding:.3em .5em;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink)}
+.addrow input{flex:1;min-width:10em}
+.addrow button{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:.3em .9em;cursor:pointer}
+.ck{display:grid;gap:8px;margin:10px 0}
+.ck label{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:.5em .8em;cursor:pointer}
+.ck input{margin-top:.25em;width:1.2em;height:1.2em;accent-color:var(--purple)}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Educație civică · Unitatea 2 · Lecția 3 · manual pp. 30–33</p>
+   <h1>Cinste – Necinste</h1>
+   <p class="lead">„A trăi cinstit este totuna cu a trăi corect și drept.” Platon. O minciună mică pare simplă, dar are nevoie de altele ca s-o ascundă.</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="#F0E9FA"/>
+   <path d="M110 40 l70 28 v50 q0 50 -70 70 q-70 -20 -70 -70 v-50Z" fill="#fff" stroke="#6B4BC4" stroke-width="6" stroke-linejoin="round"/>
+   <path d="M80 118 l20 22 l42 -46" fill="none" stroke="#2E9D52" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 STIM / VREM -->
+<section class="slide" aria-label="Ce știm și ce vrem să aflăm">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Știm deja</span>
+  <div class="tip g" style="margin-top:0">• Persoanele <b>corecte</b> sunt apreciate.<br>• Persoanele <b>incorecte</b> nu sunt agreate.<br>• Incorectitudinea poate fi <b>sancționată</b>.</div>
+  <span class="badge" style="background:var(--red);margin-top:18px">Vrem să știm</span>
+  <div class="q"><span class="mark" style="background:var(--blue)">1</span>Ce înseamnă „cinste”? Dar „necinste”?</div>
+  <div class="q"><span class="mark" style="background:var(--green)">2</span>Ce greșeală a făcut Vania? Cum putea evita situația rușinoasă?</div>
+  <div class="q"><span class="mark" style="background:var(--purple)">3</span>Când am fost cinstiți? Dar necinstiți? Cum au reacționat cei din jur?</div>
+ </div>
+</section>
+
+<!-- 3 SAMBURELE -->
+<section class="slide" aria-label="Lectură: Sâmburele">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#3a2a00">Citim și dezbatem · Lev Tolstoi, „Sâmburele”</span>
+  <h2>Prima minciună și celelalte</h2>
+  <p>Mama cumpărase prune pentru copii. Vania le tot mirosea, iar când nu era nimeni în cameră, a luat una pe furiș și a mâncat-o. Tata a întrebat dacă a mâncat cineva o prună. Vania, roșu ca un rac, a spus: „Nu, n-am mâncat-o eu!” Atunci tata a spus că, dacă cineva înghite sâmburele, moare a doua zi. Speriat, Vania a strigat: „Ba nu, că sâmburele l-am aruncat pe fereastră!” Toți au râs, iar Vania a început să plângă.</p>
+  <p>Mută spre dreapta „scara minciunii”: ce se întâmplă cu <b>încrederea</b> când spui mai întâi o minciună, apoi alta?</p>
+  <div class="ctrl"><button type="button" id="ld-l">Mint</button><button type="button" id="ld-t">Spun adevărul</button><button type="button" id="ld-r">↺ De la capăt</button></div>
+  <div class="meter" aria-hidden="true"><i id="ld-m"></i></div>
+  <div class="lad" id="ld-s" aria-live="polite"></div>
+  <details class="pd"><summary>Ce greșeală a făcut Vania? Cum putea evita situația?</summary><p>Prima greșeală: a luat prune <b>pe ascuns</b>. A doua: a <b>mințit</b> când a fost întrebat. A treia: a mărturisit fără să vrea, din frică. Putea spune de la început: „Eu am luat o prună, iartă-mă.” Atunci ar fi avut o mică rușine, dar nu s-ar fi făcut de râs.</p></details>
+ </div>
+</section>
+
+<!-- 4 RETINEM -->
+<section class="slide" aria-label="Reținem">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Reținem · cinste și necinste</span>
+  <h2>Două valori opuse</h2>
+  <div class="vs2">
+   <div class="box" style="border-color:var(--green)"><span class="emo">🛡️</span><h3>Cinstea</h3><p>Valoarea morală a persoanei care face <b>fapte lăudabile</b>, apreciate de comunitate. Un om cinstit își <b>asumă responsabilitatea</b> pentru cuvintele și faptele sale.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">🎭</span><h3>Necinstea</h3><p>Valoarea morală <b>opusă</b> cinstei: minciuna, furtul, înșelăciunea, nerespectarea cuvântului dat.</p></div>
+  </div>
+  <div class="box" style="border-color:var(--yellow);margin-top:10px"><p style="margin:0">„A trăi cinstit este totuna cu a trăi corect și drept.” <b>Platon, filosof grec</b></p></div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Cinstea e valoarea persoanei care face fapte apreciate de comunitate. Valoarea opusă e necinstea.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Platon a fost elevul lui Socrate și profesorul lui Aristotel, a cărui cugetare ai citit-o la începutul unității. Îi cunoști pe greci de la istorie. Grecii dădeau mare importanță <b>cuvântului dat</b>. Cuvântul „cinste” aduce cu el și ideea de <b>cinstire</b>: respectul pe care îl primești când ești onest.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 5 SITUATII -->
+<section class="slide" aria-label="Ce faci?">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Aplicăm 1 și 2 · ce faci tu?</span>
+  <h2>Trei situații</h2>
+  <p>Alege ce ai face, apoi citește ce înseamnă alegerea ta.</p>
+  <h3>1. Ai promis că ajungi la ora 9, dar ai întârziat</h3>
+  <div class="ch" id="s1"></div>
+  <div class="map-info" id="s1i" aria-live="polite">Alege o variantă.</div>
+  <h3 style="margin-top:14px">2. Cumperi un obiect cu o reclamă care promite mai mult decât oferă</h3>
+  <p>După ce îl folosești, vezi că informațiile despre calitate au fost <b>exagerate</b>. Ce faci?</p>
+  <div class="ch" id="s2"></div>
+  <div class="map-info" id="s2i" aria-live="polite">Alege o variantă.</div>
+  <details class="pd"><summary>Cum ar putea comunitatea să sancționeze necinstea unei firme?</summary><p>Prin <b>reclamații</b> la instituțiile care apără consumatorii, prin <b>retragerea produsului</b> de pe piață, prin <b>amenzi</b> și prin <b>păreri sincere</b> ale cumpărătorilor. Legea permite returnarea multor produse cumpărate în magazine online, de obicei în cel puțin 14 zile.</p></details>
+ </div>
+</section>
+
+<!-- 6 STUDIU DE CAZ -->
+<section class="slide" aria-label="Studiu de caz: creionul">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Studiu de caz · creionul</span>
+  <h2>Un creion, mai multe greșeli</h2>
+  <p>Un coleg i-a luat un creion colegului de bancă. Când doamna învățătoare a încercat să afle adevărul, elevul vinovat a spus că de fapt altcineva e vinovat. A fost făcută o anchetă și vinovatul a fost descoperit.</p>
+  <div class="grid g3">
+   <div class="box"><span class="emo">1️⃣</span><h3>A luat fără voie</h3><p>A luat creionul altcuiva, fără să ceară. E o greșeală.</p></div>
+   <div class="box"><span class="emo">2️⃣</span><h3>A mințit</h3><p>Când a fost întrebat, nu a spus adevărul. A doua greșeală.</p></div>
+   <div class="box"><span class="emo">3️⃣</span><h3>A dat vina pe altul</h3><p>A învinuit un coleg nevinovat. Cea mai gravă: i-a făcut rău altuia.</p></div>
+  </div>
+  <h3 style="margin-top:12px">Cum trebuie sancționat?</h3>
+  <div class="ch" id="sc-ch"></div>
+  <div class="map-info" id="sc-info" aria-live="polite">Alege o sancțiune.</div>
+ </div>
+</section>
+
+<!-- 7 COPACUL -->
+<section class="slide" aria-label="Proiect: Copacul ideilor">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Proiect · Copacul ideilor</span>
+  <h2>Personaje, întâmplări, însușiri</h2>
+  <p>Identificați personaje din lecturi care au dat dovadă de <b>cinste</b> sau <b>necinste</b>, întâmplările care arată asta și însușirile lor. Adaugă ramuri copacului (nu se salvează nimic).</p>
+  <div class="addrow">
+   <label for="cp-t" style="font-weight:800">Pentru</label><select id="cp-t"><option value="c">cinste</option><option value="n">necinste</option></select>
+   <label for="cp-k" style="font-weight:800">ramura</label><select id="cp-k"><option value="p">Personaje</option><option value="i">Întâmplări</option><option value="s">Însușiri</option></select>
+   <input id="cp-x" type="text" placeholder="ex.: Vania" aria-label="Textul ramurii"><button type="button" id="cp-a">Adaugă</button><button type="button" id="cp-r">Golește</button>
+  </div>
+  <div class="cptree" id="cp-tree"></div>
+  <details class="pd"><summary>Autoevaluare: criterii (da / nu / parțial)</summary><div class="ck" id="cp-ev"></div></details>
+  <div class="tip y">🌳 <b>Pe foaie:</b> scrie „cinste” și „necinste” în câte un dreptunghi la baza foii, de unde pornesc crengile. Fiecare membru al echipei completează o ramură. Copacul se folosește la orele de limba română.</div>
+ </div>
+</section>
+
+<!-- 8 DEZBATERE -->
+<section class="slide" aria-label="Dezbatere">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">🗣️ Dezbatere · Pro și Contra</span>
+  <h2>Testul ascuns</h2>
+  <p>Un elev le ascunde părinților testul la care a primit calificativul <b>insuficient</b>. Unul dintre prieteni îl susține. Un altul le spune părinților despre calificativ. Ce părere ai despre cei trei?</p>
+  <div class="vl" id="vl-btns">
+   <button type="button" aria-pressed="false" data-k="spune">Prietenul care a spus părinților a procedat corect</button>
+   <button type="button" aria-pressed="false" data-k="tace">Prietenul trebuia să tacă</button>
+   <button type="button" aria-pressed="false" data-k="alt">Mai bine: l-ar fi încurajat să spună singur</button>
+  </div>
+  <div class="box" id="vl-box" aria-live="polite"><p>Apasă pe o poziție ca să vezi ce argumente ar putea folosi un elev. Apoi adaugă-le pe ale tale. Formați echipe Pro și Contra.</p></div>
+  <div class="tip y">🗣️ <b>Reguli:</b> ascultăm până la capăt, nu judecăm persoane din clasă, folosim „eu cred că... pentru că...”. La final, formulăm împreună ce ar fi cea mai bună soluție pentru toți trei.</div>
+ </div>
+</section>
+
+<!-- 9 PUNTE -->
+<section class="slide" aria-label="Punte">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Română ↔ Istorie ↔ Matematică ↔ Informatică ↔ Științe ↔ Geografie</span>
+  <h2>Legături cu celelalte materii</h2>
+  <details class="pd"><summary>Română: Sâmburele, Pinocchio, proverbe</summary><p>„Minciuna are picioare scurte” e un proverb care ne amintește de Vania: o minciună se descoperă repede. Citește despre Pinocchio, al cărui nas crește la fiecare minciună. Care personaje din lecturile tale ilustrează cinstea?</p></details>
+  <details class="pd"><summary>Istorie: cuvântul dat și jurămintele</summary><p>Hipocrate a lăsat medicilor un jurământ (lecția 1, istorie, unitatea 2). Domnitorii depuneau jurăminte, iar documentele vechi (lecția 4) aveau pecete ca dovadă. Cuvântul dat conta mult. Un document fals schimbă istoria: de aceea istoricii verifică izvoarele.</p></details>
+  <details class="pd"><summary>Matematică: restul corect</summary><p>Ai plătit 20 lei pentru un produs de 13 lei și primești rest 17 lei. Restul corect e 20 − 13 = 7 lei. Dacă vânzătorul se înșală, ce faci? A-i spune e o faptă cinstită, chiar dacă ai fi câștigat 10 lei.</p></details>
+  <details class="pd"><summary>Informatică: informații false și copiat</summary><p>Pe internet circulă știri false. Cinstea înseamnă și să verifici înainte să distribui, și să spui de unde ai luat o imagine sau un text, nu să-l copiezi ca și cum ar fi al tău.</p></details>
+  <details class="pd"><summary>Științe: rezultate cinstite</summary><p>Într-un experiment, notezi ce se întâmplă cu adevărat, chiar dacă nu iese cum voiai. Cercetătorii care schimbă datele își pierd credibilitatea.</p></details>
+  <details class="pd"><summary>Geografie: sursa datelor</summary><p>La geografie, graficele au o „sursă”: arată de unde vin numerele. E o formă de cinste: spui cine a măsurat și poți fi verificat.</p></details>
+ </div>
+</section>
+
+<!-- 10 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile lecției</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 11 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--green)"><span class="emo">🛡️</span><p><b>Cinstea</b> e valoarea persoanei care face fapte lăudabile. Un om cinstit își <b>asumă responsabilitatea</b> pentru cuvinte și fapte.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">🎭</span><p><b>Necinstea</b> e opusul ei. O minciună cere altele și duce la pierderea încrederii.</p></div>
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🌳</span><p>Persoanele corecte sunt <b>apreciate</b>. Incorectitudinea poate fi <b>sancționată</b>, dar sancțiunea trebuie să fie dreaptă și să ajute la îndreptare.</p></div>
+  </div>
+  <div class="tip y">🔁 <b>Urmează:</b> recapitularea unității 2, cu toate cele trei perechi de valori și testul.</div>
+ </div>
+</section>
+
+</main>
+
+<script src="../../assets/caiet.js"></script>
+<script>
+(function(){
+  var Q=[
+   {t:'mcq',tags:['C2 L3'],d:'Definiție',q:'Ce este cinstea?',o:['Valoarea morală a persoanei care face fapte lăudabile și își asumă responsabilitatea pentru cuvintele și faptele sale','A spune ce vrei, oricum','A nu vorbi niciodată','A fi mai tare decât alții'],a:0,h:'Citește „Reținem”.',e:'Valoarea persoanei care face fapte lăudabile, apreciate de comunitate, și își asumă responsabilitatea.'},
+   {t:'mcq',tags:['C2 L3'],d:'Definiție',q:'Care este valoarea morală opusă cinstei?',o:['Necinstea','Generozitatea','Curajul','Răbdarea'],a:0,h:'Prefixul ne-.',e:'Necinstea: minciuna, înșelăciunea, nerespectarea cuvântului dat.'},
+   {t:'mcq',tags:['C2 L3','Română'],d:'Lectură',q:'Care a fost prima greșeală a lui Vania?',o:['A luat o prună pe ascuns','A strigat','A plâns','A cerut o prună'],a:0,h:'Mama cumpărase prune pentru toți.',e:'A luat o prună pe ascuns. A urmat minciuna, apoi altă minciună.'},
+   {t:'mcq',tags:['C2 L3'],d:'Lectură',q:'De ce a început Vania să plângă?',o:['Pentru că minciunile lui au fost descoperite și toți au râs','Pentru că mama l-a certat','Pentru că i-a fost foame','Pentru că a căzut'],a:0,h:'Prima minciună a cerut alta.',e:'Minciunile s-au dovedit: sâmburele l-ar fi „aruncat pe fereastră”, deși zisese că n-a mâncat prune. A fost rușinat.'},
+   {t:'mcq',tags:['C2 L3'],d:'Gândire',q:'Cum putea Vania să evite situația rușinoasă?',o:['Spunând de la început adevărul și cerând iertare','Mâncând mai multe prune','Fugind','Tăcând'],a:0,h:'Asumarea responsabilității.',e:'Spunând adevărul. Rușinea ar fi fost mai mică și s-ar fi păstrat încrederea.'},
+   {t:'mcq',tags:['C2 L3'],d:'Situație',q:'Ai promis că ajungi la ora 9 și ai întârziat. Ce e cel mai cinstit?',o:['Să-ți ceri scuze și să explici sincer de ce ai întârziat','Să dai vina pe altcineva','Să te prefaci că ai ajuns la timp','Să nu mai vorbești'],a:0,h:'Asumă-ți responsabilitatea.',e:'Scuzele sincere și explicația cinstită. A-ți respecta cuvântul înseamnă și a recunoaște când nu l-ai respectat.'},
+   {t:'mcq',tags:['C2 L3'],d:'Situație',q:'Cumperi un produs cu o reclamă exagerată. Ce poți face în mod corect?',o:['Să-l returnezi și să spui adevărul despre calitate','Să-l păstrezi și să minți pe alții','Să-l arunci','Să faci reclamă falsă și tu'],a:0,h:'Și comunitatea poate sancționa.',e:'Poți returna produsul și poți spune sincer care e calitatea. Comunitatea poate sancționa firma necinstită.'},
+   {t:'sort',tags:['C2 L3'],d:'Cinstit sau necinstit?',q:'Sortează comportamentele: cinstit sau necinstit?',items:[['Spui adevărul, chiar dacă ți-e rușine','s'],['Copiezi la test','n'],['Returnezi restul primit din greșeală','s'],['Dai vina pe un coleg pentru ce ai făcut tu','n'],['Îți ții promisiunea','s'],['Iei lucrul altcuiva fără să ceri','n']],labels:{s:'Cinstit',n:'Necinstit'},h:'Gândește-te la încredere.',e:'Cinstit: adevărul, restul returnat, promisiunea ținută. Necinstit: copiatul, învinuirea altuia, luatul fără voie.'},
+   {t:'mcq',tags:['C2 L3'],d:'Studiu de caz',q:'Un elev a luat creionul altuia, apoi a spus că vinovat e un coleg. Care e greșeala cea mai gravă?',o:['A învinuit un coleg nevinovat','A luat creionul','A mințit învățătoarea','Toate la fel'],a:0,h:'Cine a fost rănit în plus?',e:'Învinuirea altuia: a produs o nedreptate unui coleg nevinovat. Dar și celelalte sunt greșeli.'},
+   {t:'mcq',tags:['C2 L3'],d:'Studiu de caz',q:'Ce sancțiune e potrivită pentru elevul care a luat creionul și a mințit?',o:['Să-și ceară scuze, să returneze creionul și să-și asume greșeala; învățătoarea și părinții să discute cu el','Să fie umilit în fața clasei','Să nu se întâmple nimic','Să fie alungat din clasă'],a:0,h:'Sancțiune care repară și educă.',e:'Una proporțională și educativă: scuze, repararea greșelii, discuție. Sancțiunea nu trebuie să umilească.'},
+   {t:'mcq',tags:['C2 L3','Matematică'],d:'Matematică',q:'Plătești 20 lei pentru un produs de 13 lei, dar primești rest 17 lei. Câți lei primești în plus față de cât ți se cuvine?',o:['10 lei','3 lei','7 lei','17 lei'],a:0,h:'Restul corect: 20 − 13 = 7.',e:'10 lei (17 − 7). Cinstit e să-i spui vânzătorului.'},
+   {t:'mcq',tags:['C2 L3','Informatică'],d:'Informatică',q:'Găsești un text frumos pe internet și vrei să-l folosești la o temă. Ce e cinstit?',o:['Să spui de unde l-ai luat','Să-l copiezi ca și cum ai fi scris tu','Să-l modifici puțin','Să nu-l citești'],a:0,h:'Sursa.',e:'Să menționezi sursa. Copiatul fără să spui e o formă de necinste.'},
+   {t:'mcq',tags:['C2 L3','Istorie'],d:'Istorie',q:'Cine a spus „A trăi cinstit este totuna cu a trăi corect și drept”?',o:['Platon, filosof grec','Burebista','Traian','Ștefan cel Mare'],a:0,h:'Lecția 1 de istorie, grecii.',e:'Platon, filosof grec, elevul lui Socrate și profesorul lui Aristotel.'},
+   {t:'mcq',tags:['C2 L3'],d:'Dezbatere',q:'Prietenul unui coleg care ascunde un test insuficient e întrebat de părinți. Ce soluție e cea mai bună?',o:['Să-l încurajeze pe coleg să le spună el singur și să-i ofere sprijin','Să mintă și el','Să facă o glumă','Să nu mai vorbească cu el'],a:0,h:'Cinste, dar și prietenie.',e:'Să-l încurajeze să le spună singur și să-l ajute. Așa păstrează și cinstea, și prietenia.'}
+  ];
+  Caiet.start({Q:Q});
+})();
+</script>
+<script>
+(function(){
+  /* scara minciunii */
+  var LD=[['Nu, n-am mâncat-o eu!','Prima minciună: acum Vania trebuie s-o susțină.',70],['Ba nu, că sâmburele l-am aruncat pe fereastră!','A doua minciună, spusă din frică, îl trădează: a recunoscut că a mâncat prună.',15]];
+  var li=0,ls=document.getElementById('ld-s'),lm=document.getElementById('ld-m');
+  function ldDraw(msg,trust,col){lm.style.width=trust+'%';lm.style.background=col;}
+  function ldReset(){li=0;ls.innerHTML='<div>Vania a mâncat o prună pe ascuns. Tata întreabă: „Nu cumva a mâncat cineva o prună?”</div>';ldDraw('',100,'#2E9D52');}
+  document.getElementById('ld-l').onclick=function(){if(li>=LD.length)return;var d=document.createElement('div');d.className='l';d.innerHTML='🔴 <b>'+LD[li][0]+'</b><br><span style="font-size:.9em">'+LD[li][1]+'</span>';ls.appendChild(d);ldDraw('',LD[li][2],LD[li][2]>40?'#E39A4A':'#E2433A');li++;if(li>=LD.length){var e=document.createElement('div');e.innerHTML='😢 Toți au râs, iar Vania a început să plângă. Încrederea a scăzut aproape de zero.';ls.appendChild(e);}};
+  document.getElementById('ld-t').onclick=function(){var d=document.createElement('div');d.className='t';d.innerHTML='🟢 <b>„Eu am mâncat o prună. Iartă-mă.”</b><br><span style="font-size:.9em">Mică rușine, dar o singură „treaptă”: Vania își asumă și încrederea rămâne. Mama și tata pot discuta calm, fără frică și fără minciuni.</span>';ls.appendChild(d);ldDraw('',92,'#2E9D52');};
+  document.getElementById('ld-r').onclick=ldReset;ldReset();
+  /* situații */
+  function ch(id,iid,arr){var c=document.getElementById(id),i=document.getElementById(iid);arr.forEach(function(a){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','false');b.textContent=a[0];b.onclick=function(){c.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});i.innerHTML=a[1];};c.appendChild(b);});}
+  ch('s1','s1i',[['Mă prefac că am ajuns la timp','❌ <b>Necinstit.</b> Cel care te așteaptă știe adevărul, iar minciuna strică încrederea.'],['Îmi cer scuze și explic sincer de ce am întârziat','✅ <b>Cinstit.</b> Îți asumi responsabilitatea. Ți se poate ierta mai ușor o întârziere recunoscută decât o minciună.'],['Dau vina pe autobuz, deși m-am trezit târziu','❌ <b>Necinstit.</b> Dai vina pe altceva ca să scapi. Dacă se află, încrederea se pierde.']]);
+  ch('s2','s2i',[['Păstrez obiectul și nu spun nimănui','⚖️ Nu e o minciună, dar nici nu ajuți: alți cumpărători pot fi păcăliți ca și tine.'],['Returnez obiectul și spun sincer ce nu corespunde reclamei','✅ <b>Cinstit și util.</b> Ceri ce ți se cuvine și îi ajuți pe alții să nu fie păcăliți.'],['Fac și eu o reclamă falsă ca să recuperez banii','❌ <b>Necinstit.</b> Un rău nu se îndreaptă cu un alt rău.']]);
+  /* sancțiune */
+  ch('sc-ch','sc-info',[['A. Umilit în fața clasei, ca să fie o lecție pentru toți','❌ Nu: sancțiunea nu trebuie să umilească. Umilința nu educă, doar rănește.'],['B. Scuze către colegi, creionul înapoi, asumarea greșelii, discuție cu învățătoarea și cu părinții','✅ Da: e proporțională, repară greșeala (scuze, creionul) și ajută elevul să înțeleagă. Poate însemna și o consecință, de exemplu o temă despre cinste.'],['C. Să nu se întâmple nimic, să uităm','❌ Nu: fără nicio consecință, nu învață nimic. Incorectitudinea trebuie sancționată.']]);
+  /* copacul */
+  var CP={c:{p:['Pinocchio (la final, când devine sincer)'],i:['Fata care spune adevărul: „Ai întârziat”'],s:['sincer','responsabil']},n:{p:['Vania (Sâmburele)','Vulpea din „Corbul și vulpea”'],i:['Vania minte despre prună','Vulpea îl păcălește pe corb cu laude false'],s:['mincinos','viclean']}};
+  function tDraw(){var t=document.getElementById('cp-tree');t.innerHTML='';[['c','Cinste','#2E9D52'],['n','Necinste','#E2433A']].forEach(function(s){var d=document.createElement('div');d.className='cpside'+(s[0]==='n'?' n':'');
+    d.innerHTML='<div class="trunk" style="background:'+s[2]+'1f;color:'+s[2]+'">🌳 '+s[1]+'</div>'+[['p','Personaje'],['i','Întâmplări'],['s','Însușiri']].map(function(k){return '<div class="br"><h4>'+k[1]+'</h4>'+(CP[s[0]][k[0]].map(function(x){return '<span class="chip">'+x.replace(/</g,'&lt;')+'</span>';}).join('')||'<span class="sursa">gol</span>')+'</div>';}).join('');t.appendChild(d);});}
+  tDraw();
+  document.getElementById('cp-a').onclick=function(){var x=document.getElementById('cp-x').value.trim();if(!x)return;CP[document.getElementById('cp-t').value][document.getElementById('cp-k').value].push(x);document.getElementById('cp-x').value='';tDraw();};
+  document.getElementById('cp-x').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('cp-a').click();});
+  document.getElementById('cp-r').onclick=function(){CP={c:{p:[],i:[],s:[]},n:{p:[],i:[],s:[]}};tDraw();};
+  var EV=['Personajele sunt identificate corect.','Întâmplările evidențiază valori morale.','Însușirile personajelor sunt alese corect.','Produsul final ilustrează tema.'],el=document.getElementById('cp-ev');
+  EV.forEach(function(t,i){var l=document.createElement('label');l.innerHTML='<input type="checkbox" id="ev'+i+'"><span>'+t+'</span>';el.appendChild(l);});
+  /* linia valorică */
+  var ARG={
+   spune:'<b>Argumente „a procedat corect”:</b><br>• Părinții trebuie să știe cum merge copilul la școală ca să-l poată ajuta.<br>• A ascunde testul e o minciună prin omisiune, iar minciunile cresc.<br>• Un calificativ slab nu e o crimă: se poate îndrepta cu ajutor.',
+   tace:'<b>Argumente „trebuia să tacă”:</b><br>• E secretul colegului: ar fi trebuit să aibă încredere în prietenul lui.<br>• Poate colegul se temea de reacția părinților.<br>• Un prieten ar trebui să-l sprijine, nu să-l „toarne”.',
+   alt:'<b>Soluția cea mai bună:</b><br>• Prietenul îl încurajează să le spună singur părinților, și se oferă să stea lângă el.<br>• Dacă nu o face, prietenul îi spune deschis că ascunderea nu rezolvă nimic.<br>• Așa se păstrează și cinstea, și prietenia.'
+  };
+  var vb=document.querySelectorAll('#vl-btns button'),vx=document.getElementById('vl-box');
+  vb.forEach(function(b){b.onclick=function(){vb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});vx.innerHTML='<p style="margin:0">'+ARG[b.dataset.k]+'</p>';};});
+})();
+</script>
+</body>
+</html>

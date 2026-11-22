@@ -49,5 +49,10 @@ Caiet.CUPRINS=[
     {f:'civica/unitatea-1/lectia-1-apartenenta-locala.html',l:'Lecția 1',t:'Apartenența locală. Localitatea și domiciliul',d:'Comunitatea locală, instituțiile, relațiile dintre oameni și adresa de domiciliu.'},
     {f:'civica/unitatea-1/lectia-2-apartenenta-nationala.html',l:'Lecția 2',t:'Apartenența națională. Țara natală. Însemnele țării',d:'Drapelul, stema pe provincii, imnul, ziua națională și diaspora.'},
     {f:'civica/unitatea-1/lectia-3-uniunea-europeana.html',l:'Lecția 3',t:'România, membră a Uniunii Europene',d:'Însemnele UE, cum a crescut Uniunea și ce s-a schimbat din 2022.'},
-    {f:'civica/unitatea-1/recapitulare.html',l:'Toată unitatea',t:'Cercurile apartenenței',d:'Recapitularea unității, înainte de test: monedele UE, ce s-a schimbat de la manual, 18 misiuni.',r:1}]}]}
+    {f:'civica/unitatea-1/recapitulare.html',l:'Toată unitatea',t:'Cercurile apartenenței',d:'Recapitularea unității, înainte de test: monedele UE, ce s-a schimbat de la manual, 18 misiuni.',r:1}]},
+   {u:'Unitatea 2. Raporturile noastre cu ceilalți oameni. Valori morale (I)',items:[
+    {f:'civica/unitatea-2/lectia-1-bine-rau.html',l:'Lecția 1',t:'Bine – Rău',d:'Proverbe, Harap-Alb și furnicile, valul unei fapte, situații de rezolvat și schema Bine/Rău.'},
+    {f:'civica/unitatea-2/lectia-2-altruism-egoism.html',l:'Lecția 2',t:'Altruism – Egoism',d:'Cântarul valorilor, Vulturul lui Tolstoi, Uriașul cel egoist și grădina cu zid.'},
+    {f:'civica/unitatea-2/lectia-3-cinste-necinste.html',l:'Lecția 3',t:'Cinste – Necinste',d:'Scara minciunii (Sâmburele), situații, studiul de caz al creionului și Copacul ideilor.'},
+    {f:'civica/unitatea-2/recapitulare.html',l:'Toată unitatea',t:'Valorile din jurul nostru',d:'Corbul și vulpea, cvintetul, expresii, investigația Așa da – Așa nu, autoevaluare și 35 de misiuni.',r:1}]}]}
 ];

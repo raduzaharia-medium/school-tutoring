@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Valorile din jurul nostru</title>
+<link rel="stylesheet" href="../../assets/caiet.css">
+<style>
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}
+.pd summary{cursor:pointer;font-weight:800}
+.pd[open] summary{margin-bottom:6px}
+.pd:last-of-type{border-color:var(--green)}
+.vl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.vl button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.4em 1em}
+.vl button[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+.pairs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:10px 0}
+.pairs .box h3{margin-top:0}
+.pairs a{display:inline-block;margin:.15em .3em .15em 0;padding:.15em .6em;border-radius:99px;background:var(--tint-purple);color:var(--ink);font-weight:800;text-decoration:none;border:2px solid var(--line);font-size:.9em}
+.fc{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:10px 0}
+.fc button{font:inherit;text-align:left;min-height:4.8em;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:14px;padding:10px 14px}
+.fc button b{display:block;font-family:var(--display)}
+.fc button[aria-pressed="true"]{background:var(--tint-yellow);border-color:#C9862A}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.chips button{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.3em .9em;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--tint-yellow);border-color:#C9862A}
+.chips button.ok{background:var(--tint-green);border-color:var(--green)}
+.chips button.no{background:var(--tint-red);border-color:var(--red)}
+.cv{background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:12px 16px}
+.cv label{display:block;font-weight:800;margin-top:.5em}
+.cv small{font-weight:500;color:var(--soft)}
+.cv input{font:inherit;width:100%;max-width:30em;padding:.3em .5em;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink)}
+.cv pre{white-space:pre-wrap;font:inherit;background:var(--tint-yellow);border-radius:12px;padding:10px 14px;margin:10px 0 0;text-align:center}
+.pst{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+@media (max-width:700px){.pst{grid-template-columns:1fr}}
+.pst .pside{background:var(--paper);border:3px solid var(--green);border-radius:16px;padding:10px 14px;min-height:6em}
+.pst .pside.n{border-color:var(--red)}
+.pst h3{margin:0 0 .3em}
+.pst .chip{display:inline-block;margin:.15em .3em .15em 0;padding:.1em .6em;border-radius:99px;background:var(--paper);border:2px solid var(--line);font-weight:700;font-size:.9em}
+.addrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.addrow input,.addrow select{font:inherit;padding:.3em .5em;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink)}
+.addrow input{flex:1;min-width:10em}
+.addrow button{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:.3em .9em;cursor:pointer}
+.tg{display:grid;grid-template-columns:1fr auto;gap:6px 10px;align-items:center;margin:10px 0}
+.tg .s{background:var(--paper);border:2px solid var(--line);border-radius:10px;padding:.35em .7em}
+.tg select,.ev select{font:inherit;font-weight:700;padding:.2em .4em;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink)}
+.ev{display:grid;grid-template-columns:1fr auto;gap:6px 10px;align-items:center;margin:10px 0}
+.ev .s{background:var(--paper);border:2px solid var(--line);border-radius:10px;padding:.35em .7em}
+.fs{display:grid;gap:8px;margin:10px 0}
+.fs label{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:.5em .8em;cursor:pointer}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Educație civică · Unitatea 2 · Recapitulare și evaluare · manual pp. 34–38</p>
+   <h1>Valorile din jurul nostru</h1>
+   <p class="lead">Bine și rău, altruism și egoism, cinste și necinste. Recapitulăm cu o fabulă, un cvintet, o investigație și un test, apoi ne facem autoevaluarea.</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="#F0E9FA"/>
+   <path d="M110 40 v110" stroke="#6B4BC4" stroke-width="6" stroke-linecap="round"/>
+   <path d="M55 70 H165" stroke="#6B4BC4" stroke-width="6" stroke-linecap="round"/>
+   <path d="M55 70 l-14 40 h28Z" fill="#9BD59B" stroke="#2E9D52" stroke-width="3"/>
+   <path d="M165 70 l-14 40 h28Z" fill="#9BD59B" stroke="#2E9D52" stroke-width="3"/>
+   <path d="M80 160 h60" stroke="#6B4BC4" stroke-width="6" stroke-linecap="round"/>
+   <path d="M96 188 q14 -18 28 0" fill="none" stroke="#E2433A" stroke-width="5" stroke-linecap="round"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 UNITATEA PE SCURT -->
+<section class="slide" aria-label="Unitatea pe scurt">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Unitatea pe scurt</span>
+  <h2>Trei perechi de valori</h2>
+  <p>Apasă pe un card ca să vezi ideea lecției. Poți redeschide lecțiile.</p>
+  <div class="pairs">
+   <div class="box" style="border-color:var(--green)"><h3>🟢🔴 Bine – Rău</h3><p>Faptele bune aduc armonie și apreciere. Faptele rele aduc relații negative. O faptă face valuri.</p><a href="lectia-1-bine-rau.html">Lecția 1</a></div>
+   <div class="box" style="border-color:var(--blue)"><h3>🤲🙈 Altruism – Egoism</h3><p>Altruismul oferă fără să ceară ceva. Egoismul nesocotește interesele altora.</p><a href="lectia-2-altruism-egoism.html">Lecția 2</a></div>
+   <div class="box" style="border-color:var(--purple)"><h3>🛡️🎭 Cinste – Necinste</h3><p>Cinstea înseamnă fapte lăudabile și asumarea responsabilității. O minciună cere altele.</p><a href="lectia-3-cinste-necinste.html">Lecția 3</a></div>
+  </div>
+  <h3>Cuvintele-cheie ale unității</h3>
+  <div class="fc" id="fc-grid"></div>
+ </div>
+</section>
+
+<!-- 3 CORBUL SI VULPEA -->
+<section class="slide" aria-label="Corbul și vulpea">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#3a2a00">Citim și dezbatem · Gheorghe Asachi, „Corbul și vulpea”</span>
+  <h2>Cine e cinstit în fabulă?</h2>
+  <p>Un corb stătea pe o creangă de sorb, cu o bucată de caș în plisc, <b>furată</b>. O vulpe l-a mirosit și i-a spus, în sus: „Bună ziua, venetice! Cât ești mândru și frumos! Dacă și vocea ți-e pe măsură, întreci privighetoarea!” Manualul cere să formulați întrebări, să imaginați finalul și să dezbateți comportamentul celor două personaje, privind <b>cinstea</b> și <b>necinstea</b>.</p>
+  <details class="pd"><summary>Întrebări pe care le poți pune colegilor</summary><p>De unde avea corbul cașul? Ce vrea vulpea? De ce îl laudă? Cum se numește comportamentul vulpii? Ce ar fi trebuit să facă corbul? Ce credeți că se întâmplă când corbul deschide ciocul?</p></details>
+  <details class="pd"><summary>Imaginează finalul</summary><p>De obicei, corbul deschide ciocul ca să cânte, iar cașul cade; vulpea îl ia și fuge. O altă variantă: corbul înțelege păcăleala, îi spune vulpii „mulțumesc, dar nu cânt” și își mănâncă liniștit cașul. Care finalul tău?</p></details>
+  <details class="pd"><summary>Pro și Contra: comportamentul celor două personaje</summary><p><b>Corbul:</b> avea caș furat, deci e și el necinstit; în plus, se lasă păcălit din mândrie. <b>Vulpea:</b> folosește <b>lingușirea</b> (laude false) ca să obțină ce vrea: e viclenie și necinste. Morala: nu te lăsa păcălit de laude exagerate, și nu lua ce nu e al tău.</p></details>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>„Venetic” înseamnă străin, intrus, iar „sorb” e un arbore cu frunze ovale, flori albe și fructe cărnoase.</p></div>
+   <div><span class="lab">🌍 Context</span><p>O <b>fabulă</b> e o poveste scurtă cu animale care se poartă ca oamenii și au o morală. Asachi a adaptat-o după fabula lui La Fontaine, la rândul lui inspirat de Esop, un grec din Antichitate. Aceeași poveste a circulat în multe țări, ceea ce arată că oamenii au aceleași valori.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 4 EGOIST -->
+<section class="slide" aria-label="Termeni pentru egoism">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Activități în echipă · termenii</span>
+  <h2>Care caracterizează o persoană egoistă?</h2>
+  <p>Apasă pe termenii care descriu o persoană <b>egoistă</b>, apoi apasă „Verifică”.</p>
+  <div class="chips" id="eg-chips"></div>
+  <div class="ctrl"><button type="button" id="eg-c">Verifică</button><button type="button" id="eg-r">↺ De la capăt</button></div>
+  <div class="map-info" id="eg-info" aria-live="polite"></div>
+  <div class="grid g2" style="margin-top:10px">
+   <div class="box"><span class="emo">🖼️</span><h3>Desenul tău</h3><p>Realizează un desen în care un coleg din altă clasă s-a comportat bine la școală, în familie sau în grupul de joacă. Apoi scrie câteva îndemnuri pentru un coleg egoist.</p></div>
+   <div class="box"><span class="emo">📺</span><h3>Micii jurnaliști</h3><p>Imaginează-te prezentator de știri. Alege o imagine cu o faptă bună sau rea și formulează un titlu: „Elevii clasei a IV-a au strâns haine pentru copiii din sat”.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 5 CVINTET -->
+<section class="slide" aria-label="Cvintetul valorii">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Activitate în perechi · cvintetul</span>
+  <h2>Poezia în cinci rânduri</h2>
+  <p>Manualul îți dă cuvintele amestecate ale unei strofe: <i>vorba, spunând, clară, dulce, recunoscând, vorba, motivând, corectă, mult, cinste, aduce.</i> Ordonează-le după modelul cvintetului:</p>
+  <div class="box"><p style="margin:0"><b>1 cuvânt</b> (subiectul) · <b>2 adjective</b> · <b>3 verbe la gerunziu</b> · <b>o propoziție</b> · <b>1 cuvânt</b> care denumește o valoare morală</p></div>
+  <details class="pd"><summary>Modelul din manual (altruism)</summary><p style="text-align:center;margin:0">Omul<br>bun, sufletist<br>ajutând, înțelegând, iertând.<br>Omul ajută fără interes.<br><b>Altruism</b></p></details>
+  <details class="pd"><summary>Soluția pentru strofa cu „vorba”</summary><p style="text-align:center;margin:0">Vorba<br>clară, dulce<br>spunând, recunoscând, motivând.<br>Vorba corectă aduce mult.<br><b>Cinste</b></p></details>
+  <h3 style="margin-top:12px">Scrie-ți propriul cvintet</h3>
+  <div class="cv">
+   <label for="cv1">1. Un cuvânt (subiectul) <small>ex.: Prietenul</small></label><input id="cv1" type="text" value="Prietenul">
+   <label for="cv2">2. Două adjective <small>ex.: sincer, bun</small></label><input id="cv2" type="text" value="sincer, bun">
+   <label for="cv3">3. Trei verbe la gerunziu <small>ex.: ajutând, ascultând, iertând</small></label><input id="cv3" type="text" value="ajutând, ascultând, iertând">
+   <label for="cv4">4. O propoziție <small>ex.: Prietenul spune adevărul</small></label><input id="cv4" type="text" value="Prietenul spune adevărul.">
+   <label for="cv5">5. O valoare morală <small>ex.: Cinste</small></label><input id="cv5" type="text" value="Cinste">
+   <pre id="cv-out" aria-live="polite"></pre>
+  </div>
+ </div>
+</section>
+
+<!-- 6 EXPRESII -->
+<section class="slide" aria-label="Expresii și formule de adresare">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Evaluare · expresii și politețe</span>
+  <h2>Ce înseamnă expresiile?</h2>
+  <p>Apasă pe o expresie ca să vezi explicația, mai întâi spune tu ce crezi.</p>
+  <div class="fc" id="ex-grid"></div>
+  <h3 style="margin-top:12px">Formule de adresare pentru un copil bine-crescut</h3>
+  <div class="grid g3">
+   <div class="box"><span class="emo">🌞</span><h3>Salut</h3><p><b>Bună ziua</b>, bună dimineața, la revedere, noapte bună.</p></div>
+   <div class="box"><span class="emo">🙏</span><h3>Cerere</h3><p><b>Te rog</b> / <b>vă rog</b>, mi-ați permite, cu voia dumneavoastră.</p></div>
+   <div class="box"><span class="emo">💐</span><h3>Mulțumire și scuze</h3><p><b>Mulțumesc</b>, cu plăcere, <b>scuze</b>, iertați-mă, nu se poate.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 7 BALONUL -->
+<section class="slide" aria-label="Lectură: Balonul spart">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#3a2a00">Lectură · Tudor Arghezi, „Balonul spart”</span>
+  <h2>Două baloane, un secret</h2>
+  <p>Baruțu și Mița au primit fiecare câte un balon. Balonul lui Baruțu a crăpat, iar el a început să plângă. Balonul fetei plutea mai departe, tot mai frumos. Baruțu, supărat și invidios, s-a repezit pe furiș la balonul ei, a smuls sfoara și a vrut să-l spargă ca să-i facă și ei o durere. Dar balonul nu s-a spart: a urcat în sus, departe, „în fundul marilor seninătăți”. „Nu mai plânge, Mițule! S-a dus acolo unde se duc toate baloanele.”</p>
+  <details class="pd"><summary>Ce valori morale vezi aici?</summary><p>Invidia și dorința de <b>răzbunare</b> (valori negative, ale celui care vrea să-i facă rău altuia pentru că i-a fost rău lui). Dar și o lecție de <b>acceptare</b>: nimic nu e veșnic, nici baloanele. Autorul îl sfătuiește pe Baruțu să nu se mâhnească peste măsură.</p></details>
+  <details class="pd"><summary>Ce ai fi făcut în locul lui Baruțu?</summary><p>Ai fi putut să-i ceri fetei să se joace împreună cu balonul ei sau să te bucuri cu ea. Să-i faci rău din invidie nu repară balonul tău spart. Îți pierzi și tu, și ea.</p></details>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Lectura te învață să privești fiecare personaj și să te gândești la ce simte.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Arghezi scrie aici pentru adulți și copii deopotrivă, în stilul lui plin de imagini (balonul ca „sferă de cauciuc transparent”). Emoțiile lui Baruțu sunt reale: și noi suntem uneori invidioși. Important e ce facem cu ele.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 8 INVESTIGATIE -->
+<section class="slide" aria-label="Investigația și afișul Așa da – Așa nu">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Investigație · Așa da – Așa nu</span>
+  <h2>Observă valorile în jurul tău</h2>
+  <p>Pașii investigației: <b>1)</b> pregătești materialele (stilou, creioane, coli, aparat foto); <b>2)</b> recunoști comportamente moral-civice (bine – rău, altruism – egoism, cinste – necinste); <b>3)</b> notezi într-un tabel grupul, valoarea, comportamentul și relațiile create; <b>4)</b> formulezi concluzii; <b>5)</b> prezinți rezultatele cu un afiș AȘA DA – AȘA NU.</p>
+  <div class="addrow">
+   <select id="pt-t" aria-label="Tipul"><option value="y">AȘA DA</option><option value="n">AȘA NU</option></select>
+   <input id="pt-x" type="text" placeholder="ex.: Îi dau bunicului locul în autobuz" aria-label="Comportamentul">
+   <button type="button" id="pt-a">Adaugă</button><button type="button" id="pt-r">Golește</button>
+  </div>
+  <div class="pst" id="pt-box"></div>
+  <details class="pd"><summary>Exemplu de rând din tabelul investigației</summary><p><b>Grupul investigat:</b> familia · <b>Valoarea:</b> binele · <b>Comportamentul:</b> părinții i-au cumpărat medicamente vecinului · <b>Relații create:</b> înțelegere, ajutor.</p></details>
+  <div class="tip y">📸 <b>Atenție:</b> faci fotografii sau desene doar dacă ai <b>permisiunea</b> persoanelor. Nu publica imagini cu alții fără acordul lor.</div>
+ </div>
+</section>
+
+<!-- 9 AUTOEVALUARE -->
+<section class="slide" aria-label="Autoevaluare">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Autoevaluare · fișa de observație</span>
+  <h2>Cum ai lucrat la unitate?</h2>
+  <p>Apreciază cât de des îți reușesc lucrurile (nu se salvează nimic).</p>
+  <div class="tg" id="tg-list"></div>
+  <div class="map-info" id="tg-info" aria-live="polite"></div>
+  <h3 style="margin-top:14px">Descriptorii testului (din manual)</h3>
+  <p>Spune câte răspunsuri corecte ai la fiecare item. Pragurile sunt aceleași: <b>1 = Suficient</b>, <b>2 = Bine</b>, <b>3 = Foarte bine</b>.</p>
+  <div class="ev" id="ev-list"></div>
+  <div class="out" id="ev-out" aria-live="polite"></div>
+  <details class="pd"><summary>Fișa de observație: întrebări de completat</summary><p>Temele din această unitate au fost... · Am aflat lucruri interesante despre... · Nu știam că... · Mi-a plăcut... · La activitățile în perechi și în echipă am participat... · Am întâmpinat dificultăți la... · Apreciez că eu știu să... Prezintă fișa în fața clasei, compară cu a colegilor și cere părerea învățătoarei sau învățătorului.</p></details>
+ </div>
+</section>
+
+<!-- 10 DEZBATERE -->
+<section class="slide" aria-label="Dezbatere">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">🗣️ Dezbatere · linia valorică</span>
+  <h2>Merită să fii bun într-o lume în care nu toți sunt?</h2>
+  <p>Ai învățat despre bine, altruism și cinste. Dar uneori vezi oameni necinstiți care câștigă, sau egoiști care par că „reușesc”. Merită să rămâi corect?</p>
+  <div class="vl" id="vl-btns">
+   <button type="button" aria-pressed="false" data-k="da">Da, merită mereu</button>
+   <button type="button" aria-pressed="false" data-k="nu">Nu, nu se plătește</button>
+   <button type="button" aria-pressed="false" data-k="ind">Depinde / nehotărât</button>
+  </div>
+  <div class="box" id="vl-box" aria-live="polite"><p>Apasă pe o poziție ca să vezi ce argumente ar putea folosi un elev. Apoi adaugă-le pe ale tale.</p></div>
+  <div class="tip y">🗣️ <b>Reguli:</b> ascultăm până la capăt, folosim exemple din povești, nu din clasă, și respectăm părerea fiecăruia. La final: ce faptă bună vei face mâine?</div>
+ </div>
+</section>
+
+<!-- 11 PUNTE -->
+<section class="slide" aria-label="Legături între discipline">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · valorile în toate materiile</span>
+  <h2>Ce legături ai făcut în unitate?</h2>
+  <details class="pd"><summary>📚 Română</summary><p>Creangă (Harap-Alb), Tolstoi (Vulturul, Sâmburele), Wilde (Uriașul cel egoist), Asachi (Corbul și vulpea), Arghezi (Balonul spart). Proverbe, antonime, cvintet, titluri de știri.</p></details>
+  <details class="pd"><summary>🏛️ Istorie</summary><p>Aristotel, Platon și Marc Aureliu: filosofi și un împărat din Antichitate care au vorbit despre valori. Grija lui Traian pentru răniți. Jurămintele și cuvântul dat. Cum verifică istoricii izvoarele.</p></details>
+  <details class="pd"><summary>🔬 Științe, 🧮 Matematică, 💻 Informatică</summary><p>Cooperare în natură, rezultate cinstite în experimente; împărțire dreaptă, rest corect; comportament online, știri false, a spune sursa.</p></details>
+  <details class="pd"><summary>🧭 Geografie</summary><p>Solidaritatea între comunități, sursa datelor și hărțile corecte, respectul pentru natură (la proiectul „Natura este prietena mea”).</p></details>
+  <details class="pd"><summary>🎨 Artă</summary><p>Desene cu fapte bune, afișul AȘA DA – AȘA NU, ilustrații pentru titluri de știri.</p></details>
+ </div>
+</section>
+
+<!-- 12 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile unității + evaluarea din manual</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 13 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Unitatea 2, într-o privire</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--green)"><span class="emo">🟢</span><p>Faptele <b>bune</b> aduc armonie și apreciere, cele <b>rele</b> aduc relații negative. Ne gândim la ce se întâmplă după fapta noastră.</p></div>
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🤲</span><p><b>Altruismul</b> oferă fără să aștepte nimic. <b>Egoismul</b> nesocotește interesele celorlalți.</p></div>
+   <div class="box" style="border-color:var(--purple)"><span class="emo">🛡️</span><p><b>Cinstea</b> înseamnă fapte lăudabile și asumarea responsabilității. <b>Necinstea</b> strică încrederea.</p></div>
+  </div>
+  <div class="tip y">🔁 <b>Urmează:</b> Unitatea 3, „Raporturile noastre cu ceilalți oameni. Valori morale (II)”: respect, responsabilitate, solidaritate.</div>
+ </div>
+</section>
+
+</main>
+
+<script src="../../assets/caiet.js"></script>
+<script>
+(function(){
+  var Q=[
+   {t:'mcq',tags:['Rec C2','Bine–Rău'],d:'Bine–Rău',q:'Persoanele care fac fapte bune sunt, de obicei...',o:['Acceptate și integrate în grupuri','Evitate','Sancționate','Ignorate'],a:0,h:'Citește „Reținem” de la lecția 1.',e:'Acceptate și integrate în grupurile din care fac parte.'},
+   {t:'mcq',tags:['Rec C2','Bine–Rău'],d:'Bine–Rău',q:'Care este un exemplu de faptă rea?',o:['Să râzi de un coleg care a căzut','Să ceri scuze','Să ajuți un coleg','Să salută vecinii'],a:0,h:'Efectul asupra altora.',e:'Râsul răutăcios rănește și îl izolează pe cel căzut.'},
+   {t:'mcq',tags:['Rec C2','Bine–Rău'],d:'Proverbe',q:'Ce regulă exprimă proverbul „Ce ție nu-ți place, altuia nu-i face”?',o:['Regula de aur: ne purtăm cu alții cum am vrea ei cu noi','Să ne ferim de alții','Să judecăm','Să aflăm secrete'],a:0,h:'Empatie.',e:'Ne purtăm cu ceilalți așa cum am vrea să se poarte ei cu noi.'},
+   {t:'mcq',tags:['Rec C2','Bine–Rău'],d:'Lectură',q:'De ce nu a călcat Harap-Alb furnicile?',o:['I-a fost milă de ele și n-a vrut să le omoare','Nu le-a văzut','Nu era grăbit','Furnicile aveau arme'],a:0,h:'Gâzulițe nevinovate.',e:'I-a fost milă de viața lor. Furnicile i-au răsplătit mai târziu binele.'},
+   {t:'mcq',tags:['Rec C2','Bine–Rău'],d:'Dialog',q:'Cum a reacționat băiatul la scuzele fetei?',o:['A acceptat scuzele și a iertat','A refuzat scuzele','A râs','A uitat'],a:0,h:'„Sigur că da”.',e:'A iertat. Așa a păstrat relația bună.'},
+   {t:'sort',tags:['Rec C2','Bine–Rău'],d:'Bine sau rău?',q:'Sortează: bine sau rău?',items:[['Ții ușa deschisă cuiva','s'],['Strici o jucărie din supărare','n'],['Ajuți un coleg nou','s'],['Rupi flori din parc','n']],labels:{s:'Bine',n:'Rău'},h:'Efectul asupra celorlalți.',e:'Bine: ușa, ajutorul. Rău: stricatul, ruptul florilor.'},
+   {t:'mcq',tags:['Rec C2','Altruism'],d:'Altruism',q:'Ce înseamnă altruism?',o:['A oferi ceva altcuiva fără să aștepți nimic în schimb','A cere mereu','A ține totul pentru tine','A minți'],a:0,h:'Alter = altul.',e:'A oferi timp, energie sau bunuri fără a aștepta ceva în schimb.'},
+   {t:'mcq',tags:['Rec C2','Altruism'],d:'Altruism',q:'Opusul altruismului este...',o:['Egoismul','Curajul','Respectul','Cinstea'],a:0,h:'Ego = eu.',e:'Egoismul.'},
+   {t:'sort',tags:['Rec C2','Altruism'],d:'Altruism sau egoism?',q:'Sortează: altruism sau egoism?',items:[['Împarți gustarea cu un coleg','s'],['Iei toată prăjitura','n'],['Vizitezi un vecin bolnav','s'],['Ții totul numai pentru tine','n']],labels:{s:'Altruism',n:'Egoism'},h:'Cine câștigă?',e:'Altruism: împărțit, vizitat. Egoism: luat tot, ținut pentru sine.'},
+   {t:'mcq',tags:['Rec C2','Altruism'],d:'Evaluare',q:'„Egoismul este o valoare morală pozitivă a persoanelor.” Este...',o:['Adevărat','Fals'],a:1,h:'Citește „Reținem”.',e:'Fals. Egoismul e opusul altruismului și nu e o valoare pozitivă.'},
+   {t:'mcq',tags:['Rec C2','Altruism'],d:'Evaluare',q:'„O persoană altruistă nu așteaptă să fie lăudată pentru faptele ei.” Este...',o:['Adevărat','Fals'],a:0,h:'Fără recompensă.',e:'Adevărat. Altruismul înseamnă să dai fără să aștepți ceva în schimb.'},
+   {t:'mcq',tags:['Rec C2','Altruism'],d:'Evaluare',q:'„Starea de bine a persoanelor din jurul nostru depinde și de felul în care ne comportăm noi.” Este...',o:['Adevărat','Fals'],a:0,h:'Valul faptei.',e:'Adevărat. Faptele noastre afectează pe cei din jur.'},
+   {t:'mcq',tags:['Rec C2','Altruism'],d:'Lectură',q:'Ce a învățat Uriașul cel egoist?',o:['Că egoismul îl izolează și că generozitatea aduce „primăvara”','Că zidurile sunt bune','Că iarna e frumoasă','Că nu trebuie să împartă'],a:0,h:'Grădina a înflorit.',e:'Că egoismul îl izola. Când a dărâmat zidul și i-a primit pe copii, grădina a înflorit.'},
+   {t:'mcq',tags:['Rec C2','Altruism'],d:'Vocabular',q:'Ce trăsături sunt asociate unei persoane egoiste?',o:['Singuratică, invidioasă, marginalizată, șiret','Veselă, sociabilă, generoasă','Cooperantă, înțelegătoare','Binevoitoare și mulțumită'],a:0,h:'Alege lista negativă.',e:'Singuratic, invidios, marginalizat, șiret. Celelalte sunt trăsături pozitive.'},
+   {t:'mcq',tags:['Rec C2','Cinste'],d:'Cinste',q:'Ce este cinstea?',o:['Valoarea persoanei care face fapte lăudabile și își asumă responsabilitatea','Un fel de hartă','Un obiect','O minciună mică'],a:0,h:'Lecția 3.',e:'Valoarea persoanei care face fapte lăudabile și își asumă responsabilitatea pentru cuvintele și faptele sale.'},
+   {t:'mcq',tags:['Rec C2','Cinste'],d:'Evaluare',q:'___ este valoarea morală opusă cinstei.',o:['Necinstea','Altruismul','Curajul','Armonia'],a:0,h:'Opusul cinstei.',e:'Necinstea.'},
+   {t:'mcq',tags:['Rec C2','Cinste'],d:'Lectură',q:'Care e morala fabulei „Corbul și vulpea”?',o:['Să nu te lași păcălit de laude exagerate și să nu iei ce nu e al tău','Să cânți mereu','Că vulpile sunt bune','Că brânza e bună'],a:0,h:'Lingușirea.',e:'Nu te lăsa păcălit de laude false, iar ce nu e al tău nu trebuie luat.'},
+   {t:'mcq',tags:['Rec C2','Cinste'],d:'Lectură',q:'Ce face vulpea ca să obțină cașul?',o:['Îl lingușește pe corb cu laude false','Îl amenință','Îl roagă politicos','Plătește'],a:0,h:'„Cât ești mândru și frumos!”',e:'Folosește lingușirea: laude false, ca să-l păcălească.'},
+   {t:'order',tags:['Rec C2','Cinste'],d:'Cvintet',q:'Pune rândurile cvintetului în ordine: 1) subiect, 2) adjective, 3) verbe, 4) propoziție, 5) valoare.',items:['Vorba','clară, dulce','spunând, recunoscând, motivând','Vorba corectă aduce mult','Cinste'],h:'Un cuvânt, două, trei, o propoziție, un cuvânt.',e:'Vorba → clară, dulce → spunând, recunoscând, motivând → Vorba corectă aduce mult → Cinste.'},
+   {t:'mcq',tags:['Rec C2','Evaluare'],d:'Expresii',q:'Ce înseamnă „a fi strâns la pungă”?',o:['A fi zgârcit, a nu da bani','A avea multe pungi','A fi curat','A fi harnic'],a:0,h:'Pungă = portofel.',e:'Zgârcit: nu cheltuiește și nu dă nimic, nici când ar trebui.'},
+   {t:'mcq',tags:['Rec C2','Evaluare'],d:'Expresii',q:'Ce înseamnă „a lua pe cineva cu binele”?',o:['A-l convinge cu vorbă blândă și răbdare, nu cu forța','A-l bate','A-l duce acasă','A-l certa'],a:0,h:'Blândețea.',e:'A-l convinge prin vorbe bune și blândețe.'},
+   {t:'mcq',tags:['Rec C2','Evaluare'],d:'Expresii',q:'Ce înseamnă „a da cinstea pe rușine”?',o:['A renunța la cinste și a ajunge să te rușinezi','A câștiga la cinste','A fi mândru','A fi cinstit'],a:0,h:'Un schimb prost.',e:'A-ți pierde cinstea și a rămâne cu rușinea: un schimb pe care nu-l faci dacă ții la tine.'},
+   {t:'mcq',tags:['Rec C2','Evaluare'],d:'Politețe',q:'Care e o formulă de adresare potrivită unui copil bine-crescut?',o:['Vă rog, mulțumesc, bună ziua','Dă-mi','Taci','Hei, tu'],a:0,h:'Respect.',e:'Bună ziua, vă rog, mulțumesc, scuzați-mă.'},
+   {t:'mcq',tags:['Rec C2','Evaluare'],d:'Îndemn',q:'Ce îndemn potrivit i-ai spune unei persoane egoiste?',o:['„Gândește-te și la ceilalți; împarte cu ei.”','„Continuă așa.”','„Ia tot.”','„Nu-i asculta pe ceilalți.”'],a:0,h:'Fără umilire.',e:'Un îndemn blând: să se gândească la ceilalți și să împartă.'},
+   {t:'mcq',tags:['Rec C2','Evaluare'],d:'Îndemn',q:'Ce îndemn potrivit i-ai spune unei persoane necinstite?',o:['„Spune adevărul, chiar dacă ți-e greu.”','„Mai minte puțin.”','„Nu te lăsa prins.”','„Fugi.”'],a:0,h:'Asumă-ți responsabilitatea.',e:'Să spună adevărul și să-și asume greșeala.'},
+   {t:'mcq',tags:['Rec C2','Lectură'],d:'Balonul spart',q:'De ce a vrut Baruțu să spargă balonul Mițului?',o:['Din invidie, ca să-i facă și ei o durere','Pentru că era frumos','Ca să se joace','Din întâmplare'],a:0,h:'Răzbunare.',e:'Din invidie și din dorința de răzbunare, deși asta nu i-ar fi reparat balonul.'},
+   {t:'mcq',tags:['Rec C2','Gândire'],d:'Gândire',q:'Un coleg face fapte rele des, iar grupul nu-l mai acceptă. Ce e bine să faci?',o:['Să-i vorbești deschis și să-l ajuți să se schimbe','Să-l batjocorești','Să-l ignori complet','Să-i faci rău'],a:0,h:'Răul nu se vindecă cu rău.',e:'Să-i vorbești calm și să-l ajuți să înțeleagă. Nu răspunzi la rău cu rău.'},
+   {t:'mcq',tags:['Rec C2','Gândire'],d:'Gândire',q:'Ce înseamnă să-ți asumi responsabilitatea pentru o faptă?',o:['Să recunoști că ai făcut-o și să suporți consecințele','Să dai vina pe altul','Să nu spui nimic','Să te ascunzi'],a:0,h:'Cinstea.',e:'Să recunoști fapta, să-ți ceri iertare dacă e cazul și să repari ce ai stricat.'},
+   {t:'mcq',tags:['Rec C2','Istorie'],d:'Istorie',q:'Aristotel, Platon și Marc Aureliu sunt cunoscuți pentru...',o:['Gândurile lor despre valori și virtute','Războaie în Dacia','Construirea de poduri','Călătorii pe mare'],a:0,h:'Grecii și romanii.',e:'Pentru cugetările lor despre valori: Aristotel și Platon la greci, Marc Aureliu la romani.'},
+   {t:'num',u:'lei',tags:['Rec C2','Matematică'],d:'Matematică',q:'Plătești 20 de lei pentru un produs de 13 lei. Restul corect e de câți lei?',a:7,h:'20 − 13.',e:'7 lei. Dacă ți s-ar da mai mult din greșeală, cinstit e să spui.'},
+   {t:'num',u:'mere',tags:['Rec C2','Matematică'],d:'Matematică',q:'12 mere se împart egal la 3 copii. Câte primește fiecare?',a:4,h:'12 : 3.',e:'4 mere: o împărțire dreaptă.'},
+   {t:'mcq',tags:['Rec C2','Informatică'],d:'Informatică',q:'Ce înseamnă să fii cinstit când folosești informații de pe internet?',o:['Să spui de unde le-ai luat și să verifici că sunt adevărate','Să le copiezi','Să le inventezi','Să nu le citești'],a:0,h:'Sursa.',e:'Să menționezi sursa și să verifici dacă informațiile sunt adevărate.'},
+   {t:'mcq',tags:['Rec C2','Română'],d:'Română',q:'Care sunt antonime corecte?',o:['Generos – zgârcit, cinstit – necinstit','Bun – frumos','Mare – înalt','Cinstit – drept'],a:0,h:'Opuse.',e:'Generos – zgârcit și cinstit – necinstit sunt perechi de antonime.'},
+   {t:'mcq',tags:['Rec C2','Geografie'],d:'Geografie',q:'De ce e o formă de cinste să scrii „Sursa” sub un grafic?',o:['Arăți de unde vin datele, deci poți fi verificat','Pentru că arată frumos','Ca să nu-l copieze nimeni','Nu e legat de cinste'],a:0,h:'Cine a măsurat?',e:'Arăți de unde sunt datele, ca oricine să le poată verifica.'},
+   {t:'mcq',tags:['Rec C2','Civică'],d:'Siguranță',q:'Poți face fotografii colegilor pentru afișul tău „Așa da – Așa nu”?',o:['Doar cu permisiunea lor','Oricând','Fără să știe','Dacă sunt singuri'],a:0,h:'Respectul vieții private.',e:'Doar cu permisiunea persoanelor. Nu publici imagini cu alții fără acordul lor.'}
+  ];
+  Caiet.start({Q:Q});
+})();
+</script>
+<script>
+(function(){
+  /* carduri */
+  var FC=[['Bine','Ceea ce face să se simtă bine și ceilalți; fapte care aduc armonie, apreciere.'],['Rău','Ceea ce rănește sau strică relațiile, ca jignirea sau distrugerea.'],['Armonie','Înțelegere și liniște între oameni.'],['Apreciere','Prețuirea pe care o primești pentru faptele bune.'],['Altruism','A oferi fără să aștepți ceva în schimb.'],['Egoism','Preocupare exagerată pentru sine, cu nesocotirea celorlalți.'],['Cinste','Valoarea persoanei care face fapte lăudabile și își asumă responsabilitatea.'],['Necinste','Opusul cinstei: minciuna, furtul, înșelăciunea.'],['Adevăr / minciună','A spune ce e real, sau ceva ce nu e real ca să păcălești.'],['Dreptate / corectitudine','Un comportament echitabil, care respectă regulile și pe ceilalți.']];
+  var fg=document.getElementById('fc-grid');
+  FC.forEach(function(c){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','false');b.innerHTML='<b>'+c[0]+'</b>';var o=false;b.onclick=function(){o=!o;b.setAttribute('aria-pressed',o);b.innerHTML='<b>'+c[0]+'</b>'+(o?'<span>'+c[1]+'</span>':'');};fg.appendChild(b);});
+  /* egoist */
+  var TE=[['singuratic',1],['vesel',0],['sociabil',0],['generos',0],['invidios',1],['mulțumit',0],['marginalizat',1],['cooperant',0],['înțelegător',0],['binevoitor',0],['șiret',1]];
+  var ec=document.getElementById('eg-chips');
+  TE.forEach(function(t){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','false');b.textContent=t[0];b.onclick=function(){b.setAttribute('aria-pressed',b.getAttribute('aria-pressed')==='true'?'false':'true');};ec.appendChild(b);});
+  document.getElementById('eg-c').onclick=function(){var ok=0,wrong=0;ec.querySelectorAll('button').forEach(function(b,i){var sel=b.getAttribute('aria-pressed')==='true',tr=TE[i][1]===1;b.classList.remove('ok','no');if(sel&&tr){b.classList.add('ok');ok++;}else if(sel&&!tr){b.classList.add('no');wrong++;}else if(!sel&&tr){b.classList.add('no');}});
+   document.getElementById('eg-info').innerHTML=ok===4&&!wrong?'✅ Corect! Egoiști sunt: singuratic, invidios, marginalizat și șiret (cei care urmăresc doar interesul lor). Ceilalți termeni descriu persoane pozitive.':'Ai ales corect '+ok+' din 4 și ai ales greșit '+wrong+'. Roșu = altceva decât ai ales. Gândește-te: care trăsături apar la cineva care se gândește numai la sine?';};
+  document.getElementById('eg-r').onclick=function(){ec.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed','false');b.classList.remove('ok','no');});document.getElementById('eg-info').textContent='';};
+  /* cvintet */
+  function cv(){var v=[1,2,3,4,5].map(function(i){return document.getElementById('cv'+i).value.trim();});document.getElementById('cv-out').textContent=v.join('\n');}
+  [1,2,3,4,5].forEach(function(i){document.getElementById('cv'+i).oninput=cv;});cv();
+  /* expresii */
+  var EX=[['a lua pe cineva cu binele','A-l convinge prin vorbe blânde, cu răbdare, nu cu forța sau cu țipete.'],['a da cinstea pe rușine','A-ți pierde cinstea și a rămâne cu rușinea; a face o faptă pentru care te rușinezi mai târziu.'],['a fi strâns la pungă','A fi zgârcit, a nu da bani sau lucruri nici când ar trebui.']];
+  var eg=document.getElementById('ex-grid');
+  EX.forEach(function(c){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','false');b.innerHTML='<b>'+c[0]+'</b>';var o=false;b.onclick=function(){o=!o;b.setAttribute('aria-pressed',o);b.innerHTML='<b>'+c[0]+'</b>'+(o?'<span>'+c[1]+'</span>':'');};eg.appendChild(b);});
+  /* afiș */
+  var PT={y:[],n:[]};
+  function ptd(){var b=document.getElementById('pt-box');b.innerHTML='';[['y','AȘA DA ✅','pside'],['n','AȘA NU ❌','pside n']].forEach(function(s){var d=document.createElement('div');d.className=s[2];d.innerHTML='<h3>'+s[1]+'</h3>'+(PT[s[0]].map(function(x){return '<span class="chip">'+x.replace(/</g,'&lt;')+'</span>';}).join('')||'<span class="sursa">gol</span>');b.appendChild(d);});}
+  ptd();
+  document.getElementById('pt-a').onclick=function(){var x=document.getElementById('pt-x').value.trim();if(!x)return;PT[document.getElementById('pt-t').value].push(x);document.getElementById('pt-x').value='';ptd();};
+  document.getElementById('pt-x').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('pt-a').click();});
+  document.getElementById('pt-r').onclick=function(){PT={y:[],n:[]};ptd();};
+  /* autoevaluare */
+  var TG=['Știm ce reprezintă binele/răul, altruismul/egoismul și cinstea/necinstea.','Știm să recunoaștem valori morale în situații reale sau imaginare.','Știm să ne exprimăm opinia despre respectarea valorilor de către ceilalți din comunitatea noastră.'];
+  var tg=document.getElementById('tg-list'),tv={};
+  TG.forEach(function(t,i){var s=document.createElement('div');s.className='s';s.textContent=t;var sel=document.createElement('select');sel.setAttribute('aria-label','Cât de des: '+t);sel.innerHTML='<option value="">Alege</option><option value="0">Deloc</option><option value="1">Rar</option><option value="2">De multe ori</option><option value="3">Permanent</option>';sel.onchange=function(){tv[i]=+sel.value;var n=0,sum=0;for(var k in tv){if(!isNaN(tv[k])&&sel.value!==''){n++;sum+=tv[k];}}document.getElementById('tg-info').innerHTML='Ai răspuns la '+Object.keys(tv).length+' din '+TG.length+'. '+(sum/Object.keys(tv).length>=2?'Ai lucrat bine! Continuă la fel.':'Ia-ți ca scop o faptă pe zi care să-ți exerseze una dintre valori.');};tg.appendChild(s);tg.appendChild(sel);});
+  var EVI=['1. Enunțuri cu valori (egoism, altruism, cinste)','2. Adevărat/Fals','3. Valori recunoscute în imagini','4. Expresii explicate','5. Îndemnuri formulate','6. Enunțuri completate corect','7. Formule de adresare'],ev=document.getElementById('ev-list');
+  EVI.forEach(function(t,i){var s=document.createElement('div');s.className='s';s.textContent=t;var sel=document.createElement('select');sel.setAttribute('aria-label','Corecte la item '+(i+1));sel.id='evs'+i;sel.innerHTML='<option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option>';sel.onchange=evc;ev.appendChild(s);ev.appendChild(sel);});
+  function evc(){var S=0,B=0,F=0,N=0;EVI.forEach(function(t,i){var v=+document.getElementById('evs'+i).value;if(v>=3)F++;else if(v===2)B++;else if(v===1)S++;else N++;});
+    document.getElementById('ev-out').innerHTML='Foarte bine la <b>'+F+'</b> itemi, bine la <b>'+B+'</b>, suficient la <b>'+S+'</b>'+(N?', iar la <b>'+N+'</b> mai ai de exersat':'')+'. '+(F>=5?'🏆 Rezultat foarte bun!':B+F>=5?'Bine! Reia itemii mai slabi.':'Reia lecțiile și încearcă din nou.');}
+  evc();
+  /* linia valorică */
+  var ARG={
+   da:'<b>Argumente „merită mereu”:</b><br>• Cinstea și bunătatea îți aduc încrederea oamenilor, pe termen lung.<br>• Te simți bine cu tine, fără vinovăție.<br>• Dacă toți ar fi așa, lumea ar fi mai bună. Poți începe tu.',
+   nu:'<b>Argumente „nu se plătește”:</b><br>• Uneori cei necinstiți câștigă, cel puțin pe moment.<br>• Poți fi folosit de cei care nu respectă regulile.<br>• Dar: câștigul necinstit are un preț (pierderea încrederii), iar mulți dintre noi vor să trăiască în pace.',
+   ind:'<b>Gândește-te:</b><br>• Cine a câștigat la sfârșit în povestea lui Vania? Dar în „Corbul și vulpea”?<br>• Ce pierzi dacă minți și ești descoperit?<br>• Cum poți fi corect fără să fii păcălit? (Atenție la lingușiri, verifici informațiile.)'
+  };
+  var vb=document.querySelectorAll('#vl-btns button'),vx=document.getElementById('vl-box');
+  vb.forEach(function(b){b.onclick=function(){vb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});vx.innerHTML='<p style="margin:0">'+ARG[b.dataset.k]+'</p>';};});
+})();
+</script>
+</body>
+</html>

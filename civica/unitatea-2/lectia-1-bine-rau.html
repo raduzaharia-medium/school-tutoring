@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bine – Rău</title>
+<link rel="stylesheet" href="../../assets/caiet.css">
+<style>
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}
+.pd summary{cursor:pointer;font-weight:800}
+.pd[open] summary{margin-bottom:6px}
+.pd:last-of-type{border-color:var(--green)}
+.vl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.vl button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.4em 1em}
+.vl button[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+.fig svg{display:block;width:100%;max-width:640px;height:auto;margin:0 auto}
+.pv{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin:10px 0}
+.pv button{font:inherit;text-align:left;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:12px 14px;min-height:6.5em}
+.pv button[aria-pressed="true"]{border-color:var(--purple);background:var(--tint-purple)}
+.pv button i{display:block;font-weight:800;margin-bottom:.3em}
+.ch{display:grid;gap:8px;margin:10px 0}
+.ch button{font:inherit;text-align:left;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:14px;padding:.6em .9em}
+.ch button[aria-pressed="true"]{border-color:var(--purple);background:var(--tint-purple)}
+.sit{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:.7em .9em;margin:8px 0}
+.sit p{margin:0 0 .5em;font-weight:700}
+.sit .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.sit button{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:.25em .9em;cursor:pointer}
+.sit .fb{font-weight:600;margin-top:.4em;display:none}
+.sit.done .fb{display:block}
+.sit.ok{border-color:var(--green)}.sit.no{border-color:var(--red)}
+.tb{width:100%;border-collapse:collapse}
+.tb th,.tb td{border:2px solid var(--line);padding:.35em;vertical-align:top}
+.tb th{background:var(--tint-yellow)}
+.tb textarea{font:inherit;width:100%;min-height:3.2em;border:2px solid var(--line);border-radius:8px;padding:.3em .4em;background:var(--paper);color:var(--ink)}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Educație civică · Unitatea 2 · Lecția 1 · manual pp. 26–27</p>
+   <h1>Bine – Rău</h1>
+   <p class="lead">„Când vezi un om bun, gândește-te să-l întreci. Când vezi un om rău, cercetează-ți inima.” O faptă mică poate face valuri mari, bune sau rele.</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="#F0E9FA"/>
+   <circle cx="110" cy="110" r="22" fill="#2E9D52"/>
+   <circle cx="110" cy="110" r="46" fill="none" stroke="#2E9D52" stroke-width="5" opacity=".8"/>
+   <circle cx="110" cy="110" r="70" fill="none" stroke="#2E9D52" stroke-width="5" opacity=".55"/>
+   <circle cx="110" cy="110" r="94" fill="none" stroke="#2E9D52" stroke-width="5" opacity=".3"/>
+   <path d="M98 108 l9 10 l16 -20" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 STIM / VREM -->
+<section class="slide" aria-label="Ce știm și ce vrem să aflăm">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Știm deja</span>
+  <div class="tip g" style="margin-top:0">Uneori ne comportăm <b>bine</b>, alteori <b>rău</b> cu persoanele din jurul nostru. Pe unii îi auzim numiți „bine-crescuți”, pe alții „răuvoitori”.</div>
+  <span class="badge" style="background:var(--red);margin-top:18px">Vrem să știm</span>
+  <div class="q"><span class="mark" style="background:var(--blue)">1</span>Cum influențează binele sau răul relațiile dintre oameni?</div>
+  <div class="q"><span class="mark" style="background:var(--green)">2</span>De ce sunt importante faptele bune?</div>
+  <div class="q"><span class="mark" style="background:var(--red)">3</span>Care sunt consecințele faptelor rele?</div>
+ </div>
+</section>
+
+<!-- 3 PROVERBE -->
+<section class="slide" aria-label="Proverbe">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Descoperim · activitate în perechi</span>
+  <h2>Ce mesaj ascund proverbele?</h2>
+  <p>Apasă pe un proverb. Mai întâi spune în perechi ce înseamnă, apoi compară cu explicația.</p>
+  <div class="pv" id="pv-list"></div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Desprindeți mesajele transmise de proverbe și prezentați-le în fața clasei.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Proverbele sunt înțelepciunea oamenilor, spusă pe scurt. Aceeași idee apare în multe culturi: românii, arabii și norvegienii au spus-o în feluri diferite. Ideea din „Ce ție nu-ți place, altuia nu-i face” se numește uneori <b>regula de aur</b>.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 4 HARAP-ALB -->
+<section class="slide" aria-label="Citim și dezbatem: Harap-Alb">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#3a2a00">Citim și dezbatem · Ion Creangă</span>
+  <h2>Podul, apa și furnicile</h2>
+  <p>Harap-Alb vrea să treacă un pod, dar peste pod trece o <b>nuntă de furnici</b>. Dacă trece peste ele, omoară o mulțime. Dacă intră în apă, se teme că se îneacă. Până la urmă, alege apa, ca să nu stângă viața „atâtor gâzulițe nevinovate”. În semn de mulțumire, regina furnicilor îi dă o aripă și îi promite ajutor când va avea nevoie.</p>
+  <p><b>Tu ce ai alege?</b> Apasă pe o variantă.</p>
+  <div class="ch" id="ha-ch"></div>
+  <div class="map-info" id="ha-info" aria-live="polite">Alege o variantă.</div>
+  <details class="pd"><summary>Ce bine le-a făcut Harap-Alb furnicilor? De ce?</summary><p>Le-a salvat viața și nu le-a stricat „veselia”. A făcut-o pentru că i-a fost milă, nu pentru că aștepta ceva. Ajutorul furnicilor a venit abia mai târziu, ca o răsplată neașteptată: <b>„Binele cu bine se răsplătește.”</b></p></details>
+  <details class="pd"><summary>Putea Harap-Alb să le facă rău? Cum?</summary><p>Da: trecând peste ele, fără să le pese. Ar fi fost mai comod, dar rău. Binele cere uneori efort sau renunțare.</p></details>
+ </div>
+</section>
+
+<!-- 5 VALUL -->
+<section class="slide" aria-label="Valul faptei">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Reținem · cum influențează faptele relațiile</span>
+  <h2>Valul unei fapte</h2>
+  <p>O faptă e ca o piatră aruncată în apă: valurile ajung departe. Alege tipul faptei, apoi apasă pe cercuri.</p>
+  <div class="ctrl" id="wv-ctrl"><button type="button" aria-pressed="true" data-m="bine">🟢 Faptă bună</button><button type="button" aria-pressed="false" data-m="rau">🔴 Faptă rea</button></div>
+  <div class="fig-wrap fig"><svg viewBox="0 0 520 300" role="img" aria-label="Valurile unei fapte">
+   <rect x="2" y="2" width="516" height="296" rx="10" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>
+   <g id="wv-g" style="cursor:pointer"></g>
+  </svg></div>
+  <div class="map-info" id="wv-info" aria-live="polite">Apasă pe un cerc.</div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Persoanele care fac fapte bune sunt acceptate și se integrează în grupuri. Faptele rele generează relații negative. Cine participă dezinteresat la starea de bine a celor din jur se va bucura de liniște, pace, armonie, bucurie, apreciere.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Armonia se construiește din multe gesturi mici, făcute de mulți oameni. Și încrederea pierdută printr-o faptă rea se recâștigă greu. De aceea e bine să ne gândim la ce urmează <b>înainte</b> să acționăm.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 6 BINE-CRESCUT -->
+<section class="slide" aria-label="Bine sau rău">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Observăm și discutăm</span>
+  <h2>Bine sau rău?</h2>
+  <p>Aud adesea: „E bine-crescut” sau „E răuvoitor”. Decide pentru fiecare situație dacă persoana procedează <b>bine</b> sau <b>rău</b>.</p>
+  <div id="sb-list"></div>
+  <div class="map-info" id="sb-score" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 7 DIALOG -->
+<section class="slide" aria-label="Dialogul celor doi copii">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Aplicăm 1 · dialogul</span>
+  <h2>„Iartă-mă că te-am jignit ieri!”</h2>
+  <div class="vs" style="display:grid;gap:8px">
+   <div class="box" style="border-color:var(--blue)"><p style="margin:0"><b>Fata:</b> „Iartă-mă că te-am jignit ieri! Îmi împrumuți cărțile tale?”</p></div>
+   <div class="box" style="border-color:var(--green)"><p style="margin:0"><b>Băiatul:</b> „Sigur că da.”</p></div>
+  </div>
+  <details class="pd"><summary>Ce greșeală a făcut fata?</summary><p>L-a <b>jignit</b> pe colegul ei. Dar a făcut și un lucru bun: și-a cerut iertare.</p></details>
+  <details class="pd"><summary>Cum putea fi afectată relația dintre ei?</summary><p>Jignirea putea duce la o <b>ceartă</b> sau la o prietenie stricată. Și cererea de împrumut, imediat după, putea părea interesată.</p></details>
+  <details class="pd"><summary>De ce nu a reacționat băiatul în mod negativ?</summary><p>Pentru că a <b>acceptat scuzele</b> și a ales să ierte, ca să păstreze o relație bună. Iertarea nu înseamnă că jignirea nu a contat, ci că vrei pace.</p></details>
+  <details class="pd"><summary>Cum v-ați fi comportat voi? De ce?</summary><p>Răspunsul e al tău. Gândește-te la ce ai fi simțit, la ce ai fi vrut să-ți spună celălalt și la ce ți-ar fi păstrat prietenia.</p></details>
+  <div class="tip y">🎭 <b>Joc de rol:</b> în perechi, jucați scena în două feluri: întâi cu scuze sincere, apoi fără. Cum se schimbă relația?</div>
+ </div>
+</section>
+
+<!-- 8 SCHEMA -->
+<section class="slide" aria-label="Schema Bine/Rău">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Activități în echipă · schema</span>
+  <h2>Bine / Rău în viața ta</h2>
+  <p>Redactați un scurt text despre importanța cuvintelor „bine” și „rău” în viața de zi cu zi. Apoi completați schema cu acțiuni ale voastre sau observate. (Nu se salvează nimic.)</p>
+  <div class="scroll"><table class="tb"><thead><tr><th>Unde?</th><th>Bine</th><th>Rău</th></tr></thead><tbody id="sc-body"></tbody></table></div>
+  <div class="tip y">✍️ <b>Idee pentru text:</b> „Cuvântul «bine» înseamnă pentru mine... Cuvântul «rău» înseamnă... Când fac un bine, simt că...”. Citește-l în fața clasei și ascultă ce spun colegii.</div>
+ </div>
+</section>
+
+<!-- 9 DEZBATERE -->
+<section class="slide" aria-label="Dezbatere">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">🗣️ Dezbatere · linia valorică</span>
+  <h2>Merită să faci bine dacă nu primești nimic?</h2>
+  <p>Proverbul arab spune: „Când faci un bine, uită imediat.” Dar mulți oameni vor, totuși, să fie lăudați sau răsplătiți. Merită să faci o faptă bună chiar dacă nimeni nu te vede și nu primești nimic?</p>
+  <div class="vl" id="vl-btns">
+   <button type="button" aria-pressed="false" data-k="da">Da, merită oricum</button>
+   <button type="button" aria-pressed="false" data-k="nu">Doar dacă primesc ceva</button>
+   <button type="button" aria-pressed="false" data-k="ind">Încă nu m-am hotărât</button>
+  </div>
+  <div class="box" id="vl-box" aria-live="polite"><p>Apasă pe o poziție ca să vezi ce argumente ar putea folosi un elev. Apoi adaugă-le pe ale tale.</p></div>
+  <div class="tip y">🗣️ <b>Reguli:</b> ascultăm până la capăt, nu râdem de părerea altuia, folosim „eu cred că... pentru că...”. La final, formulăm o concluzie comună.</div>
+ </div>
+</section>
+
+<!-- 10 PUNTE -->
+<section class="slide" aria-label="Punte">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Română ↔ Istorie ↔ Științe ↔ Informatică ↔ Artă</span>
+  <h2>Legături cu celelalte materii</h2>
+  <details class="pd"><summary>Română: Creangă, proverbe, antonime</summary><p>„Povestea lui Harap-Alb” e plină de fapte bune și rele. Caută alte basme în care binele învinge. Joacă un joc cu antonime: bine – rău, bun – rău, prieten – dușman, ajutor – piedică.</p></details>
+  <details class="pd"><summary>Istorie: ce gândeau grecii și romanii</summary><p>Motto-ul unității e al lui <b>Aristotel</b>, filosof grec (îi cunoști pe greci din lecția 1, istorie, unitatea 2). Cel din manualul următor, <b>Marc Aureliu</b>, împărat roman, spune că ne-am născut ca să ne ajutăm unii pe alții, ca mâinile și picioarele aceluiași corp. Valorile sunt vechi de mii de ani.</p></details>
+  <details class="pd"><summary>Științe: cooperarea în natură</summary><p>Furnicile trăiesc în colonii, fiecare cu rolul ei, și se ajută între ele. Și la oameni, grupurile care cooperează se descurcă mai bine decât cei care se întrec în rău.</p></details>
+  <details class="pd"><summary>Informatică: bine și rău pe internet</summary><p>La fel ca în viața reală: un mesaj prietenos face bine, o glumă răutăcioasă sau un comentariu jignitor face rău, chiar dacă nu vezi fața celuilalt. Gândește-te înainte să trimiți.</p></details>
+  <details class="pd"><summary>Artă: culori pentru bine și rău</summary><p>Ce culori ar avea o faptă bună și una rea într-un desen? Alege tonuri și forme și explică-le colegilor. Poți face un afiș „Faptă bună”.</p></details>
+ </div>
+</section>
+
+<!-- 11 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile lecției</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 12 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--green)"><span class="emo">🤝</span><p>Relațiile dintre oameni depind de felul în care ne comportăm. Persoanele care fac <b>fapte bune</b> sunt acceptate în grupuri.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">⚡</span><p>Faptele <b>rele</b> aduc relații negative: certuri, neîncredere, izolare.</p></div>
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🕊️</span><p>Cine își analizează conduita și face bine dezinteresat se bucură de <b>liniște, pace, armonie, apreciere</b>.</p></div>
+  </div>
+  <div class="tip y">🔁 <b>Urmează:</b> Lecția 2, „Altruism – Egoism”.</div>
+ </div>
+</section>
+
+</main>
+
+<script src="../../assets/caiet.js"></script>
+<script>
+(function(){
+  var Q=[
+   {t:'mcq',tags:['C2 L1'],d:'Proverbe',q:'Ce înseamnă proverbul „Binele cu bine se răsplătește”?',o:['Că faptele bune se întorc, într-un fel sau altul, la cel care le face','Că binele trebuie plătit','Că numai cei bogați fac bine','Că binele nu contează'],a:0,h:'Pune-l în practică: ajuți pe cineva...',e:'Faptele bune se întorc, adesea, sub forma încrederii, a prieteniei sau a ajutorului când ai tu nevoie.'},
+   {t:'mcq',tags:['C2 L1'],d:'Proverbe',q:'„Ce ție nu-ți place, altuia nu-i face.” Ce regulă exprimă?',o:['Să ne purtăm cu alții așa cum ne-ar plăcea să se poarte ei cu noi','Să ne ferim de toți','Să facem doar ce ne place','Să cerem mereu ceva'],a:0,h:'Gândește-te la empatie.',e:'Să ne purtăm cu alții așa cum am vrea să se poarte ei cu noi. O numim și regula de aur.'},
+   {t:'mcq',tags:['C2 L1','Română'],d:'Harap-Alb',q:'Ce bine le-a făcut Harap-Alb furnicilor?',o:['Nu le-a călcat, deși trebuia să treacă prin apă, mai riscant','Le-a dat mâncare','Le-a construit un pod','Le-a dus în pădure'],a:0,h:'Alegerea lui la pod.',e:'Nu a trecut peste ele, ci a ales să intre în apă, ca să nu le omoare.'},
+   {t:'mcq',tags:['C2 L1'],d:'Consecințe',q:'Care e o consecință a faptelor rele repetate?',o:['Relații negative și izolare față de grup','Mai multe laude','Mai mulți prieteni','Nicio schimbare'],a:0,h:'Gândește-te la grupul din manual.',e:'Faptele rele generează relații negative, iar cei din jur pot refuza să-l mai accepte pe cel care le face.'},
+   {t:'sort',tags:['C2 L1'],d:'Bine sau rău?',q:'Sortează comportamentele: bine sau rău?',items:[['Îți ceri scuze după o jignire','s'],['Râzi de un coleg care a căzut','n'],['Ajuți un coleg nou','s'],['Strici jucăria unui frate','n'],['Spui „bună ziua” vecinilor','s'],['Rupi flori din parc','n']],labels:{s:'Bine',n:'Rău'},h:'Gândește-te la efectul asupra celorlalți.',e:'Bine: scuzele, ajutorul, politețea. Rău: râsul răutăcios, stricatul, distrugerea.'},
+   {t:'mcq',tags:['C2 L1'],d:'Dialog',q:'Fata își cere scuze și băiatul spune „Sigur că da”. Ce a făcut băiatul?',o:['A acceptat scuzele și a iertat','A refuzat','A râs de ea','A plecat'],a:0,h:'Nu a reacționat negativ.',e:'A acceptat scuzele și a ales să ierte, păstrând relația bună.'},
+   {t:'mcq',tags:['C2 L1'],d:'Armonie',q:'Cine participă dezinteresat la starea de bine a celor din jur se bucură de...',o:['Liniște, pace, armonie, apreciere','Pedepse','Frică','Singurătate'],a:0,h:'Citește „Reținem”.',e:'De liniște, pace, armonie, bucurie, apreciere.'},
+   {t:'mcq',tags:['C2 L1'],d:'Vocabular',q:'Ce înseamnă „e bine-crescut”?',o:['Că se poartă politicos și respectuos cu ceilalți','Că e foarte înalt','Că a mâncat mult','Că nu vorbește'],a:0,h:'Educație primită acasă.',e:'Că se poartă politicos și cu respect. Opusul: răuvoitor sau needucat.'},
+   {t:'mcq',tags:['C2 L1','Istorie'],d:'Istorie',q:'Motto-ul unității (Când vezi un om bun, gândește-te să-l întreci...) e al lui Aristotel. Ce era el?',o:['Filosof grec','Rege dac','Domn al Moldovei','Explorator'],a:0,h:'Lecția 1 de istorie, unitatea 2.',e:'Filosof grec din Antichitate.'},
+   {t:'mcq',tags:['C2 L1','Siguranță'],d:'Siguranță',q:'Harap-Alb intră în apă ca să nu omoare furnicile. În viața reală, ce e mai bine să faci dacă e o apă adâncă?',o:['Să aștepți sau să ceri ajutorul unui adult, fără să te pui în pericol','Să intri oricum','Să sari','Să alergi'],a:0,h:'Binele nu cere să te pui în primejdie.',e:'Să nu te pui în pericol. A aștepta sau a cere ajutor adult e tot o alegere bună.'},
+   {t:'mcq',tags:['C2 L1'],d:'Proverbe',q:'Proverbul arab spune: „Când faci un bine, uită imediat. Când ți se face un bine, nu uita niciodată.” Ce învățăm?',o:['Să fim modești când ajutăm și recunoscători când ni se ajută','Să nu mai ajutăm','Să cerem mereu răsplată','Să uităm tot'],a:0,h:'Două părți: cum faci, cum primești.',e:'Să nu ne lăudăm cu binele făcut și să fim recunoscători pentru binele primit.'},
+   {t:'mcq',tags:['C2 L1','Informatică'],d:'Internet',q:'Un coleg postează un comentariu răutăcios despre altul. Care e comportamentul corect?',o:['Să nu-l susții, să-i spui că nu e frumos sau să anunți un adult','Să dai like','Să-l distribui','Să ignori mereu'],a:0,h:'Răul nu se îndreaptă cu mai mult rău.',e:'Să nu susții răul, să spui că nu e frumos sau să anunți un adult de încredere.'},
+   {t:'mcq',tags:['C2 L1'],d:'Gândire',q:'Un coleg face fapte rele din ce în ce mai des, iar grupul nu-l mai acceptă. Ce e bine să faci?',o:['Să încerci să-l ajuți să se schimbe și să-i spui deschis ce te deranjează','Să-l batjocorești','Să-l ignori','Să-i faci și tu rău'],a:0,h:'Gândește-te la consecințe și la soluții.',e:'Să-i vorbești deschis, calm, și să-l ajuți să înțeleagă. Răul nu se vindecă cu mai mult rău.'}
+  ];
+  Caiet.start({Q:Q});
+})();
+</script>
+<script>
+(function(){
+  /* proverbe */
+  var PV=[
+   ['Binele cu bine se răsplătește.','proverb românesc','Faptele bune se întorc la cel care le face. Exemplu: ajuți un coleg la temă, iar el te ajută la desen.'],
+   ['Când faci un bine, uită imediat. Când ți se face un bine, nu uita niciodată.','proverb arab','Fii modest când ajuți și recunoscător când ești ajutat. Exemplu: nu povesti la toată lumea ce ai făcut, dar spune „mulțumesc” celui care te-a ajutat.'],
+   ['Dacă vrei să faci un bine, atunci fă-l când este nevoie.','proverb norvegian','Ajutorul are valoare când vine la timp. Exemplu: dacă un coleg e bolnav, treci să-l vezi acum, nu peste o lună.'],
+   ['Ce ție nu-ți place, altuia nu-i face.','proverb românesc','Să ne purtăm cu alții așa cum am vrea să se poarte ei cu noi. Exemplu: dacă nu-ți place să fii luat în râs, nu râde de altul.']
+  ];
+  var pl=document.getElementById('pv-list');
+  PV.forEach(function(p){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','false');b.innerHTML='<i>„'+p[0]+'”</i><small style="color:var(--soft)">'+p[1]+'</small>';var o=false;b.onclick=function(){o=!o;b.setAttribute('aria-pressed',o);b.innerHTML='<i>„'+p[0]+'”</i><small style="color:var(--soft)">'+p[1]+'</small>'+(o?'<br><span>'+p[2]+'</span>':'');};pl.appendChild(b);});
+  /* Harap-Alb */
+  var HA=[
+   ['A. Trec peste furnici, e mai comod','❌ Ai omorî o mulțime de furnici nevinovate. Nu e o faptă bună, chiar dacă ai fi ajuns mai ușor. Binele cere uneori să renunți la comoditate.'],
+   ['B. Trec prin apă, ca Harap-Alb','⚖️ Așa a ales Harap-Alb: i-a fost milă de furnici. Dar atenție în viața reală: să nu te pui în pericol. Apa adâncă e periculoasă, iar eroii de basm au ajutoare magice. Tu cere ajutorul unui adult.'],
+   ['C. Aștept să treacă nunta furnicilor','✅ O soluție înțeleaptă: nu faci rău nimănui și nu riști. Uneori cea mai bună faptă bună e răbdarea. Poate că și Harap-Alb ar fi putut aștepta, dacă nu era grăbit.']
+  ];
+  var hc=document.getElementById('ha-ch'),hi=document.getElementById('ha-info');
+  HA.forEach(function(h){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','false');b.textContent=h[0];b.onclick=function(){hc.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});hi.innerHTML=h[1];};hc.appendChild(b);});
+  /* valul */
+  var WV={bine:{col:'#2E9D52',rings:[['Tu','Te simți bine cu tine: liniștit, mândru, fără vinovăție.'],['Prietenii','Te acceptă, au încredere în tine și te ajută la rândul lor.'],['Grupul','Apare armonie: cooperare, mai puține certuri.'],['Comunitatea','Liniște, pace, apreciere. Alții sunt încurajați să facă la fel.']]},
+          rau:{col:'#E2433A',rings:[['Tu','Poți simți rușine, vinovăție sau teamă de consecințe.'],['Prietenii','Se supără, își pierd încrederea și se pot îndepărta.'],['Grupul','Apar certuri, tensiuni, izolare.'],['Comunitatea','Neîncredere, regulile nu mai sunt respectate, relațiile se strică.']]}};
+  var wm='bine',wg=document.getElementById('wv-g'),wi=document.getElementById('wv-info'),NS='http://www.w3.org/2000/svg';
+  function wvDraw(){wg.innerHTML='';var d=WV[wm];for(var i=3;i>=0;i--){(function(i){var r=[55,100,145,190][i]*.78,c=document.createElementNS(NS,'circle');c.setAttribute('cx',260);c.setAttribute('cy',150);c.setAttribute('r',r);c.setAttribute('fill',d.col);c.setAttribute('opacity',[.9,.55,.32,.18][i]);c.setAttribute('stroke','#fff');c.setAttribute('stroke-width',3);c.setAttribute('tabindex',0);c.setAttribute('role','button');c.setAttribute('aria-label',d.rings[i][0]);
+      var act=function(){wi.innerHTML='<b>'+d.rings[i][0]+'</b> · '+d.rings[i][1];};c.addEventListener('click',act);c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();act();}});wg.appendChild(c);
+      var t=document.createElementNS(NS,'text');t.setAttribute('x',260);t.setAttribute('y',150-r+16+(i===0?10:0));t.setAttribute('text-anchor','middle');t.setAttribute('font-size','13');t.setAttribute('font-weight','800');t.setAttribute('fill',i===0?'#fff':'#1a1a1a');t.setAttribute('pointer-events','none');t.textContent=d.rings[i][0];wg.appendChild(t);})(i);}
+    wi.textContent='Apasă pe un cerc.';}
+  document.querySelectorAll('#wv-ctrl button').forEach(function(b){b.onclick=function(){wm=b.getAttribute('data-m');document.querySelectorAll('#wv-ctrl button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});wvDraw();};});wvDraw();
+  /* situații */
+  var SB=[['Îți ceri scuze după ce ai jignit un coleg.','b','Bine: recunoști greșeala și repari relația.'],['Râzi de un coleg care a căzut.','r','Rău: râsul răutăcios rănește și îl face să se simtă singur.'],['Ajuți un coleg nou să-și găsească clasa.','b','Bine: ajutor simplu, care ajută o persoană să se simtă primită.'],['Strici jucăria fratelui tău, din supărare.','r','Rău: răspunzi cu răul unei supărări. Mai bine spui ce te-a supărat.'],['Ții ușa deschisă unei doamne cu mai multe pungi.','b','Bine: o faptă mică de politețe, care ajută.'],['Rupi o floare din parc doar ca s-o arunci.','r','Rău: strici ceva care e al tuturor.']];
+  var sl=document.getElementById('sb-list'),sc=0,sn=0;
+  SB.forEach(function(s){var d=document.createElement('div');d.className='sit';d.innerHTML='<p>'+s[0]+'</p><div class="row"><button type="button" data-v="b">🟢 Bine</button><button type="button" data-v="r">🔴 Rău</button></div><div class="fb"></div>';
+   d.querySelectorAll('button').forEach(function(b){b.onclick=function(){if(d.classList.contains('done'))return;d.classList.add('done');var ok=b.getAttribute('data-v')===s[1];d.classList.add(ok?'ok':'no');sn++;if(ok)sc++;d.querySelector('.fb').innerHTML=(ok?'✅ ':'🔎 ')+s[2];document.getElementById('sb-score').innerHTML='Ai răspuns la '+sn+' din '+SB.length+'. Corecte: <b>'+sc+'</b>.';};});sl.appendChild(d);});
+  /* schema */
+  var CT=[['În familie','Ajut la strâns masa.','Țip la fratele meu.'],['Pentru un vecin','Cumpăr pâine pentru vecinul bătrân.','Fac zgomot noaptea.'],['La școală','Împart radiera cu un coleg.','Aleg pe cine să nu primesc în echipă.'],['Pentru un necunoscut','Îi arăt drumul unui turist.','Îl ignor când cere ajutor.'],['Pe stradă','Arunc gunoiul la coș.','Las o pungă pe trotuar.'],['Pentru comunitate','Plantez un copac în parc.','Stric băncile din parc.']];
+  var sb=document.getElementById('sc-body');
+  CT.forEach(function(c,i){var tr=document.createElement('tr');tr.innerHTML='<td><b>'+c[0]+'</b></td><td><label for="sb'+i+'" style="position:absolute;left:-9999px">Bine, '+c[0]+'</label><textarea id="sb'+i+'" placeholder="ex.: '+c[1]+'"></textarea></td><td><label for="sr'+i+'" style="position:absolute;left:-9999px">Rău, '+c[0]+'</label><textarea id="sr'+i+'" placeholder="ex.: '+c[2]+'"></textarea></td>';sb.appendChild(tr);});
+  /* linia valorică */
+  var ARG={
+   da:'<b>Argumente „merită oricum”:</b><br>• Binele are valoare chiar dacă nimeni nu știe de el: ajuți pentru că așa e drept.<br>• Dacă faci bine doar pentru laude, cineva poate crede că nu ești sincer.<br>• Te simți bine cu tine, și asta e o răsplată.',
+   nu:'<b>Argumente „doar dacă primesc ceva”:</b><br>• Oamenii se obosesc dacă dau mereu și nu primesc nimic.<br>• O mică laudă sau un „mulțumesc” te încurajează să continui.<br>• Dar atenție: dacă ajuți doar pentru recompensă, nu mai e chiar o faptă bună dezinteresată.',
+   ind:'<b>Gândește-te:</b><br>• E în regulă să-ți facă plăcere un „mulțumesc”? Dar să ceri o recompensă?<br>• Ce înseamnă „dezinteresat”?<br>• Povestește despre o faptă bună pe care ai făcut-o fără să te aștepți la ceva.'
+  };
+  var vb=document.querySelectorAll('#vl-btns button'),vx=document.getElementById('vl-box');
+  vb.forEach(function(b){b.onclick=function(){vb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});vx.innerHTML='<p style="margin:0">'+ARG[b.dataset.k]+'</p>';};});
+})();
+</script>
+</body>
+</html>

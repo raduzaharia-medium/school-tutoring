@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Altruism – Egoism</title>
+<link rel="stylesheet" href="../../assets/caiet.css">
+<style>
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}
+.pd summary{cursor:pointer;font-weight:800}
+.pd[open] summary{margin-bottom:6px}
+.pd:last-of-type{border-color:var(--green)}
+.vl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.vl button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.4em 1em}
+.vl button[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+.fig svg{display:block;width:100%;max-width:640px;height:auto;margin:0 auto}
+.vs2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.vs2{grid-template-columns:1fr}}
+.vs2 .box h3{margin-top:0}
+.acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin:10px 0}
+.acts button{font:inherit;text-align:left;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:.5em .8em}
+.acts button.a{border-color:var(--green)}.acts button.e{border-color:var(--red)}
+.acts button[disabled]{opacity:.4;cursor:default}
+.jd{width:100%;border-collapse:collapse}
+.jd th,.jd td{border:2px solid var(--line);padding:.4em .6em;text-align:left;vertical-align:top}
+.jd th{background:var(--tint-yellow)}
+.jd select{font:inherit;font-weight:700;padding:.2em .4em;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink);max-width:14em}
+.jd td.ok{background:var(--tint-green)}.jd td.no{background:var(--tint-red)}
+.ck{display:grid;gap:8px;margin:10px 0}
+.ck label{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:.5em .8em;cursor:pointer}
+.ck input{margin-top:.25em;width:1.2em;height:1.2em;accent-color:var(--purple)}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Educație civică · Unitatea 2 · Lecția 2 · manual pp. 28–29</p>
+   <h1>Altruism – Egoism</h1>
+   <p class="lead">„Generozitatea deschide toate porțile; egoismul le închide.” Ce înseamnă să dăruiești fără să aștepți ceva? Și ce se întâmplă cu un loc cu zid în jur?</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="#F0E9FA"/>
+   <path d="M110 70 v100" stroke="#6B4BC4" stroke-width="5" stroke-linecap="round"/>
+   <path d="M50 70 H170" stroke="#6B4BC4" stroke-width="6" stroke-linecap="round"/>
+   <path d="M50 70 l-18 50 h36Z" fill="#9BD59B" stroke="#2E9D52" stroke-width="3"/>
+   <path d="M170 70 l-18 50 h36Z" fill="#F3B5AE" stroke="#E2433A" stroke-width="3"/>
+   <path d="M80 170 h60" stroke="#6B4BC4" stroke-width="6" stroke-linecap="round"/>
+   <path d="M44 104 q6 -10 12 0 q-6 6 -12 0Z" fill="#E2433A"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 STIM / VREM -->
+<section class="slide" aria-label="Ce știm și ce vrem să aflăm">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Știm deja</span>
+  <div class="tip g" style="margin-top:0">• Oamenii au uneori nevoie de ajutorul celorlalți.<br>• Unii înțeleg și participă la ajutorarea semenilor.<br>• Alții nu sunt preocupați de problemele altora.</div>
+  <span class="badge" style="background:var(--red);margin-top:18px">Vrem să știm</span>
+  <div class="q"><span class="mark" style="background:var(--blue)">1</span>Ce înseamnă să fim altruiști?</div>
+  <div class="q"><span class="mark" style="background:var(--green)">2</span>Cum se comportă o persoană egoistă?</div>
+  <div class="q"><span class="mark" style="background:var(--purple)">3</span>Ce se întâmplă în jur când oamenii dau sau când își păstrează totul pentru ei?</div>
+ </div>
+</section>
+
+<!-- 3 VULTURUL -->
+<section class="slide" aria-label="Lectură: Vulturul">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#3a2a00">Citim și dezbatem · Lev Tolstoi, „Vulturul”</span>
+  <h2>Peștele vulturului</h2>
+  <p>Un vultur și-a făcut cuibul în vârful unui copac înalt, departe de mare, și acolo și-a scos puii. Într-o zi, vulturul se întorcea spre cuib cu un pește mare în gheare. Jos, la rădăcina copacului, lucrau mai mulți oameni. Cum au văzut peștele, au înconjurat copacul, au strigat și au aruncat cu pietre în vultur. Vulturul a scăpat peștele, iar oamenii l-au ridicat și au plecat. Pasărea s-a așezat pe marginea cuibului, iar puii au ridicat capetele și au început să piuie: cereau de mâncare.</p>
+  <details class="pd"><summary>Cum apreciați atitudinea oamenilor? Explicați.</summary><p>Oamenii s-au purtat <b>egoist</b> și crud: au luat hrana unei familii (a vulturului și a puilor) doar fiindcă puteau. Nu s-au gândit la pui, care aveau nevoie de mâncare.</p></details>
+  <details class="pd"><summary>De ce erau preocupați aceștia?</summary><p>Numai de <b>interesul lor</b> imediat: să aibă ei peștele. Nu au vrut să știe ce urmează pentru ceilalți.</p></details>
+  <details class="pd"><summary>Dați exemple din viața cotidiană în care oamenii nesocotesc interesele altora.</summary><p>Cineva ia toată prăjitura și nu lasă nimic celorlalți; cineva aruncă gunoi în fața casei vecinului; un șofer parchează pe trotuar, deși copiii nu mai au pe unde trece. Gândește-te la alte exemple din jurul tău.</p></details>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Egoismul presupune o preocupare exagerată față de propria persoană și de interesele personale și nesocotirea intereselor celorlalți.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Tolstoi a scris povești scurte pentru copii, cu o morală. Aici, morala e că a lua fără să-ți pese de cel care pierde e o faptă rea. Și noi suntem uneori ca vulturul (cel care pierde), alteori ca oamenii (cei care iau). Cum ai vrea să fii?</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 4 CANTARUL -->
+<section class="slide" aria-label="Cântarul valorilor">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Observăm și discutăm · cântarul</span>
+  <h2>Ce înclină balanța?</h2>
+  <p>Apasă pe acțiuni ca să le pui pe talere: <b>altruism</b> (verde) sau <b>egoism</b> (roșu). Când predomină una, balanța se înclină.</p>
+  <div class="fig-wrap fig"><svg viewBox="0 0 520 260" role="img" aria-label="Balanță altruism și egoism">
+   <rect x="2" y="2" width="516" height="256" rx="10" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>
+   <path d="M260 90 V230 M200 230 H320" stroke="#6B4BC4" stroke-width="8" stroke-linecap="round"/>
+   <g id="bl-beam"><path d="M90 90 H430" stroke="#6B4BC4" stroke-width="8" stroke-linecap="round"/>
+    <g id="bl-L"><path d="M90 90 V120" stroke="#6B4BC4" stroke-width="3"/><path d="M40 120 H140 q-10 36 -50 36 q-40 0 -50 -36Z" fill="#9BD59B" stroke="#2E9D52" stroke-width="3"/><text x="90" y="82" text-anchor="middle" font-size="14" font-weight="800" fill="#2E9D52">Altruism</text><text id="bl-nl" x="90" y="146" text-anchor="middle" font-size="22" font-weight="800" fill="#1b4d2a">0</text></g>
+    <g id="bl-R"><path d="M430 90 V120" stroke="#6B4BC4" stroke-width="3"/><path d="M380 120 H480 q-10 36 -50 36 q-40 0 -50 -36Z" fill="#F3B5AE" stroke="#E2433A" stroke-width="3"/><text x="430" y="82" text-anchor="middle" font-size="14" font-weight="800" fill="#E2433A">Egoism</text><text id="bl-nr" x="430" y="146" text-anchor="middle" font-size="22" font-weight="800" fill="#7a1b14">0</text></g>
+   </g>
+  </svg></div>
+  <div class="acts" id="bl-acts"></div>
+  <div class="ctrl"><button type="button" id="bl-r">↺ Golește talerele</button></div>
+  <div class="map-info" id="bl-info" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 5 RETINEM -->
+<section class="slide" aria-label="Reținem">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Reținem · altruism și egoism</span>
+  <h2>Două valori opuse</h2>
+  <div class="vs2">
+   <div class="box" style="border-color:var(--green)"><span class="emo">🤲</span><h3>Altruismul</h3><p>Valoare morală <b>pozitivă</b>. A fi altruist înseamnă a oferi <b>timp</b>, <b>energie</b> și <b>bunuri materiale</b> altei persoane, <b>fără a aștepta ceva în schimb</b>. Creează o stare de bine pentru tine și pentru ceilalți.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">🙈</span><h3>Egoismul</h3><p>Opusul altruismului. O <b>preocupare exagerată</b> față de propria persoană și de interesele personale și <b>nesocotirea intereselor</b> celorlalți.</p></div>
+  </div>
+  <div class="box" style="border-color:var(--yellow);margin-top:10px"><p style="margin:0">„Generozitatea deschide toate porțile; egoismul le închide.” <b>Don Miguel Ruiz, scriitor mexican</b></p></div>
+  <details class="pd"><summary>Comentați citatul cu exemple din viață</summary><p>Un copil generos primește invitații la joacă, prieteni care îl ajută, încredere. Un copil care ține totul pentru el rămâne adesea singur. Alege un exemplu din clasa ta și explică-l colegului de bancă.</p></details>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>A oferi celor din jur atenție și ajutor material fără scop personal înseamnă a crea o stare de bine.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Cuvântul <b>altruism</b> vine din latinescul <i>alter</i> (altul). Când ești altruist, te gândești la <i>celălalt</i>. În <b>egoism</b>, vine din <i>ego</i> (eu), te gândești doar la <i>mine</i>.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 6 DIALOGUL -->
+<section class="slide" aria-label="Dialogul copiilor">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Aplicăm · activitate în perechi</span>
+  <h2>Doi copii, două replici</h2>
+  <div class="vs2">
+   <div class="box" style="border-color:var(--green)"><p style="margin:0"><b>Prima fată:</b> „Vecinul nostru cel bătrân este la spital. Mergem să-l vizităm?”</p></div>
+   <div class="box" style="border-color:var(--yellow)"><p style="margin:0"><b>Băiatul:</b> „Mă duc să ajut un vecin să culeagă fructe. Îmi va da și mie.”</p></div>
+  </div>
+  <details class="pd"><summary>Care dintre copii face o faptă bună?</summary><p><b>Fata.</b> Vrea să viziteze un bătrân bolnav, singur, fără să aștepte nimic în schimb. E o faptă <b>altruistă</b>.</p></details>
+  <details class="pd"><summary>Băiatul dă dovadă de egoism? Explicați.</summary><p>Nu chiar egoism: ajută un vecin la cules fructe, ceea ce e bine. Dar ajută și pentru că „îmi va da și mie”: are un <b>interes</b>. E un ajutor interesat, nu altruism pur.</p></details>
+  <details class="pd"><summary>Cum putea acționa ca să dea dovadă de generozitate?</summary><p>Putea ajuta vecinul fără să se gândească la ce primește, sau putea merge și el la spital, alături de fată. Și dacă vecinul îi oferă fructe, le poate accepta ca pe un „mulțumesc”.</p></details>
+  <div class="tip y">🤔 <b>Gândește-te:</b> e greșit să primești ceva după ce ai ajutat? Nu, dacă nu ai cerut și nu ai ajutat <i>doar</i> pentru asta. Altruismul se vede din intenție.</div>
+ </div>
+</section>
+
+<!-- 7 JURNAL -->
+<section class="slide" aria-label="Jurnalul cu dublă intrare">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Jurnalul cu dublă intrare</span>
+  <h2>Numește valoarea morală</h2>
+  <p>Pentru fiecare acțiune, alege valoarea morală și explică de ce, ca în modelul din manual: <i>„Un elev își ajută colegul la teme. Este altruist, pentru că nu așteaptă recompensă și oferă din timpul lui.”</i></p>
+  <div class="scroll"><table class="jd"><thead><tr><th>Acțiunea</th><th>Valoarea morală</th></tr></thead><tbody id="jd-body"></tbody></table></div>
+  <div class="map-info" id="jd-info" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 8 URIASUL -->
+<section class="slide" aria-label="Lectură: Uriașul cel egoist">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#3a2a00">Lectură · Oscar Wilde, „Uriașul cel egoist”</span>
+  <h2>Grădina cu zid</h2>
+  <p>Copiii se jucau în fiecare după-amiază în grădina frumoasă a Uriașului. Când Uriașul s-a întors și i-a găsit acolo, i-a alungat și a ridicat un zid înalt, cu inscripția „Trecerea strict interzisă”. De atunci, în grădina lui era mereu iarnă: nu cântau păsări și nu înfloreau copacii. Într-o dimineață, copiii au pătruns printr-o spărtură din zid, iar grădina a înflorit. Doar într-un colț, un băiețel prea mic ca să urce în copac plângea, iar acolo era încă iarnă. Inima Uriașului s-a muiat: „Egoistul de mine!”. L-a urcat pe băiețel în copac, a dărâmat zidul, iar grădina a devenit loc de joacă pentru toți.</p>
+  <div class="ctrl" id="gd-ctrl"><button type="button" aria-pressed="true" data-w="1">🧱 Cu zidul</button><button type="button" aria-pressed="false" data-w="0">🌸 Zidul dărâmat</button></div>
+  <div class="fig-wrap fig"><svg viewBox="0 0 520 260" role="img" aria-label="Grădina Uriașului, înainte și după dărâmarea zidului">
+   <rect id="gd-sky" x="2" y="2" width="516" height="256" rx="10" fill="#C9D6E6"/>
+   <rect x="2" y="170" width="516" height="88" fill="#D8E0E8" id="gd-gr"/>
+   <g id="gd-trees"></g>
+   <g id="gd-kids" style="display:none"><circle cx="150" cy="140" r="9" fill="#F3B5AE"/><rect x="143" y="149" width="14" height="22" fill="#2F6FD6"/><circle cx="260" cy="130" r="9" fill="#F6C431"/><rect x="253" y="139" width="14" height="22" fill="#E2433A"/><circle cx="380" cy="145" r="9" fill="#C7B4EC"/><rect x="373" y="154" width="14" height="22" fill="#2E9D52"/></g>
+   <g id="gd-wall"><rect x="2" y="90" width="516" height="130" fill="#8C7F66"/><g stroke="#6B604A" stroke-width="2"><path d="M2 120 H518 M2 150 H518 M2 180 H518 M2 210 H518"/><path d="M60 90 V120 M160 120 V150 M260 90 V120 M360 120 V150 M460 90 V120 M110 150 V180 M310 150 V180 M410 180 V210"/></g><rect x="150" y="30" width="220" height="40" rx="6" fill="#fff" stroke="#222" stroke-width="3"/><text x="260" y="57" text-anchor="middle" font-size="16" font-weight="800" fill="#222">TRECEREA INTERZISĂ</text></g>
+  </svg></div>
+  <div class="map-info" id="gd-info" aria-live="polite"></div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Lectura îți arată cum egoismul îl rupe pe Uriaș de ceilalți și de primăvară.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Povestea folosește anotimpurile ca simbol: egoismul înseamnă „iarnă” (singurătate, frig), generozitatea înseamnă „primăvară” (viață, bucurie). Ai văzut la geografie că anotimpurile vin din mișcările Pământului. Aici, ele sunt o metaforă pentru ce simte Uriașul.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 9 AUTOEVALUARE -->
+<section class="slide" aria-label="Autoevaluare">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Autoevaluare · scara de apreciere</span>
+  <h2>Cât de bine ai lucrat în echipă la dialog?</h2>
+  <p>Autoevaluați activitatea echipei, bifând criteriile îndeplinite. Fiecare valorează <b>2 puncte</b> (de la 2 la 10).</p>
+  <div class="ck" id="ae-list"></div>
+  <div class="out" id="ae-out" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 10 DEZBATERE -->
+<section class="slide" aria-label="Dezbatere">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">🗣️ Dezbatere · linia valorică</span>
+  <h2>Egoismul e întotdeauna ceva rău?</h2>
+  <p>A te gândi la tine nu e mereu greșit: mănânci, dormi, îți aperi lucrurile și drepturile. Unde se oprește grija de sine și unde începe egoismul?</p>
+  <div class="vl" id="vl-btns">
+   <button type="button" aria-pressed="false" data-k="mereu">Egoismul e mereu rău</button>
+   <button type="button" aria-pressed="false" data-k="uneori">Depinde de situație</button>
+   <button type="button" aria-pressed="false" data-k="ind">Încă nu m-am hotărât</button>
+  </div>
+  <div class="box" id="vl-box" aria-live="polite"><p>Apasă pe o poziție ca să vezi ce argumente ar putea folosi un elev. Apoi adaugă-le pe ale tale.</p></div>
+  <div class="tip y">🗣️ <b>Reguli:</b> ascultăm până la capăt, nu dăm exemple cu persoane din clasă, folosim „eu cred că... pentru că...”. La final, încercăm să găsim o regulă simplă pentru limita dintre „am grijă de mine” și „nu-mi pasă de ceilalți”.</p></div>
+ </div>
+</section>
+
+<!-- 11 PUNTE -->
+<section class="slide" aria-label="Punte">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Istorie ↔ Științe ↔ Matematică ↔ Geografie ↔ Română</span>
+  <h2>Legături cu celelalte materii</h2>
+  <details class="pd"><summary>Istorie: grijă pentru ceilalți</summary><p>La lecția 2 (dacii și romanii), împăratul Traian și-a rupt hainele ca să lege răniții, după relatarea lui Dio Cassius. Era un gest de grijă. Marc Aureliu spunea că oamenii s-au născut ca să se ajute unii pe alții. Căutați și alte exemple din istorie.</p></details>
+  <details class="pd"><summary>Științe: cooperarea în natură</summary><p>Albinele lucrează împreună pentru stup, iar în lanțurile trofice, fiecare ființă are un rol. Unele plante și animale se ajută reciproc. Natura nu e doar „cine e mai tare”.</p></details>
+  <details class="pd"><summary>Matematică: împărțirea corectă</summary><p>12 mere pentru 3 copii: 12 : 3 = 4 mere pentru fiecare. Dacă unul ia 9, ceilalți doi rămân cu 3 în total. Ce e corect? Calculul arată și când o împărțire e dreaptă, și când nu.</p></details>
+  <details class="pd"><summary>Geografie: ajutor între comunități</summary><p>Când un loc e lovit de inundații sau cutremur, alte localități trimit ajutoare. Oamenii se ajută chiar dacă nu se cunosc. Ai văzut cum relieful și apele influențează comunitățile.</p></details>
+  <details class="pd"><summary>Română: Tolstoi, Wilde și antonimele</summary><p>„Vulturul” și „Uriașul cel egoist” au morale clare. Găsește antonime: generos – zgârcit, darnic – avar, altruist – egoist. Alcătuiește un enunț cu fiecare pereche.</p></details>
+  <details class="pd"><summary>📋 Portofoliu</summary><p>Selectează din ziare sau de pe internet articole și imagini în care oamenii au dat dovadă de altruism sau egoism. Așază-le în două coloane și scrie o propoziție despre fiecare.</p></details>
+ </div>
+</section>
+
+<!-- 12 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile lecției</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 13 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--green)"><span class="emo">🤲</span><p><b>Altruismul</b> e o valoare morală pozitivă: oferi timp, energie sau bunuri, fără să aștepți ceva în schimb.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">🧱</span><p><b>Egoismul</b> e preocuparea exagerată pentru tine și nesocotirea intereselor celorlalți.</p></div>
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🌸</span><p>Generozitatea creează <b>stare de bine</b>, pentru tine și pentru ceilalți. Egoismul închide porțile.</p></div>
+  </div>
+  <div class="tip y">🔁 <b>Urmează:</b> Lecția 3, „Cinste – Necinste”.</div>
+ </div>
+</section>
+
+</main>
+
+<script src="../../assets/caiet.js"></script>
+<script>
+(function(){
+  var Q=[
+   {t:'mcq',tags:['C2 L2'],d:'Definiție',q:'Ce înseamnă să fii altruist?',o:['Să oferi timp, energie sau bunuri altcuiva, fără să aștepți ceva în schimb','Să ceri răsplată pentru orice','Să ții totul pentru tine','Să nu vorbești cu nimeni'],a:0,h:'Gândește-te la cel care primește.',e:'A oferi timp, energie sau bunuri altei persoane, fără a aștepta ceva în schimb.'},
+   {t:'mcq',tags:['C2 L2'],d:'Definiție',q:'Opusul altruismului este...',o:['Egoismul','Cinstea','Respectul','Curajul'],a:0,h:'Eu sau altul?',e:'Egoismul: preocuparea exagerată față de sine, cu nesocotirea celorlalți.'},
+   {t:'mcq',tags:['C2 L2'],d:'Lectură',q:'În „Vulturul”, ce au făcut oamenii?',o:['I-au luat peștele vulturului, deși puii aveau nevoie de el','Au hrănit puii','Au construit un cuib','Au plecat fără să facă nimic'],a:0,h:'Au aruncat cu pietre.',e:'I-au luat peștele aruncând cu pietre, nesocotind nevoile puilor: o faptă egoistă.'},
+   {t:'sort',tags:['C2 L2'],d:'Altruism sau egoism?',q:'Sortează acțiunile: altruism sau egoism?',items:[['Împarți gustarea cu un coleg','s'],['Iei toată prăjitura','n'],['Vizitezi un vecin bolnav','s'],['Nu-ți pasă de problema altuia','n'],['Îl ajuți pe un coleg la teme','s'],['Ții totul numai pentru tine','n']],labels:{s:'Altruism',n:'Egoism'},h:'Cine câștigă din acțiune?',e:'Altruism: împarți, vizitezi, ajuți. Egoism: iei tot, nu-ți pasă, ții doar pentru tine.'},
+   {t:'mcq',tags:['C2 L2'],d:'Dialog',q:'Băiatul spune: „Mă duc să ajut un vecin să culeagă fructe. Îmi va da și mie.” Ce fel de ajutor e?',o:['Ajutor interesat: are și un interes personal','Altruism pur','Egoism cumplit','Nu e ajutor'],a:0,h:'Ce așteaptă în schimb?',e:'Interesat: ajută, dar și pentru că așteaptă ceva. Altruismul pur nu cere nimic.'},
+   {t:'mcq',tags:['C2 L2'],d:'Citat',q:'„Generozitatea deschide toate porțile; egoismul le închide.” Ce înseamnă?',o:['Cine dăruiește își face prieteni; cine ține totul pentru el rămâne singur','Că porțile se închid mai repede','Că generozitatea costă bani','Că egoismul e bun'],a:0,h:'Porțile = relațiile.',e:'Generozitatea ne deschide relații, egoismul ne izolează.'},
+   {t:'mcq',tags:['C2 L2'],d:'Lectură',q:'De ce era mereu iarnă în grădina Uriașului egoist?',o:['Pentru că egoismul lui l-a rupt de ceilalți: copiii nu mai aveau voie să intre și grădina nu mai înflorea','Pentru că așa e clima','Pentru că nu avea apă','Pentru că nu-i plăceau florile'],a:0,h:'Gândește-te la simbol.',e:'Iarna simbolizează egoismul și singurătatea. Când a primit copiii, primăvara a venit.'},
+   {t:'mcq',tags:['C2 L2'],d:'Vocabular',q:'Care dintre acestea este caracteristică a unei persoane egoiste?',o:['Invidioasă și preocupată doar de ea','Generoasă','Cooperantă','Binevoitoare'],a:0,h:'Gândește-te la interese.',e:'Invidia și preocuparea doar de sine sunt trăsături ale egoismului. Generos, cooperant, binevoitor sunt trăsături pozitive.'},
+   {t:'mcq',tags:['C2 L2'],d:'Gândire',q:'Un elev își ajută colegul la teme, fără să ceară nimic. Care valoare morală e ilustrată?',o:['Altruismul','Egoismul','Necinstea','Invidia'],a:0,h:'Exemplul din manual.',e:'Altruismul: nu așteaptă recompensă și oferă din timpul lui.'},
+   {t:'mcq',tags:['C2 L2'],d:'Gândire',q:'Care e diferența dintre a avea grijă de tine și a fi egoist?',o:['Egoistul nesocotește nevoile celorlalți; cine are grijă de sine nu-i rănește pe alții','Nu există nicio diferență','Egoistul mănâncă mai mult','Cine are grijă de sine e mereu rău'],a:0,h:'Limita: ceilalți.',e:'A avea grijă de tine e normal. Egoismul începe când nu-ți pasă de nevoile celorlalți.'},
+   {t:'mcq',tags:['C2 L2','Istorie'],d:'Istorie',q:'Când Traian și-a rupt hainele ca să lege rănile soldaților, ce valoare a arătat?',o:['Grijă pentru ceilalți, un fel de altruism','Egoism','Frică','Mândrie'],a:0,h:'Lecția 2 de istorie.',e:'Grijă și solidaritate cu cei răniți. Marc Aureliu spunea că oamenii sunt făcuți să se ajute între ei.'},
+   {t:'num',u:'mere',tags:['C2 L2','Matematică'],d:'Matematică',q:'12 mere se împart egal la 3 copii. Câte mere primește fiecare?',a:4,h:'12 : 3.',e:'4 mere. O împărțire dreaptă: la fel pentru toți.'},
+   {t:'mcq',tags:['C2 L2','Științe'],d:'Științe',q:'Care exemplu arată cooperare în natură?',o:['Albinele care lucrează împreună pentru stup','Un lup singur','O piatră','Un nor'],a:0,h:'Fiecare are un rol.',e:'Albinele: fiecare are un rol în stup. Și în lanțurile trofice, ființele depind unele de altele.'},
+   {t:'mcq',tags:['C2 L2'],d:'Dezbatere',q:'Un copil e invitat de colegi să vină cu ei la film, dar nu-i invită pe alții. Ce e bine să spui?',o:['„Putem invita și pe ceilalți?”','„Merg doar eu.”','„Nu mă interesează.”','„Mă duc singur.”'],a:0,h:'Gândește-te la cei lăsați deoparte.',e:'A propune să fie incluși și ceilalți e o formă de generozitate, fără să te îndepărtezi de prieteni.'}
+  ];
+  Caiet.start({Q:Q});
+})();
+</script>
+<script>
+(function(){
+  /* cântar */
+  var AC=[['Împarți gustarea cu un coleg','a'],['Iei toată prăjitura','e'],['Vizitezi un vecin bolnav','a'],['Nu-ți pasă de problema altuia','e'],['Îl ajuți pe un coleg la teme','a'],['Ții totul numai pentru tine','e'],['Donezi o jucărie unui copil care nu are','a'],['Refuzi să împrumuți un creion, deși ai două','e']];
+  var na=0,ne=0,ba=document.getElementById('bl-acts');
+  function bl(){var d=Math.max(-18,Math.min(18,(ne-na)*6));document.getElementById('bl-beam').setAttribute('transform','rotate('+d+' 260 90)');
+    document.getElementById('bl-L').setAttribute('transform','rotate('+(-d)+' 90 90)');document.getElementById('bl-R').setAttribute('transform','rotate('+(-d)+' 430 90)');
+    document.getElementById('bl-nl').textContent=na;document.getElementById('bl-nr').textContent=ne;
+    document.getElementById('bl-info').innerHTML=na===ne?(na===0?'Balanța e în echilibru. Alege acțiuni.':'⚖️ Echilibru: la fel de multe fapte altruiste și egoiste.'):(na>ne?'🌸 Predomină <b>altruismul</b>: în astfel de locuri oamenii se simt bine și au încredere.':'🧱 Predomină <b>egoismul</b>: în astfel de locuri oamenii se simt singuri și neprețuiți.');}
+  AC.forEach(function(a){var b=document.createElement('button');b.type='button';b.className=a[1];b.textContent=(a[1]==='a'?'🟢 ':'🔴 ')+a[0];b.onclick=function(){if(a[1]==='a')na++;else ne++;b.disabled=true;bl();};ba.appendChild(b);});
+  document.getElementById('bl-r').onclick=function(){na=0;ne=0;ba.querySelectorAll('button').forEach(function(b){b.disabled=false;});bl();};bl();
+  /* jurnal */
+  var JD=[['Un elev îi cedează locul în autobuz unei persoane în vârstă.','a','Altruism: dă din confortul lui, fără să ceară nimic.'],['Cineva ia toată înghețata din frigider și nu lasă nimic celorlalți.','e','Egoism: își satisface doar propria dorință.'],['Ajuți un vecin cu pungile, ca să-ți dea și ție bani de buzunar.','i','Ajutor interesat: există un interes personal.'],['Un copil nu se oferă la curățenia clasei: „nu mă privește”.','e','Egoism: nu-i pasă de interesul comun.'],['Aduni jucării pentru un copil din altă localitate, fără să te lauzi.','a','Altruism: oferi bunuri, fără recompensă.']];
+  var jb=document.getElementById('jd-body'),jc=0;
+  JD.forEach(function(r,i){var tr=document.createElement('tr');tr.innerHTML='<td>'+r[0]+'</td><td><label for="jd'+i+'" style="position:absolute;left:-9999px">Valoarea pentru acțiunea '+(i+1)+'</label><select id="jd'+i+'"><option value="">Alege...</option><option value="a">Altruism</option><option value="e">Egoism</option><option value="i">Ajutor interesat</option></select><div class="sursa" id="jx'+i+'"></div></td>';
+   tr.querySelector('select').onchange=function(){var td=this.parentNode,ok=this.value===r[1];td.className=ok?'ok':'no';document.getElementById('jx'+i).textContent=this.value?((ok?'✅ ':'🔎 ')+r[2]):'';var c=0;JD.forEach(function(q,j){if(document.getElementById('jd'+j).value===q[1])c++;});document.getElementById('jd-info').innerHTML='Corecte: <b>'+c+'</b> din '+JD.length+'.';};jb.appendChild(tr);});
+  /* grădina */
+  var tr=document.getElementById('gd-trees'),NS='http://www.w3.org/2000/svg';
+  [[80],[200],[320],[440]].forEach(function(p,i){var g=document.createElementNS(NS,'g');g.setAttribute('class','gt');g.innerHTML='<rect x="'+(p[0]-6)+'" y="120" width="12" height="55" fill="#6B4A2B"/><circle class="cr" cx="'+p[0]+'" cy="110" r="32" fill="#cfd8dc"/><g class="fl" style="display:none"><circle cx="'+(p[0]-14)+'" cy="104" r="6" fill="#F3B5AE"/><circle cx="'+(p[0]+10)+'" cy="96" r="6" fill="#F6C431"/><circle cx="'+(p[0]+2)+'" cy="120" r="6" fill="#fff"/><circle cx="'+(p[0]+18)+'" cy="116" r="6" fill="#F3B5AE"/></g>';tr.appendChild(g);});
+  var GI={1:'🧱 <b>Cu zidul:</b> copacii sunt goi, cerul e cenușiu și nu cântă nicio pasăre. În jur e iarnă, cum spune povestea. Egoismul îl izolează pe Uriaș.',0:'🌸 <b>Zidul dărâmat:</b> copiii s-au întors, copacii au înflorit, iar grădina e plină de viață. Generozitatea aduce „primăvara”.'};
+  function gd(w){var up=w===0;document.getElementById('gd-wall').style.display=up?'none':'';document.getElementById('gd-kids').style.display=up?'':'none';
+    document.getElementById('gd-sky').setAttribute('fill',up?'#BFE3F7':'#C9D6E6');document.getElementById('gd-gr').setAttribute('fill',up?'#8CD08F':'#D8E0E8');
+    tr.querySelectorAll('.cr').forEach(function(c){c.setAttribute('fill',up?'#6FBF73':'#cfd8dc');});tr.querySelectorAll('.fl').forEach(function(f){f.style.display=up?'':'none';});
+    document.getElementById('gd-info').innerHTML=GI[w];document.querySelectorAll('#gd-ctrl button').forEach(function(b){b.setAttribute('aria-pressed',(+b.getAttribute('data-w'))===w?'true':'false');});}
+  document.querySelectorAll('#gd-ctrl button').forEach(function(b){b.onclick=function(){gd(+b.getAttribute('data-w'));};});gd(1);
+  /* autoevaluare */
+  var AE=['Am identificat corect copilul care face fapta bună.','Am argumentat atitudinea lui.','Am explicat răspunsul băiatului.','Am motivat atitudinea băiatului.','Am stabilit o soluție corectă.'];
+  var al=document.getElementById('ae-list');
+  AE.forEach(function(t,i){var l=document.createElement('label');l.innerHTML='<input type="checkbox" id="ae'+i+'"><span>'+t+'</span>';l.querySelector('input').onchange=aeUp;al.appendChild(l);});
+  function aeUp(){var n=al.querySelectorAll('input:checked').length,p=n*2;document.getElementById('ae-out').innerHTML='Ai bifat <b>'+n+'</b> din 5 criterii: <b>'+p+' puncte</b> din 10. '+(p>=8?'Foarte bine! Echipa ta a lucrat atent.':p>=4?'Bine. Reia criteriile pe care nu le-ai bifat și vezi ce poți îmbunătăți.':'Mai ai de lucru: recitește dialogul și încearcă din nou.');}aeUp();
+  /* linia valorică */
+  var ARG={
+   mereu:'<b>Argumente „egoismul e mereu rău”:</b><br>• Când ignori nevoile altora, îi rănești și ei se îndepărtează.<br>• Egoismul poate face oamenii singuri, ca Uriașul.<br>• Fiecare dintre noi poate găsi cum să se bucure și să-i bucure pe alții.',
+   uneori:'<b>Argumente „depinde de situație”:</b><br>• E normal să ai grijă de tine: să dormi, să mănânci, să-ți aperi lucrurile.<br>• Egoismul începe când nu-ți mai pasă deloc de ceilalți.<br>• Cine are grijă de sine are mai multă energie ca să-i ajute pe alții.',
+   ind:'<b>Gândește-te:</b><br>• Dă exemplu de ceva ce faci pentru tine și nu e rău.<br>• Dă exemplu de ceva ce faci pentru tine și rănește pe cineva.<br>• Care e diferența dintre cele două exemple?'
+  };
+  var vb=document.querySelectorAll('#vl-btns button'),vx=document.getElementById('vl-box');
+  vb.forEach(function(b){b.onclick=function(){vb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});vx.innerHTML='<p style="margin:0">'+ARG[b.dataset.k]+'</p>';};});
+})();
+</script>
+</body>
+</html>
