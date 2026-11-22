@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>De la clasă la țară</title>
+<link rel="stylesheet" href="../../assets/caiet.css">
+<style>
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}
+.pd summary{cursor:pointer;font-weight:800}
+.pd[open] summary{margin-bottom:6px}
+.pd:last-of-type{border-color:var(--green)}
+.vl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.vl button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.4em 1em}
+.vl button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.fig svg{display:block;width:100%;max-width:680px;height:auto;margin:0 auto}
+.blk{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:10px 0}
+.blk .box h3{margin-top:0}
+.blk a{display:inline-block;margin:.15em .3em .15em 0;padding:.15em .6em;border-radius:99px;background:var(--tint-blue);color:var(--ink);font-weight:800;text-decoration:none;border:2px solid var(--line);font-size:.9em}
+.blk a:hover,.blk a:focus{border-color:var(--blue)}
+.fc{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:10px 0}
+.fc button{font:inherit;text-align:left;min-height:5.2em;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:14px;padding:10px 14px}
+.fc button b{display:block;font-family:var(--display)}
+.fc button[aria-pressed="true"]{background:var(--tint-yellow);border-color:#C9862A}
+.fc small{display:block;color:var(--soft)}
+.ck{display:grid;gap:8px;margin:10px 0}
+.ck label{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:.5em .8em;cursor:pointer}
+.ck input{margin-top:.25em;width:1.2em;height:1.2em;accent-color:var(--green)}
+.meter{height:16px;background:var(--line);border-radius:99px;overflow:hidden;margin:6px 0}
+.meter i{display:block;height:100%;background:var(--green);width:0;transition:width .3s}
+.tg{display:grid;grid-template-columns:1fr auto auto;gap:6px 10px;align-items:center;margin:10px 0}
+.tg .s{background:var(--paper);border:2px solid var(--line);border-radius:10px;padding:.35em .7em}
+.tg button{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:.25em .8em;cursor:pointer}
+.tg button[aria-pressed="true"]{background:var(--green);color:#fff;border-color:var(--green)}
+.tg button.no[aria-pressed="true"]{background:var(--red);border-color:var(--red)}
+.role{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:.4em .9em}
+@media (prefers-reduced-motion:reduce){.meter i{transition:none}}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Geografie · Unitatea 1 · Recapitulare și test final · manual pp. 42–45</p>
+   <h1>De la clasă la țară</h1>
+   <p class="lead">Unsprezece lecții într-un singur loc: orientare, plan și hartă, relief și ape, oameni și așezări, Pământ în mișcare, calendar și, în final, țara întreagă. Joacă, repetă, apoi încearcă testul.</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="#EAF4FF"/>
+   <circle cx="110" cy="116" r="88" fill="#F7E9C8" stroke="#B5882E" stroke-width="4"/>
+   <circle cx="110" cy="130" r="62" fill="#F1D77B" stroke="#B5882E" stroke-width="4"/>
+   <circle cx="110" cy="146" r="38" fill="#9BD59B" stroke="#4F8F4A" stroke-width="4"/>
+   <circle cx="110" cy="158" r="14" fill="#E2433A"/>
+   <path d="M110 22 V10 M104 16 h12" stroke="#222" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 UNITATEA PE SCURT -->
+<section class="slide" aria-label="Unitatea pe scurt">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Unitatea pe scurt</span>
+  <h2>Patru drumuri, unsprezece lecții</h2>
+  <p>Apasă pe numărul unei lecții ca să o redeschizi, dacă vrei să mai citești ceva.</p>
+  <div class="blk">
+   <div class="box" style="border-color:var(--blue)"><h3>🏫 Orizontul apropiat</h3><p>Clasa, școala, cartierul, localitatea. Repere, distanțe, planuri.</p><a href="lectia-1-clasa-scoala-cartierul.html">L1</a><a href="lectia-2-orientarea-distantele.html">L2</a><a href="lectia-3-planul.html">L3</a><a href="recapitulare-lectiile-1-4.html">Recap L1–4</a></div>
+   <div class="box" style="border-color:var(--green)"><h3>🧭 Orizontul local</h3><p>Orizont, puncte cardinale, hărți, relief, ape, vegetație, populație, așezări.</p><a href="lectia-4-orizontul-punctele-cardinale.html">L4</a><a href="lectia-5-harti-orizont-local.html">L5</a><a href="lectia-6-relief-hidrografie-vegetatie.html">L6</a><a href="lectia-7-populatie-asezari-activitati.html">L7</a></div>
+   <div class="box" style="border-color:var(--purple)"><h3>🌍 Pământul și timpul</h3><p>Rotație și revoluție, zi și noapte, anotimpuri, ceas, calendar.</p><a href="lectia-8-modificari-observabile.html">L8</a><a href="lectia-9-repere-de-timp.html">L9</a></div>
+   <div class="box" style="border-color:var(--red)"><h3>🇷🇴 De la local la țară</h3><p>Localitatea natală, regiunea, țara, schimbări de scară.</p><a href="lectia-10-localitatea-natala-regiunea.html">L10</a><a href="lectia-11-de-la-orizont-la-tara.html">L11</a></div>
+  </div>
+  <div class="tip y">🏆 <b>Planul de azi:</b> 1) recapitulezi cu cardurile și cercurile; 2) joci „Detectivul de hărți”; 3) îți verifici fișa de portofoliu; 4) rezolvi misiunile (inclusiv testul din manual); 5) îți faci autoevaluarea.</div>
+ </div>
+</section>
+
+<!-- 3 CERCURI -->
+<section class="slide" aria-label="De la clasă la țară">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Rețin · spații unul în altul</span>
+  <h2>De la clasă la țară</h2>
+  <p>Fiecare spațiu îl cuprinde pe cel mai mic. Apasă pe un cerc ca să afli ce e și cum îl reprezentăm.</p>
+  <div class="fig-wrap"><div id="rc-circ"></div></div>
+  <div class="map-info" id="rc-info" aria-live="polite">Apasă pe un cerc.</div>
+ </div>
+</section>
+
+<!-- 4 CARDURI -->
+<section class="slide" aria-label="Carduri de vocabular">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Repet · carduri de vocabular</span>
+  <h2>Ce înseamnă cuvintele unității?</h2>
+  <p>Apasă pe un card ca să vezi explicația. Încearcă mai întâi să o spui tu cu glas tare. Alege un grup:</p>
+  <div class="legend-chips" id="fc-chips"></div>
+  <div class="fc" id="fc-grid"></div>
+ </div>
+</section>
+
+<!-- 5 DETECTIV -->
+<section class="slide" aria-label="Detectivul de hărți">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">🗺️ Joc · detectivul de hărți</span>
+  <h2>Găsește regiunea pe hartă</h2>
+  <p>Ți se cere o regiune. Apasă pe un județ din ea. Câte ghicești la rând?</p>
+  <div class="out" id="dt-task" aria-live="polite"></div>
+  <div class="fig-wrap"><div id="dt-map"></div></div>
+  <div class="map-info" id="dt-info" aria-live="polite">Apasă pe un județ.</div>
+  <div class="ctrl"><button type="button" id="dt-new">Altă regiune</button><span id="dt-score" style="font-weight:800"></span></div>
+ </div>
+</section>
+
+<!-- 6 FISA -->
+<section class="slide" aria-label="Fișa orizontului local">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">📋 Portofoliu · fișa orizontului local</span>
+  <h2>Ai strâns toate materialele?</h2>
+  <p>Portofoliul e „cartea ta de vizită”: colecția de informații și dovada progresului tău. Bifează ce ai deja (nu se salvează nimic).</p>
+  <div class="meter" aria-hidden="true"><i id="ck-bar"></i></div>
+  <div class="out" id="ck-out" aria-live="polite"></div>
+  <div class="ck" id="ck-list"></div>
+ </div>
+</section>
+
+<!-- 7 NUMERELE -->
+<section class="slide" aria-label="Numerele unității">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#3a2a00">Repet · numerele unității</span>
+  <h2>Ce numere merită ținute minte?</h2>
+  <p>Apasă pe un număr și spune ce reprezintă, înainte să vezi răspunsul.</p>
+  <div class="minbtns" id="nm-btns"></div>
+  <div class="box" id="nm-info" aria-live="polite"><p style="margin:0">Alege un număr.</p></div>
+  <div class="tip y">🌍 <b>Două mișcări, mai multe schimbări:</b> <b>rotația</b> în jurul axei (24 de ore) produce ziua și noaptea. <b>Mișcarea în jurul Soarelui</b> (un an), cu axa înclinată, produce anotimpurile.</div>
+ </div>
+</section>
+
+<!-- 8 PROIECT -->
+<section class="slide" aria-label="Proiectul Natura este prietena mea">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Proiect · Natura este prietena mea!</span>
+  <h2>Minirevista echipei tale</h2>
+  <p><b>Scopul:</b> să înțelegem că trebuie să trăim în armonie cu natura și să o protejăm. Formați echipe de 4–5 elevi. Fiecare echipă realizează o revistă, cu patru secțiuni:</p>
+  <div class="grid g4">
+   <div class="box"><span class="emo">📅</span><h3>Schimbările lunii</h3><p>Ce se schimbă în natură într-o lună.</p></div>
+   <div class="box"><span class="emo">🏘️</span><h3>Ce a schimbat omul</h3><p>În cartier, localitate și regiune.</p></div>
+   <div class="box"><span class="emo">📜</span><h3>Reguli de protecție</h3><p>O listă a regulilor care ocrotesc natura.</p></div>
+   <div class="box"><span class="emo">🎨</span><h3>Creativitate</h3><p>Fotografii, desene, orice dovedește prietenia ta cu natura.</p></div>
+  </div>
+  <h3 style="margin-top:14px">Generatorul de roluri</h3>
+  <p>Scrie numele membrilor echipei, separate prin virgulă, și apasă „Împarte rolurile”. (Nu se salvează nimic.)</p>
+  <div class="calc"><label for="rl-n" style="font-weight:800">Echipa</label><input id="rl-n" type="text" value="Ana, Bogdan, Cristian, Dana, Eva" style="max-width:26em"><button type="button" id="rl-b">Împarte rolurile</button></div>
+  <div class="grid g2" id="rl-out"></div>
+ </div>
+</section>
+
+<!-- 9 AUTOEVALUARE -->
+<section class="slide" aria-label="Autoevaluarea">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Autoevaluare · eu în oglindă</span>
+  <h2>Cum ai lucrat?</h2>
+  <p>Răspunde sincer: nu există răspunsuri corecte sau greșite. Învățătoarea sau învățătorul te va cunoaște mai bine. „Când aplic ce am învățat, îmi place...”</p>
+  <div class="tg" id="tg-list"></div>
+  <div class="map-info" id="tg-info" aria-live="polite"></div>
+  <h3 style="margin-top:14px">Calculatorul de calificative (din manual)</h3>
+  <p>Scrie câte răspunsuri corecte ai la fiecare subiect din testul de evaluare.</p>
+  <div class="calc">
+   <label for="cq-1" style="font-weight:800">Subiectul I (din 5)</label><input id="cq-1" type="number" min="0" max="5" value="4">
+   <label for="cq-2" style="font-weight:800">Subiectul II (din 5)</label><input id="cq-2" type="number" min="0" max="5" value="4">
+   <label for="cq-3" style="font-weight:800">Subiectul III (din 7)</label><input id="cq-3" type="number" min="0" max="7" value="5">
+  </div>
+  <div class="out" id="cq-out" aria-live="polite"></div>
+  <details class="pd"><summary>Autoevaluarea după fiecare test: 7 întrebări</summary><p>Am rezolvat foarte bine toate cerințele? · Cum au rezolvat colegii ce mie mi-a fost greu? · Ce calificativ am obținut? · Sunt mulțumit de ce am realizat? · Ce m-a împiedicat să obțin un rezultat mai bun? · Ce trebuie să fac ca să mă îmbunătățesc? · Ce mă nemulțumește cel mai mult? Scrie răspunsurile pe o foaie, pune-o în dosarul „Autoevaluare” și recitește-le din când în când.</p></details>
+ </div>
+</section>
+
+<!-- 10 DEZBATERE -->
+<section class="slide" aria-label="Dezbatere">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">🗣️ Dezbatere · linia valorică</span>
+  <h2>„A memora nu înseamnă a învăța”</h2>
+  <p>Manualul spune că a memora nu înseamnă a învăța. Formula Andrei: <b>înțeleg + rețin + mă antrenez = învăț</b>. Dar uneori trebuie să știm lucruri pe de rost, ca ordinea lunilor. Ce părere ai?</p>
+  <div class="vl" id="vl-btns">
+   <button type="button" aria-pressed="false" data-k="inteleg">Înțelegerea e mai importantă</button>
+   <button type="button" aria-pressed="false" data-k="memor">Memorarea e esențială</button>
+   <button type="button" aria-pressed="false" data-k="amb">Ai nevoie de amândouă</button>
+  </div>
+  <div class="box" id="vl-box" aria-live="polite"><p>Apasă pe o poziție ca să vezi ce argumente ar putea folosi un elev. Apoi adaugă-le pe ale tale.</p></div>
+  <div class="tip y">🗣️ <b>Reguli:</b> ascultăm până la capăt, folosim „eu cred că... pentru că...”, schimbăm poziția dacă argumentele ne conving. La final: ce metodă de învățare vei folosi la următoarea unitate?</div>
+ </div>
+</section>
+
+<!-- 11 PUNTE -->
+<section class="slide" aria-label="Legături între discipline">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · geografia în toate materiile</span>
+  <h2>Ce ai folosit din alte materii?</h2>
+  <details class="pd"><summary>🧮 Matematică: scară, calcule, date</summary><p>Scara (cm → km), diferențe și sume (populația), grafice cu bare, unități de timp (24 h, 7 zile, 365 de zile), ordinea operațiilor, calcul cu zile (peste 10 zile e...), temperatura care scade cu altitudinea.</p></details>
+  <details class="pd"><summary>🏛️ Istorie: locuri, regiuni, calendar</summary><p>Regiunile României sunt și vechile state românești. Dobrogea a avut colonii grecești (Tomis → Constanța). Relieful a influențat istoria (polis, Carpații, Posada, Rovine). Calendarul iulian al lui Cezar a dat anul bisect.</p></details>
+  <details class="pd"><summary>🔬 Științe: mediu, circuitul apei, Sistemul Solar</summary><p>Circuitul apei, plantele și animalele pe etaje de relief, rotația și revoluția, anotimpurile. Fiecare e o legătură cu științele naturii.</p></details>
+  <details class="pd"><summary>✍️ Română: e-mail, ghicitori, etimologii</summary><p>E-mailul către Alex, ghicitorile despre ape, cuvintele „geografie” și „atlas” (din greacă), numele zilelor (din latină), denumirile populare ale lunilor.</p></details>
+  <details class="pd"><summary>⚖️ Civică: reguli, comunități, mediu</summary><p>Țara și legile, apartenența locală, diversitatea comunităților, dreptul la un mediu curat, responsabilitatea față de natură și față de ceilalți.</p></details>
+  <details class="pd"><summary>🎨 Artă și informatică</summary><p>Colajul „De la localitatea natală la țara mea”, culorile hărților, legende desenate de tine, hărți digitale cu straturi, e-mailul.</p></details>
+ </div>
+</section>
+
+<!-- 12 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile unității + testul din manual</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 13 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Unitatea 1, într-o privire</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🧭</span><p>Mă orientez cu <b>puncte cardinale</b>, repere și hărți. Știu ce sunt <b>planul</b> și <b>harta</b>, cu titlu, scară și legendă.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">⛰️</span><p>Cunosc <b>relieful</b>, <b>apele</b>, <b>vegetația</b> și <b>oamenii</b> din orizontul meu local: populație, sate și orașe.</p></div>
+   <div class="box" style="border-color:var(--purple)"><span class="emo">🌍</span><p>Înțeleg <b>zi și noapte</b>, <b>anotimpuri</b>, <b>ora și calendarul</b>, de la mișcările Pământului.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:12px">
+   <div class="box" style="border-color:var(--red)"><span class="emo">🇷🇴</span><p>Știu că localitatea natală și orizontul local sunt în <b>regiune</b>, iar regiunea e în <b>țară</b>, prin schimbări succesive de scară.</p></div>
+   <div class="box" style="border-color:var(--yellow)"><span class="emo">🎒</span><p>Am început un <b>portofoliu</b> și mi-am făcut <b>autoevaluarea</b>. Știu cum să învăț: înțeleg, rețin, mă antrenez.</p></div>
+  </div>
+  <div class="tip y">🔁 <b>Urmează:</b> Unitatea 2, „România – Elemente de geografie generală”, începe cu limitele și vecinii țării.</div>
+ </div>
+</section>
+
+</main>
+
+<script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/romania.js"></script>
+<script>
+(function(){
+  var Q=[
+   {t:'mcq',tags:['Rec U1','L1'],d:'Orizont apropiat',q:'Spațiul în care îți desfășori activitățile zilnice (clasa, școala, cartierul) reprezintă:',o:['Linia orizontului','Orizontul apropiat','Orizontul local','Regiunea'],a:1,h:'E cel mai mic spațiu din jurul tău.',e:'Orizontul apropiat. Dincolo de el se întinde orizontul local.'},
+   {t:'mcq',tags:['Rec U1','L2'],d:'Orientare',q:'Ca să ajungi la un magazin aflat în fața ta, mergi:',o:['Spre dreapta','Înainte','Spre stânga','Înapoi'],a:1,h:'Direcția e relativă la corpul tău.',e:'Înainte. Stânga și dreapta se schimbă dacă te întorci; punctele cardinale nu.'},
+   {t:'mcq',tags:['Rec U1','L2'],d:'Repere',q:'Care e un reper bun pentru orientare?',o:['O mașină parcată','O clădire mare și veche, care nu se mută','Un om care trece','O minge'],a:1,h:'Un reper nu trebuie să se miște.',e:'O clădire stabilă, vizibilă. Mașinile și oamenii se mută: sunt repere slabe.'},
+   {t:'mcq',tags:['Rec U1','L3'],d:'Plan',q:'Ce trebuie să aibă un plan, ca să-l înțeleagă oricine?',o:['Titlu, legendă și o scară','Doar desene colorate','Un autograf','Fotografii'],a:0,h:'Semne convenționale, ce reprezintă și cât e micșorat.',e:'Titlu, legendă (semne convenționale) și scară (cât e micșorată realitatea).'},
+   {t:'mcq',tags:['Rec U1','L3'],d:'Plan',q:'Dimensiunile au fost micșorate de cele mai multe ori atunci când ai desenat planul:',o:['Clasei','Localității','Școlii','Biroului'],a:1,h:'Cel mai mare spațiu are nevoie de cea mai mare micșorare.',e:'Planul localității: spațiul e mai mare, deci realitatea e micșorată de mai multe ori (din manual, testul).'},
+   {t:'order',tags:['Rec U1','L4'],d:'Puncte cardinale',q:'Pune punctele cardinale în ordinea acelor de ceasornic, pornind de la nord.',items:['Nord','Est','Sud','Vest'],h:'Nord sus, apoi spre dreapta.',e:'Nord → est → sud → vest. Răsăritul e la est, apusul la vest.'},
+   {t:'mcq',tags:['Rec U1','L4'],d:'Puncte cardinale',q:'Partea de orizont opusă celei de miazăzi se numește:',o:['Apus sau vest','Miazănoapte sau nord','Răsărit sau est','Zenit'],a:1,h:'Miazăzi = sud.',e:'Miazănoapte sau nord. Opusul sudului (miazăzi) e nordul.'},
+   {t:'mcq',tags:['Rec U1','L4'],d:'Soare și umbră',q:'Dacă te uiți spre nord, unde răsare Soarele?',o:['În dreapta ta (est)','În stânga ta (vest)','În spate (sud)','În față'],a:0,h:'Răsare la est; nordul e în fața ta.',e:'În dreapta ta, la est. Apune la stânga ta, la vest.'},
+   {t:'mcq',tags:['Rec U1','L5'],d:'Hartă',q:'Care e diferența dintre plan și hartă?',o:['Harta reprezintă suprafețe mai mari, cu mai puține detalii','Nu există nicio diferență','Planul e mai mare decât harta','Harta nu are scară'],a:0,h:'Gândește-te la 1 cm = 1 km și 1 cm = 20 km.',e:'Harta reprezintă suprafețe mai mari, cu realitatea micșorată de mai multe ori și mai puține detalii.'},
+   {t:'num',u:'km',tags:['Rec U1','L5','Matematică'],d:'Scară',q:'Pe o hartă cu 1 cm = 20 km, două orașe sunt la 3 cm. Care e distanța reală?',a:60,h:'3 × 20.',e:'60 km.'},
+   {t:'mcq',tags:['Rec U1','L5'],d:'Hartă',q:'Cum se numește o colecție de hărți, într-o carte?',o:['Atlas','Plan','Legendă','Scară'],a:0,h:'Titanul din mitologie.',e:'Atlas.'},
+   {t:'order',tags:['Rec U1','L6'],d:'Relief',q:'Pune formele de relief în ordinea altitudinii, de la cea mai joasă.',items:['Câmpie','Deal','Munte'],h:'Sub 300 m, între 300 și 1 000 m, peste 1 000 m.',e:'Câmpie → deal → munte.'},
+   {t:'mcq',tags:['Rec U1','L6'],d:'Hartă',q:'Versanții abrupți și culmile cu vârfuri ascuțite sunt specifice formei de relief numită:',o:['Câmpie','Deal','Munte','Podiș'],a:2,h:'Cele mai înalte.',e:'Munte. Pe hartă se desenează cu maro.'},
+   {t:'sort',tags:['Rec U1','L6'],d:'Ape',q:'Sortează: ape curgătoare sau stătătoare?',items:[['Pârâu','s'],['Lac','n'],['Fluviu','s'],['Baltă','n'],['Râu','s'],['Mlaștină','n']],labels:{s:'Curgătoare',n:'Stătătoare'},h:'Unele curg la vale.',e:'Curgătoare: pârâu, râu, fluviu. Stătătoare: lac, baltă, mlaștină.'},
+   {t:'sort',tags:['Rec U1','L6'],d:'Păduri',q:'Sortează arborii: conifere sau foioase?',items:[['Brad','s'],['Stejar','n'],['Molid','s'],['Tei','n']],labels:{s:'Conifere',n:'Foioase'},h:'Ace sau frunze late.',e:'Conifere: brad, molid. Foioase: stejar, tei.'},
+   {t:'mcq',tags:['Rec U1','L7'],d:'Populație',q:'Toți oamenii care trăiesc într-o așezare omenească formează:',o:['Hidrografia','Populația','Relieful','Vegetația'],a:1,h:'Oameni = ?',e:'Populația așezării.'},
+   {t:'sort',tags:['Rec U1','L7'],d:'Așezări',q:'Sat sau oraș?',items:[['Gospodării cu grădină','s'],['Blocuri și fabrici','n'],['Cultivarea plantelor','s'],['Muzee și teatre','n']],labels:{s:'Sat',n:'Oraș'},h:'Rural sau urban.',e:'Sat: gospodării, cultivarea plantelor. Oraș: blocuri, fabrici, muzee.'},
+   {t:'num',u:'locuitori',tags:['Rec U1','L7','Matematică'],d:'Populație',q:'La Bistra sunt 2 902 bărbați și 2 737 femei. Câți locuitori sunt?',a:5639,h:'2 902 + 2 737.',e:'5 639.'},
+   {t:'mcq',tags:['Rec U1','L7'],d:'Așezări',q:'Așezările urbane sunt reprezentate de:',o:['Sate','Orașe','Gospodării','Ogoare'],a:1,h:'Urban = oraș.',e:'Orașe. Cele rurale sunt satele.'},
+   {t:'num',u:'ore',tags:['Rec U1','L8'],d:'Pământul',q:'Ciclul zi–noapte are o durată totală de câte ore?',a:24,h:'O rotație completă în jurul axei.',e:'24 de ore.'},
+   {t:'mcq',tags:['Rec U1','L8'],d:'Anotimpuri',q:'Dacă la noi (jumătatea nordică) este primăvară, în jumătatea sudică a Pământului este anotimpul numit...',o:['Primăvară','Vară','Toamnă','Iarnă'],a:2,h:'Anotimpurile sunt opuse.',e:'Toamnă. Când la noi e primăvară, în emisfera sudică e toamnă.'},
+   {t:'order',tags:['Rec U1','L8'],d:'Date',q:'Pune în ordine cele patru momente importante ale anului.',items:['21 martie','22 iunie','23 septembrie','22 decembrie'],h:'De la primăvară la iarnă.',e:'21 martie (echinocțiu) → 22 iunie (solstițiu) → 23 septembrie (echinocțiu) → 22 decembrie (solstițiu).'},
+   {t:'mcq',tags:['Rec U1','L8'],d:'Anotimpuri',q:'Care mișcare a Pământului determină formarea anotimpurilor?',o:['Rotația în jurul axei','Mișcarea în jurul Soarelui, cu axa înclinată','Mișcarea Lunii','Vântul'],a:1,h:'Durează un an.',e:'Mișcarea în jurul Soarelui, cu axa înclinată.'},
+   {t:'mcq',tags:['Rec U1','L8'],d:'Date',q:'Când este ziua egală cu noaptea?',o:['La solstiții','La echinocții (21 martie și 23 septembrie)','Doar vara','Niciodată'],a:1,h:'„Echi” = egal.',e:'La echinocții: 21 martie și 23 septembrie.'},
+   {t:'num',u:'zile',tags:['Rec U1','L9'],d:'Calendar',q:'Câte zile are o săptămână? (rezultatul lui (90 − 20) : 10)',a:7,h:'70 : 10.',e:'7 zile.'},
+   {t:'mcq',tags:['Rec U1','L9'],d:'Calendar',q:'Care an este bisect?',o:['2025','2026','2027','2028'],a:3,h:'Se împarte exact la 4.',e:'2028. Februarie are 29 de zile, iar anul 366.'},
+   {t:'mcq',tags:['Rec U1','L9'],d:'Calendar',q:'Calendarul este...',o:['Un sistem de împărțire a timpului în ani, luni și zile','Un fel de ceas','O hartă a anului','O carte de rețete'],a:0,h:'Ani, luni, zile.',e:'Un sistem de împărțire a timpului în ani, luni și zile.'},
+   {t:'mcq',tags:['Rec U1','L10'],d:'Regiune',q:'Localitatea natală e așezarea în care...',o:['Te-ai născut','Lucrezi','Te-ai mutat ultima dată','Ai fost în excursie'],a:0,h:'„Natală” de la „a naște”.',e:'Te-ai născut. Spațiul extins din jurul ei e regiunea.'},
+   {t:'mcq',tags:['Rec U1','L10'],d:'Regiune',q:'Dobrogea este regiunea dintre...',o:['Carpați și Dunăre','Dunăre și Marea Neagră','Prut și Nistru','Mureș și Olt'],a:1,h:'Singura cu ieșire la mare.',e:'Dunăre și Marea Neagră.'},
+   {t:'order',tags:['Rec U1','L11'],d:'Scară',q:'Pune spațiile în ordinea micșorării (de la mic la mare, ca teritoriu).',items:['Localitatea natală','Orizontul local','Regiunea','Țara'],h:'Fiecare îl cuprinde pe cel dinainte.',e:'Localitate → orizont local → regiune → țară.'},
+   {t:'mcq',tags:['Rec U1','L11'],d:'Țara',q:'Toate regiunile formează împreună un teritoriu numit...',o:['Țară','Județ','Oraș','Continent'],a:0,h:'România.',e:'Țară. În ea, oamenii respectă aceleași legi.'},
+   {t:'mcq',tags:['Test','Subiectul III'],d:'Test: scări',q:'Planul orașului Târgu Mureș ar fi desenat la scara:',o:['0 – 1 – 2 km','0 – 25 – 50 km','0 – 80 – 160 km'],a:0,h:'Un oraș e un spațiu mic.',e:'0–1–2 km. Un plan are cea mai mică scară (spații mici, multe detalii).'},
+   {t:'mcq',tags:['Test','Subiectul III'],d:'Test: scări',q:'Harta orizontului local în care se află Timișoara (județul Timiș) ar fi desenată la scara:',o:['0 – 1 – 2 km','0 – 25 – 50 km','0 – 80 – 160 km'],a:1,h:'Un județ e un spațiu mijlociu.',e:'0–25–50 km. Un județ e mai mare decât un oraș, dar mai mic decât țara.'},
+   {t:'mcq',tags:['Test','Subiectul III'],d:'Test: scări',q:'Harta României ar fi desenată la scara:',o:['0 – 1 – 2 km','0 – 25 – 50 km','0 – 80 – 160 km'],a:2,h:'Spațiul cel mai mare.',e:'0–80–160 km. Țara e cel mai mare spațiu, deci realitatea e micșorată cel mai mult.'},
+   {t:'mcq',tags:['Test','Subiectul III'],d:'Test: poziții',q:'Timișoara se află în ce parte a țării?',o:['Vest','Est','Sud-est','Nord-est'],a:0,h:'Lângă granița cu Serbia și Ungaria.',e:'Vest. Târgu Mureș e în centrul țării.'},
+   {t:'mcq',tags:['Test','Recapitulare'],d:'Hărți',q:'Care dintre activități are nevoie de hartă?',o:['O drumeție pe un traseu necunoscut de munte','Citirea unui basm','Numărarea până la 100','Desenarea unui animal'],a:0,h:'Orientare.',e:'Drumeția. Hărțile ne ajută la orientare, la excursii, la planificarea unui drum, în știință și în transport.'},
+   {t:'mcq',tags:['Test','Recapitulare'],d:'Adevărat sau fals',q:'„Fiecare regiune prezintă o serie de caracteristici proprii referitoare la relief, ape, vegetație, așezări, resurse naturale.” Este:',o:['Adevărat','Fals'],a:0,h:'Gândește-te la Dobrogea și la Moldova.',e:'Adevărat. Așa se deosebesc regiunile între ele.'},
+   {t:'mcq',tags:['Test','Recapitulare'],d:'Adevărat sau fals',q:'„Localitatea natală reprezintă așezarea în care m-am născut.” Este:',o:['Adevărat','Fals'],a:0,h:'Natal.',e:'Adevărat. Regiunea înconjurătoare e spațiul extins din jurul ei.'}
+  ];
+  Caiet.start({Q:Q});
+})();
+</script>
+<script>
+(function(){
+  /* cercuri */
+  Caiet.cercuri('rc-circ',{label:'De la clasă la țară',info:'rc-info',items:[
+   {label:'Țara',emoji:'🇷🇴',color:'#F7C4BE',text:'România: teritoriul în care oamenii respectă aceleași legi. Scara hărții: de exemplu 0–80–160 km.'},
+   {label:'Regiunea',emoji:'🗺️',color:'#F6D78B',text:'Spațiul extins din jurul orizontului local (de ex. Dobrogea). Scara: zeci de km.'},
+   {label:'Orizontul local',emoji:'🌄',color:'#BFE3A8',text:'Localitatea și spațiul din jur, de obicei județul. Scara: 0–25–50 km.'},
+   {label:'Localitatea',emoji:'🏘️',color:'#A5CCF2',text:'Satul sau orașul tău natal. Se reprezintă pe un plan, scara în sute de metri.'},
+   {label:'Cartierul',emoji:'🏠',color:'#C7B4EC',text:'Partea de localitate unde locuiești. Plan cu străzi și clădiri.'},
+   {label:'Școala',emoji:'🏫',color:'#F3B5AE',text:'Clădirea și curtea școlii. Plan detaliat.'},
+   {label:'Clasa',emoji:'🪑',color:'#E3E3E3',text:'Cel mai mic spațiu din unitate: băncile, tabla, ușa. Plan foarte detaliat.'}]});
+  /* carduri */
+  var FC=[
+   ['Orizont apropiat','Spațiul în care îți desfășori activitățile zilnice: clasa, școala, cartierul, localitatea.',0],
+   ['Reper','Un obiect fix și ușor de recunoscut, care te ajută să te orientezi.',0],
+   ['Plan','Desen al unui spațiu mic, văzut de sus, cu titlu, scară și legendă.',0],
+   ['Scară','Arată cât reprezintă în realitate 1 cm de pe hartă sau plan.',0],
+   ['Legendă','Semnele convenționale folosite și ce înseamnă ele.',0],
+   ['Orizont local','Localitatea și spațiul din jur, de obicei județul.',1],
+   ['Linia orizontului','Locul unde cerul pare să se întâlnească cu pământul.',1],
+   ['Puncte cardinale','Nord, est, sud, vest: direcții fixe, după Soare sau busolă.',1],
+   ['Miazănoapte / miazăzi','Nord și sud. Răsărit = est, apus = vest.',1],
+   ['Hartă','Desen micșorat și convențional al unor suprafețe mari.',1],
+   ['Atlas','Carte cu o colecție de hărți.',1],
+   ['Județ','Unitate administrativă tradițională, cu mai multe localități care se gospodăresc împreună.',1],
+   ['Relief','Toate denivelările suprafeței Pământului: munți, dealuri, câmpii.',1],
+   ['Altitudine','Înălțimea reliefului într-un anumit loc.',1],
+   ['Versant, culme, creastă','Versant: coasta înclinată; culme: partea de sus, ușor înclinată; creastă: partea de sus, ascuțită.',1],
+   ['Hidrografie','Toate apele dintr-un spațiu: curgătoare (pârâu, râu, fluviu) și stătătoare (baltă, mlaștină, lac).',1],
+   ['Izvor','Locul unde un firicel de apă iese la suprafață și curge.',1],
+   ['Vegetație','Toate plantele care cresc spontan într-un spațiu: arbori, arbuști, ierburi.',1],
+   ['Populație','Toți oamenii care trăiesc într-o așezare.',1],
+   ['Așezare rurală / urbană','Rurală: satul. Urbană: orașul.',1],
+   ['Gospodărie','Casa, grădina, curtea și adăposturile pentru animale, la sat.',1],
+   ['Rotația Pământului','Mișcarea în jurul axei, de la vest la est, în 24 de ore: zi și noapte.',2],
+   ['Mișcarea în jurul Soarelui','Durează un an; cu axa înclinată, produce anotimpurile.',2],
+   ['Echinocțiu / solstițiu','Echinocțiu: zi egală cu noaptea (21 martie, 23 septembrie). Solstițiu: cea mai lungă zi (22 iunie) sau noapte (22 decembrie).',2],
+   ['Calendar','Sistem de împărțire a timpului în ani, luni și zile.',2],
+   ['An bisect','An cu 366 de zile: februarie are 29 de zile, o dată la 4 ani.',2],
+   ['Localitate natală','Așezarea în care te-ai născut.',3],
+   ['Regiune','Teritoriu mai întins, cu limite clare și mediu relativ asemănător.',3],
+   ['Țară','Teritoriu din care fac parte regiunile și în care oamenii respectă aceleași legi.',3]
+  ];
+  var FG=['Orizontul apropiat','Orizontul local','Pământul și timpul','De la local la țară'],fg=-1,fgrid=document.getElementById('fc-grid'),fch=document.getElementById('fc-chips');
+  function fcDraw(){fgrid.innerHTML='';FC.forEach(function(c){if(fg>=0&&c[2]!==fg)return;var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','false');b.innerHTML='<b>'+c[0]+'</b><small>'+FG[c[2]]+'</small>';var open=false;b.onclick=function(){open=!open;b.setAttribute('aria-pressed',open);b.innerHTML=open?'<b>'+c[0]+'</b><span>'+c[1]+'</span>':'<b>'+c[0]+'</b><small>'+FG[c[2]]+'</small>';};fgrid.appendChild(b);});}
+  ['Toate'].concat(FG).forEach(function(n,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',i===0?'true':'false');b.textContent=n;b.onclick=function(){fg=i-1;fch.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});fcDraw();};fch.appendChild(b);});
+  fcDraw();
+  /* detectiv */
+  var RGN=[['Transilvania','transilvania'],['Banat','banat'],['Oltenia','oltenia'],['Muntenia','muntenia'],['Moldova','moldova'],['Dobrogea','dobrogea']];
+  var tgt=0,sc=0,st=0,tot=0,dsel=null;
+  function dTask(){tgt=Math.floor(Math.random()*RGN.length);document.getElementById('dt-task').innerHTML='🔍 Găsește regiunea: <b>'+RGN[tgt][0]+'</b>';dsel=null;dDraw();}
+  function dDraw(){Caiet.harta('dt-map',{map:'romania',label:'Găsește regiunea',fill:function(z){return z.id===dsel?(z.prov===RGN[tgt][1]?'#2E9D52':'#E2433A'):'#E7E2D2';},
+    text:function(z){dsel=z.id;tot++;var ok=z.prov===RGN[tgt][1],real=(RGN.filter(function(r){return r[1]===z.prov;})[0]||['?'])[0];
+      if(ok){sc++;st++;}else st=0;document.getElementById('dt-score').textContent='Corecte: '+sc+' din '+tot+' · la rând: '+st;
+      return ok?'✅ Corect! <b>'+z.name+'</b> e în '+real+'. Apasă „Altă regiune” pentru următoarea.':'❌ <b>'+z.name+'</b> e în '+real+', nu în '+RGN[tgt][0]+'. Mai încearcă.';},info:'dt-info'});}
+  document.getElementById('dt-new').onclick=function(){dTask();document.getElementById('dt-info').textContent='Apasă pe un județ.';};
+  dTask();
+  /* fișa */
+  var CK=['Posterul „Orizontul apropiat” (planul clasei/școlii)','Fișa de observare: forma de relief predominantă din orizontul meu local','Fișa de observare: apele curgătoare și lacurile din regiune','Fișa de observare: vegetația și animalele sălbatice','Hărți ale orizontului local găsite (titlu, scară, legendă)','Numele așezărilor urbane și rurale din județ','Numărul de locuitori ai localității mele și ocupațiile principale','Calendarul meu: o fișă pentru fiecare lună a anului școlar','Investigația: schimbările produse de oameni în orizontul local','Fișa localității natale și a regiunii','Colajul „De la localitatea natală la țara mea”','Autoevaluările mele, în dosarul „Autoevaluare”'];
+  var cl=document.getElementById('ck-list');
+  function ckUp(){var n=cl.querySelectorAll('input:checked').length;document.getElementById('ck-bar').style.width=(n/CK.length*100)+'%';document.getElementById('ck-out').innerHTML='Ai bifat <b>'+n+'</b> din '+CK.length+'. '+(n===CK.length?'🏆 Portofoliul tău e complet!':n>=8?'Aproape gata! Mai ai câteva materiale de adăugat.':n>=4?'Ai un început bun. Continuă cu fișele de observare.':'Începe cu ce ai mai ușor: un poster sau o fișă.');}
+  CK.forEach(function(t,i){var l=document.createElement('label');l.innerHTML='<input type="checkbox" id="ck'+i+'"><span>'+t+'</span>';l.querySelector('input').onchange=ckUp;cl.appendChild(l);});ckUp();
+  /* numere */
+  var NM=[['24','24 de ore: durata unui ciclu zi–noapte, adică o rotație completă a Pământului în jurul axei.'],['7','7 zile într-o săptămână, mereu în aceeași ordine.'],['12','12 luni într-un an. Într-o lună: 4 săptămâni întregi plus 2–3 zile.'],['365 / 366','Zilele unui an obișnuit / bisect. Anul real: 365 de zile și 6 ore.'],['4','4 anotimpuri, fiecare de 3 luni. 4 momente importante: 21 martie, 22 iunie, 23 septembrie, 22 decembrie.'],['300 m · 1 000 m','Limitele reliefului: câmpii sub 300 m, dealuri între 300 și 1 000 m, munți peste 1 000 m.'],['1 cm = ? km','Scara: cât reprezintă în realitate 1 cm. Distanța reală = cm × km pe 1 cm.'],['41 + București','Județele României (41), plus municipiul București. Orizontul local = de obicei județul.']];
+  var nb=document.getElementById('nm-btns'),ni=document.getElementById('nm-info');
+  NM.forEach(function(n){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','false');b.textContent=n[0];b.onclick=function(){nb.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});ni.innerHTML='<h3 style="margin-top:0">'+n[0]+'</h3><p style="margin:0">'+n[1]+'</p>';};nb.appendChild(b);});
+  /* roluri */
+  var ROLES=['📅 Reporter al schimbărilor din natură (o lună)','🏘️ Cercetător: ce a schimbat omul în localitate','📜 Autorul regulilor de protecție a naturii','📷 Fotograf / desenator','✏️ Redactor-șef și secretar'];
+  document.getElementById('rl-b').onclick=function(){var nm=document.getElementById('rl-n').value.split(',').map(function(x){return x.trim();}).filter(Boolean);
+    var out=document.getElementById('rl-out');out.innerHTML='';if(!nm.length){out.innerHTML='<div class="role">Scrie cel puțin un nume.</div>';return;}
+    var r=ROLES.slice();for(var i=r.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=r[i];r[i]=r[j];r[j]=t;}
+    nm.forEach(function(n,i){var d=document.createElement('div');d.className='role';d.innerHTML='<b>'+n.replace(/</g,'&lt;')+'</b>: '+r[i%r.length];out.appendChild(d);});};
+  /* autoevaluare */
+  var TG=['Să aleg răspunsul corect din mai multe variante','Să citesc informațiile de pe o hartă sau un plan','Să completez spațiile libere dintr-un enunț','Să experimentez lucruri noi','Să reformulez enunțuri greșite','Să rezolv probleme','Să stabilesc dacă o afirmație este adevărată sau falsă'];
+  var tl=document.getElementById('tg-list'),tans={};
+  TG.forEach(function(t,i){var s=document.createElement('div');s.className='s';s.textContent=t;var y=document.createElement('button');y.type='button';y.textContent='DA';y.setAttribute('aria-pressed','false');var n=document.createElement('button');n.type='button';n.className='no';n.textContent='NU';n.setAttribute('aria-pressed','false');
+    y.onclick=function(){tans[i]='y';y.setAttribute('aria-pressed','true');n.setAttribute('aria-pressed','false');up();};n.onclick=function(){tans[i]='n';n.setAttribute('aria-pressed','true');y.setAttribute('aria-pressed','false');up();};tl.appendChild(s);tl.appendChild(y);tl.appendChild(n);});
+  function up(){var yes=0,no=0;for(var k in tans){if(tans[k]==='y')yes++;else no++;}document.getElementById('tg-info').innerHTML='Ai răspuns la <b>'+(yes+no)+'</b> din '+TG.length+': <b>'+yes+'</b> DA și <b>'+no+'</b> NU. '+(no?'Ce îți place mai puțin poate fi exersat: începe cu un exercițiu mic, în fiecare zi.':'Îți place să aplici ce ai învățat!');}
+  function grade(n,fb,b,s){return n>=fb?'Foarte bine':n>=b?'Bine':n>=s?'Suficient':'Insuficient (mai exersează)';}
+  function cq(){var a=+document.getElementById('cq-1').value,b=+document.getElementById('cq-2').value,c=+document.getElementById('cq-3').value;
+    document.getElementById('cq-out').innerHTML='Subiectul I: <b>'+grade(a,4,2,1)+'</b> · Subiectul II: <b>'+grade(b,4,2,1)+'</b> · Subiectul III: <b>'+grade(c,6,4,2)+'</b>.<br><span style="font-size:.9em">Grila din manual: la I și II, Foarte bine = 4–5 corecte, Bine = 2–3, Suficient = 1. La III, Foarte bine = 6–7, Bine = 4–5, Suficient = 2–3.</span>';}
+  ['cq-1','cq-2','cq-3'].forEach(function(i){document.getElementById(i).oninput=cq;});cq();
+  /* linia valorică */
+  var ARG={
+   inteleg:'<b>Argumente „înțelegerea e mai importantă”:</b><br>• Dacă înțelegi, poți rezolva și lucruri pe care nu le-ai mai văzut.<br>• Ce memorezi fără să înțelegi se uită repede.<br>• Formula Andrei: înțeleg + rețin + mă antrenez.',
+   memor:'<b>Argumente „memorarea e esențială”:</b><br>• Unele lucruri trebuie știute pe loc: lunile, zilele, punctele cardinale.<br>• Memoria ne ajută să rezolvăm repede, fără să căutăm.<br>• Ca la sport: reflexele se formează exersând.',
+   amb:'<b>Ai nevoie de amândouă.</b><br>• Înțelegi ca să nu uiți și memorezi ca să fii rapid.<br>• Când înveți ceva nou, mai întâi înțelegi, apoi exersezi până îl știi.<br>• Spune cum vei învăța tu data viitoare: o hartă, un desen, un joc?'
+  };
+  var vb=document.querySelectorAll('#vl-btns button'),vx=document.getElementById('vl-box');
+  vb.forEach(function(b){b.onclick=function(){vb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});vx.innerHTML='<p style="margin:0">'+ARG[b.dataset.k]+'</p>';};});
+})();
+</script>
+</body>
+</html>

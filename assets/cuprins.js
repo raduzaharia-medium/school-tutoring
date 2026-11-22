@@ -40,7 +40,10 @@ Caiet.CUPRINS=[
     {f:'geografie/unitatea-1/lectia-6-relief-hidrografie-vegetatie.html',l:'Lecția 6',t:'Relief, hidrografie, vegetație',d:'Peisaj 3D de la câmpie la munte, râuri și lacuri, circuitul apei și vegetația pe etaje.'},
     {f:'geografie/unitatea-1/lectia-7-populatie-asezari-activitati.html',l:'Lecția 7',t:'Populație, așezări, activități ale oamenilor',d:'Ancheta în familie, sat și oraș, orașe și sate cu istorie, jocul „Unde ai construi o așezare?”.'},
     {f:'geografie/unitatea-1/lectia-8-modificari-observabile.html',l:'Lecția 8',t:'Modificări observabile în realitatea înconjurătoare',d:'Rotația și mișcarea în jurul Soarelui în 3D, lungimea zilei, anotimpurile și omul în mediu.'},
-    {f:'geografie/unitatea-1/lectia-9-repere-de-timp.html',l:'Lecția 9',t:'Repere de timp: ora, ziua, săptămâna, anul, calendarul',d:'Ceasul, rebusul zilelor, cercul anului, anul bisect, generatorul de calendar și istoria calendarului.'}]}]},
+    {f:'geografie/unitatea-1/lectia-9-repere-de-timp.html',l:'Lecția 9',t:'Repere de timp: ora, ziua, săptămâna, anul, calendarul',d:'Ceasul, rebusul zilelor, cercul anului, anul bisect, generatorul de calendar și istoria calendarului.'},
+    {f:'geografie/unitatea-1/lectia-10-localitatea-natala-regiunea.html',l:'Lecția 10',t:'Localitatea natală. Regiunea înconjurătoare',d:'Cele șase regiuni ale României, de ce satul e un punct pe hartă, compară regiuni și scrie un e-mail.'},
+    {f:'geografie/unitatea-1/lectia-11-de-la-orizont-la-tara.html',l:'Lecția 11',t:'De la orizontul local la regiune și țară',d:'Cercuri unul în altul, zoom de la județ la țară, hărțile orașelor și direcțiile între orașe.'},
+    {f:'geografie/unitatea-1/recapitulare-unitatea-1.html',l:'Toată unitatea',t:'De la clasă la țară',d:'Recapitularea celor 11 lecții: carduri, detectivul de hărți, fișa de portofoliu, autoevaluare și testul final, cu 38 de misiuni.',r:1}]}]},
  {id:'civica',name:'Educație civică',emoji:'⚖️',desc:'Locurile cărora le aparținem, valorile, regulile și drepturile copilului.',color:'var(--purple)',tint:'var(--tint-purple)',units:[
    {u:'Unitatea 1. Locuri de apartenență',items:[
     {f:'civica/unitatea-1/lectia-1-apartenenta-locala.html',l:'Lecția 1',t:'Apartenența locală. Localitatea și domiciliul',d:'Comunitatea locală, instituțiile, relațiile dintre oameni și adresa de domiciliu.'},

@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>De la orizontul local la regiune și țară</title>
+<link rel="stylesheet" href="../../assets/caiet.css">
+<style>
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}
+.pd summary{cursor:pointer;font-weight:800}
+.pd[open] summary{margin-bottom:6px}
+.pd:last-of-type{border-color:var(--green)}
+.vl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.vl button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.4em 1em}
+.vl button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.fig svg{display:block;width:100%;max-width:680px;height:auto;margin:0 auto}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:700px){.two{grid-template-columns:1fr}}
+.two .fig-wrap{margin:0}
+.lv{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.lv button{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:.3em .8em;cursor:pointer}
+.lv button[aria-pressed="true"]{background:var(--blue);color:#fff;border-color:var(--blue)}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Geografie · Unitatea 1 · Lecția 11 · manual pp. 40–41</p>
+   <h1>De la orizontul local la regiune și țară</h1>
+   <p class="lead">O țară întreagă încape pe o foaie dacă o micșorezi destul. Cum trecem de la satul nostru la România, de la un cerc mic la unul mare?</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="#EAF4FF"/>
+   <circle cx="110" cy="110" r="88" fill="#F7E9C8" stroke="#B5882E" stroke-width="4"/>
+   <circle cx="110" cy="110" r="62" fill="#F1D77B" stroke="#B5882E" stroke-width="4"/>
+   <circle cx="110" cy="110" r="38" fill="#9BD59B" stroke="#4F8F4A" stroke-width="4"/>
+   <circle cx="110" cy="110" r="14" fill="#E2433A"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 CERCURI -->
+<section class="slide" aria-label="Care desen e corect">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Observ · desenele lui Alex</span>
+  <h2>Care desen arată corect spațiile?</h2>
+  <p>Alex i-a trimis lui Cristian două desene și o legendă: <b>localitatea</b>, <b>orizontul local</b>, <b>regiunea</b>, <b>țara</b>. Una dintre variante e corectă. Alege-o, apoi vezi motivul.</p>
+  <div class="ctrl" id="dr-ctrl"><button type="button" aria-pressed="false" data-d="A">Desenul A: cercuri separate</button><button type="button" aria-pressed="false" data-d="B">Desenul B: cercuri unul în altul</button></div>
+  <div class="fig-wrap fig"><svg viewBox="0 0 520 280" role="img" aria-label="Două desene cu spațiile înconjurătoare">
+   <rect x="2" y="2" width="516" height="276" rx="10" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>
+   <g id="dr-A"><text x="130" y="28" text-anchor="middle" font-size="15" font-weight="800" fill="var(--ink)">A</text>
+    <circle cx="70" cy="90" r="50" fill="#F7E9C8" stroke="#B5882E" stroke-width="3"/><circle cx="170" cy="90" r="38" fill="#F1D77B" stroke="#B5882E" stroke-width="3"/><circle cx="70" cy="210" r="28" fill="#9BD59B" stroke="#4F8F4A" stroke-width="3"/><circle cx="170" cy="215" r="12" fill="#E2433A"/>
+    <text x="70" y="94" text-anchor="middle" font-size="12" font-weight="800" fill="#222">țara</text><text x="170" y="94" text-anchor="middle" font-size="11" font-weight="800" fill="#222">regiunea</text><text x="70" y="214" text-anchor="middle" font-size="9" font-weight="800" fill="#222">orizont local</text><text x="170" y="242" text-anchor="middle" font-size="10" font-weight="800" fill="#222">localitatea</text></g>
+   <g id="dr-B"><text x="390" y="28" text-anchor="middle" font-size="15" font-weight="800" fill="var(--ink)">B</text>
+    <circle cx="390" cy="150" r="110" fill="#F7E9C8" stroke="#B5882E" stroke-width="3"/><circle cx="390" cy="170" r="76" fill="#F1D77B" stroke="#B5882E" stroke-width="3"/><circle cx="390" cy="192" r="44" fill="#9BD59B" stroke="#4F8F4A" stroke-width="3"/><circle cx="390" cy="204" r="14" fill="#E2433A"/>
+    <text x="390" y="62" text-anchor="middle" font-size="13" font-weight="800" fill="#222">țara</text><text x="390" y="110" text-anchor="middle" font-size="12" font-weight="800" fill="#222">regiunea</text><text x="390" y="158" text-anchor="middle" font-size="11" font-weight="800" fill="#222">orizontul local</text><text x="390" y="208" text-anchor="middle" font-size="9" font-weight="800" fill="#222">loc.</text></g>
+  </svg></div>
+  <div class="map-info" id="dr-info" aria-live="polite">Alege un desen.</div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Localitatea natală și orizontul local fac parte dintr-o regiune. Regiunea e parte dintr-un teritoriu numit <b>țară</b>, în care oamenii respectă aceleași reguli, numite <b>legi</b>.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Cercurile unul în altul arată că fiecare spațiu <b>cuprinde</b> spațiul mai mic (ca păpușile matrioșka). Ai folosit cercuri și la lecția 1, pentru orizontul apropiat. Aici ele cresc până la scara țării.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 3 ZOOM OUT -->
+<section class="slide" aria-label="De la localitate la țară">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">🗺️ Descopăr · schimbări de scară</span>
+  <h2>De la satul tău la România, în patru pași</h2>
+  <p>Reprezentarea pe hărți a unor spații tot mai mari se face prin <b>micșorarea treptată</b> a dimensiunilor, adică prin <b>schimbări succesive de scară</b>. Apasă pe pași, de la mic la mare.</p>
+  <div class="lv" id="zo-lv"></div>
+  <div class="fig-wrap"><div id="zo-map"></div><svg id="zo-plan" viewBox="0 0 520 300" role="img" aria-label="Planul localității" style="display:block;width:100%;max-width:460px;height:auto;margin:0 auto"><rect x="2" y="2" width="516" height="296" rx="10" fill="#F4F0E2"/><path d="M20 160 H500 M150 30 V280 M340 30 V280" stroke="#888" stroke-width="10"/><g fill="#C99A6B"><rect x="170" y="80" width="50" height="40"/><rect x="240" y="80" width="50" height="40"/><rect x="170" y="190" width="50" height="40"/><rect x="240" y="190" width="50" height="40"/><rect x="360" y="80" width="50" height="40"/><rect x="40" y="80" width="50" height="40"/><rect x="40" y="190" width="50" height="40"/></g><rect x="360" y="185" width="60" height="50" fill="#2F6FD6"/><text x="390" y="215" font-size="12" font-weight="800" text-anchor="middle" fill="#fff">ȘCOALA</text><path d="M30 275 h100 M30 270 v10 M80 270 v10 M130 270 v10" stroke="#222" stroke-width="3"/><text x="30" y="264" font-size="11" font-weight="800" fill="#222">0   250  500 m</text></svg></div>
+  <div class="map-info" id="zo-info" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 4 DOUA HARTI -->
+<section class="slide" aria-label="Orașe în regiune și în județ">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Descopăr · hărțile lui Cristian</span>
+  <h2>Două hărți ale orașelor din jur</h2>
+  <p>Cristian spune: „Orizontul local în care se află localitatea mea natală este reprezentat de <b>județul Constanța</b>. Acest județ ocupă o mare parte din regiunea <b>Dobrogea</b>.” El a trimis două hărți. Alege titlul potrivit pentru fiecare.</p>
+  <div class="two">
+   <div><div class="fig-wrap"><div id="dh-a"></div></div><div class="ctrl"><button type="button" data-a="A-regiune">Harta orașelor din regiune</button><button type="button" data-a="A-oriz">Harta orașelor din orizontul local</button></div></div>
+   <div><div class="fig-wrap"><div id="dh-b"></div></div><div class="ctrl"><button type="button" data-a="B-regiune">Harta orașelor din regiune</button><button type="button" data-a="B-oriz">Harta orașelor din orizontul local</button></div></div>
+  </div>
+  <div class="map-info" id="dh-info" aria-live="polite">Alege un titlu pentru fiecare hartă (A și B).</div>
+  <p class="sursa">Observă: județul Constanța e în sud, în partea de jos a Dobrogei.</p>
+ </div>
+</section>
+
+<!-- 5 DIRECTII -->
+<section class="slide" aria-label="În ce parte a țării">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Descopăr · orientare pe harta țării</span>
+  <h2>În ce parte a țării? Și față de alt oraș?</h2>
+  <p>Folosește punctele cardinale (lecția 4). Alege două orașe: vezi unde se află fiecare în țară și în ce direcție mergi de la primul la al doilea.</p>
+  <div class="calc"><label for="di-a" style="font-weight:800">De la</label><select id="di-a"></select><label for="di-b" style="font-weight:800">spre</label><select id="di-b"></select></div>
+  <div class="fig-wrap"><div id="di-map"></div></div>
+  <div class="map-info" id="di-info" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 6 ORDINE -->
+<section class="slide" aria-label="Colaj și proiect">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#3a2a00">Activitate în grup · colajul</span>
+  <h2>„De la localitatea natală la țara mea”</h2>
+  <p>Realizați împreună un colaj cu imagini reprezentative pentru <b>orizontul local</b>, pentru <b>regiunea</b> în care se află și pentru <b>țară</b>. Expuneți colajul în clasă. Planificați-l pe etape:</p>
+  <div class="grid g4">
+   <div class="box"><span class="emo">🏡</span><h3>1. Localitatea</h3><p>Fotografii cu clădiri, străzi, oameni, tradiții.</p></div>
+   <div class="box"><span class="emo">🌄</span><h3>2. Orizontul local</h3><p>Imagini cu relieful, apele, pădurile din județ.</p></div>
+   <div class="box"><span class="emo">🗺️</span><h3>3. Regiunea</h3><p>Orașe, locuri vestite, specific regional.</p></div>
+   <div class="box"><span class="emo">🇷🇴</span><h3>4. Țara</h3><p>Drapel, harta României, locuri de pe tot cuprinsul.</p></div>
+  </div>
+  <div class="tip y">🧠 <b>De gândit:</b> pe un colaj, spațiile trebuie ordonate de la mic la mare, ca pe hartă. Imaginile din regiune nu trebuie amestecate cu cele din țară. Cum le grupați?</div>
+  <details class="pd"><summary>Aplic 2: caută în atlas harta localității tale natale</summary><p>Caută hărți pe care e marcată localitatea ta. Compară-le: care arată o suprafață mai mare? Pe care scara micșorează de mai multe ori realitatea? Notează-le în ordinea micșorării: <b>localitate → județ → regiune → țară</b>.</p></details>
+ </div>
+</section>
+
+<!-- 7 DEZBATERE -->
+<section class="slide" aria-label="Dezbatere">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">🗣️ Dezbatere · linia valorică</span>
+  <h2>În colaj, arătăm și problemele locului?</h2>
+  <p>La colajul „De la localitatea natală la țara mea”, e firesc să punem imagini frumoase. Dar fiecare loc are și probleme: gunoi, drumuri proaste, ape poluate. Ar trebui să le arătăm și pe ele?</p>
+  <div class="vl" id="vl-btns">
+   <button type="button" aria-pressed="false" data-k="frumos">Doar partea frumoasă</button>
+   <button type="button" aria-pressed="false" data-k="ambele">Și problemele</button>
+   <button type="button" aria-pressed="false" data-k="ind">Încă nu m-am hotărât</button>
+  </div>
+  <div class="box" id="vl-box" aria-live="polite"><p>Apasă pe o poziție ca să vezi ce argumente ar putea folosi un elev. Apoi adaugă-le pe ale tale.</p></div>
+  <div class="tip y">🗣️ <b>Reguli:</b> ascultăm până la capăt, nu acuzăm pe nimeni anume, folosim „eu cred că... pentru că...”. La final, decidem împreună cum arătăm și frumosul, și ce poate fi îmbunătățit.</div>
+ </div>
+</section>
+
+<!-- 8 PUNTE -->
+<section class="slide" aria-label="Punte">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Civică ↔ Istorie ↔ Matematică ↔ Artă</span>
+  <h2>Legături cu celelalte materii</h2>
+  <details class="pd"><summary>Educație civică: țara și legile</summary><p>România e o țară în care oamenii respectă aceleași reguli, numite <b>legi</b>. La civică (unitatea 1, lecția 2) ai studiat însemnele țării: drapel, stemă, imn. Toți locuitorii țării, de oriunde, sunt cetățeni care au drepturi și datorii.</p></details>
+  <details class="pd"><summary>Istorie: de la state medievale la țară</summary><p>Transilvania, Țara Românească, Moldova și Dobrogea au fost state separate (lecția 3). Cu timpul, ele s-au unit într-o singură țară. Mihai Viteazul a unit pentru prima dată trei dintre ele în 1600 (povestea urmează în manualul de istorie).</p></details>
+  <details class="pd"><summary>Matematică: de la 1 : 1 la scări mari</summary><p>Un plan al localității (0–250–500 m) și o hartă a țării (0–100–200 km) au scări foarte diferite. Dacă 1 cm = 500 m pe plan și 1 cm = 100 km pe hartă, a doua scară e de 200 de ori mai mică în detaliu (100 km : 0,5 km = 200).</p></details>
+  <details class="pd"><summary>Artă: colajul</summary><p>Un colaj combină fotografii, desene și decupaje pe aceeași pagină. Alege un titlu, ordonează imaginile de la mic la mare, folosește culori care se potrivesc. Poți face și o legendă, ca pe hartă.</p></details>
+  <details class="pd"><summary>Informatică: hărți și straturi</summary><p>Pe hărțile digitale poți porni sau opri „straturi” (orașe, ape, drumuri). Fiecare strat e ca un desen transparent așezat peste altul, la aceeași scară.</p></details>
+ </div>
+</section>
+
+<!-- 9 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile lecției</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 10 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">⭕</span><p>Localitatea natală și orizontul local fac parte dintr-o <b>regiune</b>, iar regiunea face parte din <b>țară</b>.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">⚖️</span><p>În țară, oamenii respectă aceleași reguli, numite <b>legi</b>. Țara noastră se numește <b>România</b>.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">🔍</span><p>Spațiile tot mai mari se reprezintă prin <b>schimbări succesive de scară</b>: realitatea e micșorată tot mai mult.</p></div>
+  </div>
+  <div class="tip y">🔁 <b>Urmează:</b> recapitularea întregii unități 1, cu testul final.</div>
+ </div>
+</section>
+
+</main>
+
+<script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/romania.js"></script>
+<script>
+(function(){
+  var Q=[
+   {t:'mcq',tags:['G L11'],d:'Cercuri',q:'Care desen arată corect cum se includ spațiile?',o:['Cercuri separate','Cercuri unul în altul: localitate, orizont local, regiune, țară','Doar un cerc','Cercuri care se suprapun la întâmplare'],a:1,h:'Fiecare spațiu cuprinde spațiul mai mic.',e:'Cercurile unul în altul: localitatea e în orizontul local, acesta e în regiune, iar regiunea e în țară.'},
+   {t:'order',tags:['G L11'],d:'Scară',q:'Pune spațiile în ordine, de la cel mai mic la cel mai mare.',items:['Localitatea natală','Orizontul local (județul)','Regiunea','Țara'],h:'Fiecare îl cuprinde pe cel dinainte.',e:'Localitate → orizont local → regiune → țară.'},
+   {t:'mcq',tags:['G L11'],d:'Vocabular',q:'Ce este o țară, după manual?',o:['Un teritoriu în care oamenii respectă aceleași reguli, numite legi','Un râu mare','O hartă','Un oraș'],a:0,h:'Citește „Rețin”.',e:'Un teritoriu din care fac parte regiunile și în care trăiesc oameni ce respectă aceleași legi.'},
+   {t:'mcq',tags:['G L11'],d:'Scară',q:'Cum se reprezintă pe hărți spații tot mai mari?',o:['Mărind dimensiunile','Micșorând treptat dimensiunile, prin schimbări succesive de scară','Doar colorând','Făcând hărțile mai mici decât foaia'],a:1,h:'Scara micșorează realitatea.',e:'Prin micșorare treptată, adică prin schimbări succesive de scară.'},
+   {t:'mcq',tags:['G L11'],d:'Hartă',q:'Județul Constanța ocupă o mare parte din regiunea...',o:['Moldova','Dobrogea','Banat','Oltenia'],a:1,h:'Cristian.',e:'Dobrogea. Județul Constanța e în sudul regiunii.'},
+   {t:'mcq',tags:['G L11'],d:'Orientare',q:'Alex s-a născut la Oradea. În ce parte a țării e Oradea?',o:['Nord-vest','Sud-est','Sud','Est'],a:0,h:'La granița cu Ungaria.',e:'În nord-vestul țării, aproape de granița cu Ungaria.'},
+   {t:'mcq',tags:['G L11'],d:'Orientare',q:'Sibiu, localitatea natală a Mariei, se află...',o:['În centrul țării','În extremitatea de est','În extremitatea de sud-est','La mare'],a:0,h:'Unul dintre orașele din interiorul arcului Carpaților.',e:'În centrul țării, în sudul Transilvaniei.'},
+   {t:'mcq',tags:['G L11'],d:'Orientare',q:'Față de Alexandria (în sud), Constanța se află spre...',o:['Nord-vest','Est','Vest','Sud-vest'],a:1,h:'Constanța e lângă Marea Neagră; Alexandria e mai spre centru-sud.',e:'Spre est (și puțin spre nord-est): Marea Neagră e în partea de est a țării.'},
+   {t:'mcq',tags:['G L11'],d:'Orientare',q:'Oana s-a născut la Bacău (Moldova). Bogdan, la Alexandria (Muntenia). Față de regiunea lui Bogdan, regiunea Oanei e spre...',o:['Nord-est','Sud-vest','Vest','Sud'],a:0,h:'Moldova e în nord-est.',e:'Nord-est: Moldova e în nord-estul țării, deasupra Munteniei.'},
+   {t:'num',u:'ori',tags:['G L11','Matematică'],d:'Matematică',q:'Un plan are 1 cm = 500 m (0,5 km), iar o hartă a țării are 1 cm = 100 km. De câte ori este a doua scară mai mică în detaliu? (100 : 0,5)',a:200,h:'100 împărțit la 0,5.',e:'De 200 de ori. De aceea o școală nu se vede pe harta țării.'},
+   {t:'mcq',tags:['G L11','Civică'],d:'Civică',q:'Cine hotărăște legile unei țări, într-o democrație?',o:['Reprezentanții aleși ai cetățenilor','Un singur om, mereu','Doar copiii','Nimeni'],a:0,h:'Parlamentul. Ai văzut democrația la istorie.',e:'Reprezentanții aleși, în Parlament. În democrație, oamenii aleg pe cei care fac legile.'},
+   {t:'mcq',tags:['G L11','Istorie'],d:'Istorie',q:'Ce state românești medievale s-au unit, cu timpul, într-o singură țară?',o:['Transilvania, Țara Românească, Moldova și Dobrogea','Doar Moldova','Atena și Sparta','Dacia și Roma'],a:0,h:'Lecția 3 de istorie.',e:'Transilvania, Țara Românească, Moldova și Dobrogea (unite la date și moduri diferite, în timp).'},
+   {t:'mcq',tags:['G L11'],d:'Gândire',q:'De ce nu se văd casele pe harta țării?',o:['Pentru că nu sunt case','Pentru că la scara hărții țării, o casă e prea mică ca să se vadă','Pentru că harta e veche','Pentru că sunt ascunse'],a:1,h:'Scara.',e:'Realitatea e micșorată de foarte multe ori. Se vede doar ce are dimensiuni mari, ca orașele, apele și munții.'}
+  ];
+  Caiet.start({Q:Q});
+})();
+</script>
+<script>
+(function(){
+  /* cercuri A/B */
+  var db=document.querySelectorAll('#dr-ctrl button'),di=document.getElementById('dr-info');
+  db.forEach(function(b){b.onclick=function(){var d=b.getAttribute('data-d');db.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+    document.getElementById('dr-A').style.opacity=d==='A'?1:.3;document.getElementById('dr-B').style.opacity=d==='B'?1:.3;
+    di.innerHTML=d==='B'?'✅ <b>Desenul B e corect.</b> Localitatea e în orizontul local, orizontul local e în regiune, iar regiunea e în țară: cercuri unul în altul.':'❌ <b>Desenul A nu e corect.</b> Cercurile sunt separate, ca și cum localitatea, regiunea și țara ar fi locuri diferite. Dar ele se includ unele în altele.';};});
+  /* zoom */
+  var DC={lon:28.65,lat:44.17};
+  function kmPerUnit(lat){return 6371*Math.cos(lat*Math.PI/180)/3569.6;}
+  var LV=[
+   {n:'1 · Localitatea',plan:true,txt:'🏡 <b>Planul localității</b>: se văd străzile, casele și școala. Scara: 0–250–500 m.'},
+   {n:'2 · Orizontul local',v:[27.45,45.05,29.45,43.45],km:25,fill:function(z){return z.name==='Constanța'?'#E2433A':'#E7E2D2';},txt:'🔍 <b>Județul Constanța</b>, orizontul local al lui Cristian. Orașele sunt puncte, apele sunt linii și pete. Scara: 0–25–50 km.'},
+   {n:'3 · Regiunea',v:[26.9,45.75,30.3,43.4],km:50,fill:function(z){return z.name==='Constanța'?'#E2433A':z.prov==='dobrogea'?'#F3B5AE':'#E7E2D2';},txt:'🗺️ <b>Regiunea Dobrogea</b>: județele Constanța și Tulcea. Județul Constanța ocupă partea de sud. Scara: 0–50–100 km.'},
+   {n:'4 · Țara',v:null,km:100,fill:function(z){return z.name==='Constanța'?'#E2433A':z.prov==='dobrogea'?'#F3B5AE':'#E7E2D2';},txt:'🇷🇴 <b>România</b>: toate regiunile. Dobrogea e în sud-est, lângă Marea Neagră. Scara: 0–100–200 km.'}
+  ];
+  var zl=document.getElementById('zo-lv'),zi=document.getElementById('zo-info'),zp=document.getElementById('zo-plan'),zm=document.getElementById('zo-map');
+  function zo(i){var L=LV[i];zl.querySelectorAll('button').forEach(function(x,j){x.setAttribute('aria-pressed',j===i?'true':'false');});zi.innerHTML=L.txt;
+    if(L.plan){zp.style.display='block';zm.style.display='none';return;}
+    zp.style.display='none';zm.style.display='block';
+    var o={map:'romania',label:'Spațiu la scara '+L.n,fill:L.fill,points:[{lon:DC.lon,lat:DC.lat,text:i>1?'':'Constanța',color:'#222',r:4}]};
+    if(L.v){var a=Caiet.proj('romania',L.v[0],L.v[1]),b=Caiet.proj('romania',L.v[2],L.v[3]);o.view=[a[0],a[1],b[0]-a[0],b[1]-a[1]];}
+    o.after=function(svg,k){var v=o.view||[0,0,600,430],len=L.km/kmPerUnit(44.5),x=v[0]+v[2]*.05,y=v[1]+v[3]*.94,E=Caiet.svg;
+      E('line',{x1:x,y1:y,x2:x+len,y2:y,stroke:'#222','stroke-width':3*k},svg);E('line',{x1:x,y1:y-4*k,x2:x,y2:y+4*k,stroke:'#222','stroke-width':3*k},svg);E('line',{x1:x+len,y1:y-4*k,x2:x+len,y2:y+4*k,stroke:'#222','stroke-width':3*k},svg);
+      var t=E('text',{x:x,y:y-8*k,'font-size':12*k,'font-weight':800,fill:'#222'},svg);t.textContent=L.km+' km';};
+    Caiet.harta('zo-map',o);}
+  LV.forEach(function(L,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','false');b.textContent=L.n;b.onclick=function(){zo(i);};zl.appendChild(b);});
+  zo(0);
+  /* două hărți */
+  function dm(id,reg){var v=reg?[26.9,45.75,30.3,43.4]:[27.45,45.05,29.45,43.45];var a=Caiet.proj('romania',v[0],v[1]),b=Caiet.proj('romania',v[2],v[3]);
+    var CITY=reg?[[45.18,28.8,'Tulcea'],[44.17,28.65,'Constanța'],[44.25,28.27,'Medgidia'],[43.82,28.58,'Mangalia'],[44.32,28.61,'Năvodari']]:[[44.17,28.65,'Constanța'],[43.82,28.58,'Mangalia'],[44.25,28.27,'Medgidia'],[44.34,28.03,'Cernavodă'],[44.32,28.61,'Năvodari'],[44.05,28.65,'Eforie']];
+    Caiet.harta(id,{map:'romania',label:reg?'Orașe din regiune':'Orașe din județ',view:[a[0],a[1],b[0]-a[0],b[1]-a[1]],fill:function(z){return z.name==='Constanța'?'#F6C431':z.prov==='dobrogea'?'#F9E08A':'#E7E2D2';},points:CITY.map(function(c){return {lat:c[0],lon:c[1],text:c[2],color:'#E2433A',r:3.5};})});}
+  dm('dh-a',false);dm('dh-b',true);
+  var ans={A:null,B:null},di2=document.getElementById('dh-info');
+  document.querySelectorAll('.two button').forEach(function(b){b.onclick=function(){var k=b.getAttribute('data-a').split('-');ans[k[0]]=k[1];b.parentNode.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+    var ok=ans.A==='oriz'&&ans.B==='regiune',msg=[];if(ans.A)msg.push('A: '+(ans.A==='oriz'?'orizontul local':'regiunea'));if(ans.B)msg.push('B: '+(ans.B==='oriz'?'orizontul local':'regiunea'));
+    di2.innerHTML=(ans.A&&ans.B)?(ok?'✅ Corect! <b>A</b> (zoom mai mare, doar județul) = orașele din orizontul local; <b>B</b> (toată Dobrogea) = orașele din regiune.':'🔎 Mai încearcă. Care hartă acoperă tot spațiul Dobrogei? Care doar județul Constanța?'):msg.join(' · ');};});
+  /* direcții */
+  var CT=[['Oradea',47.05,21.92],['Timișoara',45.75,21.23],['Craiova',44.32,23.8],['Alexandria',43.97,25.33],['București',44.43,26.1],['Sibiu',45.8,24.15],['Bacău',46.57,26.91],['Iași',47.16,27.59],['Constanța',44.17,28.65]];
+  var DN=['nord','nord-est','est','sud-est','sud','sud-vest','vest','nord-vest'];
+  function dir(la1,lo1,la2,lo2){var dx=(lo2-lo1)*Math.cos(((la1+la2)/2)*Math.PI/180),dy=la2-la1,ang=(Math.atan2(dx,dy)*180/Math.PI+360)%360;return DN[Math.round(ang/45)%8];}
+  var sa=document.getElementById('di-a'),sb=document.getElementById('di-b');
+  CT.forEach(function(c,i){[sa,sb].forEach(function(s,j){var o=document.createElement('option');o.value=i;o.textContent=c[0];if((j===0&&i===0)||(j===1&&i===8))o.selected=true;s.appendChild(o);});});
+  function dsh(){var A=CT[+sa.value],B=CT[+sb.value];
+    Caiet.harta('di-map',{map:'romania',label:'Direcția între două orașe',fill:function(){return '#E7E2D2';},points:[{lat:A[1],lon:A[2],text:A[0],color:'#2F6FD6',r:6},{lat:B[1],lon:B[2],text:B[0],color:'#E2433A',r:6}],routes:A===B?[]:[{pts:[[A[2],A[1]],[B[2],B[1]]],color:'#222'}]});
+    var cen=dir(45.9,25,A[1],A[2]),ce2=dir(45.9,25,B[1],B[2]);
+    document.getElementById('di-info').innerHTML='📍 <b>'+A[0]+'</b> e în partea de <b>'+(cen==='nord'&&Math.abs(A[2]-25)<1.2&&Math.abs(A[1]-45.9)<1.2?'centru':cen)+'</b> a țării, iar <b>'+B[0]+'</b>, în partea de <b>'+(Math.abs(B[2]-25)<1.2&&Math.abs(B[1]-45.9)<1.2?'centru':ce2)+'</b>.<br>🧭 De la '+A[0]+' spre '+B[0]+' mergi spre <b>'+(A===B?'(același oraș)':dir(A[1],A[2],B[1],B[2]))+'</b>.';}
+  sa.onchange=dsh;sb.onchange=dsh;dsh();
+  /* linia valorică */
+  var ARG={
+   frumos:'<b>Argumente „doar partea frumoasă”:</b><br>• Colajul e o prezentare a locului de care ești mândru.<br>• Imaginile frumoase îi fac pe vizitatori să vrea să vină.<br>• Dacă arăți doar probleme, poate părea că locul nu are nimic bun.',
+   ambele:'<b>Argumente „și problemele”:</b><br>• Un loc real are și lucruri bune, și lucruri de îmbunătățit. A arăta doar partea frumoasă nu e onest.<br>• Dacă vedem problemele, putem decide cum să le rezolvăm.<br>• Putem arăta problemele și soluțiile: „așa e acum, așa ar putea fi”.',
+   ind:'<b>Gândește-te:</b><br>• Ce vrei să afle cineva care nu a fost niciodată acolo?<br>• Pot fi imaginile despre probleme prezentate cu respect, fără să judece pe cineva?<br>• Alege 3 imagini frumoase și 1 problemă, apoi explică de ce.'
+  };
+  var vb=document.querySelectorAll('#vl-btns button'),vx=document.getElementById('vl-box');
+  vb.forEach(function(b){b.onclick=function(){vb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});vx.innerHTML='<p style="margin:0">'+ARG[b.dataset.k]+'</p>';};});
+})();
+</script>
+</body>
+</html>
