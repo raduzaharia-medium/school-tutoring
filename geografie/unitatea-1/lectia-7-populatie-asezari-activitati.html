@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Populație, așezări, activități ale oamenilor</title>
+<link rel="stylesheet" href="../../assets/caiet.css">
+<style>
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}
+.pd summary{cursor:pointer;font-weight:800}
+.pd[open] summary{margin-bottom:6px}
+.pd:last-of-type{border-color:var(--green)}
+.vl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.vl button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.4em 1em}
+.vl button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.fig svg{display:block;width:100%;max-width:680px;height:auto;margin:0 auto}
+.hot{cursor:pointer}
+.hot:focus{outline:3px solid var(--blue);outline-offset:2px}
+.fam{width:100%;border-collapse:collapse;margin:8px 0}
+.fam th,.fam td{border:2px solid var(--line);padding:.3em .5em;text-align:left}
+.fam th{background:var(--tint-yellow)}
+.fam input,.fam select{font:inherit;font-weight:700;padding:.2em .4em;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink);width:100%;max-width:11em}
+.sites{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:10px 0}
+.site{background:var(--paper);border:2px solid var(--line);border-radius:16px;padding:10px 14px;cursor:pointer;font:inherit;text-align:left;color:var(--ink)}
+.site[aria-pressed="true"]{border-color:var(--blue);background:var(--tint-blue)}
+.site b{display:block;font-family:var(--display);font-size:1.05em}
+.stars{letter-spacing:0;color:#C9862A;font-size:.62em;display:block}
+.tblwrap table{width:100%;border-collapse:collapse}
+.tblwrap th,.tblwrap td{border:2px solid var(--line);padding:.4em .6em;text-align:left}
+.tblwrap th{background:var(--tint-yellow)}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Geografie · Unitatea 1 · Lecția 7 · manual pp. 28–33</p>
+   <h1>Populație, așezări, activități ale oamenilor</h1>
+   <p class="lead">Cine locuiește în satul și în orașul tău? Cum se deosebesc oamenii, locurile și meseriile, și de ce au apărut așezările tocmai acolo?</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="#BFE3F7"/>
+   <circle cx="180" cy="40" r="14" fill="#F6C431"/>
+   <path d="M10 170 H210 V210 H10Z" fill="#6FBF73"/>
+   <g fill="#8A5A2B"><rect x="22" y="140" width="26" height="30"/><rect x="54" y="148" width="22" height="22"/></g>
+   <path d="M18 140 l17 -16 l17 16Z M50 148 l15 -14 l15 14Z" fill="#E2433A"/>
+   <path d="M90 170 V84 h24 V170Z M120 170 V64 h26 V170Z M152 170 V100 h24 V170Z" fill="#7C8FB8"/>
+   <g fill="#F6E7A3"><rect x="96" y="92" width="5" height="6"/><rect x="104" y="92" width="5" height="6"/><rect x="126" y="72" width="5" height="6"/><rect x="136" y="72" width="5" height="6"/><rect x="126" y="90" width="5" height="6"/><rect x="136" y="90" width="5" height="6"/><rect x="158" y="108" width="5" height="6"/></g>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 OBSERV -->
+<section class="slide" aria-label="Observ">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Observ · orizontul local al Mihaelei</span>
+  <h2>Care enunț e adevărat?</h2>
+  <div class="grid g2">
+   <div class="box"><span class="emo">⛰️</span><h3>1. Natura</h3><p>Orizontul local are caracteristici <b>naturale</b> proprii, ușor de observat: relief, ape (râuri, lacuri), vegetație.</p></div>
+   <div class="box"><span class="emo">🏘️</span><h3>2. Oamenii</h3><p>Pe lângă cele naturale, are caracteristici legate de <b>oameni</b>, de așezările lor și de activitățile pe care le desfășoară.</p></div>
+  </div>
+  <div class="tip g">✅ <b>Amândouă sunt adevărate!</b> La lecția 6 ai studiat natura orizontului local. Acum studiem oamenii.</div>
+  <span class="badge" style="background:var(--red);margin-top:14px">Ancheta de azi</span>
+  <div class="q"><span class="mark" style="background:var(--blue)">1</span>Ce este o așezare omenească și cine formează populația ei?</div>
+  <div class="q"><span class="mark" style="background:var(--green)">2</span>Cum se deosebesc oamenii dintr-o așezare de cei din alta?</div>
+  <div class="q"><span class="mark" style="background:var(--purple)">3</span>Ce deosebește un sat de un oraș? Și ce fac oamenii acolo?</div>
+  <div class="q"><span class="mark" style="background:var(--red)">4</span>De ce s-au născut așezările tocmai acolo unde sunt?</div>
+ </div>
+</section>
+
+<!-- 3 POPULATIA -->
+<section class="slide" aria-label="Populația">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Descopăr și rețin · populația</span>
+  <h2>Cum se deosebesc oamenii dintr-o așezare?</h2>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Marele geograf român <b>Simion Mehedinți</b> spunea că așezările sunt „grupări de locuințe [...] și de oameni care își desfășoară activitatea pe un anumit teritoriu”. Toți oamenii care locuiesc într-o așezare formează <b>populația</b> ei.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Geografia nu se uită la cum arată un om (culoarea ochilor, a părului), ci la <b>caracteristicile de grup</b> care ne spun cum trăiește o comunitate: câți copii sunt, câți vârstnici, ce lucrează oamenii.</p></div>
+  </div>
+  <p style="margin-top:10px">Apasă pe un criteriu:</p>
+  <div class="minbtns" id="pp-btns"></div>
+  <div class="box" id="pp-info" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 4 AIUD / BISTRA -->
+<section class="slide" aria-label="Aiud și Bistra">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Aplic · tabelul din manual</span>
+  <h2>Aiud și Bistra: femei și bărbați</h2>
+  <p>În două așezări, populația e formată din persoane de sex <b>masculin</b> și <b>feminin</b>. Priviți graficele.</p>
+  <div class="grid g2">
+   <div class="box"><h3 style="margin-top:0">Aiud (oraș)</h3><div id="ai-bar"></div></div>
+   <div class="box"><h3 style="margin-top:0">Bistra (sat)</h3><div id="bi-bar"></div></div>
+  </div>
+  <details class="pd"><summary>1. Cu cât sunt mai mulți bărbați decât femei la Aiud?</summary><p>14 591 − 14 522 = <b>69</b>. E o diferență foarte mică. Aiud are 29 113 locuitori (14 591 + 14 522).</p></details>
+  <details class="pd"><summary>2. Care e populația totală din Bistra?</summary><p>2 902 + 2 737 = <b>5 639</b> locuitori.</p></details>
+  <div class="tip y">🧮 <b>Matematică:</b> Aiud are de peste cinci ori mai mulți locuitori decât Bistra (29 113 : 5 639 ≈ 5,2). Cu cât o așezare are mai mulți locuitori, cu atât e mai probabil să fie oraș, dar nu doar numărul contează, ci și ce activități se desfășoară acolo.</div>
+ </div>
+</section>
+
+<!-- 5 ANCHETA FAMILIE -->
+<section class="slide" aria-label="Ancheta în familie">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Activitate în grup · ancheta în familie</span>
+  <h2>Familia ta, grupată după vârstă</h2>
+  <p>Manualul îți cere să aduni date despre familia ta. Aici ai un exemplu. <b>Schimbă vârstele și ocupațiile</b> și vezi cum se modifică graficele (nu se salvează nimic).</p>
+  <div class="scroll"><table class="fam"><thead><tr><th>Persoana</th><th>Vârsta (ani)</th><th>Ocupația</th></tr></thead><tbody id="fm-body"></tbody></table></div>
+  <div class="grid g2">
+   <div class="box"><h3 style="margin-top:0">După vârstă</h3><div id="fm-age"></div></div>
+   <div class="box"><h3 style="margin-top:0">După ocupație</h3><div id="fm-occ"></div></div>
+  </div>
+  <div class="map-info" id="fm-info" aria-live="polite"></div>
+  <p class="sursa">Grupele din manual: 0–19 ani, 20–65 de ani, peste 65 de ani; elevi, persoane care lucrează, pensionari.</p>
+ </div>
+</section>
+
+<!-- 6 SAT VS ORAS -->
+<section class="slide" aria-label="Sat și oraș">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Descopăr și rețin · rural și urban</span>
+  <h2>Sat și oraș, față în față</h2>
+  <p>Așezările sunt <b>rurale</b> (sate) sau <b>urbane</b> (orașe). Alege o așezare, apoi apasă pe elementele din desen.</p>
+  <div class="ctrl" id="so-ctrl"><button type="button" aria-pressed="true" data-m="sat">🏡 Satul</button><button type="button" aria-pressed="false" data-m="oras">🏙️ Orașul</button></div>
+  <div class="fig-wrap fig"><svg viewBox="0 0 520 280" role="img" aria-label="Un sat și un oraș">
+   <rect x="2" y="2" width="516" height="276" rx="10" fill="#CFE8FF" stroke="var(--line)" stroke-width="2"/>
+   <path d="M2 190 H518 V278 H2Z" fill="#8CD08F"/>
+   <g id="so-sat">
+    <path d="M2 190 H518 V220 H2Z" fill="#E7C95A"/>
+    <path d="M2 235 H518 V278 H2Z" fill="#B9A15A"/>
+    <path d="M40 190 q10 -30 40 -40 q40 -10 60 40Z" fill="#2F7A44"/>
+    <g class="hot" tabindex="0" role="button" aria-label="Gospodărie" data-t="<b>Gospodăria</b>: casa, grădina, curtea cu adăposturi pentru animale, la un loc. Aproape fiecare familie din sat are una."><rect x="170" y="150" width="60" height="40" fill="#C99A6B"/><path d="M164 150 l36 -30 l36 30Z" fill="#E2433A"/><rect x="236" y="165" width="46" height="25" fill="#8A5A2B"/><path d="M232 165 l27 -14 l27 14Z" fill="#B5452F"/></g>
+    <g class="hot" tabindex="0" role="button" aria-label="Biserica" data-t="<b>Biserica</b>: una dintre clădirile cele mai importante din centrul satului, alături de școală, primărie și cabinetul medical."><rect x="320" y="140" width="30" height="50" fill="#F4E9D8" stroke="#8C7F66" stroke-width="2"/><path d="M335 100 l-8 40 h16Z" fill="#B5452F"/><path d="M335 100 v-14 M329 92 h12" stroke="#222" stroke-width="2"/></g>
+    <g class="hot" tabindex="0" role="button" aria-label="Școala" data-t="<b>Școala</b>: în sat există de obicei o școală, în centru. Copiii merg pe jos sau cu autobuzul școlar."><rect x="360" y="160" width="60" height="30" fill="#7CA7E0"/><path d="M354 160 l36 -18 l36 18Z" fill="#B5452F"/></g>
+    <g class="hot" tabindex="0" role="button" aria-label="Terenuri cultivate" data-t="<b>Ogoarele</b> și livezile: o mare parte din suprafața satului. Oamenii cultivă plante și cresc animale."><path d="M20 235 h140 M20 250 h140 M20 265 h140" stroke="#6F8F3A" stroke-width="6"/><path d="M200 235 h120 M200 250 h120 M200 265 h120" stroke="#E7C95A" stroke-width="6"/><circle cx="450" cy="245" r="14" fill="#E2433A" opacity=".85"/><circle cx="478" cy="255" r="14" fill="#E2433A" opacity=".85"/></g>
+   </g>
+   <g id="so-oras" style="display:none">
+    <path d="M2 250 H518 V278 H2Z" fill="#5B5F6B"/><path d="M2 265 H518" stroke="#fff" stroke-width="3" stroke-dasharray="14 10"/>
+    <g class="hot" tabindex="0" role="button" aria-label="Blocuri" data-t="<b>Blocurile</b>: în oraș locuiesc mulți oameni în blocuri sau în case. Străzi multe, clădiri înalte, aglomerație."><rect x="30" y="80" width="50" height="170" fill="#7C8FB8"/><rect x="90" y="110" width="44" height="140" fill="#8EA2C9"/><rect x="144" y="60" width="54" height="190" fill="#6F83AE"/><g fill="#F6E7A3"><rect x="40" y="95" width="8" height="10"/><rect x="58" y="95" width="8" height="10"/><rect x="40" y="130" width="8" height="10"/><rect x="58" y="130" width="8" height="10"/><rect x="100" y="125" width="8" height="10"/><rect x="118" y="125" width="8" height="10"/><rect x="156" y="80" width="8" height="10"/><rect x="174" y="80" width="8" height="10"/><rect x="156" y="120" width="8" height="10"/><rect x="174" y="120" width="8" height="10"/></g></g>
+    <g class="hot" tabindex="0" role="button" aria-label="Fabrica" data-t="<b>Fabrica</b>: în oraș sunt multe locuri de muncă în industrie. Oamenii lucrează în fabrici, uzine, pe șantiere."><rect x="220" y="160" width="90" height="90" fill="#A06A4A"/><rect x="236" y="120" width="16" height="40" fill="#8C5A3E"/><rect x="266" y="130" width="16" height="30" fill="#8C5A3E"/><path d="M244 112 q-8 -14 4 -24 q14 -8 6 -22" stroke="#aaa" stroke-width="6" fill="none" opacity=".7"/></g>
+    <g class="hot" tabindex="0" role="button" aria-label="Magazin și instituții" data-t="<b>Magazine, muzee, teatre, școli, spitale</b>: în oraș se desfășoară activități comerciale, culturale, educative, sportive și medicale."><rect x="330" y="140" width="70" height="110" fill="#D8A97A"/><rect x="340" y="150" width="50" height="18" fill="#E2433A"/><text x="365" y="164" text-anchor="middle" font-size="11" font-weight="800" fill="#fff">MAGAZIN</text><rect x="410" y="130" width="64" height="120" fill="#9FB6D8"/><path d="M404 130 h76 l-38 -26Z" fill="#6F83AE"/></g>
+    <g class="hot" tabindex="0" role="button" aria-label="Parc" data-t="<b>Parcul</b>: în oraș sunt și spații verzi pentru plimbare și joacă."><circle cx="498" cy="226" r="16" fill="#2E9D52"/><rect x="496" y="226" width="4" height="24" fill="#6B4A2B"/></g>
+   </g>
+  </svg></div>
+  <div class="map-info" id="so-info" aria-live="polite">Apasă pe un element din desen.</div>
+  <div class="tblwrap" style="margin-top:10px"><table>
+   <tr><th></th><th>Sat (rural)</th><th>Oraș (urban)</th></tr>
+   <tr><td><b>Populație</b></td><td>mai puțin numeroasă</td><td>mai numeroasă</td></tr>
+   <tr><td><b>Locuințe</b></td><td>gospodării: casă, grădină, curte, adăposturi, livezi</td><td>blocuri sau case, pe străzi</td></tr>
+   <tr><td><b>Ocupații</b></td><td>cultivarea plantelor, creșterea animalelor</td><td>industrie, comerț, cultură, educație, sport, sănătate</td></tr>
+  </table></div>
+ </div>
+</section>
+
+<!-- 7 HARTA ASEZARI -->
+<section class="slide" aria-label="Așezări pe hartă">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">🗺️ Hartă · așezări și istorie</span>
+  <h2>Orașe și sate cu povești</h2>
+  <p>Pe hartă, orașele se arată cu <b>cercuri mari</b>, iar satele cu <b>puncte mici</b>. Alege o categorie.</p>
+  <div class="legend-chips" id="as-chips"></div>
+  <div class="fig-wrap"><div id="as-map"></div></div>
+  <div class="map-info" id="as-info" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 8 UNDE SA FACI ASEZAREA -->
+<section class="slide" aria-label="Unde ai construi o așezare">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Explic · de ce acolo?</span>
+  <h2>Joc: alege locul pentru o așezare nouă</h2>
+  <p>Manualul întreabă: de ce sunt așezările răspândite în toate formele de relief, dar mai ales în <b>câmpii și dealuri</b>, și de ce multe sunt lângă <b>ape</b>? Alege un loc și vezi ce primește așezarea ta.</p>
+  <div class="sites" id="st-list"></div>
+  <div class="map-info" id="st-info" aria-live="polite">Alege un loc.</div>
+  <div class="tip y">🏛️ <b>Istorie:</b> dacii își țineau cetățile pe înălțimi, pentru protecție, iar grecii își puneau orașele pe țărm, pentru comerț. Fiecare a ales în funcție de ce avea nevoie cel mai mult.</div>
+ </div>
+</section>
+
+<!-- 9 DEZBATERE -->
+<section class="slide" aria-label="Dezbatere">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">🗣️ Dezbatere · linia valorică</span>
+  <h2>Sat sau oraș: unde e mai bine să trăiești?</h2>
+  <p>Oameni din sate se mută în orașe, iar unii din orașe aleg să trăiască la sat. Fiecare loc are avantaje și dezavantaje. Alege o poziție și citește argumentele.</p>
+  <div class="vl" id="vl-btns">
+   <button type="button" aria-pressed="false" data-k="sat">La sat</button>
+   <button type="button" aria-pressed="false" data-k="oras">La oraș</button>
+   <button type="button" aria-pressed="false" data-k="ind">Depinde / nehotărât</button>
+  </div>
+  <div class="box" id="vl-box" aria-live="polite"><p>Apasă pe o poziție ca să vezi ce argumente ar putea folosi un elev. Apoi adaugă-le pe ale tale.</p></div>
+  <div class="tip y">🗣️ <b>Reguli:</b> ascultăm până la capăt, nu judecăm locul altuia, folosim „eu cred că... pentru că...”. La final formulăm o concluzie comună: ce ar trebui să aibă fiecare loc ca oamenii să trăiască bine?</div>
+ </div>
+</section>
+
+<!-- 10 PUNTE -->
+<section class="slide" aria-label="Punte">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Istorie ↔ Civică ↔ Română ↔ Matematică</span>
+  <h2>Legături cu celelalte materii</h2>
+  <details class="pd"><summary>Istorie: când au apărut primele așezări?</summary><p>Manualul te întreabă. Primele așezări stabile au apărut acum mii de ani, când oamenii au început să cultive pământul și să crească animale, în loc să se mute mereu după hrană. Lecțiile de istorie despre geto-daci, greci (Histria, Tomis, Callatis) și comunitatea locală (unitatea 1, lecția 4) îți dau exemple concrete.</p></details>
+  <details class="pd"><summary>Civică: tradiții, obiceiuri, diversitate</summary><p>Populația unei așezări poate fi de naționalități diferite: români, maghiari, romi, germani și alții. Fiecare comunitate are tradiții și obiceiuri. Respectul pentru diversitate înseamnă să ne cunoaștem vecinii și să nu-i judecăm după aspect sau după origine.</p></details>
+  <details class="pd"><summary>Română: tradiții în literatură</summary><p>Vlahuță descrie hora la sat în „România pitorească” (text din manualul de istorie). Povești, ghicitori și proverbe din satul bunicilor te ajută să descrii o așezare cu cuvinte frumoase. Scrie o compunere: „Satul/orașul meu în cinci propoziții”.</p></details>
+  <details class="pd"><summary>Matematică: date și grafice</summary><p>Ai citit un tabel, ai calculat o diferență (14 591 − 14 522) și o sumă (2 902 + 2 737), apoi ai făcut grafice cu bare. Așa lucrează și geografii: strâng numere, le compară și le arată în desene.</p></details>
+  <details class="pd"><summary>📋 Portofoliu: fișa orizontului local (II)</summary><p>Notează: numele așezărilor urbane și rurale din județ, aspecte privind vechimea lor, întinderea și clădirile, populația, tradițiile, activitățile oamenilor. Caută numărul de locuitori ai localității tale în presa locală, la bibliotecă sau pe internet.</p></details>
+ </div>
+</section>
+
+<!-- 11 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile lecției</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 12 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">👥</span><p><b>Populația</b> unei așezări e formată din toți oamenii care locuiesc acolo și se deosebește după vârstă, sex, naționalitate, mediu de viață și ocupații.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">🏡</span><p>Așezările sunt <b>rurale</b> (sate) sau <b>urbane</b> (orașe). Satele au mai puțini locuitori, iar orașele mai mulți.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">💧</span><p>Așezările se află mai ales în <b>câmpii</b> și <b>dealuri</b>, lângă ape, pentru că acolo oamenii au ce le trebuie pentru viață.</p></div>
+  </div>
+  <div class="tip y">🔁 <b>Urmează:</b> Lecția 8, „Modificări observabile în realitatea înconjurătoare”: Pământul în 3D.</div>
+ </div>
+</section>
+
+</main>
+
+<script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/romania.js"></script>
+<script>
+(function(){
+  var Q=[
+   {t:'mcq',tags:['G L7'],d:'Vocabular',q:'Cine formează populația unei așezări?',o:['Doar copiii','Toți oamenii care locuiesc în ea','Doar adulții','Doar cei născuți acolo'],a:1,h:'Citește la „Rețin”.',e:'Toți oamenii care locuiesc în așezare, de orice vârstă și sex.'},
+   {t:'mcq',tags:['G L7'],d:'Criterii',q:'Care dintre acestea NU este o caracteristică după care se deosebesc populațiile așezărilor, în geografie?',o:['Vârsta','Sexul','Culoarea ochilor','Ocupațiile'],a:2,h:'Geografia studiază grupurile, nu aspectul fiecărei persoane.',e:'Culoarea ochilor. Se compară vârsta, sexul, naționalitatea, mediul de viață și ocupațiile.'},
+   {t:'num',u:'persoane',tags:['G L7','Matematică'],d:'Matematică',q:'La Aiud sunt 14 591 de persoane de sex masculin și 14 522 de sex feminin. Cu câți mai mulți sunt bărbații?',a:69,h:'14 591 − 14 522.',e:'69. E o diferență foarte mică față de 29 113 locuitori.'},
+   {t:'num',u:'locuitori',tags:['G L7','Matematică'],d:'Matematică',q:'La Bistra sunt 2 902 persoane de sex masculin și 2 737 de sex feminin. Care e populația totală?',a:5639,h:'2 902 + 2 737.',e:'5 639 de locuitori.'},
+   {t:'mcq',tags:['G L7'],d:'Vocabular',q:'Care sunt cele două feluri de așezări omenești?',o:['Rurale (sate) și urbane (orașe)','Mari și mici','Vechi și noi','De munte și de mare'],a:0,h:'Rural = la țară; urban = la oraș.',e:'Rurale, reprezentate de sate, și urbane, reprezentate de orașe.'},
+   {t:'sort',tags:['G L7'],d:'Sat sau oraș?',q:'Sortează: caracteristică de sat sau de oraș?',items:[['Gospodării cu grădină și curte','s'],['Blocuri și străzi largi','n'],['Cultivarea plantelor','s'],['Fabrici și magazine','n'],['Populație mai puțin numeroasă','s'],['Muzee și teatre','n']],labels:{s:'Sat',n:'Oraș'},h:'Gândește-te la ocupații și la locuințe.',e:'Sat: gospodării, cultivarea plantelor, populație mai puțin numeroasă. Oraș: blocuri, fabrici, muzee, teatre.'},
+   {t:'mcq',tags:['G L7'],d:'Corectează',q:'Care enunț e adevărat?',o:['Față de orașe, satele au mai mulți locuitori','Față de sate, orașele au mai mulți locuitori','Toate așezările au același număr de locuitori','Orașele se ocupă mai ales cu cultivarea plantelor'],a:1,h:'Orașele sunt mai aglomerate.',e:'Față de sate, orașele au mai mulți locuitori. Ocupațiile din oraș sunt industriale, comerciale, culturale etc.'},
+   {t:'mcq',tags:['G L7'],d:'Vocabular',q:'Ce este o gospodărie, într-un sat?',o:['Casa, grădina, curtea și adăposturile pentru animale, la un loc','Doar o casă','O fabrică','Un magazin'],a:0,h:'Un loc unde familia locuiește și lucrează.',e:'Casa, grădina, curtea cu adăposturi pentru animale, formând împreună gospodăria.'},
+   {t:'num',u:'persoane',tags:['G L7','Matematică'],d:'Ancheta',q:'Într-o familie, vârstele sunt: 10, 15, 38, 41, 68 și 71 de ani. Câte persoane au peste 65 de ani?',a:2,h:'Caută numerele mai mari de 65.',e:'2 persoane (68 și 71 de ani): ele formează grupa „peste 65 de ani”.'},
+   {t:'mcq',tags:['G L7'],d:'Explic',q:'De ce sunt multe așezări lângă ape?',o:['Pentru că apa e frumoasă','Pentru că oamenii au nevoie de apă pentru băut, gătit, agricultură și animale','Pentru că nu se poate construi în alt loc','Pentru că acolo nu plouă'],a:1,h:'Ai învățat la științe de ce avem nevoie de apă.',e:'Apa e necesară pentru băut, pentru plante și animale, pentru curățenie și pentru transport.'},
+   {t:'mcq',tags:['G L7'],d:'Explic',q:'De ce sunt mai multe așezări în câmpii și dealuri decât la munte înalt?',o:['Pentru că munții sunt mai frumoși','Pentru că terenul e mai ușor de lucrat, e mai cald și drumurile se fac mai ușor','Pentru că la munte nu sunt oameni','Pentru că nu există apă'],a:1,h:'Gândește-te la altitudine și temperatură (lecția 6).',e:'La câmpie și la deal pământul se lucrează mai ușor, e mai cald și se construiesc mai ușor casele și drumurile.'},
+   {t:'mcq',tags:['G L7','Istorie'],d:'Istorie',q:'Tomis, colonia grecească din Dobrogea, este azi...',o:['Un sat mic','Orașul Constanța','Orașul Cluj','Un lac'],a:1,h:'Lecția 1 de istorie, unitatea 2.',e:'Orașul Constanța. Callatis a devenit Mangalia. Așezările pot dura mii de ani.'},
+   {t:'mcq',tags:['G L7','Istorie'],d:'Istorie',q:'Badea Cârțan, care a mers pe jos la Roma, s-a născut la Cârțișoara. Ce fel de așezare e Cârțișoara?',o:['Oraș mare','Sat','Capitală','Port'],a:1,h:'Pe hartă, un punct mic.',e:'Sat, în județul Sibiu. Oameni din sate au făcut istorie.'},
+   {t:'mcq',tags:['G L7','Civică'],d:'Civică',q:'Populația unei așezări poate fi formată din români, maghiari, romi etc. Cum e bine să ne purtăm?',o:['Să-i judecăm după aspect','Să respectăm diversitatea și să ne cunoaștem vecinii','Să ne ținem departe de cei diferiți','Să cerem să plece'],a:1,h:'Gândește-te la regulile clasei.',e:'Să respectăm diversitatea. Diferențele ne îmbogățesc, iar toți oamenii au aceleași drepturi.'},
+   {t:'mcq',tags:['G L7'],d:'Ocupații',q:'Cu ce se ocupă, mai ales, locuitorii satelor?',o:['Cu cultivarea plantelor și creșterea animalelor','Cu industria grea','Cu transportul pe mare','Cu bursa'],a:0,h:'Citește „Rețin”.',e:'Cu cultivarea plantelor și creșterea animalelor.'}
+  ];
+  Caiet.start({Q:Q});
+})();
+</script>
+<script>
+(function(){
+  /* Criterii populație */
+  var PP=[
+   ['👶 Vârsta','Copii (0–19 ani), adulți (20–65), vârstnici (peste 65). O așezare cu mulți copii are nevoie de școli; una cu mulți vârstnici, de servicii medicale.'],
+   ['⚥ Sexul','Persoane de sex feminin și de sex masculin. În majoritatea așezărilor, numerele sunt apropiate, ca la Aiud.'],
+   ['🤝 Naționalitatea','Români, maghiari, romi, germani și alții. Fiecare comunitate are tradițiile ei. Pe hartă poți vedea unde trăiesc comunitățile (istorie, unitatea 1, lecția 4).'],
+   ['🏘️ Mediul de viață','Sat (rural) sau oraș (urban).'],
+   ['👷 Ocupațiile','Elevi, persoane care lucrează, pensionari. Și felul meseriei: agricultor, profesor, medic, muncitor, șofer...']
+  ];
+  var pb=document.getElementById('pp-btns'),pi=document.getElementById('pp-info');
+  PP.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','false');b.textContent=p[0];b.onclick=function(){pb.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});pi.innerHTML='<h3 style="margin-top:0">'+p[0]+'</h3><p style="margin:0">'+p[1]+'</p>';};pb.appendChild(b);});
+  pb.firstChild.click();
+
+  /* Aiud / Bistra */
+  Caiet.bare('ai-bar',{items:[{label:'Bărbați',value:14591,color:'#2F6FD6'},{label:'Femei',value:14522,color:'#E2433A'}],max:15000,source:'tabelul din manual'});
+  Caiet.bare('bi-bar',{items:[{label:'Bărbați',value:2902,color:'#2F6FD6'},{label:'Femei',value:2737,color:'#E2433A'}],max:15000,source:'tabelul din manual (aceeași scară cu Aiud)'});
+
+  /* Ancheta */
+  var FM=[['Bunica',68,'p'],['Bunicul',71,'p'],['Mama',38,'l'],['Tata',41,'l'],['Eu',10,'e'],['Fratele',15,'e'],['Mătușa',29,'l']];
+  var fb=document.getElementById('fm-body');
+  var OC={e:'Elev/ă',l:'Lucrează',p:'Pensionar/ă'};
+  FM.forEach(function(r,i){var tr=document.createElement('tr');tr.innerHTML='<td>'+r[0]+'</td><td><label class="sr" for="fa'+i+'" style="position:absolute;left:-9999px">Vârsta '+r[0]+'</label><input id="fa'+i+'" type="number" min="0" max="110" value="'+r[1]+'"></td><td><label for="fo'+i+'" style="position:absolute;left:-9999px">Ocupația '+r[0]+'</label><select id="fo'+i+'"><option value="e"'+(r[2]==='e'?' selected':'')+'>Elev/ă</option><option value="l"'+(r[2]==='l'?' selected':'')+'>Lucrează</option><option value="p"'+(r[2]==='p'?' selected':'')+'>Pensionar/ă</option></select></td>';fb.appendChild(tr);});
+  function fam(){
+    var ag=[0,0,0],oc={e:0,l:0,p:0};
+    FM.forEach(function(r,i){var a=parseFloat(document.getElementById('fa'+i).value),o=document.getElementById('fo'+i).value;if(isNaN(a))return;ag[a<=19?0:(a<=65?1:2)]++;oc[o]++;});
+    Caiet.bare('fm-age',{items:[{label:'0–19 ani',value:ag[0],color:'#2E9D52'},{label:'20–65 ani',value:ag[1],color:'#2F6FD6'},{label:'peste 65',value:ag[2],color:'#C9862A'}],max:FM.length});
+    Caiet.bare('fm-occ',{items:[{label:'Elevi',value:oc.e,color:'#2E9D52'},{label:'Lucrează',value:oc.l,color:'#2F6FD6'},{label:'Pensionari',value:oc.p,color:'#C9862A'}],max:FM.length});
+    var mx=ag.indexOf(Math.max.apply(null,ag));var nm=['0–19 ani','20–65 de ani','peste 65 de ani'][mx];
+    document.getElementById('fm-info').innerHTML='Cea mai numeroasă grupă de vârstă: <b>'+nm+'</b> ('+ag[mx]+' persoane). Observă legătura: copiii sunt de obicei <b>elevi</b>, cei din grupa 20–65 sunt de obicei persoane care <b>lucrează</b>, iar cei de peste 65, <b>pensionari</b>. Dacă se schimbă o grupă de vârstă, se schimbă și ocupațiile.';
+  }
+  FM.forEach(function(r,i){document.getElementById('fa'+i).oninput=fam;document.getElementById('fo'+i).onchange=fam;});fam();
+
+  /* Sat/oraș */
+  var sb=document.querySelectorAll('#so-ctrl button'),si=document.getElementById('so-info');
+  sb.forEach(function(b){b.onclick=function(){var m=b.getAttribute('data-m');sb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});document.getElementById('so-sat').style.display=m==='sat'?'':'none';document.getElementById('so-oras').style.display=m==='oras'?'':'none';si.innerHTML='Apasă pe un element din desen.';};});
+  document.querySelectorAll('.hot').forEach(function(g){var act=function(){si.innerHTML=g.getAttribute('data-t');};g.addEventListener('click',act);g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();act();}});});
+
+  /* Hartă așezări */
+  var AS=[
+   ['Orașe mari','#E2433A',[{lon:26.1,lat:44.43,text:'București',r:7},{lon:23.6,lat:46.77,text:'Cluj-Napoca',r:6},{lon:27.59,lat:47.16,text:'Iași',r:6},{lon:21.23,lat:45.75,text:'Timișoara',r:6},{lon:28.65,lat:44.17,text:'Constanța',r:6},{lon:25.6,lat:45.65,text:'Brașov',r:6}],'Orașele mari apar cu <b>cercuri mari</b>. Constanța e vechiul <b>Tomis</b> (istorie, unitatea 2, lecția 1).'],
+   ['Sate cu istorie','#222',[{lon:24.57,lat:45.72,text:'Cârțișoara',r:4},{lon:22.8,lat:45.52,text:'Sarmizegetusa',r:4},{lon:28.77,lat:44.55,text:'Histria',r:4},{lon:25.6,lat:47.87,text:'Putna',r:4}],'<b>Cârțișoara</b>: satul lui Badea Cârțan, care a mers pe jos la Roma. <b>Sarmizegetusa</b>: lângă ruinele capitalei romane a provinciei, Ulpia Traiana Sarmizegetusa. <b>Histria</b>: ruinele coloniei grecești. <b>Putna</b>: mănăstirea lui Ștefan cel Mare.']
+  ];
+  var as=0,ac=document.getElementById('as-chips');
+  function drawA(){var a=AS[as];Caiet.harta('as-map',{map:'romania',label:'Orașe și sate din România',fill:function(){return '#E7E2D2';},points:a[2].map(function(p){return {lon:p.lon,lat:p.lat,text:p.text,color:a[1],r:p.r};})});document.getElementById('as-info').innerHTML='<b>'+a[0]+'</b> · '+a[3];}
+  AS.forEach(function(a,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',i===0?'true':'false');b.innerHTML='<i style="background:'+a[1]+'"></i>'+a[0];b.onclick=function(){as=i;ac.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});drawA();};ac.appendChild(b);});
+  drawA();
+
+  /* Joc așezare */
+  var ST=[
+   ['⛰️ Vârf de munte înalt','Apă: 1 · Pământ bun: 1 · Protecție: 3 · Drumuri: 1','Foarte bine apărat, dar greu de locuit: e frig, pământul e sărac, drumurile sunt grele. Aici se țineau cetăți, nu sate mari.',[1,1,3,1]],
+   ['🌾 Câmpie, lângă un râu','Apă: 3 · Pământ bun: 3 · Protecție: 1 · Drumuri: 3','Apă din belșug, pământ roditor și drumuri ușoare. De aceea sunt multe așezări în câmpii, lângă ape. Atenție la inundații.',[3,3,1,3]],
+   ['🌄 Deal, lângă un izvor','Apă: 2 · Pământ bun: 2 · Protecție: 2 · Drumuri: 2','Un loc echilibrat: protejat de vânt, cu pământ pentru livezi și vii, și apă de izvor. Multe sate sunt la deal.',[2,2,2,2]],
+   ['🏜️ Loc fără apă, pe un platou arid','Apă: 0 · Pământ bun: 1 · Protecție: 2 · Drumuri: 2','Fără apă, nimeni nu poate locui mult timp. Așezările apar unde există apă.',[0,1,2,2]]
+  ];
+  var sl=document.getElementById('st-list'),stI=document.getElementById('st-info');
+  ST.forEach(function(s){var b=document.createElement('button');b.type='button';b.className='site';b.setAttribute('aria-pressed','false');var n=s[3].reduce(function(a,c){return a+c;},0);b.innerHTML='<b>'+s[0]+'</b><span class="stars">'+'★'.repeat(n)+'☆'.repeat(12-n)+'</span><br><span style="font-size:.9em;color:var(--soft)">'+s[1]+'</span>';
+   b.onclick=function(){sl.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});stI.innerHTML='<b>'+s[0]+'</b> · '+n+' puncte din 12. '+s[2];};sl.appendChild(b);});
+
+  /* Linia valorică */
+  var ARG={
+   sat:'<b>Argumente „la sat”:</b><br>• Aer curat, liniște, spațiu pentru joacă și grădină.<br>• Oamenii se cunosc între ei și se ajută.<br>• Poți avea animale și să mănânci produse proaspete din gospodărie.',
+   oras:'<b>Argumente „la oraș”:</b><br>• Multe școli, spitale, muzee, teatre și magazine aproape.<br>• Mai multe locuri de muncă și transport în comun.<br>• Poți întâlni mulți oameni și activități diferite.',
+   ind:'<b>Depinde.</b><br>• La sat: liniște, natură, dar servicii mai departe.<br>• La oraș: oportunități, dar aglomerație și zgomot.<br>• Ce ar putea face un sat mai bun? Dar un oraș mai verde? Alege 2 idei pentru fiecare.'
+  };
+  var vb=document.querySelectorAll('#vl-btns button'),vx=document.getElementById('vl-box');
+  vb.forEach(function(b){b.onclick=function(){vb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});vx.innerHTML='<p style="margin:0">'+ARG[b.dataset.k]+'</p>';};});
+})();
+</script>
+</body>
+</html>

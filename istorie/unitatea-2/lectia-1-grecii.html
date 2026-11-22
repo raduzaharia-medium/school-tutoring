@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Grecii – prima civilizație a Europei</title>
+<link rel="stylesheet" href="../../assets/caiet.css">
+<style>
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}
+.pd summary{cursor:pointer;font-weight:800}
+.pd[open] summary{margin-bottom:6px}
+.pd:last-of-type{border-color:var(--green)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .box h3{margin-top:0}
+.vs ul{margin:.4em 0 0;padding-left:1.1em}
+.vs li{margin:.2em 0}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Istorie · Unitatea 2 · Lecția 1 · manual pp. 38–41</p>
+   <h1>Grecii – prima civilizație a Europei</h1>
+   <p class="lead">Cetăți care se luptau între ele, zei care locuiau pe un munte, sportivi încoronați cu ramuri de măslin și o idee nouă: puterea poporului. Ce ne-au lăsat grecii vechi?</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="#BFE3F7"/>
+   <circle cx="172" cy="46" r="14" fill="#F6C431"/>
+   <path d="M10 170 H210 V210 H10Z" fill="#E8D9B5"/>
+   <path d="M34 66 L110 30 L186 66Z" fill="#F4E9D8" stroke="#C9B58A" stroke-width="3" stroke-linejoin="round"/>
+   <rect x="38" y="70" width="144" height="10" fill="#F4E9D8" stroke="#C9B58A" stroke-width="2"/>
+   <g fill="#F4E9D8" stroke="#C9B58A" stroke-width="2">
+    <rect x="46" y="82" width="16" height="76"/><rect x="82" y="82" width="16" height="76"/>
+    <rect x="122" y="82" width="16" height="76"/><rect x="158" y="82" width="16" height="76"/>
+   </g>
+   <rect x="34" y="158" width="152" height="8" fill="#F4E9D8" stroke="#C9B58A" stroke-width="2"/>
+   <rect x="28" y="166" width="164" height="8" fill="#F4E9D8" stroke="#C9B58A" stroke-width="2"/>
+   <path d="M10 190 q30 -10 60 0 t60 0 t80 0 V210 H10Z" fill="#2F6FD6" opacity=".85"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 STIM / VREM -->
+<section class="slide" aria-label="Ce știm și ce vrem să aflăm">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Știm deja</span>
+  <div class="tip g" style="margin-top:0">Grecii sunt locuitorii Greciei, o țară europeană cu ieșire la mare. La lecția 6 ai aflat că grecii sunt printre cele mai vechi popoare din Europa. Au fost „o civilizație care a marcat istoria lumii”, iar poporul grec există și astăzi.</div>
+  <span class="badge" style="background:var(--red);margin-top:18px">Ancheta de azi</span>
+  <div class="q"><span class="mark" style="background:var(--blue)">1</span>Cât de veche este civilizația greacă?</div>
+  <div class="q"><span class="mark" style="background:var(--purple)">2</span>Care erau modul de viață și ocupațiile vechilor greci?</div>
+  <div class="q"><span class="mark" style="background:var(--green)">3</span>Ce obiceiuri și sărbători aveau?</div>
+  <div class="q"><span class="mark" style="background:var(--red)">4</span>Cum au influențat ei istoria omenirii?</div>
+ </div>
+</section>
+
+<!-- 3 HARTA GRECIEI -->
+<section class="slide" aria-label="Grecia antică pe hartă">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">🗺️ Lucru cu harta · fig. 8 din manual</span>
+  <h2>Elada, țara grecilor</h2>
+  <p>Manualul îți cere să găsești <b>Atena</b> și <b>Sparta</b> și să numești vecinii Greciei. Apasă pe fiecare loc și citește ce s-a întâmplat acolo.</p>
+  <div class="legend-chips" id="gr-chips"></div>
+  <div class="fig-wrap"><div id="gr-map"></div></div>
+  <div class="map-info" id="gr-info" aria-live="polite"></div>
+  <p class="sursa">Harta arată țările de azi. Cu albastru e Grecia de astăzi. În Antichitate, grecii locuiau și pe insule și pe coasta Asiei Mici (azi Turcia).</p>
+ </div>
+</section>
+
+<!-- 4 RELIEF -->
+<section class="slide" aria-label="Relieful și modul de viață">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Reținem · Descoperim 1</span>
+  <h2>Țara îi face pe oameni: munții, golfurile și marea</h2>
+  <p>Elada se întindea în sud-estul Europei, cu insulele din <b>Marea Egee</b> și vestul Asiei Mici. Era o țară <b>muntoasă</b>, cu puține câmpii. Priviți fig. 1 și 2 din manual: ce vedeți? Munți și un țărm tăiat de golfuri.</p>
+  <div class="grid g3">
+   <div class="box"><span class="emo">⛰️</span><h3>Munți, puține câmpii</h3><p>Pământ puțin și greu de lucrat. Grecii cultivau <b>măslini</b> și <b>viță-de-vie</b>, care cresc și pe dealuri pietroase.</p></div>
+   <div class="box"><span class="emo">⚓</span><h3>Țărm crestat de golfuri</h3><p>Multe porturi bune. Grecii au devenit <b>navigatori</b> și <b>negustori</b> pe Marea Egee și mai departe.</p></div>
+   <div class="box"><span class="emo">🏛️</span><h3>Văi despărțite de munți</h3><p>Fiecare vale sau insulă trăia aparte, în câte o <b>cetate</b>, numită <b>polis</b>, cu organizare și conducere proprii.</p></div>
+  </div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Țara avea „câmpii puține și neroditoare”. Tucidide (sec. V î.H.) scria că orașele „au fost înălțate pe țărmuri și înconjurate de ziduri, atât pentru înlesnirea comerțului, cât și pentru a fi mai puternice”.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Cu atât de puțin pământ bun, grâul din Grecia nu ajungea pentru toți. Atena, de pildă, aducea grâu din alte țări, mai ales de pe țărmurile <b>Mării Negre</b>. Hai să vedem mai încolo cum a ajuns acolo și ce legătură are cu România.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 5 CUM TRAIAU -->
+<section class="slide" aria-label="Cum trăiau grecii">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Descoperim 2 și 3 · fig. 3–7 din manual</span>
+  <h2>Meșteșuguri, haine și războinici</h2>
+  <div class="grid g2">
+   <div class="box"><span class="emo">🏺</span><h3>Ceramica</h3><p>Din lut ardeau vase pentru ulei, vin și apă, pictate cu scene din viața zeilor și a oamenilor. Istoricul francez Pierre Lévêque scrie că cea mai importantă meserie a fost <b>ceramica</b> (fig. 7).</p></div>
+   <div class="box"><span class="emo">👗</span><h3>Chitonul</h3><p>Femeile purtau <b>chiton</b>, o tunică lungă din pânză, prinsă pe umeri și strânsă în talie (fig. 5). Bărbații purtau o variantă mai scurtă.</p></div>
+   <div class="box"><span class="emo">🛡️</span><h3>Soldatul grec</h3><p>Avea <b>coif</b>, <b>scut</b> rotund, <b>suliță</b> și sabie, iar unii aveau armură de metal (fig. 6). Cetățile se apărau cu soldați proprii.</p></div>
+   <div class="box"><span class="emo">🏗️</span><h3>Două feluri de construcții</h3><p><b>Mormântul din Micene</b> (fig. 3), mai vechi, e o clădire boltită din piatră. <b>Partenonul</b> (fig. 4), din secolul V î.H., e un templu cu coloane, construit pentru zeița Atena.</p></div>
+  </div>
+  <div class="tip y">🔎 <b>Unealta de istoric:</b> ceramica, statuile și templele sunt izvoare <b>nescrise</b>. Tucidide și Lévêque sunt izvoare <b>scrise</b>. Recunoști diferența de la lecția 1, din prima unitate?</div>
+ </div>
+</section>
+
+<!-- 6 POLISURI -->
+<section class="slide" aria-label="Atena și Sparta">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Reținem · cetățile cele mai puternice</span>
+  <h2>Atena și Sparta</h2>
+  <p>Grecii nu formau un singur stat. Fiecare <b>polis</b> avea legile și conducătorii lui. Aveau în comun limba, zeii și sărbătorile, dar uneori se și războiau între ele.</p>
+  <div class="vs">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🦉</span><h3>Atena</h3>
+    <ul><li>La mare, cu port și flotă</li><li>Comerț, artă, teatru, filosofie</li><li>Aici s-a născut <b>democrația</b></li><li>Zeița protectoare: <b>Atena</b>; templul ei, Partenonul, e pe Acropole</li></ul></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">🗡️</span><h3>Sparta</h3>
+    <ul><li>În sudul Greciei, în Peloponez</li><li>Cea mai puternică armată</li><li>Băieții începeau pregătirea militară de la 7 ani</li><li>Viață aspră, cu multă disciplină</li></ul></div>
+  </div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Grecii au lăsat „un model de organizare socială și politică, democrația, valabil și astăzi”.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Cuvântul vine din greacă: <b>demos</b> = popor, <b>kratos</b> = putere. La Atena, cetățenii se adunau și votau legile. Dar cetățeni erau doar <b>bărbații adulți</b>, născuți în Atena. <b>Femeile, sclavii și străinii</b> nu votau. Democrația de azi e mai largă: votează toți cetățenii majori, la fel ca în România.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 7 ZEI SI MITURI -->
+<section class="slide" aria-label="Zeii și legendele">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#3a2a00">Reținem · credințe și legende</span>
+  <h2>Zeii de pe Olimp</h2>
+  <p>Grecii erau <b>politeiști</b>: credeau în mai mulți zei. Cel mai important era <b>Zeus</b>. Credeau că zeii locuiesc deasupra norilor, pe <b>muntele Olimp</b>. Fiecare cetate avea un zeu protector, în cinstea căruia se făceau serbări.</p>
+  <div class="grid g4">
+   <div class="box"><span class="emo">⚡</span><h3>Zeus</h3><p>Regele zeilor, stăpânul cerului și al fulgerului.</p></div>
+   <div class="box"><span class="emo">🦉</span><h3>Atena</h3><p>Zeița înțelepciunii. Protectoarea cetății Atena.</p></div>
+   <div class="box"><span class="emo">🔱</span><h3>Poseidon</h3><p>Stăpânul mărilor. Foarte important pentru navigatori.</p></div>
+   <div class="box"><span class="emo">☀️</span><h3>Apollo</h3><p>Zeul luminii și al muzicii. Avea la Delfi un sanctuar vestit.</p></div>
+  </div>
+  <details class="pd"><summary>📖 Lectură: cum a crescut Zeus (după Alexandru Mitru)</summary><p>Tatăl lui Zeus, <b>Cronos</b>, își înghițise cinci copii, de teamă să nu fie răsturnat de unul dintre ei. Mama, <b>Reea</b>, l-a ascuns pe cel mai mic, Zeus, în insula <b>Creta</b>. Porumbițe îi aduceau <b>ambrozie</b>, hrana zeilor, iar un vultur îi aducea <b>nectar</b>. Când a ajuns stăpân, Zeus l-a luat pe vultur lângă tron, iar porumbițele au devenit simbolul iubirii și al primăverii.</p></details>
+  <details class="pd"><summary>🐴 Portofoliu: Calul Troian și călcâiul lui Ahile</summary><p>Sunt povești din poemele lui <b>Homer</b> și din legendele despre războiul Troiei. Grecii ar fi ascuns soldați într-un cal uriaș de lemn, lăsat la porțile cetății. Troienii l-au dus înăuntru, iar noaptea soldații au ieșit. Mama eroului <b>Ahile</b> l-ar fi scăldat în apa unui râu magic, ținându-l de călcâi. Doar acolo nu l-a atins apa, așa că acolo a putut fi rănit. Azi spunem „călcâiul lui Ahile” despre punctul slab al cuiva.</p></details>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>„Grecii credeau că zeii locuiesc în nori, deasupra muntelui Olimp.”</p></div>
+   <div><span class="lab">🌍 Context</span><p>Legendele sunt <b>mituri</b>: povești, nu dovezi. Dar nu sunt inutile: ne arată cum gândeau grecii. Cetatea Troia a existat în realitate (arheologii i-au găsit ruinele, în Turcia de azi), însă calul de lemn nu are nicio dovadă.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 8 JOCURI OLIMPICE -->
+<section class="slide" aria-label="Jocurile Olimpice">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Aplicăm 3 · textul lui Julie Ferris</span>
+  <h2>Jocurile Olimpice, în cinstea lui Zeus</h2>
+  <div class="grid g3">
+   <div class="box"><span class="emo">📍</span><h3>Unde?</h3><p>La <b>Olimpia</b>, un loc sfânt al lui Zeus, în vestul Peloponezului.</p></div>
+   <div class="box"><span class="emo">⏳</span><h3>Când?</h3><p>La fiecare <b>patru ani</b>. Primele Jocuri au fost în <b>776 î.H.</b></p></div>
+   <div class="box"><span class="emo">🌿</span><h3>Premiul</h3><p>O <b>ramură de măslin</b>, tăiată din copacul sacru. Nu medalii!</p></div>
+  </div>
+  <div class="box" style="margin-top:10px"><h3 style="margin-top:0">Probele</h3><p>Alergări · curse cu care · sărituri în lungime · aruncarea suliței · aruncarea discului · lupte.</p></div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>La „Știați că”: soldatul care a alergat de la Maraton la Atena a parcurs 42 de kilometri, iar proba olimpică de maraton datează din Antichitate.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Bătălia de la <b>Maraton</b> a avut loc în <b>490 î.H.</b>: atenienii i-au învins pe perși. Povestea alergătorului a fost scrisă abia la sute de ani după aceea. Drumul măsoară aproximativ 40 km, iar cei <b>42,195 km</b> au fost fixați mult mai târziu. Iar <b>cursa de maraton</b> a fost introdusă la <b>Jocurile moderne din 1896</b>, la Atena, în amintirea poveștii. La Olimpia, în Antichitate, nu exista. Tot în 1896 mergea Badea Cârțan pe jos la Roma!</p></div>
+  </div>
+  <p class="sursa">La Jocurile antice concurau doar bărbați greci liberi. Pe durata lor, cetățile opreau războaiele.</p>
+ </div>
+</section>
+
+<!-- 9 AXA -->
+<section class="slide" aria-label="Axa timpului">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Descoperim · repere cronologice, fig. 9 din manual</span>
+  <h2>Povestea grecilor pe axa timpului</h2>
+  <p>Apasă pe fiecare eveniment. Cu butoanele de sus poți mări zona secolelor VIII–IV î.H. Atenție: la <b>î.H.</b> anii se numără invers. 776 vine <b>înaintea</b> lui 490.</p>
+  <div class="fig-wrap"><div id="gr-axa"></div></div>
+  <div class="map-info" id="gr-axa-info" aria-live="polite">Apasă pe un punct de pe axă.</div>
+ </div>
+</section>
+
+<!-- 10 COLONII -->
+<section class="slide" aria-label="Marea colonizare greacă">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🗺️ Reținem · marea colonizare greacă</span>
+  <h2>De la Elada până la Marea Neagră</h2>
+  <p>Între secolele <b>VIII și VI î.H.</b> grecii au pornit pe mări și au întemeiat cetăți noi, numite <b>colonii</b>. Pe țărmul Mării Negre, în Dobrogea de azi, au apărut <b>Histria</b>, <b>Tomis</b> (azi Constanța) și <b>Callatis</b> (azi Mangalia).</p>
+  <div class="legend-chips" id="col-chips"></div>
+  <div class="fig-wrap"><div id="col-map"></div></div>
+  <div class="map-info" id="col-info" aria-live="polite"></div>
+  <p class="sursa">Drumurile sunt desenate simplificat. Alte colonii celebre: Siracuza (în Sicilia), Marsilia (în sudul Franței), Bizanț (azi Istanbul).</p>
+ </div>
+</section>
+
+<!-- 11 COMERT -->
+<section class="slide" aria-label="Comerțul coloniilor">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Izvor istoric · Polibiu, om politic și istoric grec</span>
+  <h2>Ce vindeau și ce primeau coloniile?</h2>
+  <div class="box" style="border-color:var(--yellow)"><p style="margin:0">„Ținuturile pontice ne dau vite [...]. Dintre articolele de lux, ne procură miere din belșug, ceară, pește sărat. În schimb, primesc ulei și tot felul de vinuri. Cu grâu facem schimb reciproc.”</p></div>
+  <div class="grid g2" style="margin-top:12px">
+   <div class="box" style="border-color:var(--green)"><span class="emo">📦</span><h3>De la Marea Neagră spre Grecia</h3><p>Vite · miere · ceară · pește sărat</p></div>
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🚢</span><h3>Din Grecia spre colonii</h3><p>Ulei de măsline · vin</p></div>
+  </div>
+  <div class="tip y">💡 <b>Ce le-a adus coloniile oamenilor din Dobrogea:</b> manualul spune că au dus la <b>înflorirea comerțului</b> în spațiul de la noi. Pe lângă mărfuri, grecii au adus și obiceiuri și meșteșuguri. Ruinele Histriei, din fig. 11, se pot vizita și azi.</div>
+  <p class="sursa">Polibiu a trăit în secolul II î.H., mai târziu decât întemeierea coloniilor. Descrie comerțul așa cum se făcea în vremea lui.</p>
+ </div>
+</section>
+
+<!-- 12 PERSONALITATI -->
+<section class="slide" aria-label="Personalități și cuvinte">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Reținem · personalități ale culturii grecești</span>
+  <h2>Oameni care au schimbat felul în care gândim</h2>
+  <div class="grid g3">
+   <div class="box"><span class="emo">📜</span><h3>Herodot</h3><p>Secolul V î.H. Numit „părintele istoriei”. A scris despre războaiele cu perșii și despre popoarele din jur, printre care și <b>geții</b> de la Dunăre.</p></div>
+   <div class="box"><span class="emo">📐</span><h3>Pitagora</h3><p>Secolul VI î.H. Matematician și filosof. O teoremă importantă din geometrie îi poartă numele, iar o vei învăța mai târziu.</p></div>
+   <div class="box"><span class="emo">⚕️</span><h3>Hipocrate</h3><p>Secolele V–IV î.H. Numit „părintele medicinei”: observa bolnavii și căuta cauze naturale ale bolilor.</p></div>
+  </div>
+  <h3 style="margin-top:18px">Cuvinte românești venite din greacă</h3>
+  <p>Încearcă să ghicești ce înseamnă părțile cuvântului, apoi apasă.</p>
+  <details class="pd"><summary>demo-crație</summary><p><b>demos</b> = popor, <b>kratos</b> = putere. Deci „puterea poporului”.</p></details>
+  <details class="pd"><summary>tele-fon</summary><p><b>tele</b> = departe, <b>phone</b> = voce, sunet. Deci „sunet de departe”.</p></details>
+  <details class="pd"><summary>geo-grafie</summary><p><b>ge</b> = pământ, <b>graphein</b> = a scrie. Deci „descrierea Pământului”.</p></details>
+  <details class="pd"><summary>alfabet</summary><p>Din primele două litere grecești: <b>alfa</b> și <b>beta</b>.</p></details>
+ </div>
+</section>
+
+<!-- 13 PUNTE -->
+<section class="slide" aria-label="Punte">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Istorie ↔ Geografie ↔ Științe ↔ Civică</span>
+  <h2>Legături cu celelalte materii</h2>
+  <details class="pd"><summary>Geografie (L4): în ce parte a Europei e Grecia?</summary><p>Manualul spune că Elada era în <b>sud-estul</b> Europei. Folosește punctele cardinale învățate la geografie: pe harta Europei, Grecia e jos (sud) și în dreapta (est).</p></details>
+  <details class="pd"><summary>Științe: cine a știut primii că Pământul e rotund?</summary><p>La lecția 7 ai aflat că grecii antici știau că Pământul e rotund, iar Eratostene l-a și măsurat. Unii istorici spun că Pitagora a fost printre primii care au spus asta.</p></details>
+  <details class="pd"><summary>Matematică: cât de vechi sunt primele Jocuri Olimpice?</summary><p>Anul 776 î.H. înseamnă 776 de ani <b>înaintea</b> anului 1. Până în 2026 sunt 776 + 2026 = 2802, deci aproape 2 800 de ani (anul 0 nu există, așa că diferența reală e cu unul mai mică).</p></details>
+  <details class="pd"><summary>Educație civică: ce înseamnă „cetățean”?</summary><p>La Atena, cetățean era doar un bărbat adult născut acolo. În România de azi, orice persoană care are cetățenia română e cetățean, iar la 18 ani poate vota. Compară cele două: ce s-a schimbat în 2 500 de ani?</p></details>
+ </div>
+</section>
+
+<!-- 14 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile lecției</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 15 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🏛️</span><p>Grecii sunt <b>prima mare civilizație</b> din Europa. Ne-au lăsat un model de organizare socială și politică, <b>democrația</b>, valabil și astăzi.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">📚</span><p>Prin cultura lor, vechii greci au contribuit la <b>progresul întregii lumi</b>.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">🚢</span><p>Coloniile grecești de pe țărmul Mării Negre, <b>Histria, Tomis și Callatis</b>, au dus la înflorirea comerțului în spațiul de la noi.</p></div>
+  </div>
+  <div class="tip y">🔁 <b>Urmează:</b> Lecția 2, „Dacii și romanii. Întemeierea poporului român”.</div>
+ </div>
+</section>
+
+</main>
+
+<script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/europa.js"></script>
+<script src="../../assets/harti/romania.js"></script>
+<script>
+(function(){
+  var Q=[
+   {t:'mcq',tags:['U2 L1'],d:'Vocabular',q:'Cum se numeau cetățile Greciei antice, cu organizare și conducere proprii?',o:['Colonii','Polisuri','Provincii','Imperii'],a:1,h:'Cuvântul a rămas și în „politică”.',e:'Polisuri. Colonie e o cetate nouă, întemeiată de greci în altă parte.'},
+   {t:'mcq',tags:['U2 L1'],d:'Harta',q:'Care erau cele mai puternice cetăți grecești?',o:['Atena și Sparta','Roma și Cartagina','Olimpia și Delfi','Histria și Tomis'],a:0,h:'Le-ai căutat pe harta din manual.',e:'Atena și Sparta. Olimpia și Delfi erau locuri sfinte, iar Histria și Tomis erau colonii la Marea Neagră.'},
+   {t:'mcq',tags:['U2 L1'],d:'Credințe',q:'Grecii credeau în mai mulți zei. Cum se numește asta?',o:['Monoteism','Politeism','Democrație','Colonizare'],a:1,h:'„Poli” înseamnă „mulți”.',e:'Politeism. Cel mai important zeu era Zeus, iar zeii locuiau, credeau grecii, pe muntele Olimp.'},
+   {t:'mcq',tags:['U2 L1'],d:'Fapte',q:'Ce primeau învingătorii la Jocurile Olimpice antice?',o:['Medalii de aur','O ramură de măslin','Bani','Un cal'],a:1,h:'Citește textul lui Julie Ferris.',e:'O ramură de măslin, tăiată din arborele sacru. Medaliile de aur, argint și bronz au apărut în Jocurile moderne.'},
+   {t:'num',u:'î.H.',tags:['U2 L1','Matematică'],d:'Matematică',q:'Primele Jocuri Olimpice au fost în 776 î.H. și se țineau din 4 în 4 ani. În ce an a avut loc a patra ediție?',a:764,h:'Anii î.H. se numără invers: 776, 772, 768, …',e:'776, 772, 768, 764. A patra ediție: 764 î.H. La î.H., numerele scad pe măsură ce timpul trece.'},
+   {t:'order',tags:['U2 L1','L2'],d:'Cronologie',q:'Pune evenimentele în ordine cronologică.',items:['Grecii se așază în Elada (aprox. 2000 î.H.)','Primele Jocuri Olimpice (776 î.H.)','Bătălia de la Maraton (490 î.H.)','Alexandru Macedon devine rege (336 î.H.)'],h:'La î.H., numărul mai mare vine mai devreme.',e:'2000 → 776 → 490 → 336 î.H. Cu cât numărul e mai mare, cu atât evenimentul e mai vechi.'},
+   {t:'mcq',tags:['U2 L1','L2'],d:'Secole',q:'În ce secol î.H. a avut loc bătălia de la Maraton (490 î.H.)?',o:['al IV-lea','al V-lea','al VI-lea','al VII-lea'],a:1,h:'Secolul V î.H. înseamnă anii 500–401 î.H.',e:'Al V-lea. 490 se află între 500 și 401 î.H.'},
+   {t:'num',u:'secole',tags:['U2 L1','Matematică'],d:'Matematică',q:'Marea colonizare a avut loc între secolele VIII și VI î.H. Câte secole au trecut, numărând și cele două capete?',a:3,h:'VIII, VII, …',e:'Trei: al VIII-lea, al VII-lea și al VI-lea î.H.'},
+   {t:'sort',tags:['U2 L1','Izvoare'],d:'Comerț',q:'După Polibiu: ce vindeau coloniile de la Marea Neagră și ce primeau de la greci?',items:[['Vite','s'],['Miere','s'],['Ulei de măsline','n'],['Pește sărat','s'],['Vin','n'],['Ceară','s']],labels:{s:'Dădeau coloniile',n:'Primeau de la greci'},h:'Textul spune „ne procură” și „în schimb, primesc”.',e:'Dădeau: vite, miere, ceară, pește sărat. Primeau: ulei și vin. La grâu, schimbul mergea în ambele sensuri.'},
+   {t:'mcq',tags:['U2 L1','România'],d:'Legătura cu România',q:'Ce oraș românesc de azi s-a numit în Antichitate Tomis?',o:['Mangalia','Constanța','Tulcea','Galați'],a:1,h:'Cel mai mare port de la Marea Neagră.',e:'Constanța. Callatis, cealaltă colonie din manual, este azi Mangalia.'},
+   {t:'mcq',tags:['U2 L1','Geografie'],d:'Gândire',q:'De ce au ajuns grecii navigatori și negustori?',o:['Pentru că nu aveau zei','Pentru că aveau multe câmpii bogate','Pentru că țara era muntoasă, cu puțin pământ bun, dar cu multe golfuri și porturi','Pentru că nu aveau vecini'],a:2,h:'Gândește-te la fig. 1 și 2 din manual.',e:'Munți, puțin pământ bun și un țărm plin de golfuri. Marea le oferea hrană, drumuri și negoț.'},
+   {t:'mcq',tags:['U2 L1','Civică'],d:'Gândire critică',q:'Manualul spune că democrația greacă e „valabilă și astăzi”. La Atena, cine avea dreptul să voteze?',o:['Toți locuitorii','Doar bărbații adulți născuți în Atena','Doar femeile','Doar sclavii'],a:1,h:'Câți locuitori nu aveau acest drept?',e:'Doar bărbații adulți născuți în Atena. Femeile, sclavii și străinii nu votau. Democrația de azi este mai largă.'},
+   {t:'mcq',tags:['U2 L1','Izvoare'],d:'Detectiv',q:'Povestea soldatului alergător de la Maraton la Atena a fost scrisă la sute de ani după bătălie. Ce întrebare pune un istoric?',o:['Ce încălțăminte purta?','Cât de sigur e că s-a întâmplat exact așa?','Ce zeu l-a ajutat?','Câte medalii a primit?'],a:1,h:'Cine a scris? Când? Pe baza cărui izvor?',e:'Cât de sigur e. Istoricii verifică de când e izvorul și de unde știe autorul ce a scris. Iar cursa de maraton a fost introdusă abia în 1896.'},
+   {t:'mcq',tags:['U2 L1','Izvoare'],d:'Mit sau dovadă?',q:'Povestea Calului Troian e dintr-un poem. Troia a existat, i s-au găsit ruinele. Ce înseamnă?',o:['Calul de lemn a fost dovedit de arheologi','Cetatea e reală, dar povestea cu calul e un mit, fără dovezi','Troia n-a existat niciodată','Toate legendele sunt adevărate'],a:1,h:'Separă locul de poveste.',e:'Locul a existat, dar povestea cu calul e un mit. Un mit ne spune ce credeau oamenii, dar nu e dovadă pentru ce s-a întâmplat.'},
+   {t:'mcq',tags:['U2 L1','Română'],d:'Cuvinte',q:'Cuvântul „democrație” vine din greacă: demos (popor) + kratos (putere). Ce înseamnă?',o:['Puterea regelui','Puterea poporului','Puterea zeilor','Puterea armatei'],a:1,h:'Pune cele două părți una lângă alta.',e:'Puterea poporului. Alte cuvinte grecești în română: telefon, alfabet, geografie, teatru.'},
+   {t:'mcq',tags:['U2 L1','Personalități'],d:'Personalități',q:'Care grec antic este numit „părintele istoriei”?',o:['Pitagora','Hipocrate','Herodot','Zeus'],a:2,h:'A scris despre războaiele cu perșii.',e:'Herodot. Pitagora a fost matematician, Hipocrate medic, iar Zeus era un zeu, nu un om.'}
+  ];
+  Caiet.start({Q:Q});
+})();
+</script>
+<script>
+(function(){
+  /* Harta Greciei */
+  var P=[
+   ['Atena',23.73,37.98,'🦉 Cea mai puternică cetate, la mare. Aici s-a născut democrația. Pe Acropole stă Partenonul (fig. 4), templul zeiței Atena, construit în secolul V î.H.'],
+   ['Sparta',22.43,37.07,'🗡️ Cetate din sudul Greciei, în Peloponez. Era faimoasă pentru armata ei și pentru viața aspră a spartanilor.'],
+   ['Olimpia',21.63,37.64,'🌿 Locul sfânt al lui Zeus, unde se țineau Jocurile Olimpice. Era mai mult un loc de sărbătoare decât un oraș mare.'],
+   ['Delfi',22.5,38.48,'🔮 Sanctuarul zeului Apollo, într-un loc de munte. Grecii veneau aici să ceară sfaturi de la oracol. Din fig. 10 vezi amfiteatrul din Delfi.'],
+   ['Micene',22.76,37.73,'🏰 Cetate foarte veche. Mormântul din fig. 3 e numit „al lui Agamemnon” după un rege din legende, dar nu știm sigur al cui a fost.'],
+   ['Milet',27.28,37.53,'⛵ Cetate greacă pe coasta Asiei Mici, în regiunea Ionia (azi în Turcia). Grecii nu trăiau doar în Grecia de azi! Se spune că din Milet au plecat coloniștii care au întemeiat Histria.'],
+   ['Olimp',22.36,40.09,'⛰️ Cel mai înalt munte din Grecia (aproape 2 900 m). Grecii credeau că zeii locuiesc deasupra lui, ca în fig. 1.']
+  ];
+  var sel=0,ch=document.getElementById('gr-chips');
+  var a=Caiet.proj('europa',15.5,43.3),b=Caiet.proj('europa',33,34.6);
+  function drawG(){
+    var p=P[sel],pts=P.map(function(q,i){return i===sel?{lon:q[1],lat:q[2],text:q[0],color:'#E2433A',r:6.5}:{lon:q[1],lat:q[2],color:'#444',r:3.2};});
+    Caiet.harta('gr-map',{map:'europa',label:'Harta Greciei antice',view:[a[0],a[1],b[0]-a[0],b[1]-a[1]],
+      fill:function(z){return z.id==='300'?'#8FB8EE':null;},points:pts,
+      labels:[{lon:25.2,lat:38.9,text:'Marea Egee',size:12},{lon:19.3,lat:37.9,text:'Marea Ionică',size:11},{lon:22.4,lat:41.1,text:'MACEDONIA',size:11},{lon:26.2,lat:41.9,text:'TRACIA',size:11},{lon:30.5,lat:38.3,text:'Imperiul Persan',size:12},{lon:24.6,lat:35.2,text:'Creta',size:11}]});
+    document.getElementById('gr-info').innerHTML='<b>'+p[0]+'</b> · '+p[3];
+  }
+  P.forEach(function(p,i){var bt=document.createElement('button');bt.type='button';bt.setAttribute('aria-pressed',i===0?'true':'false');bt.textContent=p[0];
+    bt.onclick=function(){sel=i;ch.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===bt?'true':'false');});drawG();};ch.appendChild(bt);});
+  drawG();
+
+  /* Axa timpului */
+  Caiet.axa('gr-axa',{from:-850,to:-290,label:'Axa timpului: grecii antici',info:'gr-axa-info',
+   views:[{label:'Secolele VIII–IV î.H.',from:-850,to:-290},{label:'De la început (2000 î.H.)',from:-2100,to:-250}],
+   bands:[{from:-800,to:-501,label:'Colonizarea (VIII–VI)',color:'#6B4BC4'},{from:-500,to:-401,label:'Sec. V',color:'#E2433A'},{from:-400,to:-301,label:'Sec. IV',color:'#2E9D52'}],
+   events:[
+    {y:-2000,label:'Elada',color:'#2F6FD6',info:'Locuitorii Eladei s-au așezat aici în jurul anului 2000 î.H. Aveau ca principale ocupații cultivarea măslinilor și a viței-de-vie, navigarea și comerțul.'},
+    {y:-776,label:'Jocuri Olimpice',color:'#2E9D52',info:'La Olimpia, în cinstea lui Zeus. De atunci s-au ținut la fiecare patru ani.'},
+    {y:-650,label:'Histria',color:'#6B4BC4',info:'În jurul acestui an apare Histria, prima mare colonie greacă din Dobrogea. Data e aproximativă, stabilită de arheologi după obiectele găsite în ruine.'},
+    {y:-490,label:'Maraton',color:'#E2433A',info:'Atenienii i-au învins pe perși la Maraton. Povestea alergătorului care a dus vestea la Atena a fost scrisă mult mai târziu.'},
+    {y:-447,label:'Partenon',color:'#E2433A',info:'Templul zeiței Atena de pe Acropole, din fig. 4. Atena trăia atunci cea mai înfloritoare perioadă.'},
+    {y:-336,label:'Alexandru',color:'#2E9D52',info:'Alexandru, rege al Macedoniei (nordul Greciei), a început cuceririle care au dus la un imperiu uriaș, în secolul IV î.H.'}
+   ]});
+
+  /* Harta coloniilor */
+  var CH=[
+   ['🌊 Marea colonizare','#6B4BC4','Între secolele VIII și VI î.H., grecii au întemeiat colonii în toată Marea Mediterană și la Marea Neagră. Drumurile de aici sunt simplificate.'],
+   ['🏖️ Coasta Dobrogei','#E2433A','Dobrogea de azi, în România. Histria era aproape de gurile Dunării. Tomis e sub Constanța de azi. Callatis e sub Mangalia. Din cele trei, Histria are cele mai vizibile ruine.']
+  ];
+  var cs=0,cc=document.getElementById('col-chips');
+  function drawC(){
+    var info=document.getElementById('col-info');
+    if(cs===0){
+      var v1=Caiet.proj('europa',-2,47.4),v2=Caiet.proj('europa',37,35.2);
+      var routes=[
+        {pts:[[23.7,37.9],[24.0,37.0],[22.6,36.3],[19,36.8],[15.3,37.07]],color:'#2F6FD6'},
+        {pts:[[23.7,37.9],[24.0,37.0],[22.6,36.3],[19,36.8],[15.6,38.1],[12.5,39.8],[10.7,42.0],[9.2,43.5],[5.4,43.3]],color:'#2E9D52'},
+        {pts:[[23.7,37.98],[25,38.8],[26.2,40.0],[27.5,40.7],[29.0,41.05]],color:'#C9862A'},
+        {pts:[[29.0,41.05],[29.9,42.0],[29.6,43.0],[29.2,44.2],[28.77,44.55]],color:'#E2433A'}
+      ];
+      Caiet.harta('col-map',{map:'europa',label:'Marea colonizare greacă',view:[v1[0],v1[1],v2[0]-v1[0],v2[1]-v1[1]],
+        fill:function(z){return z.id==='300'?'#8FB8EE':(z.id==='642'?'#F6C431':null);},
+        routes:routes,
+        points:[{lon:15.29,lat:37.07,text:'Siracuza',color:'#2F6FD6'},{lon:5.4,lat:43.3,text:'Marsilia',color:'#2E9D52'},{lon:29.0,lat:41.05,text:'Bizanț',color:'#C9862A'},{lon:28.7,lat:44.3,text:'Tomis',color:'#E2433A'},{lon:23.73,lat:37.98,text:'Atena',color:'#222'}],
+        labels:[{lon:17.5,lat:35.9,text:'Marea Mediterană',size:13},{lon:33.4,lat:43.3,text:'Marea Neagră',size:13},{lon:25.0,lat:46.3,text:'ROMÂNIA',size:11}]});
+      info.innerHTML='<b>'+CH[0][0]+'</b> · '+CH[0][2];
+    }else{
+      var w1=Caiet.proj('romania',26.7,45.6),w2=Caiet.proj('romania',30.4,43.4);
+      Caiet.harta('col-map',{map:'romania',label:'Coloniile grecești din Dobrogea',view:[w1[0],w1[1],w2[0]-w1[0],w2[1]-w1[1]],
+        fill:function(z){return z.name==='Constanța'?'#F6C431':(z.name==='Tulcea'?'#F9E08A':null);},
+        points:[{lon:28.77,lat:44.55,text:'Histria',color:'#E2433A',r:5},{lon:28.65,lat:44.17,text:'Tomis (Constanța)',color:'#E2433A',r:5},{lon:28.58,lat:43.82,text:'Callatis (Mangalia)',color:'#E2433A',r:5}],
+        labels:[{lon:29.9,lat:44.7,text:'Marea Neagră',size:14}]});
+      info.innerHTML='<b>'+CH[1][0]+'</b> · '+CH[1][2];
+    }
+  }
+  CH.forEach(function(c,i){var bt=document.createElement('button');bt.type='button';bt.setAttribute('aria-pressed',i===0?'true':'false');bt.innerHTML='<i style="background:'+c[1]+'"></i>'+c[0];
+    bt.onclick=function(){cs=i;cc.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===bt?'true':'false');});drawC();};cc.appendChild(bt);});
+  if(Caiet.onSlide)Caiet.onSlide(function(i,s){if(s.contains(cc))drawC();});
+  drawC();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Relief, hidrografie, vegetație</title>
+<link rel="stylesheet" href="../../assets/caiet.css">
+<style>
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}
+.pd summary{cursor:pointer;font-weight:800}
+.pd[open] summary{margin-bottom:6px}
+.pd:last-of-type{border-color:var(--green)}
+.vl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.vl button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.4em 1em}
+.vl button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.fig svg{display:block;width:100%;max-width:680px;height:auto;margin:0 auto}
+.rev{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:6px 0}
+.rev button{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:.3em .8em;cursor:pointer}
+.rev .a{display:none;font-weight:700;background:var(--tint-yellow);border-radius:12px;padding:.3em .8em}
+.rev.open .a{display:inline-block}
+.belt-row{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:8px 0}
+@media (max-width:640px){.belt-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Geografie · Unitatea 1 · Lecția 6 · manual pp. 24–27</p>
+   <h1>Relief, hidrografie, vegetație</h1>
+   <p class="lead">Munți, dealuri și câmpii; râuri și lacuri; păduri și flori. Cum se leagă între ele, și cum le citim pe hartă?</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="#BFE3F7"/>
+   <circle cx="170" cy="44" r="14" fill="#F6C431"/>
+   <path d="M10 190 L10 150 q30 -14 60 4 q30 -50 60 -20 l24 -50 l56 62 V190Z" fill="#A9774A"/>
+   <path d="M10 190 L10 168 q40 -22 80 0 t120 -6 V190Z" fill="#F1D77B"/>
+   <path d="M10 190 L10 182 q60 -10 100 0 t100 -4 V190Z" fill="#6FBF73"/>
+   <path d="M150 100 q-10 40 -30 60 t-10 30" fill="none" stroke="#2F6FD6" stroke-width="5" stroke-linecap="round"/>
+   <path d="M158 112 l6 -14 l6 14Z M172 120 l6 -14 l6 14Z" fill="#2F6A3A"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 IMI AMINTESC -->
+<section class="slide" aria-label="Îmi amintesc">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Îmi amintesc</span>
+  <div class="tip g" style="margin-top:0">„La vest, văd dealuri domoale care se pierd treptat în lanurile de grâu ce îmbracă câmpia, iar la est, departe în zare, zăresc niște munți, ale căror creste se înalță mândre în văzduh.”</div>
+  <p>Ce forme de relief apar în text? <b>Dealuri</b>, <b>câmpie</b>, <b>munți</b>. Locul în care trăim, orizontul local, are anumite forme de relief, prin care seamănă sau se deosebește de alte locuri.</p>
+  <span class="badge" style="background:var(--red);margin-top:14px">Ancheta de azi</span>
+  <div class="q"><span class="mark" style="background:var(--blue)">1</span>Cum deosebim munții, dealurile și câmpiile?</div>
+  <div class="q"><span class="mark" style="background:var(--green)">2</span>Ce ape curg și stau în jurul nostru, și cum le arătăm pe hartă?</div>
+  <div class="q"><span class="mark" style="background:var(--purple)">3</span>Ce plante și animale trăiesc în fiecare loc, și de ce?</div>
+  <div class="q"><span class="mark" style="background:var(--red)">4</span>Cum influențează relieful viața oamenilor și istoria?</div>
+ </div>
+</section>
+
+<!-- 3 MODEL 3D -->
+<section class="slide" aria-label="Relieful în 3D">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🧊 Model 3D · relief, ape, vegetație</span>
+  <h2>Un peisaj de la câmpie la munte</h2>
+  <p>Mută glisoarele ca să privești de lângă sau de sus și să-l rotești. Apasă pe teren ca să afli <b>altitudinea</b> și <b>forma de relief</b>. Apasă „Fă-l hartă” ca să vezi cum desenează oamenii relieful, cu culori.</p>
+  <div id="rl3"></div>
+  <div class="ctrl"><span style="font-weight:800">👀 Din lateral</span><input id="rl-a" type="range" min="0" max="100" value="25" aria-label="Înălțimea privirii"><span style="font-weight:800">🐦 De sus</span><button type="button" id="rl-m" aria-pressed="false">Fă-l hartă</button></div>
+  <div class="ctrl"><span style="font-weight:800">↺ Rotește</span><input id="rl-r" type="range" min="-90" max="90" value="0" aria-label="Rotire"><button type="button" id="rl-v" aria-pressed="true">🌲 Vegetație</button><button type="button" id="rl-w" aria-pressed="true">💧 Ape</button></div>
+  <div class="map-info" id="rl-info" aria-live="polite">Apasă pe teren (în model).</div>
+ </div>
+</section>
+
+<!-- 4 FORMELE -->
+<section class="slide" aria-label="Formele de relief">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Descopăr și rețin · A. Relieful</span>
+  <h2>Munți, dealuri, câmpii: cât de înalte?</h2>
+  <p>Toate denivelările suprafeței Pământului, ca ridicături și adâncituri, formează <b>relieful</b>. Ordinea după altitudine: <b>munții</b>, <b>dealurile și podișurile</b>, <b>câmpiile</b>.</p>
+  <div class="fig-wrap"><div id="alt-bar"></div></div>
+  <div class="grid g3">
+   <div class="box" style="border-color:#2E9D52"><span class="emo">🟩</span><h3>Câmpia</h3><p>Aproape netedă, joasă (sub 300 m). Pe hartă: <b>verde</b>. Cu cât e mai joasă, cu atât verdele e mai închis.</p></div>
+   <div class="box" style="border-color:#D9A93A"><span class="emo">🟨</span><h3>Dealurile și podișurile</h3><p>Pante mai domoale, culmi rotunjite, 300–1 000 m. Pe hartă: <b>galben</b>. Podișul are culmea mai lată și netedă.</p></div>
+   <div class="box" style="border-color:#A9774A"><span class="emo">🟫</span><h3>Munții</h3><p>Pante abrupte, creste ascuțite, peste 1 000 m. Pe hartă: <b>maro</b>, cu atât mai închis cu cât sunt mai înalți.</p></div>
+  </div>
+  <div class="tip y">🏔️ <b>Știai?</b> Cel mai înalt vârf din România e <b>Moldoveanu</b>, în Munții Făgăraș: 2 544 m. Pe hartă, ar avea cel mai închis maro.</div>
+ </div>
+</section>
+
+<!-- 5 PROFIL -->
+<section class="slide" aria-label="Vocabular: versant, culme, creastă">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Vocabular · în profil</span>
+  <h2>Versant, culme, creastă, altitudine</h2>
+  <p>Apasă pe un termen și vezi la ce parte a reliefului se referă.</p>
+  <div class="ctrl" id="pf-ctrl"><button type="button" aria-pressed="false" data-p="cr">Creastă</button><button type="button" aria-pressed="false" data-p="cu">Culme</button><button type="button" aria-pressed="false" data-p="ve">Versant</button><button type="button" aria-pressed="false" data-p="al">Altitudine</button></div>
+  <div class="fig-wrap fig"><svg viewBox="0 0 520 250" role="img" aria-label="Profil de relief: câmpie, dealuri, munți">
+   <rect x="2" y="2" width="516" height="246" rx="10" fill="#EAF4FF" stroke="var(--line)" stroke-width="2"/>
+   <path d="M2 220 H170 q40 -60 80 -50 q30 -10 50 -30 L330 60 L355 110 L385 40 L420 120 L450 90 L518 190 V248 H2Z" fill="#8F6B45"/>
+   <path d="M2 220 H170 q40 -60 80 -50 q20 -6 34 -18 Z" fill="#E7C95A"/>
+   <path d="M2 248 V224 H150 q10 0 20 -4 H2Z" fill="#6FBF73"/>
+   <path d="M2 224 H170 V248 H2Z" fill="#6FBF73"/>
+   <g id="pf-cr" opacity=".25"><path d="M312 80 L330 60 L355 110 L385 40 L420 120" fill="none" stroke="#E2433A" stroke-width="5" stroke-linecap="round"/><text x="320" y="30" font-size="14" font-weight="800" fill="#E2433A">creastă</text></g>
+   <g id="pf-cu" opacity=".25"><path d="M185 192 q35 -20 70 -22" fill="none" stroke="#E2433A" stroke-width="5" stroke-linecap="round"/><text x="170" y="165" font-size="14" font-weight="800" fill="#E2433A">culme</text></g>
+   <g id="pf-ve" opacity=".25"><path d="M420 120 L470 150 L518 190" fill="none" stroke="#2F6FD6" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 9"/><text x="440" y="110" font-size="14" font-weight="800" fill="#2F6FD6">versant</text></g>
+   <g id="pf-al" opacity=".25"><path d="M488 20 V224" stroke="#222" stroke-width="2"/><path d="M482 30 l6 -10 l6 10 M482 214 l6 10 l6 -10" stroke="#222" stroke-width="2" fill="none"/><text x="402" y="130" font-size="13" font-weight="800" fill="#222" text-anchor="end"></text><text x="494" y="130" font-size="13" font-weight="800" fill="#222" transform="rotate(90 494 130)">altitudine</text></g>
+   <text x="50" y="205" font-size="13" font-weight="800" fill="#1b4d2a">câmpie</text>
+   <text x="215" y="232" font-size="13" font-weight="800" fill="#4a3a00">dealuri</text>
+   <text x="345" y="200" font-size="13" font-weight="800" fill="#fff">munți</text>
+  </svg></div>
+  <div class="map-info" id="pf-info" aria-live="polite">Alege un termen.</div>
+ </div>
+</section>
+
+<!-- 6 HIDROGRAFIE -->
+<section class="slide" aria-label="Apele">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Descopăr și rețin · B. Hidrografia</span>
+  <h2>De la izvor la vărsare</h2>
+  <p>Apele curgătoare scurg pe pantele munților și dealurilor și străbat câmpiile. Un pârâu mic se unește cu altele, devine <b>râu</b>, iar râurile se unesc și formează <b>fluviul</b>, care se varsă într-un lac, o mare sau un ocean.</p>
+  <div class="ctrl" id="rv-ctrl"><button type="button" aria-pressed="false" data-p="iz">Izvor</button><button type="button" aria-pressed="false" data-p="cu">Curs</button><button type="button" aria-pressed="false" data-p="af">Afluenți</button><button type="button" aria-pressed="false" data-p="gv">Gura de vărsare</button><button type="button" aria-pressed="false" data-p="lc">Lac</button></div>
+  <div class="fig-wrap fig"><svg viewBox="0 0 520 260" role="img" aria-label="Un râu de la izvor la vărsare">
+   <rect x="2" y="2" width="516" height="256" rx="10" fill="#EAF4FF" stroke="var(--line)" stroke-width="2"/>
+   <path d="M2 2 H190 L130 70 L40 130 L2 160Z" fill="#8F6B45"/>
+   <path d="M2 160 L40 130 L130 70 L190 2 H290 L230 90 L110 150 L2 200Z" fill="#E7C95A"/>
+   <path d="M2 200 L110 150 L230 90 L290 2 H516 V258 H2Z" fill="#8CD08F"/>
+   <path d="M516 150 q-8 4 -20 -4 V258 H516Z" fill="#2F6FD6"/>
+   <path id="rv-cu" d="M52 112 q30 20 60 6 t60 20 q50 24 80 6 t70 24 q30 20 60 8 t90 12" fill="none" stroke="#2F6FD6" stroke-width="9" stroke-linecap="round" opacity=".3"/>
+   <path id="rv-af" d="M110 164 q20 -16 42 -26 M250 194 q-6 -24 -2 -40 M330 220 q30 -6 50 -26" fill="none" stroke="#2F6FD6" stroke-width="4" stroke-linecap="round" opacity=".3"/>
+   <g id="rv-iz" opacity=".3"><circle cx="52" cy="112" r="9" fill="#E2433A"/><text x="64" y="104" font-size="13" font-weight="800" fill="#fff">izvor (munte)</text></g>
+   <g id="rv-gv" opacity=".3"><circle cx="496" cy="150" r="9" fill="#E2433A"/><text x="410" y="140" font-size="13" font-weight="800" fill="#1a1a1a">gura de vărsare</text></g>
+   <g id="rv-lc" opacity=".3"><ellipse cx="170" cy="215" rx="30" ry="15" fill="#2F6FD6"/><text x="140" y="245" font-size="13" font-weight="800" fill="#1a1a1a">lac</text></g>
+   <text x="150" y="30" font-size="13" font-weight="800" fill="#fff">munți</text><text x="150" y="190" font-size="12" font-weight="800" fill="#1a1a1a" opacity="0"></text>
+   <text x="330" y="60" font-size="13" font-weight="800" fill="#1b4d2a">câmpie</text><text x="480" y="210" font-size="13" font-weight="800" fill="#fff">mare</text>
+  </svg></div>
+  <div class="map-info" id="rv-info" aria-live="polite">Alege un element.</div>
+  <div class="grid g2" style="margin-top:10px">
+   <div class="box"><span class="emo">🏞️</span><h3>Ape curgătoare</h3><p><b>Pârâul</b> (cel mai mic), <b>râul</b> și <b>fluviul</b> (cel mai mare). Pe hartă: <b>linii albastre</b>.</p></div>
+   <div class="box"><span class="emo">🪷</span><h3>Ape stătătoare</h3><p><b>Balta</b>, <b>mlaștina</b> (baltă secată, cu pământ îmbibat) și <b>lacul</b>, cel mai adânc și întins. Pe hartă: <b>pete albastre</b>.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 7 CIRCUITUL APEI -->
+<section class="slide" aria-label="Circuitul apei">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Îmi amintesc · Științe ↔ Geografie</span>
+  <h2>Circuitul apei în natură</h2>
+  <p>De la științe: apa se află în trei stări (solid, lichid, gaz). Apasă pe pași ca să vezi cum se leagă hidrografia locului de circuitul apei.</p>
+  <div class="ctrl" id="cw-ctrl"><button type="button" aria-pressed="false" data-p="1">1 · Evaporare</button><button type="button" aria-pressed="false" data-p="2">2 · Condensare</button><button type="button" aria-pressed="false" data-p="3">3 · Precipitații</button><button type="button" aria-pressed="false" data-p="4">4 · Scurgere</button></div>
+  <div class="fig-wrap fig"><svg viewBox="0 0 520 260" role="img" aria-label="Circuitul apei">
+   <rect x="2" y="2" width="516" height="256" rx="10" fill="#EAF4FF" stroke="var(--line)" stroke-width="2"/>
+   <circle cx="470" cy="46" r="24" fill="#F6C431"/>
+   <path d="M2 150 H120 L190 90 L260 150 H320 V258 H2Z" fill="#8F6B45"/>
+   <path d="M320 190 H516 V258 H320Z" fill="#2F6FD6"/>
+   <path d="M200 100 q10 40 -5 60 t-30 40 t80 40" fill="none" stroke="#2F6FD6" stroke-width="5" stroke-linecap="round"/>
+   <g id="cw-1" opacity=".25"><path d="M400 180 q-6 -30 6 -50 M430 180 q-6 -30 6 -50" stroke="#E2433A" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M400 130 l6 -8 l6 8 M430 130 l6 -8 l6 8" stroke="#E2433A" stroke-width="4" fill="none"/><text x="340" y="120" font-size="13" font-weight="800" fill="#1a1a1a">apa se evaporă</text></g>
+   <g id="cw-2" opacity=".25"><ellipse cx="400" cy="80" rx="46" ry="20" fill="#fff" stroke="#999" stroke-width="2"/><ellipse cx="370" cy="88" rx="28" ry="14" fill="#fff" stroke="#999" stroke-width="2"/><text x="360" y="52" font-size="13" font-weight="800" fill="#1a1a1a">se formează norii</text></g>
+   <g id="cw-3" opacity=".25"><ellipse cx="170" cy="50" rx="46" ry="20" fill="#fff" stroke="#999" stroke-width="2"/><path d="M140 76 l-4 16 M165 76 l-4 16 M190 76 l-4 16" stroke="#2F6FD6" stroke-width="4" stroke-linecap="round"/><text x="90" y="30" font-size="13" font-weight="800" fill="#1a1a1a">plouă și ninge pe munte</text></g>
+   <g id="cw-4" opacity=".25"><path d="M200 100 q10 40 -5 60 t-30 40 t80 40" fill="none" stroke="#E2433A" stroke-width="3" stroke-dasharray="6 5"/><text x="330" y="246" font-size="13" font-weight="800" fill="#fff">râul duce apa spre mare</text></g>
+  </svg></div>
+  <div class="map-info" id="cw-info" aria-live="polite">Alege un pas.</div>
+  <div class="tip y">🧠 <b>Ghicitoare din manual:</b> „Într-o adâncitură eu m-am format, când multă apă s-a adunat, ba din ploi, ba din izvoare, așa am crescut eu mare.” Ce apă e? <span class="rev" id="gh-1"><button type="button">Arată răspunsul</button><span class="a">Lacul</span></span></div>
+ </div>
+</section>
+
+<!-- 8 VEGETATIE -->
+<section class="slide" aria-label="Vegetația pe etaje">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Descopăr · C. Vegetația și fauna · Științe</span>
+  <h2>Pe măsură ce urci, se schimbă totul</h2>
+  <p>Vegetația (arbori, arbuști, ierburi) și fauna depind de relief, pentru că <b>temperatura</b>, <b>precipitațiile</b> și <b>solurile</b> se schimbă cu înălțimea. Urcă muntele cu glisorul.</p>
+  <div class="ctrl"><span style="font-weight:800">⬇ 0 m</span><input id="vg-a" type="range" min="0" max="2500" step="50" value="100" aria-label="Altitudine"><span style="font-weight:800">⬆ 2 500 m</span></div>
+  <div class="fig-wrap fig"><svg viewBox="0 0 520 260" role="img" aria-label="Etajele de vegetație">
+   <defs><clipPath id="vg-clip"><path d="M10 240 L260 30 L510 240Z"/></clipPath></defs>
+   <rect x="2" y="2" width="516" height="256" rx="10" fill="#EAF4FF" stroke="var(--line)" stroke-width="2"/>
+   <g clip-path="url(#vg-clip)">
+    <rect x="0" y="228" width="520" height="14" fill="#6FBF73"/>
+    <rect x="0" y="171" width="520" height="57" fill="#8DA85A"/>
+    <rect x="0" y="94" width="520" height="77" fill="#2F7A44"/>
+    <rect x="0" y="63" width="520" height="31" fill="#B5CF95"/>
+    <rect x="0" y="0" width="520" height="63" fill="#9A9A9A"/>
+   </g>
+   <path d="M10 240 L260 30 L510 240Z" fill="none" stroke="#444" stroke-width="3"/>
+   <line id="vg-line" x1="0" x2="520" y1="228" y2="228" stroke="#E2433A" stroke-width="3" stroke-dasharray="8 4"/>
+   <text x="12" y="256" font-size="11" fill="var(--ink)">0 m</text><text x="12" y="34" font-size="11" fill="var(--ink)">2 500 m</text>
+  </svg></div>
+  <div class="map-info" id="vg-info" aria-live="polite"></div>
+  <details class="pd"><summary>🌳 Conifere și foioase: ce înseamnă?</summary><p><b>Foioasele</b> (stejar, tei, arțar, frasin) au frunze late și le pierd toamna. Formează pădurile de pe dealuri. <b>Coniferele</b> (brad, molid, pin) au frunze ca niște ace și rămân verzi iarna. Formează pădurile de munte.</p></details>
+ </div>
+</section>
+
+<!-- 9 ISTORIE -->
+<section class="slide" aria-label="Relief și istorie">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Istorie ↔ Geografie</span>
+  <h2>Cum a influențat relieful istoria?</h2>
+  <p>Manualul îți cere să discuți cum influențează relieful viața oamenilor. Istoria are exemple clare.</p>
+  <div class="grid g2">
+   <div class="box"><span class="emo">🏛️</span><h3>Grecia: munți și golfuri</h3><p>Munții separau văile, așa că fiecare s-a organizat într-o cetate (polis). Țărmul crestat a făcut din greci navigatori (istorie, unitatea 2, lecția 1).</p></div>
+   <div class="box"><span class="emo">⛏️</span><h3>Dacii: Carpații</h3><p>Din munți, dacii scoteau metale și își țineau turmele. Cetățile lor erau pe înălțimi, greu de cucerit (lecția 2).</p></div>
+   <div class="box"><span class="emo">🛡️</span><h3>Basarab I: trecătoarea</h3><p>La Posada (1330), românii au atacat din râpi o armată mult mai mare, prinsă într-o trecătoare îngustă (lecția 3).</p></div>
+   <div class="box"><span class="emo">🌳</span><h3>Mircea cel Bătrân: pădurea</h3><p>La Rovine (1395), pădurile de stejar și locul mlăștinos au fost aliații lui (lecția 4).</p></div>
+  </div>
+  <div class="tip y">❓ <b>De gândit:</b> dacă ar fi trebuit să alegi locul unde îți construiești o așezare, ai alege câmpia, dealul sau muntele? Ce ai avea nevoie să găsești aproape?</div>
+ </div>
+</section>
+
+<!-- 10 DEZBATERE -->
+<section class="slide" aria-label="Dezbatere">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">🗣️ Dezbatere · linia valorică</span>
+  <h2>Pădurea: o tăiem sau o protejăm?</h2>
+  <p>Manualul spune: „Pădurea trebuie ocrotită, deoarece reprezintă o casă naturală pentru plante și animale și o bogăție imensă pentru oameni.” Dar lemnul e și o resursă: masa la care scrii e din lemn! Ar trebui interzisă orice tăiere a pădurilor?</p>
+  <div class="vl" id="vl-btns">
+   <button type="button" aria-pressed="false" data-k="pro">Să interzicem tăierea</button>
+   <button type="button" aria-pressed="false" data-k="contra">Putem tăia, cu reguli</button>
+   <button type="button" aria-pressed="false" data-k="ind">Încă nu m-am hotărât</button>
+  </div>
+  <div class="box" id="vl-box" aria-live="polite"><p>Apasă pe o poziție ca să vezi ce argumente ar putea folosi un elev. Apoi adaugă-le pe ale tale.</p></div>
+  <div class="tip y">🗣️ <b>Reguli:</b> ascultăm până la capăt, folosim „eu cred că... pentru că...”, acceptăm că problema are mai multe fețe. La final formulăm o concluzie comună.</div>
+ </div>
+</section>
+
+<!-- 11 PUNTE -->
+<section class="slide" aria-label="Punte">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Matematică ↔ Română ↔ Civică ↔ Plastică</span>
+  <h2>Legături cu celelalte materii</h2>
+  <details class="pd"><summary>Matematică: altitudini și temperaturi</summary><p>Temperatura scade, în medie, cu aproximativ <b>0,6 °C la fiecare 100 m</b>. Dacă la câmpie sunt 20 °C, la 1 500 m sunt aproximativ 20 − 15 × 0,6 = <b>11 °C</b>. Compară numere, ordonează altitudini: 200 m, 800 m, 2 000 m.</p></details>
+  <details class="pd"><summary>Română: culme, creastă, izvor în poezie</summary><p>Cuvintele din geografie apar în poezie și proză. Ghicitorile din manual au rimă și ritm. Scrie și tu o ghicitoare despre un deal sau despre un râu, apoi vezi dacă colegii o rezolvă.</p></details>
+  <details class="pd"><summary>Educație civică: arii protejate</summary><p>Unele plante și animale sunt ocrotite prin lege. Multe locuri din România sunt <b>parcuri naționale</b> sau rezervații. Informează-te dacă în orizontul tău local există o arie naturală protejată și ce nu ai voie să faci acolo.</p></details>
+  <details class="pd"><summary>Educație plastică: culori pentru hărți</summary><p>Cum alegi culorile unei hărți? Verde → câmpie, galben → deal, maro → munte, albastru → ape. Alege tonuri mai închise pentru altitudini mai mari. Realizează o hartă a camerei tale cu relieful pernelor și al păturii!</p></details>
+  <details class="pd"><summary>📋 Proiect: fișa de observare a orizontului local</summary><p>Notează: <b>forma de relief predominantă</b> (înfățișare, înălțime), cum a influențat așezarea localității, apele curgătoare și lacurile din regiune, vegetația și animalele sălbatice. Caută și plantele sau animalele ocrotite din zona ta.</p></details>
+ </div>
+</section>
+
+<!-- 12 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile lecției</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 13 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">⛰️</span><p><b>Relieful</b>: munți (peste 1 000 m, maro), dealuri și podișuri (300–1 000 m, galben), câmpii (sub 300 m, verde).</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">💧</span><p><b>Hidrografia</b>: ape curgătoare (pârâu, râu, fluviu) și ape stătătoare (baltă, mlaștină, lac). Pe hartă: albastru.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">🌲</span><p><b>Vegetația și fauna</b> depind de relief, iar pădurea trebuie <b>ocrotită</b>.</p></div>
+  </div>
+  <div class="tip y">🔁 <b>Urmează:</b> Lecția 7, „Populație, așezări, activități ale oamenilor”.</div>
+ </div>
+</section>
+
+</main>
+
+<script src="../../vendor/three.min.js"></script>
+<script src="../../vendor/OrbitControls.js"></script>
+<script src="../../assets/caiet.js"></script>
+<script>
+(function(){
+  var Q=[
+   {t:'mcq',tags:['G L6'],d:'Relief',q:'Care formă de relief are pante abrupte, creste ascuțite și depășește 1 000 m?',o:['Câmpia','Dealul','Muntele','Podișul'],a:2,h:'Pe hartă se desenează cu maro.',e:'Muntele. Câmpia e sub 300 m, iar dealurile între 300 și 1 000 m.'},
+   {t:'order',tags:['G L6','Matematică'],d:'Altitudini',q:'Pune formele de relief în ordine crescătoare a altitudinii.',items:['Câmpie','Deal','Munte'],h:'De jos în sus.',e:'Câmpie → deal → munte. În ordine descrescătoare: munți, dealuri și podișuri, câmpii.'},
+   {t:'mcq',tags:['G L6'],d:'Hartă',q:'Cu ce culoare se reprezintă pe hărți câmpiile?',o:['Maro','Galben','Verde','Albastru'],a:2,h:'Cu cât e mai joasă, cu atât mai închisă.',e:'Verde. Dealurile și podișurile: galben. Munții: maro.'},
+   {t:'mcq',tags:['G L6'],d:'Vocabular',q:'Care e partea cea mai de sus, prelungă și ascuțită a unui munte?',o:['Culmea','Creasta','Versantul','Izvorul'],a:1,h:'Culmea e mai rotunjită și apare la dealuri.',e:'Creasta. Culmea e și ea parte de sus, dar mai ușor înclinată și rotunjită.'},
+   {t:'mcq',tags:['G L6'],d:'Vocabular',q:'Ce este altitudinea?',o:['Lățimea unui râu','Înălțimea reliefului într-un anumit loc','Adâncimea unui lac','Lungimea unei ape'],a:1,h:'Cât de sus e un loc față de nivelul mării.',e:'Înălțimea reliefului într-un anumit loc.'},
+   {t:'order',tags:['G L6'],d:'Ape curgătoare',q:'Pune apele curgătoare în ordine, de la cea mai mică la cea mai mare.',items:['Pârâu','Râu','Fluviu'],h:'Din pâraie se formează râul.',e:'Pârâu → râu → fluviu. Fluviul se varsă într-o mare sau într-un ocean.'},
+   {t:'sort',tags:['G L6'],d:'Hidrografie',q:'Sortează apele: curgătoare sau stătătoare?',items:[['Pârâu','s'],['Lac','n'],['Râu','s'],['Baltă','n'],['Fluviu','s'],['Mlaștină','n']],labels:{s:'Curgătoare',n:'Stătătoare'},h:'Unele curg la vale, altele stau în adâncituri.',e:'Curgătoare: pârâu, râu, fluviu. Stătătoare: lac, baltă, mlaștină.'},
+   {t:'mcq',tags:['G L6'],d:'Ape',q:'Care sunt elementele unei ape curgătoare?',o:['Izvorul, cursul, gura de vărsare','Culmea, versantul, creasta','Lacul, balta, mlaștina','Titlul, scara, legenda'],a:0,h:'De unde pornește și unde se termină.',e:'Izvorul, cursul (între izvor și vărsare) și gura de vărsare.'},
+   {t:'sort',tags:['G L6','Științe'],d:'Vegetație',q:'Sortează arborii: conifere sau foioase?',items:[['Brad','s'],['Stejar','n'],['Molid','s'],['Tei','n'],['Pin','s'],['Arțar','n']],labels:{s:'Conifere',n:'Foioase'},h:'Coniferele au frunze ca niște ace.',e:'Conifere: brad, molid, pin. Foioase: stejar, tei, arțar. Pădurile de conifere sunt la munte, iar cele de foioase pe dealuri.'},
+   {t:'num',u:'°C',tags:['G L6','Matematică'],d:'Matematică',q:'La câmpie sunt 20 °C. Temperatura scade cu 0,6 °C la fiecare 100 m. Câte grade sunt la 1 500 m?',a:11,h:'1 500 m = 15 × 100 m. 15 × 0,6 = 9.',e:'20 − 9 = 11 °C. De aceea, în vârful muntelui e mai frig, chiar și vara.'},
+   {t:'mcq',tags:['G L6','Științe'],d:'Științe',q:'Care e ordinea corectă a circuitului apei?',o:['Evaporare → condensare → precipitații → scurgere','Precipitații → evaporare → scurgere → condensare','Scurgere → condensare → evaporare → precipitații','Condensare → scurgere → precipitații → evaporare'],a:0,h:'Mai întâi apa urcă, apoi coboară.',e:'Evaporare → condensare (nori) → precipitații → scurgere (râuri) și din nou evaporare.'},
+   {t:'mcq',tags:['G L6','Istorie'],d:'Istorie',q:'De ce s-au organizat grecii în cetăți separate (polisuri)?',o:['Pentru că nu aveau marea','Pentru că relieful muntos despărțea văile și insulele','Pentru că nu aveau zei','Pentru că erau puțini'],a:1,h:'Lecția 1 de istorie, unitatea 2.',e:'Relieful muntos și insulele separau comunitățile, iar fiecare s-a organizat într-o cetate.'},
+   {t:'mcq',tags:['G L6','Istorie'],d:'Istorie',q:'La Rovine (1395), ce l-a ajutat pe Mircea cel Bătrân?',o:['Munții înzăpeziți','Pădurile de stejar și locul mlăștinos','Deșertul','Marea'],a:1,h:'Lecția 4 de istorie, unitatea 2.',e:'Pădurile de stejar și locul mlăștinos. Relieful și vegetația pot fi aliați ai celor care le cunosc.'},
+   {t:'mcq',tags:['G L6','Civică'],d:'Civică',q:'De ce trebuie ocrotită pădurea?',o:['Pentru că e frumoasă, nimic altceva','Pentru că e casă pentru plante și animale și o bogăție pentru oameni','Pentru că nu putem tăia nimic niciodată','Pentru că dă umbră'],a:1,h:'Citește „Explic”.',e:'Pădurea e casă pentru plante și animale și o bogăție pentru oameni. Folosită cu grijă, rămâne pentru cei de după noi.'},
+   {t:'mcq',tags:['G L6'],d:'Gândire',q:'Un râu izvorăște de la 1 200 m. În ce formă de relief își are izvorul?',o:['În câmpie','În dealuri','În munți','În deșert'],a:2,h:'Peste 1 000 m.',e:'În munți. Multe ape curgătoare izvorăsc din munți și coboară spre dealuri și câmpii.'},
+   {t:'mcq',tags:['G L6','Științe'],d:'Faună',q:'Ce animale găsim, de obicei, în pădurile de conifere de la munte?',o:['Iepurele','Ursul și jderul','Rățușca','Calul'],a:1,h:'Animale care trăiesc în pădure.',e:'Ursul și jderul sunt animale ale pădurilor de munte. Iepurele trăiește mai ales la dealuri și câmpii.'}
+  ];
+  Caiet.start({Q:Q});
+})();
+</script>
+<script>
+(function(){
+  /* ===== Relief 3D ===== */
+  function sm(a,b,x){var t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t);}
+  function alt(x,z){
+    var t=(x+10)/20,a=sm(0,1,t);
+    var h=80+a*a*2300;
+    h+=Math.sin(x*1.3)*Math.cos(z*1.1)*(20+60*a)+Math.sin(z*0.9+x*0.4)*(10+260*a*a);
+    if(t<0.35)h=Math.min(h,290-Math.abs(Math.sin(x*2))*30);
+    return Math.max(30,h);
+  }
+  function col(h){
+    function mix(a,b,t){var c=[];for(var i=0;i<3;i++)c.push(a[i]+(b[i]-a[i])*t);return c;}
+    if(h<300)return mix([.18,.55,.29],[.66,.85,.54],h/300);
+    if(h<1000)return mix([.96,.89,.48],[.85,.66,.23],(h-300)/700);
+    return mix([.72,.54,.35],[.42,.29,.17],Math.min(1,(h-1000)/1500));
+  }
+  function form(h){return h<300?'câmpie (verde pe hartă)':h<1000?'deal sau podiș (galben pe hartă)':'munte (maro pe hartă)';}
+  var T,ctx,terr,world,trees,water,flat=false;
+  Caiet.scena3d('rl3',{background:0xCFE8FF,camera:[0,6,14],setup:function(T_,scene,cam,c){
+    T=T_;ctx=c;ctx.controls.enabled=false;
+    scene.add(new T.AmbientLight(0xffffff,.62));var L=new T.DirectionalLight(0xffffff,.75);L.position.set(-6,10,8);scene.add(L);
+    world=new T.Group();scene.add(world);
+    var g=new T.PlaneGeometry(20,12,120,72);g.rotateX(-Math.PI/2);
+    var p=g.attributes.position,cs=new Float32Array(p.count*3);
+    for(var i=0;i<p.count;i++){var x=p.getX(i),z=p.getZ(i),h=alt(x,z);p.setY(i,h/500);var c2=col(h);cs[i*3]=c2[0];cs[i*3+1]=c2[1];cs[i*3+2]=c2[2];}
+    g.setAttribute('color',new T.BufferAttribute(cs,3));g.computeVertexNormals();
+    terr=new T.Mesh(g,new T.MeshStandardMaterial({vertexColors:true,roughness:1}));world.add(terr);
+    /* ape */
+    water=new T.Group();world.add(water);
+    var pts=[];for(var x=8;x>=-10;x-=1){var z=-1.6+Math.sin(x*.55)*1.3;pts.push(new T.Vector3(x,alt(x,z)/500+.07,z));}
+    water.add(new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts),90,.09,6,false),new T.MeshBasicMaterial({color:0x2F6FD6})));
+    var lake=new T.Mesh(new T.CircleGeometry(.9,32),new T.MeshBasicMaterial({color:0x2F6FD6}));lake.rotation.x=-Math.PI/2;lake.position.set(-6.3,alt(-6.3,3.2)/500+.05,3.2);water.add(lake);
+    /* vegetatie */
+    trees=new T.Group();world.add(trees);
+    var seed=7;function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647;}
+    var con=new T.MeshStandardMaterial({color:0x1F5F36}),fol=new T.MeshStandardMaterial({color:0x4F8F3A}),trunk=new T.MeshStandardMaterial({color:0x6B4A2B});
+    for(var k=0;k<70;k++){var x=2.5+rnd()*7.2,z=-5.6+rnd()*11.2,h=alt(x,z);if(h<1000||h>1850)continue;
+      var cn=new T.Mesh(new T.ConeGeometry(.14,.5,7),con);cn.position.set(x,h/500+.24,z);trees.add(cn);}
+    for(var k=0;k<60;k++){var x=-4+rnd()*6.5,z=-5.6+rnd()*11.2,h=alt(x,z);if(h<300||h>950)continue;
+      var cr=new T.Mesh(new T.SphereGeometry(.17,8,6),fol);cr.position.set(x,h/500+.3,z);trees.add(cr);
+      var tr=new T.Mesh(new T.CylinderGeometry(.03,.04,.2,5),trunk);tr.position.set(x,h/500+.1,z);trees.add(tr);}
+    var fl=[0xE2433A,0xF6C431,0xFFFFFF,0x8E4A82];
+    for(var k=0;k<50;k++){var x=-9.6+rnd()*5.6,z=-5.6+rnd()*11.2,h=alt(x,z);var f=new T.Mesh(new T.SphereGeometry(.05,6,4),new T.MeshBasicMaterial({color:fl[k%4]}));f.position.set(x,h/500+.06,z);trees.add(f);}
+    cam.lookAt(0,0,0);
+    /* click */
+    var rc=new T.Raycaster(),m=new T.Vector2(),dn=null,el=ctx.renderer.domElement;
+    el.addEventListener('pointerdown',function(e){dn=[e.clientX,e.clientY];});
+    el.addEventListener('pointerup',function(e){if(!dn||Math.abs(e.clientX-dn[0])>5||Math.abs(e.clientY-dn[1])>5)return;var r=el.getBoundingClientRect();
+      m.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1);rc.setFromCamera(m,ctx.camera);var hit=rc.intersectObject(terr)[0];
+      if(hit){var h=Math.round(alt(hit.point.x,hit.point.z)/10)*10;document.getElementById('rl-info').innerHTML='📍 Altitudine aproximativă: <b>'+h.toLocaleString('ro-RO')+' m</b> · formă de relief: <b>'+form(h)+'</b>.';}});
+    set();
+  }});
+  function set(){
+    var a=+document.getElementById('rl-a').value/100,rot=+document.getElementById('rl-r').value*Math.PI/180,ang=a*Math.PI/2*0.999,R=14;
+    ctx.camera.position.set(Math.sin(rot)*Math.cos(ang)*R,2.2+Math.sin(ang)*R,Math.cos(rot)*Math.cos(ang)*R+.01);ctx.camera.lookAt(0,.8,0);
+  }
+  function flatten(){
+    world.scale.y=flat?.012:1;
+    terr.material=flat?new T.MeshBasicMaterial({vertexColors:true}):new T.MeshStandardMaterial({vertexColors:true,roughness:1});
+    var v=document.getElementById('rl-v').getAttribute('aria-pressed')==='true';trees.visible=v&&!flat;
+    document.getElementById('rl-m').setAttribute('aria-pressed',flat);
+    if(flat){document.getElementById('rl-a').value=100;set();document.getElementById('rl-info').innerHTML='🗺️ Așa arată relieful pe hartă: <b>verde</b> = câmpie (mai închis = mai jos), <b>galben</b> = dealuri, <b>maro</b> = munți (mai închis = mai înalt). Linia albastră e un râu, iar pata albastră, un lac.';}
+  }
+  ['rl-a','rl-r'].forEach(function(id){document.getElementById(id).oninput=set;});
+  document.getElementById('rl-m').onclick=function(){flat=!flat;flatten();};
+  document.getElementById('rl-v').onclick=function(){var on=this.getAttribute('aria-pressed')!=='true';this.setAttribute('aria-pressed',on);trees.visible=on&&!flat;};
+  document.getElementById('rl-w').onclick=function(){var on=this.getAttribute('aria-pressed')!=='true';this.setAttribute('aria-pressed',on);water.visible=on;};
+
+  /* ===== Bare altitudini ===== */
+  Caiet.bare('alt-bar',{items:[{label:'Câmpii',value:300,text:'sub 300 m',color:'#2E9D52'},{label:'Dealuri / podișuri',value:1000,text:'300–1 000 m',color:'#D9A93A'},{label:'Munți',value:2544,text:'peste 1 000 m (max. 2 544 m în România)',color:'#A9774A'}],max:2600,source:'manualul de geografie; Moldoveanu, 2 544 m'});
+
+  /* ===== Profil ===== */
+  var PF={cr:'<b>Creasta</b>: partea cea mai de sus, prelungă, ascuțită și cu înclinări mari, la munți.',cu:'<b>Culmea</b>: partea cea mai de sus, prelungă și ușor înclinată, la dealuri (și la munți, dar rotunjită).',ve:'<b>Versantul</b> (coasta): suprafața înclinată de pe părțile laterale. Pantele (înclinarea) sunt mai mici la dealuri și mai mari la munți.',al:'<b>Altitudinea</b>: înălțimea reliefului într-un anumit loc, de obicei față de nivelul mării.'};
+  var pb=document.querySelectorAll('#pf-ctrl button');
+  pb.forEach(function(b){b.onclick=function(){var k=b.getAttribute('data-p');pb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});['cr','cu','ve','al'].forEach(function(p){document.getElementById('pf-'+p).style.opacity=p===k?1:.2;});document.getElementById('pf-info').innerHTML=PF[k];};});
+
+  /* ===== Râu ===== */
+  var RV={iz:'<b>Izvorul</b>: locul în care un firicel de apă iese la suprafață și curge. Aici, în munți.',cu:'<b>Cursul</b>: drumul apei între izvor și vărsare. Coboară la vale, trece prin dealuri și câmpie.',af:'<b>Afluenții</b>: pâraie și râuri mai mici care se varsă în râul principal. Din mai mulți pâraie se formează un râu.',gv:'<b>Gura de vărsare</b>: locul unde apa se varsă într-un râu mai mare, într-un fluviu, lac, mare sau ocean.',lc:'<b>Lacul</b>: apă stătătoare, formată într-o adâncitură, din ploi, izvoare sau râuri. Poate fi pe cursul unui râu.'};
+  var rb=document.querySelectorAll('#rv-ctrl button');
+  rb.forEach(function(b){b.onclick=function(){var k=b.getAttribute('data-p');rb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});['iz','cu','af','gv','lc'].forEach(function(p){var g=document.getElementById('rv-'+p);g.style.opacity=p===k?1:.25;});document.getElementById('rv-info').innerHTML=RV[k];};});
+
+  /* ===== Circuitul apei ===== */
+  var CW={1:'<b>1 · Evaporare.</b> Soarele încălzește apa mărilor și a râurilor, iar o parte se ridică sub formă de vapori (gaz).',2:'<b>2 · Condensare.</b> La înălțime, vaporii se răcesc și se transformă în picături mici: se formează norii.',3:'<b>3 · Precipitații.</b> Picăturile devin mari și cad ca ploaie, zăpadă sau grindină, mai ales la munte.',4:'<b>4 · Scurgere.</b> Apa din ploi și din zăpezi topite se adună în pâraie și râuri, care o duc spre mare. Circuitul poate începe din nou.'};
+  var cb=document.querySelectorAll('#cw-ctrl button');
+  cb.forEach(function(b){b.onclick=function(){var k=b.getAttribute('data-p');cb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});[1,2,3,4].forEach(function(p){document.getElementById('cw-'+p).style.opacity=(''+p)===k?1:.2;});document.getElementById('cw-info').innerHTML=CW[k];};});
+  var gh=document.getElementById('gh-1');gh.querySelector('button').onclick=function(){gh.classList.toggle('open');};
+
+  /* ===== Etaje de vegetație ===== */
+  var vg=document.getElementById('vg-a'),vl=document.getElementById('vg-line'),vi=document.getElementById('vg-info');
+  function belt(a){
+    if(a<300)return ['Câmpie','ierburi scunde și flori: mac, mușețel, albăstrele','iepure, vulpe, păsări de câmp'];
+    if(a<1000)return ['Dealuri','păduri de foioase: stejar, tei, arțar, frasin','iepure, căprioară, mistreț'];
+    if(a<1800)return ['Munte, pădure de conifere','brad, molid, pin: arbori zvelți, cu frunze ca niște ace','urs, jder, cerb'];
+    if(a<2200)return ['Munte, pajiști alpine','ierburi și flori mici, arbuști pitici; nu mai cresc arbori înalți','capră neagră, marmotă'];
+    return ['Munte, stâncă și piatră','aproape nicio plantă: doar licheni și mușchi','păsări de pradă; vizitatori'];
+  }
+  function vgSet(){var a=+vg.value,y=240-a/2500*210;vl.setAttribute('y1',y);vl.setAttribute('y2',y);var b=belt(a),t=(20-a*.006).toFixed(1).replace('.',',');
+    vi.innerHTML='⛰️ <b>'+a.toLocaleString('ro-RO')+' m</b> · zonă: <b>'+b[0]+'</b>.<br>🌿 Vegetație: '+b[1]+'.<br>🐾 Animale: '+b[2]+'.<br>🌡️ Temperatura aproximativă (dacă la 0 m sunt 20 °C): <b>'+t+' °C</b>.';}
+  vg.oninput=vgSet;vgSet();
+
+  /* ===== Linia valorică ===== */
+  var ARG={
+   pro:'<b>Argumente „să interzicem tăierea”:</b><br>• Pădurea e casa a mii de plante și animale: dacă o tăiem, ele dispar.<br>• Rădăcinile copacilor țin pământul: fără ele apar alunecări de teren și inundații.<br>• Pădurea curăță aerul și ne ajută să respirăm mai bine.',
+   contra:'<b>Argumente „putem tăia, cu reguli”:</b><br>• Avem nevoie de lemn: pentru mese, case, hârtie, încălzire.<br>• Dacă tăiem puțin și plantăm la loc, pădurea se reface.<br>• Oamenii din zonele de munte trăiesc din lucrul cu lemnul. Regulile trebuie respectate de toți.',
+   ind:'<b>Ia-ți timp să te decizi.</b><br>• Ce s-ar întâmpla dacă am tăia tot? Dar dacă nu am tăia nimic?<br>• Cine ar trebui să controleze tăierile?<br>• Când te-ai hotărât, spune ce regulă ai propune tu.'
+  };
+  var vb=document.querySelectorAll('#vl-btns button'),vx=document.getElementById('vl-box');
+  vb.forEach(function(b){b.onclick=function(){vb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});vx.innerHTML='<p style="margin:0">'+ARG[b.dataset.k]+'</p>';};});
+})();
+</script>
+</body>
+</html>

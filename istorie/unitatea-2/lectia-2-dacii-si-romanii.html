@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dacii și romanii. Întemeierea poporului român</title>
+<link rel="stylesheet" href="../../assets/caiet.css">
+<style>
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}
+.pd summary{cursor:pointer;font-weight:800}
+.pd[open] summary{margin-bottom:6px}
+.pd:last-of-type{border-color:var(--green)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .box h3{margin-top:0}
+.vs ul{margin:.4em 0 0;padding-left:1.1em}
+.vs li{margin:.2em 0}
+.steps{counter-reset:s;display:grid;gap:8px;margin:10px 0}
+.steps div{position:relative;background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:.6em .9em .6em 3em}
+.steps div::before{counter-increment:s;content:counter(s);position:absolute;left:.7em;top:50%;transform:translateY(-50%);width:1.7em;height:1.7em;border-radius:50%;background:var(--purple);color:#fff;font-weight:800;display:grid;place-items:center}
+.pie{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.pie .disc{width:190px;height:190px;border-radius:50%;flex:none;background:conic-gradient(#ffffff 0 15%,#E2433A 15% 26%,#2E9D52 26% 45%,#8E4A82 45% 100%);border:3px solid var(--line)}
+.pie ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;min-width:0}
+.pie li{display:flex;gap:8px;align-items:center}
+.pie li i{width:16px;height:16px;border-radius:4px;flex:none;border:2px solid var(--line)}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Istorie · Unitatea 2 · Lecția 2 · manual pp. 42–45</p>
+   <h1>Dacii și romanii. Întemeierea poporului român</h1>
+   <p class="lead">Două popoare care s-au luptat, apoi au trăit împreună. Din amestecul lor, în câteva secole, s-au născut poporul român și limba română.</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="#BFE3F7"/>
+   <circle cx="176" cy="44" r="14" fill="#F6C431"/>
+   <path d="M10 180 H210 V210 H10Z" fill="#6FA85A"/>
+   <rect x="78" y="160" width="64" height="20" fill="#D8CDB6" stroke="#B5A685" stroke-width="2"/>
+   <rect x="88" y="40" width="44" height="120" fill="#E4DBC7" stroke="#B5A685" stroke-width="2"/>
+   <path d="M88 58 q22 -8 44 0 M88 76 q22 8 44 0 M88 94 q22 -8 44 0 M88 112 q22 8 44 0 M88 130 q22 -8 44 0 M88 148 q22 8 44 0" stroke="#B5A685" stroke-width="3" fill="none"/>
+   <rect x="82" y="32" width="56" height="10" fill="#D8CDB6" stroke="#B5A685" stroke-width="2"/>
+   <path d="M20 150 q20 -22 40 0" fill="none" stroke="#E2433A" stroke-width="5" stroke-linecap="round"/>
+   <path d="M160 150 q20 -22 40 0" fill="none" stroke="#2F6FD6" stroke-width="5" stroke-linecap="round"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 STIM / VREM -->
+<section class="slide" aria-label="Ce știm și ce vrem să aflăm">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Știm deja</span>
+  <div class="tip g" style="margin-top:0">Dacii și romanii au fost strămoșii poporului nostru. La lecția 6 din prima unitate ai aflat că românii sunt un popor de origine <b>latină</b>. Azi aflăm de ce.</div>
+  <span class="badge" style="background:var(--red);margin-top:18px">Ancheta de azi</span>
+  <div class="q"><span class="mark" style="background:var(--blue)">1</span>Ce teritorii stăpâneau dacii și romanii?</div>
+  <div class="q"><span class="mark" style="background:var(--purple)">2</span>Care au fost cei mai de seamă conducători ai lor?</div>
+  <div class="q"><span class="mark" style="background:var(--green)">3</span>Cum era modul de viață al celor două popoare?</div>
+  <div class="q"><span class="mark" style="background:var(--red)">4</span>Cum au luat naștere poporul român și limba română?</div>
+ </div>
+</section>
+
+<!-- 3 HARTA -->
+<section class="slide" aria-label="Imperiul Roman și Dacia">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">🗺️ Lucru cu harta · fig. 7 din manual</span>
+  <h2>Imperiul Roman și Dacia</h2>
+  <p>Manualul îți cere să localizezi capitala Daciei și pe cea a Imperiului Roman, să numești mările din jurul Peninsulei Italice și vecinii Daciei. Apasă pe butoane.</p>
+  <div class="legend-chips" id="rm-chips"></div>
+  <div class="fig-wrap"><div id="rm-map"></div></div>
+  <div class="map-info" id="rm-info" aria-live="polite"></div>
+  <p class="sursa">Harta arată țările de azi. Cu mov sunt țările de azi care au făcut parte, în întregime sau în parte, din Imperiul Roman în secolul II d.H. (aproximativ). Cu galben e România de azi.</p>
+ </div>
+</section>
+
+<!-- 4 DACII -->
+<section class="slide" aria-label="Dacii">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Reținem · geții sau dacii</span>
+  <h2>Cine erau dacii?</h2>
+  <p>Geții sau dacii făceau parte din ramura de nord a <b>tracilor</b>. Locuiau între <b>Carpați, Dunăre și Marea Neagră</b>. Țara lor se numea <b>Dacia</b>, iar capitala era la <b>Sarmizegetusa</b>.</p>
+  <div class="grid g3">
+   <div class="box"><span class="emo">⛰️</span><h3>Munții Carpați</h3><p>Pășuni pentru oi și bogății în pământ: <b>minerit</b> și prelucrarea metalelor prețioase. Brățara din fig. 12 e din aur.</p></div>
+   <div class="box"><span class="emo">🌾</span><h3>Dealuri și câmpii</h3><p><b>Agricultură</b>, <b>creșterea animalelor</b> și <b>apicultură</b>. Dacii făceau și vase din lut: <b>olărit</b>.</p></div>
+   <div class="box"><span class="emo">🌊</span><h3>Dunărea și marea</h3><p>Ape bune pentru <b>pescuit</b> și drumuri de <b>comerț</b>, inclusiv cu grecii din coloniile de la Marea Neagră (lecția 1).</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:12px">
+   <div class="box"><span class="emo">⚡</span><h3>Credințe</h3><p>Dacii erau <b>politeiști</b>. Zeul suprem era <b>Zalmoxis</b>. Sanctuarul din fig. 1, de la Sarmizegetusa, era un loc de rugăciune.</p></div>
+   <div class="box"><span class="emo">👕</span><h3>Portul</h3><p>Seamănă foarte mult cu al țăranilor de azi: cămașă lungă, pantaloni și o căciulă. Pe Columna lui Traian îi vezi așa.</p></div>
+  </div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Herodot: „Geții sunt cei mai viteji și mai drepți dintre traci.” Tucidide: „Geții locuiesc între fluviul Istros [Dunăre] și Pontus Euxinus [Marea Neagră].”</p></div>
+   <div><span class="lab">🌍 Context</span><p>Dacii nu au lăsat texte scrise despre ei. Tot ce știm vine din izvoare <b>scrise de greci și de romani</b> (care îi priveau din afară) și din <b>izvoare nescrise</b>: ruine, arme, bijuterii. Amintește-ți lecția 1: un istoric întreabă mereu „cine a scris și de ce?”. Grecii îi numeau <b>geți</b>, romanii <b>daci</b>, dar vorbim despre același popor.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 5 ROMANII -->
+<section class="slide" aria-label="Romanii">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Reținem · romanii</span>
+  <h2>Cine erau romanii?</h2>
+  <p>Romanii au trăit în Peninsula Italică, în cetatea <b>Roma</b>, pe malul râului <b>Tibru</b>, într-o câmpie îngustă numită <b>Latium</b>. De aici vine și numele <b>limbii latine</b>. Prin cuceriri repetate au pus bazele unui stat foarte întins.</p>
+  <div class="vs">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🏛️</span><h3>Constructori iscusiți</h3>
+    <ul><li>Cetăți-orașe, temple, piețe publice (forum)</li><li>Arcuri de triumf</li><li>Poduri, ca cel de la Drobeta (fig. 9)</li><li>Amfiteatre, ca Colosseumul (fig. 4)</li></ul></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">👑</span><h3>Viață și credințe</h3>
+    <ul><li>Agricultură, creșterea animalelor, meșteșuguri și comerț</li><li>Politeiști. Zeul suprem: <b>Jupiter</b></li><li>Împărații erau considerați zei, în cinstea lor erau serbări și întreceri</li><li>Mantie albă și sandale</li></ul></div>
+  </div>
+  <div class="tip y">🐺 <b>Legenda Romei (fig. 5):</b> gemenii Romulus și Remus ar fi fost alăptați de o lupoaică, iar Romulus ar fi întemeiat cetatea în anul <b>753 î.H.</b> Este o legendă: arheologii au găsit urmele unui sat mai vechi, care a crescut încet.</div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Romanii au întemeiat cetăți-orașe, iar teritoriile cucerite le-au transformat în provincii.</p></div>
+   <div><span class="lab">🌍 Context</span><p>O <b>provincie</b> era un teritoriu cucerit, condus de un guvernator trimis de la Roma. Locuitorii plăteau impozite, aveau soldați romani în apropiere și, în timp, învățau latina. Pentru romani, cuceririle aduceau bogății, sclavi și putere.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 6 CONDUCATORI -->
+<section class="slide" aria-label="Conducători">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#3a2a00">Descoperim · fig. 3 și 6 din manual</span>
+  <h2>Conducători din Antichitate</h2>
+  <div class="grid g4">
+   <div class="box"><span class="emo">👑</span><h3>Burebista</h3><p>Rege al dacilor (82–44 î.H.). A unit triburile dacice într-un stat puternic.</p></div>
+   <div class="box"><span class="emo">🦅</span><h3>Iulius Cezar</h3><p>Conducător roman (48–44 î.H.). A cucerit Galia, iar Burebista a murit în același an cu el, în 44 î.H.</p></div>
+   <div class="box"><span class="emo">🛡️</span><h3>Decebal</h3><p>Rege al dacilor (87–106 d.H.). A condus lupta împotriva romanilor. Fig. 3.</p></div>
+   <div class="box"><span class="emo">⚔️</span><h3>Traian</h3><p>Împărat roman (98–117 d.H.). A cucerit Dacia. Fig. 6.</p></div>
+  </div>
+  <p style="margin-top:12px">Compară fig. 3 și 6 din manual: cum arată și ce poartă <b>Decebal</b>, și ce poartă <b>Traian</b>? Ce te ajută să-i deosebești?</p>
+  <div class="tip y">🔎 <b>Atenție la ani!</b> La î.H. anii se numără invers: Burebista (82–44 î.H.) a murit cu 44 de ani <b>înainte de anul 1</b>. Decebal și Traian trăiesc după anul 1, adică d.H., așa că numerele cresc cu trecerea timpului.</div>
+ </div>
+</section>
+
+<!-- 7 AXA -->
+<section class="slide" aria-label="Axa timpului">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Descoperim · repere cronologice, fig. 11 din manual</span>
+  <h2>Dacii și romanii pe axa timpului</h2>
+  <p>Apasă pe evenimente. Cu butoanele de sus poți vedea anii războaielor sau toată povestea, de la întemeierea Romei.</p>
+  <div class="fig-wrap"><div id="rm-axa"></div></div>
+  <div class="map-info" id="rm-axa-info" aria-live="polite">Apasă pe un punct de pe axă.</div>
+ </div>
+</section>
+
+<!-- 8 RAZBOAIE -->
+<section class="slide" aria-label="Războaiele daco-romane">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Cucerirea Daciei · Aplicăm 2</span>
+  <h2>Două războaie: 101–102 și 105–106</h2>
+  <p>Bogățiile Daciei (aur, argint, sare) și poziția ei geografică, la nord de Dunăre, o făceau o țintă pentru Roma. Între daci și romani au fost <b>două războaie</b>. Dacia a fost învinsă, cucerită și transformată în <b>provincie romană</b>. Decebal s-a sinucis ca să nu fie prins.</p>
+  <div class="box" style="border-color:var(--yellow)"><p style="margin:0">„Traian dădu lupta cu dacii, își văzu răniți pe mulți dintre ai săi și ucise mulți dușmani. Deoarece îi lipseau bandajele, se zice că nu și-a cruțat nici propriile veșminte, ci le-a tăiat fâșii. Apoi a poruncit să se ridice un altar soldaților căzuți în luptă și să li se aducă jertfă în fiecare an.” <b>Dio Cassius, istoric roman</b></p></div>
+  <details class="pd"><summary>Cum explici atitudinea lui Traian față de soldații răniți?</summary><p>Își ajută soldații chiar cu hainele lui: arată <b>grijă</b>. Prin altarul pentru cei căzuți, îi cinstește: soldații care mor pentru țară nu sunt uitați. Monumentele pentru ostași le spun urmașilor ce au făcut ei.</p></details>
+  <details class="pd"><summary>Ce știm despre dacii care nu apar în text?</summary><p>Textul e scris de un <b>roman</b>, la peste 100 de ani după război. Arată partea romană: curajul și grija împăratului. Dacii nu au lăsat nicio poveste scrisă despre război. Cei mai buni „martori” ai lor sunt <b>ruinele cetăților</b>, armele și Columna lui Traian, făcută tot de romani.</p></details>
+  <div class="grid g2" style="margin-top:10px">
+   <div class="box"><span class="emo">🌉</span><h3>Podul de la Drobeta</h3><p>Construit de arhitectul <b>Apolodor din Damasc</b>, ca armata romană să treacă Dunărea. Avea peste un kilometru lungime (fig. 9).</p></div>
+   <div class="box"><span class="emo">🏛️</span><h3>Columna lui Traian</h3><p>La Roma (fig. 10 și 14), cu scene sculptate în spirală: ca o bandă desenată din piatră despre războaie. Badea Cârțan a mers pe jos până acolo, după cum ai aflat la lecția 7 din prima unitate!</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 9 HARTA PROVINCIEI -->
+<section class="slide" aria-label="Provincia Dacia">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🗺️ Hartă · provincia romană Dacia</span>
+  <h2>Cât din țara noastră a devenit provincie romană?</h2>
+  <div class="legend-chips" id="pr-chips"></div>
+  <div class="fig-wrap"><div id="pr-map"></div></div>
+  <div class="map-info" id="pr-info" aria-live="polite"></div>
+  <p class="sursa">Limitele sunt desenate aproximativ, pe județe de azi.</p>
+ </div>
+</section>
+
+<!-- 10 ROMANIZAREA -->
+<section class="slide" aria-label="Romanizarea">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Reținem · nașterea poporului român</span>
+  <h2>Cum au devenit dacii... români?</h2>
+  <p>Provincia a fost <b>colonizată</b> cu cetățeni romani, iar capitala a primit numele <b>Ulpia Traiana Sarmizegetusa</b>, în cinstea lui Traian (fig. 15). Apoi, în câteva secole:</p>
+  <div class="steps">
+   <div>Dacii și romanii au trăit <b>împreună</b>. Dacii au adoptat stilul de viață, obiceiurile și cultura romană.</div>
+   <div><b>Limba latină</b> se vorbea în administrație și s-a răspândit treptat. Asta se numește <b>romanizare</b>.</div>
+   <div>Au avut loc <b>căsătorii mixte</b>. Din ele au rezultat <b>daco-romanii</b>.</div>
+   <div><b>Creștinismul</b> a pătruns prin Imperiul Roman. În sec. IV d.H. a fost recunoscut ca religie oficială, iar misionarii l-au dus și aici: „poporul român s-a născut creștin”.</div>
+   <div>Populațiile <b>migratoare</b> (de exemplu slavii) au fost asimilate de daco-romani. La sfârșitul sec. VIII d.H. se putea vorbi despre <b>poporul român</b>.</div>
+  </div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Procesul de formare a poporului român și a limbii române se numește <b>etnogeneză</b>.</p></div>
+   <div><span class="lab">🌍 Context</span><p>În 271 d.H. împăratul Aurelian a retras armata și administrația romană din provincie. Dar oamenii nu au plecat toți: au rămas aici, au vorbit mai departe latina populară și au continuat să trăiască. Asta explică de ce limba română a rămas o limbă latină, chiar dacă împrejurul ei s-au vorbit alte limbi.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 11 LIMBA -->
+<section class="slide" aria-label="Limba română">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#3a2a00">Aplicăm 3 · fig. 16 din manual</span>
+  <h2>Din ce e făcută limba română?</h2>
+  <div class="pie">
+   <div class="disc" role="img" aria-label="Diagramă circulară: limba latină, cea mai mare parte; apoi slava, dacica și alte influențe"></div>
+   <ul>
+    <li><i style="background:#8E4A82"></i><span><b>Limba latină</b>: cea mai mare parte</span></li>
+    <li><i style="background:#2E9D52"></i><span><b>Limba slavă</b>: a doua ca importanță</span></li>
+    <li><i style="background:#E2433A"></i><span><b>Limba dacică</b>: o parte mică</span></li>
+    <li><i style="background:#fff"></i><span><b>Alte influențe</b> (partea necolorată din manual)</span></li>
+   </ul>
+  </div>
+  <p class="sursa">Desen aproximativ, după fig. 16: manualul nu dă procente.</p>
+  <div class="grid g3">
+   <div class="box"><span class="emo">🏺</span><h3>Latină</h3><p>apă, om, casă, lună, pâine, mamă, <b>biserică</b>, <b>cruce</b>. Cuvintele cele mai importante ale vieții.</p></div>
+   <div class="box"><span class="emo">🌲</span><h3>Dacică</h3><p>Se crede că vin din limba dacilor: <b>copil, mal, brad, balaur, viezure</b>. Sunt puține, pentru că nu avem texte dacice cu care să le verificăm.</p></div>
+   <div class="box"><span class="emo">🛶</span><h3>Slavă și alte limbi</h3><p>Slavă: plug, coasă, voievod, boier (L6). Alte influențe: greacă, maghiară, turcă, franceză...</p></div>
+  </div>
+  <div class="tip y">👪 <b>Familia popoarelor romanice:</b> românii, alături de <b>portughezi, spanioli, francezi și italieni</b>. Limbile lor vin din latină. Compară: lat. <i>aqua</i> → it. <i>acqua</i>, sp. <i>agua</i>, port. <i>água</i>, fr. <i>eau</i>, ro. <b>apă</b>.</div>
+ </div>
+</section>
+
+<!-- 12 PUNTE -->
+<section class="slide" aria-label="Punte">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Istorie ↔ Geografie ↔ Română ↔ Matematică</span>
+  <h2>Legături cu celelalte materii</h2>
+  <details class="pd"><summary>Geografie: ce forme de relief vedeai în Dacia?</summary><p>Între Carpați, Dunăre și Marea Neagră sunt <b>munți</b>, <b>dealuri</b> și <b>câmpii</b>, plus <b>ape</b>: Dunărea, râurile și marea. Fiecare formă de relief a dat dacilor ocupații diferite.</p></details>
+  <details class="pd"><summary>Română: cum recunoști o limbă romanică?</summary><p>Cuvintele de bază seamănă între limbi: <i>pane</i> (it.), <i>pan</i> (sp.), <i>pão</i> (port.), <i>pain</i> (fr.), <i>pâine</i> (ro.). Toate vin din latinescul <i>panis</i>.</p></details>
+  <details class="pd"><summary>Matematică: cât a durat provincia Dacia?</summary><p>Din 106 până în 271 d.H. Calculăm: 271 − 106 = <b>165 de ani</b>. Tot atâta timp a trecut din anul 1861 până azi.</p></details>
+  <details class="pd"><summary>Istorie (L6): ce învățasem despre latini?</summary><p>La lecția 6 din prima unitate: <b>latinii</b>, <b>germanicii</b> și <b>slavii</b>. Românii sunt popor de origine latină. Acum știi de ce: limba noastră vine din latina vorbită în Dacia romană.</p></details>
+ </div>
+</section>
+
+<!-- 13 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile lecției</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 14 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🤝</span><p>Poporul român a luat naștere din <b>conviețuirea dacilor cu romanii</b> cuceritori, prin adoptarea stilului de viață, a obiceiurilor, a culturii și a limbii acestora.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">🗺️</span><p>S-a format pe teritoriul dintre <b>Dunăre, Carpați și Marea Neagră</b>, în decursul mai multor secole.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">🗣️</span><p>La formarea limbii române au contribuit și <b>populațiile migratoare</b> asimilate. Procesul se numește <b>etnogeneză</b>.</p></div>
+  </div>
+  <div class="tip y">🔁 <b>Urmează:</b> Lecția 3, „Întemeietorii statelor medievale românești. Gelu. Dragoș. Basarab”.</div>
+ </div>
+</section>
+
+</main>
+
+<script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/europa.js"></script>
+<script src="../../assets/harti/romania.js"></script>
+<script>
+(function(){
+  var Q=[
+   {t:'mcq',tags:['U2 L2'],d:'Harta',q:'Între ce limite trăiau geto-dacii?',o:['Între Alpi și Marea Baltică','Între Carpați, Dunăre și Marea Neagră','Între Tibru și Marea Mediterană','Între Nistru și Urali'],a:1,h:'Citește izvorul lui Tucidide.',e:'Între Carpați, Dunăre și Marea Neagră. Țara lor se numea Dacia.'},
+   {t:'mcq',tags:['U2 L2'],d:'Vocabular',q:'Care era capitala Daciei?',o:['Roma','Sarmizegetusa','Atena','Histria'],a:1,h:'Este fig. 1 din manual.',e:'Sarmizegetusa. Capitala romană a provinciei a primit numele Ulpia Traiana Sarmizegetusa.'},
+   {t:'sort',tags:['U2 L2'],d:'Daci sau romani?',q:'Sortează: aparține dacilor sau romanilor?',items:[['Zalmoxis','s'],['Jupiter','n'],['Decebal','s'],['Traian','n'],['Sarmizegetusa','s'],['Roma','n']],labels:{s:'Daci',n:'Romani'},h:'Cine avea ca zeu suprem pe Zalmoxis? Cine ținea Roma?',e:'Daci: Zalmoxis, Decebal, Sarmizegetusa. Romani: Jupiter, Traian, Roma.'},
+   {t:'mcq',tags:['U2 L2','Geografie'],d:'Așezarea',q:'Care ocupație a dacilor era legată direct de munții bogați în metale?',o:['Pescuitul','Mineritul și prelucrarea metalelor','Comerțul pe mare','Creșterea cămilelor'],a:1,h:'Brățara din fig. 12.',e:'Mineritul și prelucrarea metalelor prețioase. Munții, câmpiile și apele le-au dat ocupații diferite.'},
+   {t:'order',tags:['U2 L2','L2'],d:'Cronologie',q:'Pune evenimentele în ordine cronologică.',items:['Întemeierea Romei (753 î.H.)','Începutul domniei lui Burebista (82 î.H.)','Primul război daco-roman (101–102 d.H.)','Retragerea aureliană (271 d.H.)'],h:'Mai întâi î.H. (numărul mare vine primul), apoi d.H.',e:'753 î.H. → 82 î.H. → 101 d.H. → 271 d.H.'},
+   {t:'num',u:'ani',tags:['U2 L2','Matematică'],d:'Matematică',q:'Provincia Dacia a durat din 106 până în 271 d.H. Câți ani?',a:165,h:'271 − 106.',e:'165 de ani: aproape două secole de contact între daci și romani.'},
+   {t:'num',u:'ani',tags:['U2 L2','Matematică'],d:'Matematică',q:'Traian a fost împărat între 98 și 117 d.H. Câți ani a domnit?',a:19,h:'117 − 98.',e:'19 ani. În această perioadă a cucerit Dacia.'},
+   {t:'mcq',tags:['U2 L2','L2'],d:'Secole',q:'În ce secol a fost cucerită Dacia (106 d.H.)?',o:['I d.H.','II d.H.','III d.H.','IV d.H.'],a:1,h:'Secolul II d.H. înseamnă anii 101–200.',e:'Al II-lea d.H. Pentru anii d.H., 106 : 100 = 1,06, rotunjit în sus: 2.'},
+   {t:'mcq',tags:['U2 L2'],d:'Fapte',q:'Care limbă se vorbea în administrația provinciei Dacia?',o:['Greaca','Latina','Slava','Dacica'],a:1,h:'Limba Romei.',e:'Latina. Dacii au adoptat-o treptat: romanizarea.'},
+   {t:'mcq',tags:['U2 L2'],d:'Vocabular',q:'Cum se numeau oamenii născuți din căsătoriile dintre daci și romani?',o:['Slavi','Daco-romani','Migratori','Legionari'],a:1,h:'Un nume cu două părți.',e:'Daco-romani, strămoșii poporului român.'},
+   {t:'mcq',tags:['U2 L2'],d:'Vocabular',q:'Ce înseamnă etnogeneza?',o:['Războiul dintre două popoare','Formarea unui popor și a limbii lui','Construirea unui oraș','Un tip de monedă'],a:1,h:'Manualul: „procesul de formare a poporului român și a limbii române”.',e:'Formarea unui popor și a limbii lui. La noi a durat câteva secole, până la sfârșitul sec. VIII d.H.'},
+   {t:'mcq',tags:['U2 L2','Română'],d:'Diagrama',q:'Din fig. 16: de la ce limbă are limba română cea mai mare parte a cuvintelor?',o:['Limba slavă','Limba dacică','Limba latină','Alte influențe'],a:2,h:'Cea mai mare „felie” din diagramă.',e:'Latină. De aceea româna e limbă romanică, ca italiana, franceza, spaniola și portugheza.'},
+   {t:'mcq',tags:['U2 L2','Română'],d:'Diagrama',q:'Ce reprezintă partea necolorată (albă) din fig. 16?',o:['Limba latină','Limba dacică','Alte influențe','Nimic'],a:2,h:'Citește legenda diagramei.',e:'Alte influențe: cuvinte din limbi cu care românii au intrat în contact, precum greaca, maghiara, turca sau franceza.'},
+   {t:'mcq',tags:['U2 L2'],d:'Familia limbilor',q:'Care popor face parte, alături de români, din familia popoarelor romanice?',o:['Polonezii','Francezii','Germanii','Ungurii'],a:1,h:'Limba lor vine din latină.',e:'Francezii. Și portughezii, spaniolii și italienii.'},
+   {t:'mcq',tags:['U2 L2','Izvoare'],d:'Detectiv',q:'Dio Cassius, un istoric roman, descrie cum și-a tăiat Traian veșmintele ca să lege răniții. Ce întrebare pune un istoric?',o:['Ce culoare aveau hainele?','Povestește din perspectiva romanilor? Ce ar fi spus dacii?','Câte haine avea Traian?','Ce a mâncat Traian?'],a:1,h:'Cine a scris izvorul? Pe cine arată în lumină bună?',e:'Textul arată doar partea romană. Dacii nu au lăsat izvoare scrise despre război, așa că istoricii caută și alte dovezi, ca ruinele și armele.'},
+   {t:'mcq',tags:['U2 L2','L7'],d:'Legături',q:'Badea Cârțan a mers pe jos la Roma, în 1896, ca să vadă Columna lui Traian. Ce înfățișează columna?',o:['Un concurs sportiv','Scene din războaiele daco-romane','Legenda lui Zeus','Harta Europei'],a:1,h:'A fost ridicată în cinstea lui Traian.',e:'Scene din războaiele dintre daci și romani, sculptate în spirală, pe o coloană de piatră.'},
+   {t:'mcq',tags:['U2 L2','Civică'],d:'Gândire',q:'Traian a poruncit să se ridice un altar soldaților căzuți în luptă. De ce sunt importante astfel de monumente?',o:['Ca să fie frumoase','Ca cei care au murit să nu fie uitați și să fie cinstiți','Ca să sperie dușmanii','Nu au nicio importanță'],a:1,h:'Gândește-te la monumentele eroilor din localitatea ta.',e:'Ca să cinstim memoria celor căzuți și să nu uităm ce au făcut. Și azi avem monumente și zile de cinstire a eroilor.'}
+  ];
+  Caiet.start({Q:Q});
+})();
+</script>
+<script>
+(function(){
+  /* Harta Imperiului Roman */
+  var IMP={'380':1,'724':1,'620':1,'250':1,'300':1,'100':1,'191':1,'705':1,'688':1,'807':1,'499':1,'826':1,'792':1,'70':1,'8':1};
+  var C=[
+   ['Roma',12.5,41.9,'🏛️ Capitala Imperiului Roman, pe malul râului Tibru, în Italia de azi. Din ea au pornit armatele care au cucerit Dacia.'],
+   ['Sarmizegetusa',23.31,45.62,'🏔️ Capitala Daciei, în munții de azi din Hunedoara. Ruinele ei, cu sanctuarul din fig. 1, se pot vizita.'],
+   ['Vecinii Daciei',24,48,'🧭 Spre vest Panonia (Ungaria de azi), spre nord și est Sarmația, spre sud, dincolo de Dunăre, Moesia și Tracia. Spre est, Marea Neagră.'],
+   ['Mările din jurul Italiei',14,39.5,'🌊 Marea Adriatică (est), Marea Tireniană (vest), Marea Ionică (sud-est) și Marea Mediterană, care înconjoară tot Imperiul. Romanii o numeau „marea noastră”.']
+  ];
+  var sel=0,ch=document.getElementById('rm-chips');
+  var a=Caiet.proj('europa',-9,52.5),b=Caiet.proj('europa',40,34.9);
+  function drawM(){
+    var c=C[sel],pts=[{lon:12.5,lat:41.9,text:sel===0?'Roma':'',color:sel===0?'#E2433A':'#444',r:sel===0?6.5:3.5},{lon:23.31,lat:45.62,text:sel===1?'Sarmizegetusa':'',color:sel===1?'#E2433A':'#444',r:sel===1?6.5:3.5}];
+    Caiet.harta('rm-map',{map:'europa',label:'Harta Imperiului Roman',view:[a[0],a[1],b[0]-a[0],b[1]-a[1]],
+      fill:function(z){return z.id==='642'?'#F6C431':(IMP[z.id]?'#B9A4DA':null);},points:pts,
+      labels:[{lon:25,lat:46.9,text:'DACIA',size:9},{lon:19.5,lat:47.3,text:'PANONIA',size:8},{lon:28,lat:49.3,text:'SARMAȚIA',size:9},{lon:25.5,lat:43.2,text:'MOESIA',size:8},{lon:15.5,lat:43.2,text:'M. Adriatică',size:7},{lon:11.7,lat:39.2,text:'M. Tireniană',size:7},{lon:19,lat:36.1,text:'Marea Mediterană',size:9},{lon:34,lat:43.4,text:'Marea Neagră',size:9}]});
+    document.getElementById('rm-info').innerHTML='<b>'+c[0]+'</b> · '+c[3];
+  }
+  C.forEach(function(c,i){var bt=document.createElement('button');bt.type='button';bt.setAttribute('aria-pressed',i===0?'true':'false');bt.textContent=c[0];
+    bt.onclick=function(){sel=i;ch.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===bt?'true':'false');});drawM();};ch.appendChild(bt);});
+  drawM();
+
+  /* Axa timpului */
+  Caiet.axa('rm-axa',{from:70,to:290,label:'Axa timpului: daci și romani',info:'rm-axa-info',
+   views:[{label:'Războaiele (70–290 d.H.)',from:70,to:290},{label:'Toată povestea',from:-800,to:300}],
+   bands:[{from:106,to:271,label:'Provincia Dacia',color:'#8E4A82'},{from:-82,to:-44,label:'Burebista',color:'#2E9D52'}],
+   events:[
+    {y:-753,label:'Roma',color:'#E2433A',info:'Data tradițională a întemeierii cetății Roma, după legendă.'},
+    {y:-82,label:'Burebista',color:'#2E9D52',info:'Începutul domniei lui Burebista (82–44 î.H.), regele care a unit triburile dacice.'},
+    {y:-44,label:'Cezar',color:'#2E9D52',info:'În 44 î.H. mor și Iulius Cezar, și Burebista. Cezar a condus Roma între 48 și 44 î.H.'},
+    {y:87,label:'Decebal',color:'#2F6FD6',info:'Începutul domniei lui Decebal (87–106 d.H.).'},
+    {y:98,label:'Traian',color:'#E2433A',info:'Traian devine împărat roman (98–117 d.H.).'},
+    {y:101,label:'Război 1',color:'#E2433A',info:'Primul război daco-roman (101–102 d.H.).'},
+    {y:105,label:'Război 2',color:'#E2433A',info:'Al doilea război (105–106 d.H.). Dacia e învinsă și devine provincie romană în 106.'},
+    {y:271,label:'Aurelian',color:'#8E4A82',info:'Retragerea aureliană: armata și administrația romană părăsesc provincia Dacia (271 d.H.).'}
+   ]});
+
+  /* Harta provinciei */
+  var PROV={'Timiș':1,'Caraș-Severin':1,'Mehedinți':1,'Gorj':1,'Vâlcea':1,'Dolj':1,'Olt':1,'Hunedoara':1,'Alba':1,'Sibiu':1,'Cluj':1,'Mureș':1,'Bistrița-Năsăud':1,'Sălaj':1};
+  var PM=[
+   ['Dacia liberă','#F6C431','Înainte de cucerire, dacii trăiau pe întreg teritoriul de azi al României și în regiunile vecine. Colorat: România de azi.'],
+   ['Provincia romană (106–271)','#8E4A82','Provincia a cuprins o parte din țara noastră: Banatul, Oltenia și Transilvania (aproximativ). Moldova și cea mai mare parte din Muntenia au rămas în afara ei. Dacii „liberi” au trăit și în afara provinciei, iar contactele cu romanii au continuat.']
+  ];
+  var ps=0,pc=document.getElementById('pr-chips');
+  var CITIES=[{lon:22.79,lat:45.52,text:'Ulpia',color:'#E2433A'},{lon:23.31,lat:45.62,text:'',color:'#2F6FD6'},{lon:22.66,lat:44.63,text:'Drobeta',color:'#E2433A'},{lon:23.57,lat:46.07,text:'Apulum',color:'#E2433A'},{lon:23.6,lat:46.77,text:'Napoca',color:'#E2433A'}];
+  function drawP(){
+    Caiet.harta('pr-map',{map:'romania',label:'Provincia romană Dacia',
+      fill:function(z){return ps===0?'#F9E08A':(PROV[z.name]?'#B9A4DA':'#F9E08A');},
+      points:ps===1?CITIES:[{lon:23.31,lat:45.62,text:'Sarmizegetusa',color:'#2F6FD6',r:5}]});
+    document.getElementById('pr-info').innerHTML='<b>'+PM[ps][0]+'</b> · '+PM[ps][2]+(ps===1?'<br>Orașe romane (nume de azi): Ulpia Traiana Sarmizegetusa (capitala), Drobeta (Drobeta-Turnu Severin), Apulum (Alba Iulia), Napoca (Cluj-Napoca). Albastru: Sarmizegetusa Regia, capitala dacilor.':'');
+  }
+  PM.forEach(function(p,i){var bt=document.createElement('button');bt.type='button';bt.setAttribute('aria-pressed',i===0?'true':'false');bt.innerHTML='<i style="background:'+p[1]+'"></i>'+p[0];
+    bt.onclick=function(){ps=i;pc.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===bt?'true':'false');});drawP();};pc.appendChild(bt);});
+  drawP();
+})();
+</script>
+</body>
+</html>

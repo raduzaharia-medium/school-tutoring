@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Repere de timp: ora, ziua, săptămâna, anul, calendarul</title>
+<link rel="stylesheet" href="../../assets/caiet.css">
+<style>
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}
+.pd summary{cursor:pointer;font-weight:800}
+.pd[open] summary{margin-bottom:6px}
+.pd:last-of-type{border-color:var(--green)}
+.vl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.vl button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.4em 1em}
+.vl button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.fig svg{display:block;width:100%;max-width:680px;height:auto;margin:0 auto}
+.clockrow{display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:center}
+.clockrow svg{width:min(320px,100%);height:auto;flex:none}
+.clockrow .side{flex:1;min-width:240px}
+.digi{font-family:var(--display);font-size:2.4em;font-weight:800;background:var(--tint-yellow);border-radius:16px;padding:.1em .5em;display:inline-block}
+.ws{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;max-width:360px;margin:8px 0}
+.ws button{font:inherit;font-weight:800;aspect-ratio:1;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;cursor:pointer;padding:0}
+.ws button.on{background:var(--tint-yellow);border-color:#C9862A}
+.ws button.ans{background:#9BD59B;border-color:#2E9D52}
+.cal{border-collapse:collapse;width:100%;max-width:520px}
+.cal th,.cal td{border:2px solid var(--line);padding:.35em;text-align:center;width:14.28%}
+.cal th{background:var(--tint-yellow)}
+.cal td.we{background:var(--tint-red)}
+.cal td.em{border-color:transparent;background:transparent}
+.wd{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:10px 0}
+.wd .box h3{margin-top:0}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Geografie · Unitatea 1 · Lecția 9 · manual pp. 36–37</p>
+   <h1>Repere de timp: ora, ziua, săptămâna, anul, calendarul</h1>
+   <p class="lead">Cum a împărțit omul timpul? De ce are săptămâna șapte zile, iar februarie uneori 29? Un ceas, un calendar și multă istorie.</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="#F4E9D8"/>
+   <circle cx="90" cy="100" r="58" fill="#fff" stroke="#8A5A2B" stroke-width="6"/>
+   <g stroke="#222" stroke-width="3" stroke-linecap="round"><path d="M90 52 v10 M90 138 v10 M42 100 h10 M128 100 h10"/><path d="M90 100 V70" stroke-width="5"/><path d="M90 100 l24 14" stroke-width="4"/></g>
+   <circle cx="90" cy="100" r="5" fill="#E2433A"/>
+   <rect x="128" y="120" width="72" height="72" rx="8" fill="#fff" stroke="#2F6FD6" stroke-width="4"/>
+   <rect x="128" y="120" width="72" height="18" fill="#2F6FD6"/>
+   <g fill="#222" font-family="Baloo 2, sans-serif" font-weight="800" font-size="12"><text x="136" y="156">1  2  3</text><text x="136" y="172">8  9 10</text><text x="136" y="188">15 16 17</text></g>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 OBSERV + ANCHETA -->
+<section class="slide" aria-label="Observ">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Îmi amintesc</span>
+  <div class="tip g" style="margin-top:0">Oamenii au observat că unele schimbări din natură se repetă la aceleași intervale: <b>ciclul zi–noapte</b> (de la lumină la întuneric) și <b>anotimpurile</b>. Folosindu-le, au măsurat și au împărțit <b>timpul</b>. (Pe slide-ul precedent le-ai văzut în 3D.)</div>
+  <span class="badge" style="background:var(--red);margin-top:18px">Ancheta de azi</span>
+  <div class="q"><span class="mark" style="background:var(--blue)">1</span>Cum citim ora pe un ceas?</div>
+  <div class="q"><span class="mark" style="background:var(--green)">2</span>Câte ore are o zi, câte zile o săptămână, câte luni un an?</div>
+  <div class="q"><span class="mark" style="background:var(--purple)">3</span>De ce există ani bisecți?</div>
+  <div class="q"><span class="mark" style="background:var(--red)">4</span>Cine a inventat calendarul și de ce au zilele aceste nume?</div>
+ </div>
+</section>
+
+<!-- 3 CEASUL -->
+<section class="slide" aria-label="Ceasul">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Observ · ceasul și ora</span>
+  <h2>Citește ora pe ceas</h2>
+  <p>Acul scurt arată <b>ora</b>, acul lung arată <b>minutele</b>. Într-o zi, acul scurt face <b>două ture</b> (24 de ore). Mută glisoarele.</p>
+  <div class="clockrow">
+   <svg viewBox="0 0 200 200" role="img" aria-label="Ceas analog"><circle cx="100" cy="100" r="92" fill="#fff" stroke="#8A5A2B" stroke-width="8"/><g id="ck-ticks"></g><g id="ck-nums"></g><line id="ck-h" x1="100" y1="100" x2="100" y2="52" stroke="#222" stroke-width="8" stroke-linecap="round"/><line id="ck-m" x1="100" y1="100" x2="100" y2="30" stroke="#2F6FD6" stroke-width="5" stroke-linecap="round"/><circle cx="100" cy="100" r="7" fill="#E2433A"/></svg>
+   <div class="side">
+    <div class="digi" id="ck-d" aria-live="polite">09:00</div>
+    <p id="ck-t" style="margin:.6em 0"></p>
+    <div class="ctrl"><label for="ck-hr" style="font-weight:800">Ora</label><input id="ck-hr" type="range" min="0" max="23" value="9"><label for="ck-mn" style="font-weight:800">Minute</label><input id="ck-mn" type="range" min="0" max="59" step="1" value="0"></div>
+    <div class="ctrl" id="ck-pre"><button type="button" data-t="7:00">⏰ Trezirea</button><button type="button" data-t="8:00">🚌 Școala</button><button type="button" data-t="13:30">🍽️ Prânzul</button><button type="button" data-t="21:00">🛏️ Somnul</button></div>
+   </div>
+  </div>
+  <h3 style="margin-top:14px">Joc: ghicește ora</h3>
+  <div class="clockrow">
+   <svg viewBox="0 0 200 200" role="img" aria-label="Ceas pentru joc"><circle cx="100" cy="100" r="92" fill="#fff" stroke="#2F6FD6" stroke-width="8"/><g id="gk-ticks"></g><g id="gk-nums"></g><line id="gk-h" x1="100" y1="100" x2="100" y2="52" stroke="#222" stroke-width="8" stroke-linecap="round"/><line id="gk-m" x1="100" y1="100" x2="100" y2="30" stroke="#2F6FD6" stroke-width="5" stroke-linecap="round"/><circle cx="100" cy="100" r="7" fill="#E2433A"/></svg>
+   <div class="side">
+    <p style="margin:0">Ce oră arată ceasul? (Ora e între 1 și 12.)</p>
+    <div class="calc"><label for="gk-i" style="font-weight:800">Ora</label><input id="gk-i" type="number" min="1" max="12" value="3"><label for="gk-j" style="font-weight:800">Minute</label><input id="gk-j" type="number" min="0" max="55" step="5" value="0"></div>
+    <div class="ctrl"><button type="button" id="gk-c">Verifică</button><button type="button" id="gk-n">Alt ceas</button></div>
+    <div class="out" id="gk-o" aria-live="polite">Scrie ora și apasă „Verifică”.</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- 4 ZIUA SI SAPTAMANA -->
+<section class="slide" aria-label="Ziua și săptămâna">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Descopăr · ziua și săptămâna</span>
+  <h2>Șapte zile, mereu în aceeași ordine</h2>
+  <p>O <b>zi</b> (un ciclu zi–noapte) are <b>24 de ore</b>. O <b>săptămână</b> are <b>7 zile</b>, într-o ordine mereu aceeași. Într-o lună sunt <b>4 săptămâni întregi, plus două sau trei zile</b> (în luni de 30 sau 31 de zile).</p>
+  <h3>Joc: găsește cele 7 zile ascunse</h3>
+  <p>Apasă pe literele unui cuvânt ca să le marchezi, apoi apasă „Arată zilele” ca să verifici. (Cuvintele merg pe orizontală sau pe verticală.)</p>
+  <div class="ws" id="ws-grid"></div>
+  <div class="ctrl"><button type="button" id="ws-show">Arată zilele</button><button type="button" id="ws-clr">Șterge marcajele</button></div>
+  <div class="map-info" id="ws-info" aria-live="polite"></div>
+  <h3 style="margin-top:14px">Calculatorul zilelor</h3>
+  <div class="calc"><label for="wd-a" style="font-weight:800">Azi e</label><select id="wd-a"><option>luni</option><option>marți</option><option selected>miercuri</option><option>joi</option><option>vineri</option><option>sâmbătă</option><option>duminică</option></select>
+  <label for="wd-n" style="font-weight:800">Peste</label><input id="wd-n" type="number" min="0" max="365" value="10"><span style="font-weight:800">zile</span></div>
+  <div class="out" id="wd-o" aria-live="polite"></div>
+  <p class="sursa">Trucul: împarte la 7 și ia restul. Restul îți spune câte zile mergi înainte în săptămână.</p>
+ </div>
+</section>
+
+<!-- 5 NUMELE ZILELOR -->
+<section class="slide" aria-label="De unde vin numele zilelor">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#3a2a00">🌉 Română ↔ Istorie</span>
+  <h2>De unde vin numele zilelor?</h2>
+  <p>Romanii (lecția 2, istorie, unitatea 2) au dat zilelor nume după cele șapte astre cunoscute și după zeii lor. Româna le-a moștenit din latină.</p>
+  <div class="wd">
+   <div class="box"><span class="emo">🌙</span><h3>Luni</h3><p>de la <b>Luna</b>.</p></div>
+   <div class="box"><span class="emo">🔴</span><h3>Marți</h3><p>de la <b>Marte</b>, zeul războiului.</p></div>
+   <div class="box"><span class="emo">☿️</span><h3>Miercuri</h3><p>de la <b>Mercur</b>, zeul comerțului și al mesagerilor.</p></div>
+   <div class="box"><span class="emo">⚡</span><h3>Joi</h3><p>de la <b>Jupiter</b>, zeul zeilor (la greci: Zeus!).</p></div>
+   <div class="box"><span class="emo">💗</span><h3>Vineri</h3><p>de la <b>Venus</b>, zeița iubirii (la greci: Afrodita).</p></div>
+   <div class="box"><span class="emo">🕯️</span><h3>Sâmbătă</h3><p>vine din <b>sabat</b>, ziua de odihnă din tradiția ebraică.</p></div>
+   <div class="box"><span class="emo">⛪</span><h3>Duminică</h3><p>din latină, <b>dies Dominica</b>, „ziua Domnului”, în tradiția creștină.</p></div>
+  </div>
+  <div class="tip y">🔎 <b>Observă:</b> în engleză, „Saturday” vine tot de la zeul roman Saturn, iar „Sunday” de la Soare. Și ei au păstrat numele astrelor.</div>
+ </div>
+</section>
+
+<!-- 6 LUNILE -->
+<section class="slide" aria-label="Lunile și anotimpurile">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Observ · lunile anului</span>
+  <h2>12 luni, patru anotimpuri</h2>
+  <p>12 luni formează un <b>an</b>: timpul în care Pământul face o rotație în jurul Soarelui. Lunile se grupează în <b>anotimpuri</b>, de câte 3 luni. Apasă pe o lună.</p>
+  <div class="fig-wrap fig"><svg viewBox="0 0 420 420" role="img" aria-label="Cercul anului" style="max-width:420px"><g id="yr-seg"></g><circle cx="210" cy="210" r="62" fill="var(--paper)" stroke="var(--line)" stroke-width="3"/><text id="yr-c1" x="210" y="204" text-anchor="middle" font-size="16" font-weight="800" fill="var(--ink)">Anul</text><text id="yr-c2" x="210" y="226" text-anchor="middle" font-size="12" fill="var(--ink)">12 luni</text></svg></div>
+  <div class="map-info" id="yr-info" aria-live="polite">Apasă pe o lună din cerc.</div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Oamenii au grupat lunile după durata zilelor și a nopților și după fenomenele naturale. Așa au apărut anotimpurile, care corespund momentelor parcurse de Pământ în jurul Soarelui. Au dat și <b>denumiri populare</b> lunilor.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Atenție: lecția 8 a numărat anotimpurile după echinocții și solstiții (de exemplu primăvara începe la 21 martie), iar aici le-ai grupat câte 3 luni întregi. Sunt două moduri de a le împărți: <b>astronomic</b> și <b>pe luni întregi</b>. Aici folosim a doua metodă, ca în manual.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 7 ANUL BISECT -->
+<section class="slide" aria-label="Anul bisect">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Rețin · anul bisect</span>
+  <h2>De ce are februarie uneori 29 de zile?</h2>
+  <p>Pământul face o rotație în jurul Soarelui în <b>365 de zile și 6 ore</b>. Calendarul are doar 365 de zile, așa că cele 6 ore „rămase” se adună: 6 × 4 = 24 de ore, adică o zi. Această zi se adaugă lunii februarie o dată la 4 ani. Anul are atunci <b>366 de zile</b> și se numește <b>an bisect</b>.</p>
+  <div class="fig-wrap"><div id="bi-bar"></div></div>
+  <div class="calc"><label for="by" style="font-weight:800">Verifică un an:</label><input id="by" type="number" min="1" max="9999" value="2028"></div>
+  <div class="out" id="by-o" aria-live="polite"></div>
+  <details class="pd"><summary>Pentru curioși: o regulă mai exactă</summary><p>Anul real e un pic mai scurt de 365 de zile și 6 ore, așa că anii care se termină în „00” sunt bisecți doar dacă se împart exact la 400. De exemplu 2000 a fost bisect, dar 1900 nu. Pentru anii din clasă, ajunge regula „se împarte exact la 4”.</p></details>
+ </div>
+</section>
+
+<!-- 8 CALENDAR -->
+<section class="slide" aria-label="Calendarul">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Aplic · calendarul</span>
+  <h2>Generatorul de calendar</h2>
+  <p>Calendarul e sistemul care împarte timpul în ani, luni și zile. Alege o lună și un an și vezi săptămânile.</p>
+  <div class="calc"><label for="cl-m" style="font-weight:800">Luna</label><select id="cl-m"></select><label for="cl-y" style="font-weight:800">Anul</label><input id="cl-y" type="number" min="1900" max="2100" value="2026"></div>
+  <div class="scroll"><table class="cal" id="cl-t"></table></div>
+  <div class="out" id="cl-o" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 9 ISTORIA CALENDARULUI -->
+<section class="slide" aria-label="Istoria calendarului">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#3a2a00">🌉 Istorie ↔ Geografie</span>
+  <h2>Cum a ajuns calendarul la noi</h2>
+  <p>Anul de 365 de zile și 6 ore a pus mulți conducători pe gânduri. Apasă pe evenimente.</p>
+  <div class="fig-wrap"><div id="ca-axa"></div></div>
+  <div class="map-info" id="ca-info" aria-live="polite">Apasă pe un punct de pe axă.</div>
+  <div class="grid g3" style="margin-top:12px">
+   <div class="box"><span class="emo">☀️</span><h3>Ceasul solar</h3><p>Cea mai veche metodă: umbra unui băț. Ai studiat umbra la lecția 4 (orizontul și punctele cardinale).</p></div>
+   <div class="box"><span class="emo">⏳</span><h3>Clepsidra</h3><p>Nisip care curge prin gât îngust, într-un timp fix. Folosită în Antichitate și mult după.</p></div>
+   <div class="box"><span class="emo">⚙️</span><h3>Ceasul mecanic</h3><p>Apărut în Evul Mediu, în turnuri de biserici. Mai târziu, ceasul de mână și cel digital.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 10 DEZBATERE -->
+<section class="slide" aria-label="Dezbatere">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">🗣️ Dezbatere · linia valorică</span>
+  <h2>Să mai schimbăm ceasul de două ori pe an?</h2>
+  <p>În România, la ultima duminică din martie mutăm ceasul cu o oră înainte (ora de vară), iar la ultima duminică din octombrie îl mutăm înapoi (ora de iarnă). Scopul: să fie mai multă lumină seara, vara. Unii oameni vor să renunțe la schimbare. Ce părere ai?</p>
+  <div class="vl" id="vl-btns">
+   <button type="button" aria-pressed="false" data-k="pastram">Păstrăm schimbarea</button>
+   <button type="button" aria-pressed="false" data-k="renuntam">Renunțăm</button>
+   <button type="button" aria-pressed="false" data-k="ind">Încă nu m-am hotărât</button>
+  </div>
+  <div class="box" id="vl-box" aria-live="polite"><p>Apasă pe o poziție ca să vezi ce argumente ar putea folosi un elev. Apoi adaugă-le pe ale tale.</p></div>
+  <div class="tip y">🗣️ <b>Reguli:</b> ascultăm până la capăt, folosim „eu cred că... pentru că...”, ne gândim și la cei care locuiesc în alte locuri și ore. La final, formulăm o concluzie comună.</div>
+ </div>
+</section>
+
+<!-- 11 PUNTE -->
+<section class="slide" aria-label="Punte">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Matematică ↔ Civică ↔ Științe ↔ Artă</span>
+  <h2>Legături cu celelalte materii</h2>
+  <details class="pd"><summary>Matematică: ordinea operațiilor, ca în manual</summary><p>8 + (2 × 2) = 8 + 4 = <b>12</b> (luni într-un an). (90 − 20) : 10 = 70 : 10 = <b>7</b> (zile într-o săptămână). (3 × 6) − 14 = 18 − 14 = <b>4</b> (săptămâni într-o lună). Întâi paranteza, apoi înmulțirea și împărțirea, apoi adunarea și scăderea.</p></details>
+  <details class="pd"><summary>Matematică: unități de timp</summary><p>1 oră = 60 de minute; 1 minut = 60 de secunde; 1 zi = 24 de ore; 1 săptămână = 7 zile = 7 × 24 = <b>168 de ore</b>; 1 an = 365 sau 366 de zile. Ai unități pe care nu le împarți zecimal, spre deosebire de metri sau grame.</p></details>
+  <details class="pd"><summary>Educație civică: orarul și punctualitatea</summary><p>Orarul tău spune ce zi e geografia. Punctualitatea înseamnă respect pentru timpul celorlalți. Un plan pe zile și ore te ajută să-ți faci temele și să ai timp liber. Încearcă să-ți faci un program pe săptămână.</p></details>
+  <details class="pd"><summary>Științe: ritmuri în natură</summary><p>Plantele și animalele au și ele „calendare”: florile se deschid primăvara, păsările migrează toamna, ursul hibernează iarna. Corpul tău are un ritm zi–noapte: somnul.</p></details>
+  <details class="pd"><summary>Artă: proiectul „calendarul meu”</summary><p>Fă o fișă pentru fiecare lună a anului școlar, cu evenimentele importante din viața ta de elev: calificative bune, concursuri, fapte bune. La final, vei avea propriul calendar de atașat la portofoliu. Decorează-l cu desene de anotimp.</p></details>
+ </div>
+</section>
+
+<!-- 12 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile lecției</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 13 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🕒</span><p>O <b>zi</b> are 24 de ore. O <b>săptămână</b> are 7 zile, mereu în aceeași ordine. Un <b>an</b> are 12 luni (365 de zile, sau 366 la anul bisect).</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">🍂</span><p>Lunile se grupează în <b>4 anotimpuri</b> de câte 3 luni, în funcție de durata zilelor și a nopților.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">📅</span><p><b>Calendarul</b> împarte timpul în ani, luni și zile. Anul bisect adaugă o zi lui februarie, la 4 ani.</p></div>
+  </div>
+  <div class="tip y">🔁 <b>Urmează:</b> Lecția 10, „Localitatea natală. Regiunea înconjurătoare”.</div>
+ </div>
+</section>
+
+</main>
+
+<script src="../../assets/caiet.js"></script>
+<script>
+(function(){
+  var Q=[
+   {t:'num',u:'ore',tags:['G L9','Matematică'],d:'Calcul',q:'Câte ore are o zi?',a:24,h:'Un ciclu zi–noapte.',e:'24 de ore: o rotație completă a Pământului în jurul axei.'},
+   {t:'num',u:'zile',tags:['G L9','Matematică'],d:'Din manual',q:'Calculează (90 − 20) : 10. Ce reprezintă rezultatul?',a:7,h:'90 − 20 = 70.',e:'7: câte zile are o săptămână.'},
+   {t:'num',u:'luni',tags:['G L9','Matematică'],d:'Din manual',q:'Calculează 8 + (2 × 2). Ce reprezintă rezultatul?',a:12,h:'Întâi paranteza.',e:'12: câte luni are un an.'},
+   {t:'num',u:'săptămâni',tags:['G L9','Matematică'],d:'Din manual',q:'Calculează (3 × 6) − 14. Ce reprezintă rezultatul?',a:4,h:'18 − 14.',e:'4: câte săptămâni întregi are, în medie, o lună.'},
+   {t:'order',tags:['G L9'],d:'Zilele',q:'Pune zilele săptămânii în ordine, începând cu luni.',items:['Luni','Marți','Miercuri','Joi','Vineri','Sâmbătă','Duminică'],h:'Mai întâi începe săptămâna.',e:'Luni → marți → miercuri → joi → vineri → sâmbătă → duminică. Ordinea e mereu aceeași.'},
+   {t:'order',tags:['G L9'],d:'Lunile',q:'Pune lunile în ordine calendaristică, de la ianuarie.',items:['Ianuarie','Martie','August','Septembrie','Noiembrie','Decembrie'],h:'Numără: 1, 3, 8, 9, 11, 12.',e:'Ianuarie (1) → martie (3) → august (8) → septembrie (9) → noiembrie (11) → decembrie (12).'},
+   {t:'sort',tags:['G L9'],d:'Anotimpuri',q:'Sortează lunile: vară sau iarnă?',items:[['Iulie','s'],['Ianuarie','n'],['August','s'],['Decembrie','n'],['Iunie','s'],['Februarie','n']],labels:{s:'Vară',n:'Iarnă'},h:'Grupare pe 3 luni: vara iunie–august, iarna decembrie–februarie.',e:'Vară: iunie, iulie, august. Iarnă: decembrie, ianuarie, februarie.'},
+   {t:'mcq',tags:['G L9'],d:'Denumiri populare',q:'Care e denumirea populară a lunii ianuarie?',o:['Gerar','Florar','Cireșar','Cuptor'],a:0,h:'Luna cu ger.',e:'Gerar. Florar = mai, Cireșar = iunie, Cuptor = iulie. Natura a dat numele.'},
+   {t:'mcq',tags:['G L9'],d:'Denumiri populare',q:'Care lună se numește popular „Cuptor”?',o:['Mai','Iunie','Iulie','Ianuarie'],a:2,h:'E cea mai caldă.',e:'Iulie: lună caldă, ca un cuptor.'},
+   {t:'mcq',tags:['G L9'],d:'An bisect',q:'Cum se numește anul cu 366 de zile?',o:['An obișnuit','An bisect','An școlar','An lung'],a:1,h:'Februarie are 29 de zile.',e:'An bisect. Se adaugă o zi la februarie, o dată la 4 ani.'},
+   {t:'mcq',tags:['G L9','Matematică'],d:'An bisect',q:'Care dintre acești ani este bisect?',o:['2023','2024','2025','2026'],a:1,h:'Se împarte exact la 4.',e:'2024 (2024 : 4 = 506). Februarie 2024 a avut 29 de zile.'},
+   {t:'mcq',tags:['G L9','Matematică'],d:'Calcul',q:'Azi e miercuri. Ce zi va fi peste 10 zile?',o:['Joi','Vineri','Sâmbătă','Duminică'],a:2,h:'10 = 7 + 3.',e:'Sâmbătă. 10 zile = 1 săptămână + 3 zile; miercuri + 3 = sâmbătă.'},
+   {t:'num',u:'ore',tags:['G L9','Matematică'],d:'Calcul',q:'Un copil se trezește la 7:00 și se culcă la 21:00. Câte ore stă treaz?',a:14,h:'21 − 7.',e:'14 ore. Somnul unui copil de clasa a IV-a ar trebui să fie de peste 9 ore.'},
+   {t:'num',u:'ore',tags:['G L9','Matematică'],d:'Calcul',q:'Câte ore are o săptămână?',a:168,h:'7 × 24.',e:'168 de ore (7 × 24).'},
+   {t:'mcq',tags:['G L9','Istorie'],d:'Istorie',q:'Cine a introdus, în 45 î.H., calendarul iulian, cu ani bisecți?',o:['Burebista','Iulius Cezar','Mircea cel Bătrân','Pitagora'],a:1,h:'Conducător roman din lecția 2 de istorie.',e:'Iulius Cezar. Calendarul de azi, gregorian, e o corectare a lui.'},
+   {t:'mcq',tags:['G L9','Română'],d:'Cuvinte',q:'De la ce zeu roman vine numele zilei de marți?',o:['Jupiter','Marte','Mercur','Venus'],a:1,h:'Zeul războiului.',e:'De la Marte, zeul războiului. Joi vine de la Jupiter, miercuri de la Mercur, vineri de la Venus.'},
+   {t:'mcq',tags:['G L9','Civică'],d:'Civică',q:'Ce înseamnă să fii punctual?',o:['Să ajungi când vrei','Să ajungi la timp, din respect pentru ceilalți','Să nu ai ceas','Să pleci repede'],a:1,h:'Timpul altora contează la fel ca al tău.',e:'Să ajungi la timp, din respect pentru ceilalți. Un orar și un ceas te ajută.'}
+  ];
+  Caiet.start({Q:Q});
+})();
+</script>
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  function svgEl(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+  function pad(n){return n<10?'0'+n:''+n;}
+  /* ceas */
+  function face(tg,ng){var t=document.getElementById(tg),n=document.getElementById(ng);for(var i=0;i<60;i++){var a=i*6*Math.PI/180,r1=i%5?86:80,r2=90;svgEl('line',{x1:100+r1*Math.sin(a),y1:100-r1*Math.cos(a),x2:100+r2*Math.sin(a),y2:100-r2*Math.cos(a),stroke:'#222','stroke-width':i%5?1:3},t);}
+    for(var h=1;h<=12;h++){var b=h*30*Math.PI/180,x=100+68*Math.sin(b),y=100-68*Math.cos(b)+6;var tx=svgEl('text',{x:x,y:y,'text-anchor':'middle','font-size':'18','font-weight':'800',fill:'#222'},n);tx.textContent=h;}}
+  face('ck-ticks','ck-nums');face('gk-ticks','gk-nums');
+  function hands(h,m,hid,mid){var ha=((h%12)+m/60)*30,ma=m*6;document.getElementById(hid).setAttribute('transform','rotate('+ha+' 100 100)');document.getElementById(mid).setAttribute('transform','rotate('+ma+' 100 100)');}
+  var hr=document.getElementById('ck-hr'),mn=document.getElementById('ck-mn');
+  function phase(h){return h<6?'noapte 🌙':h<9?'dimineață 🌅':h<12?'înainte de prânz ☀️':h<14?'prânz 🍽️':h<18?'după-amiază 🌤️':h<21?'seară 🌆':'noapte 🌙';}
+  function ck(){var h=+hr.value,m=+mn.value;hands(h,m,'ck-h','ck-m');document.getElementById('ck-d').textContent=pad(h)+':'+pad(m);
+    document.getElementById('ck-t').innerHTML='Ora <b>'+h+'</b> și <b>'+m+'</b> minute · <b>'+phase(h)+'</b>.<br>Același ac scurt arată și '+((h%12)||12)+' (de dimineață sau de seară): de aceea folosim ora de 24 de ore ca să nu ne încurcăm.';}
+  hr.oninput=ck;mn.oninput=ck;ck();
+  document.querySelectorAll('#ck-pre button').forEach(function(b){b.onclick=function(){var p=b.getAttribute('data-t').split(':');hr.value=p[0];mn.value=p[1];ck();};});
+  var gt={h:3,m:0};
+  function gnew(){gt.h=1+Math.floor(Math.random()*12);gt.m=5*Math.floor(Math.random()*12);hands(gt.h,gt.m,'gk-h','gk-m');document.getElementById('gk-o').textContent='Scrie ora și apasă „Verifică”.';}
+  gnew();
+  document.getElementById('gk-n').onclick=gnew;
+  document.getElementById('gk-c').onclick=function(){var h=parseInt(document.getElementById('gk-i').value,10),m=parseInt(document.getElementById('gk-j').value,10),o=document.getElementById('gk-o');
+    if(h===gt.h&&m===gt.m)o.innerHTML='✅ Corect! Ceasul arată <b>'+gt.h+':'+pad(gt.m)+'</b>.';else o.innerHTML='Mai încearcă. Acul scurt e aproape de <b>'+gt.h+'</b>? Acul lung arată minutele: fiecare număr înseamnă 5 minute.';};
+  /* rebus */
+  var G=['DVINERIJ','UÂCMNLEO','MIERCURI','IVOMNNJL','NMARȚIAP','IRLEUGSO','CSÂMBĂTĂ','ĂIDTRBEM'];
+  var W=[['DUMINICĂ',[[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0]]],['VINERI',[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6]]],['MIERCURI',[[2,0],[2,1],[2,2],[2,3],[2,4],[2,5],[2,6],[2,7]]],['JOI',[[0,7],[1,7],[2,7]]],['LUNI',[[1,5],[2,5],[3,5],[4,5]]],['MARȚI',[[4,1],[4,2],[4,3],[4,4],[4,5]]],['SÂMBĂTĂ',[[6,1],[6,2],[6,3],[6,4],[6,5],[6,6],[6,7]]]];
+  var ws=document.getElementById('ws-grid'),cells=[];
+  G.forEach(function(row,r){for(var c=0;c<8;c++){var b=document.createElement('button');b.type='button';b.textContent=row[c];b.setAttribute('aria-label','Litera '+row[c]);b.onclick=function(){this.classList.toggle('on');};ws.appendChild(b);cells[r*8+c]=b;}});
+  document.getElementById('ws-show').onclick=function(){W.forEach(function(w){w[1].forEach(function(p){cells[p[0]*8+p[1]].classList.add('ans');});});document.getElementById('ws-info').innerHTML='Cuvintele: <b>'+W.map(function(w){return w[0];}).join(', ')+'</b>. Sunt cele 7 zile ale săptămânii.';};
+  document.getElementById('ws-clr').onclick=function(){cells.forEach(function(c){c.classList.remove('on','ans');});document.getElementById('ws-info').textContent='';};
+  /* calculator zile */
+  var DN=['luni','marți','miercuri','joi','vineri','sâmbătă','duminică'];
+  function wd(){var a=DN.indexOf(document.getElementById('wd-a').value),n=parseInt(document.getElementById('wd-n').value,10)||0,r=n%7;document.getElementById('wd-o').innerHTML=n+' zile = '+Math.floor(n/7)+' săptămâni și '+r+' zile. Peste '+n+' zile va fi <b>'+DN[(a+r)%7]+'</b>.';}
+  document.getElementById('wd-a').onchange=wd;document.getElementById('wd-n').oninput=wd;wd();
+  /* cercul anului */
+  var MN=[['ianuarie','Gerar',31,'iarnă'],['februarie','Făurar',28,'iarnă'],['martie','Mărțișor',31,'primăvară'],['aprilie','Prier',30,'primăvară'],['mai','Florar',31,'primăvară'],['iunie','Cireșar',30,'vară'],['iulie','Cuptor',31,'vară'],['august','Gustar',31,'vară'],['septembrie','Răpciune',30,'toamnă'],['octombrie','Brumărel',31,'toamnă'],['noiembrie','Brumar',30,'toamnă'],['decembrie','Undrea',31,'iarnă']];
+  var SC={iarnă:'#7FB2E8',primăvară:'#8CD08F',vară:'#F6C431',toamnă:'#E39A4A'};
+  var seg=document.getElementById('yr-seg'),yi=document.getElementById('yr-info');
+  function arc(i){var a0=(i*30-90-15)*Math.PI/180,a1=((i+1)*30-90-15)*Math.PI/180,R=190,r=62;return 'M'+(210+r*Math.cos(a0))+' '+(210+r*Math.sin(a0))+' L'+(210+R*Math.cos(a0))+' '+(210+R*Math.sin(a0))+' A'+R+' '+R+' 0 0 1 '+(210+R*Math.cos(a1))+' '+(210+R*Math.sin(a1))+' L'+(210+r*Math.cos(a1))+' '+(210+r*Math.sin(a1))+' A'+r+' '+r+' 0 0 0 '+(210+r*Math.cos(a0))+' '+(210+r*Math.sin(a0))+'Z';}
+  MN.forEach(function(m,i){var g=svgEl('g',{tabindex:0,role:'button','aria-label':m[0],style:'cursor:pointer'},seg);svgEl('path',{d:arc(i),fill:SC[m[3]],stroke:'#fff','stroke-width':3},g);
+    var am=(i*30-90)*Math.PI/180,tx=svgEl('text',{x:210+128*Math.cos(am),y:210+128*Math.sin(am)+4,'text-anchor':'middle','font-size':'13','font-weight':'800',fill:'#1a1a1a'},g);tx.textContent=m[0].slice(0,3).toUpperCase();
+    var act=function(){seg.querySelectorAll('path').forEach(function(p){p.setAttribute('stroke','#fff');});g.firstChild.setAttribute('stroke','#222');document.getElementById('yr-c1').textContent=m[0];document.getElementById('yr-c2').textContent=m[1];yi.innerHTML='<b>'+m[0].charAt(0).toUpperCase()+m[0].slice(1)+'</b> · numele popular: <b>'+m[1]+'</b> · '+(i===1?'28 sau 29 de zile (an bisect)':m[2]+' de zile')+' · anotimp: <b>'+m[3]+'</b>.';};
+    g.addEventListener('click',act);g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();act();}});});
+  /* an bisect */
+  Caiet.bare('bi-bar',{items:[{label:'după 1 an',value:6,text:'6 ore',color:'#6FA8DC'},{label:'după 2 ani',value:12,text:'12 ore',color:'#4F8FCF'},{label:'după 3 ani',value:18,text:'18 ore',color:'#2F6FD6'},{label:'după 4 ani',value:24,text:'24 ore = o zi în plus',color:'#E2433A'}],max:24,source:'6 ore pe an × 4 ani = 24 ore'});
+  var by=document.getElementById('by'),bo=document.getElementById('by-o');
+  function bis(){var y=parseInt(by.value,10);if(isNaN(y)){bo.textContent='Scrie un an.';return;}var l=(y%4===0&&(y%100!==0||y%400===0));bo.innerHTML='Anul <b>'+y+'</b> '+(l?'<b>este bisect</b>: februarie are 29 de zile, iar anul are 366 de zile.':'nu este bisect: februarie are 28 de zile, iar anul are 365 de zile.');}
+  by.oninput=bis;bis();
+  /* calendar */
+  var cm=document.getElementById('cl-m'),cy=document.getElementById('cl-y');
+  MN.forEach(function(m,i){var o=document.createElement('option');o.value=i;o.textContent=m[0];if(i===10)o.selected=true;cm.appendChild(o);});
+  function cal(){var m=+cm.value,y=parseInt(cy.value,10);if(isNaN(y))return;var first=(new Date(y,m,1).getDay()+6)%7,days=new Date(y,m+1,0).getDate();
+    var h='<tr><th>L</th><th>Ma</th><th>Mi</th><th>J</th><th>V</th><th>S</th><th>D</th></tr><tr>',c=0;
+    for(var i=0;i<first;i++){h+='<td class="em"></td>';c++;}
+    for(var d=1;d<=days;d++){h+='<td'+(c%7>=5?' class="we"':'')+'>'+d+'</td>';c++;if(c%7===0&&d<days)h+='</tr><tr>';}
+    while(c%7){h+='<td class="em"></td>';c++;}
+    document.getElementById('cl-t').innerHTML=h+'</tr>';
+    var w=Math.floor(days/7),r=days%7;
+    document.getElementById('cl-o').innerHTML='<b>'+MN[m][0].charAt(0).toUpperCase()+MN[m][0].slice(1)+' '+y+'</b> are <b>'+days+'</b> zile = <b>'+w+' săptămâni întregi</b> + <b>'+r+'</b> zile'+(r?'':' (exact 4 săptămâni, februarie într-un an obișnuit)')+'. Prima zi a lunii e '+DN[first]+'.';}
+  cm.onchange=cal;cy.oninput=cal;cal();
+  /* axa calendar */
+  Caiet.axa('ca-axa',{from:-100,to:2026,label:'Istoria calendarului',info:'ca-info',
+   events:[
+    {y:-45,label:'Calendar iulian',color:'#E2433A',info:'Iulius Cezar introduce un calendar cu 365 de zile și un an bisect la 4 ani. A fost folosit în Europa timp de peste 1 500 de ani. (Cezar apare în lecția 2 de istorie.)'},
+    {y:1582,label:'Calendar gregorian',color:'#2E9D52',info:'Papa Grigore al XIII-lea corectează calendarul iulian, care rămăsese în urmă față de Soare. Noul calendar e cel folosit și azi în majoritatea țărilor.'},
+    {y:1919,label:'România',color:'#2F6FD6',info:'România a trecut la calendarul gregorian în 1919 (ziua de 1 aprilie a fost urmată de 14 aprilie). Acum și noi avem același calendar ca restul Europei.'}
+   ]});
+  /* linia valorică */
+  var ARG={
+   pastram:'<b>Argumente „păstrăm schimbarea”:</b><br>• Vara avem lumină mai mult seara, putem sta afară.<br>• Se poate economisi un pic de energie la iluminat.<br>• Ne-am obișnuit și ne ajută în programul zilei.',
+   renuntam:'<b>Argumente „renunțăm”:</b><br>• Schimbarea ne dezechilibrează somnul câteva zile, mai ales pe copii și pe bătrâni.<br>• Economia de energie e mică, spun unii specialiști.<br>• E simplu să nu mai schimbăm: ceasul ar rămâne același tot anul.',
+   ind:'<b>Gândește-te:</b><br>• Ce se întâmplă dimineața, când mergi la școală și e încă întuneric?<br>• Dacă ceasul nu s-ar mai schimba, ce oră ar fi mai bună?<br>• Poți propune un compromis? Spune de ce.'
+  };
+  var vb=document.querySelectorAll('#vl-btns button'),vx=document.getElementById('vl-box');
+  vb.forEach(function(b){b.onclick=function(){vb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});vx.innerHTML='<p style="margin:0">'+ARG[b.dataset.k]+'</p>';};});
+})();
+</script>
+</body>
+</html>

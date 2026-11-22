@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Modificări observabile în realitatea înconjurătoare</title>
+<link rel="stylesheet" href="../../assets/caiet.css">
+<style>
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}
+.pd summary{cursor:pointer;font-weight:800}
+.pd[open] summary{margin-bottom:6px}
+.pd:last-of-type{border-color:var(--green)}
+.vl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.vl button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.4em 1em}
+.vl button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.fig svg{display:block;width:100%;max-width:680px;height:auto;margin:0 auto}
+.sea{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:10px 0}
+.sea button{font:inherit;text-align:left;cursor:pointer;background:var(--paper);color:var(--ink);border:2px solid var(--line);border-radius:16px;padding:10px 14px}
+.sea button b{display:block;font-family:var(--display);font-size:1.05em}
+.sea button[aria-pressed="true"]{border-color:var(--blue);background:var(--tint-blue)}
+.hud2{font-weight:800}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Geografie · Unitatea 1 · Lecția 8 · manual pp. 34–35</p>
+   <h1>Modificări observabile în realitatea înconjurătoare</h1>
+   <p class="lead">Nu simți că Pământul se mișcă, dar vezi zi și noapte, vară și iarnă. Două mișcări explică totul. Hai să le vedem în 3D.</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="10" y="10" width="200" height="200" rx="20" fill="#0B1030"/>
+   <circle cx="50" cy="60" r="26" fill="#F6C431"/>
+   <g stroke="#F6C431" stroke-width="3" stroke-linecap="round"><path d="M50 20 v-8 M50 100 v8 M10 60 h-8 M90 60 h8 M22 32 l-6 -6 M78 88 l6 6 M22 88 l-6 6 M78 32 l6 -6"/></g>
+   <circle cx="150" cy="140" r="44" fill="#2F6FD6"/>
+   <path d="M126 130 q14 -20 30 -8 q10 10 -6 22 q-20 10 -24 -14Z M156 150 q10 -6 18 4 q-4 14 -18 8Z" fill="#5BB06A"/>
+   <path d="M150 90 q-24 40 0 100" fill="none" stroke="#0B1030" stroke-width="30" opacity=".35"/>
+   <path d="M150 84 V196" stroke="#fff" stroke-width="2" stroke-dasharray="4 4" transform="rotate(23 150 140)"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 IMI AMINTESC -->
+<section class="slide" aria-label="Îmi amintesc">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Îmi amintesc</span>
+  <div class="tip g" style="margin-top:0">Pământul, planeta noastră, se rotește <b>în jurul propriei axe</b> și <b>în jurul Soarelui</b>. Nu simțim aceste mișcări, pentru că ne mișcăm odată cu Pământul. Dar observăm <b>mișcarea aparentă a Soarelui pe cer</b> într-o zi și toate schimbările care se petrec într-un an.</div>
+  <span class="badge" style="background:var(--red);margin-top:18px">Ancheta de azi</span>
+  <div class="q"><span class="mark" style="background:var(--blue)">1</span>De ce după zi vine noapte?</div>
+  <div class="q"><span class="mark" style="background:var(--green)">2</span>De ce avem anotimpuri, și de ce sunt zilele mai lungi vara?</div>
+  <div class="q"><span class="mark" style="background:var(--purple)">3</span>Ce se întâmplă în natură și în viața oamenilor din cauza lor?</div>
+  <div class="q"><span class="mark" style="background:var(--red)">4</span>Ce schimbări produc oamenii, și sunt ele bune sau rele?</div>
+  <div class="tip y">🔦 <b>Activitate în grup (din manual):</b> cu un glob sau o minge și o lanternă, într-o sală întunecată, rotiți globul încet în fața lanternei aprinse. Vedeți cum se formează ziua și noaptea? Apoi vezi același lucru în 3D, pe slide-ul următor.</div>
+ </div>
+</section>
+
+<!-- 3 ROTATIA 3D -->
+<section class="slide" aria-label="Rotația în 3D">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🧊 Model 3D · rotația Pământului</span>
+  <h2>Ciclul zi–noapte</h2>
+  <p>Soarele e în dreapta. <b>România</b> e marcată cu roșu. Mută glisorul ca să treacă orele sau apasă „Pornește”. Pământul se rotește de la <b>vest la est</b>. Poți roti modelul cu degetul sau cu mouse-ul.</p>
+  <div id="rot3"></div>
+  <div class="ctrl"><span style="font-weight:800">🕛 Ora</span><input id="rt-t" type="range" min="0" max="24" step="0.25" value="9" aria-label="Ora din zi în România"><button type="button" id="rt-p" aria-pressed="false">▶ Pornește</button></div>
+  <div class="map-info" id="rt-info" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 4 VITEZA -->
+<section class="slide" aria-label="Cât de repede ne rotim">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Rețin și aplic · de ce nu simțim mișcarea?</span>
+  <h2>Ne rotim cu peste 1 000 km pe oră!</h2>
+  <p>O rotație completă durează <b>24 de ore</b>, adică un <b>ciclu zi–noapte</b>. La ecuator, un loc parcurge cam 40 000 km într-o zi, deci aproape <b>1 670 km pe oră</b>. Cu cât te apropii de poli, cu atât mergi mai încet. Alege o latitudine:</p>
+  <div class="calc">
+   <label for="sp-l" style="font-weight:800">Latitudine</label>
+   <input id="sp-l" type="range" min="0" max="90" value="46" aria-label="Latitudinea">
+   <span class="out" id="sp-o" style="min-width:12em"></span>
+  </div>
+  <div class="fig-wrap"><div id="sp-bar"></div></div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Noi nu simțim mișcările Pământului, pentru că ne aflăm pe el și ne rotim odată cu el.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Ca într-un tren care merge lin: nu simți viteza dacă nu te uiți pe geam. Rotația e foarte constantă, fără zdruncinături. Dacă Pământul s-ar opri brusc, tot ce nu e legat ar fi aruncat, iar o parte a Pământului ar avea zi aproape fără sfârșit (foarte fierbinte), iar cealaltă noapte (foarte rece). Așa se întâmplă doar în visul Andrei din manual.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 5 ORBITA 3D -->
+<section class="slide" aria-label="Mișcarea în jurul Soarelui">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🧊 Model 3D · mișcarea în jurul Soarelui</span>
+  <h2>Anul și anotimpurile</h2>
+  <p>Pământul face o rotație completă în jurul Soarelui într-un <b>an</b>. Axa lui e <b>înclinată</b> și arată mereu în aceeași direcție. Mută glisorul pe zilele anului și urmărește ce se întâmplă cu lumina care cade pe România.</p>
+  <div id="orb3"></div>
+  <div class="ctrl"><span style="font-weight:800">📅 Ziua anului</span><input id="ob-n" type="range" min="1" max="365" value="80" aria-label="Ziua anului"><button type="button" id="ob-p" aria-pressed="false">▶ Pornește</button></div>
+  <div class="map-info" id="ob-info" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 6 GRAFIC ZIUA -->
+<section class="slide" aria-label="Lungimea zilei">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Descopăr · cât durează ziua?</span>
+  <h2>Lungimea zilei în România, de-a lungul anului</h2>
+  <p>Graficul arată cât durează lumina zilei într-un loc din România (latitudine ~46°). Mută data.</p>
+  <div class="ctrl"><span style="font-weight:800">📅</span><input id="dl-n" type="range" min="1" max="365" value="172" aria-label="Ziua anului pentru grafic"></div>
+  <div class="fig-wrap fig"><svg viewBox="0 0 560 250" role="img" aria-label="Lungimea zilei în timpul anului">
+   <rect x="2" y="2" width="556" height="246" rx="10" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>
+   <g id="dl-grid"></g><path id="dl-path" fill="none" stroke="#2F6FD6" stroke-width="4"/>
+   <line id="dl-vl" y1="20" y2="200" stroke="#E2433A" stroke-width="2" stroke-dasharray="5 4"/><circle id="dl-dot" r="7" fill="#E2433A"/>
+  </svg></div>
+  <div class="map-info" id="dl-info" aria-live="polite"></div>
+  <div class="grid g4">
+   <div class="box"><span class="emo">🌸</span><h3>Echinocțiul de primăvară</h3><p><b>21 martie</b>: ziua egală cu noaptea.</p></div>
+   <div class="box"><span class="emo">☀️</span><h3>Solstițiul de vară</h3><p><b>22 iunie</b>: cea mai lungă zi din emisfera nordică.</p></div>
+   <div class="box"><span class="emo">🍂</span><h3>Echinocțiul de toamnă</h3><p><b>23 septembrie</b>: ziua egală cu noaptea.</p></div>
+   <div class="box"><span class="emo">❄️</span><h3>Solstițiul de iarnă</h3><p><b>22 decembrie</b>: cea mai lungă noapte din emisfera nordică.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 7 ANOTIMPURI -->
+<section class="slide" aria-label="Anotimpurile">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Descopăr · cele patru anotimpuri</span>
+  <h2>Cum descrii fiecare anotimp?</h2>
+  <p>Manualul îți cere să descrii anotimpurile prin <b>durata zilelor și a nopților</b> și prin <b>temperatură</b>. Alege un anotimp.</p>
+  <div class="sea" id="an-list"></div>
+  <div class="map-info" id="an-info" aria-live="polite">Alege un anotimp.</div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Anotimpurile se repetă în fiecare an în aceeași ordine. Fiecare durează 3 luni.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Când la noi e vară, în emisfera sudică (de exemplu în Australia) e iarnă. Mișcarea e aceeași, dar înclinarea axei face ca lumina să cadă diferit. Pe slide-ul 5, urmărește cum se schimbă situația în emisfera sudică.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 8 OMUL SI MEDIUL -->
+<section class="slide" aria-label="Omul și mediul">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Investigație · omul are grijă de mediul său?</span>
+  <h2>Ce schimbă oamenii în peisaj?</h2>
+  <p>Unele acțiuni ale oamenilor produc schimbări <b>negative</b> în jurul nostru. Apasă pe butoane și compară același loc în trei momente.</p>
+  <div class="ctrl" id="ev-ctrl"><button type="button" aria-pressed="true" data-s="1">🌳 Pădure</button><button type="button" aria-pressed="false" data-s="2">🪓 După defrișare</button><button type="button" aria-pressed="false" data-s="3">🌱 După replantare</button></div>
+  <div class="fig-wrap fig"><svg viewBox="0 0 520 240" role="img" aria-label="Același deal în trei situații">
+   <rect x="2" y="2" width="516" height="236" rx="10" fill="#CFE8FF" stroke="var(--line)" stroke-width="2"/>
+   <path d="M2 238 V140 q80 -70 170 -40 t160 -10 t186 60 V238Z" id="ev-hill" fill="#6FA85A"/>
+   <path d="M330 238 q40 -40 50 -90" fill="none" stroke="#2F6FD6" stroke-width="10" stroke-linecap="round" id="ev-river"/>
+   <g id="ev-trees"></g><g id="ev-scars" style="display:none"><path d="M90 150 q10 40 6 70 M140 130 q14 40 8 90 M240 120 q-10 50 -4 100" stroke="#8A5A2B" stroke-width="6" fill="none" stroke-linecap="round" opacity=".7"/></g>
+  </svg></div>
+  <div class="map-info" id="ev-info" aria-live="polite"></div>
+  <div class="tip y">📋 <b>Temă de investigație:</b> observă în jurul tău, discută cu părinții, caută la primărie sau pe internet și fă o listă cu schimbările produse de oameni în orizontul tău local. Prezintă-o colegilor.</div>
+ </div>
+</section>
+
+<!-- 9 DEZBATERE -->
+<section class="slide" aria-label="Dezbatere">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">🗣️ Dezbatere · linia valorică</span>
+  <h2>Cine ar trebui să aibă grijă de mediu?</h2>
+  <p>Gunoaie în natură, ape poluate, copaci tăiați. Cine ar trebui să rezolve problema: <b>fiecare dintre noi</b> prin obiceiurile lui, sau <b>statul</b>, prin legi și amenzi?</p>
+  <div class="vl" id="vl-btns">
+   <button type="button" aria-pressed="false" data-k="noi">Fiecare dintre noi</button>
+   <button type="button" aria-pressed="false" data-k="stat">Statul, prin legi</button>
+   <button type="button" aria-pressed="false" data-k="ind">Amândoi / nehotărât</button>
+  </div>
+  <div class="box" id="vl-box" aria-live="polite"><p>Apasă pe o poziție ca să vezi ce argumente ar putea folosi un elev. Apoi adaugă-le pe ale tale.</p></div>
+  <div class="tip y">🗣️ <b>Reguli:</b> ascultăm până la capăt, nu dăm vina pe cineva anume, folosim „eu cred că... pentru că...”. La final alegem împreună trei lucruri pe care le putem face în clasa noastră.</div>
+ </div>
+</section>
+
+<!-- 10 PUNTE -->
+<section class="slide" aria-label="Punte">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Științe ↔ Istorie ↔ Matematică ↔ Muzică ↔ Română</span>
+  <h2>Legături cu celelalte materii</h2>
+  <details class="pd"><summary>Științe: Sistemul Solar, Soarele și anotimpurile</summary><p>La științele naturii (unitatea 2) studiezi Sistemul Solar, Soarele, anotimpurile și ritmurile viețuitoarelor. Aici ai văzut cauza: <b>mișcările Pământului</b>. Acolo vezi efectele: de ce cad frunzele, de ce migrează păsările, de ce hibernează ursul.</p></details>
+  <details class="pd"><summary>Istorie: calendarul lui Cezar și măsurarea Pământului</summary><p>Anul de 365 de zile și 6 ore a dus la <b>calendarul iulian</b>, introdus de Iulius Cezar în anul 45 î.H. (îl știi din lecția 2, istorie, unitatea 2). Grecul <b>Eratostene</b> a măsurat circumferința Pământului prin umbra Soarelui (lecția 7, istorie, unitatea 1).</p></details>
+  <details class="pd"><summary>Matematică: 24 de ore, 365 de zile, 6 ore</summary><p>6 ore × 4 ani = 24 de ore: o zi în plus la fiecare 4 ani, 29 februarie. Calculează: 365 × 24 = 8 760 de ore într-un an obișnuit. Care e viteza la ecuator? 40 000 km : 24 h ≈ 1 670 km/h.</p></details>
+  <details class="pd"><summary>Muzică și Română: anotimpurile în artă</summary><p>Compozitorul <b>Antonio Vivaldi</b> a scris „Cele patru anotimpuri”, patru piese pentru vioară. Ascultă-le și spune ce anotimp e fiecare. În română ai poezii, proverbe și ghicitori despre anotimpuri: „Primăvara arată cum a fost iarna”, spune o vorbă.</p></details>
+  <details class="pd"><summary>Educație civică: ritmul zilei</summary><p>Somnul, mesele, școala și joaca urmează <b>ciclul zi–noapte</b>. Un program regulat ne ajută să fim sănătoși și atenți. Respectă orele de somn: corpul tău e și el „sincronizat” cu rotația Pământului.</p></details>
+ </div>
+</section>
+
+<!-- 11 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile lecției</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 12 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g2">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🌍</span><p><b>Rotația</b> în jurul axei, de la vest la est, durează 24 de ore și produce <b>ciclul zi–noapte</b>.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">☀️</span><p><b>Mișcarea în jurul Soarelui</b> durează un an. Cu axa înclinată, produce cele <b>patru anotimpuri</b>, cu echinocții (21 martie, 23 septembrie) și solstiții (22 iunie, 22 decembrie).</p></div>
+  </div>
+  <div class="tip y">🔁 <b>Urmează:</b> Lecția 9, „Repere de timp: ora, ziua, săptămâna, anul, calendarul”.</div>
+ </div>
+</section>
+
+</main>
+
+<script src="../../vendor/three.min.js"></script>
+<script src="../../vendor/OrbitControls.js"></script>
+<script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/glob.js"></script>
+<script>
+(function(){
+  var Q=[
+   {t:'mcq',tags:['G L8'],d:'Rotație',q:'În ce direcție se rotește Pământul în jurul axei lui?',o:['De la nord la sud','De la vest la est','De la est la vest','De la sud la nord'],a:1,h:'Soarele pare să răsară în est.',e:'De la vest la est. De aceea Soarele pare să răsară în est și să apună în vest.'},
+   {t:'num',u:'ore',tags:['G L8','Matematică'],d:'Matematică',q:'Cât durează un ciclu zi–noapte, adică o rotație completă a Pământului în jurul axei?',a:24,h:'O zi.',e:'24 de ore.'},
+   {t:'mcq',tags:['G L8'],d:'Rotație',q:'Ce produce rotația Pământului în jurul axei sale?',o:['Anotimpurile','Ciclul zi–noapte','Anul bisect','Ploaia'],a:1,h:'Lumină sau întuneric?',e:'Ciclul zi–noapte. Anotimpurile sunt produse de mișcarea în jurul Soarelui.'},
+   {t:'mcq',tags:['G L8'],d:'Revoluție',q:'Cât durează o rotație completă a Pământului în jurul Soarelui?',o:['O zi','O lună','Un an','Un secol'],a:2,h:'365 de zile și 6 ore.',e:'Un an: aproximativ 365 de zile și 6 ore.'},
+   {t:'sort',tags:['G L8'],d:'Două mișcări',q:'Ce mișcare a Pământului produce fiecare schimbare?',items:[['Răsăritul și apusul Soarelui','s'],['Cele patru anotimpuri','n'],['Dimineață, zi, seară, noapte','s'],['Zile mai lungi vara','n'],['Somnul oamenilor','s'],['Căderea frunzelor toamna','n']],labels:{s:'Rotația în jurul axei',n:'Mișcarea în jurul Soarelui'},h:'Ce se repetă în 24 de ore? Ce se repetă într-un an?',e:'Zi/noapte, răsărit/apus, somn: rotația în jurul axei. Anotimpuri, zile lungi vara, căderea frunzelor: mișcarea în jurul Soarelui.'},
+   {t:'mcq',tags:['G L8'],d:'Anotimpuri',q:'De ce avem anotimpuri?',o:['Pentru că Soarele se apropie și se depărtează','Pentru că Pământul se rotește în jurul Soarelui cu axa înclinată, deci primește lumină și căldură diferit','Pentru că Luna se mișcă','Pentru că norii se mută'],a:1,h:'Citește la „Rețin” și vezi modelul 3D.',e:'Pământul se mișcă în jurul Soarelui cu axa înclinată și nu primește peste tot aceeași cantitate de lumină și căldură.'},
+   {t:'mcq',tags:['G L8'],d:'Date',q:'Ce marchează 21 martie și 23 septembrie?',o:['Solstițiile','Echinocțiile, când ziua e egală cu noaptea','Anii bisecți','Sărbători'],a:1,h:'„Echi” înseamnă egal.',e:'Echinocțiile (de primăvară și de toamnă): ziua e egală cu noaptea.'},
+   {t:'mcq',tags:['G L8'],d:'Date',q:'Care e ziua cea mai lungă din emisfera nordică, unde se află și România?',o:['21 martie','22 iunie','23 septembrie','22 decembrie'],a:1,h:'Solstițiul de vară.',e:'22 iunie, solstițiul de vară. Noaptea cea mai lungă e la 22 decembrie.'},
+   {t:'order',tags:['G L8'],d:'Ordine',q:'Pune în ordine cele patru momente importante ale anului, începând cu 1 ianuarie.',items:['21 martie (echinocțiul de primăvară)','22 iunie (solstițiul de vară)','23 septembrie (echinocțiul de toamnă)','22 decembrie (solstițiul de iarnă)'],h:'Mai întâi primăvara.',e:'21 martie → 22 iunie → 23 septembrie → 22 decembrie.'},
+   {t:'num',u:'ore',tags:['G L8','Matematică'],d:'Matematică',q:'Ce număr de ore se adună într-o zi suplimentară, dacă în fiecare an rămân 6 ore, la 4 ani?',a:24,h:'6 × 4.',e:'6 × 4 = 24 de ore, adică o zi în plus: 29 februarie, într-un an bisect.'},
+   {t:'mcq',tags:['G L8'],d:'Aplic',q:'Andra a visat că Pământul s-a oprit din rotația în jurul axei. De ce s-a speriat?',o:['Pentru că nu ar mai fi nicio schimbare','Pentru că o parte a Pământului ar avea mereu zi, iar cealaltă mereu noapte','Pentru că ar fi mereu vară','Pentru că Soarele s-ar stinge'],a:1,h:'Fără rotație, aceeași parte ar fi mereu spre Soare.',e:'Pentru că o parte ar avea zi fără sfârșit (foarte cald), iar cealaltă noapte fără sfârșit (foarte frig). Viața ar fi foarte grea.'},
+   {t:'mcq',tags:['G L8','Științe'],d:'Științe',q:'Care e o schimbare din natură determinată de mișcarea Pământului în jurul Soarelui?',o:['Răsăritul','Căderea frunzelor toamna','Somnul','Schimbarea orei'],a:1,h:'Se repetă anual.',e:'Căderea frunzelor toamna, hibernarea ursului, migrația păsărilor: schimbări legate de anotimpuri.'},
+   {t:'mcq',tags:['G L8','Istorie'],d:'Istorie',q:'Un an are 365 de zile și 6 ore. Cine a introdus, în anul 45 î.H., un calendar cu ani bisecți?',o:['Burebista','Iulius Cezar','Decebal','Mircea cel Bătrân'],a:1,h:'Îl știi din lecția despre daci și romani.',e:'Iulius Cezar, cu calendarul iulian. Ani bisecți: cu o zi în plus la fiecare 4 ani.'},
+   {t:'mcq',tags:['G L8','Civică'],d:'Civică',q:'Care dintre acestea este o faptă bună pentru mediu?',o:['Arunci gunoiul în râu','Colectezi selectiv și stingi lumina când nu e nevoie','Tai un copac fără rost','Lași robinetul deschis'],a:1,h:'Gândește-te la pădure și ape.',e:'Colectarea selectivă și economisirea energiei ajută mediul. Fiecare faptă mică contează.'},
+   {t:'mcq',tags:['G L8'],d:'Investigație',q:'Ce schimbare negativă a mediului produc oamenii prin defrișări?',o:['Aerul devine mai curat','Pământul poate fi spălat de ploi, apar alunecări și inundații, iar animalele pierd adăpostul','Râurile se usucă mereu','Nu se întâmplă nimic'],a:1,h:'Rădăcinile țin pământul.',e:'Fără copaci, ploile spală pământul, pot apărea alunecări de teren și inundații, iar animalele își pierd casa.'}
+  ];
+  Caiet.start({Q:Q});
+})();
+</script>
+<script>
+(function(){
+  var D2R=Math.PI/180;
+  function pad(n){return n<10?'0'+n:''+n;}
+  /* ===== ROTATIA ===== */
+  var c1,spin,playing=false,tm=9,LON=25,LAT=45.9;
+  function hhmm(t){var h=Math.floor(t)%24,m=Math.round((t-Math.floor(t))*60);if(m===60){m=0;h=(h+1)%24;}return pad(h)+':'+pad(m);}
+  function ripple(t){return t>=6&&t<18;}
+  function setRot(){
+    spin.rotation.y=-(LON-(tm-12)*15)*D2R;
+    var t=hhmm(tm),day=ripple(tm),ph=tm<6?'noapte (înainte de răsărit)':tm<9?'dimineață':tm<12?'înainte de prânz':tm<15?'după-amiază':tm<18?'după-amiază târzie':tm<21?'seară':'noapte';
+    document.getElementById('rt-info').innerHTML=(day?'☀️':'🌙')+' La <b>'+t+'</b> în România este <b>'+(day?'zi':'noapte')+'</b> ('+ph+').<br>Cine e acum în partea luminată? Locurile aflate spre Soare, în partea dreaptă a modelului. În partea opusă e noapte. (Orele de răsărit și apus se schimbă cu anotimpul, aici am folosit 6:00 și 18:00 ca exemplu.)';
+  }
+  Caiet.scena3d('rot3',{background:0x0B1030,camera:[0,3,5.4],minDistance:4,maxDistance:12,setup:function(T,scene,cam,c){
+    c1=c;scene.add(new T.AmbientLight(0xffffff,.2));
+    var sun=new T.DirectionalLight(0xffffff,1.2);sun.position.set(10,0,0);scene.add(sun);
+    var sb=new T.Mesh(new T.SphereGeometry(.8,32,24),new T.MeshBasicMaterial({color:0xFFD34E}));sb.position.set(5.6,0,0);scene.add(sb);
+    var halo=new T.Mesh(new T.SphereGeometry(1.15,32,24),new T.MeshBasicMaterial({color:0xFFD34E,transparent:true,opacity:.25}));halo.position.copy(sb.position);scene.add(halo);
+    var tilt=new T.Group();tilt.rotation.x=23.44*D2R;scene.add(tilt);
+    spin=new T.Group();tilt.add(spin);
+    spin.add(new T.Mesh(new T.SphereGeometry(1.5,64,48),new T.MeshStandardMaterial({map:Caiet.globTexture(T),roughness:1})));
+    var mk=new T.Mesh(new T.SphereGeometry(.07,12,10),new T.MeshBasicMaterial({color:0xFF3B30}));mk.position.copy(Caiet.latLon3d(T,LAT,LON,1.52));spin.add(mk);
+    var lb=Caiet.label3d(T,'România',{size:.34});lb.position.copy(Caiet.latLon3d(T,LAT,LON,1.9));spin.add(lb);
+    var ax=new T.Line(new T.BufferGeometry().setFromPoints([new T.Vector3(0,-2.3,0),new T.Vector3(0,2.3,0)]),new T.LineBasicMaterial({color:0xffffff}));tilt.add(ax);
+    var st=[];for(var i=0;i<260;i++){var r=14+Math.random()*10,a=Math.random()*6.283,b=(Math.random()-.5)*3;st.push(r*Math.cos(a),b*5,r*Math.sin(a));}
+    var sg=new T.BufferGeometry();sg.setAttribute('position',new T.Float32BufferAttribute(st,3));scene.add(new T.Points(sg,new T.PointsMaterial({color:0xffffff,size:.07})));
+    setRot();
+  },tick:function(t,dt){if(playing){tm=(tm+dt*1.6)%24;document.getElementById('rt-t').value=tm;setRot();}}});
+  document.getElementById('rt-t').oninput=function(){tm=+this.value;setRot();};
+  var rp=document.getElementById('rt-p');rp.onclick=function(){playing=!playing;rp.setAttribute('aria-pressed',playing);rp.textContent=playing?'⏸ Oprește':'▶ Pornește';};
+
+  /* ===== VITEZA ===== */
+  var sl=document.getElementById('sp-l'),so=document.getElementById('sp-o');
+  function spd(){var l=+sl.value,v=Math.round(1670*Math.cos(l*D2R)/10)*10;so.innerHTML='La latitudinea <b>'+l+'°</b>: aprox. <b>'+v.toLocaleString('ro-RO')+' km/h</b>';
+    Caiet.bare('sp-bar',{items:[{label:'Ecuator (0°)',value:1670,text:'~1 670 km/h',color:'#2F6FD6'},{label:'România (~46°)',value:1160,text:'~1 160 km/h',color:'#E2433A'},{label:'Latitudinea aleasă',value:v,text:v.toLocaleString('ro-RO')+' km/h',color:'#2E9D52'},{label:'Pol (90°)',value:1,text:'aproape 0 km/h',color:'#999'}],max:1700,source:'calcul: 40 000 km : 24 h × cos(latitudine)'});}
+  sl.oninput=spd;spd();
+
+  /* ===== ORBITA ===== */
+  var c2,earth,playing2=false,nn=80,R=5;
+  function season(n){return n<80||n>=356?'iarnă':n<173?'primăvară':n<266?'vară':'toamnă';}
+  var OPP={'iarnă':'vară','primăvară':'toamnă','vară':'iarnă','toamnă':'primăvară'};
+  function dayLen(n,lat){var dec=23.44*Math.sin(2*Math.PI*(n-81)/365)*D2R,x=-Math.tan(lat*D2R)*Math.tan(dec);x=Math.max(-1,Math.min(1,x));return 24/Math.PI*Math.acos(x);}
+  function dateTxt(n){return new Date(2025,0,n).toLocaleDateString('ro-RO',{day:'numeric',month:'long'});}
+  function setOrb(){
+    var phi=2*Math.PI*(nn-80)/365;earth.position.set(R*Math.cos(phi),0,R*Math.sin(phi));
+    var s=season(nn),L=dayLen(nn,LAT),h=Math.floor(L),m=Math.round((L-h)*60);if(m===60){m=0;h++;}
+    document.getElementById('ob-info').innerHTML='📅 <b>'+dateTxt(nn)+'</b> · în emisfera nordică (și în România): <b>'+s+'</b>; în cea sudică: <b>'+OPP[s]+'</b>.<br>☀️ Lumina zilei în România: aprox. <b>'+h+' h '+pad(m)+' min</b>.';
+  }
+  Caiet.scena3d('orb3',{background:0x0B1030,camera:[0,8,9.4],minDistance:5,maxDistance:22,setup:function(T,scene,cam,c){
+    c2=c;c.controls.target.set(0,0,1.2);scene.add(new T.AmbientLight(0xffffff,.16));
+    var pl=new T.PointLight(0xffffff,1.9,0,0);scene.add(pl);
+    scene.add(new T.Mesh(new T.SphereGeometry(1.1,32,24),new T.MeshBasicMaterial({color:0xFFD34E})));
+    scene.add(new T.Mesh(new T.SphereGeometry(1.6,32,24),new T.MeshBasicMaterial({color:0xFFD34E,transparent:true,opacity:.2})));
+    var pts=[];for(var i=0;i<=128;i++){var a=i/128*6.2832;pts.push(new T.Vector3(R*Math.cos(a),0,R*Math.sin(a)));}
+    scene.add(new T.Line(new T.BufferGeometry().setFromPoints(pts),new T.LineBasicMaterial({color:0x5C6BA8})));
+    earth=new T.Group();scene.add(earth);
+    var em=new T.Mesh(new T.SphereGeometry(.8,48,36),new T.MeshStandardMaterial({map:Caiet.globTexture(T),roughness:1}));em.rotation.x=-23.44*D2R;earth.add(em);
+    var ax=new T.Line(new T.BufferGeometry().setFromPoints([new T.Vector3(0,-1.35,0),new T.Vector3(0,1.35,0)]),new T.LineBasicMaterial({color:0xffffff}));ax.rotation.x=-23.44*D2R;earth.add(ax);
+    earth.userData.m=em;
+    [['21 martie',80],['22 iunie',173],['23 septembrie',266],['22 decembrie',356]].forEach(function(e){var phi=2*Math.PI*(e[1]-80)/365,lb=Caiet.label3d(T,e[0],{size:.7});lb.position.set((R+1.5)*Math.cos(phi),.2,(R+1.5)*Math.sin(phi));scene.add(lb);});
+    var st=[];for(var i=0;i<300;i++){var r=22+Math.random()*10,a=Math.random()*6.283,b=(Math.random()-.5)*20;st.push(r*Math.cos(a),b,r*Math.sin(a));}
+    var sg=new T.BufferGeometry();sg.setAttribute('position',new T.Float32BufferAttribute(st,3));scene.add(new T.Points(sg,new T.PointsMaterial({color:0xffffff,size:.09})));
+    setOrb();
+  },tick:function(t,dt){earth.userData.m.rotation.y+=dt*1.2;if(playing2){nn+=dt*25;if(nn>365)nn-=365;document.getElementById('ob-n').value=Math.round(nn);setOrb();}}});
+  var obn=document.getElementById('ob-n');obn.oninput=function(){nn=+this.value;setOrb();};
+  var op=document.getElementById('ob-p');op.onclick=function(){playing2=!playing2;op.setAttribute('aria-pressed',playing2);op.textContent=playing2?'⏸ Oprește':'▶ Pornește';};
+
+  /* ===== GRAFIC ZIUA ===== */
+  var X0=50,X1=540,Y0=30,Y1=200;
+  function gx(n){return X0+(n-1)/364*(X1-X0);}
+  function gy(h){return Y1-(h-8)/(16-8)*(Y1-Y0);}
+  var grid='',pth='';
+  for(var h=8;h<=16;h+=2){grid+='<line x1="'+X0+'" x2="'+X1+'" y1="'+gy(h)+'" y2="'+gy(h)+'" stroke="var(--line)" stroke-width="1"/><text x="'+(X0-8)+'" y="'+(gy(h)+4)+'" text-anchor="end" font-size="11" fill="var(--ink)">'+h+' h</text>';}
+  ['I','F','M','A','M','I','I','A','S','O','N','D'].forEach(function(m,i){var n=1+Math.round(i*30.4);grid+='<text x="'+gx(n+15)+'" y="222" text-anchor="middle" font-size="12" fill="var(--ink)">'+m+'</text>';});
+  [80,173,266,356].forEach(function(n){grid+='<line x1="'+gx(n)+'" x2="'+gx(n)+'" y1="'+Y0+'" y2="'+Y1+'" stroke="#C9862A" stroke-width="1" stroke-dasharray="3 4"/>';});
+  for(var n=1;n<=365;n+=3){pth+=(n===1?'M':'L')+gx(n).toFixed(1)+' '+gy(dayLen(n,LAT)).toFixed(1)+' ';}
+  document.getElementById('dl-grid').innerHTML=grid+'<text x="12" y="20" font-size="12" font-weight="800" fill="var(--ink)">ore de lumină</text><text x="540" y="240" text-anchor="end" font-size="11" fill="var(--ink)">linii punctate: 21 mart., 22 iun., 23 sept., 22 dec.</text>';
+  document.getElementById('dl-path').setAttribute('d',pth);
+  function hm(x){var a=Math.floor(x),b=Math.round((x-a)*60);if(b===60){b=0;a++;}return [a,b];}
+  function dlSet(){var n=+document.getElementById('dl-n').value,L=dayLen(n,LAT),dd=hm(L),nn2=hm(24-L),h=dd[0],m=dd[1];var x=gx(n),y=gy(L);
+    var v=document.getElementById('dl-vl');v.setAttribute('x1',x);v.setAttribute('x2',x);var d=document.getElementById('dl-dot');d.setAttribute('cx',x);d.setAttribute('cy',y);
+    document.getElementById('dl-info').innerHTML='📅 <b>'+dateTxt(n)+'</b>: aproximativ <b>'+h+' h '+pad(m)+' min</b> de lumină și aproximativ '+nn2[0]+' h '+pad(nn2[1])+' min de noapte. Anotimpul în România: <b>'+season(n)+'</b>.';}
+  document.getElementById('dl-n').oninput=dlSet;dlSet();
+
+  /* ===== ANOTIMPURI ===== */
+  var AN=[
+   ['🌸 Primăvara','21 martie – 21 iunie','Zilele se lungesc, nopțile se scurtează. Temperaturile cresc. Înfloresc pomii, se întorc păsările migratoare.'],
+   ['☀️ Vara','22 iunie – 22 septembrie','Zilele sunt cele mai lungi (maximum la 22 iunie), nopțile cele mai scurte. Temperaturile sunt cele mai mari. Vacanța școlară.'],
+   ['🍂 Toamna','23 septembrie – 21 decembrie','Zilele se scurtează, nopțile se lungesc. Temperaturile scad. Cad frunzele, se coc fructele, se culeg recoltele.'],
+   ['❄️ Iarna','22 decembrie – 20 martie','Zilele sunt scurte, nopțile lungi (cea mai lungă, la 22 decembrie). Temperaturile sunt joase, ninge. Unele animale hibernează.']
+  ];
+  var al=document.getElementById('an-list'),ai=document.getElementById('an-info');
+  AN.forEach(function(a){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','false');b.innerHTML='<b>'+a[0]+'</b>'+a[1];b.onclick=function(){al.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});ai.innerHTML='<b>'+a[0]+'</b> ('+a[1]+')<br>'+a[2];};al.appendChild(b);});
+
+  /* ===== OMUL ȘI MEDIUL ===== */
+  var trees=document.getElementById('ev-trees'),scars=document.getElementById('ev-scars'),hill=document.getElementById('ev-hill'),river=document.getElementById('ev-river'),evi=document.getElementById('ev-info');
+  var TP=[[60,150],[100,140],[140,128],[180,120],[220,120],[260,116],[300,112],[420,122],[460,134],[500,150],[80,170],[130,160],[200,150],[250,140],[470,170],[420,150]];
+  function treeSvg(x,y,sz,col){return '<path d="M'+x+' '+y+' l'+(-sz*.5)+' '+(sz*1.3)+' h'+sz+'Z" fill="'+col+'"/><rect x="'+(x-2)+'" y="'+(y+sz*1.3)+'" width="4" height="'+(sz*.4)+'" fill="#6B4A2B"/>';}
+  var EV={1:'🌳 <b>Pădure:</b> rădăcinile țin pământul, copacii dau adăpost animalelor și curăță aerul. Apa din râu e limpede.',2:'🪓 <b>După defrișare:</b> fără copaci, ploile spală pământul de pe versant, apar șanțuri, iar apa râului devine tulbure și poate inunda. Animalele pierd adăpostul.',3:'🌱 <b>După replantare:</b> pădurea tânără începe să țină pământul. Au nevoie de ani ca să crească. Replantarea e o faptă bună, dar prevenirea defrișărilor e și mai bună.'};
+  function evSet(s){
+    var h='';TP.forEach(function(p){if(s===1)h+=treeSvg(p[0],p[1],26,'#2F7A44');else if(s===3)h+=treeSvg(p[0],p[1]+12,12,'#5BB06A');});
+    trees.innerHTML=h;scars.style.display=s===2?'':'none';hill.setAttribute('fill',s===2?'#C0A06B':'#6FA85A');river.setAttribute('stroke',s===2?'#8B6B3F':'#2F6FD6');evi.innerHTML=EV[s];
+    document.querySelectorAll('#ev-ctrl button').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-s')===''+s?'true':'false');});}
+  document.querySelectorAll('#ev-ctrl button').forEach(function(b){b.onclick=function(){evSet(+b.getAttribute('data-s'));};});evSet(1);
+
+  /* ===== LINIA VALORICĂ ===== */
+  var ARG={
+   noi:'<b>Argumente „fiecare dintre noi”:</b><br>• Gunoiul îl aruncăm noi: dacă nu aruncăm, nu e problemă.<br>• Obiceiurile se învață de mici, acasă și la școală.<br>• Nu poți avea un polițist la fiecare pas: contează ce facem când nu ne vede nimeni.',
+   stat:'<b>Argumente „statul, prin legi”:</b><br>• Unele probleme sunt prea mari pentru un singur om: fabrici, defrișări ilegale, ape poluate.<br>• Legile și amenzile îi opresc pe cei care nu țin cont de alții.<br>• Statul poate organiza colectarea gunoiului, parcuri naționale și controale.',
+   ind:'<b>Amândoi.</b><br>• Legile fără oameni care le respectă nu ajută. Oamenii fără reguli pot greși.<br>• Ce poți face tu azi? Ce poate face primăria din localitatea ta?<br>• Alege două fapte personale și două reguli pe care le-ai cere statului.'
+  };
+  var vb=document.querySelectorAll('#vl-btns button'),vx=document.getElementById('vl-box');
+  vb.forEach(function(b){b.onclick=function(){vb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});vx.innerHTML='<p style="margin:0">'+ARG[b.dataset.k]+'</p>';};});
+})();
+</script>
+</body>
+</html>

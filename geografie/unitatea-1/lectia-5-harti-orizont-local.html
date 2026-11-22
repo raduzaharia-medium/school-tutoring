@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hărți ale orizontului local</title>
+<link rel="stylesheet" href="../../assets/caiet.css">
+<style>
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.pd{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:10px 16px;margin-top:8px}
+.pd summary{cursor:pointer;font-weight:800}
+.pd[open] summary{margin-bottom:6px}
+.pd:last-of-type{border-color:var(--green)}
+.vl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.vl button{font:inherit;font-weight:800;cursor:pointer;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:.4em 1em}
+.vl button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.fig svg{display:block;width:100%;max-width:680px;height:auto;margin:0 auto}
+.part{cursor:pointer}
+.part:focus{outline:3px solid var(--blue);outline-offset:2px}
+.sym{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.sym button{display:inline-flex;align-items:center;gap:.5em;font:inherit;font-weight:700;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:.3em .7em;cursor:pointer}
+.sym button[aria-pressed="true"]{border-color:var(--blue);background:var(--tint-blue)}
+.sym svg{width:26px;height:20px}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- 1 COPERTA -->
+<section class="slide" aria-label="Copertă">
+ <div class="wrap cover">
+  <div>
+   <div class="stripes"><span style="background:var(--purple)"></span><span style="background:var(--red)"></span><span style="background:var(--yellow)"></span><span style="background:var(--green)"></span><span style="background:var(--blue)"></span></div>
+   <p style="font-weight:800;color:var(--soft);margin:0">Geografie · Unitatea 1 · Lecția 5 · manual pp. 22–23</p>
+   <h1>Hărți ale orizontului local</h1>
+   <p class="lead">Cum încape un județ întreg pe o foaie? Ce înseamnă titlul, scara și legenda, și de ce ți-ar trebui o hartă chiar dacă ai telefon?</p>
+   <p style="color:var(--soft)">Navighezi cu săgețile de jos sau cu tastele ← →.</p>
+  </div>
+  <svg viewBox="0 0 220 220" aria-hidden="true">
+   <rect x="16" y="16" width="188" height="188" rx="12" fill="#F4E9D8" stroke="#8A5A2B" stroke-width="4"/>
+   <path d="M40 60 q40 -30 70 0 t60 20 v50 q-30 30 -70 10 t-60 -20Z" fill="#9BD59B" stroke="#4F8F4A" stroke-width="3"/>
+   <path d="M120 40 q10 40 -10 80 t-10 60" fill="none" stroke="#2F6FD6" stroke-width="5" stroke-linecap="round"/>
+   <circle cx="78" cy="110" r="6" fill="#E2433A"/><circle cx="148" cy="88" r="4" fill="#E2433A"/>
+   <path d="M30 192 h60 M30 188 v8 M60 188 v8 M90 188 v8" stroke="#222" stroke-width="3"/>
+   <path d="M170 150 l12 -22 l12 22Z" fill="#8A5A2B"/>
+  </svg>
+ </div>
+</section>
+
+<!-- 2 STIM / ANCHETA -->
+<section class="slide" aria-label="Orizontul local">
+ <div class="wrap">
+  <span class="badge" style="background:var(--blue)">Observ · Alex din Oradea</span>
+  <h2>Ce cuprinde orizontul local?</h2>
+  <p>Alex locuiește în Oradea, în cartierul Mihai Eminescu. În fotografiile lui apare orașul, dar și locuri din jurul lui: râul <b>Crișul Repede</b> și dealuri. Ce spațiu e orizontul lui local?</p>
+  <div class="grid g2">
+   <div class="box"><span class="emo">🏙️</span><h3>a. Doar localitatea</h3><p>Orașul Oradea, cu străzile lui.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">🌄</span><h3>b. Localitatea și spațiul din jur</h3><p>Orașul <b>și</b> împrejurimile lui: alte localități, râuri, dealuri, drumuri. Varianta corectă.</p></div>
+  </div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Orizontul local cuprinde localitatea în care trăiești și spațiul ce o înconjoară. De obicei e reprezentat de <b>județul</b> unde se află localitatea.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Un <b>județ</b> e o unitate administrativă tradițională, cu mai multe localități care se gospodăresc împreună. România are 41 de județe, plus municipiul București. Apasă pe harta de pe slide-ul următor ca să-ți găsești orizontul local.</p></div>
+  </div>
+  <span class="badge" style="background:var(--red);margin-top:14px">Ancheta de azi</span>
+  <div class="q"><span class="mark" style="background:var(--blue)">1</span>Cum se numește desenul care micșorează suprafețe mari?</div>
+  <div class="q"><span class="mark" style="background:var(--green)">2</span>Ce trebuie să aibă o hartă ca să o înțeleagă toți?</div>
+  <div class="q"><span class="mark" style="background:var(--purple)">3</span>Cum aflăm cât de departe sunt două localități?</div>
+ </div>
+</section>
+
+<!-- 3 HARTA ROMANIEI -->
+<section class="slide" aria-label="Alege-ți județul">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">🗺️ Hartă · orizontul tău local</span>
+  <h2>Găsește-ți județul</h2>
+  <p>Apasă pe județul tău. Acesta este, de obicei, <b>orizontul tău local</b>. Orașul sau satul tău e undeva înăuntru.</p>
+  <div class="fig-wrap"><div id="hl-map"></div></div>
+  <div class="map-info" id="hl-info" aria-live="polite">Apasă pe un județ (sau folosește Tab și Enter).</div>
+ </div>
+</section>
+
+<!-- 4 PLAN VS HARTA -->
+<section class="slide" aria-label="Plan sau hartă">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Observ · imaginile A și B din manual</span>
+  <h2>Același oraș, două desene</h2>
+  <p>Alex a folosit două desene: <b>planul orașului</b> și <b>harta județului</b>. Apasă pe butoane și compară.</p>
+  <div class="ctrl" id="pm-ctrl"><button type="button" aria-pressed="true" data-m="plan">B · Planul orașului (1 cm = 1 km)</button><button type="button" aria-pressed="false" data-m="harta">A · Harta județului (1 cm = 20 km)</button></div>
+  <div class="fig-wrap fig"><svg id="pm-svg" viewBox="0 0 440 280" role="img" aria-label="Plan și hartă">
+   <rect x="2" y="2" width="436" height="276" rx="10" fill="var(--paper)" stroke="var(--line)" stroke-width="3"/>
+   <g id="pm-plan">
+    <path d="M10 210 q110 -70 220 -30 t200 -50" fill="none" stroke="#2F6FD6" stroke-width="16" stroke-linecap="round" opacity=".85"/>
+    <g stroke="var(--ink)" stroke-width="3" opacity=".6"><path d="M60 40 V260 M140 40 V240 M220 30 V250 M300 50 V230 M380 60 V210"/><path d="M30 80 H420 M30 150 H420"/></g>
+    <rect x="224" y="84" width="36" height="28" fill="#E2433A"/><rect x="144" y="154" width="30" height="24" fill="#8A5A2B"/><rect x="64" y="84" width="32" height="28" fill="#2E9D52"/>
+    <circle cx="340" cy="112" r="14" fill="#2E9D52"/>
+    <text x="226" y="78" font-size="13" font-weight="800" fill="var(--ink)">Primăria</text>
+    <text x="146" y="198" font-size="13" font-weight="800" fill="var(--ink)">Școala</text>
+    <text x="66" y="78" font-size="13" font-weight="800" fill="var(--ink)">Parc</text>
+    <text x="320" y="94" font-size="13" font-weight="800" fill="var(--ink)">Grădină</text>
+    <text x="20" y="262" font-size="14" font-weight="800" fill="var(--ink)">Planul orașului · se văd străzile și clădirile</text>
+   </g>
+   <g id="pm-harta" style="display:none">
+    <path d="M40 60 q60 -40 150 -20 t170 30 q50 60 10 120 t-130 50 q-80 20 -150 -20 t-80 -90Z" fill="#E4F2D2" stroke="#4F8F4A" stroke-width="3"/>
+    <path d="M180 50 q30 80 -10 130 t40 70" fill="none" stroke="#2F6FD6" stroke-width="4" stroke-linecap="round"/>
+    <path d="M300 60 q-30 50 -10 110" fill="none" stroke="#2F6FD6" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="320" cy="150" rx="18" ry="10" fill="#2F6FD6"/>
+    <path d="M70 150 q40 -40 110 -20 t120 0" fill="none" stroke="#C9862A" stroke-width="3" stroke-dasharray="7 4"/>
+    <circle cx="182" cy="118" r="8" fill="#E2433A"/><circle cx="148" cy="218" r="6" fill="#E2433A"/><g fill="var(--ink)"><circle cx="80" cy="120" r="3"/><circle cx="250" cy="100" r="3"/><circle cx="330" cy="200" r="3"/></g>
+    <text x="196" y="116" font-size="13" font-weight="800" fill="var(--ink)">Oraș mare</text>
+    <text x="160" y="236" font-size="12" font-weight="800" fill="var(--ink)">Oraș mic</text>
+    <text x="20" y="262" font-size="14" font-weight="800" fill="var(--ink)">Harta județului · se văd localități, ape, drumuri</text>
+   </g>
+  </svg></div>
+  <div class="map-info" id="pm-info" aria-live="polite"></div>
+ </div>
+</section>
+
+<!-- 5 ANATOMIA HARTII -->
+<section class="slide" aria-label="Ce trebuie să aibă o hartă">
+ <div class="wrap">
+  <span class="badge" style="background:var(--red)">Descopăr · ce trebuie să aibă o hartă</span>
+  <h2>Titlu, scară, legendă</h2>
+  <p>Hărți citește oricine, dacă are trei lucruri. Apasă pe butoane și vezi unde sunt.</p>
+  <div class="ctrl" id="an-ctrl"><button type="button" aria-pressed="false" data-p="t">📛 Titlul</button><button type="button" aria-pressed="false" data-p="s">📏 Scara</button><button type="button" aria-pressed="false" data-p="l">🔑 Legenda</button></div>
+  <div class="fig-wrap fig"><svg viewBox="0 0 440 300" role="img" aria-label="Hartă cu titlu, scară și legendă">
+   <rect x="3" y="3" width="434" height="294" rx="10" fill="#FBF6EA" stroke="var(--line)" stroke-width="3"/>
+   <g id="an-t" class="part"><rect x="90" y="12" width="260" height="30" rx="8" fill="#fff" stroke="var(--line)" stroke-width="2"/><text x="220" y="33" text-anchor="middle" font-size="15" font-weight="800" fill="#222">Județul Exemplu · harta fizică</text></g>
+   <path d="M20 60 H280 V250 H20Z" fill="#9BD59B"/>
+   <path d="M120 60 H280 V250 H170 q-30 -60 -50 -190Z" fill="#F1D77B"/>
+   <path d="M210 60 H280 V190 q-40 -30 -70 -130Z" fill="#A9774A"/>
+   <path d="M70 60 q40 70 20 120 t30 70" fill="none" stroke="#2F6FD6" stroke-width="4" stroke-linecap="round"/>
+   <ellipse cx="170" cy="215" rx="20" ry="11" fill="#2F6FD6"/>
+   <path d="M40 130 q100 -30 200 20" fill="none" stroke="#444" stroke-width="2" stroke-dasharray="6 3"/>
+   <circle cx="90" cy="110" r="7" fill="#E2433A"/><circle cx="230" cy="150" r="5" fill="#E2433A"/><g fill="#222"><circle cx="60" cy="190" r="3"/><circle cx="150" cy="95" r="3"/></g>
+   <g id="an-s" class="part"><rect x="22" y="262" width="150" height="30" rx="6" fill="#fff" stroke="var(--line)" stroke-width="2"/><path d="M34 280 H154" stroke="#222" stroke-width="3"/><path d="M34 274 v12 M94 274 v12 M154 274 v12" stroke="#222" stroke-width="3"/><text x="34" y="272" font-size="10" font-weight="800" fill="#222">0</text><text x="88" y="272" font-size="10" font-weight="800" fill="#222">10</text><text x="144" y="272" font-size="10" font-weight="800" fill="#222">20 km</text></g>
+   <g id="an-l" class="part"><rect x="296" y="60" width="132" height="226" rx="8" fill="#fff" stroke="var(--line)" stroke-width="2"/><text x="362" y="80" text-anchor="middle" font-size="13" font-weight="800" fill="#222">LEGENDA</text>
+    <rect x="306" y="92" width="22" height="12" fill="#9BD59B"/><text x="336" y="102" font-size="11" fill="#222">câmpie</text>
+    <rect x="306" y="112" width="22" height="12" fill="#F1D77B"/><text x="336" y="122" font-size="11" fill="#222">dealuri</text>
+    <rect x="306" y="132" width="22" height="12" fill="#A9774A"/><text x="336" y="142" font-size="11" fill="#222">munți</text>
+    <path d="M306 160 h22" stroke="#2F6FD6" stroke-width="3"/><text x="336" y="164" font-size="11" fill="#222">râu</text>
+    <ellipse cx="317" cy="180" rx="11" ry="6" fill="#2F6FD6"/><text x="336" y="184" font-size="11" fill="#222">lac</text>
+    <circle cx="317" cy="200" r="6" fill="#E2433A"/><text x="336" y="204" font-size="11" fill="#222">oraș</text>
+    <circle cx="317" cy="220" r="3" fill="#222"/><text x="336" y="224" font-size="11" fill="#222">sat</text>
+    <path d="M306 240 h22" stroke="#444" stroke-width="2" stroke-dasharray="6 3"/><text x="336" y="244" font-size="11" fill="#222">drum</text></g>
+  </svg></div>
+  <div class="map-info" id="an-info" aria-live="polite">Alege un element.</div>
+  <div class="mc">
+   <div class="m"><span class="lab">📘 Manualul spune</span><p>Harta respectă orientarea după punctele cardinale. Are <b>titlu</b>, <b>scară</b> și <b>legendă</b>. O colecție de hărți se numește <b>atlas</b>.</p></div>
+   <div><span class="lab">🌍 Context</span><p>Culorile reliefului sunt aceleași pe aproape toate hărțile fizice: <b>verde</b> pentru câmpii, <b>galben</b> pentru dealuri, <b>maro</b> pentru munți. Mai închis înseamnă mai înalt. Ai vorbit despre ele la lecția 6.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 6 SEMNE -->
+<section class="slide" aria-label="Semne convenționale">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Aplic · semne convenționale</span>
+  <h2>Ce spune fiecare semn?</h2>
+  <p>Un <b>semn convențional</b> e un desen simplu pe care ne-am înțeles toți să îl folosim. Apasă pe semne. Unele reprezintă lucruri <b>naturale</b>, altele <b>create de om</b>.</p>
+  <div class="sym" id="sy-list"></div>
+  <div class="map-info" id="sy-info" aria-live="polite">Apasă pe un semn.</div>
+  <div class="tip y">🎨 <b>Artă:</b> desenează tu o legendă pentru harta camerei tale. Ce semne alegi pentru pat, birou, ușă? Alege forme simple și culori care se văd bine.</div>
+ </div>
+</section>
+
+<!-- 7 CALCULATOR SCARA -->
+<section class="slide" aria-label="Scara hărții">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">Aplic · scara · harta A din manual</span>
+  <h2>Cât de departe sunt Oradea și Salonta?</h2>
+  <p>Pe harta A, scara arată că <b>1 cm din hartă = 20 km în realitate</b>. Distanța în linie dreaptă între Oradea și Salonta e de aproximativ <b>34 km</b>. Alege o scară și vezi cât ar măsura pe hartă.</p>
+  <div class="calc">
+   <label for="sc-s" style="font-weight:800">1 cm = </label>
+   <select id="sc-s"><option>1</option><option>5</option><option>10</option><option selected>20</option><option>50</option></select>
+   <span style="font-weight:800">km</span>
+  </div>
+  <div class="out" id="sc-out" aria-live="polite"></div>
+  <div class="fig-wrap" style="margin-top:10px"><svg viewBox="0 0 520 90" role="img" aria-label="Linie scară" style="width:100%;height:auto"><g id="sc-vis"></g></svg></div>
+  <h3 style="margin-top:14px">Invers: cunoști distanța de pe hartă</h3>
+  <div class="calc">
+   <label for="sc-cm" style="font-weight:800">Pe hartă:</label>
+   <input id="sc-cm" type="number" min="0" max="30" step="0.5" value="3"><span style="font-weight:800">cm</span>
+   <label for="sc-s2" style="font-weight:800">Scara: 1 cm =</label>
+   <select id="sc-s2"><option>1</option><option>5</option><option selected>10</option><option>20</option><option>50</option></select>
+   <span style="font-weight:800">km</span>
+  </div>
+  <div class="out" id="sc-out2" aria-live="polite"></div>
+  <div class="tip y">🧮 <b>Matematică:</b> distanța reală = cm de pe hartă × km pe 1 cm. Când scara se mărește (1 cm = 50 km), aceeași distanță ocupă mai puțin loc, deci harta cuprinde un teritoriu <b>mai mare</b>, dar cu mai puține detalii.</div>
+ </div>
+</section>
+
+<!-- 8 ATLAS -->
+<section class="slide" aria-label="Atlas și hărți vechi">
+ <div class="wrap">
+  <span class="badge" style="background:var(--yellow);color:#3a2a00">🌉 Istorie ↔ Geografie</span>
+  <h2>De ce „atlas”? Și cum desenau grecii și romanii hărțile?</h2>
+  <div class="grid g3">
+   <div class="box"><span class="emo">🏋️</span><h3>Titanul Atlas</h3><p>În mitologia greacă (lecția 1 de istorie, unitatea 2), Atlas era titanul care purta cerul pe umeri. Geograful <b>Mercator</b> a pus chipul lui pe o colecție de hărți (secolul XVI). De aici, o carte cu hărți se numește <b>atlas</b>.</p></div>
+   <div class="box"><span class="emo">📜</span><h3>Ptolemeu</h3><p>Un învățat din Antichitate (sec. II d.H.), care a scris o „Geografie” cu liste de locuri și coordonate, printre care și locuri din Dacia.</p></div>
+   <div class="box"><span class="emo">🛣️</span><h3>Harta drumurilor romane</h3><p>Romanii au făcut o hartă lungă, ca o fâșie, cu drumuri, orașe și popasuri. Prin copia ei medievală (Tabula Peutingeriana), putem vedea și teritoriul Daciei.</p></div>
+  </div>
+  <div class="tip y">🔤 <b>Română:</b> „geografie” = <i>ge</i> (pământ) + <i>graphein</i> (a scrie, a desena), cuvinte grecești. „Atlas” a rămas la fel. „Hartă” vine din latinescul <i>charta</i>, adică foaie, hârtie.</div>
+ </div>
+</section>
+
+<!-- 9 DEZBATERE -->
+<section class="slide" aria-label="Dezbatere">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">🗣️ Dezbatere · linia valorică</span>
+  <h2>Hartă pe hârtie sau GPS în telefon?</h2>
+  <p>Astăzi multă lume folosește harta din telefon. Mai are rost să învățăm să citim o hartă pe hârtie, să folosim scara și legenda? Alege o poziție și citește argumentele. Nu există un răspuns „corect”: contează cum argumentezi.</p>
+  <div class="vl" id="vl-btns">
+   <button type="button" aria-pressed="false" data-k="pro">Hârtia are rost</button>
+   <button type="button" aria-pressed="false" data-k="contra">Telefonul ajunge</button>
+   <button type="button" aria-pressed="false" data-k="ind">Încă nu m-am hotărât</button>
+  </div>
+  <div class="box" id="vl-box" aria-live="polite"><p>Apasă pe o poziție ca să vezi ce argumente ar putea folosi un elev. Apoi adaugă-le pe ale tale.</p></div>
+  <div class="tip y">🗣️ <b>Reguli:</b> ascultăm până la capăt, folosim „eu cred că... pentru că...”, schimbăm poziția dacă ne conving argumentele. La final formulăm împreună o concluzie.</div>
+ </div>
+</section>
+
+<!-- 10 PUNTE -->
+<section class="slide" aria-label="Punte">
+ <div class="wrap">
+  <span class="badge" style="background:var(--purple)">🌉 Punte · Matematică ↔ Informatică ↔ Științe ↔ Civică</span>
+  <h2>Legături cu celelalte materii</h2>
+  <details class="pd"><summary>Matematică: scara și proporțiile</summary><p>Scara e o <b>înmulțire</b> sau o <b>împărțire</b>: 3 cm × 20 km = 60 km; 60 km : 20 km = 3 cm. Dacă dublezi scara, jumătate din distanță pe hartă. Pentru calcule ai nevoie de unități: cm și km.</p></details>
+  <details class="pd"><summary>Informatică: hărți digitale</summary><p>Aplicațiile cu hărți au tot titlu (locul), scară (apare un mic segment) și legendă (simboluri). Poți <b>mări</b> și <b>micșora</b>: schimbi scara cu degetele. Hărțile digitale se bazează tot pe hărți desenate, apoi puse pe calculator.</p></details>
+  <details class="pd"><summary>Științe: de ce sunt albastre apele?</summary><p>Convenția e universală: albastru pentru ape, verde pentru câmpii, maro pentru munți. E mai ușor de înțeles pentru oricine, indiferent de limbă. Știința folosește convenții comune, ca să ne putem înțelege.</p></details>
+  <details class="pd"><summary>Educație civică: orientare și siguranță</summary><p>Într-o drumeție, harta, busola și un adult sunt aliații tăi. Spune mereu adulților pe unde mergi, ia harta cu tine și respectă marcajele traseelor. Natura trebuie protejată, la fel ca drumul pe care ai venit.</p></details>
+ </div>
+</section>
+
+<!-- 11 MISIUNI -->
+<section class="slide" aria-label="Misiunile">
+ <div class="wrap" style="max-width:920px">
+  <div class="qtop">
+   <span class="badge" style="background:var(--purple);margin:0">Misiunile lecției</span>
+   <span class="score" id="qscore">0 puncte</span>
+  </div>
+  <div class="qprog"><i id="qbar"></i></div>
+  <div id="qhost"></div>
+ </div>
+</section>
+
+<!-- 12 AM INVATAT -->
+<section class="slide" aria-label="Am învățat">
+ <div class="wrap">
+  <span class="badge" style="background:var(--green)">Am învățat</span>
+  <h2>Ce luăm cu noi din lecție</h2>
+  <div class="grid g3">
+   <div class="box" style="border-color:var(--blue)"><span class="emo">🗺️</span><p><b>Orizontul local</b> cuprinde localitatea și spațiul din jur și e reprezentat, de obicei, de <b>județ</b>.</p></div>
+   <div class="box" style="border-color:var(--green)"><span class="emo">📏</span><p>Harta micșorează suprafețe mari. Are <b>titlu</b>, <b>scară</b> și <b>legendă</b>. O colecție de hărți e un <b>atlas</b>.</p></div>
+   <div class="box" style="border-color:var(--red)"><span class="emo">🔑</span><p>Pe hartă folosim <b>semne convenționale</b> pentru elemente naturale și create de om.</p></div>
+  </div>
+  <div class="tip y">🔁 <b>Urmează:</b> Lecția 6, „Relief, hidrografie, vegetație”: ce arată culorile de pe hartă, în 3D.</div>
+ </div>
+</section>
+
+</main>
+
+<script src="../../assets/caiet.js"></script>
+<script src="../../assets/harti/romania.js"></script>
+<script>
+(function(){
+  var Q=[
+   {t:'mcq',tags:['G L5'],d:'Orizont',q:'Ce cuprinde orizontul local al lui Alex din Oradea?',o:['Doar clasa lui','Localitatea în care trăiește și spațiul din jurul ei','Doar cartierul','Toată țara'],a:1,h:'Citește la „Observ”.',e:'Localitatea și spațiul din jur, adică, de obicei, județul.'},
+   {t:'mcq',tags:['G L5'],d:'Vocabular',q:'De obicei, orizontul local este reprezentat de...',o:['Țară','Județ','Continent','Cameră'],a:1,h:'O unitate cu mai multe localități care se gospodăresc împreună.',e:'De județ. Fiecare elev are un județ (sau București) ca orizont local.'},
+   {t:'mcq',tags:['G L5'],d:'Hartă',q:'Cum se numește desenul care reprezintă micșorat suprafețe mari?',o:['Plan','Hartă','Legendă','Scară'],a:1,h:'Planul e pentru spații mici, ca orașul.',e:'Harta. Planul se folosește pentru suprafețe mici, ca un oraș sau o clasă.'},
+   {t:'mcq',tags:['G L5'],d:'Hartă',q:'Care dintre imaginile din manual prezintă un spațiu mai mare: A (1 cm = 20 km) sau B (1 cm = 1 km)?',o:['A','B','La fel','Niciuna'],a:0,h:'1 cm acoperă mai mulți kilometri.',e:'A, harta județului. Cu cât scara e mai mare (1 cm = 20 km), cu atât spațiul acoperit pe aceeași foaie e mai mare.'},
+   {t:'mcq',tags:['G L5'],d:'Scară',q:'Ce ne spune scara unei hărți?',o:['Cât măsoară harta în cm','Cât reprezintă în realitate 1 cm de pe hartă','Cât de veche e harta','Ce culoare au râurile'],a:1,h:'Pe scurt, de câte ori a fost micșorată realitatea.',e:'Cât reprezintă în realitate 1 cm de pe hartă. De exemplu 1 cm = 20 km.'},
+   {t:'num',u:'km',tags:['G L5','Matematică'],d:'Matematică',q:'Pe o hartă cu 1 cm = 20 km, două orașe sunt la 3 cm. Care e distanța reală?',a:60,h:'3 × 20.',e:'60 km. Distanța reală = cm de pe hartă × kilometri pe 1 cm.'},
+   {t:'num',u:'km',tags:['G L5','Matematică'],d:'Matematică',q:'Două orașe sunt la 4 cm pe o hartă cu 1 cm = 10 km. Care e distanța reală?',a:40,h:'4 × 10.',e:'40 km.'},
+   {t:'num',u:'cm',tags:['G L5','Matematică'],d:'Matematică',q:'Două localități sunt la 120 km în realitate. Pe o hartă cu 1 cm = 20 km, câți cm sunt între ele?',a:6,h:'120 : 20.',e:'6 cm. Distanța pe hartă = distanța reală : kilometri pe 1 cm.'},
+   {t:'sort',tags:['G L5'],d:'Semne',q:'Sortează elementele reprezentate pe hartă: naturale sau create de om?',items:[['Râu','s'],['Oraș','n'],['Pădure','s'],['Drum','n'],['Lac','s'],['Pod','n']],labels:{s:'Naturale',n:'Create de om'},h:'Gândește-te: le-a făcut natura sau oamenii?',e:'Naturale: râu, pădure, lac. Create de om: oraș, drum, pod.'},
+   {t:'mcq',tags:['G L5'],d:'Legendă',q:'Ce cuprinde legenda unei hărți?',o:['Povestea locului','Semnele convenționale folosite pe hartă','Numele autorului','Data hărții'],a:1,h:'Ca la o cheie.',e:'Semnele convenționale și ce înseamnă ele, ca orice om să înțeleagă harta.'},
+   {t:'mcq',tags:['G L5'],d:'Titlu',q:'Ce ne spune titlul unei hărți?',o:['Cât de mare e scara','Ce spațiu și ce fenomen geografic sunt reprezentate','Cine a desenat-o','Câte culori are'],a:1,h:'De exemplu: „Județul Bihor – harta fizică”.',e:'Ce spațiu și ce fenomen geografic sunt reprezentate.'},
+   {t:'mcq',tags:['G L5','Istorie'],d:'Istorie',q:'Cartea cu o colecție de hărți se numește atlas. De unde vine numele?',o:['De la un râu','De la titanul Atlas din mitologia greacă, care purta cerul pe umeri, desenat pe o colecție de hărți','De la o țară','De la un munte din Moldova'],a:1,h:'Grecii (L1 de istorie, unitatea 2) aveau mulți zei și titani.',e:'De la titanul Atlas. Un geograf din secolul XVI a pus chipul lui pe coperta unei colecții de hărți.'},
+   {t:'mcq',tags:['G L5'],d:'Scară',q:'Ce se întâmplă dacă schimbi scara de la 1 cm = 10 km la 1 cm = 50 km?',o:['Harta cuprinde un teritoriu mai mare, dar cu mai puține detalii','Harta cuprinde un teritoriu mai mic','Nu se schimbă nimic','Harta devine plan'],a:0,h:'Imaginează-ți că te îndepărtezi de o poză.',e:'Harta cuprinde un teritoriu mai mare, dar cu mai puține detalii. Același cm acoperă mai mulți km.'},
+   {t:'mcq',tags:['G L5','Informatică'],d:'Informatică',q:'Când măriți harta din telefon, ce schimbați?',o:['Scara','Titlul','Legenda','Culorile apelor'],a:0,h:'Arată mai puțin loc, dar mai multe detalii.',e:'Scara. Când mărești, vezi un spațiu mai mic, cu mai multe detalii.'},
+   {t:'mcq',tags:['G L5','Științe'],d:'Culori',q:'Pe harta fizică, cu ce culoare se reprezintă câmpiile?',o:['Maro','Galben','Verde','Roșu'],a:2,h:'Culori convenționale: verde, galben, maro.',e:'Verde. Dealurile se reprezintă cu galben, iar munții cu maro.'}
+  ];
+  Caiet.start({Q:Q});
+})();
+</script>
+<script>
+(function(){
+  /* Harta județelor */
+  var selId=null;
+  function drawH(){
+    Caiet.harta('hl-map',{map:'romania',label:'Harta județelor României',
+      fill:function(z){return z.id===selId?'#2F6FD6':'#E7E2D2';},
+      text:function(z){selId=z.id;var rg={transilvania:'Transilvania',banat:'Banat',oltenia:'Oltenia',muntenia:'Muntenia',moldova:'Moldova',dobrogea:'Dobrogea'}[z.prov]||'';return '<b>'+(z.name==='București'?'Municipiul București':'Județul '+z.name)+'</b>'+(rg?' · în regiunea istorică '+rg:'')+'. Dacă locuiești aici, acesta este orizontul tău local. Orașul sau satul tău e una dintre localitățile lui.';},
+      info:'hl-info'});
+  }
+  drawH();
+  /* Plan vs hartă */
+  var pb=document.querySelectorAll('#pm-ctrl button');
+  var PI={plan:'<b>Planul orașului</b> (imaginea B): suprafață mică (1 cm = 1 km), foarte multe detalii: străzi, clădiri, parcuri.',harta:'<b>Harta județului</b> (imaginea A): suprafață mare (1 cm = 20 km), cu mai puține detalii. Orașele sunt puncte, apele sunt linii și pete albastre.'};
+  pb.forEach(function(b){b.onclick=function(){var m=b.getAttribute('data-m');pb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});document.getElementById('pm-plan').style.display=m==='plan'?'':'none';document.getElementById('pm-harta').style.display=m==='harta'?'':'none';document.getElementById('pm-info').innerHTML=PI[m];};});
+  document.getElementById('pm-info').innerHTML=PI.plan;
+  /* Anatomia hărții */
+  var AN={t:'<b>Titlul</b> spune ce spațiu și ce fenomen geografic sunt reprezentate. Aici: „Județul Exemplu · harta fizică”.',s:'<b>Scara</b> spune de câte ori a fost micșorată realitatea. Aici 1 segment (aproape 1 cm) = 10 km.',l:'<b>Legenda</b> explică semnele convenționale: culori pentru relief, linii pentru râuri, pete pentru lacuri, cerculețe pentru localități.'};
+  var ab=document.querySelectorAll('#an-ctrl button'),ai=document.getElementById('an-info');
+  function an(k){ab.forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-p')===k?'true':'false');});['t','s','l'].forEach(function(p){var g=document.getElementById('an-'+p);g.style.opacity=(k===null||p===k)?1:.25;});ai.innerHTML=AN[k];}
+  ab.forEach(function(b){b.onclick=function(){an(b.getAttribute('data-p'));};});
+  ['t','s','l'].forEach(function(p){var g=document.getElementById('an-'+p);g.setAttribute('tabindex','0');g.setAttribute('role','button');g.addEventListener('click',function(){an(p);});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();an(p);}});});
+  /* Semne */
+  var SY=[
+   ['Râu','<path d="M2 10 q6 -8 11 0 t11 0" fill="none" stroke="#2F6FD6" stroke-width="3"/>','natural','Apă curgătoare: linie albastră.'],
+   ['Lac','<ellipse cx="13" cy="10" rx="10" ry="6" fill="#2F6FD6"/>','natural','Apă stătătoare: pată albastră.'],
+   ['Pădure','<path d="M13 2 l7 10 h-4 l5 7 h-16 l5 -7 h-4Z" fill="#2E9D52"/>','natural','Vegetație: semn verde sau pată verde.'],
+   ['Munte','<path d="M2 18 l8 -14 l6 8 l3 -4 l5 10Z" fill="#A9774A"/>','natural','Relief înalt, desenat cu maro.'],
+   ['Oraș','<circle cx="13" cy="10" r="7" fill="#E2433A"/>','creat de om','Așezare urbană: cerc mare.'],
+   ['Sat','<circle cx="13" cy="10" r="3.5" fill="#222"/>','creat de om','Așezare rurală: punct mic.'],
+   ['Drum','<path d="M2 10 h22" stroke="#444" stroke-width="3" stroke-dasharray="6 3"/>','creat de om','Cale de comunicație: linie întreruptă sau neagră.'],
+   ['Pod','<path d="M2 14 h22 M5 14 v-5 M13 14 v-5 M21 14 v-5 M2 9 h22" stroke="#444" stroke-width="2" fill="none"/>','creat de om','Construcție pentru a trece peste o apă.']
+  ];
+  var sl=document.getElementById('sy-list'),si=document.getElementById('sy-info');
+  SY.forEach(function(s,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed','false');b.innerHTML='<svg viewBox="0 0 26 20">'+s[1]+'</svg>'+s[0];
+    b.onclick=function(){sl.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});si.innerHTML='<b>'+s[0]+'</b> · element <b>'+s[2]+'</b>. '+s[3];};sl.appendChild(b);});
+  /* Scara */
+  var sel1=document.getElementById('sc-s'),o1=document.getElementById('sc-out'),vis=document.getElementById('sc-vis');
+  function sc(){var s=+sel1.value,cm=34/s,txt=cm.toLocaleString('ro-RO',{maximumFractionDigits:1});
+    o1.innerHTML='La scara 1 cm = '+s+' km, cei aproximativ <b>34 km</b> între Oradea și Salonta se văd pe hartă ca <b>'+txt+' cm</b>.';
+    var px=Math.max(4,Math.min(500,cm*40));
+    var tk='';for(var i=0;i<=12;i++){tk+='<line x1="'+(10+i*40)+'" y1="54" x2="'+(10+i*40)+'" y2="'+(i%5===0?72:64)+'" stroke="var(--ink)" stroke-width="2"/>'+(i%2===0?'<text x="'+(10+i*40)+'" y="86" text-anchor="middle" font-size="11" fill="var(--ink)">'+i+'</text>':'');}
+    vis.innerHTML='<text x="10" y="20" font-size="14" font-weight="800" fill="var(--ink)">Distanța pe hartă: '+txt+' cm (riglă în cm)</text><line x1="10" y1="40" x2="'+(10+px)+'" y2="40" stroke="#E2433A" stroke-width="6" stroke-linecap="round"/><line x1="10" y1="54" x2="490" y2="54" stroke="var(--ink)" stroke-width="2"/>'+tk;}
+  sel1.onchange=sc;sc();
+  var cmI=document.getElementById('sc-cm'),s2=document.getElementById('sc-s2'),o2=document.getElementById('sc-out2');
+  function sc2(){var cm=parseFloat(cmI.value),s=+s2.value;if(isNaN(cm)){o2.textContent='Scrie un număr.';return;}
+    o2.innerHTML=cm.toLocaleString('ro-RO')+' cm × '+s+' km = <b>'+(cm*s).toLocaleString('ro-RO')+' km</b> în realitate.';}
+  cmI.oninput=sc2;s2.onchange=sc2;sc2();
+  /* Linia valorică */
+  var ARG={
+   pro:'<b>Argumente „hârtia are rost”:</b><br>• Telefonul se poate descărca sau poate rămâne fără semnal, pe munte, în pădure.<br>• Pe hârtie vezi tot spațiul odată și înveți să te orientezi.<br>• Scara și legenda sunt la fel pe orice hartă: dacă le știi, citești orice hartă, și pe telefon.',
+   contra:'<b>Argumente „telefonul ajunge”:</b><br>• Îți arată unde ești chiar acum și drumul cel mai scurt.<br>• Poți mări și micșora și se actualizează singură.<br>• E mereu la tine și ocupă puțin loc.',
+   ind:'<b>Ia-ți timp să te decizi.</b><br>• În ce situații ai nevoie de una, în care de cealaltă?<br>• Ce se întâmplă dacă bateria ți se termină în drumeție?<br>• Poți folosi amândouă? Spune ce situație ai ales și de ce.'
+  };
+  var vb=document.querySelectorAll('#vl-btns button'),vx=document.getElementById('vl-box');
+  vb.forEach(function(b){b.onclick=function(){vb.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});vx.innerHTML='<p style="margin:0">'+ARG[b.dataset.k]+'</p>';};});
+})();
+</script>
+</body>
+</html>
